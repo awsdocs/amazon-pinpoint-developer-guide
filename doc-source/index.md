@@ -61,6 +61,7 @@ Amazon's trademarks and trade dress may not be used in
    + [Customizing Segments with AWS Lambda](segments-dynamic.md)
 + [Creating Campaigns](campaigns.md)
 + [Streaming Amazon Pinpoint Events to Kinesis](analytics-streaming.md)
++ [Logging Amazon Pinpoint API Calls with AWS CloudTrail](logging-using-cloudtrail.md)
 + [Permissions](permissions.md)
    + [IAM Policies for Amazon Pinpoint Users](permissions-actions.md)
    + [User Authentication in Amazon Pinpoint Apps](permissions-authentication.md)

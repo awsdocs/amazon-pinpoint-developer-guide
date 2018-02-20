@@ -1,6 +1,6 @@
 # IAM Role for Streaming Events to Kinesis<a name="permissions-streams"></a>
 
-Amazon Pinpoint can automatically send app usage data, or *event data*, from your app to an Kinesis stream or Amazon Kinesis Data Firehose delivery stream in your AWS account\. Before Amazon Pinpoint can begin streaming the event data, you must delegate the required permissions to Amazon Pinpoint\. 
+Amazon Pinpoint can automatically send app usage data, or *event data*, from your app to a Kinesis stream or Amazon Kinesis Data Firehose delivery stream in your AWS account\. Before Amazon Pinpoint can begin streaming the event data, you must delegate the required permissions to Amazon Pinpoint\. 
 
 If you use the console to set up event streaming, Amazon Pinpoint automatically creates an AWS Identity and Access Management \(IAM\) role with the required permissions\. For more information, see [Streaming Amazon Pinpoint Events to Amazon Kinesis](http://docs.aws.amazon.com/pinpoint/latest/userguide/analytics-streaming-kinesis.html) in the *Amazon Pinpoint User Guide*\.
 
@@ -20,7 +20,7 @@ To allow Amazon Pinpoint to send event data to your stream, attach one of the fo
 
 ### Amazon Kinesis Data Streams<a name="permissions-streams-permissionspolicies-aks"></a>
 
-The following policy allows Amazon Pinpoint to send event data to an Kinesis stream\.
+The following policy allows Amazon Pinpoint to send event data to a Kinesis stream\.
 
 ```
 {

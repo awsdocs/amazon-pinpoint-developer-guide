@@ -17,7 +17,7 @@ If you already have an iOS distribution certificate, you can skip this step\.
 1. In the **About Creating a Certificate Signing Request \(CSR\)** pane, follow the instructions for creating a Certificate Signing Request \(CSR\) file\. You use the Keychain Access application on your Mac to create the request and save it on your local disk\. When you are done, choose **Continue**\.
 
 1. In the **Generate your certificate** pane, choose **Choose File\.\.\.**, and then select the CSR file you created\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/images/ios_appcert13.png)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)
 
 1. Choose **Continue**\.
 

@@ -1,16 +1,16 @@
 # Importing Segments<a name="segments-importing"></a>
 
-With Amazon Pinpoint, you can define a user segment by importing information about the user devices that belong to the segment\.
+With Amazon Pinpoint, you can define a user segment by importing information about the endpoints that belong to the segment\. An *endpoint* is a single messaging destination, such as a mobile push device token, a mobile phone number, or an email address\.
 
-Importing segments is useful if you have segments for your users outside of Amazon Pinpoint but you want to engage your users with Amazon Pinpoint campaigns\.
+Importing segments is useful if you've already created segments of your users outside of Amazon Pinpoint but you want to engage your users with Amazon Pinpoint campaigns\.
 
 When you import a segment, Amazon Pinpoint gets the segment's endpoints from Amazon Simple Storage Service \(Amazon S3\)\. Before you import, you add the endpoints to Amazon S3, and you create an IAM role that grants Amazon Pinpoint access to Amazon S3\. Then, you give Amazon Pinpoint the Amazon S3 location where the endpoints are stored, and Amazon Pinpoint adds each endpoint to the segment\.
 
-To create the IAM role, see [IAM Role for Importing Segments](permissions-import.md)\. For information about creating the Amazon S3 bucket, creating endpoint files, and importing a segment by using the console, see [Importing Segments](http://docs.aws.amazon.com/pinpoint/latest/userguide/segments-importing.html) in the *Amazon Pinpoint User Guide*\.
+To create the IAM role, see [IAM Role for Importing Segments](permissions-import.md)\. For information about importing a segment by using the Amazon Pinpoint console, see [Importing Segments](http://docs.aws.amazon.com/pinpoint/latest/userguide/segments-importing.html) in the *Amazon Pinpoint User Guide*\.
 
 ## Importing a Segment<a name="segments-importing-example-java"></a>
 
-The following example demonstrates how to import a segment with the AWS SDK for Java\.
+The following example demonstrates how to import a segment by using the AWS SDK for Java\.
 
 ```
 import com.amazonaws.services.pinpoint.AmazonPinpointClient;

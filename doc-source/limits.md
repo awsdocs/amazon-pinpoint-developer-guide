@@ -37,7 +37,7 @@ The following limits apply to the [Endpoints](http://docs.aws.amazon.com/pinpoin
 | Attribute name length | 50 characters | No | 
 | Attribute value length | 100 characters | No | 
 | `EndpointBatchItem` objects in an `EndpointBatchRequest` payload | 100 per payload\. The payload size can't exceed 7 MB\. | No | 
-| Endpoints with the same user ID | 10 per user ID | No | 
+| Endpoints with the same user ID | 10 unique endpoints per user ID | No | 
 | Values assigned to `Attributes` parameter attributes | 50 per attribute | No | 
 | Values assigned to `UserAttributes` parameter attributes | 50 per attribute | No | 
 
@@ -58,7 +58,7 @@ The following limits apply to the [Segments](http://docs.aws.amazon.com/pinpoint
 
 | Resource | Default Limit | Eligible for Increase | 
 | --- | --- | --- | 
-| Maximum number of segments | 100 per app\. | No | 
+| Maximum number of segments | 100 per app | No | 
 | Maximum number of dimensions that can be used to create a segment | 100 per segment | No | 
 
 ## Campaign limits<a name="limits-campaign"></a>
@@ -68,8 +68,8 @@ The following limits apply to the [Campaigns](http://docs.aws.amazon.com/pinpoin
 
 | Resource | Default Limit | Eligible for Increase | 
 | --- | --- | --- | 
-| Active \(currently running\) campaigns | 200 per account | No | 
-| Message sends | 100 million per campaign activity | No | 
+| Active campaigns | 200 per account An *active campaign* is a campaign that hasn't completed or failed\. Active campaigns have a status of `SCHEDULED`, `EXECUTING`, or `PENDING_NEXT_RUN`\.  | Yes | 
+| Message sends | 100 million per campaign activity | Yes | 
 
 ## Mobile push limits<a name="limits-mobile"></a>
 
@@ -110,7 +110,7 @@ The limits in the following sections apply to the Email channel\.
 | Resource | Default Limit | Eligible for Increase | 
 | --- | --- | --- | 
 | Sender address | All sending addresses or domains must be verified\. | No | 
-| Recipient address | If your account is still in the sandbox, all recipient email addresses or domains must be verified\. If your account is out of the sandbox, you can send to any valid address\. | No | 
+| Recipient address | If your account is still in the sandbox, all recipient email addresses or domains must be verified\. If your account is out of the sandbox, you can send to any valid address\. | Yes | 
 | Number of recipients per message |  50 recipients per message\.  | No | 
 | Number of identities that you can verify |  10,000 identities per AWS Region\.  *Identities* refers to email addresses or domains, or any combination of the two\. Every email you send using Amazon Pinpoint must be sent from a verified identity\.   | No | 
 
@@ -123,6 +123,7 @@ The following limits apply to the SMS channel\.
 | --- | --- | --- | 
 | Account spend threshold | USD$1\.00 per account\. | Yes | 
 | Number of SMS messages that can be sent each second \(*sending rate* \) | 20 messages per second\. | No | 
+| Number of Amazon SNS topics for two\-way SMS | 100,000 per account\. | Yes | 
 
 ## Requesting a limit increase<a name="limits-increase"></a>
 

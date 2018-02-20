@@ -2,11 +2,12 @@
 
 The following table describes the documentation for this release of Amazon Pinpoint\.
 
-+ **Latest documentation update:** January 19, 2018
++ **Latest documentation update:** February 6, 2018
 
 
 | Change | Description | Date | 
 | --- | --- | --- | 
+| AWS CloudTrail logging | Added information about logging Amazon Pinpoint API calls with CloudTrail\. | February 6, 2018 | 
 | Updated service limits | Updated [[ERROR] BAD/MISSING LINK TEXT](limits.md) with additional information about email limits\. | January 19, 2018 | 
 | Public beta for Amazon Pinpoint extensions | Use AWS Lambda functions to customize segments or create custom messaging channels\. | November 28, 2017 | 
 | External ID removed from IAM trust policies | The external ID key is removed from the example trust policy and example Java code for importing segments\. | October 26, 2017 | 

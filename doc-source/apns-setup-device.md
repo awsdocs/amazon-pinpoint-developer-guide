@@ -9,7 +9,7 @@ If you already have a registered device, you can skip this step\.
 1. Sign in to your Apple Developer account at [https://developer\.apple\.com/membercenter/index\.action](https://developer.apple.com/membercenter/index.action)\.
 
 1. Choose **Certificates, Identifiers & Profiles**\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/images/ios_appcert04.png)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)
 
 1. In the **Devices** section, choose the type of device that you want to add, such **iPhone**\.
 

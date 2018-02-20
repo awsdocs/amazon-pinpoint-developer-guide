@@ -11,10 +11,10 @@ To open the app via a `pinpoint://` URL scheme you need to assign a unique ident
 **To register a custom URL scheme in Xcode:**
 
 1. In Xcode, select the **Info** tab\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/images/ios_deeplink01.png)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)
 
 1. In the **URL Types** section, select \+ to add a URL type\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/images/ios_deeplink02.png)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)
 
 1. Enter the reverse DNS notation identifier for this URL type in **Identifier**\.
 
@@ -31,25 +31,32 @@ To direct the app to a specific view, implement a callback in your `AppDelegate`
 **Objective\-C**
 
 ```
--(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    NSLog(@"%s",__func__);
-    if([[url host] isEqualToString:@"deeplink"]) {
-        if([[url path] isEqualToString:@"/page1"]) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [((UINavigationController*)self.window.rootViewController) popToRootViewControllerAnimated:NO];
-                [[((UINavigationController*)self.window.rootViewController).viewControllers firstObject]  performSegueWithIdentifier:@"PAGE1_SEGUE" sender:self.window.rootViewController];
-            });
-        } else if ([[url path] isEqualToString:@"/page2"]) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [((UINavigationController*)self.window.rootViewController) popToRootViewControllerAnimated:NO];
-                [[((UINavigationController*)self.window.rootViewController).viewControllers firstObject] performSegueWithIdentifier:@"PAGE2_SEGUE" sender:self.window.rootViewController];
-            });
-        } else {
-            return NO;
-        }
+-(BOOL) application: (UIApplication * ) application openURL: (NSURL * ) url sourceApplication: (NSString * ) sourceApplication annotation: (id) annotation {
+  NSLog(@ "%s", __func__);
+  if ([[url host] isEqualToString: @ "deeplink"]) {
+    if ([[url path] isEqualToString: @ "/page1"]) {
+      dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^ {
+        [((UINavigationController * ) self.window.rootViewController) popToRootViewControllerAnimated: NO];
+        [
+          [((UINavigationController * ) self.window.rootViewController).viewControllers firstObject] performSegueWithIdentifier: @ "PAGE1_SEGUE"
+          sender: self.window.rootViewController
+        ];
+      });
+    } 
+    else if ([[url path] isEqualToString: @ "/page2"]) {
+      dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^ {
+        [((UINavigationController * ) self.window.rootViewController) popToRootViewControllerAnimated: NO];
+        [
+          [((UINavigationController * ) self.window.rootViewController).viewControllers firstObject] performSegueWithIdentifier: @ "PAGE2_SEGUE"
+          sender: self.window.rootViewController
+        ];
+      });
     } else {
-        return NO;
+      return NO;
     }
-    return YES;
+  } else {
+    return NO;
+  }
+  return YES;
 }
 ```

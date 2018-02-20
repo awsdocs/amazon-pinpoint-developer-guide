@@ -12,7 +12,7 @@ To complete this task, you need a Mobile Hub sample app with Amazon Pinpoint sup
 1. On the **Projects** page, choose the app that you created in AWS Mobile Hub\.
 
 1. Unless you have already created a campaign for your app, the console shows the **Campaigns** page\. Choose **New campaign** to create a campaign\.  
-![\[The Campaigns page for a first-time user.\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)![\[The Campaigns page for a first-time user.\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)![\[The Campaigns page for a first-time user.\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)
+![\[The Campaigns page for a first-time user.\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/images/campaigns_ftue.png)![\[The Campaigns page for a first-time user.\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)![\[The Campaigns page for a first-time user.\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)
 
 1. The **Create a campaign** page displays at the **Details** step\.
 

@@ -1,10 +1,10 @@
 # Registering Endpoints<a name="mobile-sdk-android-register"></a>
 
-When a user starts an app session \(the app comes to the foreground\), the AWS Mobile SDK for Android automatically registers \(or updates\) an *endpoint* with Amazon Pinpoint\. The endpoint uniquely identifies the user's mobile device\. It includes attributes that describe the device, and it can include custom attributes that you define\.
+When a user starts an app session \(the app comes to the foreground\), the AWS Mobile SDK for Android automatically registers \(or updates\) an *endpoint* with Amazon Pinpoint\. In this case, an endpoint represents a unique user's mobile device\. The endpoint includes attributes that describe the device, and can also include other attributes that you define\.
 
 After your app registers endpoints, you can segment your audience based on endpoint attributes, and you can engage these segments with tailored messaging campaigns\. You can also use the **Analytics** page in the Amazon Pinpoint console to view charts about endpoint registration and activity, such as **New endpoints** and **Daily active endpoints**\.
 
-While the endpoint uniquely identifies the mobile device, you can assign user IDs to endpoints to uniquely identify users\. You can assign a single user ID to multiple endpoints\. In this case, the user ID would represent an individual who uses your app on multiple devices, such as a smartphone and a tablet\. After you assign user IDs to your endpoints, you can view charts about user activity in the console, such as **Daily active users** and **Monthly active users**\. 
+You can assign a single user ID to multiple endpoints\. In the context of mobile applications, a user ID represents a single user, while the endpoints associated with the user ID represent the devices that the user uses to interact with your app\. Endpoints can also represent other methods of communicating with customers, such as email addresses or mobile phone numbers\. For more information, see [Adding Endpoints](endpoints.md)\. After you assign user IDs to your endpoints, you can view charts about user activity in the console, such as **Daily active users** and **Monthly active users**\. 
 
 ## Adding Custom Endpoint Attributes<a name="mobile-sdk-android-custom-attributes"></a>
 

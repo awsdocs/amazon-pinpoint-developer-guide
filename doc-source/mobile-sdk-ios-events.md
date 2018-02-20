@@ -20,28 +20,39 @@ After your app reports monetization events, view revenue analytics in the Amazon
 
 The following examples use the `analyticsClient` of the `AWSPinpoint` class to create, record, and submit a monetization event\.
 
-**Objective\-C**
+------
+#### [ Objective\-C ]
 
 In the following example, the `AWSMobileClient` class is provided in the AWS Mobile Hub sample code to reference the Amazon Pinpoint object\.
 
 ```
 AWSPinpointEvent *event = _pinpoint.analyticsClient
-                              createVirtualMonetizationEventWithProductId:@"PRODUCT_ID"
-                               withItemPrice:1.00
-                               withQuantity:1
-                               withCurrency:@"USD"];
-    [[AWSMobileClient sharedInstance].pinpoint.analyticsClient recordEvent:event];
-    [[AWSMobileClient sharedInstance].pinpoint.analyticsClient submitEvents];
+createVirtualMonetizationEventWithProductId:@"PRODUCT_ID"
+    withItemPrice:1.00
+    withQuantity:1
+    withCurrency:@"USD"];
+
+[[AWSMobileClient sharedInstance].pinpoint.analyticsClient 
+    recordEvent:event];
+[[AWSMobileClient sharedInstance].pinpoint.analyticsClient 
+    submitEvents];
 ```
 
-**Swift**
+------
+#### [ Swift ]
 
 ```
 let pinpointAnalyticsClient = pinpoint!.analyticsClient
-let event = pinpoint!.analyticsClient.createVirtualMonetizationEventWithProductId("PRODUCT_ID", withItemPrice: 1.00, withQuantity: 1, withCurrency: "USD")
+let event = pinpoint!.analyticsClient.createVirtualMonetizationEventWithProductId("PRODUCT_ID", 
+    withItemPrice: 1.00, 
+    withQuantity: 1, 
+    withCurrency: "USD")
+
 pinpointAnalyticsClient.recordEvent(event)
 pinpointAnalyticsClient.submitEvents()
 ```
+
+------
 
 ## Reporting Authentication Events<a name="mobile-sdk-ios-events-auth"></a>
 
@@ -65,22 +76,30 @@ Amazon Cognito user pools provide user directories that make it easier to add si
 
 If you don't want to use Amazon Cognito user pools, you can use the `analyticsClient` of the `AWSPinpoint` class to record and submit authentication events, as shown in the following examples\. The event type is set to `_userauth.sign_in`, but you can substitute any authentication event type\.
 
-**Objective\-C**
+------
+#### [ Objective\-C ]
 
 ```
-AWSPinpointEvent *event = _pinpoint.analyticsClient createEventWithEventType:@"_userauth.sign_in"];
-    _pinpoint.analyticsClient recordEvent:event];
-    _pinpoint.analyticsClient submitEvents];
+AWSPinpointEvent *event = _pinpoint.analyticsClient createEventWithEventType
+    :@"_userauth.sign_in"];
+
+_pinpoint.analyticsClient recordEvent:event];
+_pinpoint.analyticsClient submitEvents];
 ```
 
-**Swift**
+------
+#### [ Swift ]
 
 ```
 let pinpointAnalyticsClient = pinpoint!.analyticsClient
-let event = pinpointAnalyticsClient.createEventWithEventType("_userauth.sign_in")
+let event = 
+    pinpointAnalyticsClient.createEventWithEventType("_userauth.sign_in")
+
 pinpointAnalyticsClient.recordEvent(event)
 pinpointAnalyticsClient.submitEvents()
 ```
+
+------
 
 ## Reporting Custom Events<a name="mobile-sdk-ios-events-custom"></a>
 
@@ -90,25 +109,39 @@ After your app reports custom events, view the related analytics in the Amazon P
 
 The following examples use the `analyticsClient` of the `AWSPinpoint` class to create a custom event\.
 
-**Objective\-C**
+------
+#### [ Objective\-C ]
 
 ```
-AWSPinpointEvent *event = _pinpoint.analyticsClient createEventWithEventType:@"MyCustomEvent"];
-    [event addAttribute:@"MyAttributeValue1" forKey:@"MyAttribute1"];
-    [event addAttribute:@"MyAttributeValue2" forKey:@"MyAttribute2"];
-    [event addMetric:[NSNumber numberWithInt:(arc4random() % 65535)] forKey:@"MyMetric"];
-    _pinpoint.analyticsClient recordEvent:event];
-    _pinpoint.analyticsClient submitEvents];
+AWSPinpointEvent *event = _pinpoint.analyticsClient 
+    createEventWithEventType:@"MyCustomEvent"];
+
+[event addAttribute:@"MyAttributeValue1" 
+    forKey:@"MyAttribute1"
+];
+[event addAttribute:@"MyAttributeValue2" 
+    forKey:@"MyAttribute2"
+];
+[event addMetric:[NSNumber numberWithInt:(arc4random() % 65535)] 
+    forKey:@"MyMetric"];
+
+_pinpoint.analyticsClient recordEvent:event];
+_pinpoint.analyticsClient submitEvents];
 ```
 
-**Swift**
+------
+#### [ Swift ]
 
 ```
 let pinpointAnalyticsClient = pinpoint!.analyticsClient
 let event = pinpointAnalyticsClient.createEventWithEventType("MyCustomEvent")
-            event.addAttribute("MyAttributeValue1", forKey: "MyAttribute1")
-            event.addAttribute("MyAttributeValue2", forKey: "MyAttribute2")
-            event.addMetric(Int((arc4random() % 65535)), forKey: "MyMetric")
+
+event.addAttribute("MyAttributeValue1", forKey: "MyAttribute1")
+event.addAttribute("MyAttributeValue2", forKey: "MyAttribute2")
+event.addMetric(Int((arc4random() % 65535)), forKey: "MyMetric")
+
 pinpointAnalyticsClient.recordEvent(event)
 pinpointAnalyticsClient.submitEvents()
 ```
+
+------

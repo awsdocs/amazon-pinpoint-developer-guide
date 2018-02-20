@@ -5,19 +5,19 @@
 | --- |
 | This is prerelease documentation for a feature in public beta release\. It is subject to change\. | 
 
-You can use AWS Lambda to tailor how an Amazon Pinpoint campaign engages your target audience\. With AWS Lambda, you can modify the campaign's segment at the moment Amazon Pinpoint delivers the campaign's message\.
+You can use AWS Lambda to tailor how an Amazon Pinpoint campaign engages your target audience\. With AWS Lambda, you can modify the campaign's segment at the moment that Amazon Pinpoint delivers the campaign's message\.
 
 AWS Lambda is a compute service that you can use to run code without provisioning or managing servers\. You package your code and upload it to Lambda as *Lambda functions*\. Lambda runs a function when the function is invoked, which might be done manually by you or automatically in response to events\.
 
 For more information, see [Lambda Functions](http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction-function.html) in the *AWS Lambda Developer Guide*\.
 
-To assign a Lambda function to a campaign, you define the campaign's [http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaign.html#rest-api-campaign-attributes-campaignhook-table](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaign.html#rest-api-campaign-attributes-campaignhook-table) settings\. These settings include the Lambda function name, and they include the `CampaignHook` mode, which sets whether Amazon Pinpoint receives a return value from the function\.
+To assign a Lambda function to a campaign, you define the campaign's [http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaign.html#rest-api-campaign-attributes-campaignhook-table](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaign.html#rest-api-campaign-attributes-campaignhook-table) settings\. These settings include the Lambda function name\. They also include the `CampaignHook` mode, which sets whether Amazon Pinpoint receives a return value from the function\.
 
 A Lambda function that you assign to a campaign is referred to as an Amazon Pinpoint *extension*\.
 
-With the `CampaignHook` settings defined, Amazon Pinpoint automatically invokes the Lambda function when it runs the campaign, before it delivers the campaign's message\. When Amazon Pinpoint invokes the function, it provides *event data* about the message delivery\. This data includes the campaign's segment, which is the list of endpoints to which Amazon Pinpoint sends the message\.
+With the `CampaignHook` settings defined, Amazon Pinpoint automatically invokes the Lambda function when it runs the campaign, before it delivers the campaign's message\. When Amazon Pinpoint invokes the function, it provides *event data* about the message delivery\. This data includes the campaign's segment, which is the list of endpoints that Amazon Pinpoint sends the message to\.
 
-If the `CampaignHook` mode is set to `FILTER`, Amazon Pinpoint allows the function to modify and return the segment before sending the message\. For example, the function might update the endpoint definitions with attributes that contain data from a source that is external to Amazon Pinpoint\. Or, the function might filter the segment by removing certain endpoints based on conditions in your function code\. After Amazon Pinpoint receives the modified segment from your function, it sends the message to each of the segment's endpoints using the campaign's delivery channel\.
+If the `CampaignHook` mode is set to `FILTER`, Amazon Pinpoint allows the function to modify and return the segment before sending the message\. For example, the function might update the endpoint definitions with attributes that contain data from a source that is external to Amazon Pinpoint\. Or, the function might filter the segment by removing certain endpoints, based on conditions in your function code\. After Amazon Pinpoint receives the modified segment from your function, it sends the message to each of the segment's endpoints using the campaign's delivery channel\.
 
 By processing your segments with AWS Lambda, you have more control over who you send messages to and what those messages contain\. You can tailor your campaigns in real time, at the moment campaign messages are delivered\. Filtering segments enables you to engage more narrowly defined subsets of your segments\. Adding or updating endpoint attributes enables you to make new data available for message variables\.
 
@@ -53,15 +53,15 @@ The event data provides the following attributes:
 
 + `MessageConfiguration` – Has the same structure as the [http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-messages.html#rest-api-messages-attributes-directmessageconfiguration-table](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-messages.html#rest-api-messages-attributes-directmessageconfiguration-table) in the `Messages` resource in the Amazon Pinpoint API\. 
 
-+ `ApplicationId` – The ID of the Amazon Pinpoint project to which the campaign belongs\.
++ `ApplicationId` – The ID of the Amazon Pinpoint project that the campaign belongs to\.
 
-+ `CampaignId` – The ID of the Amazon Pinpoint project for which the function is invoked\.
++ `CampaignId` – The ID of the Amazon Pinpoint project that the function is invoked for\.
 
-+ `TreatmentId` – The ID of a campaign variation used for A/B testing\.
++ `TreatmentId` – The ID of a campaign variation that's used for A/B testing\.
 
-+ `ActivityId` – The ID of the activity being performed by the campaign\.
++ `ActivityId` – The ID of the activity that's being performed by the campaign\.
 
-+ `ScheduledTime` – The schedule time at which the campaign's messages are delivered in ISO 8601 format\.
++ `ScheduledTime` – The date and time when the campaign's messages will be delivered in ISO 8601 format\.
 
 + `Endpoints` – A map that associates endpoint IDs with endpoint definitions\. Each event data payload contains up to 50 endpoints\. If the campaign segment contains more than 50 endpoints, Amazon Pinpoint invokes the function repeatedly, with up to 50 endpoints at a time, until all endpoints have been processed\. 
 

@@ -1,18 +1,18 @@
 # Adding Endpoints<a name="endpoints"></a>
 
-An *endpoint* uniquely identifies a user device to which you can send push notifications with Amazon Pinpoint\. You can assign attributes to endpoints to describe your users\.
+An *endpoint* is a unique messaging destination\. When you send messages using Amazon Pinpoint, you send them to endpoints\. Examples of endpoints include email addresses, mobile phone numbers, and mobile device identifiers\. 
 
-After you add endpoints to Amazon Pinpoint, you can segment your audience based on endpoint attributes, and you can engage these segments with tailored messaging campaigns\.
+You can add attributes to endpoints to better describe your users\. After you add endpoints to Amazon Pinpoint, you can create segments based on customer attributes, and then engage with your segments by sending tailored messages\.
 
-While the endpoint uniquely identifies the mobile device, you can assign user IDs to endpoints to uniquely identify users\. You can assign a single user ID to multiple endpoints\. In this case, the user ID would represent an individual who uses your app on multiple devices, such as an iPhone and an iPad\.
+You can associate endpoints with user IDs to identify individual users\. You can also associate multiple endpoints with a single user ID\.
 
-If your app is enabled with Amazon Pinpoint support, your app automatically registers an endpoint with Amazon Pinpoint when a new user opens the app\. You can also add endpoints programmatically with the Amazon Pinpoint API or the AWS SDK for Java\.
+If you're a mobile developer and you've integrated Amazon Pinpoint into your app, your app automatically registers an endpoint with Amazon Pinpoint when a new user opens it, and updates existing endpoints when returning users open it\. You can also add endpoints programmatically by using the Amazon Pinpoint API or an AWS SDK\.
 
 For more information, see [Endpoints](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoints.html) in the *Amazon Pinpoint API Reference*\.
 
-## Adding Endpoints with the AWS SDK for Java<a name="endpoints-example-java"></a>
+## Adding Endpoints Programmatically<a name="endpoints-example-java"></a>
 
-The following example demonstrates how to add endpoints to Amazon Pinpoint with the AWS SDK for Java\.
+The following example demonstrates how to add endpoints to Amazon Pinpoint programmatically by using the AWS SDK for Java\.
 
 ```
 import com.amazonaws.services.pinpoint.AmazonPinpointClient;
