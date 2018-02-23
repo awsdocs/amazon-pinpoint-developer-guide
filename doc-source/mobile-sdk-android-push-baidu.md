@@ -9,7 +9,7 @@ Registration as a Baidu developer\.
 Baidu Cloud Push project\.
 API key and secret key from a Baidu Cloud Push project\.
 Baidu user ID and channel ID\.
-You must also set up SDK support and initialize the Amazon Pinpoint client before you begin\.
+You must also [set up SDK support](mobile-sdk-android-setup.md) and [initialize the Amazon Pinpoint client](mobile-sdk-android-modify.md) before you begin\.
 
 ## Integrating Baidu Cloud Push with Your App<a name="mobile-sdk-android-push-baidu-integrate"></a>
 

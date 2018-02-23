@@ -24,7 +24,7 @@ Your app code uses Amazon Cognito and IAM to authenticate users as follows:
 
 1. The user gains the permissions granted by the IAM roles that are associated with the identity pool\.
 
-For code examples that show how to construct the credentials provider and initialize the Amazon Pinpoint client, see Initializing the Amazon Pinpoint Client \(iOS\) and Initializing the Amazon Pinpoint Client \(Android\)\.
+For code examples that show how to construct the credentials provider and initialize the Amazon Pinpoint client, see [Initializing the Amazon Pinpoint Client \(iOS\)](mobile-sdk-ios-modify.md) and [Initializing the Amazon Pinpoint Client \(Android\)](mobile-sdk-android-modify.md)\.
 
 For more information about how Amazon Cognito supports user authentication, see [Amazon Cognito Identity: Using Federated Identities](http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html) in the *Amazon Cognito Developer Guide*\.
 

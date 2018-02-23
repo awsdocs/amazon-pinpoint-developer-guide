@@ -33,6 +33,6 @@ A Firebase Cloud Messaging \(FCM\) or Google Cloud Messaging \(GCM\) API key and
 
 Mobile Hub helps you integrate Amazon Pinpoint with your app in two ways:
 
-1. You can download a working sample app that demonstrates Amazon Pinpoint features\. Then, you can create a virtual device and build the sample app so that you can send it a push notification with Amazon Pinpoint\.
+1. You can download a working sample app that demonstrates Amazon Pinpoint features\. Then, you can [create a virtual device](getting-started-android-virtual-device.md) and [build the sample app](getting-started-android-sampleapp.md) so that you can send it a push notification with Amazon Pinpoint\.
 
 1. You can download a package that includes the required SDKs for your project\. Then, you can follow the instructions in the AWS Mobile Hub console to integrate Amazon Pinpoint with your app\.

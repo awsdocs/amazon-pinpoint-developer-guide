@@ -72,4 +72,4 @@ If you need to obtain these items, see [Setting Up iOS Push Notifications](apns-
 1. In the sample app, you can tap **User Sign\-in** or **User Engagement** to learn more about these features\.  
 ![\[The sample app screen after launching.\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/images/app_screen.png)![\[The sample app screen after launching.\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)![\[The sample app screen after launching.\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)
 
-Now that you have built the sample iOS app, you can test the app by sending it a push notification from Amazon Pinpoint\.
+Now that you have built the sample iOS app, you can [test the app](getting-started-sampletest.md) by sending it a push notification from Amazon Pinpoint\.

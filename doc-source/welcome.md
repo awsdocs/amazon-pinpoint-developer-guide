@@ -6,11 +6,11 @@ This section describes the major features of Amazon Pinpoint\.
 
 ## Define Audience Segments<a name="welcome-segments"></a>
 
-Reach the right audience for your messages by defining audience segments\. A segment designates which users receive the messages that are sent from a campaign\. You can define dynamic segments based on data that's reported by your application, such as operating system or mobile device type\. You can also import static segments that you define outside of Amazon Pinpoint\.
+Reach the right audience for your messages by [defining audience segments](segments.md)\. A segment designates which users receive the messages that are sent from a campaign\. You can define dynamic segments based on data that's reported by your application, such as operating system or mobile device type\. You can also import static segments that you define outside of Amazon Pinpoint\.
 
 ## Engage Your Audience with Messaging Campaigns<a name="welcome-campaigns"></a>
 
-Engage your audience by creating a messaging campaign\. A campaign sends tailored messages on a schedule that you define\. You can create campaigns that send mobile push, email, or SMS messages\.
+Engage your audience by [creating a messaging campaign](campaigns.md)\. A campaign sends tailored messages on a schedule that you define\. You can create campaigns that send mobile push, email, or SMS messages\.
 
 To experiment with alternative campaign strategies, set up your campaign as an A/B test, and analyze the results with Amazon Pinpoint analytics\.
 
@@ -22,11 +22,11 @@ Keep your customers informed by sending direct mobile push and SMS messages—su
 
 Gain insights about your audience and the effectiveness of your campaigns by using the analytics that Amazon Pinpoint provides\. You can view trends about your users' level of engagement, purchase activity, and demographics\. You can monitor your message traffic with metrics for messages sent and opened\. Through the Amazon Pinpoint API, your application can report custom data, which Amazon Pinpoint makes available for analysis\.
 
-To analyze or store the analytics data outside of Amazon Pinpoint, you can configure Amazon Pinpoint to stream the data to Amazon Kinesis\.
+To analyze or store the analytics data outside of Amazon Pinpoint, you can configure Amazon Pinpoint to [stream the data](analytics-streaming.md) to Amazon Kinesis\.
 
 ## Integrate Amazon Pinpoint with Your Applications<a name="incorporating-dartboard"></a>
 
-Amazon Pinpoint can capture information about the ways your customers interact with your applications\. If you're a mobile app developer, you can integrate Amazon Pinpoint into your app code so the app can connect to the service and then report events about app usage\. Amazon Pinpoint compiles the app usage events into user engagement analytics that you can use to identify and engage with specific segments of users\.
+Amazon Pinpoint can capture information about the ways your customers interact with your applications\. If you're a mobile app developer, you can [integrate Amazon Pinpoint into your app code](getting-started.md) so the app can connect to the service and then report events about app usage\. Amazon Pinpoint compiles the app usage events into user engagement analytics that you can use to identify and engage with specific segments of users\.
 
 You can use the Amazon Pinpoint API to export application event data, define customer segments, and create and execute multichannel campaigns\. You can also use the API to send transactional SMS and mobile push messages directly to specific recipients\.
 

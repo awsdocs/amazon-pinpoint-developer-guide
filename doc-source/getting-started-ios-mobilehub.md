@@ -31,7 +31,7 @@ To complete this task, you need an SSL certificate as a `.p12` file that authori
 
 Mobile Hub helps you integrate Amazon Pinpoint with your app in two ways:
 
-1. You can download a working sample app that demonstrates Amazon Pinpoint features\. Then, you can build the sample app and send it a push notification with Amazon Pinpoint\.
+1. You can download a working sample app that demonstrates Amazon Pinpoint features\. Then, you can [build the sample app](getting-started-ios-sampleapp.md) and send it a push notification with Amazon Pinpoint\.
 
 1. You can download a package that includes the required SDKs for your project\. Then, you can follow the instructions in the AWS Mobile Hub console to integrate Amazon Pinpoint with your app\.
 

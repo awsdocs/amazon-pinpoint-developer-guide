@@ -48,8 +48,8 @@ The following limits apply when you import endpoints into Amazon Pinpoint\.
 
 | Resource | Default Limit | Eligible for Increase | 
 | --- | --- | --- | 
-| Concurrent import jobs | 2 per account | Yes | 
-| Import size | 1 GB per import job\(For example, if each endpoint is 4 KB or less, you can import 250,000 endpoints\.\) | Yes | 
+| Concurrent import jobs | 2 per account | [Yes](#limits-increase) | 
+| Import size | 1 GB per import job\(For example, if each endpoint is 4 KB or less, you can import 250,000 endpoints\.\) | [Yes](#limits-increase) | 
 
 ## Segment limits<a name="limits-segment"></a>
 
@@ -68,8 +68,8 @@ The following limits apply to the [Campaigns](http://docs.aws.amazon.com/pinpoin
 
 | Resource | Default Limit | Eligible for Increase | 
 | --- | --- | --- | 
-| Active campaigns | 200 per account An *active campaign* is a campaign that hasn't completed or failed\. Active campaigns have a status of `SCHEDULED`, `EXECUTING`, or `PENDING_NEXT_RUN`\.  | Yes | 
-| Message sends | 100 million per campaign activity | Yes | 
+| Active campaigns | 200 per account An *active campaign* is a campaign that hasn't completed or failed\. Active campaigns have a status of `SCHEDULED`, `EXECUTING`, or `PENDING_NEXT_RUN`\.  | [Yes](#limits-increase) | 
+| Message sends | 100 million per campaign activity | [Yes](#limits-increase) | 
 
 ## Mobile push limits<a name="limits-mobile"></a>
 
@@ -93,8 +93,8 @@ The limits in the following sections apply to the Email channel\.
 
 | Resource | Default Limit | Eligible for Increase | 
 | --- | --- | --- | 
-| Number of emails that can be sent per 24\-hour period \(sending quota\) |  If your account is in the sandbox: 200 emails per 24\-hour period\. If your account is out of the sandbox, the quota varies based on your specific use case\.  This quota is based on the number of recipients, as opposed to the number of unique messages sent\. A *recipient* is any email address on the To: line\.   |  Yes  | 
-| Number of emails that can be sent each second \(sending rate\) |  If your account is in the sandbox: 1 email per second\. If your account is out of the sandbox, the rate varies based on your specific use case\.   This rate is based on the number of recipients, as opposed to the number of unique messages sent\. A *recipient* is any email address on the To: line\.   |  Yes  | 
+| Number of emails that can be sent per 24\-hour period \(sending quota\) |  If your account is in the sandbox: 200 emails per 24\-hour period\. If your account is out of the sandbox, the quota varies based on your specific use case\.  This quota is based on the number of recipients, as opposed to the number of unique messages sent\. A *recipient* is any email address on the To: line\.   |  [Yes](#limits-increase)  | 
+| Number of emails that can be sent each second \(sending rate\) |  If your account is in the sandbox: 1 email per second\. If your account is out of the sandbox, the rate varies based on your specific use case\.   This rate is based on the number of recipients, as opposed to the number of unique messages sent\. A *recipient* is any email address on the To: line\.   |  [Yes](#limits-increase)  | 
 
 ### Email Message Limits<a name="limits-email-message"></a>
 
@@ -110,7 +110,7 @@ The limits in the following sections apply to the Email channel\.
 | Resource | Default Limit | Eligible for Increase | 
 | --- | --- | --- | 
 | Sender address | All sending addresses or domains must be verified\. | No | 
-| Recipient address | If your account is still in the sandbox, all recipient email addresses or domains must be verified\. If your account is out of the sandbox, you can send to any valid address\. | Yes | 
+| Recipient address | If your account is still in the sandbox, all recipient email addresses or domains must be verified\. If your account is out of the sandbox, you can send to any valid address\. | [Yes](#limits-increase) | 
 | Number of recipients per message |  50 recipients per message\.  | No | 
 | Number of identities that you can verify |  10,000 identities per AWS Region\.  *Identities* refers to email addresses or domains, or any combination of the two\. Every email you send using Amazon Pinpoint must be sent from a verified identity\.   | No | 
 
@@ -121,9 +121,9 @@ The following limits apply to the SMS channel\.
 
 | Resource | Default Limit | Eligible for Increase | 
 | --- | --- | --- | 
-| Account spend threshold | USD$1\.00 per account\. | Yes | 
+| Account spend threshold | USD$1\.00 per account\. | [Yes](#limits-increase) | 
 | Number of SMS messages that can be sent each second \(*sending rate* \) | 20 messages per second\. | No | 
-| Number of Amazon SNS topics for two\-way SMS | 100,000 per account\. | Yes | 
+| Number of Amazon SNS topics for two\-way SMS | 100,000 per account\. | [Yes](#limits-increase) | 
 
 ## Requesting a limit increase<a name="limits-increase"></a>
 
