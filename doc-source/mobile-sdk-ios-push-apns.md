@@ -1,151 +1,40 @@
 # Handling Push Notifications from Apple Push Notification Service<a name="mobile-sdk-ios-push-apns"></a>
 
-Modify your app code to handle push notifications from Apple Push Notification service \(APNs\)\.
+You can enable your iOS app to receive push notifications that you send by using Amazon Pinpoint\. With Amazon Pinpoint, you can send push notifications to iOS apps through Apple Push Notification service \(APNs\)\.
 
-## Registering for Push Notifications<a name="mobile-sdk-ios-modify-register"></a>
+**Prerequisite**  
+Before you update your app to receive push notifications, integrate the AWS Mobile SDK for iOS\. For more information, see [Integrating the AWS Mobile SDKs for Android or iOS](integrate-sdk.md#integrate-sdk-mobile)\.
 
-Prompt the user to accept receiving push notifications during app launch or when the app requests receipt of push notifications\. After the user grants permission, the app should re\-register when launching the app because the device token can change\.
+## Enabling Push Notifications<a name="mobile-sdk-ios-push-apns-enable"></a>
 
-------
-#### [ Objective\-C ]
+To enable push notifications in your app, update your app to include push listening code\. For more information, see [Add Push Notifications to Your Mobile App with Amazon Pinpoint](http://docs.aws.amazon.com/aws-mobile/latest/developerguide/add-aws-mobile-push-notifications.html) in the *AWS Mobile Developer Guide*\.
 
-```
-UIUserNotificationType userNotificationTypes =
-    (UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | 
-        UIUserNotificationTypeSound);
-UIUserNotificationSettings *notificationSettings =
-    [UIUserNotificationSettings settingsForTypes:userNotificationTypes 
-        categories:nil];
+## Setting Up Deep Linking<a name="mobile-sdk-ios-deep-linking"></a>
 
-[[UIApplication sharedApplication] 
-    registerUserNotificationSettings:notificationSettings];
-```
+Amazon Pinpoint campaigns can take one of three actions when a user taps a notification\. One of those possible actions is a deep link, which opens the app to a specified activity\.
 
-------
-#### [ Swift ]
+### Registering a Custom URL Scheme<a name="mobile-sdk-ios-deep-linking-url"></a>
 
-```
-let settings = UIUserNotificationSettings(
-    forTypes: [.Sound, .Alert, .Badge], categories: nil)
+To specify a destination activity for deep links, the app must have set up deep linking\. This setup requires registering a custom URL scheme the deep links will use\. To register a custom URL identifier, go to your Xcode project's target **Info** tab and expand the **URL Types** section\. 
 
-UIApplication.sharedApplication().registerUserNotificationSettings(settings)
-UIApplication.shared().registerForRemoteNotifications()
-```
+To open the app via a `pinpoint://` URL scheme you need to assign a unique identifier to the scheme\. Apple recommends reverse DNS notation to avoid name collisions on the platform\. The following example uses `com.exampleCorp.exampleApp`:
 
-------
+**To register a custom URL scheme in Xcode:**
 
-If you are using iOS 10 or greater with the `UserNotification` framework, add the following:
+1. In Xcode, select the **Info** tab\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/images/ios_deeplink01.png)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)
 
-------
-#### [ Objective\-C ]
+1. In the **URL Types** section, select \+ to add a URL type\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/images/ios_deeplink02.png)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/)
 
-```
-[UNUserNotificationCenter currentNotificationCenter]
-requestAuthorizationWithOptions:(UNAuthorizationOptionAlert + 
-    UNAuthorizationOptionSound)
-completionHandler:^(BOOL granted, NSError * _Nullable error) {
-  // Enable or disable features based on authorization.
-}];
-[[UIApplication sharedApplication] registerForRemoteNotifications];
-```
+1. Enter the reverse DNS notation identifier for this URL type in **Identifier**\.
 
-------
-#### [ Swift ]
+1. Enter the URL you want to use for your app in **URL Schemes**\.
 
-```
-UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]) { 
-  (granted, error) in
-  // Enable or disable features based on authorization.
-}
-UIApplication.shared().registerForRemoteNotifications()
-```
+1. Save the project\.
 
-------
+After this custom URL scheme is registered, test it in the iOS simulator\. Open Safari and navigate to your custom URL; in this example, `pinpoint://`\. Your app launches and opens to its home screen\. 
 
-## Handle Notification Callbacks<a name="mobile-sdk-ios-modify-callbacks"></a>
+### Listening for Custom URLs<a name="mobile-sdk-ios-deep-linking-listening"></a>
 
-To enable Amazon Pinpoint to report the notifications that are opened for a campaign, you must intercept some notification callbacks\.
-
-In the `application:didRegisterForRemoteNotificationsWithDeviceToken:` method in the `ApplicationDelegate` for your app, call the interceptor:
-
-------
-#### [ Objective\-C ]
-
-```
--(void)application:(UIApplication * )application 
-    didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-  [_pinpoint.notificationManager 
-      interceptDidRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
-```
-
-------
-#### [ Swift ]
-
-```
-func application(application: UIApplication, 
-    didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-  pinpoint!.notificationManager
-      .interceptDidRegisterForRemoteNotificationsWithDeviceToken(deviceToken)
-```
-
-------
-
-In the `application:didReceiveNotification:fetchCompletionHandler:` method in the `ApplicationDelegate` for your app, call the interceptor:
-
-------
-#### [ Objective\-C ]
-
-```
--(void)application:(UIApplication * )application 
-    didReceiveRemoteNotification:(nonnull NSDictionary *)userInfo 
-    fetchCompletionHandler:(nonnull void (^)(UIBackgroundFetchResult))
-    completionHandler {
-  [_pinpoint.notificationManager interceptDidReceiveRemoteNotification:
-      userInfofetchCompletionHandler:completionHandler];
-  completionHandler(UIBackgroundFetchResultNewData);
-```
-
-------
-#### [ Swift ]
-
-```
-func application(application: UIApplication, 
-    didReceiveRemoteNotification userInfo: [NSObject : AnyObject], 
-    fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-  pinpoint!.notificationManager.interceptDidReceiveRemoteNotification(
-      userInfo, fetchCompletionHandler: completionHandler)
-```
-
-------
-
-If you are using iOS 10 or greater with the `UserNotification` framework, add the following:
-
-------
-#### [ Objective\-C ]
-
-```
--(void)userNotificationCenter:(UNUserNotificationCenter * ) center
-    didReceiveNotificationResponse: (UNNotificationResponse * ) response
-    withCompletionHandler: (void( ^ )(void)) completionHandler {
-  [[[AWSMobileClient sharedInstance] pinpoint].notificationManager 
-      interceptDidReceiveRemoteNotification: 
-      response.notification.request.content.userInfo
-      fetchCompletionHandler: ^ (UIBackgroundFetchResult result) {}
-  ];
-```
-
-------
-#### [ Swift ]
-
-```
-@available(iOS 10.0, *)
-func userNotificationCenter(center: UNUserNotificationCenter, 
-    didReceiveNotificationResponse response: UNNotificationResponse, 
-    withCompletionHandler completionHandler: () -> Void) {
-  pinpoint!.notificationManager.interceptDidReceiveRemoteNotification(
-      response.notification.request.content.userInfo) { 
-        (UIBackgroundFetchResult) in 
-      }
-```
-
-------
+To direct the app to a specific view, implement a callback in your `AppDelegate` that is called when your app launches from a deep link\. The scheme launches the app, using the host and path to go to a separate screen within the app\. 

@@ -8,11 +8,12 @@ For more information about IAM policies, see [Overview of IAM Policies](http://d
 
 When you add your app to Amazon Pinpoint by creating a project in AWS Mobile Hub, Mobile Hub automatically provisions [AWS resources for app user authentication](permissions-authentication.md)\. Mobile Hub creates an Amazon Cognito identity pool so that app users can authenticate with AWS\. Mobile Hub also creates an IAM role that allows app users to register with Amazon Pinpoint and report usage data\. You can customize these resources as needed for your app\.
 
-To import endpoint definitions, you must grant Amazon Pinpoint [read\-only access to an Amazon S3 bucket](permissions-import.md)\.  
+To import endpoint definitions, you must grant Amazon Pinpoint [read\-only access to an Amazon S3 bucket](permissions-import-segment.md)\.  
 
-
+**Topics**
 + [IAM Policies for Amazon Pinpoint Users](permissions-actions.md)
 + [User Authentication in Amazon Pinpoint Apps](permissions-authentication.md)
 + [AWS Mobile Hub Service Role](permissions-mobilehub.md)
-+ [IAM Role for Importing Segments](permissions-import.md)
++ [IAM Role for Importing Segments](permissions-import-segment.md)
++ [IAM Role for Exporting Segments](permissions-export-endpoints.md)
 + [IAM Role for Streaming Events to Kinesis](permissions-streams.md)

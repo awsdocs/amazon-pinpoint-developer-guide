@@ -5,9 +5,7 @@ Amazon Pinpoint can automatically send app usage data, or *event data*, from you
 If you use the console to set up event streaming, Amazon Pinpoint automatically creates an AWS Identity and Access Management \(IAM\) role with the required permissions\. For more information, see [Streaming Amazon Pinpoint Events to Amazon Kinesis](http://docs.aws.amazon.com/pinpoint/latest/userguide/analytics-streaming-kinesis.html) in the *Amazon Pinpoint User Guide*\.
 
 If you want to create the role manually, attach the following policies to the role: 
-
 + A permissions policy that allows Amazon Pinpoint to send records to your stream\.
-
 + A trust policy that allows Amazon Pinpoint to assume the role\.
 
 For more information about IAM roles, see [IAM Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) in the *IAM User Guide*\.

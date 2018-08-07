@@ -6,7 +6,7 @@ After you create a segment, you can use it in one or more campaigns\. A campaign
 
 For more information, see [Segments](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segments.html)\.
 
-
+**Topics**
 + [Building Segments](segments-dimensional.md)
 + [Importing Segments](segments-importing.md)
 + [Customizing Segments with AWS Lambda](segments-dynamic.md)

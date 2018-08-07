@@ -2,18 +2,19 @@
 
 The following sections describe limits within Amazon Pinpoint\.
 
+**Topics**
++ [General Limits](#limits-general)
++ [Endpoint Limits](#limits-endpoint)
++ [Endpoint Import Limits](#limits-import)
++ [Segment Limits](#limits-segment)
++ [Campaign Limits](#limits-campaign)
++ [Mobile Push Limits](#limits-mobile)
++ [Email Limits](#limits-email)
++ [SMS Limits](#limits-sms)
++ [Event Ingestion Limits](#limits-events)
++ [Requesting a Limit Increase](#limits-increase)
 
-+ [General limits](#limits-general)
-+ [Endpoint limits](#limits-endpoint)
-+ [Endpoint import limits](#limits-import)
-+ [Segment limits](#limits-segment)
-+ [Campaign limits](#limits-campaign)
-+ [Mobile push limits](#limits-mobile)
-+ [Email limits](#limits-email)
-+ [SMS limits](#limits-sms)
-+ [Requesting a limit increase](#limits-increase)
-
-## General limits<a name="limits-general"></a>
+## General Limits<a name="limits-general"></a>
 
 The following limits affect general use of Amazon Pinpoint\.
 
@@ -23,7 +24,7 @@ The following limits affect general use of Amazon Pinpoint\.
 | API request payload size | 7 MB per request | No | 
 | Apps | 100 per account | No | 
 
-## Endpoint limits<a name="limits-endpoint"></a>
+## Endpoint Limits<a name="limits-endpoint"></a>
 
 The following limits apply to the [Endpoints](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoints.html) resource in the Amazon Pinpoint API\.
 
@@ -41,7 +42,7 @@ The following limits apply to the [Endpoints](http://docs.aws.amazon.com/pinpoin
 | Values assigned to `Attributes` parameter attributes | 50 per attribute | No | 
 | Values assigned to `UserAttributes` parameter attributes | 50 per attribute | No | 
 
-## Endpoint import limits<a name="limits-import"></a>
+## Endpoint Import Limits<a name="limits-import"></a>
 
 The following limits apply when you import endpoints into Amazon Pinpoint\.
 
@@ -51,7 +52,7 @@ The following limits apply when you import endpoints into Amazon Pinpoint\.
 | Concurrent import jobs | 2 per account | [Yes](#limits-increase) | 
 | Import size | 1 GB per import job\(For example, if each endpoint is 4 KB or less, you can import 250,000 endpoints\.\) | [Yes](#limits-increase) | 
 
-## Segment limits<a name="limits-segment"></a>
+## Segment Limits<a name="limits-segment"></a>
 
 The following limits apply to the [Segments](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segments.html) resource in the Amazon Pinpoint API\.
 
@@ -61,7 +62,7 @@ The following limits apply to the [Segments](http://docs.aws.amazon.com/pinpoint
 | Maximum number of segments | 100 per app | No | 
 | Maximum number of dimensions that can be used to create a segment | 100 per segment | No | 
 
-## Campaign limits<a name="limits-campaign"></a>
+## Campaign Limits<a name="limits-campaign"></a>
 
 The following limits apply to the [Campaigns](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaigns.html) resource in the Amazon Pinpoint API\.
 
@@ -71,20 +72,21 @@ The following limits apply to the [Campaigns](http://docs.aws.amazon.com/pinpoin
 | Active campaigns | 200 per account An *active campaign* is a campaign that hasn't completed or failed\. Active campaigns have a status of `SCHEDULED`, `EXECUTING`, or `PENDING_NEXT_RUN`\.  | [Yes](#limits-increase) | 
 | Message sends | 100 million per campaign activity | [Yes](#limits-increase) | 
 
-## Mobile push limits<a name="limits-mobile"></a>
+## Mobile Push Limits<a name="limits-mobile"></a>
 
 The following limits apply to messages that Amazon Pinpoint delivers through mobile push channels\.
 
 
 | Resource | Default Limit | Eligible for Increase | 
 | --- | --- | --- | 
+| Maximum number of mobile push notifications that can be sent per second | 25,000 notifications per second | No | 
 | Amazon Device Messaging \(ADM\) message payload size | 6 KB per message | No | 
 | Apple Push Notification service \(APNs\) message payload size | 4 KB per message | No | 
 | APNs sandbox message payload size | 4 KB per message | No | 
 | Baidu Cloud Push message payload size | 4 KB per message | No | 
 | Firebase Cloud Messaging \(FCM\) or Google Cloud Messaging \(GCM\) message payload size | 4 KB per message | No | 
 
-## Email limits<a name="limits-email"></a>
+## Email Limits<a name="limits-email"></a>
 
 The limits in the following sections apply to the Email channel\.
 
@@ -114,7 +116,7 @@ The limits in the following sections apply to the Email channel\.
 | Number of recipients per message |  50 recipients per message\.  | No | 
 | Number of identities that you can verify |  10,000 identities per AWS Region\.  *Identities* refers to email addresses or domains, or any combination of the two\. Every email you send using Amazon Pinpoint must be sent from a verified identity\.   | No | 
 
-## SMS limits<a name="limits-sms"></a>
+## SMS Limits<a name="limits-sms"></a>
 
 The following limits apply to the SMS channel\.
 
@@ -125,7 +127,25 @@ The following limits apply to the SMS channel\.
 | Number of SMS messages that can be sent each second \(*sending rate* \) | 20 messages per second\. | No | 
 | Number of Amazon SNS topics for two\-way SMS | 100,000 per account\. | [Yes](#limits-increase) | 
 
-## Requesting a limit increase<a name="limits-increase"></a>
+## Event Ingestion Limits<a name="limits-events"></a>
+
+The following limits apply to the ingestion of events using the AWS Mobile SDKs and the [Amazon Pinpoint Events API](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-events.html)\.
+
+
+| Resource | Default Limit | Eligible for Increase | 
+| --- | --- | --- | 
+| Maximum number of custom event types | 1,500 per app | No | 
+| Maximum number of custom attribute keys | 500 per app | No | 
+| Maximum number of custom attribute values per attribute key | 100,000 | No | 
+| Maximum number of characters per attribute key | 50 | No | 
+| Maximum number of characters per attribute value | 200 | No | 
+| Maximum number of custom metric keys | 500 per app | No | 
+| Maximum number events in a request | 100 per request | No | 
+| Maximum size of a request | 4 MB | No | 
+| Maximum size of an individual event | 1,000 KB | No | 
+| Maximum number of attribute keys and metric keys for each event | 40 per request | No | 
+
+## Requesting a Limit Increase<a name="limits-increase"></a>
 
 If the value in the **Eligible for Increase** column in any of the tables above is **Yes**, you can request a change to that limit\.
 
@@ -136,15 +156,10 @@ If the value in the **Eligible for Increase** column in any of the tables above 
 1. Create a new Support case at [https://console\.aws\.amazon\.com/support/home\#/case/create](https://console.aws.amazon.com/support/home#/case/create)\.
 
 1. On the **Create Case** page, make the following selections:
-
    + For **Regarding**, choose **Service Limit Increase**\.
-
    + For **Limit Type**, choose one of the following options:
-
      + Choose **Amazon Pinpoint** for limit increases related to Amazon Pinpoint campaigns and imports\.
-
      + Choose **Amazon Pinpoint Email** for limit increases related to the email channel\.
-
      + Choose **Amazon Pinpoint SMS** for limit increases related to the SMS channel\.
 
 1. For **Use Case Description**, explain why you are requesting the limit increase\.

@@ -9,7 +9,7 @@ Registration as a Baidu developer\.
 Baidu Cloud Push project\.
 API key and secret key from a Baidu Cloud Push project\.
 Baidu user ID and channel ID\.
-You must also [set up SDK support](mobile-sdk-android-setup.md) and [initialize the Amazon Pinpoint client](mobile-sdk-android-modify.md) before you begin\.
+You must also integrate the AWS Mobile SDK for Android before you begin\. For more information, see [Integrating the AWS Mobile SDKs or JavaScript Library with Your Application](integrate-sdk.md)\.
 
 ## Integrating Baidu Cloud Push with Your App<a name="mobile-sdk-android-push-baidu-integrate"></a>
 
@@ -22,19 +22,12 @@ The following procedure is based on version 5\.7\.1\.65 of the Baidu push servic
 1. Extract the zip file and import the `pushservice-x.x.xx.jar` file from the Baidu\-Push\-SDK\-Android `libs` folder into your Android app’s `lib` folder\.
 
 1. The Baidu\-Push\-SDK\-Android `libs` folder should also include the following folders:
-
    + `arm64-v8a/`
-
    + `armeabi/`
-
    + `armeabi-v7a/`
-
    + `mips/`
-
    + `mips64/`
-
    + `x86/`
-
    + `x86_64/`
 
    Add each complete folder to your Android app’s `src/main/jniLibs` folder\.

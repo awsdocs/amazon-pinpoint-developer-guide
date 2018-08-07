@@ -7,7 +7,7 @@ To send push notifications to your app using Amazon Pinpoint and ADM, you need t
 Amazon Developer account\.
 Client ID and client secret from Amazon Device Messaging\.
 ADM registration ID \(provided by the end device that contains the ADM platform\)\.
-You must also [set up SDK support](mobile-sdk-android-setup.md) and [initialize the Amazon Pinpoint client](mobile-sdk-android-modify.md) before you begin\.
+You must also integrate the AWS Mobile SDK for Android before you begin\. For more information, see [Integrating the AWS Mobile SDKs or JavaScript Library with Your Application](integrate-sdk.md)\.
 
 ## Integrating ADM with Your App<a name="mobile-sdk-android-push-adm-integrate"></a>
 

@@ -44,19 +44,12 @@ When Amazon Pinpoint invokes your Lambda function, it provides the following pay
 ```
 
 The event data provides the following attributes:
-
 + `MessageConfiguration` – Has the same structure as the [http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-messages.html#rest-api-messages-attributes-directmessageconfiguration-table](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-messages.html#rest-api-messages-attributes-directmessageconfiguration-table) in the `Messages` resource in the Amazon Pinpoint API\. 
-
 + `ApplicationId` – The ID of the Amazon Pinpoint project to which the campaign belongs\.
-
 + `CampaignId` – The ID of the Amazon Pinpoint project for which the function is invoked\.
-
 + `TreatmentId` – The ID of a campaign variation used for A/B testing\.
-
 + `ActivityId` – The ID of the activity being performed by the campaign\.
-
 + `ScheduledTime` – The schedule time at which the campaign's messages are delivered in ISO 8601 format\.
-
 + `Endpoints` – A map that associates endpoint IDs with endpoint definitions\. Each event data payload contains up to 50 endpoints\. If the campaign segment contains more than 50 endpoints, Amazon Pinpoint invokes the function repeatedly, with up to 50 endpoints at a time, until all endpoints have been processed\. 
 
 ## Creating a Lambda Function<a name="channels-custom-lambda-create"></a>
@@ -257,7 +250,5 @@ You can assign a Lambda function to an individual Amazon Pinpoint campaign\. Or,
 To assign a Lambda function to an individual campaign, use the Amazon Pinpoint API to create or update a [http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaigns.html](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaigns.html) object, and define its `CampaignHook` attribute\. To set a Lambda function as the default for all campaigns in a project, create or update the [http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-settings.html](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-settings.html) resource for that project, and define its `CampaignHook` object\.
 
 In both cases, set the following `CampaignHook` attributes:
-
 + `LambdaFunctionName` – The name or ARN of the Lambda function that Amazon Pinpoint invokes to send messages for the campaign\.
-
 + `Mode` – Set to `DELIVERY`\. With this mode, Amazon Pinpoint uses the function to deliver the messages for a campaign, and it doesn't attempt to send the messages through the standard channels\.

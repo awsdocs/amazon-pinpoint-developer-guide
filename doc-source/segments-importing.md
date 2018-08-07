@@ -6,92 +6,159 @@ Importing segments is useful if you've already created segments of your users ou
 
 When you import a segment, Amazon Pinpoint gets the segment's endpoints from Amazon Simple Storage Service \(Amazon S3\)\. Before you import, you add the endpoints to Amazon S3, and you create an IAM role that grants Amazon Pinpoint access to Amazon S3\. Then, you give Amazon Pinpoint the Amazon S3 location where the endpoints are stored, and Amazon Pinpoint adds each endpoint to the segment\.
 
-To create the IAM role, see [IAM Role for Importing Segments](permissions-import.md)\. For information about importing a segment by using the Amazon Pinpoint console, see [Importing Segments](http://docs.aws.amazon.com/pinpoint/latest/userguide/segments-importing.html) in the *Amazon Pinpoint User Guide*\.
+To create the IAM role, see [IAM Role for Importing Segments](permissions-import-segment.md)\. For information about importing a segment by using the Amazon Pinpoint console, see [Importing Segments](http://docs.aws.amazon.com/pinpoint/latest/userguide/segments-importing.html) in the *Amazon Pinpoint User Guide*\.
 
 ## Importing a Segment<a name="segments-importing-example-java"></a>
 
 The following example demonstrates how to import a segment by using the AWS SDK for Java\.
 
 ```
-import com.amazonaws.services.pinpoint.AmazonPinpointClient;
-import com.amazonaws.services.pinpoint.model.AttributeDimension;
-import com.amazonaws.services.pinpoint.model.AttributeType;
-import com.amazonaws.services.pinpoint.model.CreateImportJobRequest;
-import com.amazonaws.services.pinpoint.model.CreateImportJobResult;
-import com.amazonaws.services.pinpoint.model.CreateSegmentRequest;
-import com.amazonaws.services.pinpoint.model.CreateSegmentResult;
-import com.amazonaws.services.pinpoint.model.Format;
-import com.amazonaws.services.pinpoint.model.GetImportJobRequest;
-import com.amazonaws.services.pinpoint.model.GetImportJobResult;
-import com.amazonaws.services.pinpoint.model.GetSegmentRequest;
-import com.amazonaws.services.pinpoint.model.GetSegmentResult;
-import com.amazonaws.services.pinpoint.model.ImportJobRequest;
-import com.amazonaws.services.pinpoint.model.JobStatus;
-import com.amazonaws.services.pinpoint.model.RecencyDimension;
-import com.amazonaws.services.pinpoint.model.SegmentBehaviors;
-import com.amazonaws.services.pinpoint.model.SegmentDemographics;
-import com.amazonaws.services.pinpoint.model.SegmentDimensions;
-import com.amazonaws.services.pinpoint.model.SegmentLocation;
-import com.amazonaws.services.pinpoint.model.SegmentResponse;
-import com.amazonaws.services.pinpoint.model.WriteSegmentRequest;
+import com.amazonaws.AmazonServiceException;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.pinpoint.AmazonPinpoint;
+import com.amazonaws.services.pinpoint.AmazonPinpointClientBuilder;
+import com.amazonaws.services.pinpoint.model.*;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.AmazonS3Exception;
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-import java.util.HashMap;
-import java.util.Map;
+public class ImportSegment {
 
-public class PinpointImportSample {
+    public static void main(String[] args) {
 
-    public SegmentResponse createImportSegment(AmazonPinpointClient client, String appId,
-                                               String bucket, String key,
-                                               String roleArn) throws Exception {
+        final String USAGE = "\n" +
+        "ImportSegment - Creates a segment by: \n" +
+        "1.) Uploading the endpoint definitions that belong to the segment to an Amazon S3 bucket. \n" +
+        "2.) Importing the endpoint definitions from the bucket to an Amazon Pinpoint application." +
+        "    Amazon Pinpoint creates a segment that has the specified name.\n\n" +
+        "Usage: ImportSegment <endpointsFileLocation> <s3BucketName> <iamImportRoleArn> <segmentName> <applicationId>\n\n" +
+        "Where:\n" +
+        "  endpointsFileLocation - The relative location of the JSON file that contains the endpoint definitions.\n" +
+        "  s3BucketName - The name of the Amazon S3 bucket to upload the JSON file to. If the bucket doesn't " +
+        "exist, a new bucket is created.\n" +
+        "  iamImportRoleArn - The ARN of an IAM role that grants Amazon Pinpoint read permissions so the S3 bucket.\n" +
+        "  segmentName - The name for the segment that you are creating or updating." +
+        "  applicationId - The ID of the Amazon Pinpoint application to add the endpoints to.";
 
-        // Create the job.
-        ImportJobRequest importRequest = new ImportJobRequest()
-                .withDefineSegment(true)
-                .withRegisterEndpoints(true)
-                .withRoleArn(roleArn)
-                .withFormat(Format.JSON)
-                .withS3Url("s3://" + bucket + "/" + key);
+        if (args.length < 1) {
+            System.out.println(USAGE);
+            System.exit(1);
+        }
 
-        CreateImportJobRequest jobRequest = new CreateImportJobRequest()
-                .withImportJobRequest(importRequest)
-                .withApplicationId(appId);
+        String endpointsFileLocation = args[0];
+        String s3BucketName = args[1];
+        String iamImportRoleArn = args[2];
+        String segmentName = args[3];
+        String applicationId = args[4];
 
-        CreateImportJobResult jobResponse = client.createImportJob(jobRequest);
+        Path endpointsFilePath = Paths.get(endpointsFileLocation);
+        File endpointsFile = new File(endpointsFilePath.toAbsolutePath().toString());
+        uploadToS3(endpointsFile, s3BucketName);
 
-        GetImportJobRequest fetchRequest = new GetImportJobRequest()
-                .withApplicationId(appId)
-                .withJobId(jobResponse.getImportJobResponse().getId());
+        importSegment(endpointsFile.getName(), s3BucketName, iamImportRoleArn, segmentName, applicationId);
 
-        // Wait for job to finish.
+    }
 
-        GetImportJobResult getJobResponse;
+    private static void uploadToS3(File endpointsFile, String s3BucketName) {
 
-        do {
-            // Lets only check once every 10 seconds if done, busy waits are bad.
+        // Initializes Amazon S3 client.
+        final AmazonS3 s3 = AmazonS3ClientBuilder.defaultClient();
 
-            Thread.sleep(10 * 1000);
-
-            getJobResponse = client.getImportJob(fetchRequest);
-
-            if (getJobResponse.getImportJobResponse().getJobStatus().equals(JobStatus.FAILED)) {
-                throw new Exception("Failed to process import job successfully");
+        // Checks whether the specified bucket exists. If not, attempts to create one.
+        if (!s3.doesBucketExistV2(s3BucketName)) {
+            try {
+                s3.createBucket(s3BucketName);
+                System.out.format("Created S3 bucket %s.\n", s3BucketName);
+            } catch (AmazonS3Exception e) {
+                System.err.println(e.getErrorMessage());
+                System.exit(1);
             }
-        } while(!getJobResponse.getImportJobResponse().getJobStatus().equals(JobStatus.COMPLETED));
+        }
 
-        // Finally get the import segment that was created.
+        // Uploads the endpoints file to the bucket.
+        String endpointsFileName = endpointsFile.getName();
+        System.out.format("Uploading %s to S3 bucket %s . . .\n", endpointsFileName, s3BucketName);
+        try {
+            s3.putObject(s3BucketName, "imports/" + endpointsFileName, endpointsFile);
+            System.out.println("Finished uploading to S3.");
+        } catch (AmazonServiceException e) {
+            System.err.println(e.getErrorMessage());
+            System.exit(1);
+        }
+    }
 
-        GetSegmentRequest segmentRequest = new GetSegmentRequest()
-                .withApplicationId(appId)
-                .withSegmentId(getJobResponse.getImportJobResponse().getId());
+    private static void importSegment(String endpointsFileName, String s3BucketName, String iamImportRoleArn,
+                                      String segmentName, String applicationId) {
 
-        GetSegmentResult getSegmentResult = client.getSegment(segmentRequest);
+        // The S3 URL that Amazon Pinpoint requires to find the endpoints file.
+        String s3Url = "s3://" + s3BucketName + "/imports/" + endpointsFileName;
 
-        // Print out what we got
+        // Defines the import job that Amazon Pinpoint runs.
+        ImportJobRequest importJobRequest = new ImportJobRequest()
+                .withS3Url(s3Url)
+                .withFormat(Format.JSON)
+                .withRoleArn(iamImportRoleArn)
+                .withRegisterEndpoints(true)
+                .withDefineSegment(true)
+                .withSegmentName(segmentName);
+        CreateImportJobRequest createImportJobRequest = new CreateImportJobRequest()
+                .withApplicationId(applicationId)
+                .withImportJobRequest(importJobRequest);
 
-        System.out.println("Segment ID: " + getSegmentResult.getSegmentResponse().getId()
-                + " with size " + getSegmentResult.getSegmentResponse().getImportDefinition().getSize());
+        // Initializes the Amazon Pinpoint client.
+        AmazonPinpoint pinpointClient = AmazonPinpointClientBuilder.standard()
+                .withRegion(Regions.US_EAST_1).build();
 
-        return getSegmentResult.getSegmentResponse();
+        System.out.format("Creating segment %s with the endpoints in %s . . .\n", segmentName, endpointsFileName);
+
+        try {
+
+            // Runs the import job with Amazon Pinpoint.
+            CreateImportJobResult importResult = pinpointClient.createImportJob(createImportJobRequest);
+            String jobId = importResult.getImportJobResponse().getId();
+
+            // Checks the job status until the job completes or fails.
+            GetImportJobResult getImportJobResult = null;
+            String jobStatus = null;
+            do {
+                getImportJobResult = pinpointClient.getImportJob(new GetImportJobRequest()
+                        .withJobId(jobId)
+                        .withApplicationId(applicationId));
+                jobStatus = getImportJobResult.getImportJobResponse().getJobStatus();
+                System.out.format("Import job %s . . .\n", jobStatus.toLowerCase());
+                if (jobStatus.equals("FAILED")) {
+                    System.err.println("Failed to import segment.");
+                    System.exit(1);
+                }
+                try {
+                    TimeUnit.SECONDS.sleep(3);
+                } catch (InterruptedException e) {
+                    System.err.println(e.getMessage());
+                    System.exit(1);
+                }
+            } while (!jobStatus.equals("COMPLETED"));
+
+            System.out.println("Finished importing segment.");
+
+            // Checks for entries that failed to import.
+            List<String> failedEndpoints = getImportJobResult.getImportJobResponse().getFailures();
+            if (failedEndpoints != null) {
+                System.out.println("Failed to import the following entries:");
+                for (String failedEndpoint : failedEndpoints) {
+                    System.out.println(failedEndpoint);
+                }
+            }
+
+        } catch (AmazonServiceException e) {
+            System.err.println(e.getErrorMessage());
+            System.exit(1);
+        }
+
     }
 
 }

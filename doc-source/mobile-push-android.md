@@ -4,8 +4,6 @@ This section describes how to obtain the credentials required to send push notif
 
 You do not need an existing Android app to complete the steps in this section\. After you create an Android project in Mobile Hub, you can download and launch a working sample app\. Mobile Hub automatically provisions the AWS resources that your app requires\.
 
-After completing the steps in this section, you will have an API key and sender ID in the Firebase console or the Google Cloud Platform console\. If you already have these credentials, you can skip this section and complete the steps in [Getting Started With Android Apps](getting-started-android.md)\.
-
-
+**Topics**
 + [Step 1: Create a Firebase Project](mobile-push-android-cloud-messaging-project.md)
 + [Step 2: Get Push Messaging Credentials for Android](mobile-push-android-creds.md)

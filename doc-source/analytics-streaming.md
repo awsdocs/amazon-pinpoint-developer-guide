@@ -8,8 +8,8 @@ The following examples demonstrate how to configure Amazon Pinpoint to automatic
 
 **Prerequisites**  
 These examples require the following input:  
-The app ID of an app that is integrated with Amazon Pinpoint and reporting events\. For information about how to integrate, see [Integrating Amazon Pinpoint with a Mobile App](mobile-sdk.md)\.
-The ARN of an Kinesis stream or Kinesis Data Firehose delivery stream in your AWS account\. For information about creating these resources, see [Amazon Kinesis Data Streams](http://docs.aws.amazon.com/streams/latest/dev/amazon-kinesis-streams.html) in the *Amazon Kinesis Data Streams Developer Guide* or [Creating an Amazon Kinesis Firehose Delivery Stream](http://docs.aws.amazon.com/firehose/latest/dev/basic-create.html) in the *Amazon Kinesis Firehose Developer Guide*\.
+The app ID of an app that is integrated with Amazon Pinpoint and reporting events\. For information about how to integrate, see [Integrating Amazon Pinpoint with Your Application](integrate.md)\.
+The ARN of an Kinesis stream or Kinesis Data Firehose delivery stream in your AWS account\. For information about creating these resources, see [Amazon Kinesis Data Streams](http://docs.aws.amazon.com/streams/latest/dev/amazon-kinesis-streams.html) in the *Amazon Kinesis Data Streams Developer Guide* or [Creating an Amazon Kinesis Data Firehose Delivery Stream](http://docs.aws.amazon.com/firehose/latest/dev/basic-create.html) in the *Amazon Kinesis Data Firehose Developer Guide*\.
 The ARN of an AWS Identity and Access Management \(IAM\) role that authorizes Amazon Pinpoint to send data to the stream\. For information about creating a role, see [IAM Role for Streaming Events to Kinesis](permissions-streams.md)\.
 
 ### AWS CLI<a name="analytics-streaming-setup-cli"></a>
@@ -136,23 +136,14 @@ The JSON object for an app event contains the data shown in the following exampl
 #### Standard App Event Types<a name="analytics-streaming-data-app-types"></a>
 
 Amazon Pinpoint streams the following standard types for app events:
-
 + \_campaign\.send
-
 + \_monetization\.purchase
-
 + \_session\.start
-
 + \_session\.stop
-
 + \_session\.pause
-
 + \_session\.resume
-
 + \_userauth\.sign\_in
-
 + \_userauth\.sign\_up
-
 + \_userauth\.auth\_fail
 
 ### Email Events<a name="analytics-streaming-data-email"></a>
@@ -211,23 +202,14 @@ The JSON object for an email event contains the data shown in the following exam
 #### Standard Email Event Types<a name="analytics-streaming-data-email-types"></a>
 
 Amazon Pinpoint streams the following standard types for the email channel:
-
 + \_email\.send
-
 + \_email\.delivered
-
 + \_email\.rejected
-
 + \_email\.hardbounce
-
 + \_email\.softbounce
-
 + \_email\.complaint
-
 + \_email\.open
-
 + \_email\.click
-
 + \_email\.unsubscribe
 
 ### SMS Events<a name="analytics-streaming-data-sms"></a>
@@ -268,13 +250,9 @@ The JSON object for an SMS event contains the data shown in the following exampl
 #### Standard SMS Event Types<a name="analytics-streaming-data-sms-types"></a>
 
 Amazon Pinpoint streams the following standard types for the SMS channel:
-
 + \_sms\.send
-
 + \_sms\.success
-
 + \_sms\.fail
-
 + \_sms\.optout
 
 ### Event Attributes<a name="analytics-streaming-data-attributes"></a>

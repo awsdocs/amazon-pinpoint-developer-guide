@@ -50,19 +50,12 @@ When Amazon Pinpoint invokes your Lambda function, it provides the following pay
 The event data is passed to your function code by AWS Lambda\.
 
 The event data provides the following attributes:
-
 + `MessageConfiguration` – Has the same structure as the [http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-messages.html#rest-api-messages-attributes-directmessageconfiguration-table](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-messages.html#rest-api-messages-attributes-directmessageconfiguration-table) in the `Messages` resource in the Amazon Pinpoint API\. 
-
 + `ApplicationId` – The ID of the Amazon Pinpoint project that the campaign belongs to\.
-
 + `CampaignId` – The ID of the Amazon Pinpoint project that the function is invoked for\.
-
 + `TreatmentId` – The ID of a campaign variation that's used for A/B testing\.
-
 + `ActivityId` – The ID of the activity that's being performed by the campaign\.
-
 + `ScheduledTime` – The date and time when the campaign's messages will be delivered in ISO 8601 format\.
-
 + `Endpoints` – A map that associates endpoint IDs with endpoint definitions\. Each event data payload contains up to 50 endpoints\. If the campaign segment contains more than 50 endpoints, Amazon Pinpoint invokes the function repeatedly, with up to 50 endpoints at a time, until all endpoints have been processed\. 
 
 ## Creating a Lambda Function<a name="segments-dynamic-lambda-create"></a>
@@ -70,11 +63,8 @@ The event data provides the following attributes:
 To create a Lambda function, see [Building Lambda Functions](http://docs.aws.amazon.com/lambda/latest/dg/lambda-app.html) in the *AWS Lambda Developer Guide*\.
 
 When you create your function, remember that the message delivery fails in the following conditions:
-
 + The Lambda function takes longer than 15 seconds to return the modified segment\.
-
 + Amazon Pinpoint cannot decode the function's return value\.
-
 + The function requires more than 3 attempts from Amazon Pinpoint to successfully invoke\.
 
 Amazon Pinpoint only accepts endpoint definitions in the function's return value\. The function cannot modify other elements in the event data\.
@@ -221,9 +211,7 @@ You can assign a Lambda function to an individual Amazon Pinpoint campaign\. Or,
 To assign a Lambda function to an individual campaign, use the Amazon Pinpoint API to create or update a [http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaigns.html](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaigns.html) object, and define its `CampaignHook` attribute\. To set a Lambda function as the default for all campaigns in a project, create or update the [http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-settings.html](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-settings.html) resource for that project, and define its `CampaignHook` object\.
 
  In both cases, set the following `CampaignHook` attributes:
-
 + `LambdaFunctionName` – The name or ARN of the Lambda function that Amazon Pinpoint invokes before sending messages for the campaign\.
-
 + `Mode` – Set to `FILTER`\. With this mode, Amazon Pinpoint invokes the function and waits for it to return the modified endpoints\. After receiving them, Amazon Pinpoint sends the message\. Amazon Pinpoint waits for up to 15 seconds before failing the message delivery\.
 
 With `CampaignHook` settings defined for a campaign, Amazon Pinpoint invokes the specified Lambda function before sending the campaign's messages\. Amazon Pinpoint waits to receive the modified endpoints from the function\. If Amazon Pinpoint receives the updated endpoints, it proceeds with the message delivery, using the updated endpoint data\.

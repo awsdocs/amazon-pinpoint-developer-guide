@@ -1,130 +1,71 @@
 # Handling Push Notifications from Firebase Cloud Messaging or Google Cloud Messaging<a name="mobile-sdk-android-push-fcm"></a>
 
-Modify your app code to handle push notifications from Firebase Cloud Messaging \(FCM\) or its predecessor, Google Cloud Messaging \(GCM\)\.
+You can enable your Android or iOS app to receive push notifications that you send through by using Amazon Pinpoint\. With Amazon Pinpoint, you can send push notifications through Firebase Cloud Messaging \(FCM\) or its predecessor, Google Cloud Messaging \(GCM\)\.
 
-## Set up the Manifest File<a name="mobile-sdk-android-modify-manifest"></a>
+**Prerequisite**  
+Before you update your app to receive push notifications, integrate the AWS Mobile SDK for Android\. For more information, see [Integrating the AWS Mobile SDKs for Android or iOS](integrate-sdk.md#integrate-sdk-mobile)\.
 
-If you are using FCM, add the following entries to your `AndroidManifest.xml` file before the `<application>` tag\.
+## Enabling Push Notifications<a name="mobile-sdk-android-push-fcm-enable"></a>
+
+To enable push notifications in your app, update your app to include push listening code\. For more information, see [Add Push Notifications to Your Mobile App with Amazon Pinpoint](http://docs.aws.amazon.com/aws-mobile/latest/developerguide/add-aws-mobile-push-notifications.html) in the *AWS Mobile Developer Guide*\.
+
+## Setting up Deep Linking<a name="mobile-sdk-android-deep-linking"></a>
+
+Amazon Pinpoint campaigns can take one of three actions when a user taps a notification\. One of those possible actions is a deep link, which opens the app to a specified activity\.
+
+To specify a destination activity for deep links, the app must have set up deep linking\. This setup requires an intent filter that registers a URL scheme the deep links will use\. After the app creates an intent filter, the data provided by the intent determines the activity to render\. 
+
+### Creating an Intent Filter<a name="mobile-sdk-android-deep-linking-filter"></a>
+
+Begin to set up deep linking by creating an intent filter in your `AndroidManifest.xml` file\. For example:
 
 ```
-<receiver
-    android:name="com.amazonaws.mobileconnectors.pinpoint.targeting.notification.PinpointNotificationReceiver"
-    android:exported="false" >
-    <intent-filter>
-        <action android:name="com.amazonaws.intent.fcm.NOTIFICATION_OPEN" />
+<!-- This activity allows your application to receive a deep link that navigates directly to the 
+"Deeplink Page"-->
+<activity
+    android:name=".DeepLinkActivity"
+    android:label="A deeplink!" >
+    <intent-filter android:label="inAppReceiver">
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <!-- Accepts URIs of type "pinpoint://deeplink" -->
+        <data android:scheme="pinpoint"
+            android:host="deeplink" />
     </intent-filter>
-</receiver>
+</activity>
 ```
 
-If you are using GCM, you must provide permissions for your app to register, receive, and respond to GCM notifications\. Add the following entries to your `AndroidManifest.xml` file before the `<application>` tag\.
+The data element in the previous example registers a URL scheme, `pinpoint://`, as well as the host, `deeplink`\. As a result, when given a URL in the form of `pinpoint://deeplink`, the manifest is prepared to execute the action\. 
+
+### Handling the Intent<a name="mobile-sdk-android-deep-linking-intent"></a>
+
+Next, set up an intent handler to present the screen associated with the registered URL scheme and host\. Intent data is retrieved in the `onCreate()` method, which then can use `Uri data` to create an activity\. The following example shows an alert and tracks an event\. 
 
 ```
-<uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-<uses-permission android:name="android.permission.WAKE_LOCK"/>
-<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-<permission android:name="PACKAGE_NAME.permission.C2D_MESSAGE"
-    android:protectionLevel="signature" />
-<uses-permission android:name="PACKAGE_NAME.permission.C2D_MESSAGE" />
-```
-
-Install a listener for push notification messages from Google servers\. Add the following entries to your `AndroidManifest.xml` file inside the `<application>` tag: 
-
-```
-<receiver
-    android:name="com.google.android.gms.gcm.GcmReceiver"
-    android:exported="true"
-    android:permission="com.google.android.c2dm.permission.SEND" >
-    <intent-filter>
-        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-        <category android:name="@string/google_cloud_messaging_package" />
-    </intent-filter>
-</receiver>
-```
-
-Register a service that extends the Google `GcmListenerService` to listen for push notifications\. Here is an example of such a service called `PushListenerService`\. 
-
-```
-<service
-    android:name="PACKAGE_NAME.PushListenerService"
-    android:exported="false" >
-    <intent-filter>
-        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-    </intent-filter>
-</service>
-```
-
-## Register the Token<a name="mobile-sdk-android-modify-token"></a>
-
-If you are using GCM, register the GCM token with the Amazon Pinpoint client\.
-
-In the following example, the `AWSMobileClient` class is provided in the AWS Mobile Hub sample code to reference the Amazon Pinpoint object\.
-
-```
-InstanceID instanceID = InstanceID.getInstance(this);
-String gcmToken =
-    instanceID.getToken(
-        getString(R.string.gcm_defaultSenderId),
-        GoogleCloudMessaging.INSTANCE_ID_SCOPE,
-        null);
-AWSMobileClient.defaultMobileClient().getPinpointManager().getNotificationClient().registerGCMDeviceToken(refreshedToken) ;
-```
-
-If you are using FCM, call this object inside your class that extends `FirebaseInstanceIdService`:
-
-```
-/**
- * Called if InstanceID token is updated. This may occur if the security of
- * the previous token has been compromised. Note that this is called when the InstanceID token
- * is initially generated so this is where you would retrieve the token.
- */
-// [START refresh_token]
-@Override
-public void onTokenRefresh() {
-    // Get updated InstanceID token.
-    String refreshedToken = FirebaseInstanceId.getInstance().getToken();
-    Log.d(TAG, "Refreshed token: " + refreshedToken);
-
-    // If you want to send messages to this application instance or
-    // manage this apps subscriptions on the server side, send the
-    // Instance ID token to your app server.
-
-    AWSMobileClient.defaultMobileClient().getPinpointManager().getNotificationClient().registerGCMDeviceToken(refreshedToken);
+public class DeeplinkActivity extends Activity {
+ 
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+ 
+        if (getIntent().getAction() == Intent.ACTION_VIEW) {
+            Uri data = getIntent().getData();
+ 
+            if (data != null) {
+ 
+                // show an alert with the "custom" param
+                new AlertDialog.Builder(this)
+                        .setTitle("An example of a Deeplink")
+                        .setMessage("Found custom param: " +data.getQueryParameter("custom"))
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+            }
+        }
+    }
 }
-// [END refresh_token]
-```
-
-## Handling the Message<a name="mobile-sdk-android-modify-handling"></a>
-
-You must add a hook to handle the message\. 
-
-If you are using GCM, add a hook in the class in your app that extends `GcmListenerService` in the `onMessageReceived` method:
-
-```
-@Override
-public void onMessageReceived(final String from, final Bundle data) {
-    AWSMobileClient.initializeMobileClientIfNecessary(this.getApplicationContext());
-    final NotificationClient notificationClient = AWSMobileClient.defaultMobileClient()
-        .getPinpointManager().getNotificationClient();
-
-    NotificationClient.CampaignPushResult pushResult =
-        notificationClient.handleGCMCampaignPush(from, data, this.getClass());
-```
-
-If you are using FCM, add a hook in the class in your app that extends `FirebaseMessagingService` in the `onMessageReceived` method:
-
-```
-/**
-     * Called when message is received.
-     *
-     * @param remoteMessage Object representing the message received from Firebase Cloud Messaging.
-     */
-    // [START receive_message]
-    @Override
-    public void onMessageReceived(RemoteMessage remoteMessage) {
-
-AWSMobileClient.defaultMobileClient().getPinpointManager().getNotificationClient().handleFCMCampaignPush(remoteMessage.getFrom(), remoteMessage.getData());
-    } 
-    // [END receive_message]
 ```

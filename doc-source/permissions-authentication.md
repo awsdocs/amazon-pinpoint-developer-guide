@@ -24,8 +24,6 @@ Your app code uses Amazon Cognito and IAM to authenticate users as follows:
 
 1. The user gains the permissions granted by the IAM roles that are associated with the identity pool\.
 
-For code examples that show how to construct the credentials provider and initialize the Amazon Pinpoint client, see [Initializing the Amazon Pinpoint Client \(iOS\)](mobile-sdk-ios-modify.md) and [Initializing the Amazon Pinpoint Client \(Android\)](mobile-sdk-android-modify.md)\.
-
 For more information about how Amazon Cognito supports user authentication, see [Amazon Cognito Identity: Using Federated Identities](http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html) in the *Amazon Cognito Developer Guide*\.
 
 ## Unauthenticated Role<a name="permissions-authentication-unauthenticatedrole"></a>
@@ -33,9 +31,7 @@ For more information about how Amazon Cognito supports user authentication, see 
 The unauthenticated role created by Mobile Hub allows your app users to send data to Amazon Pinpoint\. The role name includes "`unauth_MOBILEHUB`"; for example, in the IAM console, you will see a role with a name similar to `MySampleApp_unauth_MOBILEHUB_1234567890`\.
 
 IAM roles delegate permissions with two types of policies:
-
 + Permissions policy – Grants the user of the role permission to take the specified actions on the specified resources\.
-
 + Trust policy – Specifies which entities are allowed to assume the role and gain its permissions\.
 
 ### Permissions Policies<a name="permissions-authentication-unauthenticatedrole-permissionspolicies"></a>
