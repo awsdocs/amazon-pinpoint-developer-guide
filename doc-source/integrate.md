@@ -4,7 +4,7 @@ Integrate Amazon Pinpoint with your client code to understand and engage your us
 
 After you integrate, as users launch your application, it connects to the Amazon Pinpoint service to add or update *endpoints*\. Endpoints represent the destinations that you can message—such as user devices, email addresses, or phone numbers\.
 
-Also, after you integrate, your application provides usage data, or *events*\. View event data in the Amazon Pinpoint console to learn how many users you have, how often they use your application, when they use it, and more\. 
+Also, your application provides usage data, or *events*\. View event data in the Amazon Pinpoint console to learn how many users you have, how often they use your application, when they use it, and more\. 
 
 After your application supplies endpoints and events, you can use this information to tailor messaging campaigns for specific audiences, or *segments*\. \(You can also directly message simple lists of recipients without creating campaigns\.\)
 

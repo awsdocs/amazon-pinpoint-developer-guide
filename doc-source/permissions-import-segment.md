@@ -1,4 +1,4 @@
-# IAM Role for Importing Segments<a name="permissions-import-segment"></a>
+# IAM Role for Importing Endpoints or Segments<a name="permissions-import-segment"></a>
 
 With Amazon Pinpoint, you define a user segment by importing endpoint definitions from an Amazon S3 bucket in your AWS account\. Before you import, you must delegate the required permissions to Amazon Pinpoint\. Create an AWS Identity and Access Management \(IAM\) role and attach the following policies to the role: 
 + The `AmazonS3ReadOnlyAccess` AWS managed policy\. This policy is created and managed by AWS, and it grants read\-only access to your Amazon S3 bucket\.

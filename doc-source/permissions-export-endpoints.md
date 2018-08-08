@@ -1,4 +1,4 @@
-# IAM Role for Exporting Segments<a name="permissions-export-endpoints"></a>
+# IAM Role for Exporting Endpoints or Segments<a name="permissions-export-endpoints"></a>
 
 You can obtain a list of endpoints by creating an export job\. When you create an export job, you have to specify a project ID, and you can optionally specify a segment ID\. Amazon Pinpoint then exports a list of the endpoints associated with the project or segment to an Amazon Simple Storage Service \(Amazon S3\) bucket\. The resulting file contains a JSON\-formatted list of endpoints and their attributes \(such as channel, address, opt\-in/opt\-out status, creation date, and endpoint ID\)\. 
 

@@ -14,6 +14,6 @@ To import endpoint definitions, you must grant Amazon Pinpoint [read\-only acces
 + [IAM Policies for Amazon Pinpoint Users](permissions-actions.md)
 + [User Authentication in Amazon Pinpoint Apps](permissions-authentication.md)
 + [AWS Mobile Hub Service Role](permissions-mobilehub.md)
-+ [IAM Role for Importing Segments](permissions-import-segment.md)
-+ [IAM Role for Exporting Segments](permissions-export-endpoints.md)
++ [IAM Role for Importing Endpoints or Segments](permissions-import-segment.md)
++ [IAM Role for Exporting Endpoints or Segments](permissions-export-endpoints.md)
 + [IAM Role for Streaming Events to Kinesis](permissions-streams.md)
