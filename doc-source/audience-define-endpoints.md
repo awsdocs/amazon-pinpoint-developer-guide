@@ -21,7 +21,7 @@ The following examples show you how to add an endpoint to an Amazon Pinpoint pro
 You can use Amazon Pinpoint by running commands with the AWS CLI\.
 
 **Example Update Endpoint Command**  
-To add or update an endpoint, use the [update\-endpoint](http://docs.aws.amazon.com/cli/latest/reference/pinpoint/update-endpoint.html) command:  
+To add or update an endpoint, use the [update\-endpoint](https://docs.aws.amazon.com/cli/latest/reference/pinpoint/update-endpoint.html) command:  
 
 ```
 $ aws pinpoint update-endpoint \
@@ -71,7 +71,7 @@ The example `update-endpoint` command uses a JSON file as the argument for the `
   }
 }
 ```
-For the attributes that you can use to define an endpoint, see the [EndpointRequest](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html#rest-api-endpoint-schemas) schema in the *Amazon Pinpoint API Reference*\.
+For the attributes that you can use to define an endpoint, see the [EndpointRequest](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html#rest-api-endpoint-schemas) schema in the *Amazon Pinpoint API Reference*\.
 
 ------
 #### [ AWS SDK for Java ]
@@ -79,7 +79,7 @@ For the attributes that you can use to define an endpoint, see the [EndpointRequ
 You can use the Amazon Pinpoint API in your Java applications by using the client that's provided by the AWS SDK for Java\.
 
 **Example Code**  
-To add an endpoint, initialize an [http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/model/EndpointRequest.html](http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/model/EndpointRequest.html) object, and pass it to the [http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#updateEndpoint-com.amazonaws.services.pinpoint.model.UpdateEndpointRequest-](http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#updateEndpoint-com.amazonaws.services.pinpoint.model.UpdateEndpointRequest-) method of the `AmazonPinpoint` client:  
+To add an endpoint, initialize an [https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/model/EndpointRequest.html](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/model/EndpointRequest.html) object, and pass it to the [https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#updateEndpoint-com.amazonaws.services.pinpoint.model.UpdateEndpointRequest-](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#updateEndpoint-com.amazonaws.services.pinpoint.model.UpdateEndpointRequest-) method of the `AmazonPinpoint` client:  
 
 ```
 import com.amazonaws.regions.Regions;
@@ -166,12 +166,12 @@ public class AddExampleEndpoint {
 You can use Amazon Pinpoint by making HTTP requests directly to the REST API\.
 
 **Example PUT Endpoint Request**  
-To add an endpoint, issue a `PUT` request to the [Endpoint](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html) resource at the following URI:  
+To add an endpoint, issue a `PUT` request to the [Endpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html) resource at the following URI:  
 `/v1/apps/application-id/endpoints/endpoint-id`  
 Where:  
 + *application\-id* is the ID of the Amazon Pinpoint project in which you're adding or updating an endpoint\.
 + *endpoint\-id* is the ID that you're assigning to a new endpoint, or it's the ID of an existing endpoint that you're updating\.
-In your request, include the required headers, and provide the [EndpointRequest](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html#rest-api-endpoint-schemas) JSON as the body:  
+In your request, include the required headers, and provide the [EndpointRequest](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html#rest-api-endpoint-schemas) JSON as the body:  
 
 ```
 PUT /v1/apps/application_id/endpoints/example_endpoint HTTP/1.1
@@ -229,8 +229,8 @@ If your request succeeds, you receive a response like the following:
 
 ## Related Information<a name="audience-define-endpoints-related"></a>
 
-For more information about the Endpoint resource in the Amazon Pinpoint API, including the supported HTTP methods and request parameters, see [Endpoint](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html) in the *Amazon Pinpoint API Reference\.*
+For more information about the Endpoint resource in the Amazon Pinpoint API, including the supported HTTP methods and request parameters, see [Endpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html) in the *Amazon Pinpoint API Reference\.*
 
-For more information about personalizing messages with variables, see [Message Variables](http://docs.aws.amazon.com/pinpoint/latest/userguide/campaigns-message.html#campaigns-message-variables.html) in the *Amazon Pinpoint User Guide*\.
+For more information about personalizing messages with variables, see [Message Variables](https://docs.aws.amazon.com/pinpoint/latest/userguide/campaigns-message.html#campaigns-message-variables.html) in the *Amazon Pinpoint User Guide*\.
 
 For the limits that apply to endpoints, such as the number of attributes you can assign, see [Endpoint Limits](limits.md#limits-endpoint)\.

@@ -14,7 +14,7 @@ One of the easiest ways to interact with the Amazon Pinpoint API is to use an AW
 + [AWS SDK for Go](https://aws.amazon.com/sdk-for-go/) version 1\.5\.13 or later
 + [AWS SDK for C\+\+](https://aws.amazon.com/sdk-for-cpp/) version 1\.0\.20151208\.143 or later
 
-You can also interact with the Amazon Pinpoint API by using version 1\.11\.24 or later of the [AWS Command Line Interface](https://aws.amazon.com/cli/) \(AWS CLI\)\. The AWS CLI requires Python 2\.6\.5 or later, or Python 3\.3 or later\. For more information about installing and configuring the AWS CLI, see [Installing the AWS Command Line Interface](http://docs.aws.amazon.com/cli/latest/userguide/installing.html) in the *AWS Command Line Interface User Guide*\.
+You can also interact with the Amazon Pinpoint API by using version 1\.11\.24 or later of the [AWS Command Line Interface](https://aws.amazon.com/cli/) \(AWS CLI\)\. The AWS CLI requires Python 2\.6\.5 or later, or Python 3\.3 or later\. For more information about installing and configuring the AWS CLI, see [Installing the AWS Command Line Interface](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) in the *AWS Command Line Interface User Guide*\.
 
 **Note**  
 The version numbers shown in this section are the first versions of each SDK or CLI that included support for the Amazon Pinpoint API\. New resources or operations are occasionally added to the Amazon Pinpoint API\. In order to use all of the features of Amazon Pinpoint through the API, ensure that you're using the latest version of the SDK or CLI\.

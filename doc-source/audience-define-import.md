@@ -13,7 +13,7 @@ Each import job can transfer up to 1 GB of data\. In a typical job, where each e
 ## Before You Begin<a name="audience-define-import-before"></a>
 
 Before you can import endpoints, you need the following resources in your AWS account:
-+ An Amazon S3 bucket\. To create a bucket, see [Create a Bucket](http://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html) in the *Amazon Simple Storage Service Getting Started Guide*\.
++ An Amazon S3 bucket\. To create a bucket, see [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html) in the *Amazon Simple Storage Service Getting Started Guide*\.
 + An AWS Identity and Access Management \(IAM\) role that grants Amazon Pinpoint read permissions for your Amazon S3 bucket\. To create the role, see [IAM Role for Importing Endpoints or Segments](permissions-import-segment.md)\.
 
 ## Examples<a name="audience-define-import-examples"></a>
@@ -22,7 +22,7 @@ The following examples demonstrate how to add endpoint definitions to your Amazo
 
 ### Files with Endpoint Definitions<a name="audience-define-import-examples-files"></a>
 
-The files that you add to your Amazon S3 bucket can contain endpoint definitions in CSV or newline\-delimited JSON format\. For the attributes that you can use to define your endpoints, see the [EndpointRequest](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html#rest-api-endpoint-schemas) JSON schema in the *Amazon Pinpoint API Reference*\.
+The files that you add to your Amazon S3 bucket can contain endpoint definitions in CSV or newline\-delimited JSON format\. For the attributes that you can use to define your endpoints, see the [EndpointRequest](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html#rest-api-endpoint-schemas) JSON schema in the *Amazon Pinpoint API Reference*\.
 
 ------
 #### [ CSV ]
@@ -67,7 +67,7 @@ The following examples show you how to add endpoint definitions to Amazon S3 by 
 You can use Amazon Pinpoint by running commands with the AWS CLI\.
 
 **Example S3 CP Command**  
-To upload a local file to an Amazon S3 bucket, use the Amazon S3 [http://docs.aws.amazon.com/cli/latest/reference/s3/cp.html](http://docs.aws.amazon.com/cli/latest/reference/s3/cp.html) command:  
+To upload a local file to an Amazon S3 bucket, use the Amazon S3 [https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html](https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html) command:  
 
 ```
 $ aws s3 cp ./endpoints-file s3://bucket-name/prefix/
@@ -78,7 +78,7 @@ Where:
 + *bucket\-name/prefix/* is the name of your Amazon S3 bucket and, optionally, a prefix that helps you organize the objects in your bucket hierarchically\. For example, a useful prefix might be `pinpoint/imports/endpoints/`\.
 
 **Example Create Import Job Command**  
-To import endpoint definitions from an Amazon S3 bucket, use the [http://docs.aws.amazon.com/cli/latest/reference/pinpoint/create-import-job.html](http://docs.aws.amazon.com/cli/latest/reference/pinpoint/create-import-job.html) command:  
+To import endpoint definitions from an Amazon S3 bucket, use the [https://docs.aws.amazon.com/cli/latest/reference/pinpoint/create-import-job.html](https://docs.aws.amazon.com/cli/latest/reference/pinpoint/create-import-job.html) command:  
 
 ```
 $ aws pinpoint create-import-job \
@@ -162,8 +162,8 @@ The response provides the job status with the `JobStatus` attribute\.
 You can use the Amazon Pinpoint API in your Java applications by using the client that's provided by the AWS SDK for Java\.
 
 **Example Code**  
-To upload a file with endpoint definitions to Amazon S3, use the [http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3Client.html#putObject-java.lang.String-java.lang.String-java.io.File-](http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3Client.html#putObject-java.lang.String-java.lang.String-java.io.File-) method of the `AmazonS3` client\.   
-To import the endpoints into an Amazon Pinpoint project, initialize a [http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/model/CreateImportJobRequest.html](http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/model/CreateImportJobRequest.html) object\. Then, pass this object to the [http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#createImportJob-com.amazonaws.services.pinpoint.model.CreateImportJobRequest-](http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#createImportJob-com.amazonaws.services.pinpoint.model.CreateImportJobRequest-) method of the `AmazonPinpoint` client\.  
+To upload a file with endpoint definitions to Amazon S3, use the [https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3Client.html#putObject-java.lang.String-java.lang.String-java.io.File-](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3Client.html#putObject-java.lang.String-java.lang.String-java.io.File-) method of the `AmazonS3` client\.   
+To import the endpoints into an Amazon Pinpoint project, initialize a [https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/model/CreateImportJobRequest.html](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/model/CreateImportJobRequest.html) object\. Then, pass this object to the [https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#createImportJob-com.amazonaws.services.pinpoint.model.CreateImportJobRequest-](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#createImportJob-com.amazonaws.services.pinpoint.model.CreateImportJobRequest-) method of the `AmazonPinpoint` client\.  
 
 ```
 package com.amazonaws.examples.pinpoint;
@@ -329,7 +329,7 @@ public class ImportEndpoints {
 You can use Amazon Pinpoint by making HTTP requests directly to the REST API\.
 
 **Example S3 PUT Object Request**  
-To add your endpoint definitions to a bucket, use the Amazon S3 [PUT Object](http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUT.html) operation, and provide the endpoint definitions as the body:  
+To add your endpoint definitions to a bucket, use the Amazon S3 [PUT Object](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUT.html) operation, and provide the endpoint definitions as the body:  
 
 ```
 PUT /prefix/key HTTP/1.1
@@ -351,7 +351,7 @@ Where:
 + *bucket\-name* is the name of the Amazon S3 bucket that you're adding the endpoint definitions to\.
 
 **Example POST Import Job Request**  
-To import endpoint definitions from an Amazon S3 bucket, issue a POST request to the [Import Jobs](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-import-jobs.html) resource\. In your request, include the required headers and provide the [ImportJobRequest](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-import-jobs.html#rest-api-import-jobs-schemas) JSON as the body:  
+To import endpoint definitions from an Amazon S3 bucket, issue a POST request to the [Import Jobs](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-import-jobs.html) resource\. In your request, include the required headers and provide the [ImportJobRequest](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-import-jobs.html#rest-api-import-jobs-schemas) JSON as the body:  
 
 ```
 POST /v1/apps/application_id/jobs/import HTTP/1.1
@@ -395,7 +395,7 @@ If your request succeeds, you receive a response like the following:
 The response provides the job ID with the `Id` attribute\. You can use this ID to check the current status of the import job\.
 
 **Example GET Import Job Request**  
-To check the current status of an import job, issue a `GET` request to the [Import Job](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-import-job.html) resource:  
+To check the current status of an import job, issue a `GET` request to the [Import Job](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-import-job.html) resource:  
 
 ```
 GET /v1/apps/application_id/jobs/import/job_id HTTP/1.1
@@ -440,4 +440,4 @@ The response provides the job status with the `JobStatus` attribute\.
 
 ## Related Information<a name="audience-define-import-related"></a>
 
-For more information about the Import Jobs resource in the Amazon Pinpoint API, including the supported HTTP methods and request parameters, see [Import Jobs](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-import-jobs.html) in the *Amazon Pinpoint API Reference*\.
+For more information about the Import Jobs resource in the Amazon Pinpoint API, including the supported HTTP methods and request parameters, see [Import Jobs](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-import-jobs.html) in the *Amazon Pinpoint API Reference*\.

@@ -8,9 +8,9 @@ To create an export job, you have to configure an IAM role that allows Amazon Pi
 
 1. Create an IAM role and attach the policy to it\.
 
-This section contains procedures for completing both of these steps\. These procedures assume that you've already created an Amazon S3 bucket, as well as a folder within that bucket, for storing exported segments\. For more information about creating buckets, see [Create a Bucket](http://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html) in the *Amazon Simple Storage Service Getting Started Guide*\. 
+This section contains procedures for completing both of these steps\. These procedures assume that you've already created an Amazon S3 bucket, as well as a folder within that bucket, for storing exported segments\. For more information about creating buckets, see [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html) in the *Amazon Simple Storage Service Getting Started Guide*\. 
 
-These procedures also assume that you've already installed and configured the AWS CLI\. For more information about setting up the AWS CLI, see [Installing the AWS Command Line Interface](http://docs.aws.amazon.com/cli/latest/userguide/installing.html) in the *AWS Command Line Interface User Guide*\.
+These procedures also assume that you've already installed and configured the AWS CLI\. For more information about setting up the AWS CLI, see [Installing the AWS Command Line Interface](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) in the *AWS Command Line Interface User Guide*\.
 
 ## Step 1: Create the IAM Policy<a name="permissions-export-endpoints-create-policy"></a>
 
@@ -105,7 +105,7 @@ An IAM policy defines the permissions for an entity, such as an identity or reso
 
    Copy the Amazon Resource Name \(ARN\) of the policy \(`arn:aws:iam::123456789012:policy/s3ExportPolicy` in the preceding example\)\. In the next section, you must supply this ARN when you create the role\.
 **Note**  
-If you see a message stating that your account isn't authorized to perform the CreatePolicy operation, then you need to attach a policy to your user account that lets you create new IAM policies and roles\. For more information, see [Attaching IAM Policies \(Console\)](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html#attach-managed-policy-console) in the *IAM User Guide*\.
+If you see a message stating that your account isn't authorized to perform the CreatePolicy operation, then you need to attach a policy to your user account that lets you create new IAM policies and roles\. For more information, see [Attaching IAM Policies \(Console\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html#attach-managed-policy-console) in the *IAM User Guide*\.
 
 ## Step 2: Create the IAM Role<a name="permissions-export-endpoints-create-role"></a>
 

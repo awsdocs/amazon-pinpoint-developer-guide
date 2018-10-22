@@ -14,7 +14,7 @@ The following examples show you how to add two endpoints at once by including th
 You can use Amazon Pinpoint by running commands with the AWS CLI\.
 
 **Example Update Endpoints Batch Command**  
-To submit an endpoint batch request, use the [http://docs.aws.amazon.com/cli/latest/reference/pinpoint/update-endpoints-batch.html](http://docs.aws.amazon.com/cli/latest/reference/pinpoint/update-endpoints-batch.html) command:  
+To submit an endpoint batch request, use the [https://docs.aws.amazon.com/cli/latest/reference/pinpoint/update-endpoints-batch.html](https://docs.aws.amazon.com/cli/latest/reference/pinpoint/update-endpoints-batch.html) command:  
 
 ```
 $ aws pinpoint update-endpoints-batch \
@@ -84,7 +84,7 @@ The example `update-endpoints-batch` command uses a JSON file as the argument fo
   ]
 }
 ```
-For the attributes that you can use to define a batch of endpoints, see the [EndpointBatchRequest](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoints.html#rest-api-endpoints-schemas) schema in the *Amazon Pinpoint API Reference*\.
+For the attributes that you can use to define a batch of endpoints, see the [EndpointBatchRequest](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoints.html#rest-api-endpoints-schemas) schema in the *Amazon Pinpoint API Reference*\.
 
 ------
 #### [ AWS SDK for Java ]
@@ -92,7 +92,7 @@ For the attributes that you can use to define a batch of endpoints, see the [End
 You can use the Amazon Pinpoint API in your Java applications by using the client that's provided by the AWS SDK for Java\.
 
 **Example Code**  
-To submit an endpoint batch request, initialize an [http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/model/EndpointRequest.html](http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/model/EndpointRequest.html) object, and pass it to the [http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#updateEndpointsBatch-com.amazonaws.services.pinpoint.model.UpdateEndpointsBatchRequest-](http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#updateEndpointsBatch-com.amazonaws.services.pinpoint.model.UpdateEndpointsBatchRequest-) method of the `AmazonPinpoint` client\. The following example populates an `EndpointBatchRequest` object with two `EndpointBatchItem` objects:  
+To submit an endpoint batch request, initialize an [https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/model/EndpointRequest.html](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/model/EndpointRequest.html) object, and pass it to the [https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#updateEndpointsBatch-com.amazonaws.services.pinpoint.model.UpdateEndpointsBatchRequest-](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#updateEndpointsBatch-com.amazonaws.services.pinpoint.model.UpdateEndpointsBatchRequest-) method of the `AmazonPinpoint` client\. The following example populates an `EndpointBatchRequest` object with two `EndpointBatchItem` objects:  
 
 ```
 import com.amazonaws.regions.Regions;
@@ -204,10 +204,10 @@ public class AddExampleEndpoints {
 You can use Amazon Pinpoint by making HTTP requests directly to the REST API\.
 
 **Example Put Endpoints Request**  
-To submit an endpoint batch request, issue a `PUT` request to the [Endpoints](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoints.html) resource at the following URI:  
+To submit an endpoint batch request, issue a `PUT` request to the [Endpoints](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoints.html) resource at the following URI:  
 `/v1/apps/application-id/endpoints`  
 Where *application\-id* is the ID of the Amazon Pinpoint project in which you're adding or updating the endpoints\.  
-In your request, include the required headers, and provide the [EndpointBatchRequest](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoints.html#rest-api-endpoints-schemas) JSON as the body:  
+In your request, include the required headers, and provide the [EndpointBatchRequest](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoints.html#rest-api-endpoints-schemas) JSON as the body:  
 
 ```
 PUT /v1/apps/application_id/endpoints HTTP/1.1
@@ -286,4 +286,4 @@ If your request succeeds, you receive a response like the following:
 
 ## Related Information<a name="audience-define-endpoints-batch-related"></a>
 
-For more information about the Endpoint resource in the Amazon Pinpoint API, including the supported HTTP methods and request parameters, see [Endpoint](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html) in the *Amazon Pinpoint API Reference\.*
+For more information about the Endpoint resource in the Amazon Pinpoint API, including the supported HTTP methods and request parameters, see [Endpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html) in the *Amazon Pinpoint API Reference\.*

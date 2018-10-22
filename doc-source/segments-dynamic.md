@@ -9,9 +9,9 @@ You can use AWS Lambda to tailor how an Amazon Pinpoint campaign engages your ta
 
 AWS Lambda is a compute service that you can use to run code without provisioning or managing servers\. You package your code and upload it to Lambda as *Lambda functions*\. Lambda runs a function when the function is invoked, which might be done manually by you or automatically in response to events\.
 
-For more information, see [Lambda Functions](http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction-function.html) in the *AWS Lambda Developer Guide*\.
+For more information, see [Lambda Functions](https://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction-function.html) in the *AWS Lambda Developer Guide*\.
 
-To assign a Lambda function to a campaign, you define the campaign's [http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaign.html#rest-api-campaign-attributes-campaignhook-table](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaign.html#rest-api-campaign-attributes-campaignhook-table) settings\. These settings include the Lambda function name\. They also include the `CampaignHook` mode, which sets whether Amazon Pinpoint receives a return value from the function\.
+To assign a Lambda function to a campaign, you define the campaign's [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaign.html#rest-api-campaign-attributes-campaignhook-table](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaign.html#rest-api-campaign-attributes-campaignhook-table) settings\. These settings include the Lambda function name\. They also include the `CampaignHook` mode, which sets whether Amazon Pinpoint receives a return value from the function\.
 
 A Lambda function that you assign to a campaign is referred to as an Amazon Pinpoint *extension*\.
 
@@ -21,7 +21,7 @@ If the `CampaignHook` mode is set to `FILTER`, Amazon Pinpoint allows the functi
 
 By processing your segments with AWS Lambda, you have more control over who you send messages to and what those messages contain\. You can tailor your campaigns in real time, at the moment campaign messages are delivered\. Filtering segments enables you to engage more narrowly defined subsets of your segments\. Adding or updating endpoint attributes enables you to make new data available for message variables\.
 
-For more information about message variables, see [Message Variables](http://docs.aws.amazon.com/pinpoint/latest/userguide/campaigns-message.html#campaigns-message-variables) in the *Amazon Pinpoint User Guide*\.
+For more information about message variables, see [Message Variables](https://docs.aws.amazon.com/pinpoint/latest/userguide/campaigns-message.html#campaigns-message-variables) in the *Amazon Pinpoint User Guide*\.
 
 **Note**  
 You can also use the `CampaignHook` settings to assign a Lambda function that handles the message delivery\. This type of function is useful for delivering messages through custom channels that Amazon Pinpoint doesn't support, such as social media platforms\. For more information, see [Creating Custom Channels with AWS Lambda](channels-custom.md)\.
@@ -50,7 +50,7 @@ When Amazon Pinpoint invokes your Lambda function, it provides the following pay
 The event data is passed to your function code by AWS Lambda\.
 
 The event data provides the following attributes:
-+ `MessageConfiguration` – Has the same structure as the [http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-messages.html#rest-api-messages-attributes-directmessageconfiguration-table](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-messages.html#rest-api-messages-attributes-directmessageconfiguration-table) in the `Messages` resource in the Amazon Pinpoint API\. 
++ `MessageConfiguration` – Has the same structure as the [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-messages.html#rest-api-messages-attributes-directmessageconfiguration-table](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-messages.html#rest-api-messages-attributes-directmessageconfiguration-table) in the `Messages` resource in the Amazon Pinpoint API\. 
 + `ApplicationId` – The ID of the Amazon Pinpoint project that the campaign belongs to\.
 + `CampaignId` – The ID of the Amazon Pinpoint project that the function is invoked for\.
 + `TreatmentId` – The ID of a campaign variation that's used for A/B testing\.
@@ -60,7 +60,7 @@ The event data provides the following attributes:
 
 ## Creating a Lambda Function<a name="segments-dynamic-lambda-create"></a>
 
-To create a Lambda function, see [Building Lambda Functions](http://docs.aws.amazon.com/lambda/latest/dg/lambda-app.html) in the *AWS Lambda Developer Guide*\.
+To create a Lambda function, see [Building Lambda Functions](https://docs.aws.amazon.com/lambda/latest/dg/lambda-app.html) in the *AWS Lambda Developer Guide*\.
 
 When you create your function, remember that the message delivery fails in the following conditions:
 + The Lambda function takes longer than 15 seconds to return the modified segment\.
@@ -138,7 +138,7 @@ In the endpoint definitions that you return, Amazon Pinpoint accepts `TitleOverr
 
 Before you can use your Lambda function to process your endpoints, you must authorize Amazon Pinpoint to invoke your Lambda function\. To grant invocation permission, assign a *Lambda function policy* to the function\. A Lambda function policy is a resource\-based permissions policy that designates which entities can use your function and what actions those entities can take\.
 
-For more information, see [Using Resource\-Based Policies for AWS Lambda \(Lambda Function Policies\)](http://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html) in the *AWS Lambda Developer Guide*\.
+For more information, see [Using Resource\-Based Policies for AWS Lambda \(Lambda Function Policies\)](https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html) in the *AWS Lambda Developer Guide*\.
 
 ### Example Function Policy<a name="segments-dynamic-lambda-trust-policy-example"></a>
 
@@ -155,7 +155,7 @@ The following policy grants permission to the Amazon Pinpoint service principal 
   "Resource": "{arn:aws:lambda:us-east-1:account-id:function:function-name}",
   "Condition": {
     "ArnLike": {
-      "AWS:SourceArn": "arn:aws:mobiletargeting:us-east-1:account-id:/apps/application-id/campaigns/campaign-id"
+      "AWS:SourceArn": "arn:aws:mobiletargeting:us-east-1:account-id:apps/application-id/campaigns/campaign-id"
     }
   }
 }
@@ -166,14 +166,14 @@ Your function policy requires a `Condition` block that includes an `AWS:SourceAr
 ```
 "Condition": {
   "ArnLike": {
-    "AWS:SourceArn": "arn:aws:mobiletargeting:us-east-1:account-id:/apps/*"
+    "AWS:SourceArn": "arn:aws:mobiletargeting:us-east-1:account-id:apps/*"
   }
 }
 ```
 
 ### Granting Amazon Pinpoint Invocation Permission<a name="segments-dynamic-lambda-trust-policy-assign"></a>
 
-You can use the AWS Command Line Interface \(AWS CLI\) to add permissions to the Lambda function policy assigned to your Lambda function\. To allow Amazon Pinpoint to invoke a function, use the Lambda [http://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html](http://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html) command, as shown by the following example:
+You can use the AWS Command Line Interface \(AWS CLI\) to add permissions to the Lambda function policy assigned to your Lambda function\. To allow Amazon Pinpoint to invoke a function, use the Lambda [https://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html](https://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html) command, as shown by the following example:
 
 ```
 $ aws lambda add-permission \
@@ -181,10 +181,10 @@ $ aws lambda add-permission \
 > --statement-id sid \
 > --action lambda:InvokeFunction \
 > --principal pinpoint.us-east-1.amazonaws.com \
-> --source-arn arn:aws:mobiletargeting:us-east-1:account-id:/apps/application-id/campaigns/campaign-id
+> --source-arn arn:aws:mobiletargeting:us-east-1:account-id:apps/application-id/campaigns/campaign-id
 ```
 
-If you want to provide a campaign ID for the `--source-arn` parameter, you can look up your campaign IDs by using the Amazon Pinpoint [http://docs.aws.amazon.com/cli/latest/reference/pinpoint/get-campaigns.html](http://docs.aws.amazon.com/cli/latest/reference/pinpoint/get-campaigns.html) command with the AWS CLI\. This command requires an `--application-id` parameter\. To look up your application IDs, sign in to the Amazon Pinpoint console at [https://console\.aws\.amazon\.com/pinpoint/](https://console.aws.amazon.com/pinpoint/), and go to the **Projects** page\. The console shows an **ID** for each project, which is the project's application ID\.
+If you want to provide a campaign ID for the `--source-arn` parameter, you can look up your campaign IDs by using the Amazon Pinpoint [https://docs.aws.amazon.com/cli/latest/reference/pinpoint/get-campaigns.html](https://docs.aws.amazon.com/cli/latest/reference/pinpoint/get-campaigns.html) command with the AWS CLI\. This command requires an `--application-id` parameter\. To look up your application IDs, sign in to the Amazon Pinpoint console at [https://console\.aws\.amazon\.com/pinpoint/](https://console.aws.amazon.com/pinpoint/), and go to the **Projects** page\. The console shows an **ID** for each project, which is the project's application ID\.
 
 When you run the Lambda `add-permission` command, AWS Lambda returns the following output:
 
@@ -198,7 +198,7 @@ When you run the Lambda `add-permission` command, AWS Lambda returns the followi
     \"Condition\":
       {\"ArnLike\":
         {\"AWS:SourceArn\":
-         \"arn:aws:mobiletargeting:us-east-1:111122223333:/apps/application-id/campaigns/campaign-id\"}}}"
+         \"arn:aws:mobiletargeting:us-east-1:111122223333:apps/application-id/campaigns/campaign-id\"}}}"
 }
 ```
 
@@ -208,7 +208,7 @@ The `Statement` value is a JSON string version of the statement added to the Lam
 
 You can assign a Lambda function to an individual Amazon Pinpoint campaign\. Or, you can set the Lambda function as the default used by all campaigns for a project, except for those campaigns to which you assign a function individually\.
 
-To assign a Lambda function to an individual campaign, use the Amazon Pinpoint API to create or update a [http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaigns.html](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaigns.html) object, and define its `CampaignHook` attribute\. To set a Lambda function as the default for all campaigns in a project, create or update the [http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-settings.html](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-settings.html) resource for that project, and define its `CampaignHook` object\.
+To assign a Lambda function to an individual campaign, use the Amazon Pinpoint API to create or update a [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaigns.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaigns.html) object, and define its `CampaignHook` attribute\. To set a Lambda function as the default for all campaigns in a project, create or update the [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-settings.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-settings.html) resource for that project, and define its `CampaignHook` object\.
 
  In both cases, set the following `CampaignHook` attributes:
 + `LambdaFunctionName` – The name or ARN of the Lambda function that Amazon Pinpoint invokes before sending messages for the campaign\.

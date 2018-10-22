@@ -14,7 +14,7 @@ The following examples show you how to look up an individual endpoint by specify
 You can use Amazon Pinpoint by running commands with the AWS CLI\.
 
 **Example Get Endpoint Command**  
-To look up an endpoint, use the [http://docs.aws.amazon.com/cli/latest/reference/pinpoint/get-endpoint.html](http://docs.aws.amazon.com/cli/latest/reference/pinpoint/get-endpoint.html) command:  
+To look up an endpoint, use the [https://docs.aws.amazon.com/cli/latest/reference/pinpoint/get-endpoint.html](https://docs.aws.amazon.com/cli/latest/reference/pinpoint/get-endpoint.html) command:  
 
 ```
 $ aws pinpoint get-endpoint \
@@ -92,7 +92,7 @@ The response to this command is the JSON definition of the endpoint, as in the f
 You can use the Amazon Pinpoint API in your Java applications by using the client that's provided by the AWS SDK for Java\.
 
 **Example Code**  
-To look up an endpoint, initialize a [http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/model/GetEndpointRequest.html](http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/model/GetEndpointRequest.html) object\. Then, pass this object to the [http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#getEndpoint-com.amazonaws.services.pinpoint.model.GetEndpointRequest-](http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#getEndpoint-com.amazonaws.services.pinpoint.model.GetEndpointRequest-) method of the `AmazonPinpoint` client:  
+To look up an endpoint, initialize a [https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/model/GetEndpointRequest.html](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/model/GetEndpointRequest.html) object\. Then, pass this object to the [https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#getEndpoint-com.amazonaws.services.pinpoint.model.GetEndpointRequest-](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#getEndpoint-com.amazonaws.services.pinpoint.model.GetEndpointRequest-) method of the `AmazonPinpoint` client:  
 
 ```
 import com.amazonaws.regions.Regions;
@@ -158,7 +158,7 @@ To print the endpoint data in a readable format, this example uses the Google GS
 You can use Amazon Pinpoint by making HTTP requests directly to the REST API\.
 
 **Example GET Endpoint Request**  
-To look up an endpoint, issue a `GET` request to the [Endpoint](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html) resource:  
+To look up an endpoint, issue a `GET` request to the [Endpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html) resource:  
 
 ```
 GET /v1/apps/application_id/endpoints/endpoint_id HTTP/1.1
@@ -220,4 +220,4 @@ The response to this request is the JSON definition of the endpoint, as in the f
 
 ## Related Information<a name="audience-data-endpoints-related"></a>
 
-For more information about the Endpoint resource in the Amazon Pinpoint API, see [Endpoint](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html) in the *Amazon Pinpoint API Reference\.*
+For more information about the Endpoint resource in the Amazon Pinpoint API, see [Endpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html) in the *Amazon Pinpoint API Reference\.*

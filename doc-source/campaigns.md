@@ -10,7 +10,7 @@ You can set the campaign schedule to send the message once or at a recurring fre
 
 To experiment with alternative campaign strategies, set up your campaign as an A/B test\. An A/B test includes two or more treatments of the message or schedule\. Treatments are variations of your message or schedule\. As your users respond to the campaign, you can view campaign analytics to compare the effectiveness of each treatment\.
 
-For more information, see [Campaigns](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaigns.html)\.
+For more information, see [Campaigns](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaigns.html)\.
 
 ## Creating Standard Campaigns<a name="campaigns-standard"></a>
 

@@ -246,7 +246,7 @@ Assign user IDs to endpoints by doing either of the following:
 + Manage user sign\-up and sign\-in with Amazon Cognito user pools\.
 + Use the Amazon Pinpoint client to assign user IDs without using Amazon Cognito user pools\.
 
-Amazon Cognito user pools are user directories that make it easier to add sign\-up and sign\-in to your app\. When the AWS Mobile SDKs for iOS and Android register an endpoint with Amazon Pinpoint, Amazon Cognito automatically assigns a user ID from the user pool\. For more information, see [Using Amazon Pinpoint Analytics with Amazon Cognito User Pools](http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-pinpoint-integration.html) in the *Amazon Cognito Developer Guide*\.
+Amazon Cognito user pools are user directories that make it easier to add sign\-up and sign\-in to your app\. When the AWS Mobile SDKs for iOS and Android register an endpoint with Amazon Pinpoint, Amazon Cognito automatically assigns a user ID from the user pool\. For more information, see [Using Amazon Pinpoint Analytics with Amazon Cognito User Pools](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-pinpoint-integration.html) in the *Amazon Cognito Developer Guide*\.
 
 If you don't want to use Amazon Cognito user pools, you can use the Amazon Pinpoint client in your application to assign user IDs to endpoints\.
 

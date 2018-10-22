@@ -26,7 +26,7 @@ The following limits affect general use of Amazon Pinpoint\.
 
 ## Endpoint Limits<a name="limits-endpoint"></a>
 
-The following limits apply to the [Endpoints](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoints.html) resource in the Amazon Pinpoint API\.
+The following limits apply to the [Endpoints](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoints.html) resource in the Amazon Pinpoint API\.
 
 
 | Resource | Default Limit | Eligible for Increase | 
@@ -54,7 +54,7 @@ The following limits apply when you import endpoints into Amazon Pinpoint\.
 
 ## Segment Limits<a name="limits-segment"></a>
 
-The following limits apply to the [Segments](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segments.html) resource in the Amazon Pinpoint API\.
+The following limits apply to the [Segments](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segments.html) resource in the Amazon Pinpoint API\.
 
 
 | Resource | Default Limit | Eligible for Increase | 
@@ -64,7 +64,7 @@ The following limits apply to the [Segments](http://docs.aws.amazon.com/pinpoint
 
 ## Campaign Limits<a name="limits-campaign"></a>
 
-The following limits apply to the [Campaigns](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaigns.html) resource in the Amazon Pinpoint API\.
+The following limits apply to the [Campaigns](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaigns.html) resource in the Amazon Pinpoint API\.
 
 
 | Resource | Default Limit | Eligible for Increase | 
@@ -129,7 +129,7 @@ The following limits apply to the SMS channel\.
 
 ## Event Ingestion Limits<a name="limits-events"></a>
 
-The following limits apply to the ingestion of events using the AWS Mobile SDKs and the [Amazon Pinpoint Events API](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-events.html)\.
+The following limits apply to the ingestion of events using the AWS Mobile SDKs and the [Amazon Pinpoint Events API](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-events.html)\.
 
 
 | Resource | Default Limit | Eligible for Increase | 

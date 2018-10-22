@@ -4,7 +4,7 @@ A user *segment* represents a subset of your users based on shared characteristi
 
 After you create a segment, you can use it in one or more campaigns\. A campaign delivers tailored messages to the users in the segment\.
 
-For more information, see [Segments](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segments.html)\.
+For more information, see [Segments](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segments.html)\.
 
 **Topics**
 + [Building Segments](segments-dimensional.md)

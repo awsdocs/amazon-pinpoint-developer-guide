@@ -12,7 +12,7 @@ Includes permissions policies that delegate limited access to AWS resources for 
 
 If your app requires users to authenticate with a public identity provider, you must create an IAM role for authenticated users and assign this role to the identity pool\. To support Amazon Pinpoint, the permissions in your authenticated role must include the same permissions as those in the unauthenticated role created by Mobile Hub\.
 
-For more information about IAM roles, see [IAM Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) in the *IAM User Guide*\.
+For more information about IAM roles, see [IAM Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) in the *IAM User Guide*\.
 
 Your app code uses Amazon Cognito and IAM to authenticate users as follows:
 
@@ -24,7 +24,7 @@ Your app code uses Amazon Cognito and IAM to authenticate users as follows:
 
 1. The user gains the permissions granted by the IAM roles that are associated with the identity pool\.
 
-For more information about how Amazon Cognito supports user authentication, see [Amazon Cognito Identity: Using Federated Identities](http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html) in the *Amazon Cognito Developer Guide*\.
+For more information about how Amazon Cognito supports user authentication, see [Amazon Cognito Identity: Using Federated Identities](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html) in the *Amazon Cognito Developer Guide*\.
 
 ## Unauthenticated Role<a name="permissions-authentication-unauthenticatedrole"></a>
 
@@ -113,4 +113,4 @@ To allow Amazon Cognito to assume the role for unauthenticated users in your ide
 }
 ```
 
-For an example of a trust policy assigned to an authenticated role, see [Role\-Based Access Control](http://docs.aws.amazon.com/cognito/latest/developerguide/role-based-access-control.html) in the *Amazon Cognito Developer Guide*\.
+For an example of a trust policy assigned to an authenticated role, see [Role\-Based Access Control](https://docs.aws.amazon.com/cognito/latest/developerguide/role-based-access-control.html) in the *Amazon Cognito Developer Guide*\.

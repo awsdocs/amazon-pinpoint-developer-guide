@@ -4,9 +4,9 @@ Amazon Pinpoint is an AWS service that you can use to engage with your customers
 
 The information in this developer guide is intended for application developers\. This guide contains information about using the features of Amazon Pinpoint programmatically\. It also contains information of particular interest to mobile app developers, such as procedures for [integrating analytics and messaging features with your application](integrate.md)\.
 
-The [Amazon Pinpoint API Reference](http://docs.aws.amazon.com/pinpoint/latest/apireference/) is a companion to this document\. The API Reference provides information about the resources and methods that are available in the Amazon Pinpoint API\.
+The [Amazon Pinpoint API Reference](https://docs.aws.amazon.com/pinpoint/latest/apireference/) is a companion to this document\. The API Reference provides information about the resources and methods that are available in the Amazon Pinpoint API\.
 
-If you're new to Amazon Pinpoint, you might find it helpful to review the [Amazon Pinpoint User Guide](http://docs.aws.amazon.com/pinpoint/latest/userguide/) before proceeding with this document\.
+If you're new to Amazon Pinpoint, you might find it helpful to review the [Amazon Pinpoint User Guide](https://docs.aws.amazon.com/pinpoint/latest/userguide/) before proceeding with this document\.
 
 ## Amazon Pinpoint Features<a name="welcome-features"></a>
 

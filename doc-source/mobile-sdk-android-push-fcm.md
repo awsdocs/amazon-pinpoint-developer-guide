@@ -7,7 +7,7 @@ Before you update your app to receive push notifications, integrate the AWS Mobi
 
 ## Enabling Push Notifications<a name="mobile-sdk-android-push-fcm-enable"></a>
 
-To enable push notifications in your app, update your app to include push listening code\. For more information, see [Add Push Notifications to Your Mobile App with Amazon Pinpoint](http://docs.aws.amazon.com/aws-mobile/latest/developerguide/add-aws-mobile-push-notifications.html) in the *AWS Mobile Developer Guide*\.
+To enable push notifications in your app, update your app to include push listening code\. For more information, see [Add Push Notifications to Your Mobile App with Amazon Pinpoint](https://docs.aws.amazon.com/aws-mobile/latest/developerguide/add-aws-mobile-push-notifications.html) in the *AWS Mobile Developer Guide*\.
 
 ## Setting up Deep Linking<a name="mobile-sdk-android-deep-linking"></a>
 

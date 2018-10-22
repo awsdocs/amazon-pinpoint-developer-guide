@@ -4,7 +4,7 @@ To use Amazon Pinpoint, users in your AWS account require permissions that allow
 
 IAM is a service that helps you securely control access to AWS resources\. IAM policies include statements that allow or deny specific actions that users can perform on specific resources\. Amazon Pinpoint provides [a set of actions for IAM policies](permissions-actions.md#permissions-actions-apiactions) that you can use to specify granular permissions for Amazon Pinpoint users\. You can grant the appropriate level of access to Amazon Pinpoint without creating overly permissive policies that might expose important data or compromise your campaigns\. For example, you can grant unrestricted access to an Amazon Pinpoint administrator, and grant read\-only access to individuals in your organization who only need access to analytics\.
 
-For more information about IAM policies, see [Overview of IAM Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html) in the *IAM User Guide*\.
+For more information about IAM policies, see [Overview of IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html) in the *IAM User Guide*\.
 
 When you add your app to Amazon Pinpoint by creating a project in AWS Mobile Hub, Mobile Hub automatically provisions [AWS resources for app user authentication](permissions-authentication.md)\. Mobile Hub creates an Amazon Cognito identity pool so that app users can authenticate with AWS\. Mobile Hub also creates an IAM role that allows app users to register with Amazon Pinpoint and report usage data\. You can customize these resources as needed for your app\.
 

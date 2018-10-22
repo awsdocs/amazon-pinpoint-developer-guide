@@ -8,7 +8,7 @@ You can use the Amazon Pinpoint API to permanently delete personal data\. This s
 
 An endpoint represents a single method of contacting one of your customers\. Each endpoint can refer to a customer's email address, mobile device identifier, or email address\. In many jurisdictions, this type of information might be considered personal\.
 
-The procedure in this section uses the AWS CLI to interact with the Amazon Pinpoint API\. This procedure assumes that you've already installed and configured the AWS CLI\. For more information, see [Installing the AWS Command Line Interface](http://docs.aws.amazon.com/cli/latest/userguide/installing.html) in the *AWS Command Line Interface User Guide*\.
+The procedure in this section uses the AWS CLI to interact with the Amazon Pinpoint API\. This procedure assumes that you've already installed and configured the AWS CLI\. For more information, see [Installing the AWS Command Line Interface](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) in the *AWS Command Line Interface User Guide*\.
 
 **To delete an endpoint by using the AWS CLI**
 + At the command line, type the following command:
@@ -23,7 +23,7 @@ The procedure in this section uses the AWS CLI to interact with the Amazon Pinpo
 
 You can import segments from a file that's stored in an Amazon S3 bucket by using the Amazon Pinpoint console or the API\. You can also export application, segment, or endpoint data from Amazon Pinpoint to an Amazon S3 bucket\. Both the imported and exported files can contain personal data, including email addresses, mobile phone numbers, and information about the physical location of the endpoint\.
 
-Content delivered to Amazon S3 buckets might contain customer content\. For more information about removing sensitive data, see [How Do I Empty an S3 Bucket?](http://docs.aws.amazon.com/AmazonS3/latest/user-guide/empty-bucket.html) or [How Do I Delete an S3 Bucket?](http://docs.aws.amazon.com/AmazonS3/latest/user-guide/delete-bucket.html)\.
+Content delivered to Amazon S3 buckets might contain customer content\. For more information about removing sensitive data, see [How Do I Empty an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/empty-bucket.html) or [How Do I Delete an S3 Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/delete-bucket.html)\.
 
 ## Delete All AWS Data by Closing Your AWS Account<a name="deleting-data-close-account"></a>
 

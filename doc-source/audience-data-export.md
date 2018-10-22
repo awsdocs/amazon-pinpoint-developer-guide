@@ -8,7 +8,7 @@ To get all of the information that Amazon Pinpoint has about your audience, you 
 ## Before You Begin<a name="audience-data-export-before"></a>
 
 Before you can export endpoints, you need the following resources in your AWS account:
-+ An Amazon S3 bucket\. To create a bucket, see [Create a Bucket](http://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html) in the *Amazon Simple Storage Service Getting Started Guide*\.
++ An Amazon S3 bucket\. To create a bucket, see [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html) in the *Amazon Simple Storage Service Getting Started Guide*\.
 + An AWS Identity and Access Management \(IAM\) role that grants Amazon Pinpoint write permissions for your Amazon S3 bucket\. To create the role, see [IAM Role for Exporting Endpoints or Segments](permissions-export-endpoints.md)\.
 
 ## Examples<a name="audience-data-export-examples"></a>
@@ -21,7 +21,7 @@ The following examples demonstrate how to export endpoints from an Amazon Pinpoi
 You can use Amazon Pinpoint by running commands with the AWS CLI\.
 
 **Example Create Export Job Command**  
-To export the endpoints in your Amazon Pinpoint project, use the [http://docs.aws.amazon.com/cli/latest/reference/pinpoint/create-export-job.html](http://docs.aws.amazon.com/cli/latest/reference/pinpoint/create-export-job.html) command:  
+To export the endpoints in your Amazon Pinpoint project, use the [https://docs.aws.amazon.com/cli/latest/reference/pinpoint/create-export-job.html](https://docs.aws.amazon.com/cli/latest/reference/pinpoint/create-export-job.html) command:  
 
 ```
 $ aws pinpoint create-export-job \
@@ -53,7 +53,7 @@ The response to this command provides details about the export job:
 The response provides the job ID with the `Id` attribute\. You can use this ID to check the current status of the export job\.
 
 **Example Get Export Job Command**  
-To check the current status of an export job, use the [http://docs.aws.amazon.com/cli/latest/reference/pinpoint/get-export-job.html](http://docs.aws.amazon.com/cli/latest/reference/pinpoint/get-export-job.html) command:  
+To check the current status of an export job, use the [https://docs.aws.amazon.com/cli/latest/reference/pinpoint/get-export-job.html](https://docs.aws.amazon.com/cli/latest/reference/pinpoint/get-export-job.html) command:  
 
 ```
 $ aws pinpoint get-export-job \
@@ -89,7 +89,7 @@ The response to this command provides the current state of the export job:
 The response provides the job status with the `JobStatus` attribute\. When the job status value is `COMPLETED`, you can get your exported endpoints from your Amazon S3 bucket\.
 
 **Example S3 CP Command**  
-To download your exported endpoints, use the Amazon S3 [http://docs.aws.amazon.com/cli/latest/reference/s3/cp.html](http://docs.aws.amazon.com/cli/latest/reference/s3/cp.html) command:  
+To download your exported endpoints, use the Amazon S3 [https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html](https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html) command:  
 
 ```
 $ aws s3 cp s3://bucket-name/prefix/key.gz /local/directory/
@@ -104,8 +104,8 @@ Where:
 You can use the Amazon Pinpoint API in your Java applications by using the client that's provided by the AWS SDK for Java\.
 
 **Example Code**  
-To export endpoints from an Amazon Pinpoint project, initialize a [http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/model/CreateExportJobRequest.html](http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/model/CreateExportJobRequest.html) object\. Then, pass this object to the [http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#createExportJob-com.amazonaws.services.pinpoint.model.CreateExportJobRequest-](http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#createExportJob-com.amazonaws.services.pinpoint.model.CreateExportJobRequest-) method of the `AmazonPinpoint` client\.  
-To download the exported endpoints from Amazon Pinpoint, use the [http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3Client.html#getObject-java.lang.String-java.lang.String-](http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3Client.html#getObject-java.lang.String-java.lang.String-) method of the `AmazonS3` client\.  
+To export endpoints from an Amazon Pinpoint project, initialize a [https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/model/CreateExportJobRequest.html](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/model/CreateExportJobRequest.html) object\. Then, pass this object to the [https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#createExportJob-com.amazonaws.services.pinpoint.model.CreateExportJobRequest-](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#createExportJob-com.amazonaws.services.pinpoint.model.CreateExportJobRequest-) method of the `AmazonPinpoint` client\.  
+To download the exported endpoints from Amazon Pinpoint, use the [https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3Client.html#getObject-java.lang.String-java.lang.String-](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3Client.html#getObject-java.lang.String-java.lang.String-) method of the `AmazonS3` client\.  
 
 ```
 import com.amazonaws.AmazonServiceException;
@@ -319,7 +319,7 @@ public class ExportEndpoints {
 You can use Amazon Pinpoint by making HTTP requests directly to the REST API\.
 
 **Example POST Export Job Request**  
-To export the endpoints in your Amazon Pinpoint project, issue a `POST` request to the [Export Jobs](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-export-jobs.html) resource:  
+To export the endpoints in your Amazon Pinpoint project, issue a `POST` request to the [Export Jobs](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-export-jobs.html) resource:  
 
 ```
 POST /v1/apps/application_id/jobs/export HTTP/1.1
@@ -356,7 +356,7 @@ The response to this request provides details about the export job:
 The response provides the job ID with the `Id` attribute\. You can use this ID to check the current status of the export job\.
 
 **Example GET Export Job Request**  
-To check the current status of an export job, issue a `GET` request to the [Export Job](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-export-job.html) resource:  
+To check the current status of an export job, issue a `GET` request to the [Export Job](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-export-job.html) resource:  
 
 ```
 GET /v1/apps/application_id/jobs/export/job_id HTTP/1.1
@@ -394,4 +394,4 @@ The response provides the job status with the `JobStatus` attribute\. When the j
 
 ## Related Information<a name="audience-data-export-related"></a>
 
-For more information about the Export Jobs resource in the Amazon Pinpoint API, including the supported HTTP methods and request parameters, see [Export Jobs](http://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-export-jobs.html) in the *Amazon Pinpoint API Reference*\.
+For more information about the Export Jobs resource in the Amazon Pinpoint API, including the supported HTTP methods and request parameters, see [Export Jobs](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-export-jobs.html) in the *Amazon Pinpoint API Reference*\.
