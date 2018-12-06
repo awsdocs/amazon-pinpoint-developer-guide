@@ -1,10 +1,13 @@
 # What Is Amazon Pinpoint?<a name="welcome"></a>
 
-Amazon Pinpoint is an AWS service that you can use to engage with your customers across multiple messaging channels\. You can send push notifications, emails, or text messages \(SMS\), depending on the purpose of your campaign\.
+Amazon Pinpoint is an AWS service that you can use to engage with your customers across multiple messaging channels\. You can use Amazon Pinpoint to send push notifications, emails, SMS text messages, or voice messages\.
 
 The information in this developer guide is intended for application developers\. This guide contains information about using the features of Amazon Pinpoint programmatically\. It also contains information of particular interest to mobile app developers, such as procedures for [integrating analytics and messaging features with your application](integrate.md)\.
 
-The [Amazon Pinpoint API Reference](https://docs.aws.amazon.com/pinpoint/latest/apireference/) is a companion to this document\. The API Reference provides information about the resources and methods that are available in the Amazon Pinpoint API\.
+There are several other documents that are companions to this document\. The following documents provide reference information related to the Amazon Pinpoint APIs:
++ [Amazon Pinpoint API Reference](https://docs.aws.amazon.com/pinpoint/latest/apireference/)
++ [Amazon Pinpoint Email API](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/)
++ [Amazon Pinpoint SMS and Voice API](https://docs.aws.amazon.com/pinpoint-sms-voice/latest/APIReference/)
 
 If you're new to Amazon Pinpoint, you might find it helpful to review the [Amazon Pinpoint User Guide](https://docs.aws.amazon.com/pinpoint/latest/userguide/) before proceeding with this document\.
 
@@ -22,12 +25,16 @@ Engage your audience by [creating a messaging campaign](campaigns.md)\. A campai
 
 To experiment with alternative campaign strategies, set up your campaign as an A/B test, and analyze the results with Amazon Pinpoint analytics\.
 
-### Send Direct Messages<a name="welcome-transactional"></a>
+### Send Transactional Messages<a name="welcome-transactional"></a>
 
-Keep your customers informed by sending direct mobile push and SMS messages—such as new account activation messages, order confirmations, and password reset notifications—to specific users\. You can send direct messages from the Amazon Pinpoint console, or by using the Amazon Pinpoint REST API\.
+Keep your customers informed by sending transactional mobile push and SMS messages—such as new account activation messages, order confirmations, and password reset notifications—to specific users\. You can send transactional messages by using the Amazon Pinpoint REST API\.
 
 ### Analyze User Behavior<a name="welcome-analyze"></a>
 
 Gain insights about your audience and the effectiveness of your campaigns by using the analytics that Amazon Pinpoint provides\. You can view trends about your users' level of engagement, purchase activity, and demographics\. You can monitor your message traffic with metrics for messages sent and opened\. Through the Amazon Pinpoint API, your application can report custom data, which Amazon Pinpoint makes available for analysis\.
 
 To analyze or store the analytics data outside of Amazon Pinpoint, you can configure Amazon Pinpoint to [stream the data](analytics-streaming.md) to Amazon Kinesis\.
+
+## Regional Availability<a name="welcome-regions"></a>
+
+Amazon Pinpoint is available in the US East \(N\. Virginia\) and EU \(Ireland\) AWS Regions\. For a list of Amazon Pinpoint endpoint URLs, see the [Amazon Pinpoint API Reference](https://docs.aws.amazon.com/pinpoint/latest/apireference/)\.

@@ -18,7 +18,9 @@ You can refer generically to all Amazon Pinpoint actions or resources by using w
 
 The following examples demonstrate how you can manage Amazon Pinpoint access with IAM policies\.
 
-### Amazon Pinpoint Administrator<a name="permissions-actions-examples-admin"></a>
+### Amazon Pinpoint API Actions<a name="permissions-actions-examples-pin-api"></a>
+
+#### Amazon Pinpoint Administrator<a name="permissions-actions-examples-admin"></a>
 
 The following administrator policy allows full access to Amazon Pinpoint actions and resources:
 
@@ -37,7 +39,7 @@ The following administrator policy allows full access to Amazon Pinpoint actions
 }
 ```
 
-### Read\-Only Access<a name="permissions-actions-examples-readonly"></a>
+#### Read\-Only Access<a name="permissions-actions-examples-readonly"></a>
 
 The following policy allows read\-only access for all apps in an account:
 
@@ -81,7 +83,47 @@ You can also create a policy that allows read\-only access to a specific Amazon 
 
 In the preceding policy example, replace *region* with the name of the AWS Region you're using, *account\-id* with your AWS account ID, and *project\-id* with the unique ID of your Amazon Pinpoint project\.
 
-## API Actions for IAM Policies<a name="permissions-actions-apiactions"></a>
+### Amazon Pinpoint SMS and Voice API Actions<a name="permissions-actions-examples-pin-sms-voice-api"></a>
+
+#### Admin Access<a name="permissions-actions-examples-admin"></a>
+
+The following policy grants full access to the Amazon Pinpoint SMS and Voice API:
+
+```
+{
+    "Version": "2018-09-05",
+    "Statement": [
+        {
+            "Action": [
+                "sms-voice:*"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+#### Read\-Only Access<a name="permissions-actions-examples-readonly"></a>
+
+The following policy allows read\-only access to the Amazon Pinpoint SMS and Voice API:
+
+```
+{
+    "Version": "2018-09-05",
+    "Statement": [
+        {
+            "Action": [
+                "sms-voice:Get*"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+## Amazon Pinpoint API Actions<a name="permissions-actions-apiactions"></a>
 
 This section contains API actions that you can add to the IAM policies in your AWS account\. By adding these policies to an IAM user account, you can specify which Amazon Pinpoint features that user is allowed to perform\.
 
@@ -560,3 +602,51 @@ Retrieve information about the endpoints that are associated with a user ID\.
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-user.html#rest-api-user-methods-get](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-user.html#rest-api-user-methods-get)
 + Method – GET
 + Resource ARN – `arn:aws:mobiletargeting:region:account-id:apps/project-id/users/user-id`
+
+## Amazon Pinpoint SMS and Voice API Actions<a name="permissions-actions-sms-voice-apiactions"></a>
+
+This section contains API actions that you can add to the IAM policies in your AWS account\. By adding these policies to an IAM user account, you can specify which features of the Amazon Pinpoint SMS and Voice a user is allowed to use\.
+
+To learn more about the Amazon Pinpoint SMS and Voice API, see [the Amazon Pinpoint SMS and Voice API Reference](https://docs.aws.amazon.com/pinpoint-sms-voice/latest/APIReference/)\.
+
+**`sms-voice:CreateConfigurationSet`**  
+Create a configuration set for sending voice messages\.  
++ URI – `/sms-voice/configuration-sets`
++ Method – POST
++ Resource ARN – not available; use `*`
+
+**`sms-voice:DeleteConfigurationSet`**  
+Delete a voice message configuration set\.  
++ URI – /sms\-voice/configuration\-sets/*ConfigurationSetName*
++ Method – DELETE
++ Resource ARN – not available; use `*`
+
+**`sms-voice:GetConfigurationSetEventDestinations`**  
+Get information about a configuration set and the event destinations that it contains\.  
++ URI – /sms\-voice/configuration\-sets/*ConfigurationSetName*/event\-destinations
++ Method – GET
++ Resource ARN – not available; use `*`
+
+**`sms-voice:CreateConfigurationSetEventDestination`**  
+Create an event destination for voice events\.  
++ URI – /sms\-voice/configuration\-sets/*ConfigurationSetName*/event\-destinations
++ Method – POST
++ Resource ARN – not available; use `*`
+
+**`sms-voice:UpdateConfigurationSetEventDestination`**  
+Update an event destination for voice events\.  
++ URI – /sms\-voice/configuration\-sets/*ConfigurationSetName*/event\-destinations/*EventDestinationName*
++ Method – PUT
++ Resource ARN – not available; use `*`
+
+**`sms-voice:DeleteConfigurationSetEventDestination`**  
+Delete an event destination for voice events\.  
++ URI – /sms\-voice/configuration\-sets/*ConfigurationSetName*/event\-destinations/*EventDestinationName*
++ Method – DELETE
++ Resource ARN – not available; use `*`
+
+**`sms-voice:SendVoiceMessage`**  
+Create and send voice messages\.  
++ URI – /sms\-voice/voice/message
++ Method – POST
++ Resource ARN – not available; use `*`

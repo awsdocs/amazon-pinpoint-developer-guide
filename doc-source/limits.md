@@ -11,6 +11,7 @@ The following sections describe limits within Amazon Pinpoint\.
 + [Mobile Push Limits](#limits-mobile)
 + [Email Limits](#limits-email)
 + [SMS Limits](#limits-sms)
++ [Voice Limits](#limits-voice)
 + [Event Ingestion Limits](#limits-events)
 + [Requesting a Limit Increase](#limits-increase)
 
@@ -71,6 +72,7 @@ The following limits apply to the [Campaigns](https://docs.aws.amazon.com/pinpoi
 | --- | --- | --- | 
 | Active campaigns | 200 per account An *active campaign* is a campaign that hasn't completed or failed\. Active campaigns have a status of `SCHEDULED`, `EXECUTING`, or `PENDING_NEXT_RUN`\.  | [Yes](#limits-increase) | 
 | Message sends | 100 million per campaign activity | [Yes](#limits-increase) | 
+| Event\-based campaigns | Each project can include up to 10 campaigns that are sent when events occur\. Campaigns that use event\-based triggers have to use dynamic segments \(that is, they can't use imported segments\)\.  Event\-based campaigns are only sent to customers who use apps that run version 2\.7\.2 or later of the AWS Mobile SDK for Android or version 2\.6\.30 or later of the AWS Mobile SDK for iOS\. If Amazon Pinpoint can't deliver a message from an event\-based campaign within five minutes, it drops the message and doesn't attempt to re\-deliver it\. | No | 
 
 ## Mobile Push Limits<a name="limits-mobile"></a>
 
@@ -126,6 +128,22 @@ The following limits apply to the SMS channel\.
 | Account spend threshold | USD$1\.00 per account\. | [Yes](#limits-increase) | 
 | Number of SMS messages that can be sent each second \(*sending rate* \) | 20 messages per second\. | No | 
 | Number of Amazon SNS topics for two\-way SMS | 100,000 per account\. | [Yes](#limits-increase) | 
+
+## Voice Limits<a name="limits-voice"></a>
+
+The following limits apply to the Voice channel\.
+
+
+| Resource | Default Limit | 
+| --- | --- | 
+| Number of voice messages that can be sent in a 24\-hour period | If your account is in the sandbox: 20 messages\.If your account is out of the sandbox: unlimited\. | 
+| Number of voice messages that can be sent to a single recipient in a 24\-hour period | 5 messages\. | 
+| Number of voice messages that can be sent per minute | If your account is in the sandbox: 5 calls per minute\.If your account is out of the sandbox: 20 calls per minute\. | 
+| Number of voice messages that can be sent from a single originating phone number per second | 1 message per second\. | 
+| Voice message length | If your account is in the sandbox: 30 seconds\.If your account is out of the sandbox: 5 minutes\. | 
+| Ability to send voice messages to international phone numbers | If your account is in the sandbox, you can only send messages to recipients in the following countries: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/limits.html) If your account is out of the sandbox, you can send messages to recipients in any country\.  International calls are subject to additional fees, which vary by destination country or region\.   | 
+| Number of characters in a voice message |  3,000 billable characters \(characters in words that are spoken\) 6,000 characters total \(including billable characters and SSML tags\) | 
+| Number of configuration sets | 10,000 voice configuration sets per AWS Region\. | 
 
 ## Event Ingestion Limits<a name="limits-events"></a>
 

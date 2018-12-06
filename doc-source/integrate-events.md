@@ -27,73 +27,20 @@ On the **Analytics** page, the **Users** tab displays charts for **Sign\-ins**, 
 ## Before You Begin<a name="integrate-events-before"></a>
 
 If you haven't already, do the following:
-+ Integrate an AWS Mobile SDK or library with your app\. See [Integrating the AWS Mobile SDKs or JavaScript Library with Your Application](integrate-sdk.md)\.
++ Integrate your app with AWS Amplify\. See [Integrating the AWS Mobile SDKs or JavaScript Library with Your Application](integrate-sdk.md)\.
 + Update your application to register endpoints\. See [Registering Endpoints in Your Application](integrate-endpoints.md)\.
-+ If you're integrating Amazon Pinpoint with an Android app, update your code to track the application lifecycle and report session events to Amazon Pinpoint\. See [Managing Sessions in Your Application \(Android Only\)](integrate-sessions-android.md)\.
 
 ## Reporting Events with the AWS Mobile SDKs for Android or iOS<a name="integrate-events-mobile-sdks"></a>
 
 You can enable a mobile app to report events to Amazon Pinpoint by using the AWS Mobile SDKs for iOS and Android\.
 
-To update your app code to record and submit events, see [Add Analytics to your Mobile App with Amazon Pinpoint](https://docs.aws.amazon.com/aws-mobile/latest/developerguide/add-aws-mobile-analytics.html) in the *AWS Mobile Developer Guide*\.
-
-### Reporting Authentication Events From a Mobile App<a name="integrate-events-auth"></a>
-
-To learn how frequently users authenticate with your app, update your application code so that Amazon Pinpoint receives the following standard event types for authentication:
-+ `_userauth.sign_in`
-+ `_userauth.sign_up`
-+ `_userauth.auth_fail`
-
-You can report authentication events by doing either of the following:
-+ Managing user sign\-up and sign\-in with Amazon Cognito user pools\.
-+ Reporting authentication events by using the Amazon Pinpoint client that's provided by the AWS Mobile SDK for iOS or Android\.
-
-Amazon Cognito user pools are user directories that make it easier to add sign\-up and sign\-in to your app\. As users authenticate with your app, Amazon Cognito reports authentication events to Amazon Pinpoint\. For more information, see [Using Amazon Pinpoint Analytics with Amazon Cognito User Pools](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-pinpoint-integration.html) in the *Amazon Cognito Developer Guide*\.
-
-If you don't want to use Amazon Cognito user pools, you can use the Amazon Pinpoint client to record and submit authentication events, as shown in the following examples\. In these examples, the event type is set to `_userauth.sign_in`, but you can substitute any authentication event type\.
-
-------
-#### [ Android \- Java ]
-
-```
-final AnalyticsEvent event =  AWSMobileClient.defaultMobileClient()
-        .getPinpointManager().getAnalyticsClient().createEvent("_userauth.sign_in")
-AWSMobileClient.defaultMobileClient()
-        .getPinpointManager().getAnalyticsClient().recordEvent(event);
-AWSMobileClient.defaultMobileClient()
-        .getPinpointManager().getAnalyticsClient().submitEvents();
-```
-
-------
-#### [ iOS \- Swift ]
-
-```
-let pinpointAnalyticsClient = pinpoint!.analyticsClient
-let event = 
-    pinpointAnalyticsClient.createEventWithEventType("_userauth.sign_in")
-
-pinpointAnalyticsClient.recordEvent(event)
-pinpointAnalyticsClient.submitEvents()
-```
-
-------
-#### [ iOS \- Objective\-C ]
-
-```
-AWSPinpointEvent *event = _pinpoint.analyticsClient createEventWithEventType
-    :@"_userauth.sign_in"];
-
-_pinpoint.analyticsClient recordEvent:event];
-_pinpoint.analyticsClient submitEvents];
-```
-
-------
+For more information about updating your app to record and submit events to Amazon Pinpoint, see the following pages in the AWS Amplify documentation:
++ [Analytics](https://aws-amplify.github.io/docs/ios/analytics) in the iOS SDK documentation
++ [Analytics](https://aws-amplify.github.io/docs/android/analytics) in the Android SDK documentation
 
 ## Reporting Events with the AWS Amplify JavaScript Library<a name="integrate-events-amplify"></a>
 
-To record analytics in a JavaScript application, see either of the following topics in the *AWS Mobile Developer Guide*:
-+ [Add Analytics \(Web\)](https://docs.aws.amazon.com/aws-mobile/latest/developerguide/web-add-analytics.html)
-+ [Add Analytics \(React Native\)](https://docs.aws.amazon.com/aws-mobile/latest/developerguide/react-native-add-analytics.html)
+You can enable JavaScript and React Native apps to report appplication usage events to Amazon Pinpoint by using the AWS Amplify JavaScript library\. For more information about updating your app to submit events to Amazon Pinpoint, see [Analytics](https://aws-amplify.github.io/docs/js/analytics) in the AWS Amplify JavaScript documentation\.
 
 ## Reporting Events by Using the Amazon Pinpoint API<a name="integrate-events-api"></a>
 

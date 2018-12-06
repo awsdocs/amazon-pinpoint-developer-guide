@@ -8,11 +8,33 @@ To learn more about CloudTrail, including how to configure and enable it, see th
 
 CloudTrail is enabled on your AWS account when you create the account\. When supported event activity occurs in Amazon Pinpoint, that activity is recorded in a CloudTrail event along with other AWS service events in **Event history**\. You can view, search, and download recent events in your AWS account\. For more information, see [Viewing Events with CloudTrail Event History](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html)\. 
 
-For an ongoing record of events in your AWS account, including events for Amazon Pinpoint, create a trail\. A *trail* enables CloudTrail to deliver log files to an Amazon S3 bucket\. By default, when you create a trail in the console, the trail applies to all AWS Regions\. The trail logs events from all Regions in the AWS partition and delivers the log files to the Amazon S3 bucket that you specify\. Additionally, you can configure other AWS services to further analyze and act upon the event data collected in CloudTrail logs\. For more information, see the following: 
+For an ongoing record of events in your AWS account, including events for Amazon Pinpoint, create a trail\. A *trail* enables CloudTrail to deliver log files to an Amazon S3 bucket\. By default, when you create a trail in the console, the trail applies to all AWS Regions\. The trail logs events from all Regions in the AWS partition and delivers the log files to the Amazon S3 bucket that you specify\. Additionally, you can configure other AWS services to further analyze and act upon the event data collected in CloudTrail logs\. For more information, see the following:
 + [Overview for Creating a Trail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html)
 + [CloudTrail Supported Services and Integrations](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html#cloudtrail-aws-service-specific-topics-integrations)
 + [Configuring Amazon SNS Notifications for CloudTrail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html)
 + [Receiving CloudTrail Log Files from Multiple Regions](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html) and [Receiving CloudTrail Log Files from Multiple Accounts](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html)
+
+Every event or log entry contains information about who generated the request\. The identity information helps you determine the following: 
++ Whether the request was made with root or AWS Identity and Access Management \(IAM\) user credentials\.
++ Whether the request was made with temporary security credentials for a role or federated user\.
++ Whether the request was made by another AWS service\.
+
+For more information, see the [CloudTrail userIdentity Element](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html)\.
+
+ You can create a trail and store your log files in your Amazon S3 bucket for as long as you want, and define Amazon S3 lifecycle rules to archive or delete log files automatically\. By default, your log files are encrypted with Amazon S3 server\-side encryption \(SSE\)\.
+
+To be notified of log file delivery, configure CloudTrail to publish Amazon SNS notifications when new log files are delivered\. For more information, see [Configuring Amazon SNS Notifications for CloudTrail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html)\.
+
+You can also aggregate Amazon Pinpoint log files from multiple AWS Regions and multiple AWS accounts into a single Amazon S3 bucket\. 
+
+For more information, see [Receiving CloudTrail Log Files from Multiple Regions](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-regions.html) and [Receiving CloudTrail Log Files from Multiple Accounts](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html)\.
+
+You can use CloudTrail to log actions for the following Amazon Pinpoint APIs:
++ [Amazon Pinpoint API](#pinpoint-cloudtrail-actions)
++ [Amazon Pinpoint Email API](#pinpoint-email-cloudtrail-actions)
++ [Amazon Pinpoint SMS and Voice API](#pinpoint-sms-voice-cloudtrail-actions)
+
+### Amazon Pinpoint API Actions That Can be Logged by CloudTrail<a name="pinpoint-cloudtrail-actions"></a>
 
 Amazon Pinpoint supports logging the following actions as events in CloudTrail log files:
 + [CreateApp](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apps.html#rest-api-apps-methods-post)
@@ -79,26 +101,62 @@ SendUsersMessages
 UpdateEndpoint
 UpdateEndpointsBatch
 
-Every event or log entry contains information about who generated the request\. The identity information helps you determine the following: 
-+ Whether the request was made with root or AWS Identity and Access Management \(IAM\) user credentials\.
-+ Whether the request was made with temporary security credentials for a role or federated user\.
-+ Whether the request was made by another AWS service\.
+### Amazon Pinpoint SMS Email Actions That Can be Logged by CloudTrail<a name="pinpoint-email-cloudtrail-actions"></a>
 
-For more information, see the [CloudTrail userIdentity Element](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html)\.
+The Amazon Pinpoint Email API supports logging the following actions as events in CloudTrail log files:
++ [CreateConfigurationSet](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_CreateConfigurationSet.html)
++ [CreateConfigurationSetEventDestination](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_CreateConfigurationSetEventDestination.html)
++ [CreateDedicatedIpPool](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_CreateDedicatedIpPool.html)
++ [CreateEmailIdentity](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_CreateEmailIdentity.html)
++ [DeleteConfigurationSet](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_DeleteConfigurationSet.html)
++ [DeleteConfigurationSetEventDestination](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_DeleteConfigurationSetEventDestination.html)
++ [DeleteDedicatedIpPool](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_DeleteDedicatedIpPool.html)
++ [DeleteEmailIdentity](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_DeleteEmailIdentity.html)
++ [GetAccount](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_GetAccount.html)
++ [GetConfigurationSet](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_GetConfigurationSet.html)
++ [GetConfigurationSetEventDestinations](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_GetConfigurationSetEventDestinations.html)
++ [GetDedicatedIp](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_GetDedicatedIp.html)
++ [GetDedicatedIps](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_GetDedicatedIps.html)
++ [GetEmailIdentity](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_GetEmailIdentity.html)
++ [ListConfigurationSets](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_ListConfigurationSets.html)
++ [ListDedicatedIpPools](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_ListDedicatedIpPools.html)
++ [ListEmailIdentities](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_ListEmailIdentities.html)
++ [PutAccountDedicatedIpWarmupAttributes](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_PutAccountDedicatedIpWarmupAttributes.html)
++ [PutAccountSendingAttributes](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_PutAccountSendingAttributes.html)
++ [PutConfigurationSetDeliveryOptions](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_PutConfigurationSetDeliveryOptions.html)
++ [PutConfigurationSetReputationOptions](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_PutConfigurationSetReputationOptions.html)
++ [PutConfigurationSetSendingOptions](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_PutConfigurationSetSendingOptions.html)
++ [PutConfigurationSetTrackingOptions](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_PutConfigurationSetTrackingOptions.html)
++ [PutDedicatedIpInPool](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_PutDedicatedIpInPool.html)
++ [PutDedicatedIpWarmupAttributes](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_PutDedicatedIpWarmupAttributes.html)
++ [PutEmailIdentityDkimAttributes](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_PutEmailIdentityDkimAttributes.html)
++ [PutEmailIdentityFeedbackAttributes](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_PutEmailIdentityFeedbackAttributes.html)
++ [PutEmailIdentityMailFromAttributes](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_PutEmailIdentityMailFromAttributes.html)
++ [UpdateConfigurationSetEventDestination](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_UpdateConfigurationSetEventDestination.html)
 
- You can create a trail and store your log files in your Amazon S3 bucket for as long as you want, and define Amazon S3 lifecycle rules to archive or delete log files automatically\. By default, your log files are encrypted with Amazon S3 server\-side encryption \(SSE\)\.
+**Note**  
+The following Amazon Pinpoint Email API action **isn't** logged in CloudTrail:  
+SendEmail
 
-To be notified of log file delivery, configure CloudTrail to publish Amazon SNS notifications when new log files are delivered\. For more information, see [Configuring Amazon SNS Notifications for CloudTrail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html)\.
+### Amazon Pinpoint SMS and Voice API Actions That Can be Logged by CloudTrail<a name="pinpoint-sms-voice-cloudtrail-actions"></a>
 
-You can also aggregate Amazon Pinpoint log files from multiple AWS Regions and multiple AWS accounts into a single Amazon S3 bucket\. 
+The Amazon Pinpoint SMS and Voice API supports logging the following actions as events in CloudTrail log files:
++ [CreateConfigurationSet](https://docs.aws.amazon.com/pinpoint-sms-voice/latest/APIReference/v1-sms-voice-configuration-sets.html#v1-sms-voice-configuration-setspost)
++ [DeleteConfigurationSet](https://docs.aws.amazon.com/pinpoint-sms-voice/latest/APIReference/v1-sms-voice-configuration-sets-configurationsetname.html#v1-sms-voice-configuration-sets-configurationsetnamedelete)
++ [GetConfigurationSetEventDestinations](https://docs.aws.amazon.com/pinpoint-sms-voice/latest/APIReference/v1-sms-voice-configuration-sets-configurationsetname-event-destinations.html#v1-sms-voice-configuration-sets-configurationsetname-event-destinationsget)
++ [CreateConfigurationSetEventDestination](https://docs.aws.amazon.com/pinpoint-sms-voice/latest/APIReference/v1-sms-voice-configuration-sets-configurationsetname-event-destinations.html#v1-sms-voice-configuration-sets-configurationsetname-event-destinationspost)
++ [UpdateConfigurationSetEventDestination](https://docs.aws.amazon.com/pinpoint-sms-voice/latest/APIReference/v1-sms-voice-configuration-sets-configurationsetname-event-destinations-eventdestinationname.html#v1-sms-voice-configuration-sets-configurationsetname-event-destinations-eventdestinationnameput)
++ [DeleteConfigurationSetEventDestination](https://docs.aws.amazon.com/pinpoint-sms-voice/latest/APIReference/v1-sms-voice-configuration-sets-configurationsetname-event-destinations-eventdestinationname.html#v1-sms-voice-configuration-sets-configurationsetname-event-destinations-eventdestinationnamedelete)
 
-For more information, see [Receiving CloudTrail Log Files from Multiple Regions](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-regions.html) and [Receiving CloudTrail Log Files from Multiple Accounts](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html)\.
+**Note**  
+The following Amazon Pinpoint SMS and Voice API action **isn't** logged in CloudTrail:  
+SendVoiceMessage
 
 ## Example: Amazon Pinpoint Log File Entries<a name="understanding-pinpoint-entries"></a>
 
 A trail is a configuration that enables delivery of events as log files to an Amazon S3 bucket that you specify\. CloudTrail log files contain one or more log entries\. An event represents a single request from any source and includes information about the requested action, the date and time of the action, request parameters, and so on\. CloudTrail log files aren't an ordered stack trace of the public API calls, so they don't appear in any specific order\.
 
-The following example shows a CloudTrail log entry that demonstrates the `GetCampaigns` and `CreateCampaign` actions\.
+The following example shows a CloudTrail log entry that demonstrates the `GetCampaigns` and `CreateCampaign` actions of the Amazon Pinpoint API\.
 
 ```
 {
@@ -195,6 +253,79 @@ The following example shows a CloudTrail log entry that demonstrates the `GetCam
         "type": "IAMUser",
         "userName": "userName"
       }
+    }
+  ]
+}
+```
+
+The following example shows a CloudTrail log entry that demonstrates the `CreateConfigurationSet` and `CreateConfigurationSetEventDestination` actions in the Amazon Pinpoint SMS and Voice API\.
+
+```
+{
+  "Records": [
+    {
+      "eventVersion":"1.05",
+      "userIdentity":{
+        "type":"IAMUser",
+        "principalId":"AIDAIHTHRCDA62EXAMPLE",
+        "arn":"arn:aws:iam::111122223333:user/SampleUser",
+        "accountId":"111122223333",
+        "accessKeyId":"AKIAIOSFODNN7EXAMPLE",
+        "userName":"SampleUser"
+      },
+      "eventTime":"2018-11-06T21:45:55Z",
+      "eventSource":"sms-voice.amazonaws.com",
+      "eventName":"CreateConfigurationSet",
+      "awsRegion":"us-east-1",
+      "sourceIPAddress":"192.0.0.1",
+      "userAgent":"PostmanRuntime/7.3.0",
+      "requestParameters":{
+        "ConfigurationSetName":"MyConfigurationSet"
+      },
+      "responseElements":null,
+      "requestID":"56dcc091-e20d-11e8-87d2-9994aexample",
+      "eventID":"725843fc-8846-41f4-871a-7c52dexample",
+      "readOnly":false,
+      "eventType":"AwsApiCall",
+      "recipientAccountId":"123456789012"
+    },
+    {
+      "eventVersion":"1.05",
+      "userIdentity":{
+        "type":"IAMUser",
+        "principalId":"AIDAIHTHRCDA62EXAMPLE",
+        "arn":"arn:aws:iam::111122223333:user/SampleUser",
+        "accountId":"111122223333",
+        "accessKeyId":"AKIAIOSFODNN7EXAMPLE",
+        "userName":"SampleUser"
+      },
+      "eventTime":"2018-11-06T21:47:08Z",
+      "eventSource":"sms-voice.amazonaws.com",
+      "eventName":"CreateConfigurationSetEventDestination",
+      "awsRegion":"us-east-1",
+      "sourceIPAddress":"192.0.0.1",
+      "userAgent":"PostmanRuntime/7.3.0",
+      "requestParameters":{
+        "EventDestinationName":"CloudWatchEventDestination",
+        "ConfigurationSetName":"MyConfigurationSet",
+        "EventDestination":{
+          "Enabled":true,
+          "MatchingEventTypes":[
+            "INITIATED_CALL",
+            "INITIATED_CALL"
+          ],
+          "CloudWatchLogsDestination":{
+            "IamRoleArn":"arn:aws:iam::111122223333:role/iamrole-01",
+            "LogGroupArn":"arn:aws:logs:us-east-1:111122223333:log-group:clientloggroup-01"
+          }
+        }
+      },
+      "responseElements":null,
+      "requestID":"81de1e73-e20d-11e8-b158-d5536example",
+      "eventID":"fcafc21f-7c93-4a3f-9e72-fca2dexample",
+      "readOnly":false,
+      "eventType":"AwsApiCall",
+      "recipientAccountId":"111122223333"
     }
   ]
 }
