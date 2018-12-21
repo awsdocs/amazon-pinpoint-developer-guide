@@ -155,7 +155,7 @@ The following policy grants permission to the Amazon Pinpoint service principal 
   "Resource": "{arn:aws:lambda:us-east-1:account-id:function:function-name}",
   "Condition": {
     "ArnLike": {
-      "AWS:SourceArn": "arn:aws:mobiletargeting:us-east-1:account-id:apps/application-id/campaigns/campaign-id"
+      "AWS:SourceArn": "arn:aws:mobiletargeting:us-east-1:account-id:/apps/application-id/campaigns/campaign-id"
     }
   }
 }
@@ -166,7 +166,7 @@ Your function policy requires a `Condition` block that includes an `AWS:SourceAr
 ```
 "Condition": {
   "ArnLike": {
-    "AWS:SourceArn": "arn:aws:mobiletargeting:us-east-1:account-id:apps/*"
+    "AWS:SourceArn": "arn:aws:mobiletargeting:us-east-1:account-id:/apps/*"
   }
 }
 ```
@@ -181,7 +181,7 @@ $ aws lambda add-permission \
 > --statement-id sid \
 > --action lambda:InvokeFunction \
 > --principal pinpoint.us-east-1.amazonaws.com \
-> --source-arn arn:aws:mobiletargeting:us-east-1:account-id:apps/application-id/campaigns/campaign-id
+> --source-arn arn:aws:mobiletargeting:us-east-1:account-id:/apps/application-id/campaigns/campaign-id
 ```
 
 If you want to provide a campaign ID for the `--source-arn` parameter, you can look up your campaign IDs by using the Amazon Pinpoint [https://docs.aws.amazon.com/cli/latest/reference/pinpoint/get-campaigns.html](https://docs.aws.amazon.com/cli/latest/reference/pinpoint/get-campaigns.html) command with the AWS CLI\. This command requires an `--application-id` parameter\. To look up your application IDs, sign in to the Amazon Pinpoint console at [https://console\.aws\.amazon\.com/pinpoint/](https://console.aws.amazon.com/pinpoint/), and go to the **Projects** page\. The console shows an **ID** for each project, which is the project's application ID\.
@@ -198,7 +198,7 @@ When you run the Lambda `add-permission` command, AWS Lambda returns the followi
     \"Condition\":
       {\"ArnLike\":
         {\"AWS:SourceArn\":
-         \"arn:aws:mobiletargeting:us-east-1:111122223333:apps/application-id/campaigns/campaign-id\"}}}"
+         \"arn:aws:mobiletargeting:us-east-1:111122223333:/apps/application-id/campaigns/campaign-id\"}}}"
 }
 ```
 

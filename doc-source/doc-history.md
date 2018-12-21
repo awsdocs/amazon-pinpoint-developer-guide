@@ -1,11 +1,12 @@
 # Document History for Amazon Pinpoint<a name="doc-history"></a>
 
 The following table describes the documentation for this release of Amazon Pinpoint\.
-+ **Latest documentation update:** November 15, 2018
++ **Latest documentation update:** December 21, 2018
 
 
 | Change | Description | Date | 
 | --- | --- | --- | 
+| Regional availability | Amazon Pinpoint is now available in the US West \(Oregon\) and EU \(Frankfurt\) AWS Regions\. | December 21, 2018 | 
 | Voice channel | You can use the new Amazon Pinpoint voice channel to create voice messages and deliver them to your customers over the phone\. Currently, you can only send voice messages by using the Amazon Pinpoint SMS and Voice API\. | November 15, 2018 | 
 | EU \(Ireland\) Availability | Amazon Pinpoint is now available in the EU \(Ireland\) AWS Region\. | October 25, 2018 | 
 | Events API | Use the Amazon Pinpoint API to [record events](integrate-events.md#integrate-events-api) and associate them with endpoints\. | August 7, 2018 | 

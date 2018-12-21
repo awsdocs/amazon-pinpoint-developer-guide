@@ -60,7 +60,6 @@ The following limits apply to the [Segments](https://docs.aws.amazon.com/pinpoin
 
 | Resource | Default Limit | Eligible for Increase | 
 | --- | --- | --- | 
-| Maximum number of segments | 100 per app | No | 
 | Maximum number of dimensions that can be used to create a segment | 100 per segment | No | 
 
 ## Campaign Limits<a name="limits-campaign"></a>

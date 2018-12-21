@@ -13,11 +13,11 @@ If you're new to Amazon Pinpoint, you might find it helpful to review the [Amazo
 
 ## Amazon Pinpoint Features<a name="welcome-features"></a>
 
-This section describes the major features of Amazon Pinpoint\.
+This section describes the major features of Amazon Pinpoint and the tasks that you can perform by using them\.
 
 ### Define Audience Segments<a name="welcome-segments"></a>
 
-Reach the right audience for your messages by [defining audience segments](segments.md)\. A segment designates which users receive the messages that are sent from a campaign\. You can define dynamic segments based on data that's reported by your application, such as operating system or mobile device type\. You can also import static segments that you define outside of Amazon Pinpoint\.
+Reach the right audience for your messages by [defining audience segments](segments.md)\. A segment designates which users receive the messages that are sent from a campaign\. You can define dynamic segments based on data that's reported by your application, such as operating system or mobile device type\. You can also import static segments that you define outside Amazon Pinpoint\.
 
 ### Engage Your Audience with Messaging Campaigns<a name="welcome-campaigns"></a>
 
@@ -31,10 +31,10 @@ Keep your customers informed by sending transactional mobile push and SMS messag
 
 ### Analyze User Behavior<a name="welcome-analyze"></a>
 
-Gain insights about your audience and the effectiveness of your campaigns by using the analytics that Amazon Pinpoint provides\. You can view trends about your users' level of engagement, purchase activity, and demographics\. You can monitor your message traffic with metrics for messages sent and opened\. Through the Amazon Pinpoint API, your application can report custom data, which Amazon Pinpoint makes available for analysis\.
+Gain insights about your audience and the effectiveness of your campaigns by using the analytics that Amazon Pinpoint provides\. You can view trends about your users' level of engagement, purchase activity, and demographics\. You can also monitor your message traffic with metrics for messages that are sent and opened\. Through the Amazon Pinpoint API, your application can report custom data, which Amazon Pinpoint makes available for analysis\.
 
 To analyze or store the analytics data outside of Amazon Pinpoint, you can configure Amazon Pinpoint to [stream the data](analytics-streaming.md) to Amazon Kinesis\.
 
 ## Regional Availability<a name="welcome-regions"></a>
 
-Amazon Pinpoint is available in the US East \(N\. Virginia\) and EU \(Ireland\) AWS Regions\. For a list of Amazon Pinpoint endpoint URLs, see the [Amazon Pinpoint API Reference](https://docs.aws.amazon.com/pinpoint/latest/apireference/)\.
+Amazon Pinpoint is available in the US East \(N\. Virginia\), US West \(Oregon\), EU \(Frankfurt\), and EU \(Ireland\) AWS Regions\. For a list of Amazon Pinpoint endpoint URLs, see the [Amazon Pinpoint API Reference](https://docs.aws.amazon.com/pinpoint/latest/apireference/)\.

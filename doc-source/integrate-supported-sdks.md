@@ -21,4 +21,4 @@ The version numbers shown in this section are the first versions of each SDK or 
 
 ## Regional Availability<a name="integrate-supported-sdks-regions"></a>
 
-Amazon Pinpoint is available in the US East \(N\. Virginia\) and EU \(Ireland\) AWS Regions\. For a list of Amazon Pinpoint endpoint URLs, see the [Amazon Pinpoint API Reference](https://docs.aws.amazon.com/pinpoint/latest/apireference/)\.
+Amazon Pinpoint is available in the US East \(N\. Virginia\), US West \(Oregon\), EU \(Frankfurt\), and EU \(Ireland\) AWS Regions\. For a list of Amazon Pinpoint endpoint URLs, see the [Amazon Pinpoint API Reference](https://docs.aws.amazon.com/pinpoint/latest/apireference/)\.
