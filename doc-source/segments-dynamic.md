@@ -47,15 +47,13 @@ When Amazon Pinpoint invokes your Lambda function, it provides the following pay
 }
 ```
 
-The event data is passed to your function code by AWS Lambda\.
-
-The event data provides the following attributes:
+AWS Lambda passes the event data to your function code\. The event data provides the following attributes:
 + `MessageConfiguration` – Has the same structure as the [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-messages.html#rest-api-messages-attributes-directmessageconfiguration-table](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-messages.html#rest-api-messages-attributes-directmessageconfiguration-table) in the `Messages` resource in the Amazon Pinpoint API\. 
 + `ApplicationId` – The ID of the Amazon Pinpoint project that the campaign belongs to\.
 + `CampaignId` – The ID of the Amazon Pinpoint project that the function is invoked for\.
 + `TreatmentId` – The ID of a campaign variation that's used for A/B testing\.
 + `ActivityId` – The ID of the activity that's being performed by the campaign\.
-+ `ScheduledTime` – The date and time when the campaign's messages will be delivered in ISO 8601 format\.
++ `ScheduledTime` – The date and time, in ISO 8601 format, when the campaign's messages will be delivered\.
 + `Endpoints` – A map that associates endpoint IDs with endpoint definitions\. Each event data payload contains up to 50 endpoints\. If the campaign segment contains more than 50 endpoints, Amazon Pinpoint invokes the function repeatedly, with up to 50 endpoints at a time, until all endpoints have been processed\. 
 
 ## Creating a Lambda Function<a name="segments-dynamic-lambda-create"></a>
@@ -64,10 +62,10 @@ To create a Lambda function, see [Building Lambda Functions](https://docs.aws.am
 
 When you create your function, remember that the message delivery fails in the following conditions:
 + The Lambda function takes longer than 15 seconds to return the modified segment\.
-+ Amazon Pinpoint cannot decode the function's return value\.
++ Amazon Pinpoint can't decode the function's return value\.
 + The function requires more than 3 attempts from Amazon Pinpoint to successfully invoke\.
 
-Amazon Pinpoint only accepts endpoint definitions in the function's return value\. The function cannot modify other elements in the event data\.
+Amazon Pinpoint only accepts endpoint definitions in the function's return value\. The function can't modify other elements in the event data\.
 
 ### Example Lambda Function<a name="segments-dynamic-lambda-example"></a>
 
@@ -132,7 +130,11 @@ Your function must return endpoints in the same format provided by the event dat
 
 The example function modifies and returns the `event.Endpoints` object that it received in the event data\.
 
-In the endpoint definitions that you return, Amazon Pinpoint accepts `TitleOverride` and `BodyOverride` attributes\.
+Optionally, you can include the `TitleOverride` and `BodyOverride` attributes in the endpoint definitions that you return\.
+
+**Note**  
+When you use this solution to send messages, Amazon Pinpoint only honors the `TitleOverride` and `BodyOverride` attributes for endpoints where the value of the `ChannelType` attribute is one of the following: `SMS`, `GCM`, `APNS`, `APNS_SANDBOX`, `APNS_VOIP`, `APNS_VOIP_SANDBOX`, `ADM`, or `BAIDU`\.  
+Amazon Pinpoint **doesn't** honor these attributes for endpoints where the value of the `ChannelType` attribute is `EMAIL`\.
 
 ## Assigning a Lambda Function Policy<a name="segments-dynamic-lambda-trust-policy"></a>
 
