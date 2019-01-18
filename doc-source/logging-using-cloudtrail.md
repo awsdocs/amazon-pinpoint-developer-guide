@@ -96,6 +96,7 @@ Amazon Pinpoint supports logging the following actions as events in CloudTrail l
 **Note**  
 The following Amazon Pinpoint actions **aren't** logged in CloudTrail:  
 GetEndpoint
+PutEvents
 SendMessages
 SendUsersMessages
 UpdateEndpoint
