@@ -9,7 +9,7 @@ One of the easiest ways to interact with the Amazon Pinpoint API is to use an AW
 + [AWS SDK for Java](https://aws.amazon.com/sdk-for-java/) version 1\.11\.63 or later
 + [AWS SDK for \.NET](https://aws.amazon.com/sdk-for-net/) version 3\.3\.27\.0 or later
 + [AWS SDK for PHP](https://aws.amazon.com/sdk-for-php/) version 3\.20\.1
-+ [AWS SDK for Python \(Boto\)](https://aws.amazon.com/sdk-for-python/) version 1\.4\.2 or later
++ [AWS SDK for Python \(Boto 3\)](https://aws.amazon.com/sdk-for-python/) version 1\.4\.2 or later
 + [AWS SDK for Ruby](https://aws.amazon.com/sdk-for-ruby/) version 1\.0\.0\.rc2 or later
 + [AWS SDK for Go](https://aws.amazon.com/sdk-for-go/) version 1\.5\.13 or later
 + [AWS SDK for C\+\+](https://aws.amazon.com/sdk-for-cpp/) version 1\.0\.20151208\.143 or later
@@ -18,7 +18,3 @@ You can also interact with the Amazon Pinpoint API by using version 1\.11\.24 or
 
 **Note**  
 The version numbers shown in this section are the first versions of each SDK or CLI that included support for the Amazon Pinpoint API\. New resources or operations are occasionally added to the Amazon Pinpoint API\. In order to use all of the features of Amazon Pinpoint through the API, ensure that you're using the latest version of the SDK or CLI\.
-
-## Regional Availability<a name="integrate-supported-sdks-regions"></a>
-
-Amazon Pinpoint is available in the US East \(N\. Virginia\), US West \(Oregon\), EU \(Frankfurt\), and EU \(Ireland\) AWS Regions\. For a list of Amazon Pinpoint endpoint URLs, see the [Amazon Pinpoint API Reference](https://docs.aws.amazon.com/pinpoint/latest/apireference/)\.

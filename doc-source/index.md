@@ -1,7 +1,7 @@
 # Amazon Pinpoint Developer Guide
 
 -----
-*****Copyright &copy; 2018 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
+*****Copyright &copy; 2019 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
 Amazon's trademarks and trade dress may not be used in 
@@ -15,6 +15,15 @@ Amazon's trademarks and trade dress may not be used in
 -----
 ## Contents
 + [What Is Amazon Pinpoint?](welcome.md)
++ [Tutorials](tutorials.md)
+   + [Tutorial: Setting Up an SMS Registration System](tutorials-two-way-sms.md)
+      + [Prerequisites](tutorials-two-way-sms-prereqs.md)
+      + [Step 1: Set Up Amazon Pinpoint](tutorials-two-way-sms-part-1.md)
+      + [Step 2: Create IAM Policies and Roles](tutorials-two-way-sms-part-2.md)
+      + [Step 3: Create Lambda Functions](tutorials-two-way-sms-part-3.md)
+      + [Step 4: Set Up Amazon API Gateway](tutorials-two-way-sms-part-4.md)
+      + [Step 5: Create and Deploy the Web Form](tutorials-two-way-sms-part-5.md)
+      + [Next Steps](tutorials-two-way-sms-next-steps.md)
 + [Integrating Amazon Pinpoint with Your Application](integrate.md)
    + [AWS SDK Support for Amazon Pinpoint](integrate-supported-sdks.md)
    + [Integrating the AWS Mobile SDKs or JavaScript Library with Your Application](integrate-sdk.md)
@@ -41,13 +50,19 @@ Amazon's trademarks and trade dress may not be used in
    + [Importing Segments](segments-importing.md)
    + [Customizing Segments with AWS Lambda](segments-dynamic.md)
 + [Creating Campaigns](campaigns.md)
++ [Sending Transactional Messages from Your Apps](send-messages.md)
+   + [Send Transactional Email Messages](send-messages-email.md)
+      + [Send Email by Using the Amazon Pinpoint API](send-messages-sdk.md)
+      + [Send Email by Using the Amazon Pinpoint Email API](send-messages-email-sdk.md)
+      + [Send Email by Using the Amazon Pinpoint SMTP Interface](send-messages-email-smtp.md)
+   + [Send SMS Messages](send-messages-sms.md)
+   + [Send Voice Messages](send-messages-voice.md)
 + [Streaming Amazon Pinpoint Events to Kinesis](analytics-streaming.md)
 + [Logging Amazon Pinpoint API Calls with AWS CloudTrail](logging-using-cloudtrail.md)
++ [Tagging Amazon Pinpoint Resources](tagging-resources.md)
 + [Deleting Data from Amazon Pinpoint](deleting-data.md)
 + [Permissions](permissions.md)
    + [IAM Policies for Amazon Pinpoint Users](permissions-actions.md)
-   + [User Authentication in Amazon Pinpoint Apps](permissions-authentication.md)
-   + [AWS Mobile Hub Service Role](permissions-mobilehub.md)
    + [IAM Role for Importing Endpoints or Segments](permissions-import-segment.md)
    + [IAM Role for Exporting Endpoints or Segments](permissions-export-endpoints.md)
    + [IAM Role for Streaming Events to Kinesis](permissions-streams.md)
