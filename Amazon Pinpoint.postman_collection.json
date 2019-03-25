@@ -1,0 +1,3346 @@
+{
+  "info": {
+    "name": "Amazon Pinpoint",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [{
+      "name": "Apps",
+      "item": [{
+          "name": "GetApp",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "value": "application/json",
+              "type": "text"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}"
+              ]
+            },
+            "description": "Get information about a specific Amazon Pinpoint app."
+          },
+          "response": []
+        },
+        {
+          "name": "GetApps",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "value": "application/json",
+              "type": "text"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps"
+              ]
+            },
+            "description": "Get information about the apps in your Amazon Pinpoint account."
+          },
+          "response": []
+        },
+        {
+          "name": "CreateApp",
+          "request": {
+            "method": "POST",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "value": "application/json",
+              "type": "text"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"Name\": \"string\",\n    \"tags\": {\n        \"string\": \"string\"\n    }\n}"
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DeleteApp",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "request": {
+            "method": "DELETE",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "value": "application/json",
+              "type": "text"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}"
+              ]
+            },
+            "description": "Delete an existing Amazon Pinpoint application."
+          },
+          "response": []
+        }
+      ],
+      "description": "API operations related to managing Amazon Pinpoint projects (apps).",
+      "event": [{
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Campaigns",
+      "item": [{
+          "name": "CreateCampaign",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "request": {
+            "method": "POST",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "value": "application/json",
+              "type": "text"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"TreatmentName\": \"string\",\n    \"TreatmentDescription\": \"string\",\n    \"MessageConfiguration\": {\n        \"DefaultMessage\": {\n            \"Title\": \"string\",\n            \"Body\": \"string\",\n            \"ImageUrl\": \"string\",\n            \"ImageIconUrl\": \"string\",\n            \"ImageSmallIconUrl\": \"string\",\n            \"MediaUrl\": \"string\",\n            \"Action\": \"OPEN_APP\",\n            \"Url\": \"string\",\n            \"SilentPush\": true,\n            \"JsonBody\": \"string\",\n            \"RawContent\": \"string\",\n            \"TimeToLive\": 0\n        },\n        \"APNSMessage\": {\n            \"Title\": \"string\",\n            \"Body\": \"string\",\n            \"ImageUrl\": \"string\",\n            \"ImageIconUrl\": \"string\",\n            \"ImageSmallIconUrl\": \"string\",\n            \"MediaUrl\": \"string\",\n            \"Action\": \"OPEN_APP\",\n            \"Url\": \"string\",\n            \"SilentPush\": true,\n            \"JsonBody\": \"string\",\n            \"RawContent\": \"string\",\n            \"TimeToLive\": 0\n        },\n        \"GCMMessage\": {\n            \"Title\": \"string\",\n            \"Body\": \"string\",\n            \"ImageUrl\": \"string\",\n            \"ImageIconUrl\": \"string\",\n            \"ImageSmallIconUrl\": \"string\",\n            \"MediaUrl\": \"string\",\n            \"Action\": \"OPEN_APP\",\n            \"Url\": \"string\",\n            \"SilentPush\": true,\n            \"JsonBody\": \"string\",\n            \"RawContent\": \"string\",\n            \"TimeToLive\": 0\n        },\n        \"ADMMessage\": {\n            \"Title\": \"string\",\n            \"Body\": \"string\",\n            \"ImageUrl\": \"string\",\n            \"ImageIconUrl\": \"string\",\n            \"ImageSmallIconUrl\": \"string\",\n            \"MediaUrl\": \"string\",\n            \"Action\": \"OPEN_APP\",\n            \"Url\": \"string\",\n            \"SilentPush\": true,\n            \"JsonBody\": \"string\",\n            \"RawContent\": \"string\",\n            \"TimeToLive\": 0\n        },\n        \"BaiduMessage\": {\n            \"Title\": \"string\",\n            \"Body\": \"string\",\n            \"ImageUrl\": \"string\",\n            \"ImageIconUrl\": \"string\",\n            \"ImageSmallIconUrl\": \"string\",\n            \"MediaUrl\": \"string\",\n            \"Action\": \"OPEN_APP\",\n            \"Url\": \"string\",\n            \"SilentPush\": true,\n            \"JsonBody\": \"string\",\n            \"RawContent\": \"string\",\n            \"TimeToLive\": 0\n        },\n        \"EmailMessage\": {\n            \"Title\": \"string\",\n            \"Body\": \"string\",\n            \"HtmlBody\": \"string\",\n            \"FromAddress\": \"string\"\n        },\n        \"SMSMessage\": {\n            \"Body\": \"string\",\n            \"MessageType\": \"TRANSACTIONAL\",\n            \"SenderId\": \"string\"\n        }\n    },\n    \"Schedule\": {\n        \"StartTime\": \"string\",\n        \"EndTime\": \"string\",\n        \"Frequency\": \"ONCE | HOURLY | DAILY | WEEKLY | MONTHLY | EVENT\",\n        \"IsLocalTime\": true,\n        \"Timezone\": \"string\",\n        \"QuietTime\": {\n            \"Start\": \"string\",\n            \"End\": \"string\"\n        },\n        \"EventFilter\": {\n            \"Dimensions\": {\n                \"Attributes\": {\n                    \"attributeKey1\": [\"string\"]\n                },\n                \"Metrics\": {\"metricName\": 0},\n                \"EventType\": {\n                    \"DimensionType\": \"INCLUSIVE\",\n                    \"Values\": [\"_monetization.purchase\"]\n                }\n            },\n            \"FilterType\": \"ENDPOINT\"\n        }\n    },\n    \"SegmentId\": \"string\",\n    \"SegmentVersion\": 0,\n    \"IsPaused\": true,\n    \"AdditionalTreatments\": [\n        {\n            \"TreatmentName\": \"string\",\n            \"TreatmentDescription\": \"string\",\n            \"MessageConfiguration\": {\n                \"DefaultMessage\": {\n                    \"Title\": \"string\",\n                    \"Body\": \"string\",\n                    \"ImageUrl\": \"string\",\n                    \"ImageIconUrl\": \"string\",\n                    \"ImageSmallIconUrl\": \"string\",\n                    \"MediaUrl\": \"string\",\n                    \"Action\": \"OPEN_APP\",\n                    \"Url\": \"string\",\n                    \"SilentPush\": true,\n                    \"JsonBody\": \"string\",\n                    \"RawContent\": \"string\",\n                    \"TimeToLive\": 0\n                },\n                \"APNSMessage\": {\n                    \"Title\": \"string\",\n                    \"Body\": \"string\",\n                    \"ImageUrl\": \"string\",\n                    \"ImageIconUrl\": \"string\",\n                    \"ImageSmallIconUrl\": \"string\",\n                    \"MediaUrl\": \"string\",\n                    \"Action\": \"OPEN_APP\",\n                    \"Url\": \"string\",\n                    \"SilentPush\": true,\n                    \"JsonBody\": \"string\",\n                    \"RawContent\": \"string\",\n                    \"TimeToLive\": 0\n                },\n                \"GCMMessage\": {\n                    \"Title\": \"string\",\n                    \"Body\": \"string\",\n                    \"ImageUrl\": \"string\",\n                    \"ImageIconUrl\": \"string\",\n                    \"ImageSmallIconUrl\": \"string\",\n                    \"MediaUrl\": \"string\",\n                    \"Action\": \"OPEN_APP\",\n                    \"Url\": \"string\",\n                    \"SilentPush\": true,\n                    \"JsonBody\": \"string\",\n                    \"RawContent\": \"string\",\n                    \"TimeToLive\": 0\n                },\n                \"ADMMessage\": {\n                    \"Title\": \"string\",\n                    \"Body\": \"string\",\n                    \"ImageUrl\": \"string\",\n                    \"ImageIconUrl\": \"string\",\n                    \"ImageSmallIconUrl\": \"string\",\n                    \"MediaUrl\": \"string\",\n                    \"Action\": \"OPEN_APP\",\n                    \"Url\": \"string\",\n                    \"SilentPush\": true,\n                    \"JsonBody\": \"string\",\n                    \"RawContent\": \"string\",\n                    \"TimeToLive\": 0\n                },\n                \"BaiduMessage\": {\n                    \"Title\": \"string\",\n                    \"Body\": \"string\",\n                    \"ImageUrl\": \"string\",\n                    \"ImageIconUrl\": \"string\",\n                    \"ImageSmallIconUrl\": \"string\",\n                    \"MediaUrl\": \"string\",\n                    \"Action\": \"OPEN_APP\",\n                    \"Url\": \"string\",\n                    \"SilentPush\": true,\n                    \"JsonBody\": \"string\",\n                    \"RawContent\": \"string\",\n                    \"TimeToLive\": 0\n                },\n                \"EmailMessage\": {\n                    \"Title\": \"string\",\n                    \"Body\": \"string\",\n                    \"HtmlBody\": \"string\",\n                    \"FromAddress\": \"string\"\n                },\n                \"SMSMessage\": {\n                    \"Body\": \"string\",\n                    \"MessageType\": \"TRANSACTIONAL\",\n                    \"SenderId\": \"string\"\n                }\n            },\n            \"Schedule\": {\n                \"StartTime\": \"string\",\n                \"EndTime\": \"string\",\n                \"Frequency\": \"ONCE | HOURLY | DAILY | WEEKLY | MONTHLY | EVENT\",\n                \"IsLocalTime\": true,\n                \"Timezone\": \"string\",\n                \"QuietTime\": {\n                    \"Start\": \"string\",\n                    \"End\": \"string\"\n                },\n                \"EventFilter\": {\n                    \"Dimensions\": {\n                        \"Attributes\": {\n                            \"attributeKey1\": [\"string\"]\n                        },\n                        \"Metrics\": {\"metricName\": 0},\n                        \"EventType\": {\n                            \"DimensionType\": \"INCLUSIVE\",\n                            \"Values\": [\"_monetization.purchase\"]\n                        }\n                    },\n                    \"FilterType\": \"ENDPOINT\"\n                }\n            },\n            \"SizePercent\": 0\n        }\n    ],\n    \"HoldoutPercent\": 0,\n    \"Limits\": {\n        \"Daily\": 0,\n        \"Total\": 0,\n        \"MessagesPerSecond\": 0,\n        \"MaximumDuration\": 0\n    },\n    \"Name\": \"string\",\n    \"Hook\": {\n        \"LambdaFunctionName\": \"string\",\n        \"WebUrl\": \"string\",\n        \"Mode\": \"DELIVERY\"\n    },\n    \"Description\": \"string\",\n    \"tags\": {\n        \"string\": \"string\"\n    }\n}"
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/campaigns",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "campaigns"
+              ]
+            },
+            "description": "Creates or updates a campaign in an Amazon Pinpoint project."
+          },
+          "response": []
+        },
+        {
+          "name": "DeleteCampaign",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+                "pm.variables.set(\"campaignId\", \"98765432109876543210987654321098\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "request": {
+            "method": "DELETE",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "value": "application/json",
+              "type": "text"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/campaigns/{{campaignId}}",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "campaigns",
+                "{{campaignId}}"
+              ]
+            },
+            "description": "Deletes an existing campaign."
+          },
+          "response": []
+        },
+        {
+          "name": "GetCampaign",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+                "pm.variables.set(\"campaignId\", \"98765432109876543210987654321098\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "value": "application/json",
+              "type": "text"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/campaigns/{{campaignId}}",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "campaigns",
+                "{{campaignId}}"
+              ]
+            },
+            "description": "Get information about a specific Amazon Pinpoint campaign."
+          },
+          "response": []
+        },
+        {
+          "name": "GetCampaignActivities",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+                "pm.variables.set(\"campaignId\", \"98765432109876543210987654321098\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "value": "application/json",
+              "type": "text"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/campaigns/{{campaignId}}/activities",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "campaigns",
+                "{{campaignId}}",
+                "activities"
+              ]
+            },
+            "description": "Get information about the activities associated with a specific campaign."
+          },
+          "response": []
+        },
+        {
+          "name": "GetCampaigns",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "value": "application/json",
+              "type": "text"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/campaigns",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "campaigns"
+              ]
+            },
+            "description": "Get information about all of the campaigns in a specific Amazon Pinpoint project."
+          },
+          "response": []
+        },
+        {
+          "name": "GetCampaignVersion",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+                "pm.variables.set(\"campaignId\", \"98765432109876543210987654321098\");",
+                "pm.variables.set(\"version\", \"1\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "type": "text",
+              "value": "application/json"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/campaigns/{{campaignId}}/versions/{{version}}",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "campaigns",
+                "{{campaignId}}",
+                "versions",
+                "{{version}}"
+              ]
+            },
+            "description": "Get information about a specific version of a campaign."
+          },
+          "response": []
+        },
+        {
+          "name": "GetCampaignVersions",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+                "pm.variables.set(\"campaignId\", \"98765432109876543210987654321098\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "type": "text",
+              "value": "application/json"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/campaigns/{{campaignId}}/versions",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "campaigns",
+                "{{campaignId}}",
+                "versions"
+              ]
+            },
+            "description": "Returns information about your campaign versions."
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateCampaign",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+                "pm.variables.set(\"campaignId\", \"98765432109876543210987654321098\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "request": {
+            "method": "PUT",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "value": "application/json",
+              "type": "text"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"TreatmentName\": \"string\",\n    \"TreatmentDescription\": \"string\",\n    \"MessageConfiguration\": {\n        \"DefaultMessage\": {\n            \"Title\": \"string\",\n            \"Body\": \"string\",\n            \"ImageUrl\": \"string\",\n            \"ImageIconUrl\": \"string\",\n            \"ImageSmallIconUrl\": \"string\",\n            \"MediaUrl\": \"string\",\n            \"Action\": \"OPEN_APP\",\n            \"Url\": \"string\",\n            \"SilentPush\": true,\n            \"JsonBody\": \"string\",\n            \"RawContent\": \"string\",\n            \"TimeToLive\": 0\n        },\n        \"APNSMessage\": {\n            \"Title\": \"string\",\n            \"Body\": \"string\",\n            \"ImageUrl\": \"string\",\n            \"ImageIconUrl\": \"string\",\n            \"ImageSmallIconUrl\": \"string\",\n            \"MediaUrl\": \"string\",\n            \"Action\": \"OPEN_APP\",\n            \"Url\": \"string\",\n            \"SilentPush\": true,\n            \"JsonBody\": \"string\",\n            \"RawContent\": \"string\",\n            \"TimeToLive\": 0\n        },\n        \"GCMMessage\": {\n            \"Title\": \"string\",\n            \"Body\": \"string\",\n            \"ImageUrl\": \"string\",\n            \"ImageIconUrl\": \"string\",\n            \"ImageSmallIconUrl\": \"string\",\n            \"MediaUrl\": \"string\",\n            \"Action\": \"OPEN_APP\",\n            \"Url\": \"string\",\n            \"SilentPush\": true,\n            \"JsonBody\": \"string\",\n            \"RawContent\": \"string\",\n            \"TimeToLive\": 0\n        },\n        \"ADMMessage\": {\n            \"Title\": \"string\",\n            \"Body\": \"string\",\n            \"ImageUrl\": \"string\",\n            \"ImageIconUrl\": \"string\",\n            \"ImageSmallIconUrl\": \"string\",\n            \"MediaUrl\": \"string\",\n            \"Action\": \"OPEN_APP\",\n            \"Url\": \"string\",\n            \"SilentPush\": true,\n            \"JsonBody\": \"string\",\n            \"RawContent\": \"string\",\n            \"TimeToLive\": 0\n        },\n        \"BaiduMessage\": {\n            \"Title\": \"string\",\n            \"Body\": \"string\",\n            \"ImageUrl\": \"string\",\n            \"ImageIconUrl\": \"string\",\n            \"ImageSmallIconUrl\": \"string\",\n            \"MediaUrl\": \"string\",\n            \"Action\": \"OPEN_APP\",\n            \"Url\": \"string\",\n            \"SilentPush\": true,\n            \"JsonBody\": \"string\",\n            \"RawContent\": \"string\",\n            \"TimeToLive\": 0\n        },\n        \"EmailMessage\": {\n            \"Title\": \"string\",\n            \"Body\": \"string\",\n            \"HtmlBody\": \"string\",\n            \"FromAddress\": \"string\"\n        },\n        \"SMSMessage\": {\n            \"Body\": \"string\",\n            \"MessageType\": \"TRANSACTIONAL\",\n            \"SenderId\": \"string\"\n        }\n    },\n    \"Schedule\": {\n        \"StartTime\": \"string\",\n        \"EndTime\": \"string\",\n        \"Frequency\": \"ONCE | HOURLY | DAILY | WEEKLY | MONTHLY | EVENT\",\n        \"IsLocalTime\": true,\n        \"Timezone\": \"string\",\n        \"QuietTime\": {\n            \"Start\": \"string\",\n            \"End\": \"string\"\n        },\n        \"EventFilter\": {\n            \"Dimensions\": {\n                \"Attributes\": {\n                    \"attributeKey1\": [\"string\"]\n                },\n                \"Metrics\": {\"metricName\": 0},\n                \"EventType\": {\n                    \"DimensionType\": \"INCLUSIVE\",\n                    \"Values\": [\"_monetization.purchase\"]\n                }\n            },\n            \"FilterType\": \"ENDPOINT\"\n        }\n    },\n    \"SegmentId\": \"string\",\n    \"SegmentVersion\": 0,\n    \"IsPaused\": true,\n    \"AdditionalTreatments\": [\n        {\n            \"TreatmentName\": \"string\",\n            \"TreatmentDescription\": \"string\",\n            \"MessageConfiguration\": {\n                \"DefaultMessage\": {\n                    \"Title\": \"string\",\n                    \"Body\": \"string\",\n                    \"ImageUrl\": \"string\",\n                    \"ImageIconUrl\": \"string\",\n                    \"ImageSmallIconUrl\": \"string\",\n                    \"MediaUrl\": \"string\",\n                    \"Action\": \"OPEN_APP\",\n                    \"Url\": \"string\",\n                    \"SilentPush\": true,\n                    \"JsonBody\": \"string\",\n                    \"RawContent\": \"string\",\n                    \"TimeToLive\": 0\n                },\n                \"APNSMessage\": {\n                    \"Title\": \"string\",\n                    \"Body\": \"string\",\n                    \"ImageUrl\": \"string\",\n                    \"ImageIconUrl\": \"string\",\n                    \"ImageSmallIconUrl\": \"string\",\n                    \"MediaUrl\": \"string\",\n                    \"Action\": \"OPEN_APP\",\n                    \"Url\": \"string\",\n                    \"SilentPush\": true,\n                    \"JsonBody\": \"string\",\n                    \"RawContent\": \"string\",\n                    \"TimeToLive\": 0\n                },\n                \"GCMMessage\": {\n                    \"Title\": \"string\",\n                    \"Body\": \"string\",\n                    \"ImageUrl\": \"string\",\n                    \"ImageIconUrl\": \"string\",\n                    \"ImageSmallIconUrl\": \"string\",\n                    \"MediaUrl\": \"string\",\n                    \"Action\": \"OPEN_APP\",\n                    \"Url\": \"string\",\n                    \"SilentPush\": true,\n                    \"JsonBody\": \"string\",\n                    \"RawContent\": \"string\",\n                    \"TimeToLive\": 0\n                },\n                \"ADMMessage\": {\n                    \"Title\": \"string\",\n                    \"Body\": \"string\",\n                    \"ImageUrl\": \"string\",\n                    \"ImageIconUrl\": \"string\",\n                    \"ImageSmallIconUrl\": \"string\",\n                    \"MediaUrl\": \"string\",\n                    \"Action\": \"OPEN_APP\",\n                    \"Url\": \"string\",\n                    \"SilentPush\": true,\n                    \"JsonBody\": \"string\",\n                    \"RawContent\": \"string\",\n                    \"TimeToLive\": 0\n                },\n                \"BaiduMessage\": {\n                    \"Title\": \"string\",\n                    \"Body\": \"string\",\n                    \"ImageUrl\": \"string\",\n                    \"ImageIconUrl\": \"string\",\n                    \"ImageSmallIconUrl\": \"string\",\n                    \"MediaUrl\": \"string\",\n                    \"Action\": \"OPEN_APP\",\n                    \"Url\": \"string\",\n                    \"SilentPush\": true,\n                    \"JsonBody\": \"string\",\n                    \"RawContent\": \"string\",\n                    \"TimeToLive\": 0\n                },\n                \"EmailMessage\": {\n                    \"Title\": \"string\",\n                    \"Body\": \"string\",\n                    \"HtmlBody\": \"string\",\n                    \"FromAddress\": \"string\"\n                },\n                \"SMSMessage\": {\n                    \"Body\": \"string\",\n                    \"MessageType\": \"TRANSACTIONAL\",\n                    \"SenderId\": \"string\"\n                }\n            },\n            \"Schedule\": {\n                \"StartTime\": \"string\",\n                \"EndTime\": \"string\",\n                \"Frequency\": \"ONCE | HOURLY | DAILY | WEEKLY | MONTHLY | EVENT\",\n                \"IsLocalTime\": true,\n                \"Timezone\": \"string\",\n                \"QuietTime\": {\n                    \"Start\": \"string\",\n                    \"End\": \"string\"\n                },\n                \"EventFilter\": {\n                    \"Dimensions\": {\n                        \"Attributes\": {\n                            \"attributeKey1\": [\"string\"]\n                        },\n                        \"Metrics\": {\"metricName\": 0},\n                        \"EventType\": {\n                            \"DimensionType\": \"INCLUSIVE\",\n                            \"Values\": [\"_monetization.purchase\"]\n                        }\n                    },\n                    \"FilterType\": \"ENDPOINT\"\n                }\n            },\n            \"SizePercent\": 0\n        }\n    ],\n    \"HoldoutPercent\": 0,\n    \"Limits\": {\n        \"Daily\": 0,\n        \"Total\": 0,\n        \"MessagesPerSecond\": 0,\n        \"MaximumDuration\": 0\n    },\n    \"Name\": \"string\",\n    \"Hook\": {\n        \"LambdaFunctionName\": \"string\",\n        \"WebUrl\": \"string\",\n        \"Mode\": \"DELIVERY\"\n    },\n    \"Description\": \"string\",\n    \"tags\": {\n        \"string\": \"string\"\n    }\n}"
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/campaigns/{{campaignId}}",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "campaigns",
+                "{{campaignId}}"
+              ]
+            },
+            "description": "Update an existing Amazon Pinpoint campaign."
+          },
+          "response": []
+        }
+      ],
+      "description": "API operations related to managing Amazon Pinpoint campaigns. "
+    },
+    {
+      "name": "Channels",
+      "item": [{
+          "name": "ADM",
+          "item": [{
+              "name": "DeleteAdmChannel",
+              "event": [{
+                "listen": "prerequest",
+                "script": {
+                  "exec": [
+                    "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+                  ],
+                  "type": "text/javascript"
+                }
+              }],
+              "request": {
+                "method": "DELETE",
+                "header": [{
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "type": "text",
+                  "value": "application/json"
+                }],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/channels/adm",
+                  "protocol": "https",
+                  "host": [
+                    "{{endpoint}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "apps",
+                    "{{projectId}}",
+                    "channels",
+                    "adm"
+                  ]
+                },
+                "description": "Disable the ADM channel in a specific Amazon Pinpoint project. Amazon Pinpoint saves the settings for the channel in the event that you want to enable it again later."
+              },
+              "response": []
+            },
+            {
+              "name": "GetAdmChannel",
+              "event": [{
+                "listen": "prerequest",
+                "script": {
+                  "exec": [
+                    "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+                  ],
+                  "type": "text/javascript"
+                }
+              }],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [{
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "type": "text",
+                  "value": "application/json"
+                }],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/channels/adm",
+                  "protocol": "https",
+                  "host": [
+                    "{{endpoint}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "apps",
+                    "{{projectId}}",
+                    "channels",
+                    "adm"
+                  ]
+                },
+                "description": "Get information about the settings for the ADM channel in a specific Amazon Pinpoint project."
+              },
+              "response": []
+            },
+            {
+              "name": "UpdateAdmChannel",
+              "event": [{
+                "listen": "prerequest",
+                "script": {
+                  "exec": [
+                    "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+                  ],
+                  "type": "text/javascript"
+                }
+              }],
+              "request": {
+                "method": "PUT",
+                "header": [{
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "type": "text",
+                  "value": "application/json"
+                }],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"ClientId\": \"string\",\n    \"ClientSecret\": \"string\",\n    \"Enabled\": true|false\n}"
+                },
+                "url": {
+                  "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/channels/adm",
+                  "protocol": "https",
+                  "host": [
+                    "{{endpoint}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "apps",
+                    "{{projectId}}",
+                    "channels",
+                    "adm"
+                  ]
+                },
+                "description": "Update the settings for the ADM channel in a specific Amazon Pinpoint project."
+              },
+              "response": []
+            }
+          ],
+          "event": [{
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "APNs",
+          "item": [{
+              "name": "DeleteApnsChannel",
+              "event": [{
+                "listen": "prerequest",
+                "script": {
+                  "exec": [
+                    "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+                  ],
+                  "type": "text/javascript"
+                }
+              }],
+              "request": {
+                "method": "DELETE",
+                "header": [{
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "type": "text",
+                  "value": "application/json"
+                }],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/channels/apns",
+                  "protocol": "https",
+                  "host": [
+                    "{{endpoint}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "apps",
+                    "{{projectId}}",
+                    "channels",
+                    "apns"
+                  ]
+                },
+                "description": "Disable the APNs channel in a specific Amazon Pinpoint project. Amazon Pinpoint saves the settings for the channel in the event that you want to enable it again later."
+              },
+              "response": []
+            },
+            {
+              "name": "GetApnsChannel",
+              "event": [{
+                "listen": "prerequest",
+                "script": {
+                  "exec": [
+                    "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+                  ],
+                  "type": "text/javascript"
+                }
+              }],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [{
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "type": "text",
+                  "value": "application/json"
+                }],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/channels/apns",
+                  "protocol": "https",
+                  "host": [
+                    "{{endpoint}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "apps",
+                    "{{projectId}}",
+                    "channels",
+                    "apns"
+                  ]
+                },
+                "description": "Get information about the settings for the APNS channel in a specific Amazon Pinpoint project."
+              },
+              "response": []
+            },
+            {
+              "name": "UpdateApnsChannel",
+              "event": [{
+                "listen": "prerequest",
+                "script": {
+                  "exec": [
+                    "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+                  ],
+                  "type": "text/javascript"
+                }
+              }],
+              "request": {
+                "method": "PUT",
+                "header": [{
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "type": "text",
+                  "value": "application/json"
+                }],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"Certificate\": \"string\",\n    \"PrivateKey\": \"string\",\n    \"Enabled\": true|false,\n    \"TokenKeyId\": \"string\",\n    \"TeamId\": \"string\",\n    \"TokenKey\": \"string\",\n    \"BundleId\": \"string\",\n    \"DefaultAuthenticationMethod\": \"string\"\n}"
+                },
+                "url": {
+                  "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/channels/apns",
+                  "protocol": "https",
+                  "host": [
+                    "{{endpoint}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "apps",
+                    "{{projectId}}",
+                    "channels",
+                    "apns"
+                  ]
+                },
+                "description": "Update the settings for the APNs channel in a specific Amazon Pinpoint project."
+              },
+              "response": []
+            }
+          ],
+          "event": [{
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "APNs Sandbox",
+          "item": [{
+              "name": "DeleteApnsSandboxChannel",
+              "event": [{
+                "listen": "prerequest",
+                "script": {
+                  "exec": [
+                    "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+                  ],
+                  "type": "text/javascript"
+                }
+              }],
+              "request": {
+                "method": "DELETE",
+                "header": [{
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "type": "text",
+                  "value": "application/json"
+                }],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/channels/apns_sandbox",
+                  "protocol": "https",
+                  "host": [
+                    "{{endpoint}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "apps",
+                    "{{projectId}}",
+                    "channels",
+                    "apns_sandbox"
+                  ]
+                },
+                "description": "Disable the APNs sandbox channel in a specific Amazon Pinpoint project. Amazon Pinpoint saves the settings for the channel in the event that you want to enable it again later."
+              },
+              "response": []
+            },
+            {
+              "name": "GetApnsSandboxChannel",
+              "event": [{
+                "listen": "prerequest",
+                "script": {
+                  "exec": [
+                    "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+                  ],
+                  "type": "text/javascript"
+                }
+              }],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [{
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "type": "text",
+                  "value": "application/json"
+                }],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/channels/apns_sandbox",
+                  "protocol": "https",
+                  "host": [
+                    "{{endpoint}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "apps",
+                    "{{projectId}}",
+                    "channels",
+                    "apns_sandbox"
+                  ]
+                },
+                "description": "Get information about the settings for the APNS sandbox channel in a specific Amazon Pinpoint project."
+              },
+              "response": []
+            },
+            {
+              "name": "UpdateApnsSandboxChannel",
+              "event": [{
+                "listen": "prerequest",
+                "script": {
+                  "exec": [
+                    "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+                  ],
+                  "type": "text/javascript"
+                }
+              }],
+              "request": {
+                "method": "PUT",
+                "header": [{
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "type": "text",
+                  "value": "application/json"
+                }],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"Certificate\": \"string\",\n    \"PrivateKey\": \"string\",\n    \"Enabled\": true|false,\n    \"TokenKeyId\": \"string\",\n    \"TeamId\": \"string\",\n    \"TokenKey\": \"string\",\n    \"BundleId\": \"string\",\n    \"DefaultAuthenticationMethod\": \"string\"\n}"
+                },
+                "url": {
+                  "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/channels/apns_sandbox",
+                  "protocol": "https",
+                  "host": [
+                    "{{endpoint}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "apps",
+                    "{{projectId}}",
+                    "channels",
+                    "apns_sandbox"
+                  ]
+                },
+                "description": "Update the settings for the APNs sandbox channel in a specific Amazon Pinpoint project."
+              },
+              "response": []
+            }
+          ],
+          "event": [{
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "APNs VoIP",
+          "item": [{
+              "name": "DeleteApnsVoipChannel",
+              "event": [{
+                "listen": "prerequest",
+                "script": {
+                  "exec": [
+                    "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+                  ],
+                  "type": "text/javascript"
+                }
+              }],
+              "request": {
+                "method": "DELETE",
+                "header": [{
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "type": "text",
+                  "value": "application/json"
+                }],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/channels/apns_voip",
+                  "protocol": "https",
+                  "host": [
+                    "{{endpoint}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "apps",
+                    "{{projectId}}",
+                    "channels",
+                    "apns_voip"
+                  ]
+                },
+                "description": "Disable the APNs VoIP channel in a specific Amazon Pinpoint project. Amazon Pinpoint saves the settings for the channel in the event that you want to enable it again later."
+              },
+              "response": []
+            },
+            {
+              "name": "GetApnsVoipChannel",
+              "event": [{
+                "listen": "prerequest",
+                "script": {
+                  "exec": [
+                    "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+                  ],
+                  "type": "text/javascript"
+                }
+              }],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [{
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "type": "text",
+                  "value": "application/json"
+                }],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/channels/apns_voip",
+                  "protocol": "https",
+                  "host": [
+                    "{{endpoint}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "apps",
+                    "{{projectId}}",
+                    "channels",
+                    "apns_voip"
+                  ]
+                },
+                "description": "Get information about the settings for the APNS VoIP channel in a specific Amazon Pinpoint project."
+              },
+              "response": []
+            },
+            {
+              "name": "UpdateApnsVoipChannel",
+              "event": [{
+                "listen": "prerequest",
+                "script": {
+                  "exec": [
+                    "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+                  ],
+                  "type": "text/javascript"
+                }
+              }],
+              "request": {
+                "method": "PUT",
+                "header": [{
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "type": "text",
+                  "value": "application/json"
+                }],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"Certificate\": \"string\",\n    \"PrivateKey\": \"string\",\n    \"Enabled\": true|false,\n    \"TokenKeyId\": \"string\",\n    \"TeamId\": \"string\",\n    \"TokenKey\": \"string\",\n    \"BundleId\": \"string\",\n    \"DefaultAuthenticationMethod\": \"string\"\n}"
+                },
+                "url": {
+                  "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/channels/apns_voip",
+                  "protocol": "https",
+                  "host": [
+                    "{{endpoint}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "apps",
+                    "{{projectId}}",
+                    "channels",
+                    "apns_voip"
+                  ]
+                },
+                "description": "Update the settings for the APNs VoIP channel in a specific Amazon Pinpoint project."
+              },
+              "response": []
+            }
+          ],
+          "event": [{
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "APNs VoIP Sandbox",
+          "item": [{
+              "name": "DeleteApnsVoipSandboxChannel",
+              "event": [{
+                "listen": "prerequest",
+                "script": {
+                  "exec": [
+                    "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+                  ],
+                  "type": "text/javascript"
+                }
+              }],
+              "request": {
+                "method": "DELETE",
+                "header": [{
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "type": "text",
+                  "value": "application/json"
+                }],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/channels/apns_voip_sandbox",
+                  "protocol": "https",
+                  "host": [
+                    "{{endpoint}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "apps",
+                    "{{projectId}}",
+                    "channels",
+                    "apns_voip_sandbox"
+                  ]
+                },
+                "description": "Disable the APNs VoIP sandbox channel in a specific Amazon Pinpoint project. Amazon Pinpoint saves the settings for the channel in the event that you want to enable it again later."
+              },
+              "response": []
+            },
+            {
+              "name": "GetApnsVoipSandboxChannel",
+              "event": [{
+                "listen": "prerequest",
+                "script": {
+                  "exec": [
+                    "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+                  ],
+                  "type": "text/javascript"
+                }
+              }],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [{
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "type": "text",
+                  "value": "application/json"
+                }],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/channels/apns_voip_sandbox",
+                  "protocol": "https",
+                  "host": [
+                    "{{endpoint}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "apps",
+                    "{{projectId}}",
+                    "channels",
+                    "apns_voip_sandbox"
+                  ]
+                },
+                "description": "Get information about the settings for the APNS VoIP sandbox channel in a specific Amazon Pinpoint project."
+              },
+              "response": []
+            },
+            {
+              "name": "UpdateApnsVoipSandboxChannel",
+              "event": [{
+                "listen": "prerequest",
+                "script": {
+                  "exec": [
+                    "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+                  ],
+                  "type": "text/javascript"
+                }
+              }],
+              "request": {
+                "method": "PUT",
+                "header": [{
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "type": "text",
+                  "value": "application/json"
+                }],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"Certificate\": \"string\",\n    \"PrivateKey\": \"string\",\n    \"Enabled\": true|false,\n    \"TokenKeyId\": \"string\",\n    \"TeamId\": \"string\",\n    \"TokenKey\": \"string\",\n    \"BundleId\": \"string\",\n    \"DefaultAuthenticationMethod\": \"string\"\n}"
+                },
+                "url": {
+                  "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/channels/apns_voip_sandbox",
+                  "protocol": "https",
+                  "host": [
+                    "{{endpoint}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "apps",
+                    "{{projectId}}",
+                    "channels",
+                    "apns_voip_sandbox"
+                  ]
+                },
+                "description": "Update the settings for the APNs VoIP sandbox channel in a specific Amazon Pinpoint project."
+              },
+              "response": []
+            }
+          ],
+          "event": [{
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "Baidu",
+          "item": [{
+              "name": "DeleteBaiduChannel",
+              "event": [{
+                "listen": "prerequest",
+                "script": {
+                  "exec": [
+                    "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+                  ],
+                  "type": "text/javascript"
+                }
+              }],
+              "request": {
+                "method": "DELETE",
+                "header": [{
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "type": "text",
+                  "value": "application/json"
+                }],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/channels/baidu",
+                  "protocol": "https",
+                  "host": [
+                    "{{endpoint}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "apps",
+                    "{{projectId}}",
+                    "channels",
+                    "baidu"
+                  ]
+                },
+                "description": "Disable the Baidu channel in a specific Amazon Pinpoint project. Amazon Pinpoint saves the settings for the channel in the event that you want to enable it again later."
+              },
+              "response": []
+            },
+            {
+              "name": "GetBaiduChannel",
+              "event": [{
+                "listen": "prerequest",
+                "script": {
+                  "exec": [
+                    "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+                  ],
+                  "type": "text/javascript"
+                }
+              }],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [{
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "type": "text",
+                  "value": "application/json"
+                }],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/channels/baidu",
+                  "protocol": "https",
+                  "host": [
+                    "{{endpoint}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "apps",
+                    "{{projectId}}",
+                    "channels",
+                    "baidu"
+                  ]
+                },
+                "description": "Get information about the settings for the Baidu channel in a specific Amazon Pinpoint project."
+              },
+              "response": []
+            },
+            {
+              "name": "UpdateBaiduChannel",
+              "event": [{
+                "listen": "prerequest",
+                "script": {
+                  "exec": [
+                    "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+                  ],
+                  "type": "text/javascript"
+                }
+              }],
+              "request": {
+                "method": "PUT",
+                "header": [{
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "type": "text",
+                  "value": "application/json"
+                }],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"ApiKey\": \"string\",\n    \"SecretKey\": \"string\",\n    \"Enabled\": true|false\n}"
+                },
+                "url": {
+                  "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/channels/baidu",
+                  "protocol": "https",
+                  "host": [
+                    "{{endpoint}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "apps",
+                    "{{projectId}}",
+                    "channels",
+                    "baidu"
+                  ]
+                },
+                "description": "Update the settings for the Baidu channel in a specific Amazon Pinpoint project."
+              },
+              "response": []
+            }
+          ],
+          "event": [{
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "Email",
+          "item": [{
+              "name": "DeleteEmailChannel",
+              "event": [{
+                "listen": "prerequest",
+                "script": {
+                  "exec": [
+                    "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+                  ],
+                  "type": "text/javascript"
+                }
+              }],
+              "request": {
+                "method": "DELETE",
+                "header": [{
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "type": "text",
+                  "value": "application/json"
+                }],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/channels/email",
+                  "protocol": "https",
+                  "host": [
+                    "{{endpoint}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "apps",
+                    "{{projectId}}",
+                    "channels",
+                    "email"
+                  ]
+                },
+                "description": "Disable the Email channel in a specific Amazon Pinpoint project. Amazon Pinpoint saves the settings for the channel in the event that you want to enable it again later."
+              },
+              "response": []
+            },
+            {
+              "name": "GetEmailChannel",
+              "event": [{
+                "listen": "prerequest",
+                "script": {
+                  "exec": [
+                    "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+                  ],
+                  "type": "text/javascript"
+                }
+              }],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [{
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "type": "text",
+                  "value": "application/json"
+                }],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/channels/email",
+                  "protocol": "https",
+                  "host": [
+                    "{{endpoint}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "apps",
+                    "{{projectId}}",
+                    "channels",
+                    "email"
+                  ]
+                },
+                "description": "Get information about the settings for the email channel in a specific Amazon Pinpoint project."
+              },
+              "response": []
+            },
+            {
+              "name": "UpdateEmailChannel",
+              "event": [{
+                "listen": "prerequest",
+                "script": {
+                  "exec": [
+                    "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+                  ],
+                  "type": "text/javascript"
+                }
+              }],
+              "request": {
+                "method": "PUT",
+                "header": [{
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "type": "text",
+                  "value": "application/json"
+                }],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"Enabled\": true|false,\n    \"Identity\": \"string\",\n    \"FromAddress\": \"string\",\n    \"RoleArn\": \"string\"\n}"
+                },
+                "url": {
+                  "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/channels/email",
+                  "protocol": "https",
+                  "host": [
+                    "{{endpoint}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "apps",
+                    "{{projectId}}",
+                    "channels",
+                    "email"
+                  ]
+                },
+                "description": "Update the settings for the email channel in a specific Amazon Pinpoint project."
+              },
+              "response": []
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "GCM",
+          "item": [{
+              "name": "DeleteGcmChannel",
+              "event": [{
+                "listen": "prerequest",
+                "script": {
+                  "exec": [
+                    "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+                  ],
+                  "type": "text/javascript"
+                }
+              }],
+              "request": {
+                "method": "DELETE",
+                "header": [{
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "type": "text",
+                  "value": "application/json"
+                }],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/channels/gcm",
+                  "protocol": "https",
+                  "host": [
+                    "{{endpoint}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "apps",
+                    "{{projectId}}",
+                    "channels",
+                    "gcm"
+                  ]
+                },
+                "description": "Disable the GCM channel in a specific Amazon Pinpoint project. Amazon Pinpoint saves the settings for the channel in the event that you want to enable it again later."
+              },
+              "response": []
+            },
+            {
+              "name": "GetGcmChannel",
+              "event": [{
+                "listen": "prerequest",
+                "script": {
+                  "exec": [
+                    "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+                  ],
+                  "type": "text/javascript"
+                }
+              }],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [{
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "type": "text",
+                  "value": "application/json"
+                }],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/channels/gcm",
+                  "protocol": "https",
+                  "host": [
+                    "{{endpoint}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "apps",
+                    "{{projectId}}",
+                    "channels",
+                    "gcm"
+                  ]
+                },
+                "description": "Get information about the settings for the GCM channel in a specific Amazon Pinpoint project."
+              },
+              "response": []
+            },
+            {
+              "name": "UpdateGcmChannel",
+              "event": [{
+                "listen": "prerequest",
+                "script": {
+                  "exec": [
+                    "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+                  ],
+                  "type": "text/javascript"
+                }
+              }],
+              "request": {
+                "method": "PUT",
+                "header": [{
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "type": "text",
+                  "value": "application/json"
+                }],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"ApiKey\": \"string\",\n    \"Enabled\": true|false\n}"
+                },
+                "url": {
+                  "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/channels/gcm",
+                  "protocol": "https",
+                  "host": [
+                    "{{endpoint}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "apps",
+                    "{{projectId}}",
+                    "channels",
+                    "gcm"
+                  ]
+                },
+                "description": "Update the settings for the GCM channel in a specific Amazon Pinpoint project."
+              },
+              "response": []
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "SMS",
+          "item": [{
+              "name": "DeleteSmsChannel",
+              "event": [{
+                "listen": "prerequest",
+                "script": {
+                  "exec": [
+                    "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+                  ],
+                  "type": "text/javascript"
+                }
+              }],
+              "request": {
+                "method": "DELETE",
+                "header": [{
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "type": "text",
+                  "value": "application/json"
+                }],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/channels/sms",
+                  "protocol": "https",
+                  "host": [
+                    "{{endpoint}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "apps",
+                    "{{projectId}}",
+                    "channels",
+                    "sms"
+                  ]
+                },
+                "description": "Disable the SMS channel in a specific Amazon Pinpoint project. Amazon Pinpoint saves the settings for the SMS channel in the event that you want to enable it again later."
+              },
+              "response": []
+            },
+            {
+              "name": "GetSmsChannel",
+              "event": [{
+                "listen": "prerequest",
+                "script": {
+                  "exec": [
+                    "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+                  ],
+                  "type": "text/javascript"
+                }
+              }],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [{
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json",
+                  "type": "text"
+                }],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/channels/sms",
+                  "protocol": "https",
+                  "host": [
+                    "{{endpoint}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "apps",
+                    "{{projectId}}",
+                    "channels",
+                    "sms"
+                  ]
+                },
+                "description": "Get information about the settings for the SMS channel in a specific Amazon Pinpoint project."
+              },
+              "response": []
+            },
+            {
+              "name": "UpdateSmsChannel",
+              "event": [{
+                "listen": "prerequest",
+                "script": {
+                  "exec": [
+                    "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+                  ],
+                  "type": "text/javascript"
+                }
+              }],
+              "request": {
+                "method": "PUT",
+                "header": [{
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "type": "text",
+                  "value": "application/json"
+                }],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"Enabled\": true|false,\n    \"ShortCode\": \"string\",\n    \"SenderId\": \"string\"\n}"
+                },
+                "url": {
+                  "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/channels/sms",
+                  "protocol": "https",
+                  "host": [
+                    "{{endpoint}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "apps",
+                    "{{projectId}}",
+                    "channels",
+                    "sms"
+                  ]
+                },
+                "description": "Update the settings for the SMS channel in a specific Amazon Pinpoint project."
+              },
+              "response": []
+            }
+          ],
+          "_postman_isSubFolder": true
+        }
+      ]
+    },
+    {
+      "name": "Endpoints",
+      "item": [{
+          "name": "DeleteEndpoint",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+                "pm.variables.set(\"endpointId\", \"12345\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "request": {
+            "method": "DELETE",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "value": "application/json",
+              "type": "text"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/endpoints/{{endpointId}}",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "endpoints",
+                "{{endpointId}}"
+              ]
+            },
+            "description": "Delete a specific endpoint in an Amazon Pinpoint project."
+          },
+          "response": []
+        },
+        {
+          "name": "GetEndpoint",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+                "pm.variables.set(\"endpointId\", \"12345\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "type": "text",
+              "value": "application/json"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/endpoints/{{endpointId}}",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "endpoints",
+                "{{endpointId}}"
+              ]
+            },
+            "description": "Get information about a specific endpoint."
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateEndpoint",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+                "pm.variables.set(\"endpointId\", \"12345\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "request": {
+            "method": "PUT",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "type": "text",
+              "value": "application/json"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"ChannelType\": \"GCM\"|\"APNS\"|\"APNS_SANDBOX\"|\"APNS_VOIP\"|\"APNS_VOIP_SANDBOX\"|\"ADM\"|\"SMS\"|\"VOICE\"|\"EMAIL\"|\"BAIDU\"|\"CUSTOM\",\n    \"Address\": \"string\",\n    \"EndpointStatus\": \"string\",\n    \"OptOut\": \"string\",\n    \"RequestId\": \"string\",\n    \"Location\": {\n        \"Latitude\": 0,\n        \"Longitude\": 0,\n        \"PostalCode\": \"string\",\n        \"City\": \"string\",\n        \"Region\": \"string\",\n        \"Country\": \"string\"\n    },\n    \"Demographic\": {\n        \"Make\": \"string\",\n        \"Model\": \"string\",\n        \"ModelVersion\": \"string\",\n        \"Timezone\": \"string\",\n        \"Locale\": \"string\",\n        \"AppVersion\": \"string\",\n        \"Platform\": \"string\",\n        \"PlatformVersion\": \"string\"\n    },\n    \"EffectiveDate\": \"string\",\n    \"Attributes\": {\n        \"additionalProp1\": [\n            \"string\"\n        ],\n        \"additionalProp2\": [\n            \"string\"\n        ],\n        \"additionalProp3\": [\n            \"string\"\n        ]\n    },\n    \"Metrics\": {\n        \"additionalProp1\": 0,\n        \"additionalProp2\": 0,\n        \"additionalProp3\": 0\n    },\n    \"User\": {\n        \"UserId\": \"string\",\n        \"UserAttributes\": {\n            \"additionalProp1\": [\n                \"string\"\n            ],\n            \"additionalProp2\": [\n                \"string\"\n            ],\n            \"additionalProp3\": [\n                \"string\"\n            ]\n        }\n    }\n}"
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/endpoints/{{endpointId}}",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "endpoints",
+                "{{endpointId}}"
+              ]
+            },
+            "description": "Create or update an endpoint in an Amazon Pinpoint project."
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateEndpointsBatch",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "request": {
+            "method": "PUT",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "type": "text",
+              "value": "application/json"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"Item\": [\n        {\n            \"ChannelType\": \"GCM\"|\"APNS\"|\"APNS_SANDBOX\"|\"APNS_VOIP\"|\"APNS_VOIP_SANDBOX\"|\"ADM\"|\"SMS\"|\"VOICE\"|\"EMAIL\"|\"BAIDU\"|\"CUSTOM\",\n            \"Address\": \"string\",\n            \"EndpointStatus\": \"string\",\n            \"OptOut\": \"string\",\n            \"RequestId\": \"string\",\n            \"Location\": {\n                \"Latitude\": 0,\n                \"Longitude\": 0,\n                \"PostalCode\": \"string\",\n                \"City\": \"string\",\n                \"Region\": \"string\",\n                \"Country\": \"string\"\n            },\n            \"Demographic\": {\n                \"Make\": \"string\",\n                \"Model\": \"string\",\n                \"ModelVersion\": \"string\",\n                \"Timezone\": \"string\",\n                \"Locale\": \"string\",\n                \"AppVersion\": \"string\",\n                \"Platform\": \"string\",\n                \"PlatformVersion\": \"string\"\n            },\n            \"EffectiveDate\": \"string\",\n            \"Attributes\": {\n                \"additionalProp1\": [\n                    \"string\"\n                ],\n                \"additionalProp2\": [\n                    \"string\"\n                ],\n                \"additionalProp3\": [\n                    \"string\"\n                ]\n            },\n            \"Metrics\": {\n                \"additionalProp1\": 0,\n                \"additionalProp2\": 0,\n                \"additionalProp3\": 0\n            },\n            \"User\": {\n                \"UserId\": \"string\",\n                \"UserAttributes\": {\n                    \"additionalProp1\": [\n                        \"string\"\n                    ],\n                    \"additionalProp2\": [\n                        \"string\"\n                    ],\n                    \"additionalProp3\": [\n                        \"string\"\n                    ]\n                }\n            },\n            \"Id\": \"string\"\n        }\n    ]\n}"
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/endpoints",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "endpoints"
+              ]
+            },
+            "description": "Create or update several endpoints in an Amazon Pinpoint project. You can use this operation to create up to 100 endpoints in a single call to the API."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Events",
+      "item": [{
+        "name": "PutEvent",
+        "event": [{
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+            ],
+            "type": "text/javascript"
+          }
+        }],
+        "request": {
+          "method": "POST",
+          "header": [{
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"BatchItem\":{\n    \"string\":{\n      \"Endpoint\":{\n        \"Address\":\"string\",\n        \"Attributes\":{\n          \"string\":[\n            \"string\"\n          ]\n        },\n        \"ChannelType\":\"GCM\"|\"APNS\"|\"APNS_SANDBOX\"|\"APNS_VOIP\"|\"APNS_VOIP_SANDBOX\"|\"ADM\"|\"SMS\"|\"VOICE\"|\"EMAIL\"|\"BAIDU\"|\"CUSTOM\",\n        \"Demographic\":{\n          \"AppVersion\":\"string\",\n          \"Locale\":\"string\",\n          \"Make\":\"string\",\n          \"Model\":\"string\",\n          \"ModelVersion\":\"string\",\n          \"Platform\":\"string\",\n          \"PlatformVersion\":\"string\",\n          \"Timezone\":\"string\"\n        },\n        \"EffectiveDate\":\"string\",\n        \"EndpointStatus\":\"string\",\n        \"Location\":{\n          \"City\":\"string\",\n          \"Country\":\"string\",\n          \"Latitude\":double,\n          \"Longitude\":double,\n          \"PostalCode\":\"string\",\n          \"Region\":\"string\"\n        },\n        \"Metrics\":{\n          \"string\":double\n        },\n        \"OptOut\":\"string\",\n        \"RequestId\":\"string\",\n        \"User\":{\n          \"UserAttributes\":{\n            \"string\":[\n              \"string\"\n            ]\n          },\n          \"UserId\":\"string\"\n        }\n      },\n      \"Events\":{\n        \"string\":{\n          \"AppPackageName\":\"string\",\n          \"AppTitle\":\"string\",\n          \"AppVersionCode\":\"string\",\n          \"Attributes\":{\n            \"string\":\"string\"\n          },\n          \"ClientSdkVersion\":\"string\",\n          \"EventType\":\"string\",\n          \"Metrics\":{\n            \"string\":double\n          },\n          \"SdkName\":\"string\",\n          \"Session\":{\n            \"Duration\":integer,\n            \"Id\":\"string\",\n            \"StartTimestamp\":\"string\",\n            \"StopTimestamp\":\"string\"\n          },\n          \"Timestamp\":\"string\"\n        }\n      }\n    }\n  }\n}"
+          },
+          "url": {
+            "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/events",
+            "protocol": "https",
+            "host": [
+              "{{endpoint}}"
+            ],
+            "path": [
+              "v1",
+              "apps",
+              "{{projectId}}",
+              "events"
+            ]
+          },
+          "description": "Record events and associate them with endpoints. Note: Despite its name, this operation uses the POST method."
+        },
+        "response": []
+      }]
+    },
+    {
+      "name": "Event Streams",
+      "item": [{
+          "name": "DeleteEventStream",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "request": {
+            "method": "DELETE",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "value": "application/json",
+              "type": "text"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/eventstream",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "eventstream"
+              ]
+            },
+            "description": "Delete an Amazon Pinpoint event stream."
+          },
+          "response": []
+        },
+        {
+          "name": "GetEventStream",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "type": "text",
+              "value": "application/json"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/eventstream",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "eventstream"
+              ]
+            },
+            "description": "Get information about an event stream for a specific Amazon Pinpoint project."
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateEventStream",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "request": {
+            "method": "POST",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "type": "text",
+              "value": "application/json"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"DestinationStreamArn\": \"string\",\n  \"RoleArn\": \"string\"\n}"
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/eventstream",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "eventstream"
+              ]
+            },
+            "description": "Create or update the event streaming configuration for a specific Amazon Pinpoint project."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Export Jobs",
+      "item": [{
+          "name": "CreateExportJob",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "request": {
+            "method": "POST",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "type": "text",
+              "value": "application/json"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"SegmentId\": \"string\",\n    \"S3UrlPrefix\": \"string\",\n    \"RoleArn\": \"string\"\n}"
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/jobs/export",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "jobs",
+                "export"
+              ]
+            },
+            "description": "Create a new export job."
+          },
+          "response": []
+        },
+        {
+          "name": "GetExportJob",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+                "pm.variables.set(\"exportJobId\", \"12345\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "type": "text",
+              "value": "application/json"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/jobs/export/{{exportJobId}}",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "jobs",
+                "export",
+                "{{exportJobId}}"
+              ]
+            },
+            "description": "Get information about a specific export job."
+          },
+          "response": []
+        },
+        {
+          "name": "GetExportJobs",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "value": "application/json",
+              "type": "text"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/jobs/export",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "jobs",
+                "export"
+              ]
+            },
+            "description": "Get information about the export jobs for a specific Amazon Pinpoint project."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "ImportJobs",
+      "item": [{
+          "name": "GetImportJobs",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "value": "application/json",
+              "type": "text"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/jobs/import",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "jobs",
+                "import"
+              ]
+            },
+            "description": "Get information about the import jobs for a specific Amazon Pinpoint project."
+          },
+          "response": []
+        },
+        {
+          "name": "GetImportJob",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+                "pm.variables.set(\"importJobId\", \"12345\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "type": "text",
+              "value": "application/json"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/jobs/import/{{importJobId}}",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "jobs",
+                "import",
+                "{{importJobId}}"
+              ]
+            },
+            "description": "Get information about a specific import job."
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateImportJob",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "request": {
+            "method": "POST",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "type": "text",
+              "value": "application/json"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"S3Url\": \"string\",\n    \"RoleArn\": \"string\",\n    \"Format\": \"CSV\",\n    \"RegisterEndpoints\": true|false,\n    \"DefineSegment\": true|false,\n    \"SegmentName\": \"string\",\n    \"SegmentId\": \"string\"\n}"
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/jobs/import",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "jobs",
+                "import"
+              ]
+            },
+            "description": "Create or update an import job."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Messages",
+      "item": [{
+          "name": "SendMessages",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "request": {
+            "method": "POST",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "value": "application/json",
+              "type": "text"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Context\":{\n\n  },\n  \"MessageConfiguration\":{\n    \"DefaultMessage\":{\n      \"Body\":\"string\",\n      \"Substitutions\":{\n\n      }\n    },\n    \"DefaultPushNotificationMessage\":{\n      \"Body\":\"string\",\n      \"Substitutions\":{\n\n      },\n      \"Title\":\"string\",\n      \"Action\":\"OPEN_APP\",\n      \"Url\":\"string\",\n      \"SilentPush\":true,\n      \"Data\":{\n\n      }\n    },\n    \"EmailMessage\":{\n      \"Body\":\"string\",\n      \"FeedbackForwardingAddress\":\"string\",\n      \"FromAddress\":\"string\",\n      \"RawEmail\":{\n        \"Data\":[\n          \"string\"\n        ]\n      },\n      \"SimpleEmail\":{\n        \"Subject\":{\n          \"Charset\":\"string\",\n          \"Data\":\"string\"\n        },\n        \"HtmlPart\":{\n          \"Charset\":\"string\",\n          \"Data\":\"string\"\n        },\n        \"TextPart\":{\n          \"Charset\":\"string\",\n          \"Data\":\"string\"\n        }\n      },\n      \"Substitutions\":{\n\n      }\n    },\n    \"APNSMessage\":{\n      \"Body\":\"string\",\n      \"Substitutions\":{\n\n      },\n      \"Title\":\"string\",\n      \"Action\":\"OPEN_APP\",\n      \"Url\":\"string\",\n      \"SilentPush\":true,\n      \"Data\":{\n\n      },\n      \"MediaUrl\":\"string\",\n      \"Sound\":\"string\",\n      \"Badge\":0,\n      \"Category\":\"string\",\n      \"ThreadId\":\"string\",\n      \"RawContent\":\"string\",\n      \"PreferredAuthenticationMethod\":\"string\",\n      \"TimeToLive\":0,\n      \"Priority\":\"string\",\n      \"CollapseId\":\"string\"\n    },\n    \"GCMMessage\":{\n      \"Body\":\"string\",\n      \"Substitutions\":{\n\n      },\n      \"Title\":\"string\",\n      \"Action\":\"OPEN_APP\",\n      \"Url\":\"string\",\n      \"SilentPush\":true,\n      \"Data\":{\n\n      },\n      \"IconReference\":\"string\",\n      \"Sound\":\"string\",\n      \"ImageUrl\":\"string\",\n      \"ImageIconUrl\":\"string\",\n      \"SmallImageIconUrl\":\"string\",\n      \"RawContent\":\"string\",\n      \"CollapseKey\":\"string\",\n      \"RestrictedPackageName\":\"string\",\n      \"TimeToLive\":0,\n      \"Priority\":\"string\"\n    },\n    \"BaiduMessage\":{\n      \"Body\":\"string\",\n      \"Substitutions\":{\n\n      },\n      \"Title\":\"string\",\n      \"Action\":\"OPEN_APP\",\n      \"Url\":\"string\",\n      \"SilentPush\":true,\n      \"Data\":{\n\n      },\n      \"IconReference\":\"string\",\n      \"Sound\":\"string\",\n      \"ImageUrl\":\"string\",\n      \"ImageIconUrl\":\"string\",\n      \"SmallImageIconUrl\":\"string\",\n      \"RawContent\":\"string\",\n      \"TimeToLive\":0\n    },\n    \"ADMMessage\":{\n      \"Body\":\"string\",\n      \"Substitutions\":{\n\n      },\n      \"Title\":\"string\",\n      \"Action\":\"OPEN_APP\",\n      \"Url\":\"string\",\n      \"SilentPush\":true,\n      \"Data\":{\n\n      },\n      \"IconReference\":\"string\",\n      \"Sound\":\"string\",\n      \"ImageUrl\":\"string\",\n      \"ImageIconUrl\":\"string\",\n      \"SmallImageIconUrl\":\"string\",\n      \"RawContent\":\"string\",\n      \"ConsolidationKey\":\"string\",\n      \"ExpiresAfter\":\"string\",\n      \"MD5\":\"string\"\n    },\n    \"SMSMessage\":{\n      \"Body\":\"string\",\n      \"Substitutions\":{\n\n      },\n      \"SenderId\":\"string\",\n      \"MessageType\":\"TRANSACTIONAL\",\n      \"Keyword\":\"string\",\n      \"OriginationNumber\":\"string\"\n    }\n  },\n  \"Addresses\":{\n\n  },\n  \"Endpoints\":{\n\n  }\n}"
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/messages",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "messages"
+              ]
+            },
+            "description": "Send SMS, email, or mobile push messages to endpoints, without creating segments or campaigns."
+          },
+          "response": []
+        },
+        {
+          "name": "SendUsersMessages",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "request": {
+            "method": "POST",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "type": "text",
+              "value": "application/json"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"Context\": {\n        \"string\": \"string\"\n    },\n    \"MessageConfiguration\": {\n        \"DefaultMessage\": {\n            \"Body\": \"string\",\n            \"Substitutions\": {}\n        },\n        \"DefaultPushNotificationMessage\": {\n            \"Body\": \"string\",\n            \"Substitutions\": {},\n            \"Title\": \"string\",\n            \"Action\": \"OPEN_APP\",\n            \"Url\": \"string\",\n            \"SilentPush\": true,\n            \"Data\": {}\n        },\n        \"APNSMessage\": {\n            \"Body\": \"string\",\n            \"Substitutions\": {},\n            \"Title\": \"string\",\n            \"Action\": \"OPEN_APP\",\n            \"Url\": \"string\",\n            \"SilentPush\": true,\n            \"Data\": {},\n            \"MediaUrl\": \"string\",\n            \"Sound\": \"string\",\n            \"Badge\": 0,\n            \"Category\": \"string\",\n            \"ThreadId\": \"string\",\n            \"RawContent\": \"string\",\n            \"PreferredAuthenticationMethod\": \"string\",\n            \"TimeToLive\": 0,\n            \"Priority\": \"string\",\n            \"CollapseId\": \"string\"\n        },\n        \"GCMMessage\": {\n            \"Body\": \"string\",\n            \"Substitutions\": {},\n            \"Title\": \"string\",\n            \"Action\": \"OPEN_APP\",\n            \"Url\": \"string\",\n            \"SilentPush\": true,\n            \"Data\": {},\n            \"IconReference\": \"string\",\n            \"Sound\": \"string\",\n            \"ImageUrl\": \"string\",\n            \"ImageIconUrl\": \"string\",\n            \"SmallImageIconUrl\": \"string\",\n            \"RawContent\": \"string\",\n            \"CollapseKey\": \"string\",\n            \"RestrictedPackageName\": \"string\",\n            \"TimeToLive\": 0,\n            \"Priority\": \"string\"\n        },\n        \"BaiduMessage\": {\n            \"Body\": \"string\",\n            \"Substitutions\": {},\n            \"Title\": \"string\",\n            \"Action\": \"OPEN_APP\",\n            \"Url\": \"string\",\n            \"SilentPush\": true,\n            \"Data\": {},\n            \"IconReference\": \"string\",\n            \"Sound\": \"string\",\n            \"ImageUrl\": \"string\",\n            \"ImageIconUrl\": \"string\",\n            \"SmallImageIconUrl\": \"string\",\n            \"RawContent\": \"string\",\n            \"TimeToLive\": 0\n        },\n        \"ADMMessage\": {\n            \"Body\": \"string\",\n            \"Substitutions\": {},\n            \"Title\": \"string\",\n            \"Action\": \"OPEN_APP\",\n            \"Url\": \"string\",\n            \"SilentPush\": true,\n            \"Data\": {},\n            \"IconReference\": \"string\",\n            \"Sound\": \"string\",\n            \"ImageUrl\": \"string\",\n            \"ImageIconUrl\": \"string\",\n            \"SmallImageIconUrl\": \"string\",\n            \"RawContent\": \"string\",\n            \"ConsolidationKey\": \"string\",\n            \"ExpiresAfter\": \"string\",\n            \"MD5\": \"string\"\n        },\n        \"SMSMessage\": {\n            \"Body\": \"string\",\n            \"Substitutions\": {},\n            \"SenderId\": \"string\",\n            \"MessageType\": \"TRANSACTIONAL\",\n            \"Keyword\": \"string\",\n            \"OriginationNumber\": \"string\"\n        }\n    },\n    \"Users\": {\n        \"string\": {\n            \"BodyOverride\": \"string\",\n            \"Context\": {\n                \"string\": \"string\"\n            },\n            \"RawContent\": \"string\",\n            \"Substitutions\": {\n                \"string\": [\n                    \"string\"\n                ]\n            },\n            \"TitleOverride\": \"string\"\n        }\n    }\n}"
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/users-messages",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "users-messages"
+              ]
+            },
+            "description": "Send SMS, email, or mobile push messages to all of the endpoints that are associated with a specific User ID."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "PhoneNumberValidate",
+      "item": [{
+        "name": "PhoneNumberValidate",
+        "request": {
+          "method": "POST",
+          "header": [{
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"PhoneNumber\": \"12065550199\",\n  \"IsoCountryCode\": \"US\"\n}"
+          },
+          "url": {
+            "raw": "https://{{endpoint}}/v1/phone/number/validate",
+            "protocol": "https",
+            "host": [
+              "{{endpoint}}"
+            ],
+            "path": [
+              "v1",
+              "phone",
+              "number",
+              "validate"
+            ]
+          },
+          "description": "Convert an incoming phone number into E.164 format, and get metadata for the phone number."
+        },
+        "response": []
+      }],
+      "event": [{
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Segments",
+      "item": [{
+          "name": "CreateSegment",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "request": {
+            "method": "POST",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "type": "text",
+              "value": "application/json"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"Name\": \"string\",\n    \"SegmentGroups\": {\n        \"Include\": \"ALL|ANY|NONE\",\n        \"Groups\": [\n            {\n                \"Type\": \"ALL|ANY|NONE\",\n                \"Dimensions\": [\n                    {\n                        \"Demographic\": {\n                            \"Channel\": {\n                                \"DimensionType\": \"INCLUSIVE\",\n                                \"Values\": [\"string\"]\n                            },\n                            \"Platform\": {\n                                \"DimensionType\": \"INCLUSIVE\",\n                                \"Values\": [\"string\"]\n                            },\n                            \"DeviceType\": {\n                                \"DimensionType\": \"INCLUSIVE\",\n                                \"Values\": [\"string\"]\n                            },\n                            \"AppVersion\": {\n                                \"DimensionType\": \"INCLUSIVE\",\n                                \"Values\": [\"string\"]\n                            },\n                            \"Make\": {\n                                \"DimensionType\": \"INCLUSIVE\",\n                                \"Values\": [\"string\"]\n                            },\n                            \"Model\": {\n                                \"DimensionType\": \"INCLUSIVE\",\n                                \"Values\": [\"string\"]\n                            }\n                        },\n                        \"Location\": {\n                            \"Country\": {\n                                \"DimensionType\": \"INCLUSIVE\",\n                                \"Values\": [\"string\"]\n                            },\n                            \"GPSPoint\": {\n                                \"Coordinates\": {\n                                    \"Latitude\": 0,\n                                    \"Longitude\": 0\n                                },\n                                \"RangeInKilometers\": 0\n                            }\n                        },\n                        \"Behavior\": {\n                            \"Recency\": {\n                                \"RecencyType\": \"ACTIVE\",\n                                \"Duration\": \"HR_24\"\n                            }\n                        },\n                        \"Attributes\": {},\n                        \"Metrics\": {},\n                        \"UserAttributes\": {}\n                    }\n                ],\n                \"SourceType\": \"ALL|ANY\",\n                \"SourceSegments\": [\n                    {\n                        \"Id\": \"string\",\n                        \"Version\": 0\n                    }\n                ]\n            }\n        ]\n    },\n    \"Dimensions\": {\n        \"Demographic\": {\n            \"Channel\": {\n                \"DimensionType\": \"INCLUSIVE\",\n                \"Values\": [\"string\"]\n            },\n            \"Platform\": {\n                \"DimensionType\": \"INCLUSIVE\",\n                \"Values\": [\"string\"]\n            },\n            \"DeviceType\": {\n                \"DimensionType\": \"INCLUSIVE\",\n                \"Values\": [\"string\"]\n            },\n            \"AppVersion\": {\n                \"DimensionType\": \"INCLUSIVE\",\n                \"Values\": [\"string\"]\n            },\n            \"Make\": {\n                \"DimensionType\": \"INCLUSIVE\",\n                \"Values\": [\"string\"]\n            },\n            \"Model\": {\n                \"DimensionType\": \"INCLUSIVE\",\n                \"Values\": [\"string\"]\n            }\n        },\n        \"Location\": {\n            \"Country\": {\n                \"DimensionType\": \"INCLUSIVE\",\n                \"Values\": [\"string\"]\n            },\n            \"GPSPoint\": {\n                \"Coordinates\": {\n                    \"Latitude\": 0,\n                    \"Longitude\": 0\n                },\n                \"RangeInKilometers\": 0\n            }\n        },\n        \"Behavior\": {\n            \"Recency\": {\n                \"RecencyType\": \"ACTIVE\",\n                \"Duration\": \"HR_24\"\n            }\n        },\n        \"Attributes\": {},\n        \"Metrics\": {},\n        \"UserAttributes\": {}\n    },\n    \"tags\": {\n        \"string\": \"string\"\n    }\n}"
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/segments",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "segments"
+              ]
+            },
+            "description": "Create a new segment."
+          },
+          "response": []
+        },
+        {
+          "name": "DeleteSegment",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+                "pm.variables.set(\"segmentId\", \"bfdccdee5a554406a4a5bc5c01146a0b\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "request": {
+            "method": "DELETE",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "type": "text",
+              "value": "application/json"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"Name\": \"string\",\n    \"SegmentGroups\": {\n        \"Include\": \"ALL|ANY|NONE\",\n        \"Groups\": [\n            {\n                \"Type\": \"ALL|ANY|NONE\",\n                \"Dimensions\": [\n                    {\n                        \"Demographic\": {\n                            \"Channel\": {\n                                \"DimensionType\": \"INCLUSIVE\",\n                                \"Values\": [\"string\"]\n                            },\n                            \"Platform\": {\n                                \"DimensionType\": \"INCLUSIVE\",\n                                \"Values\": [\"string\"]\n                            },\n                            \"DeviceType\": {\n                                \"DimensionType\": \"INCLUSIVE\",\n                                \"Values\": [\"string\"]\n                            },\n                            \"AppVersion\": {\n                                \"DimensionType\": \"INCLUSIVE\",\n                                \"Values\": [\"string\"]\n                            },\n                            \"Make\": {\n                                \"DimensionType\": \"INCLUSIVE\",\n                                \"Values\": [\"string\"]\n                            },\n                            \"Model\": {\n                                \"DimensionType\": \"INCLUSIVE\",\n                                \"Values\": [\"string\"]\n                            }\n                        },\n                        \"Location\": {\n                            \"Country\": {\n                                \"DimensionType\": \"INCLUSIVE\",\n                                \"Values\": [\"string\"]\n                            },\n                            \"GPSPoint\": {\n                                \"Coordinates\": {\n                                    \"Latitude\": 0,\n                                    \"Longitude\": 0\n                                },\n                                \"RangeInKilometers\": 0\n                            }\n                        },\n                        \"Behavior\": {\n                            \"Recency\": {\n                                \"RecencyType\": \"ACTIVE\",\n                                \"Duration\": \"HR_24\"\n                            }\n                        },\n                        \"Attributes\": {},\n                        \"Metrics\": {},\n                        \"UserAttributes\": {}\n                    }\n                ],\n                \"SourceType\": \"ALL|ANY\",\n                \"SourceSegments\": [\n                    {\n                        \"Id\": \"string\",\n                        \"Version\": 0\n                    }\n                ]\n            }\n        ]\n    },\n    \"Dimensions\": {\n        \"Demographic\": {\n            \"Channel\": {\n                \"DimensionType\": \"INCLUSIVE\",\n                \"Values\": [\"string\"]\n            },\n            \"Platform\": {\n                \"DimensionType\": \"INCLUSIVE\",\n                \"Values\": [\"string\"]\n            },\n            \"DeviceType\": {\n                \"DimensionType\": \"INCLUSIVE\",\n                \"Values\": [\"string\"]\n            },\n            \"AppVersion\": {\n                \"DimensionType\": \"INCLUSIVE\",\n                \"Values\": [\"string\"]\n            },\n            \"Make\": {\n                \"DimensionType\": \"INCLUSIVE\",\n                \"Values\": [\"string\"]\n            },\n            \"Model\": {\n                \"DimensionType\": \"INCLUSIVE\",\n                \"Values\": [\"string\"]\n            }\n        },\n        \"Location\": {\n            \"Country\": {\n                \"DimensionType\": \"INCLUSIVE\",\n                \"Values\": [\"string\"]\n            },\n            \"GPSPoint\": {\n                \"Coordinates\": {\n                    \"Latitude\": 0,\n                    \"Longitude\": 0\n                },\n                \"RangeInKilometers\": 0\n            }\n        },\n        \"Behavior\": {\n            \"Recency\": {\n                \"RecencyType\": \"ACTIVE\",\n                \"Duration\": \"HR_24\"\n            }\n        },\n        \"Attributes\": {},\n        \"Metrics\": {},\n        \"UserAttributes\": {}\n    },\n    \"tags\": {\n        \"string\": \"string\"\n    }\n}"
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/segments/{{segmentId}}",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "segments",
+                "{{segmentId}}"
+              ]
+            },
+            "description": "Delete a specific segment."
+          },
+          "response": []
+        },
+        {
+          "name": "GetSegment",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+                "pm.variables.set(\"segmentId\", \"98765432109876543210987654321098\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "type": "text",
+              "value": "application/json"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/segments/{{segmentId}}",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "segments",
+                "{{segmentId}}"
+              ]
+            },
+            "description": "Get information about a specific segment."
+          },
+          "response": []
+        },
+        {
+          "name": "GetSegmentImportJobs",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+                "pm.variables.set(\"segmentId\", \"98765432109876543210987654321098\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "type": "text",
+              "value": "application/json"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/segments/{{segmentId}}/jobs/import",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "segments",
+                "{{segmentId}}",
+                "jobs",
+                "import"
+              ]
+            },
+            "description": "Get a list of import jobs for a specific segment."
+          },
+          "response": []
+        },
+        {
+          "name": "GetSegmentExportJobs",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+                "pm.variables.set(\"segmentId\", \"98765432109876543210987654321098\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "type": "text",
+              "value": "application/json"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/segments/{{segmentId}}/jobs/export",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "segments",
+                "{{segmentId}}",
+                "jobs",
+                "export"
+              ]
+            },
+            "description": "Get a list of export jobs for a specific segment."
+          },
+          "response": []
+        },
+        {
+          "name": "GetSegmentVersion",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+                "pm.variables.set(\"segmentId\", \"98765432109876543210987654321098\");",
+                "pm.variables.set(\"version\", \"1\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "type": "text",
+              "value": "application/json"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/segments/{{segmentId}}/versions/{{version}}",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "segments",
+                "{{segmentId}}",
+                "versions",
+                "{{version}}"
+              ]
+            },
+            "description": "Get information about a specific version of a segment."
+          },
+          "response": []
+        },
+        {
+          "name": "GetSegmentVersions",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+                "pm.variables.set(\"segmentId\", \"98765432109876543210987654321098\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "type": "text",
+              "value": "application/json"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/segments/{{segmentId}}/versions",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "segments",
+                "{{segmentId}}",
+                "versions"
+              ]
+            },
+            "description": "Provides a list of versions for a specific segment."
+          },
+          "response": []
+        },
+        {
+          "name": "GetSegments",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "value": "application/json",
+              "type": "text"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/segments",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "segments"
+              ]
+            },
+            "description": "Get information about all of the segments in an Amazon Pinpoint project."
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateSegment",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+                "pm.variables.set(\"segmentId\", \"98765432109876543210987654321098\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "request": {
+            "method": "PUT",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "type": "text",
+              "value": "application/json"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"Name\": \"string\",\n    \"SegmentGroups\": {\n        \"Include\": \"ALL|ANY|NONE\",\n        \"Groups\": [\n            {\n                \"Type\": \"ALL|ANY|NONE\",\n                \"Dimensions\": [\n                    {\n                        \"Demographic\": {\n                            \"Channel\": {\n                                \"DimensionType\": \"INCLUSIVE\",\n                                \"Values\": [\"string\"]\n                            },\n                            \"Platform\": {\n                                \"DimensionType\": \"INCLUSIVE\",\n                                \"Values\": [\"string\"]\n                            },\n                            \"DeviceType\": {\n                                \"DimensionType\": \"INCLUSIVE\",\n                                \"Values\": [\"string\"]\n                            },\n                            \"AppVersion\": {\n                                \"DimensionType\": \"INCLUSIVE\",\n                                \"Values\": [\"string\"]\n                            },\n                            \"Make\": {\n                                \"DimensionType\": \"INCLUSIVE\",\n                                \"Values\": [\"string\"]\n                            },\n                            \"Model\": {\n                                \"DimensionType\": \"INCLUSIVE\",\n                                \"Values\": [\"string\"]\n                            }\n                        },\n                        \"Location\": {\n                            \"Country\": {\n                                \"DimensionType\": \"INCLUSIVE\",\n                                \"Values\": [\"string\"]\n                            },\n                            \"GPSPoint\": {\n                                \"Coordinates\": {\n                                    \"Latitude\": 0,\n                                    \"Longitude\": 0\n                                },\n                                \"RangeInKilometers\": 0\n                            }\n                        },\n                        \"Behavior\": {\n                            \"Recency\": {\n                                \"RecencyType\": \"ACTIVE\",\n                                \"Duration\": \"HR_24\"\n                            }\n                        },\n                        \"Attributes\": {},\n                        \"Metrics\": {},\n                        \"UserAttributes\": {}\n                    }\n                ],\n                \"SourceType\": \"ALL|ANY\",\n                \"SourceSegments\": [\n                    {\n                        \"Id\": \"string\",\n                        \"Version\": 0\n                    }\n                ]\n            }\n        ]\n    },\n    \"Dimensions\": {\n        \"Demographic\": {\n            \"Channel\": {\n                \"DimensionType\": \"INCLUSIVE\",\n                \"Values\": [\"string\"]\n            },\n            \"Platform\": {\n                \"DimensionType\": \"INCLUSIVE\",\n                \"Values\": [\"string\"]\n            },\n            \"DeviceType\": {\n                \"DimensionType\": \"INCLUSIVE\",\n                \"Values\": [\"string\"]\n            },\n            \"AppVersion\": {\n                \"DimensionType\": \"INCLUSIVE\",\n                \"Values\": [\"string\"]\n            },\n            \"Make\": {\n                \"DimensionType\": \"INCLUSIVE\",\n                \"Values\": [\"string\"]\n            },\n            \"Model\": {\n                \"DimensionType\": \"INCLUSIVE\",\n                \"Values\": [\"string\"]\n            }\n        },\n        \"Location\": {\n            \"Country\": {\n                \"DimensionType\": \"INCLUSIVE\",\n                \"Values\": [\"string\"]\n            },\n            \"GPSPoint\": {\n                \"Coordinates\": {\n                    \"Latitude\": 0,\n                    \"Longitude\": 0\n                },\n                \"RangeInKilometers\": 0\n            }\n        },\n        \"Behavior\": {\n            \"Recency\": {\n                \"RecencyType\": \"ACTIVE\",\n                \"Duration\": \"HR_24\"\n            }\n        },\n        \"Attributes\": {},\n        \"Metrics\": {},\n        \"UserAttributes\": {}\n    },\n    \"tags\": {\n        \"string\": \"string\"\n    }\n}"
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/segments/{{segmentId}}",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "segments",
+                "{{segmentId}}"
+              ]
+            },
+            "description": "Modify the attributes of an existing segment."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Settings",
+      "item": [{
+          "name": "GetApplicationSettings",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "type": "text",
+              "value": "application/json"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/settings",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "settings"
+              ]
+            },
+            "description": "Get information about the settings for a specific Amazon Pinpoint app."
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateApplicationSettings",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "request": {
+            "method": "PUT",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "type": "text",
+              "value": "application/json"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"QuietTime\": {\n    \"Start\": \"string\",\n    \"End\": \"string\"\n  },\n  \"Limits\": {\n    \"Daily\": 0,\n    \"Total\": 0,\n    \"MessagesPerSecond\": 0,\n    \"MaximumDuration\": 0\n  },\n  \"CampaignHook\": {\n    \"LambdaFunctionName\": \"string\",\n    \"WebUrl\": \"string\",\n    \"Mode\": \"DELIVERY\"\n  }\n}"
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/settings",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "settings"
+              ]
+            },
+            "description": "Update the settings for a specific Amazon Pinpoint app."
+          },
+          "response": []
+        }
+      ],
+      "description": "Manage the default settings for an Amazon Pinpoint project."
+    },
+    {
+      "name": "Tags",
+      "item": [{
+          "name": "ListTagsForResource",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "let region = pm.variables.get(\"region\");",
+                "let accountId = pm.variables.get(\"accountId\");",
+                "let projectId = \"12345678901234567890123456789012\";",
+                "",
+                "pm.variables.set(\"resourceArn\",\"arn%3Aaws%3Amobiletargeting%3A\" + region + \"%3A\" + accountId + \"%3Aapps%2F\" + projectId);"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "value": "application/json",
+              "type": "text"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/tags/{{resourceArn}}",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "tags",
+                "{{resourceArn}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TagResource",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "let region = pm.variables.get(\"region\");",
+                "let accountId = pm.variables.get(\"accountId\");",
+                "let projectId = \"12345678901234567890123456789012\";",
+                "",
+                "pm.variables.set(\"resourceArn\",\"arn%3Aaws%3Amobiletargeting%3A\" + region + \"%3A\" + accountId + \"%3Aapps%2F\" + projectId);"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "request": {
+            "method": "POST",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "type": "text",
+              "value": "application/json"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"tags\": {\n        \"string\": \"string\",\n        \"string\": \"string\"\n    }\n}"
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/tags/{{resourceArn}}",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "tags",
+                "{{resourceArn}}"
+              ]
+            },
+            "description": "Add tags to existing Amazon Pinpoint resources, such as projects, campaigns, or segments."
+          },
+          "response": []
+        },
+        {
+          "name": "UntagResource",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "let region = pm.variables.get(\"region\");",
+                "let accountId = pm.variables.get(\"accountId\");",
+                "let projectId = \"12345678901234567890123456789012\";",
+                "",
+                "pm.variables.set(\"resourceArn\",\"arn%3Aaws%3Amobiletargeting%3A\" + region + \"%3A\" + accountId + \"%3Aapps%2F\" + projectId);"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "request": {
+            "method": "DELETE",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "type": "text",
+              "value": "application/json"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"tags\": {\n        \"string\": \"string\",\n        \"string\": \"string\"\n    }\n}"
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/tags/{{resourceArn}}?tagKeys=tag1&tagKeys=tag2",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "tags",
+                "{{resourceArn}}"
+              ],
+              "query": [{
+                  "key": "tagKeys",
+                  "value": "tag1"
+                },
+                {
+                  "key": "tagKeys",
+                  "value": "tag2"
+                }
+              ]
+            },
+            "description": "Remove tags from existing Amazon Pinpoint resources, such as projects, campaigns, or segments."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [{
+          "name": "DeleteUserEndpoints",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+                "pm.variables.set(\"userId\", \"12345\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "request": {
+            "method": "DELETE",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "type": "text",
+              "value": "application/json"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/users/{{userd}}",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "users",
+                "{{userd}}"
+              ]
+            },
+            "description": "Delete all of the endpoints that are associated with a specific user ID."
+          },
+          "response": []
+        },
+        {
+          "name": "GetUserEndpoints",
+          "event": [{
+            "listen": "prerequest",
+            "script": {
+              "exec": [
+                "pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+                "pm.variables.set(\"userId\", \"12345\");"
+              ],
+              "type": "text/javascript"
+            }
+          }],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [{
+              "key": "Content-Type",
+              "name": "Content-Type",
+              "type": "text",
+              "value": "application/json"
+            }],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://{{endpoint}}/v1/apps/{{projectId}}/users/{{userd}}",
+              "protocol": "https",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "v1",
+                "apps",
+                "{{projectId}}",
+                "users",
+                "{{userd}}"
+              ]
+            },
+            "description": "Get information about all of the endpoints that are associated with a specific user ID."
+          },
+          "response": []
+        }
+      ],
+      "event": [{
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "awsv4",
+    "awsv4": [{
+        "key": "service",
+        "value": "mobiletargeting",
+        "type": "string"
+      },
+      {
+        "key": "region",
+        "value": "{{region}}",
+        "type": "string"
+      },
+      {
+        "key": "secretKey",
+        "value": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+        "type": "string"
+      },
+      {
+        "key": "accessKey",
+        "value": "AKIAIOSFODNN7EXAMPLE",
+        "type": "string"
+      }
+    ]
+  }
+}

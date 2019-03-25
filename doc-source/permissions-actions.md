@@ -616,14 +616,14 @@ Remove one or more tags from a project, campaign, or segment\.
 
 The following permissions are related to managing users\. In Amazon Pinpoint, *users* correspond to individuals who receive messages from you\. A single user might be associated with more than one endpoint\.
 
-**`mobiletargeting:DeleteUser`**  
-Delete all the endpoints that are associated with a user ID\.  
+**`mobiletargeting:DeleteUserEndpoints`**  
+Delete all of the endpoints that are associated with a user ID\.  
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-user.html#rest-api-user-methods-delete](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-user.html#rest-api-user-methods-delete)
 + Method – DELETE
 + Resource ARN – `arn:aws:mobiletargeting:region:account-id:apps/project-id/users/user-id`
 
-**`mobiletargeting:GetUser`**  
-Retrieve information about all the endpoints that are associated with a user ID\.  
+**`mobiletargeting:GetUserEndpoints`**  
+Retrieve information about all of the endpoints that are associated with a user ID\.  
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-user.html#rest-api-user-methods-get](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-user.html#rest-api-user-methods-get)
 + Method – GET
 + Resource ARN – `arn:aws:mobiletargeting:region:account-id:apps/project-id/users/user-id`

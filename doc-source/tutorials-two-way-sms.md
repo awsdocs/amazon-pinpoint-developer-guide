@@ -26,7 +26,7 @@ This tutorial is intended for developer and system implementer audiences\. You d
 **Features Used**  
 This tutorial includes usage examples for the following Amazon Pinpoint features:
 + Sending transactional SMS messages
-+ Obtaining information about phone numbers by using phone number validation\.
++ Obtaining information about phone numbers by using phone number validation
 + Receiving incoming SMS messages by using two\-way SMS messaging
 + Creating dynamic segments
 + Creating campaigns
