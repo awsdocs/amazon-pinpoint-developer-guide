@@ -1,6 +1,5 @@
 {
 	"info": {
-		"_postman_id": "450ddded-48de-4fbb-af07-266fdd0eafca",
 		"name": "Amazon Pinpoint",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -14,7 +13,12 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "0bcd0cd3-f054-4359-80c1-406c1a50fe9d",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
 								],
 								"type": "text/javascript"
@@ -56,6 +60,19 @@
 				},
 				{
 					"name": "GetApps",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "715d602d-84d9-4277-96bb-a07811a14c22",
+								"exec": [
+									"// Don't change this variable",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -90,6 +107,19 @@
 				},
 				{
 					"name": "CreateApp",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "d9a85274-02b9-46a6-af41-821c65380a18",
+								"exec": [
+									"// Don't change this variable",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -124,7 +154,12 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "7a668198-2470-496e-89fe-e094912232e7",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
 								],
 								"type": "text/javascript"
@@ -193,7 +228,12 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "18b911e7-f04a-415c-908b-368d09384a4a",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
 								],
 								"type": "text/javascript"
@@ -237,8 +277,15 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "1875370f-4e61-41f6-bf71-80a0dc3915f6",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+									"",
+									"// Change the value of this variable to your campaign ID.",
 									"pm.variables.set(\"campaignId\", \"98765432109876543210987654321098\");"
 								],
 								"type": "text/javascript"
@@ -283,8 +330,15 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "ad0a317a-5ac5-4f93-bd71-6536c658e867",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+									"",
+									"// Change the value of this variable to your campaign ID.",
 									"pm.variables.set(\"campaignId\", \"98765432109876543210987654321098\");"
 								],
 								"type": "text/javascript"
@@ -332,8 +386,15 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "e94bbfbf-999c-498c-a6cf-10e0c3ec7e3e",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+									"",
+									"// Change the value of this variable to your campaign ID.",
 									"pm.variables.set(\"campaignId\", \"98765432109876543210987654321098\");"
 								],
 								"type": "text/javascript"
@@ -382,7 +443,12 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "143192fa-4d6c-4f28-a18f-0c1cddfc0cf9",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
 								],
 								"type": "text/javascript"
@@ -429,9 +495,18 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "70fa5851-43d6-4875-9814-e4c7a2a671d3",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+									"",
+									"// Change the value of this variable to your campaign ID.",
 									"pm.variables.set(\"campaignId\", \"98765432109876543210987654321098\");",
+									"",
+									"// Change the value of this variable to the campaign version number that you want to retrieve.",
 									"pm.variables.set(\"version\", \"1\");"
 								],
 								"type": "text/javascript"
@@ -481,8 +556,15 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "56138f90-19a0-41e4-b769-071d48f9ec5a",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+									"",
+									"// Change the value of this variable to your campaign ID.",
 									"pm.variables.set(\"campaignId\", \"98765432109876543210987654321098\");"
 								],
 								"type": "text/javascript"
@@ -531,8 +613,15 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "0ca04d42-dc46-4205-b17b-29266fbb3030",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+									"",
+									"// Change the value of this variable to your campaign ID.",
 									"pm.variables.set(\"campaignId\", \"98765432109876543210987654321098\");"
 								],
 								"type": "text/javascript"
@@ -2004,8 +2093,15 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "8fb6cafc-16ef-49f4-adbf-45b000617bc7",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+									"",
+									"// Change the value of this variable to your endpoint ID.",
 									"pm.variables.set(\"endpointId\", \"12345\");"
 								],
 								"type": "text/javascript"
@@ -2050,8 +2146,15 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "bd7a3d37-bf4d-4dcf-8842-9e6fd225a347",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+									"",
+									"// Change the value of this variable to your endpoint ID.",
 									"pm.variables.set(\"endpointId\", \"12345\");"
 								],
 								"type": "text/javascript"
@@ -2099,8 +2202,15 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "21554782-e1b5-45a6-8f31-7da968db2f02",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+									"",
+									"// Change the value of this variable to your endpoint ID.",
 									"pm.variables.set(\"endpointId\", \"12345\");"
 								],
 								"type": "text/javascript"
@@ -2145,7 +2255,12 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "d8cf8ce1-d906-4025-baeb-5af369d494f5",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
 								],
 								"type": "text/javascript"
@@ -2194,7 +2309,12 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "a076b838-fdd9-4f3a-9e24-466413d8cb56",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
 								],
 								"type": "text/javascript"
@@ -2243,7 +2363,12 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "ddba9c38-8b21-410c-b2fb-3445e0152f2b",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
 								],
 								"type": "text/javascript"
@@ -2287,7 +2412,12 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "377c0490-8109-46f3-8654-9c4e9a2edcc3",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
 								],
 								"type": "text/javascript"
@@ -2334,7 +2464,12 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "153adc0b-a3b7-419a-91c4-ae9ef446efc2",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
 								],
 								"type": "text/javascript"
@@ -2383,7 +2518,12 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "59f00933-a486-4707-b45a-4200dfa26ba1",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
 								],
 								"type": "text/javascript"
@@ -2428,8 +2568,15 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "89015952-2e26-46c9-a694-2852d4dcc441",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+									"",
+									"// Change the value of this variable to your export job ID.",
 									"pm.variables.set(\"exportJobId\", \"12345\");"
 								],
 								"type": "text/javascript"
@@ -2478,7 +2625,12 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "37068653-c2ce-47e9-8802-c93c6cbcff59",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
 								],
 								"type": "text/javascript"
@@ -2531,7 +2683,12 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "d55c34ac-2b3e-4055-96a5-ec7380e78ced",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
 								],
 								"type": "text/javascript"
@@ -2579,8 +2736,15 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "91156a7f-1632-40f4-952b-1383df272a2b",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+									"",
+									"// Change the value of this variable to your import job ID.",
 									"pm.variables.set(\"importJobId\", \"12345\");"
 								],
 								"type": "text/javascript"
@@ -2629,7 +2793,12 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "f9477512-6ccc-421f-af87-2a2202237ce8",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
 								],
 								"type": "text/javascript"
@@ -2681,6 +2850,10 @@
 							"script": {
 								"id": "765f1a9d-1642-41d8-a370-e49363e7e20b",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
 								],
 								"type": "text/javascript"
@@ -2726,6 +2899,10 @@
 							"script": {
 								"id": "6a25adb7-b560-48a8-b850-3fe72ce363a7",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
 								],
 								"type": "text/javascript"
@@ -2770,6 +2947,19 @@
 			"item": [
 				{
 					"name": "PhoneNumberValidate",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "fdac008c-2d5b-4849-a42e-6ccd7653a03d",
+								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -2782,7 +2972,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"PhoneNumber\": \"12065550199\",\n  \"IsoCountryCode\": \"US\"\n}"
+							"raw": "{\n  \"PhoneNumber\": \"+12065550199\",\n  \"IsoCountryCode\": \"US\"\n}"
 						},
 						"url": {
 							"raw": "https://{{endpoint}}/v1/phone/number/validate",
@@ -2832,7 +3022,12 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "8aa1f022-6cba-4837-998a-2d9e9d75eca5",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
 								],
 								"type": "text/javascript"
@@ -2878,7 +3073,13 @@
 							"script": {
 								"id": "ca1e43dd-ad9c-4b4c-8c53-cd64ae7cb43f",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+									"",
+									"// Change the value of this variable to your segment ID.",
 									"pm.variables.set(\"segmentId\", \"98765432109876543210987654321098\");"
 								],
 								"type": "text/javascript"
@@ -2923,8 +3124,15 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "a0de80bf-43eb-4662-b978-dc7ca9ab48bc",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+									"",
+									"// Change the value of this variable to your segment ID.",
 									"pm.variables.set(\"segmentId\", \"98765432109876543210987654321098\");"
 								],
 								"type": "text/javascript"
@@ -2972,8 +3180,15 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "e0e1d653-8467-43ca-8193-1fc884d1c0f5",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+									"",
+									"// Change the value of this variable to your segment ID.",
 									"pm.variables.set(\"segmentId\", \"98765432109876543210987654321098\");"
 								],
 								"type": "text/javascript"
@@ -3023,8 +3238,15 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "cbc55e13-9fab-4723-956c-ab01b3c0829e",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+									"",
+									"// Change the value of this variable to your segment ID.",
 									"pm.variables.set(\"segmentId\", \"98765432109876543210987654321098\");"
 								],
 								"type": "text/javascript"
@@ -3074,9 +3296,18 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "3eef6d07-e65a-4d28-9dd0-2fcec20e5946",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+									"",
+									"// Change the value of this variable to your segment ID.",
 									"pm.variables.set(\"segmentId\", \"98765432109876543210987654321098\");",
+									"",
+									"// Change the value of this variable to the segment version that you want to retrieve.",
 									"pm.variables.set(\"version\", \"1\");"
 								],
 								"type": "text/javascript"
@@ -3126,8 +3357,15 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "71b8031d-7233-4156-baf1-d3d890e769ac",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+									"",
+									"// Change the value of this variable to your segment ID.",
 									"pm.variables.set(\"segmentId\", \"98765432109876543210987654321098\");"
 								],
 								"type": "text/javascript"
@@ -3176,7 +3414,12 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "86f46fc9-6cc9-47bd-bd1c-9e6c9d5c93a0",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
 								],
 								"type": "text/javascript"
@@ -3223,8 +3466,15 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "a5ecdbcf-e73a-43b8-92f4-be5c642a753e",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+									"",
+									"// Change the value of this variable to your segment ID.",
 									"pm.variables.set(\"segmentId\", \"98765432109876543210987654321098\");"
 								],
 								"type": "text/javascript"
@@ -3274,7 +3524,12 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "4ea9191f-1c7d-4667-8736-3c180d2fc570",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
 								],
 								"type": "text/javascript"
@@ -3321,7 +3576,12 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "0db32376-ac8a-4871-8113-b2a153997850",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
 								],
 								"type": "text/javascript"
@@ -3371,10 +3631,16 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "a992d0cd-10c9-4f7f-a6de-75c67c56ef6b",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
+									"let projectId = \"12345678901234567890123456789012\";",
+									"",
 									"let region = pm.variables.get(\"region\");",
 									"let accountId = pm.variables.get(\"accountId\");",
-									"let projectId = \"12345678901234567890123456789012\";",
 									"",
 									"pm.variables.set(\"resourceArn\",\"arn%3Aaws%3Amobiletargeting%3A\" + region + \"%3A\" + accountId + \"%3Aapps%2F\" + projectId);"
 								],
@@ -3420,10 +3686,16 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "4c8999f9-ab37-479f-842c-e6bbcf9eb127",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
+									"let projectId = \"12345678901234567890123456789012\";",
+									"",
 									"let region = pm.variables.get(\"region\");",
 									"let accountId = pm.variables.get(\"accountId\");",
-									"let projectId = \"12345678901234567890123456789012\";",
 									"",
 									"pm.variables.set(\"resourceArn\",\"arn%3Aaws%3Amobiletargeting%3A\" + region + \"%3A\" + accountId + \"%3Aapps%2F\" + projectId);"
 								],
@@ -3467,10 +3739,16 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "491e5d09-9f1c-4930-a8c4-d22a4b81bd53",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
+									"let projectId = \"12345678901234567890123456789012\";",
+									"",
 									"let region = pm.variables.get(\"region\");",
 									"let accountId = pm.variables.get(\"accountId\");",
-									"let projectId = \"12345678901234567890123456789012\";",
 									"",
 									"pm.variables.set(\"resourceArn\",\"arn%3Aaws%3Amobiletargeting%3A\" + region + \"%3A\" + accountId + \"%3Aapps%2F\" + projectId);"
 								],
@@ -3529,8 +3807,15 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "cb936bde-cd65-4fea-b73a-743842448275",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+									"",
+									"// Change the value of this variable to the appropriate user ID.",
 									"pm.variables.set(\"userId\", \"12345\");"
 								],
 								"type": "text/javascript"
@@ -3575,8 +3860,15 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "cdfba728-c870-4be7-9e24-7cbddaf9f1cc",
 								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
 									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");",
+									"",
+									"// Change the value of this variable to the appropriate user ID.",
 									"pm.variables.set(\"userId\", \"12345\");"
 								],
 								"type": "text/javascript"
@@ -3639,11 +3931,491 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "SMS & Voice API",
+			"item": [
+				{
+					"name": "SMS & Voice: Configuration Sets",
+					"item": [
+						{
+							"name": "ListConfigurationSets",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "fb764413-2de9-4c4c-9009-86ac5e0ecfec",
+										"exec": [
+											"// Don't change this variable",
+											"pm.variables.set(\"serviceName\", \"sms-voice\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://sms-voice.{{endpoint}}/v1/sms-voice/configuration-sets",
+									"protocol": "https",
+									"host": [
+										"sms-voice",
+										"{{endpoint}}"
+									],
+									"path": [
+										"v1",
+										"sms-voice",
+										"configuration-sets"
+									]
+								},
+								"description": "Return a list of configuration sets. This operation only returns the configuration sets that are associated with your account in the current AWS Region."
+							},
+							"response": []
+						},
+						{
+							"name": "CreateConfigurationSet",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "fb764413-2de9-4c4c-9009-86ac5e0ecfec",
+										"exec": [
+											"// Don't change this variable",
+											"pm.variables.set(\"serviceName\", \"sms-voice\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"ConfigurationSetName\": \"string\"\n}"
+								},
+								"url": {
+									"raw": "https://sms-voice.{{endpoint}}/v1/sms-voice/configuration-sets",
+									"protocol": "https",
+									"host": [
+										"sms-voice",
+										"{{endpoint}}"
+									],
+									"path": [
+										"v1",
+										"sms-voice",
+										"configuration-sets"
+									]
+								},
+								"description": "Create a new configuration set. After you create the configuration set, you can add one or more event destinations to it."
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteConfigurationSet",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "fb764413-2de9-4c4c-9009-86ac5e0ecfec",
+										"exec": [
+											"// Don't change this variable",
+											"pm.variables.set(\"serviceName\", \"sms-voice\");",
+											"",
+											"// Replace the value of this variable with the name of the configuration set that you want to delete.",
+											"pm.variables.set(\"configurationSetName\", \"MyConfigurationSet\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"ConfigurationSetName\": \"string\"\n}"
+								},
+								"url": {
+									"raw": "https://sms-voice.{{endpoint}}/v1/sms-voice/configuration-sets/{{configurationSetName}}",
+									"protocol": "https",
+									"host": [
+										"sms-voice",
+										"{{endpoint}}"
+									],
+									"path": [
+										"v1",
+										"sms-voice",
+										"configuration-sets",
+										"{{configurationSetName}}"
+									]
+								},
+								"description": "Deletes an existing configuration set."
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "25f0586b-e742-47c0-a1d5-3b61d30fc473",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "459ed975-b0fb-41da-986b-39c38cb23b4d",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "SMS & Voice: Event Destinations",
+					"item": [
+						{
+							"name": "GetConfigurationSetEventDestinations",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "03d7c96c-3aa5-4867-8d4a-88ebc780f935",
+										"exec": [
+											"// Don't change this variable",
+											"pm.variables.set(\"serviceName\", \"sms-voice\");",
+											"",
+											"// Replace the value of this variable with the name of the configuration set that you want to delete.",
+											"pm.variables.set(\"configurationSetName\", \"MyConfigurationSet\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://sms-voice.{{endpoint}}/v1/sms-voice/configuration-sets/{{configurationSetName}}/event-destinations",
+									"protocol": "https",
+									"host": [
+										"sms-voice",
+										"{{endpoint}}"
+									],
+									"path": [
+										"v1",
+										"sms-voice",
+										"configuration-sets",
+										"{{configurationSetName}}",
+										"event-destinations"
+									]
+								},
+								"description": "Obtain information about an event destination, including the types of events it reports, the Amazon Resource Name (ARN) of the destination, and the name of the event destination."
+							},
+							"response": []
+						},
+						{
+							"name": "CreateConfigurationSetEventDestination",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "03d7c96c-3aa5-4867-8d4a-88ebc780f935",
+										"exec": [
+											"// Don't change this variable",
+											"pm.variables.set(\"serviceName\", \"sms-voice\");",
+											"",
+											"// Replace the value of this variable with the name of the configuration set that you want to delete.",
+											"pm.variables.set(\"configurationSetName\", \"MyConfigurationSet\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"EventDestinationName\": \"string\",\n  \"EventDestination\": {\n    \"SnsDestination\": {\n      \"TopicArn\": \"string\"\n    },\n    \"Enabled\": true|false,\n    \"MatchingEventTypes\": [\n        \"INITIATED_CALL\",\n        \"RINGING\",\n        \"ANSWERED\",\n        \"COMPLETED_CALL\",\n        \"BUSY\",\n        \"FAILED\",\n        \"NO_ANSWER\"\n    ],\n    \"CloudWatchLogsDestination\": {\n      \"IamRoleArn\": \"string\",\n      \"LogGroupArn\": \"string\"\n    },\n    \"KinesisFirehoseDestination\": {\n      \"DeliveryStreamArn\": \"string\",\n      \"IamRoleArn\": \"string\"\n    }\n  }\n}"
+								},
+								"url": {
+									"raw": "https://sms-voice.{{endpoint}}/v1/sms-voice/configuration-sets/{{configurationSetName}}/event-destinations",
+									"protocol": "https",
+									"host": [
+										"sms-voice",
+										"{{endpoint}}"
+									],
+									"path": [
+										"v1",
+										"sms-voice",
+										"configuration-sets",
+										"{{configurationSetName}}",
+										"event-destinations"
+									]
+								},
+								"description": "Create a new event destination in a configuration set."
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateConfigurationSetEventDestination",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "03d7c96c-3aa5-4867-8d4a-88ebc780f935",
+										"exec": [
+											"// Don't change this variable",
+											"pm.variables.set(\"serviceName\", \"sms-voice\");",
+											"",
+											"// Replace the value of this variable with the name of the configuration set that contains the event destination.",
+											"pm.variables.set(\"configurationSetName\", \"MyConfigurationSet\");",
+											"",
+											"// Replace the value of this variable with the name of the event destination that you want to update.",
+											"pm.variables.set(\"eventDestinationName\", \"MyEventDestination\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"EventDestination\": {\n    \"SnsDestination\": {\n      \"TopicArn\": \"string\"\n    },\n    \"Enabled\": true|false,\n    \"MatchingEventTypes\": [\n        \"INITIATED_CALL\",\n        \"RINGING\",\n        \"ANSWERED\",\n        \"COMPLETED_CALL\",\n        \"BUSY\",\n        \"FAILED\",\n        \"NO_ANSWER\"\n    ],\n    \"CloudWatchLogsDestination\": {\n      \"IamRoleArn\": \"string\",\n      \"LogGroupArn\": \"string\"\n    },\n    \"KinesisFirehoseDestination\": {\n      \"DeliveryStreamArn\": \"string\",\n      \"IamRoleArn\": \"string\"\n    }\n  }\n}"
+								},
+								"url": {
+									"raw": "https://sms-voice.{{endpoint}}/v1/sms-voice/configuration-sets/{{configurationSetName}}/event-destinations/{{eventDestinationName}}",
+									"protocol": "https",
+									"host": [
+										"sms-voice",
+										"{{endpoint}}"
+									],
+									"path": [
+										"v1",
+										"sms-voice",
+										"configuration-sets",
+										"{{configurationSetName}}",
+										"event-destinations",
+										"{{eventDestinationName}}"
+									]
+								},
+								"description": "Updates an event destination in a configuration set. An event destination is a location that you publish information about your voice calls to. For example, you can log an event to an Amazon CloudWatch destination when a call fails."
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteConfigurationSetEventDestination",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "03d7c96c-3aa5-4867-8d4a-88ebc780f935",
+										"exec": [
+											"// Don't change this variable",
+											"pm.variables.set(\"serviceName\", \"sms-voice\");",
+											"",
+											"// Replace the value of this variable with the name of the configuration set that contains the event destination.",
+											"pm.variables.set(\"configurationSetName\", \"MyConfigurationSet\");",
+											"",
+											"// Replace the value of this variable with the name of the event destination that you want to delete.",
+											"pm.variables.set(\"eventDestinationName\", \"MyEventDestination\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"EventDestination\": {\n    \"SnsDestination\": {\n      \"TopicArn\": \"string\"\n    },\n    \"Enabled\": true|false,\n    \"MatchingEventTypes\": [\n        \"INITIATED_CALL\",\n        \"RINGING\",\n        \"ANSWERED\",\n        \"COMPLETED_CALL\",\n        \"BUSY\",\n        \"FAILED\",\n        \"NO_ANSWER\"\n    ],\n    \"CloudWatchLogsDestination\": {\n      \"IamRoleArn\": \"string\",\n      \"LogGroupArn\": \"string\"\n    },\n    \"KinesisFirehoseDestination\": {\n      \"DeliveryStreamArn\": \"string\",\n      \"IamRoleArn\": \"string\"\n    }\n  }\n}"
+								},
+								"url": {
+									"raw": "https://sms-voice.{{endpoint}}/v1/sms-voice/configuration-sets/{{configurationSetName}}/event-destinations/{{eventDestinationName}}",
+									"protocol": "https",
+									"host": [
+										"sms-voice",
+										"{{endpoint}}"
+									],
+									"path": [
+										"v1",
+										"sms-voice",
+										"configuration-sets",
+										"{{configurationSetName}}",
+										"event-destinations",
+										"{{eventDestinationName}}"
+									]
+								},
+								"description": "Deletes an event destination in a configuration set."
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "SMS & Voice: Voice Messages",
+					"item": [
+						{
+							"name": "SendVoiceMessage",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "fb764413-2de9-4c4c-9009-86ac5e0ecfec",
+										"exec": [
+											"// Don't change this variable",
+											"pm.variables.set(\"serviceName\", \"sms-voice\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"Content\": {\n    \"CallInstructionsMessage\": {\n      \"Text\": \"string\"\n    },\n    \"PlainTextMessage\": {\n      \"LanguageCode\": \"string\",\n      \"Text\": \"string\",\n      \"VoiceId\": \"string\"\n    },\n    \"SSMLMessage\": {\n      \"LanguageCode\": \"string\",\n      \"Text\": \"string\",\n      \"VoiceId\": \"string\"\n    }\n  },\n  \"OriginationPhoneNumber\": \"+12065550199\",\n  \"ConfigurationSetName\": \"string\",\n  \"DestinationPhoneNumber\": \"+14255550142\",\n  \"CallerId\": \"string\"\n}"
+								},
+								"url": {
+									"raw": "https://sms-voice.{{endpoint}}/v1/sms-voice/voice/message",
+									"protocol": "https",
+									"host": [
+										"sms-voice",
+										"{{endpoint}}"
+									],
+									"path": [
+										"v1",
+										"sms-voice",
+										"voice",
+										"message"
+									]
+								},
+								"description": "Create voice messages from a text script, and then deliver them to your customers over the phone."
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			],
+			"description": "Operations in the Amazon Pinpoint SMS and Voice API. Use these resources to configure and send voice messages.\n\nFor more information, see https://docs.aws.amazon.com/pinpoint-sms-voice/latest/APIReference/welcome.html.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "6ba1c40b-5ec7-42d6-95b7-5d6fb77834b8",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "aef8297c-a51d-43cb-95a3-a7c75536c267",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
 		}
 	],
 	"auth": {
 		"type": "awsv4",
 		"awsv4": [
+			{
+				"key": "service",
+				"value": "{{serviceName}}",
+				"type": "string"
+			},
 			{
 				"key": "secretKey",
 				"value": "{{secretAccessKey}}",
@@ -3652,11 +4424,6 @@
 			{
 				"key": "accessKey",
 				"value": "{{accessKey}}",
-				"type": "string"
-			},
-			{
-				"key": "service",
-				"value": "mobiletargeting",
 				"type": "string"
 			},
 			{
