@@ -1,11 +1,12 @@
 # Document History for Amazon Pinpoint<a name="doc-history"></a>
 
 The following table describes the documentation for this release of Amazon Pinpoint\.
-+ **Latest documentation update:** February 27, 2019
++ **Latest documentation update:** April 8, 2019
 
 
 | Change | Description | Date | 
 | --- | --- | --- | 
+| Using Postman with Amazon Pinpoint | Added a [tutorial](tutorials-using-postman.md) that describes how to use Postman to interact with the Amazon Pinpoint API\. | April 8, 2019 | 
 | Setting Up an SMS Registration System | Added a [Tutorials section](tutorials.md), and added a tutorial that describes how to create [a solution that handles SMS user registration](tutorials-two-way-sms.md)\. | February 27, 2019 | 
 | Tagging support | Added information about [tagging Amazon Pinpoint resources](tagging-resources.md)\. | February 27, 2019 | 
 | Code examples | Added [code examples](send-messages.md) in several programming languages that show you how to send [email](send-messages-email.md), [SMS](send-messages-sms.md), and [voice](send-messages-voice.md) messages programmatically\. | February 6, 2019 | 

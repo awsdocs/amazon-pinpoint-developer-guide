@@ -9,7 +9,7 @@ Before you begin with this tutorial, you should review the [prerequisites](tutor
 
 ## Step 1\.1: Create an Amazon Pinpoint Project<a name="tutorials-two-way-sms-part-1-create-project"></a>
 
-To get started, you need to create an Amazon Pinpoint project\. In Amazon Pinpoint, a project consists of segments, campaigns, configurations, and data that are united by a common purpose\. For example, you could use a project to contain all of the content that's related to a particular app, or to a specific brand or marketing initiative\. When you add customer information to Amazon Pinpoint, that information is associated with a project\.
+To get started, you need to create an Amazon Pinpoint project\. In Amazon Pinpoint, a *project* consists of segments, campaigns, configurations, and data that are united by a common purpose\. For example, you could use a project to contain all of the content that's related to a particular app, or to a specific brand or marketing initiative\. When you add customer information to Amazon Pinpoint, that information is associated with a project\.
 
 The steps involved in creating a new project differ depending on whether you've created a project in Amazon Pinpoint previously\.
 

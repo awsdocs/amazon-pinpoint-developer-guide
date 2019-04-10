@@ -16,6 +16,11 @@ Amazon's trademarks and trade dress may not be used in
 ## Contents
 + [What Is Amazon Pinpoint?](welcome.md)
 + [Tutorials](tutorials.md)
+   + [Tutorial: Using Postman with the Amazon Pinpoint API](tutorials-using-postman.md)
+      + [Prerequisites](tutorials-using-postman-prerequisites.md)
+      + [Step 1: Create IAM Policies and Roles](tutorials-using-postman-iam-user.md)
+      + [Step 2: Set Up Postman](tutorials-using-postman-configuration.md)
+      + [Step 3: Send Additional Requests](tutorials-using-postman-sample-requests.md)
    + [Tutorial: Setting Up an Email Preference Management System](tutorials-email-prefs.md)
       + [Prerequisites](tutorials-email-prefs-prereqs.md)
       + [Step 1: Set Up Amazon Pinpoint](tutorials-email-prefs-part-1.md)
