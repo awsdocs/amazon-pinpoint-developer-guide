@@ -1,10 +1,10 @@
 # Step 1: Create IAM Policies and Roles<a name="tutorials-using-postman-iam-user"></a>
 
-The first step in using Postman to test the Amazon Pinpoint API is to create an IAM user\. In this section, you create a policy that provides users with the ability to interact with all Amazon Pinpoint resources\. You then create a user account and attach the policy directly to the user account\.
+The first step in using Postman to test the Amazon Pinpoint API is to create an IAM user\. In this section, you create a policy that provides users with the ability to interact with all the Amazon Pinpoint resources\. You then create a user account and attach the policy directly to the user account\.
 
 ## Step 1\.1: Create an IAM Policy<a name="tutorials-using-postman-iam-user-create-policy"></a>
 
-This section shows you how to create an IAM policy\. Users and roles that use this policy are able to interact with all of the resources in the Amazon Pinpoint API\. It also provides access to resources that are associated with the Amazon Pinpoint Email API and the Amazon Pinpoint SMS and Voice API\.
+This section shows you how to create an IAM policy\. Users and roles that use this policy are able to interact with all of the resources in the Amazon Pinpoint API\. It also provides access to resources that are associated with the Amazon Pinpoint Email API, as well as the Amazon Pinpoint SMS and Voice API\.
 
 **To create the policy**
 
@@ -71,7 +71,7 @@ This section shows you how to create an IAM policy\. Users and roles that use th
    In the preceding example, replace *123456789012* with the unique ID for your AWS account\.
 **Note**  
 To protect the data in your Amazon Pinpoint account, this policy only includes permissions that allow you to read, create, and modify resources\. It doesn't include permissions that allow you to delete resources\. You can modify this policy by using the visual editor in the IAM console\. For more information, see [Managing IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage.html) in the IAM User Guide\. You can also use the [CreatePolicyVersion](https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreatePolicyVersion.html) operation in the IAM API to update this policy\.  
-Also note that this policy includes permissions that allow you to interact with the `ses` and `sms-voice` services, in addition the `mobiletargeting` service\. The `ses` and `sms-voice` permissions allow you to interact with the Amazon Pinpoint Email API and Amazon Pinpoint SMS and Voice API, respectively\. The `mobiletargeting` permissions allow you to interact with the Amazon Pinpoint API\.
+Also note that this policy includes permissions that allow you to interact with the `ses` and `sms-voice` services, in addition to the `mobiletargeting` service\. The `ses` and `sms-voice` permissions allow you to interact with the Amazon Pinpoint Email API and Amazon Pinpoint SMS and Voice API, respectively\. The `mobiletargeting` permissions allow you to interact with the Amazon Pinpoint API\.
 
 1. Choose **Review policy**\.
 
@@ -87,7 +87,7 @@ After you create the policy, you can create an IAM user and attach the policy to
 
 1. In the IAM console, in the navigation pane, choose **Users**, and then choose **Add user**\.
 
-1. Under **Set user details**, for **User name**, type a name that identifies the user account, such as PostmanUser\.
+1. Under **Set user details**, for **User name**, enter a name that identifies the user account, such as PostmanUser\.
 
 1. Under **Select AWS access type**, for **Access type**, choose **Programmatic access**\.
 
@@ -95,7 +95,7 @@ After you create the policy, you can create an IAM user and attach the policy to
 
    Choose **Next: Permissions**\.
 
-1. Under **Set permissions**, choose **Attach existing policies directly**\. In the list of policies, choose the **PostmanAccessPolicy** that you created in [step 1\.1](#tutorials-using-postman-iam-user-create-policy)\.
+1. Under **Set permissions**, choose **Attach existing policies directly**\. In the list of policies, choose the **PostmanAccessPolicy** that you created in [Step 1\.1](#tutorials-using-postman-iam-user-create-policy)\.
 
    Choose **Next: Tags**\.
 

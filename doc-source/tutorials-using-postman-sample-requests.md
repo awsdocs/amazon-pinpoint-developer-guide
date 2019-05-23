@@ -10,7 +10,7 @@ When you complete the procedures in this section, you submit requests to the Ama
 You have to configure most of the operations in the Amazon Pinpoint Postman collection before you can use them\. For `GET` and `DELETE` operations, you typically only need to modify the variables that are set on the **Pre\-request Script** tab\.
 
 **Note**  
-When you use the IAM policy that's shown in [step 1\.1](tutorials-using-postman-iam-user.md#tutorials-using-postman-iam-user-create-policy), you can't execute any of the `DELETE` requests that are included in this collection\.
+When you use the IAM policy that's shown in [Step 1\.1](tutorials-using-postman-iam-user.md#tutorials-using-postman-iam-user-create-policy), you can't execute any of the `DELETE` requests that are included in this collection\.
 
 For example, the `GetCampaign` operation requires you to specify a `projectId` and a `campaignId`\. On the **Pre\-request Script** tab, both of these variables are present, and are populated with example values\. These example values are highlighted in the following image\. Delete the example values and replace them with the appropriate values for your Amazon Pinpoint project and campaign\.
 
@@ -31,17 +31,17 @@ Before you create segments and campaigns in Amazon Pinpoint, you first have to c
 1. In the **Apps** folder, choose the **CreateApp** operation, as shown in the following image\.  
 ![\[\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/images/Postman_Tutorial_3.2_2.png)
 
-1. On the **Body** tab, next to `"Name"`, replace the placeholder value \(`"string"`\) with a name for the campaign, such as **"MySampleCampaign"**\.
+1. On the **Body** tab, next to `"Name"`, replace the placeholder value \(`"string"`\) with a name for the campaign, such as **"MySampleProject"**\.
 
 1. Delete the comma that after the campaign name, and then delete the entire `tags` object on lines 3 through 5\. When you finish, your request should resemble the example that's shown in the following image\.  
 ![\[\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/images/Postman_Tutorial_3.2_4.png)
 
-1. Choose **Send**\. If the campaign is created successfully, the response pane shows a status of `201 Created`, and you see a response that resembles the example in the following image\.  
+1. Choose **Send**\. If the campaign is created successfully, the response pane shows a status of `201 Created`\. You see a response that resembles the example in the following image\.  
 ![\[\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/images/Postman_Tutorial_3.2_5.png)
 
 ## Example: Sending an Email by Using the `SendMessages` Operation<a name="tutorials-using-postman-sample-requests-sendmessages"></a>
 
-It's very common to use the Amazon Pinpoint `SendMessages` API to send transactional messages\. One advantage to sending messages by using the `SendMessages` API, as opposed to creating campaigns, is that you can use the `SendMessages` API to send messages to any address \(such as an email address, phone number, or device token\)\. The address that you send messages to doesn't have to exist in your Amazon Pinpoint account already\. Compare this to sending messages by creating campaigns\. Before you send a campaign in Amazon Pinpoint, you have to add endpoints to your Amazon Pinpoint account, create segments, create the campaign, and execute the campaign\.
+It's very common to use the Amazon Pinpoint `SendMessages` API to send transactional messages\. One advantage to sending messages by using the `SendMessages` API \(as opposed to creating campaigns\), is that you can use the `SendMessages` API to send messages to any address \(such as an email address, phone number, or device token\)\. The address that you send messages to doesn't have to exist in your Amazon Pinpoint account already\. Compare this to sending messages by creating campaigns\. Before you send a campaign in Amazon Pinpoint, you have to add endpoints to your Amazon Pinpoint account, create segments, create the campaign, and execute the campaign\.
 
 The example in this section shows you how to send a transactional email message directly to a specific email address\. You can modify this request to send messages through other channels, such as SMS, mobile push, or voice\.
 
@@ -91,5 +91,5 @@ In Amazon Pinpoint, you can only send email from addresses or domains that you'v
 **Note**  
 If your account is still in the Amazon Pinpoint email sandbox, you can only send email to addresses or domains that are verified in your Amazon Pinpoint account\. For more information about having your account removed from the sandbox, see [ Requesting Production Access for Email](https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-email-setup-production-access.html) in the *Amazon Pinpoint User Guide*\.
 
-1. Choose **Send**\. If the message is sent successfully, the response pane shows a status of `200 OK`, and you see a response that resembles the example in the following image\.  
+1. Choose **Send**\. If the message is sent successfully, the response pane shows a status of `200 OK`\. You see a response that resembles the example in the following image\.  
 ![\[\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/images/Postman_Tutorial_3.3_7.png)

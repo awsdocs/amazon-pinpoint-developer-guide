@@ -200,7 +200,7 @@ public class SendMessages {
             Map<String,AddressConfiguration> addressMap = 
                 new HashMap<String,AddressConfiguration>();
                
-            addressMap.put(senderAddress, new AddressConfiguration()
+            addressMap.put(toAddress, new AddressConfiguration()
                 .withChannelType(ChannelType.EMAIL));
                
             AmazonPinpoint client = AmazonPinpointClientBuilder.standard()
@@ -392,7 +392,7 @@ This email was sent with Amazon Pinpoint using the AWS SDK for Python (Boto 3).
 For more information, see https:#aws.amazon.com/sdk-for-python/
             """
 
-# The body of the eamil for recipients whose email clients can display HTML
+# The body of the email for recipients whose email clients can display HTML
 # content.
 BODY_HTML = """<html>
 <head></head>

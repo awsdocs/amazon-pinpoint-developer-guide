@@ -22,13 +22,13 @@ First, you have to create a new API in API Gateway\. The following procedures sh
 
 Now that you've created an API, you can start to add resources to it\. After that, you add a POST method to the resource, and tell API Gateway to pass the data that you receive from this method to your Lambda function\.
 
-1. On the **Actions** menu, choose **Create Resource**\. In the **New Child Resource** pane, for **Resource Name**, enter **register**, as shown in the following image\. Choose **Create Resource**\.  
+1. On the **Actions** menu, choose **Create Resource**\. In the **New Child Resource** pane, for **Resource Name**, enter **prefs**, as shown in the following image\. Choose **Create Resource**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/images/Email_Prefs_Tutorial_APIGW_5.2_1.png)
 
 1. On the **Actions** menu, choose **Create Method**\. From the menu that appears, choose **POST**, as shown in the following image\. Then choose the **check mark** \(![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/images/APIGW_Check_Button.png)\) button\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/images/Email_Prefs_Tutorial_APIGW_5.2_2.png)
 
-1. In the **/register \- POST \- Setup** pane, make the following selections:
+1. In the **/prefs \- POST \- Setup** pane, make the following selections:
    + For **Integration type**, choose **Lambda Function**\.
    + Choose **Use Lambda Proxy Integration**\.
    + For **Lambda Region**, choose the Region that you created the Lambda function in\.
@@ -43,7 +43,7 @@ Now that you've created an API, you can start to add resources to it\. After tha
 
 The API is now ready to use\. At this point, you have to deploy it in order to create a publicly accessible endpoint\.
 
-1. In the navigation pane, choose **Resources**\. In the list of resources, choose the **/register** resource\. Finally, on the **Actions** menu, choose **Enable CORS**, as shown in the following image\.  
+1. In the navigation pane, choose **Resources**\. In the list of resources, choose the **/prefs** resource\. Finally, on the **Actions** menu, choose **Enable CORS**, as shown in the following image\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/images/Email_Prefs_Tutorial_APIGW_5.3_1.png)
 
 1. On the **Enable CORS** pane, choose **Enable CORS and replace existing CORS headers**\.
@@ -56,7 +56,7 @@ The API is now ready to use\. At this point, you have to deploy it in order to c
    An example of these selections is shown in the following image\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/images/SMS_Reg_Tutorial_APIGW_Step6.png)
 
-1. In the **v1 Stage Editor** pane, choose the **/register** resource, and then choose the **POST** method\. Copy the address that's shown next to **Invoke URL**, as shown in the following image\.  
+1. In the **v1 Stage Editor** pane, choose the **/prefs** resource, and then choose the **POST** method\. Copy the address that's shown next to **Invoke URL**, as shown in the following image\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/images/Email_Prefs_Tutorial_APIGW_5.3_4.png)
 
 **Next**: [Create and Deploy the Web Form](tutorials-email-prefs-part-6.md)

@@ -13,3 +13,4 @@ To import endpoint definitions, you must grant Amazon Pinpoint [read\-only acces
 + [IAM Role for Importing Endpoints or Segments](permissions-import-segment.md)
 + [IAM Role for Exporting Endpoints or Segments](permissions-export-endpoints.md)
 + [IAM Role for Streaming Events to Kinesis](permissions-streams.md)
++ [IAM Role for Streaming Email Events to Kinesis Data Firehose](permissions-stream-email-events-kinesis.md)

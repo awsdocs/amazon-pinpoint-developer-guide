@@ -37,4 +37,6 @@ To analyze or store the analytics data outside of Amazon Pinpoint, you can confi
 
 ## Regional Availability<a name="welcome-regions"></a>
 
-Amazon Pinpoint is available in several AWS Regions and it provides an endpoint for each of these Regions\. For a list of supported Regions and endpoints, see [AWS Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#pinpoint_region) in the *Amazon Web Services General Reference*\.
+Amazon Pinpoint is available in several AWS Regions in North America, Europe, Asia, and Oceania\. In each Region, AWS maintains multiple Availability Zones\. These Availability Zones are physically isolated from each other, but are united by private, low\-latency, high\-throughput, and highly redundant network connections\. These Availability Zones enable us to provide very high levels of availability and redundancy, while also minimizing latency\.
+
+For a list of all the Regions where Amazon Pinpoint is currently available, see [AWS Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#pinpoint_region) in the *Amazon Web Services General Reference*\. To learn more about the number of Availability Zones that are available in each Region, see [AWS Global Infrastructure](https://aws.amazon.com/about-aws/global-infrastructure/)\.

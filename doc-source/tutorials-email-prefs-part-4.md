@@ -193,9 +193,9 @@ After you create the function, you should test it to make sure that it's configu
 
 1. In the navigation pane, choose **Segments**\. On the **Segments page**, choose **Create a segment**\.
 
-1. In **Segment group 1**, under **Add filters to refine your segment**, choose **Filter by user**\.
+1. In **Segment group 1**, under **Add filters to refine your segment**, choose **Filter by endpoint**\.
 
-1. For **Choose a user attribute**, choose **NewProductsOptStatus**\. Then, for **Choose values**, choose **OptIn**\.
+1. For **Choose an endpoint attribute**, choose **NewProductsOptStatus**\. Then, for **Choose values**, choose **OptIn**\.
 
    The **Segment estimate** section should show that there is one eligible endpoint, and one total endpoint, as shown in the following image\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/images/Email_Prefs_Tutorial_LAM_Step4.1.1_9.png)

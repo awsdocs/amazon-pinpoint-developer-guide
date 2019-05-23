@@ -85,7 +85,7 @@ The following limits apply to messages that Amazon Pinpoint delivers through mob
 | Apple Push Notification service \(APNs\) message payload size | 4 KB per message | No | 
 | APNs sandbox message payload size | 4 KB per message | No | 
 | Baidu Cloud Push message payload size | 4 KB per message | No | 
-| Firebase Cloud Messaging \(FCM\) or Google Cloud Messaging \(GCM\) message payload size | 4 KB per message | No | 
+| Firebase Cloud Messaging \(FCM\) message payload size | 4 KB per message | No | 
 
 ## Email Limits<a name="limits-email"></a>
 
