@@ -1,0 +1,493 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Step 3: Send Additional
+         Requests - Amazon Pinpoint
+      </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="home" href="#top" />
+      <link rel="up" href="tutorials-using-postman.html" title="Tutorial: Using Postman with the Amazon Pinpoint API" />
+      <link rel="prev" href="tutorials-using-postman-configuration.html" title="Step 2: Set Up Postman" />
+      <link rel="next" href="tutorials-importing-data.html" title="Tutorial: Importing Data Into Amazon Pinpoint From External&#xA;            Sources" />
+      <meta name="description" content="When you finish configuring and testing Postman, you can start sending additional requests to the Amazon Pinpoint API. This section includes information that you need to know before you start sending requests. It also includes two sample requests that help you understand how to use the Amazon Pinpoint collection." />
+      <meta name="keywords" content="Pinpoint,Amazon Pinpoint,Customer engagement,Segmentation,Campaigns,Metrics" />
+      <meta name="deployment_region" content="IAD" />
+      <meta name="product" content="Amazon Pinpoint" />
+      <meta name="guide" content="Developer Guide" />
+      <meta name="guide-locale" content="en_us" />
+      <meta name="tocs" content="toc-contents.json" />
+      <link rel="icon" type="image/ico" href="images/favicon.ico" />
+      <link rel="shortcut icon" type="image/ico" href="images/favicon.ico" />
+      <link rel="canonical" href="https://docs.aws.amazon.com/pinpoint/latest/developerguide/tutorials-using-postman-sample-requests.html" />
+      <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" />
+      <link rel="stylesheet" type="text/css" href="font/css/font-awesome.min.css" />
+      <link rel="stylesheet" type="text/css" href="css/google-font.css" />
+      <link id="code-style" rel="stylesheet" type="text/css" href="css/code/light.css" />
+      <link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.css" />
+      <link rel="stylesheet" type="text/css" href="css/colorbox.css" />
+      <link rel="stylesheet" type="text/css" href="css/awsdocs.css?v=20181221" /><script type="text/javascript" src="js/highlight.pack.js"></script><script type="text/javascript" src="js/jquery.min.js"></script><script type="text/javascript" src="js/jquery-ui.min.js"></script><script type="text/javascript" src="js/jquery.colorbox.js"></script><script type="text/javascript" src="js/awsdocs.min.js?v=20181221"></script></head>
+   <body id="top">
+      <div xmlns:db="http://docbook.org/ns/docbook" id="aws-nav" class="aws-nav-header">
+         <div class="aws-nav-header-left">
+            <div class="aws-nav-logo">
+               <!--aws_logo_105x39.png--><a href="http://aws.amazon.com"><img src="images/aws_logo_105x39.png" alt="Amazon Web Services" /></a></div>
+         </div>
+         <div id="aws-nav-header-right" class="aws-nav-header-right">
+            <div class="aws-nav-cta-button-outer"><a id="aws-nav-cta-button" class="aws-nav-button" href="https://console.aws.amazon.com/console/home">Sign In to the Console</a></div>
+            <div class="aws-nav-popover-trigger" data-dropdown="aws-nav-dropdown-lang"><select id="languageSelection" onchange="SelectLanguage()">
+                  <option value="/de_de/pinpoint/latest/developerguide/tutorials-using-postman-sample-requests.html">Deutsch</option>
+                  <option value="/en_us/pinpoint/latest/developerguide/tutorials-using-postman-sample-requests.html" selected="selected">English</option>
+                  <option value="/es_es/pinpoint/latest/developerguide/tutorials-using-postman-sample-requests.html">Español</option>
+                  <option value="/fr_fr/pinpoint/latest/developerguide/tutorials-using-postman-sample-requests.html">Français</option>
+                  <option value="/it_it/pinpoint/latest/developerguide/tutorials-using-postman-sample-requests.html">Italiano</option>
+                  <option value="/ja_jp/pinpoint/latest/developerguide/tutorials-using-postman-sample-requests.html">日本語</option>
+                  <option value="/ko_kr/pinpoint/latest/developerguide/tutorials-using-postman-sample-requests.html">한국어</option>
+                  <option value="/pt_br/pinpoint/latest/developerguide/tutorials-using-postman-sample-requests.html">Português</option>
+                  <option value="/zh_cn/pinpoint/latest/developerguide/tutorials-using-postman-sample-requests.html">中文 (简体)</option>
+                  <option value="/zh_tw/pinpoint/latest/developerguide/tutorials-using-postman-sample-requests.html">中文 (繁體)</option></select></div><a class="btn btn-kindle-link" id="kindle-link-top" target="_blank" href="http://www.amazon.com/dp/B07JKHTQVP" title="Open Kindle"></a><a class="btn btn-pdf-link" id="pdf-link-top" href="pinpoint-dg.pdf#tutorials-using-postman-sample-requests" target="_blank" title="Open PDF"></a><a class="btn btn-github-link" id="github-link-top" href="https://github.com/awsdocs/amazon-pinpoint-developer-guide/tree/master/doc-source/tutorials-using-postman-sample-requests.md" target="_blank" title="Edit on GitHub"></a><div id="aws-nav-quicklinks-separator" class="aws-nav-quicklinks-separator">
+               <div class="aws-nav-left"></div>
+               <div class="aws-nav-right"></div>
+            </div>
+         </div>
+      </div>
+      <div id="content-container">
+         <div id="left-column">
+            <div id="left-col-header">
+               <div xmlns:db="http://docbook.org/ns/docbook" id="left-col-top-content">
+                  <div id="service-name">Amazon Pinpoint </div>
+                  <div id="search"><i id="search-icon" class="fa fa-search fa-2x"></i></div>
+                  <div id="guide-info">Developer Guide
+                     <div id="content-button"><i id="toggle-contents" class="fa fa-bars"></i></div>
+                  </div>
+               </div>
+               <form id="finegrainedSearch" method="get" onsubmit="return searchFormSubmit(this);" action="/search/doc-search.html">
+                  <div id="search-form"><select id="search-select" name="searchPath">
+                        <option value="all">Entire Site</option>
+                        <option value="AWSMarketplace">AMIs from AWS Marketplace</option>
+                        <option value="amis">AMIs from All Sources</option>
+                        <option value="articles">Articles &amp; Tutorials</option>
+                        <option value="products_and_info">AWS Product Information</option>
+                        <option value="case_studies">Case Studies</option>
+                        <option value="customerapps">Customer Apps</option>
+                        <option value="documentation">Documentation</option>
+                        <option value="documentation-product">Documentation - This Product</option>
+                        <option value="documentation-guide" selected="selected">Documentation - This Guide</option>
+                        <option value="datasets">Public Data Sets</option>
+                        <option value="releasenotes">Release Notes</option>
+                        <option value="solution_providers">Partners</option>
+                        <option value="code">Sample Code &amp; Libraries</option></select><br /><input id="search-query" name="searchQuery" type="text" placeholder="Search" /><input id="search-button" src="images/search-button.png" alt="Go" type="image" /></div><input type="hidden" name="this_doc_product" id="this_doc_product" value="Amazon Pinpoint" /><input type="hidden" name="this_doc_guide" id="this_doc_guide" value="Developer Guide" /><input type="hidden" name="doc_locale" value="en_us" /></form>
+            </div>
+            <div id="toc"></div>
+         </div>
+         <div id="main-column">
+            <div id="main">
+               <div id="main-content">
+                  <div id="main-col-body">
+                     <table summary="Breadcrumbs">
+                        <tr>
+                           <td>
+                              <div class="breadcrumb"><a href="/index.html">AWS Documentation</a> » <a href="/pinpoint/index.html">Amazon Pinpoint</a> » <a href="index.html">Developer Guide</a> » <a href="tutorials.html">Tutorials</a> » <a href="tutorials-using-postman.html">Tutorial: Using Postman with the Amazon Pinpoint API</a> » <span class="breadcrumb">Step 3: Send Additional
+                                    Requests</span></div>
+                           </td>
+                        </tr>
+                     </table>
+                     <div id="language-notice">
+                        <div class="language-notice-text"></div>
+                     </div>
+                     <div></div>
+                     <h1 class="topictitle" id="tutorials-using-postman-sample-requests">Step 3: Send Additional
+                        Requests
+                     </h1>
+                     <p>When you finish configuring and testing Postman, you can start sending additional
+                        requests
+                        to the Amazon Pinpoint API. This section includes information that you need to know
+                        before you start
+                        sending requests. It also includes two sample requests that help you understand how
+                        to use
+                        the Amazon Pinpoint collection.
+                     </p>
+                     <div class="aws-note">
+                        <p class="aws-note">Important</p>
+                        <p>When you complete the procedures in this section, you submit requests to the Amazon
+                           Pinpoint
+                           API. These requests are capable of creating new resources in your Amazon Pinpoint
+                           account,
+                           modifying existing resources, sending messages, changing the configuration of your
+                           Amazon Pinpoint
+                           projects, and using other Amazon Pinpoint features. Use caution when you execute these
+                           requests.
+                        </p>
+                     </div>
+                     
+                     <h2 id="tutorials-using-postman-sample-requests-about">About the Examples in
+                        the Amazon Pinpoint Postman Collection
+                     </h2>
+                     
+                     <p>You have to configure most of the operations in the Amazon Pinpoint Postman collection
+                        before
+                        you can use them. For <code class="code">GET</code> and <code class="code">DELETE</code> operations, you typically
+                        only need to modify the variables that are set on the <b>Pre-request
+                           Script</b> tab.
+                     </p>
+                     
+                     <div class="aws-note">
+                        <p class="aws-note">Note</p>
+                        <p>When you use the IAM policy that's shown in <a href="tutorials-using-postman-iam-user.html#tutorials-using-postman-iam-user-create-policy">Step 1.1</a>, you
+                           can't execute any of the <code class="code">DELETE</code> requests that are included in this
+                           collection.
+                        </p>
+                     </div>
+                     
+                     <p>For example, the <code class="code">GetCampaign</code> operation requires you to specify a
+                        <code class="code">projectId</code> and a <code class="code">campaignId</code>. On the
+                        <b>Pre-request Script</b> tab, both of these variables are present,
+                        and are populated with example values. These example values are highlighted in the
+                        following image. Delete the example values and replace them with the appropriate values
+                        for your Amazon Pinpoint project and campaign.
+                     </p>
+                     
+                     
+                     <p>For <code class="code">POST</code> and <code class="code">PUT</code> operations, you also need to modify the
+                        request body to include the values that you want to send to the API. For example,
+                        when
+                        you submit a <code class="code">CreateApp</code> request (which is a <code class="code">POST</code> request), you
+                        have to specify a name for the project that you create (in Amazon Pinpoint, a "project"
+                        is the
+                        same thing as an "application"). You can modify the request on the
+                        <b>Body</b> tab. In this example, replace the value next to
+                        <code class="code">"Name"</code> with the name of the project. If you want to add tags to the
+                        project, you can specify them in the <code class="code">tags</code> object. Or, if you don't want to
+                        add tags, you can delete the entire <code class="code">tags</code> object.
+                     </p>
+                     
+                     
+                     <div class="aws-note">
+                        <p class="aws-note">Note</p>
+                        <p>The <code class="code">UntagResource</code> operation also requires you to specify URL
+                           parameters. You can specify these parameters on the <b>Params</b> tab.
+                           Replace the values in the <b>VALUE</b> column with the tags that you
+                           want to delete for the specified resource.
+                        </p>
+                     </div>
+                     
+                     
+                     <h2 id="tutorials-using-postman-sample-requests-createapp">Example Request:
+                        Creating a Project by Using the <code class="code">CreateApp</code> Operation
+                     </h2>
+                     
+                     <p>Before you create segments and campaigns in Amazon Pinpoint, you first have to create
+                        a project.
+                        In Amazon Pinpoint, a <em>project</em> consists of segments, campaigns,
+                        configurations, and data that are united by a common purpose. For example, you could
+                        use
+                        a project to contain all of the content that's related to a particular app, or to
+                        a
+                        specific brand or marketing initiative. When you add customer information to Amazon
+                        Pinpoint, that
+                        information is associated with a project.
+                     </p>
+                     
+                     <p class="title"><b>To create a project by sending a CreateApp API request</b></p>
+                     <ol>
+                        <li>
+                           
+                           <p>On the <b>Environments</b> menu, choose the AWS Region that
+                              you want to create the project in, as shown in the following image.
+                           </p>
+                           
+                           <div class="mediaobject">
+                              
+                              <img src="images/Postman_Tutorial_Environments.png" alt="&#xA;                        The Environments menu in Postman. In this example, Postman has been&#xA;                            configured so that the Environments menu shows the following four&#xA;                            options:&#xA;                        &#xA;                            &#xA;                            &#xA;                            &#xA;                            &#xA;                        &#xA;                                US East (N. Virginia)&#xA;                            &#xA;                                US West (Oregon)&#xA;                            &#xA;                                EU (Frankfurt)&#xA;                            &#xA;                                EU (Ireland)&#xA;                            &#xA;                    " />
+                              
+                              
+                              
+                           </div>
+                           
+                        </li>
+                        <li>
+                           
+                           <p>In the <b>Apps</b> folder, choose the
+                              <b>CreateApp</b> operation, as shown in the following
+                              image.
+                           </p>
+                           
+                           <div class="mediaobject">
+                              
+                              <img src="images/Postman_Tutorial_3.2_2.png" alt="&#xA;                        The Apps folder in the Amazon Pinpoint Postman collection. The folder contents&#xA;                            are expanded, and the following requests are shown:&#xA;                        &#xA;                            &#xA;                            &#xA;                            &#xA;                            &#xA;                        &#xA;                                GetApp&#xA;                            &#xA;                                GetApps&#xA;                            &#xA;                                CreateApp&#xA;                            &#xA;                                DeleteApp&#xA;                            &#xA;                    " />
+                              
+                              
+                              
+                           </div>
+                           
+                        </li>
+                        <li>
+                           
+                           <p>On the <b>Body</b> tab, next to <code class="code">"Name"</code>, replace the
+                              placeholder value (<code class="code">"string"</code>) with a name for the campaign,
+                              such as <strong class="userinput"><code>"MySampleProject"</code></strong>.
+                           </p>
+                           
+                           
+                        </li>
+                        <li>
+                           
+                           <p>Delete the comma that after the campaign name, and then delete the entire
+                              <code class="code">tags</code> object on lines 3 through 5. When you finish, your request
+                              should resemble the example that's shown in the following image.
+                           </p>
+                           
+                           <div class="mediaobject">
+                              
+                              <img src="images/Postman_Tutorial_3.2_4.png" alt="&#xA;                        A screenshot that shows a sample request to the&#xA;                                CreateApps API. The body of the request contains the&#xA;                            following JSON content:&#xA;                        {&#xA;    &#34;Name&#34;: &#34;MySampleProject&#34;&#xA;}&#xA;                        Postman is configured to send the request as a raw JSON&#xA;                            payload.&#xA;                    " />
+                              
+                              
+                              
+                           </div>
+                           
+                        </li>
+                        <li>
+                           
+                           <p>Choose <b>Send</b>. If the campaign is created successfully, the
+                              response pane shows a status of <code class="code">201 Created</code>. You see a response
+                              that resembles the example in the following image.
+                           </p>
+                           
+                           <div class="mediaobject">
+                              
+                              <img src="images/Postman_Tutorial_3.2_5.png" alt="&#xA;                        A screenshot that shows a sample response to the&#xA;                                CreateApps API. The body of the request contains the&#xA;                            following JSON content:&#xA;                        {&#xA;    &#34;Name&#34;: &#34;MySampleProject&#34;&#xA;    &#34;Id&#34;: &#34;12345678901234567890123456789012&#34;,&#xA;    &#34;Arn&#34;: &#34;arn:aws:mobiletargeting:us-east-1:123456789012:apps/12345678901234567890123456789012&#34;,&#xA;    &#34;tags&#34;: {}&#xA;}&#xA;                    " />
+                              
+                              
+                              
+                           </div>
+                           
+                        </li>
+                     </ol>
+                     
+                     
+                     <h2 id="tutorials-using-postman-sample-requests-sendmessages">Example: Sending
+                        an Email by Using the <code class="code">SendMessages</code> Operation
+                     </h2>
+                     
+                     <p>It's very common to use the Amazon Pinpoint <code class="code">SendMessages</code> API to send transactional
+                        messages. One advantage to sending messages by using the <code class="code">SendMessages</code> API
+                        (as opposed to creating campaigns), is that you can use the <code class="code">SendMessages</code>
+                        API to send messages to any address (such as an email address, phone number, or device
+                        token). The address that you send messages to doesn't have to exist in your Amazon
+                        Pinpoint
+                        account already. Compare this to sending messages by creating campaigns. Before you
+                        send
+                        a campaign in Amazon Pinpoint, you have to add endpoints to your Amazon Pinpoint account,
+                        create segments,
+                        create the campaign, and execute the campaign.
+                     </p>
+                     
+                     <p>The example in this section shows you how to send a transactional email message
+                        directly to a specific email address. You can modify this request to send messages
+                        through other channels, such as SMS, mobile push, or voice.
+                     </p>
+                     
+                     <p class="title"><b>To send an email message by submitting a SendMessages request</b></p>
+                     <ol>
+                        <li>
+                           
+                           <p>Verify the email address or domain that you want to use to send the message.
+                              For more information, see <a href="https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-email-manage-verify.html">Verifying Email
+                                 Identities</a> in the <em>Amazon Pinpoint User Guide</em>.
+                           </p>
+                           
+                           <div class="aws-note">
+                              <p class="aws-note">Note</p>
+                              <p>In Amazon Pinpoint, you can only send email from addresses or domains that you've
+                                 verified. You won't be able to complete the procedure in this section until
+                                 you verify an email address.
+                              </p>
+                           </div>
+                           
+                        </li>
+                        <li>
+                           
+                           <p>On the <b>Environments</b> menu, choose the AWS Region that
+                              you want to send the message from, as shown in the following image.
+                           </p>
+                           
+                           <div class="mediaobject">
+                              
+                              <img src="images/Postman_Tutorial_Environments.png" alt="&#xA;                        The Environments menu in Postman. In this example, Postman has been&#xA;                            configured so that the Environments menu shows the&#xA;                            following four options:&#xA;                        &#xA;                            &#xA;                            &#xA;                            &#xA;                            &#xA;                        &#xA;                                US East (N. Virginia)&#xA;                            &#xA;                                US West (Oregon)&#xA;                            &#xA;                                EU (Frankfurt)&#xA;                            &#xA;                                EU (Ireland)&#xA;                            &#xA;                    " />
+                              
+                              
+                              
+                           </div>
+                           
+                        </li>
+                        <li>
+                           
+                           <p>In the <b>Messages</b> folder, choose the
+                              <b>SendMessages</b> operation.
+                           </p>
+                           
+                           <div class="mediaobject">
+                              
+                              <img src="images/Postman_Tutorial_3.3_3.png" alt="&#xA;                        The Messages folder in the Amazon Pinpoint Postman&#xA;                            collection. The folder contents are expanded, and the following requests&#xA;                            are shown:&#xA;                        &#xA;                            &#xA;                            &#xA;                        &#xA;                                SendMessages&#xA;                            &#xA;                                SendUsersMessages&#xA;                            &#xA;                    " />
+                              
+                              
+                              
+                           </div>
+                           
+                        </li>
+                        <li>
+                           
+                           <p>On the <b>Pre-request Script</b> tab, replace the value of the
+                              <code class="code">projectId</code> variable with the ID of a project that already exists
+                              in the Region that you selected in step 2 of this section.
+                           </p>
+                           
+                        </li>
+                        <li>
+                           
+                           <p>On the <b>Body</b> tab, delete the example request that's shown
+                              in the request editor. Paste the following code:
+                           </p>
+                           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="json ">{
+    "MessageConfiguration":{
+        "EmailMessage":{
+            "FromAddress":"<em class="replaceable"><code>sender@example.com</code></em>",
+            "SimpleEmail":{
+                "Subject":{
+                    "Data":"Sample Amazon Pinpoint message"
+                },
+                "HtmlPart":{
+                    "Data":"&lt;h1&gt;Test message&lt;/h1&gt;&lt;p&gt;This is a sample message sent from &lt;a href=\"https://aws.amazon.com/pinpoint\"&gt;Amazon Pinpoint&lt;/a&gt; using the SendMessages API.&lt;/p&gt;"
+                },
+                "TextPart":{
+                    "Data":"This is a sample message sent from Amazon Pinpoint using the SendMessages API."
+                }
+            }
+        }
+    },
+    "Addresses":{
+        "<em class="replaceable"><code>recipient@example.com</code></em>": {
+            "ChannelType": "EMAIL"
+        }
+    }
+}</code></pre>
+                           </li>
+                        <li>
+                           
+                           <p>In the preceding code, replace <em class="replaceable"><code>sender@example.com</code></em>
+                              with your verified email address. Replace
+                              <em class="replaceable"><code>recipient@example.com</code></em> with the address that you
+                              want to send the message to.
+                           </p>
+                           
+                           <div class="aws-note">
+                              <p class="aws-note">Note</p>
+                              <p>If your account is still in the Amazon Pinpoint email sandbox, you can only send
+                                 email to addresses or domains that are verified in your Amazon Pinpoint account. For
+                                 more information about having your account removed from the sandbox, see
+                                 <a href="https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-email-setup-production-access.html">
+                                    Requesting Production Access for Email</a> in the
+                                 <em>Amazon Pinpoint User Guide</em>.
+                              </p>
+                           </div>
+                           
+                        </li>
+                        <li>
+                           
+                           <p>Choose <b>Send</b>. If the message is sent successfully, the
+                              response pane shows a status of <code class="code">200 OK</code>. You see a response that
+                              resembles the example in the following image.
+                           </p>
+                           
+                           <div class="mediaobject">
+                              
+                              <img src="images/Postman_Tutorial_3.3_7.png" alt="&#xA;                        A screenshot that shows a sample response to the&#xA;                                SendMessage API. The body of the request contains the&#xA;                            following JSON content:&#xA;                        {&#xA;    &#34;ApplicationId&#34;: &#34;12345678901234567890123456789012&#34;,&#xA;    &#34;RequestId&#34;: &#34;&lt;sampleValue&gt;&#34;,&#xA;    &#34;Result&#34;: {&#xA;        &#34;recipient@example.com&#34;: {&#xA;            &#34;DeliveryStatus&#34;: &#34;SUCCESSFUL&#34;,&#xA;            &#34;StatusCode&#34;: 200,&#xA;            &#34;StatusMessage&#34;: &#34;&lt;sampleValue&gt;&#34;,&#xA;            &#34;MessageId&#34;: &#34;&lt;sampleValue&gt;&#34;&#xA;        }&#xA;    }&#xA;}&#xA;                    " />
+                              
+                              
+                              
+                           </div>
+                           
+                        </li>
+                     </ol>
+                     
+                  </div>
+                  <noscript>
+                     <div>
+                        <div>
+                           <div>
+                              <div id="js_error_message">
+                                 <p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p>
+                                 <p>To use the AWS Documentation, Javascript must be enabled. Please refer to your browser's
+                                    Help pages for instructions.
+                                 </p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </noscript>
+                  <div id="main-col-footer">
+                     <div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div>
+                     <div id="next"><a class="awstoc" accesskey="p" href="tutorials-using-postman-configuration.html">« Previous </a><a class="awstoc" accesskey="n" href="tutorials-importing-data.html">Next »</a></div>
+                     <div id="copyright-main-footer">© 2019, Amazon Web Services, Inc. or its affiliates. All rights reserved.</div>
+                  </div>
+               </div>
+            </div>
+            <div id="right-expanded">
+               <div id="right-content-wrapper">
+                  <div id="pagetoc">
+                     <p>On this page:</p>
+                     <ul class="pagetoc">
+                        <li class="pagetoc" name="About the Examples in&#xA;                the Amazon Pinpoint Postman Collection"><a class="pagetoc" href="#tutorials-using-postman-sample-requests-about">About the Examples in
+                              the Amazon Pinpoint Postman Collection</a></li>
+                        <li class="pagetoc" name="Example Request:&#xA;                Creating a Project by Using the CreateApp Operation"><a class="pagetoc" href="#tutorials-using-postman-sample-requests-createapp">Example Request:
+                              Creating a Project by Using the CreateApp Operation</a></li>
+                        <li class="pagetoc" name="Example: Sending&#xA;                an Email by Using the SendMessages Operation"><a class="pagetoc" href="#tutorials-using-postman-sample-requests-sendmessages">Example: Sending
+                              an Email by Using the SendMessages Operation</a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="cookie-notice">
+         <div class="cookie-notice-text">We use cookies to provide and improve our services. By using our site, you consent
+            to cookies. <a href="http://aws.amazon.com/legal/cookies">Learn more</a></div>
+      </div>
+      <div id="footer">
+         <div id="footer_short_fb" class="hide" title="Feedback"><a target="_blank" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Pinpoint&amp;topic_url=http://docs.aws.amazon.com/en_us/pinpoint/latest/developerguide/tutorials-using-postman-sample-requests.html&amp;hidden_guide_name=Developer Guide&amp;hidden_api_version=&amp;hidden_file_name=tutorials-using-postman-sample-requests"><i class="awsdocs-footer-text fa fa-envelope-o"></i></a></div>
+         <div id="footer_toggle" class="mediaobject">
+            <div id="footer_toggle_img" class="awsdocs-footer-text fa fa-caret-down"></div>
+            <div id="footer_toggle_img_collapse" class="hide awsdocs-footer-text fa fa-caret-right"></div>
+         </div>
+         <div id="footer-left"><a class="awsdocs-footer-text" target="_top" href="http://aws.amazon.com/terms">Terms of Use</a><span class="awsdocs-footer-text"> | </span><a class="awsdocs-footer-text" target="_top" href="http://aws.amazon.com/privacy">Privacy</a><span class="awsdocs-footer-text"> | </span><span class="awsdocs-footer-text">© 2019, Amazon Web Services, Inc. or its affiliates. All rights reserved.</span></div>
+         <div id="footer-right">
+            <div id="feedback">
+               <div id="forums"><a id="forum_link" target="_blank" href="http://forums.aws.amazon.com/forum.jspa?forumID=225" class="awsdocs-footer-text">Have a question? Try the Forums.</a></div>
+               <div id="feedback-message" class="awsdocs-footer-text">Did this page help you?</div>
+               <div id="feedback-yesno-buttons"><a class="awstoc btn btn-default" target="_blank" href="feedbackyes.html?topic_url=http://docs.aws.amazon.com/en_us/pinpoint/latest/developerguide/tutorials-using-postman-sample-requests.html">Yes</a><a class="awstoc btn btn-default" target="_blank" href="feedbackno.html?topic_url=http://docs.aws.amazon.com/en_us/pinpoint/latest/developerguide/tutorials-using-postman-sample-requests.html">No</a></div>
+               <div id="feedback-feedback-button"><a class="awstoc btn btn-default" target="_blank" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Pinpoint&amp;topic_url=http://docs.aws.amazon.com/en_us/pinpoint/latest/developerguide/tutorials-using-postman-sample-requests.html&amp;hidden_guide_name=Developer Guide&amp;hidden_api_version=&amp;hidden_file_name=tutorials-using-postman-sample-requests">Feedback</a></div>
+            </div>
+         </div>
+      </div>
+      <!-- SiteCatalyst code version: H.25.2.
+            Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+            More info available at http://www.omniture.com --><script language="JavaScript" type="text/javascript" src="https://a0.awsstatic.com/s_code/js/1.0/awshome_s_code.js"></script><script language="JavaScript" type="text/javascript">
+         <!--
+
+            // Documentation Service Name
+            s.prop66='Amazon Pinpoint';
+            s.eVar66='D=c66';
+  
+            // Documentation Guide Name                                                                 
+            s.prop65='Developer Guide';
+            s.eVar65='D=c65';
+
+            var s_code=s.t();if(s_code)document.write(s_code)//--></script><script language="JavaScript" type="text/javascript">
+         <!--
+                if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+                //--></script><noscript><img src="https://amazonwebservices.d2.sc.omtrdc.net/b/ss/awsamazondev/1/H.25.2--NS/0" height="1" width="1" border="0" alt="" /></noscript>
+      <!--/DO NOT REMOVE/-->
+      <!-- End SiteCatalyst code version: H.25.2. -->
+   </body>
+</html>

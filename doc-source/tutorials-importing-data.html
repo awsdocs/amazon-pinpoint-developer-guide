@@ -1,0 +1,475 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Tutorial: Importing Data Into Amazon Pinpoint From External
+         Sources - Amazon Pinpoint
+      </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="home" href="#top" />
+      <link rel="up" href="tutorials.html" title="Tutorials" />
+      <link rel="prev" href="tutorials-using-postman-sample-requests.html" title="Step 3: Send Additional&#xA;            Requests" />
+      <link rel="next" href="tutorials-importing-data-prereqs.html" title="Prerequisites" />
+      <meta name="description" content="Before you can create segments and send campaign messages, you have to create endpoints. In Amazon Pinpoint, endpoints are destinations that you send messages to, such as email addresses, mobile device identifiers, or mobile phone numbers. There are several ways to add endpoints to Amazon Pinpoint. For example, your web or mobile apps can use an AWS Mobile SDK to automatically write endpoint data to Amazon Pinpoint." />
+      <meta name="keywords" content="Pinpoint,Amazon Pinpoint,Customer engagement,Segmentation,Campaigns,Metrics" />
+      <meta name="deployment_region" content="IAD" />
+      <meta name="product" content="Amazon Pinpoint" />
+      <meta name="guide" content="Developer Guide" />
+      <meta name="guide-locale" content="en_us" />
+      <meta name="tocs" content="toc-contents.json" />
+      <link rel="icon" type="image/ico" href="images/favicon.ico" />
+      <link rel="shortcut icon" type="image/ico" href="images/favicon.ico" />
+      <link rel="canonical" href="https://docs.aws.amazon.com/pinpoint/latest/developerguide/tutorials-importing-data.html" />
+      <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" />
+      <link rel="stylesheet" type="text/css" href="font/css/font-awesome.min.css" />
+      <link rel="stylesheet" type="text/css" href="css/google-font.css" />
+      <link id="code-style" rel="stylesheet" type="text/css" href="css/code/light.css" />
+      <link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.css" />
+      <link rel="stylesheet" type="text/css" href="css/colorbox.css" />
+      <link rel="stylesheet" type="text/css" href="css/awsdocs.css?v=20181221" /><script type="text/javascript" src="js/highlight.pack.js"></script><script type="text/javascript" src="js/jquery.min.js"></script><script type="text/javascript" src="js/jquery-ui.min.js"></script><script type="text/javascript" src="js/jquery.colorbox.js"></script><script type="text/javascript" src="js/awsdocs.min.js?v=20181221"></script></head>
+   <body id="top">
+      <div xmlns:db="http://docbook.org/ns/docbook" id="aws-nav" class="aws-nav-header">
+         <div class="aws-nav-header-left">
+            <div class="aws-nav-logo">
+               <!--aws_logo_105x39.png--><a href="http://aws.amazon.com"><img src="images/aws_logo_105x39.png" alt="Amazon Web Services" /></a></div>
+         </div>
+         <div id="aws-nav-header-right" class="aws-nav-header-right">
+            <div class="aws-nav-cta-button-outer"><a id="aws-nav-cta-button" class="aws-nav-button" href="https://console.aws.amazon.com/console/home">Sign In to the Console</a></div>
+            <div class="aws-nav-popover-trigger" data-dropdown="aws-nav-dropdown-lang"><select id="languageSelection" onchange="SelectLanguage()">
+                  <option value="/de_de/pinpoint/latest/developerguide/tutorials-importing-data.html">Deutsch</option>
+                  <option value="/en_us/pinpoint/latest/developerguide/tutorials-importing-data.html" selected="selected">English</option>
+                  <option value="/es_es/pinpoint/latest/developerguide/tutorials-importing-data.html">Español</option>
+                  <option value="/fr_fr/pinpoint/latest/developerguide/tutorials-importing-data.html">Français</option>
+                  <option value="/it_it/pinpoint/latest/developerguide/tutorials-importing-data.html">Italiano</option>
+                  <option value="/ja_jp/pinpoint/latest/developerguide/tutorials-importing-data.html">日本語</option>
+                  <option value="/ko_kr/pinpoint/latest/developerguide/tutorials-importing-data.html">한국어</option>
+                  <option value="/pt_br/pinpoint/latest/developerguide/tutorials-importing-data.html">Português</option>
+                  <option value="/zh_cn/pinpoint/latest/developerguide/tutorials-importing-data.html">中文 (简体)</option>
+                  <option value="/zh_tw/pinpoint/latest/developerguide/tutorials-importing-data.html">中文 (繁體)</option></select></div><a class="btn btn-kindle-link" id="kindle-link-top" target="_blank" href="http://www.amazon.com/dp/B07JKHTQVP" title="Open Kindle"></a><a class="btn btn-pdf-link" id="pdf-link-top" href="pinpoint-dg.pdf#tutorials-importing-data" target="_blank" title="Open PDF"></a><a class="btn btn-github-link" id="github-link-top" href="https://github.com/awsdocs/amazon-pinpoint-developer-guide/tree/master/doc-source/tutorials-importing-data.md" target="_blank" title="Edit on GitHub"></a><div id="aws-nav-quicklinks-separator" class="aws-nav-quicklinks-separator">
+               <div class="aws-nav-left"></div>
+               <div class="aws-nav-right"></div>
+            </div>
+         </div>
+      </div>
+      <div id="content-container">
+         <div id="left-column">
+            <div id="left-col-header">
+               <div xmlns:db="http://docbook.org/ns/docbook" id="left-col-top-content">
+                  <div id="service-name">Amazon Pinpoint </div>
+                  <div id="search"><i id="search-icon" class="fa fa-search fa-2x"></i></div>
+                  <div id="guide-info">Developer Guide
+                     <div id="content-button"><i id="toggle-contents" class="fa fa-bars"></i></div>
+                  </div>
+               </div>
+               <form id="finegrainedSearch" method="get" onsubmit="return searchFormSubmit(this);" action="/search/doc-search.html">
+                  <div id="search-form"><select id="search-select" name="searchPath">
+                        <option value="all">Entire Site</option>
+                        <option value="AWSMarketplace">AMIs from AWS Marketplace</option>
+                        <option value="amis">AMIs from All Sources</option>
+                        <option value="articles">Articles &amp; Tutorials</option>
+                        <option value="products_and_info">AWS Product Information</option>
+                        <option value="case_studies">Case Studies</option>
+                        <option value="customerapps">Customer Apps</option>
+                        <option value="documentation">Documentation</option>
+                        <option value="documentation-product">Documentation - This Product</option>
+                        <option value="documentation-guide" selected="selected">Documentation - This Guide</option>
+                        <option value="datasets">Public Data Sets</option>
+                        <option value="releasenotes">Release Notes</option>
+                        <option value="solution_providers">Partners</option>
+                        <option value="code">Sample Code &amp; Libraries</option></select><br /><input id="search-query" name="searchQuery" type="text" placeholder="Search" /><input id="search-button" src="images/search-button.png" alt="Go" type="image" /></div><input type="hidden" name="this_doc_product" id="this_doc_product" value="Amazon Pinpoint" /><input type="hidden" name="this_doc_guide" id="this_doc_guide" value="Developer Guide" /><input type="hidden" name="doc_locale" value="en_us" /></form>
+            </div>
+            <div id="toc"></div>
+         </div>
+         <div id="main-column">
+            <div id="main">
+               <div id="main-content">
+                  <div id="main-col-body">
+                     <table summary="Breadcrumbs">
+                        <tr>
+                           <td>
+                              <div class="breadcrumb"><a href="/index.html">AWS Documentation</a> » <a href="/pinpoint/index.html">Amazon Pinpoint</a> » <a href="index.html">Developer Guide</a> » <a href="tutorials.html">Tutorials</a> » <span class="breadcrumb">Tutorial: Importing Data Into Amazon Pinpoint From External
+                                    Sources</span></div>
+                           </td>
+                        </tr>
+                     </table>
+                     <div id="language-notice">
+                        <div class="language-notice-text"></div>
+                     </div>
+                     <div></div>
+                     <h1 class="topictitle" id="tutorials-importing-data">Tutorial: Importing Data Into Amazon Pinpoint From External
+                        Sources
+                     </h1>
+                     <p>Before you can create segments and send campaign messages, you have to create endpoints.
+                        In Amazon Pinpoint, <em>endpoints</em> are destinations that you send messages to, such as
+                        email addresses, mobile device identifiers, or mobile phone numbers. There are several
+                        ways
+                        to add endpoints to Amazon Pinpoint. For example, your web or mobile apps can use
+                        an AWS Mobile SDK to
+                        automatically write endpoint data to Amazon Pinpoint.
+                     </p>
+                     <p>Alternatively, you can import lists of existing customers into Amazon Pinpoint by
+                        using the console,
+                        or by using the <a href="Amazon Pinpoint API Referencerest-api-import-jobs.html#rest-api-import-jobs-methods-post" target="_blank">CreateImportJob API operation</a>. However, when you create an import job, the
+                        files that you import have to be formatted in a way that Amazon Pinpoint can interpret.
+                        Additionally,
+                        if the data that you want to import includes multiple contact methods (such as email
+                        addresses and phone numbers) for each customer, you have to create separate endpoints
+                        for
+                        each contact method. You can then unite those endpoints by applying a common user
+                        ID
+                        attribute to each one.
+                     </p>
+                     <p>The solution that's described in this tutorial is intended to simplify the process
+                        of
+                        bringing customer information into Amazon Pinpoint from an external system, such as
+                        Salesforce,
+                        Segment, Braze, or Adobe Marketing Cloud. This tutorial includes a small sample file
+                        that's
+                        based on data that was originally exported from Salesforce.
+                     </p>
+                     <div class="aws-note">
+                        <p class="aws-note">Note</p>
+                        <p>AWS and Amazon Pinpoint aren't associated with any of the products or services mentioned
+                           in
+                           the preceding paragraph. To learn more about exporting data from these systems, see
+                           their official documentation:
+                        </p>
+                        <div class="itemizedlist">
+                           
+                           
+                           
+                           
+                           
+                           <ul class="itemizedlist" type="disc">
+                              <li class="listitem">
+                                 
+                                 <p>Salesforce: See <a href="https://help.salesforce.com/articleView?id=reports_custom.htm" target="_blank">Creating
+                                       a Custom Report</a> on the Salesforce website.
+                                 </p>
+                                 
+                              </li>
+                              <li class="listitem">
+                                 
+                                 <p>Segment: See <a href="https://segment.com/docs/guides/destinations/what-are-my-data-export-options/" target="_blank">What are my data export options?</a> on the Segment website.
+                                 </p>
+                                 
+                              </li>
+                              <li class="listitem">
+                                 
+                                 <p>Braze: See <a href="https://www.braze.com/docs/user_guide/data_and_analytics/export_braze_data/segment_data_to_csv/" target="_blank">Exporting to CSV</a> in the User Guide on the Braze web site.
+                                 </p>
+                                 
+                              </li>
+                              <li class="listitem">
+                                 
+                                 <p>Adobe Marketing Cloud: See <a href="https://marketing.adobe.com/resources/help/en_US/insight/client/c_exp_data_seg_exp.html" target="_blank">Exporting Data Using Segment Export</a> on the Adobe Experience Cloud
+                                    Help website.
+                                 </p>
+                                 
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <p>After you implement this solution, you can easily send customer data to Amazon Pinpoint
+                        by uploading
+                        your source file to a specific Amazon S3 bucket. When you add a new source file to
+                        the Amazon S3
+                        bucket, Amazon S3 triggers an AWS Lambda function. This function splits the source
+                        file into
+                        several smaller files, and then moves these files to a second Amazon S3 bucket. When
+                        files are
+                        added to the second Amazon S3 bucket, it triggers another Lambda function.
+                     </p>
+                     <p>The second function processes each of the smaller input files by doing the
+                        following:
+                     </p>
+                     <div class="itemizedlist">
+                        
+                        
+                        
+                        
+                        
+                        
+                        <ul class="itemizedlist" type="disc">
+                           <li class="listitem">
+                              
+                              <p>Creates a separate record for each endpoint (email address, phone number) that it
+                                 finds in the file.
+                              </p>
+                              
+                           </li>
+                           <li class="listitem">
+                              
+                              <p>Changes the headers in the incoming spreadsheet to the record names that Amazon Pinpoint
+                                 expects.
+                              </p>
+                              
+                           </li>
+                           <li class="listitem">
+                              
+                              <p>Uses the phone number validation feature of Amazon Pinpoint to properly format the
+                                 phone
+                                 numbers that it finds. If the phone number validation service discovers that a phone
+                                 number is capable of receiving SMS messages, then it creates the endpoint as an SMS
+                                 endpoint. Otherwise, it creates the endpoint as a voice endpoint.
+                              </p>
+                              
+                           </li>
+                           <li class="listitem">
+                              
+                              <p>Changes some data to use the format that Amazon Pinpoint expects. For example, Amazon
+                                 Pinpoint expects
+                                 you to specify country names in ISO 3166 alpha-2 format. If your input includes
+                                 country names, this function automatically converts them to the correct format.
+                                 Additionally, Amazon Pinpoint expects you to specify phone numbers in E.164 format.
+                                 It obtains
+                                 this value from the phone number validation step.
+                              </p>
+                              
+                           </li>
+                           <li class="listitem">
+                              
+                              <p>Stores the processed files in a third Amazon S3 bucket.</p>
+                              
+                           </li>
+                        </ul>
+                     </div>
+                     <p>Because this function only processes a small section of your data, it can run quickly
+                        each
+                        time it's invoked. Also, each instance of the function runs concurrently, making it
+                        possible
+                        to process large amounts of data in a relatively short amount of time.
+                     </p>
+                     <p>When files are added to the third and final Amazon S3 bucket, an additional Lambda
+                        function is
+                        triggered. This function takes the processed files and uses them to create import
+                        jobs in
+                        Amazon Pinpoint. When these import jobs are complete, you can start sending campaigns
+                        to the imported
+                        endpoints.
+                     </p>
+                     <p>The flow of data in this solution is illustrated in the following diagram.</p>
+                     <div class="mediaobject">
+                        
+                        <img src="images/Customer_Import_Tutorial_Architecture.png" alt="&#xA;            A diagram that shows the flow of data in the solution that's described in this&#xA;                tutorial. Customer data from an external source (in CSV format) is added to an Amazon S3&#xA;                bucket, triggering a Lambda function. This function splits the file into several&#xA;                smaller files, and sends those smaller files to another Amazon S3 bucket. Each time a&#xA;                file is added to the second bucket, a separate Lambda function is triggered. These&#xA;                functions process the data in the source file, putting it in a format that Amazon Pinpoint&#xA;                expects. The processed files are added to a third Amazon S3 bucket, which triggers an&#xA;                additional Lambda function. This final function executes the&#xA;                    CreateImportJob operation in the Amazon Pinpoint API, which adds the new&#xA;                endpoints to your Amazon Pinpoint project.&#xA;        " />
+                        
+                        
+                        
+                     </div>
+                     
+                     <p class="title"><b>Intended Audience</b></p>
+                     
+                     <p>This tutorial is intended for developers and system implementers. You don't have to
+                        be
+                        familiar with Amazon Pinpoint to complete the steps in this tutorial.
+                     </p>
+                     
+                     <p>To implement the solution that's described in this tutorial, you have to install Python
+                        and the PIP package manager on your computer in order to download some of the packages
+                        that
+                        are necessary to use this solution. This tutorial includes all of the code that you
+                        need in
+                        order to complete it. However, to make this solution work for your specific use case,
+                        you
+                        might have to modify some of the Python code that's included in the tutorial. Finally,
+                        you
+                        have to be able to create new IAM policies and users.
+                     </p>
+                     
+                     <p class="title"><b>Features Used</b></p>
+                     
+                     <p>This tutorial shows you how to import customer data by using custom Lambda functions
+                        to
+                        process your data. In addition to modifying the format of some of the data in your
+                        source files, the solution described in this tutorial also uses the phone number
+                        validation service that's built in to Amazon Pinpoint.
+                     </p>
+                     
+                     <p>After the data is processed, a Lambda function imports your customer data into Amazon
+                        Pinpoint by
+                        using the <code class="code">CreateImportJob</code> API operation.
+                     </p>
+                     
+                     <p class="title"><b>Time Required</b></p>
+                     
+                     <p>It should take 60–90 minutes to complete the procedures in this tutorial.
+                        However, you should plan to spend additional time customizing this solution to fit
+                        your
+                        unique use case.
+                     </p>
+                     
+                     
+                     <p class="title"><b>Regional Restrictions</b></p>
+                     
+                     <p>There are no regional restrictions associate with using this solution.</p>
+                     
+                     
+                     <p class="title"><b>Resource Usage Costs</b></p>
+                     
+                     <p>There's no charge for creating an AWS account. However, by implementing this
+                        solution, you might incur some or all of the costs that are listed in the following
+                        table.
+                     </p>
+                     
+                     <div class="table">
+                        <div class="table-contents">
+                           <table id="w230aab7c10c39">
+                              
+                              <tr>
+                                 
+                                 <th>Description</th>
+                                 
+                                 <th>Cost (US Dollars)</th>
+                                 
+                              </tr>
+                              
+                              
+                              <tr>
+                                 
+                                 <td>
+                                    
+                                    <p>Lambda usage</p>
+                                    
+                                 </td>
+                                 
+                                 <td>
+                                    
+                                    <p>This solution uses three Lambda functions that interact with the Amazon Pinpoint
+                                       API. When you call a Lambda function, you're charged based on the number
+                                       of requests for your functions, for the time that it takes for your code
+                                       to execute, and for the amount of memory that your functions use. The
+                                       number of requests, amount of compute time, and amount of memory
+                                       required depends on the number of records that you're importing.
+                                    </p>
+                                    
+                                    <p>Your usage of Lambda in implementing this solution might be included in
+                                       the Free Tier. For more information, see <a href="https://aws.amazon.com/lambda/pricing/" target="_blank">AWS Lambda
+                                          Pricing</a>.
+                                    </p>
+                                    
+                                 </td>
+                                 
+                              </tr>
+                              
+                              <tr>
+                                 
+                                 <td>
+                                    
+                                    <p>Amazon S3 usage</p>
+                                    
+                                 </td>
+                                 
+                                 <td>
+                                    
+                                    <p>You pay $0.023–0.025 per GB of data that you store in Amazon S3,
+                                       depending on which AWS Region you use. You also pay
+                                       $0.005–0.0055, depending on the Region, for every 1,000
+                                       <code class="code">PUT</code> requests that you make to Amazon S3.
+                                    </p>
+                                    
+                                    <p>Your usage of Amazon S3 in implementing this solution might be included in
+                                       the Free Tier. For more information, see <a href="https://aws.amazon.com/s3/pricing/" target="_blank">Amazon Simple Storage Service Pricing</a>.
+                                    </p>
+                                    
+                                 </td>
+                                 
+                              </tr>
+                              
+                              <tr>
+                                 
+                                 <td>
+                                    
+                                    <p>Phone number validation usage</p>
+                                    
+                                 </td>
+                                 
+                                 <td>
+                                    
+                                    <p>The solution in this tutorial uses the phone number validation feature
+                                       of Amazon Pinpoint to verify that each phone number in your incoming data is valid
+                                       and properly formatted.
+                                    </p>
+                                    
+                                    <p>You pay $0.006 for each phone number validation request. This tutorial
+                                       includes a sample file that contains 10 endpoints. Each time you execute
+                                       the solution that's shown in this tutorial, you pay $0.06 for your use
+                                       of the phone number validation service.
+                                    </p>
+                                    
+                                 </td>
+                                 
+                              </tr>
+                              
+                           </table>
+                        </div>
+                     </div>
+                     <p><b>Next</b>: <a href="tutorials-importing-data-prereqs.html">Prerequisites</a></p>
+                  </div>
+                  <noscript>
+                     <div>
+                        <div>
+                           <div>
+                              <div id="js_error_message">
+                                 <p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p>
+                                 <p>To use the AWS Documentation, Javascript must be enabled. Please refer to your browser's
+                                    Help pages for instructions.
+                                 </p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </noscript>
+                  <div id="main-col-footer">
+                     <div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div>
+                     <div id="next"><a class="awstoc" accesskey="p" href="tutorials-using-postman-sample-requests.html">« Previous </a><a class="awstoc" accesskey="n" href="tutorials-importing-data-prereqs.html">Next »</a></div>
+                     <div id="copyright-main-footer">© 2019, Amazon Web Services, Inc. or its affiliates. All rights reserved.</div>
+                  </div>
+               </div>
+            </div>
+            <div id="right-expanded">
+               <div id="right-content-wrapper"></div>
+            </div>
+         </div>
+      </div>
+      <div id="cookie-notice">
+         <div class="cookie-notice-text">We use cookies to provide and improve our services. By using our site, you consent
+            to cookies. <a href="http://aws.amazon.com/legal/cookies">Learn more</a></div>
+      </div>
+      <div id="footer">
+         <div id="footer_short_fb" class="hide" title="Feedback"><a target="_blank" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Pinpoint&amp;topic_url=http://docs.aws.amazon.com/en_us/pinpoint/latest/developerguide/tutorials-importing-data.html&amp;hidden_guide_name=Developer Guide&amp;hidden_api_version=&amp;hidden_file_name=tutorials-importing-data"><i class="awsdocs-footer-text fa fa-envelope-o"></i></a></div>
+         <div id="footer_toggle" class="mediaobject">
+            <div id="footer_toggle_img" class="awsdocs-footer-text fa fa-caret-down"></div>
+            <div id="footer_toggle_img_collapse" class="hide awsdocs-footer-text fa fa-caret-right"></div>
+         </div>
+         <div id="footer-left"><a class="awsdocs-footer-text" target="_top" href="http://aws.amazon.com/terms">Terms of Use</a><span class="awsdocs-footer-text"> | </span><a class="awsdocs-footer-text" target="_top" href="http://aws.amazon.com/privacy">Privacy</a><span class="awsdocs-footer-text"> | </span><span class="awsdocs-footer-text">© 2019, Amazon Web Services, Inc. or its affiliates. All rights reserved.</span></div>
+         <div id="footer-right">
+            <div id="feedback">
+               <div id="forums"><a id="forum_link" target="_blank" href="http://forums.aws.amazon.com/forum.jspa?forumID=225" class="awsdocs-footer-text">Have a question? Try the Forums.</a></div>
+               <div id="feedback-message" class="awsdocs-footer-text">Did this page help you?</div>
+               <div id="feedback-yesno-buttons"><a class="awstoc btn btn-default" target="_blank" href="feedbackyes.html?topic_url=http://docs.aws.amazon.com/en_us/pinpoint/latest/developerguide/tutorials-importing-data.html">Yes</a><a class="awstoc btn btn-default" target="_blank" href="feedbackno.html?topic_url=http://docs.aws.amazon.com/en_us/pinpoint/latest/developerguide/tutorials-importing-data.html">No</a></div>
+               <div id="feedback-feedback-button"><a class="awstoc btn btn-default" target="_blank" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Pinpoint&amp;topic_url=http://docs.aws.amazon.com/en_us/pinpoint/latest/developerguide/tutorials-importing-data.html&amp;hidden_guide_name=Developer Guide&amp;hidden_api_version=&amp;hidden_file_name=tutorials-importing-data">Feedback</a></div>
+            </div>
+         </div>
+      </div>
+      <!-- SiteCatalyst code version: H.25.2.
+            Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+            More info available at http://www.omniture.com --><script language="JavaScript" type="text/javascript" src="https://a0.awsstatic.com/s_code/js/1.0/awshome_s_code.js"></script><script language="JavaScript" type="text/javascript">
+         <!--
+
+            // Documentation Service Name
+            s.prop66='Amazon Pinpoint';
+            s.eVar66='D=c66';
+  
+            // Documentation Guide Name                                                                 
+            s.prop65='Developer Guide';
+            s.eVar65='D=c65';
+
+            var s_code=s.t();if(s_code)document.write(s_code)//--></script><script language="JavaScript" type="text/javascript">
+         <!--
+                if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+                //--></script><noscript><img src="https://amazonwebservices.d2.sc.omtrdc.net/b/ss/awsamazondev/1/H.25.2--NS/0" height="1" width="1" border="0" alt="" /></noscript>
+      <!--/DO NOT REMOVE/-->
+      <!-- End SiteCatalyst code version: H.25.2. -->
+   </body>
+</html>

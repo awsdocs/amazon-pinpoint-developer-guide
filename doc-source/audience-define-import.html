@@ -1,0 +1,865 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Importing Endpoints into Amazon Pinpoint - Amazon Pinpoint</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="home" href="#top" />
+      <link rel="up" href="audience-define.html" title="Defining Your Audience to Amazon Pinpoint" />
+      <link rel="prev" href="audience-define-endpoints-batch.html" title="Adding a Batch of Endpoints to&#xA;            Amazon Pinpoint" />
+      <link rel="next" href="audience-define-remove.html" title="Deleting Endpoints from Amazon Pinpoint" />
+      <meta name="description" content="Quickly add many endpoints to your Amazon Pinpoint project by importing them." />
+      <meta name="keywords" content="Pinpoint,Amazon Pinpoint,Customer engagement,Segmentation,Campaigns,Metrics" />
+      <meta name="deployment_region" content="IAD" />
+      <meta name="product" content="Amazon Pinpoint" />
+      <meta name="guide" content="Developer Guide" />
+      <meta name="guide-locale" content="en_us" />
+      <meta name="tocs" content="toc-contents.json" />
+      <link rel="icon" type="image/ico" href="images/favicon.ico" />
+      <link rel="shortcut icon" type="image/ico" href="images/favicon.ico" />
+      <link rel="canonical" href="https://docs.aws.amazon.com/pinpoint/latest/developerguide/audience-define-import.html" />
+      <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" />
+      <link rel="stylesheet" type="text/css" href="font/css/font-awesome.min.css" />
+      <link rel="stylesheet" type="text/css" href="css/google-font.css" />
+      <link id="code-style" rel="stylesheet" type="text/css" href="css/code/light.css" />
+      <link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.css" />
+      <link rel="stylesheet" type="text/css" href="css/colorbox.css" />
+      <link rel="stylesheet" type="text/css" href="css/awsdocs.css?v=20181221" /><script type="text/javascript" src="js/highlight.pack.js"></script><script type="text/javascript" src="js/jquery.min.js"></script><script type="text/javascript" src="js/jquery-ui.min.js"></script><script type="text/javascript" src="js/jquery.colorbox.js"></script><script type="text/javascript" src="js/awsdocs.min.js?v=20181221"></script></head>
+   <body id="top">
+      <div xmlns:db="http://docbook.org/ns/docbook" id="aws-nav" class="aws-nav-header">
+         <div class="aws-nav-header-left">
+            <div class="aws-nav-logo">
+               <!--aws_logo_105x39.png--><a href="http://aws.amazon.com"><img src="images/aws_logo_105x39.png" alt="Amazon Web Services" /></a></div>
+         </div>
+         <div id="aws-nav-header-right" class="aws-nav-header-right">
+            <div class="aws-nav-cta-button-outer"><a id="aws-nav-cta-button" class="aws-nav-button" href="https://console.aws.amazon.com/console/home">Sign In to the Console</a></div>
+            <div class="aws-nav-popover-trigger" data-dropdown="aws-nav-dropdown-lang"><select id="languageSelection" onchange="SelectLanguage()">
+                  <option value="/de_de/pinpoint/latest/developerguide/audience-define-import.html">Deutsch</option>
+                  <option value="/en_us/pinpoint/latest/developerguide/audience-define-import.html" selected="selected">English</option>
+                  <option value="/es_es/pinpoint/latest/developerguide/audience-define-import.html">Español</option>
+                  <option value="/fr_fr/pinpoint/latest/developerguide/audience-define-import.html">Français</option>
+                  <option value="/it_it/pinpoint/latest/developerguide/audience-define-import.html">Italiano</option>
+                  <option value="/ja_jp/pinpoint/latest/developerguide/audience-define-import.html">日本語</option>
+                  <option value="/ko_kr/pinpoint/latest/developerguide/audience-define-import.html">한국어</option>
+                  <option value="/pt_br/pinpoint/latest/developerguide/audience-define-import.html">Português</option>
+                  <option value="/zh_cn/pinpoint/latest/developerguide/audience-define-import.html">中文 (简体)</option>
+                  <option value="/zh_tw/pinpoint/latest/developerguide/audience-define-import.html">中文 (繁體)</option></select></div><a class="btn btn-kindle-link" id="kindle-link-top" target="_blank" href="http://www.amazon.com/dp/B07JKHTQVP" title="Open Kindle"></a><a class="btn btn-pdf-link" id="pdf-link-top" href="pinpoint-dg.pdf#audience-define-import" target="_blank" title="Open PDF"></a><a class="btn btn-github-link" id="github-link-top" href="https://github.com/awsdocs/amazon-pinpoint-developer-guide/tree/master/doc-source/audience-define-import.md" target="_blank" title="Edit on GitHub"></a><div id="aws-nav-quicklinks-separator" class="aws-nav-quicklinks-separator">
+               <div class="aws-nav-left"></div>
+               <div class="aws-nav-right"></div>
+            </div>
+         </div>
+      </div>
+      <div id="content-container">
+         <div id="left-column">
+            <div id="left-col-header">
+               <div xmlns:db="http://docbook.org/ns/docbook" id="left-col-top-content">
+                  <div id="service-name">Amazon Pinpoint </div>
+                  <div id="search"><i id="search-icon" class="fa fa-search fa-2x"></i></div>
+                  <div id="guide-info">Developer Guide
+                     <div id="content-button"><i id="toggle-contents" class="fa fa-bars"></i></div>
+                  </div>
+               </div>
+               <form id="finegrainedSearch" method="get" onsubmit="return searchFormSubmit(this);" action="/search/doc-search.html">
+                  <div id="search-form"><select id="search-select" name="searchPath">
+                        <option value="all">Entire Site</option>
+                        <option value="AWSMarketplace">AMIs from AWS Marketplace</option>
+                        <option value="amis">AMIs from All Sources</option>
+                        <option value="articles">Articles &amp; Tutorials</option>
+                        <option value="products_and_info">AWS Product Information</option>
+                        <option value="case_studies">Case Studies</option>
+                        <option value="customerapps">Customer Apps</option>
+                        <option value="documentation">Documentation</option>
+                        <option value="documentation-product">Documentation - This Product</option>
+                        <option value="documentation-guide" selected="selected">Documentation - This Guide</option>
+                        <option value="datasets">Public Data Sets</option>
+                        <option value="releasenotes">Release Notes</option>
+                        <option value="solution_providers">Partners</option>
+                        <option value="code">Sample Code &amp; Libraries</option></select><br /><input id="search-query" name="searchQuery" type="text" placeholder="Search" /><input id="search-button" src="images/search-button.png" alt="Go" type="image" /></div><input type="hidden" name="this_doc_product" id="this_doc_product" value="Amazon Pinpoint" /><input type="hidden" name="this_doc_guide" id="this_doc_guide" value="Developer Guide" /><input type="hidden" name="doc_locale" value="en_us" /></form>
+            </div>
+            <div id="toc"></div>
+         </div>
+         <div id="main-column">
+            <div id="main">
+               <div id="main-content">
+                  <div id="main-col-body">
+                     <table summary="Breadcrumbs">
+                        <tr>
+                           <td>
+                              <div class="breadcrumb"><a href="/index.html">AWS Documentation</a> » <a href="/pinpoint/index.html">Amazon Pinpoint</a> » <a href="index.html">Developer Guide</a> » <a href="audience-define.html">Defining Your Audience to Amazon Pinpoint</a> » <span class="breadcrumb">Importing Endpoints into Amazon Pinpoint</span></div>
+                           </td>
+                        </tr>
+                     </table>
+                     <div id="language-notice">
+                        <div class="language-notice-text"></div>
+                     </div>
+                     <div></div>
+                     <h1 class="topictitle" id="audience-define-import">Importing Endpoints into Amazon Pinpoint</h1>
+                     <p>You can add or update endpoints in large numbers by importing them from an Amazon
+                        S3 bucket.
+                        Importing endpoints is useful if you have records about your audience outside of Amazon
+                        Pinpoint, and
+                        you want to add this information to an Amazon Pinpoint project. In this case, you
+                        would:
+                     </p>
+                     <div class="orderedlist">
+                        
+                        
+                        
+                        
+                        <ol>
+                           <li>
+                              
+                              <p>Create endpoint definitions that are based on your own audience data.</p>
+                              
+                           </li>
+                           <li>
+                              
+                              <p>Save these endpoint definitions in one or more files, and upload the files to an
+                                 Amazon S3 bucket.
+                              </p>
+                              
+                           </li>
+                           <li>
+                              
+                              <p>Add the endpoints to your Amazon Pinpoint project by importing them from the bucket.</p>
+                              
+                           </li>
+                        </ol>
+                     </div>
+                     <p>Each import job can transfer up to 1 GB of data. In a typical job, where each endpoint
+                        is
+                        4 KB or less, you could import around 250,000 endpoints. You can run up to two concurrent
+                        import jobs per AWS account. If you need more bandwidth for your import jobs, you
+                        can
+                        submit a service limit increase request with AWS Support. For more information, see
+                        <a href="limits.html#limits-increase">Requesting a Limit Increase</a>.
+                     </p>
+                     
+                     <h2 id="audience-define-import-before">Before You Begin</h2>
+                     
+                     <p>Before you can import endpoints, you need the following resources in your AWS
+                        account:
+                     </p>
+                     
+                     <div class="itemizedlist">
+                        
+                        
+                        
+                        <ul class="itemizedlist" type="disc">
+                           <li class="listitem">
+                              
+                              <p>An Amazon S3 bucket. To create a bucket, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html">Create a Bucket</a> in the
+                                 <em>Amazon Simple Storage Service Getting Started Guide</em>.
+                              </p>
+                              
+                           </li>
+                           <li class="listitem">
+                              
+                              <p>An AWS Identity and Access Management (IAM) role that grants Amazon Pinpoint read
+                                 permissions for your Amazon S3
+                                 bucket. To create the role, see <a href="permissions-import-segment.html">IAM Role for Importing Endpoints or
+                                    Segments</a>.
+                              </p>
+                              
+                              
+                           </li>
+                        </ul>
+                     </div>
+                     
+                     
+                     <h2 id="audience-define-import-examples">Examples</h2>
+                     
+                     <p>The following examples demonstrate how to add endpoint definitions to your Amazon
+                        S3
+                        bucket, and then import those endpoints into an Amazon Pinpoint project.
+                     </p>
+                     
+                     
+                     <h3 id="audience-define-import-examples-files">Files with Endpoint
+                        Definitions
+                     </h3>
+                     
+                     <p>The files that you add to your Amazon S3 bucket can contain endpoint definitions in
+                        CSV
+                        or newline-delimited JSON format. For the attributes that you can use to define your
+                        endpoints, see the <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html#rest-api-endpoint-schemas">EndpointRequest</a> JSON schema in the <em>Amazon Pinpoint API Reference</em>.
+                     </p>
+                     
+                     <div class="option container">
+                        <div class="optionselector"><span class="optionanchor" id=""><span class="option  selected" data-tab="csv">CSV</span></span><span class="optionanchor" id=""><span class="option " data-tab="json">JSON</span></span></div>
+                        <dl>
+                           <dt>CSV</dt>
+                           <dd class="selected" data-tab="csv">
+                              <p>You can import endpoints that are defined in a CSV file, as in the
+                                 following example:
+                              </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight">ChannelType,Address,Location.Country,Demographic.Platform,Demographic.Make,User.UserId
+SMS,2065550182,CAN,Android,LG,example-user-id-1
+APNS,1a2b3c4d5e6f7g8h9i0j1a2b3c4d5e6f,USA,iOS,Apple,example-user-id-2
+EMAIL,john.stiles@example.com,USA,iOS,Apple,example-user-id-2</code></pre><p>The first line is the header, which contains the endpoint attributes.
+                                 Specify nested attributes by using dot notation, as in
+                                 <code class="code">Location.Country</code>.
+                              </p>
+                              <p>The subsequent lines define the endpoints by providing values for each
+                                 of the attributes in the header.
+                              </p>
+                              <p>To include a comma, line break, or double quote in a value, enclose
+                                 the value in double quotes, as in <code class="code">"aaa,bbb"</code>. For more
+                                 information about the CSV format, see <a href="https://tools.ietf.org/html/rfc4180" target="_blank">RFC 4180 Common Format and
+                                    MIME Type for Comma-Separated Values (CSV) Files</a>.
+                              </p>
+                           </dd>
+                           <dt>JSON</dt>
+                           <dd class="" data-tab="json">
+                              <p>You can import endpoints that are defined in a newline-delimited JSON
+                                 file, as in the following example:
+                              </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="json ">{"ChannelType":"SMS","Address":"2065550182","Location":{"Country":"CAN"},"Demographic":{"Platform":"Android","Make":"LG"},"User":{"UserId":"example-user-id-1"}}
+{"ChannelType":"APNS","Address":"1a2b3c4d5e6f7g8h9i0j1a2b3c4d5e6f","Location":{"Country":"USA"},"Demographic":{"Platform":"iOS","Make":"Apple"},"User":{"UserId":"example-user-id-2"}}
+{"ChannelType":"EMAIL","Address":"john.stiles@example.com","Location":{"Country":"USA"},"Demographic":{"Platform":"iOS","Make":"Apple"},"User":{"UserId":"example-user-id-2"}}</code></pre><p>In this format, each line is a complete JSON object that contains an
+                                 individual endpoint definition.
+                              </p>
+                           </dd>
+                        </dl>
+                     </div>
+                     
+                     
+                     
+                     <h3 id="audience-define-import-examples-jobs">Import Job Requests</h3>
+                     
+                     
+                     <p>The following examples show you how to add endpoint definitions to Amazon S3 by uploading
+                        a
+                        local file to a bucket. Then, the examples import the endpoint definitions into an
+                        Amazon Pinpoint
+                        project.
+                     </p>
+                     
+                     <div class="option container">
+                        <div class="optionselector"><span class="optionanchor" id=""><span class="option  selected" data-tab="aws-cli">AWS CLI</span></span><span class="optionanchor" id=""><span class="option " data-tab="aws-sdk-for-java">AWS SDK for Java</span></span><span class="optionanchor" id=""><span class="option " data-tab="http">HTTP</span></span></div>
+                        <dl>
+                           <dt>AWS CLI</dt>
+                           <dd class="selected" data-tab="aws-cli">
+                              <p>You can use Amazon Pinpoint by running commands with the AWS CLI.</p>
+                              <div class="example">
+                                 <p class="title"><b>Example S3 CP Command</b></p>
+                                 <div class="example-contents">
+                                    <p>To upload a local file to an Amazon S3 bucket, use the Amazon S3 <a href="https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html"><code class="code">cp</code></a>
+                                       command:
+                                    </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">$ </code><strong class="userinput"><code>aws s3 cp <em class="replaceable"><code>./endpoints-file</code></em> s3://<em class="replaceable"><code>bucket-name/prefix/</code></em></code></strong></code></pre></div>
+                              </div>
+                              <p>Where:</p>
+                              <div class="itemizedlist">
+                                 
+                                 
+                                 
+                                 <ul class="itemizedlist" type="disc">
+                                    <li class="listitem">
+                                       
+                                       <p><em>./endpoints-file</em> is the file
+                                          path to a local file that contains the endpoint definitions.
+                                       </p>
+                                       
+                                    </li>
+                                    <li class="listitem">
+                                       
+                                       <p><em>bucket-name/prefix/</em> is the name
+                                          of your Amazon S3 bucket and, optionally, a prefix that helps you
+                                          organize the objects in your bucket hierarchically. For example, a
+                                          useful prefix might be
+                                          <code class="code">pinpoint/imports/endpoints/</code>.
+                                       </p>
+                                       
+                                    </li>
+                                 </ul>
+                              </div>
+                              <div class="example">
+                                 <p class="title"><b>Example Create Import Job Command</b></p>
+                                 <div class="example-contents">
+                                    <p>To import endpoint definitions from an Amazon S3 bucket, use the <a href="https://docs.aws.amazon.com/cli/latest/reference/pinpoint/create-import-job.html"><code class="code">create-import-job</code></a> command:
+                                    </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">$ </code><strong class="userinput"><code>aws pinpoint create-import-job \</code></strong>
+<code class="prompt" copy="false">&gt; </code><strong class="userinput"><code>--application-id <em class="replaceable"><code>application-id</code></em> \</code></strong>
+<code class="prompt" copy="false">&gt; </code><strong class="userinput"><code>--import-job-request \</code></strong>
+<code class="prompt" copy="false">&gt; </code><strong class="userinput"><code>S3Url=s3://<em class="replaceable"><code>bucket-name/prefix/key</code></em>,\</code></strong>
+<code class="prompt" copy="false">&gt; </code><strong class="userinput"><code>RoleArn=<em class="replaceable"><code>iam-import-role-arn</code></em>,\</code></strong>
+<code class="prompt" copy="false">&gt; </code><strong class="userinput"><code>Format=<em class="replaceable"><code>format</code></em>,\</code></strong>
+<code class="prompt" copy="false">&gt; </code><strong class="userinput"><code>RegisterEndpoints=true</code></strong></code></pre><p>Where:</p>
+                                    <div class="itemizedlist">
+                                       
+                                       
+                                       
+                                       
+                                       
+                                       <ul class="itemizedlist" type="disc">
+                                          <li class="listitem">
+                                             
+                                             <p><em>application-id</em> is the ID of
+                                                the Amazon Pinpoint project that you're importing endpoints for.
+                                             </p>
+                                             
+                                          </li>
+                                          <li class="listitem">
+                                             
+                                             <p><em>bucket-name/prefix/key</em> is
+                                                the location in Amazon S3 that contains one or more objects to
+                                                import. The location can end with the key for an individual
+                                                object, or it can end with a prefix that qualifies multiple
+                                                objects.
+                                             </p>
+                                             
+                                          </li>
+                                          <li class="listitem">
+                                             
+                                             <p><em>iam-import-role-arn</em> is the
+                                                Amazon Resource Name (ARN) of an IAM role that grants Amazon Pinpoint
+                                                read access to the bucket.
+                                             </p>
+                                             
+                                          </li>
+                                          <li class="listitem">
+                                             
+                                             <p><em>format</em> can be either
+                                                <code class="code">JSON</code> or <code class="code">CSV</code>, depending on which
+                                                format you used to define your endpoints. If the Amazon S3 location
+                                                includes multiple objects of mixed formats, Amazon Pinpoint imports only
+                                                the objects that match the specified format.
+                                             </p>
+                                             
+                                             
+                                          </li>
+                                       </ul>
+                                    </div>
+                                    <p>The response includes details about the import job:</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight">{
+    "ImportJobResponse": {
+        "CreationDate": "2018-05-24T21:26:33.995Z",
+        "Definition": {
+            "DefineSegment": false,
+            "ExternalId": "463709046829",
+            "Format": "JSON",
+            "RegisterEndpoints": true,
+            "RoleArn": "iam-import-role-arn",
+            "S3Url": "s3://bucket-name/prefix/key"
+        },
+        "Id": "d5ecad8e417d498389e1d5b9454d4e0c",
+        "JobStatus": "CREATED",
+        "Type": "IMPORT"
+    }
+}</code></pre><p>The response provides the job ID with the <code class="code">Id</code> attribute.
+                                       You can use this ID to check the current status of the import
+                                       job.
+                                    </p>
+                                 </div>
+                              </div>
+                              <div class="example">
+                                 <p class="title"><b>Example Get Import Job Command</b></p>
+                                 <div class="example-contents">
+                                    <p>To check the current status of an import job, use the
+                                       <code class="code">get-import-job</code> command:
+                                    </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">$ </code><strong class="userinput"><code>aws pinpoint get-import-job \</code></strong>
+<code class="prompt" copy="false">&gt; </code><strong class="userinput"><code>--application-id <em class="replaceable"><code>application-id</code></em> \</code></strong>
+<code class="prompt" copy="false">&gt; </code><strong class="userinput"><code>--job-id <em class="replaceable"><code>job-id</code></em></code></strong></code></pre><p>Where:</p>
+                                    <div class="itemizedlist">
+                                       
+                                       
+                                       
+                                       <ul class="itemizedlist" type="disc">
+                                          <li class="listitem">
+                                             
+                                             <p><em>application-id</em> is the ID of
+                                                the Amazon Pinpoint project that the import job was initiated for.
+                                             </p>
+                                             
+                                          </li>
+                                          <li class="listitem">
+                                             
+                                             <p><em>job-id</em> is the ID of the
+                                                import job that you're checking.
+                                             </p>
+                                             
+                                          </li>
+                                       </ul>
+                                    </div>
+                                    <p>The response to this command provides the current state of the import
+                                       job:
+                                    </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight">{
+    "ImportJobResponse": {
+        "ApplicationId": "application-id",
+        "CompletedPieces": 1,
+        "CompletionDate": "2018-05-24T21:26:45.308Z",
+        "CreationDate": "2018-05-24T21:26:33.995Z",
+        "Definition": {
+            "DefineSegment": false,
+            "ExternalId": "463709046829",
+            "Format": "JSON",
+            "RegisterEndpoints": true,
+            "RoleArn": "iam-import-role-arn",
+            "S3Url": "s3://s3-bucket-name/prefix/endpoint-definitions.json"
+        },
+        "FailedPieces": 0,
+        "Id": "job-id",
+        "JobStatus": "COMPLETED",
+        "TotalFailures": 0,
+        "TotalPieces": 1,
+        "TotalProcessed": 3,
+        "Type": "IMPORT"
+    }
+}</code></pre><p>The response provides the job status with the <code class="code">JobStatus</code>
+                                       attribute.
+                                    </p>
+                                 </div>
+                              </div>
+                           </dd>
+                           <dt>AWS SDK for Java</dt>
+                           <dd class="" data-tab="aws-sdk-for-java">
+                              <p>You can use the Amazon Pinpoint API in your Java applications by using the client
+                                 that's provided by the AWS SDK for Java.
+                              </p>
+                              <div class="example">
+                                 <p class="title"><b>Example Code</b></p>
+                                 <div class="example-contents">
+                                    <p>To upload a file with endpoint definitions to Amazon S3, use the <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/AmazonS3Client.html#putObject-java.lang.String-java.lang.String-java.io.File-"><code class="code">putObject</code></a> method of the
+                                       <code class="code">AmazonS3</code> client. 
+                                    </p>
+                                    <p>To import the endpoints into an Amazon Pinpoint project, initialize a <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/model/CreateImportJobRequest.html"><code class="code">CreateImportJobRequest</code></a> object. Then, pass
+                                       this object to the <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#createImportJob-com.amazonaws.services.pinpoint.model.CreateImportJobRequest-"><code class="code">createImportJob</code></a> method of the
+                                       <code class="code">AmazonPinpoint</code> client.
+                                    </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="java ">
+package com.amazonaws.examples.pinpoint;
+
+import com.amazonaws.AmazonServiceException;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.pinpoint.AmazonPinpoint;
+import com.amazonaws.services.pinpoint.AmazonPinpointClientBuilder;
+import com.amazonaws.services.pinpoint.model.CreateImportJobRequest;
+import com.amazonaws.services.pinpoint.model.CreateImportJobResult;
+import com.amazonaws.services.pinpoint.model.Format;
+import com.amazonaws.services.pinpoint.model.GetImportJobRequest;
+import com.amazonaws.services.pinpoint.model.GetImportJobResult;
+import com.amazonaws.services.pinpoint.model.ImportJobRequest;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.AmazonS3Exception;
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+public class ImportEndpoints {
+
+    public static void main(String[] args) {
+
+        final String USAGE = "\n" +
+        "ImportEndpoints - Adds endpoints to an Amazon Pinpoint application by: \n" +
+        "1.) Uploading the endpoint definitions to an Amazon S3 bucket. \n" +
+        "2.) Importing the endpoint definitions from the bucket to an Amazon Pinpoint " +
+                "application.\n\n" +
+        "Usage: ImportEndpoints &lt;endpointsFileLocation&gt; &lt;s3BucketName&gt; &lt;iamImportRoleArn&gt; " +
+                "&lt;applicationId&gt;\n\n" +
+        "Where:\n" +
+        "  endpointsFileLocation - The relative location of the JSON file that contains the " +
+                "endpoint definitions.\n" +
+        "  s3BucketName - The name of the Amazon S3 bucket to upload the JSON file to. If the " +
+                "bucket doesn't exist, a new bucket is created.\n" +
+        "  iamImportRoleArn - The ARN of an IAM role that grants Amazon Pinpoint read " +
+                "permissions to the S3 bucket.\n" +
+        "  applicationId - The ID of the Amazon Pinpoint application to add the endpoints to.";
+
+        if (args.length &lt; 1) {
+            System.out.println(USAGE);
+            System.exit(1);
+        }
+
+        String endpointsFileLocation = args[0];
+        String s3BucketName = args[1];
+        String iamImportRoleArn = args[2];
+        String applicationId = args[3];
+
+        Path endpointsFilePath = Paths.get(endpointsFileLocation);
+        File endpointsFile = new File(endpointsFilePath.toAbsolutePath().toString());
+        uploadToS3(endpointsFile, s3BucketName);
+
+        importToPinpoint(endpointsFile.getName(), s3BucketName, iamImportRoleArn, applicationId);
+
+    }
+
+    private static void uploadToS3(File endpointsFile, String s3BucketName) {
+
+        // Initializes Amazon S3 client.
+        final AmazonS3 s3 = AmazonS3ClientBuilder.defaultClient();
+
+        // Checks whether the specified bucket exists. If not, attempts to create one.
+        if (!s3.doesBucketExistV2(s3BucketName)) {
+            try {
+                s3.createBucket(s3BucketName);
+                System.out.format("Created S3 bucket %s.\n", s3BucketName);
+            } catch (AmazonS3Exception e) {
+                System.err.println(e.getErrorMessage());
+                System.exit(1);
+            }
+        }
+
+        // Uploads the endpoints file to the bucket.
+        String endpointsFileName = endpointsFile.getName();
+        System.out.format("Uploading %s to S3 bucket %s . . .\n", endpointsFileName, s3BucketName);
+        try {
+            s3.putObject(s3BucketName, "imports/" + endpointsFileName, endpointsFile);
+            System.out.println("Finished uploading to S3.");
+        } catch (AmazonServiceException e) {
+            System.err.println(e.getErrorMessage());
+            System.exit(1);
+        }
+    }
+
+    private static void importToPinpoint(String endpointsFileName, String s3BucketName,
+                                         String iamImportRoleArn, String applicationId) {
+
+        // The S3 URL that Amazon Pinpoint requires to find the endpoints file.
+        String s3Url = "s3://" + s3BucketName + "/imports/" + endpointsFileName;
+
+        // Defines the import job that Amazon Pinpoint runs.
+        ImportJobRequest importJobRequest = new ImportJobRequest()
+                .withS3Url(s3Url)
+                .withRegisterEndpoints(true)
+                .withRoleArn(iamImportRoleArn)
+                .withFormat(Format.JSON);
+        CreateImportJobRequest createImportJobRequest = new CreateImportJobRequest()
+                .withApplicationId(applicationId)
+                .withImportJobRequest(importJobRequest);
+
+        // Initializes the Amazon Pinpoint client.
+        AmazonPinpoint pinpointClient = AmazonPinpointClientBuilder.standard()
+                .withRegion(Regions.US_EAST_1).build();
+
+        System.out.format("Importing endpoints in %s to Amazon Pinpoint application %s . . .\n",
+                endpointsFileName, applicationId);
+
+        try {
+
+            // Runs the import job with Amazon Pinpoint.
+            CreateImportJobResult importResult =
+                    pinpointClient.createImportJob(createImportJobRequest);
+
+            String jobId = importResult.getImportJobResponse().getId();
+            GetImportJobResult getImportJobResult = null;
+            String jobStatus = null;
+
+            // Checks the job status until the job completes or fails.
+            do {
+                getImportJobResult = pinpointClient.getImportJob(new GetImportJobRequest()
+                        .withJobId(jobId)
+                        .withApplicationId(applicationId));
+                jobStatus = getImportJobResult.getImportJobResponse().getJobStatus();
+                System.out.format("Import job %s . . .\n", jobStatus.toLowerCase());
+                TimeUnit.SECONDS.sleep(3);
+            } while (!jobStatus.equals("COMPLETED") &amp;&amp; !jobStatus.equals("FAILED"));
+
+            if (jobStatus.equals("COMPLETED")) {
+                System.out.println("Finished importing endpoints.");
+            } else {
+                System.err.println("Failed to import endpoints.");
+                System.exit(1);
+            }
+
+            // Checks for entries that failed to import.
+            // getFailures provides up to 100 of the first failed entries for the job, if any exist.
+            List&lt;String&gt; failedEndpoints = getImportJobResult.getImportJobResponse().getFailures();
+            if (failedEndpoints != null) {
+                System.out.println("Failed to import the following entries:");
+                for (String failedEndpoint : failedEndpoints) {
+                    System.out.println(failedEndpoint);
+                }
+            }
+
+        } catch (AmazonServiceException | InterruptedException e) {
+            System.err.println(e.getMessage());
+            System.exit(1);
+        }
+
+    }
+
+}
+</code></pre></div>
+                              </div>
+                           </dd>
+                           <dt>HTTP</dt>
+                           <dd class="" data-tab="http">
+                              <p>You can use Amazon Pinpoint by making HTTP requests directly to the REST API.</p>
+                              <div class="example">
+                                 <p class="title"><b>Example S3 PUT Object Request</b></p>
+                                 <div class="example-contents">
+                                    <p>To add your endpoint definitions to a bucket, use the Amazon S3 <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUT.html">PUT Object</a> operation,
+                                       and provide the endpoint definitions as the body:
+                                    </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="http ">PUT <em class="replaceable"><code>/prefix/key</code></em> HTTP/1.1
+Content-Type: text/plain
+Accept: application/json
+Host: <em class="replaceable"><code>bucket-name</code></em>.s3.amazonaws.com
+X-Amz-Content-Sha256: c430dc094b0cec2905bc88d96314914d058534b14e2bc6107faa9daa12fdff2d
+X-Amz-Date: 20180605T184132Z
+Authorization: AWS4-HMAC-SHA256 Credential=AKIAIOSFODNN7EXAMPLE/20180605/us-east-1/s3/aws4_request, SignedHeaders=accept;cache-control;content-length;content-type;host;postman-token;x-amz-content-sha256;x-amz-date, Signature=c25cbd6bf61bd3b3667c571ae764b9bf2d8af61b875cacced95d1e68d91b4170
+Cache-Control: no-cache
+
+{"ChannelType":"SMS","Address":"2065550182","Location":{"Country":"CAN"},"Demographic":{"Platform":"Android","Make":"LG"},"User":{"UserId":"example-user-id-1"}}
+{"ChannelType":"APNS","Address":"1a2b3c4d5e6f7g8h9i0j1a2b3c4d5e6f","Location":{"Country":"USA"},"Demographic":{"Platform":"iOS","Make":"Apple"},"User":{"UserId":"example-user-id-2"}}
+{"ChannelType":"EMAIL","Address":"john.stiles@example.com","Location":{"Country":"USA"},"Demographic":{"Platform":"iOS","Make":"Apple"},"User":{"UserId":"example-user-id-2"}}
+</code></pre></div>
+                              </div>
+                              <p>Where:</p>
+                              <div class="itemizedlist">
+                                 
+                                 
+                                 
+                                 <ul class="itemizedlist" type="disc">
+                                    <li class="listitem">
+                                       
+                                       <p><em>/prefix/key</em> is the prefix and
+                                          key name for the object that will contain the endpoint definitions
+                                          after the upload. You can use the prefix to organize your objects
+                                          hierarchically. For example, a useful prefix might be
+                                          <code class="code">pinpoint/imports/endpoints/</code>.
+                                       </p>
+                                       
+                                    </li>
+                                    <li class="listitem">
+                                       
+                                       <p><em>bucket-name</em> is the name of the
+                                          Amazon S3 bucket that you're adding the endpoint definitions to.
+                                       </p>
+                                       
+                                    </li>
+                                 </ul>
+                              </div>
+                              <div class="example">
+                                 <p class="title"><b>Example POST Import Job Request</b></p>
+                                 <div class="example-contents">
+                                    <p>To import endpoint definitions from an Amazon S3 bucket, issue a POST
+                                       request to the <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-import-jobs.html">Import Jobs</a> resource. In your request, include the required
+                                       headers and provide the <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-import-jobs.html#rest-api-import-jobs-schemas">ImportJobRequest</a> JSON as the body:
+                                    </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="http ">POST /v1/apps/<em class="replaceable"><code>application_id</code></em>/jobs/import HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Host: pinpoint.us-east-1.amazonaws.com
+X-Amz-Date: 20180605T214912Z
+Authorization: AWS4-HMAC-SHA256 Credential=AKIAIOSFODNN7EXAMPLE/20180605/us-east-1/mobiletargeting/aws4_request, SignedHeaders=accept;cache-control;content-length;content-type;host;postman-token;x-amz-date, Signature=c25cbd6bf61bd3b3667c571ae764b9bf2d8af61b875cacced95d1e68d91b4170
+Cache-Control: no-cache
+
+{
+  "S3Url": "s3://<em class="replaceable"><code>bucket-name/prefix/key</code></em>",
+  "RoleArn": "<em class="replaceable"><code>iam-import-role-arn</code></em>",
+  "Format": "<em class="replaceable"><code>format</code></em>",
+  "RegisterEndpoints": true
+}</code></pre><p>Where:</p>
+                                    <div class="itemizedlist">
+                                       
+                                       
+                                       
+                                       
+                                       
+                                       <ul class="itemizedlist" type="disc">
+                                          <li class="listitem">
+                                             
+                                             <p><em>application-id</em> is the ID of
+                                                the Amazon Pinpoint project that you're importing endpoints for.
+                                             </p>
+                                             
+                                          </li>
+                                          <li class="listitem">
+                                             
+                                             <p><em>bucket-name/prefix/key</em> is
+                                                the location in Amazon S3 that contains one or more objects to
+                                                import. The location can end with the key for an individual
+                                                object, or it can end with a prefix that qualifies multiple
+                                                objects.
+                                             </p>
+                                             
+                                          </li>
+                                          <li class="listitem">
+                                             
+                                             <p><em>iam-import-role-arn</em> is the
+                                                Amazon Resource Name (ARN) of an IAM role that grants Amazon Pinpoint
+                                                read access to the bucket.
+                                             </p>
+                                             
+                                          </li>
+                                          <li class="listitem">
+                                             
+                                             <p><em>format</em> can be either
+                                                <code class="code">JSON</code> or <code class="code">CSV</code>, depending on which
+                                                format you used to define your endpoints. If the Amazon S3 location
+                                                includes multiple files of mixed formats, Amazon Pinpoint imports only the
+                                                files that match the specified format.
+                                             </p>
+                                             
+                                          </li>
+                                       </ul>
+                                    </div>
+                                    <p>If your request succeeds, you receive a response like the
+                                       following:
+                                    </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight">{
+    "Id": "a995ce5d70fa44adb563b7d0e3f6c6f5",
+    "JobStatus": "CREATED",
+    "CreationDate": "2018-06-05T21:49:15.288Z",
+    "Type": "IMPORT",
+    "Definition": {
+        "S3Url": "s3://bucket-name/prefix/key",
+        "RoleArn": "iam-import-role-arn",
+        "ExternalId": "external-id",
+        "Format": "JSON",
+        "RegisterEndpoints": true,
+        "DefineSegment": false
+    }
+}</code></pre><p>The response provides the job ID with the <code class="code">Id</code> attribute.
+                                       You can use this ID to check the current status of the import
+                                       job.
+                                    </p>
+                                 </div>
+                              </div>
+                              <div class="example">
+                                 <p class="title"><b>Example GET Import Job Request</b></p>
+                                 <div class="example-contents">
+                                    <p>To check the current status of an import job, issue a <code class="code">GET</code>
+                                       request to the <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-import-job.html">Import
+                                          Job</a> resource:
+                                    </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="http ">GET /v1/apps/<em class="replaceable"><code>application_id</code></em>/jobs/import/<em class="replaceable"><code>job_id</code></em> HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Host: pinpoint.us-east-1.amazonaws.com
+X-Amz-Date: 20180605T220744Z
+Authorization: AWS4-HMAC-SHA256 Credential=AKIAIOSFODNN7EXAMPLE/20180605/us-east-1/mobiletargeting/aws4_request, SignedHeaders=accept;cache-control;content-type;host;postman-token;x-amz-date, Signature=c25cbd6bf61bd3b3667c571ae764b9bf2d8af61b875cacced95d1e68d91b4170
+Cache-Control: no-cache</code></pre><p>Where:</p>
+                                    <div class="itemizedlist">
+                                       
+                                       
+                                       
+                                       <ul class="itemizedlist" type="disc">
+                                          <li class="listitem">
+                                             
+                                             <p><em>application_id</em> is the ID of
+                                                the Amazon Pinpoint project for which the import job was initiated.
+                                             </p>
+                                             
+                                          </li>
+                                          <li class="listitem">
+                                             
+                                             <p><em>job_id</em> is the ID of the
+                                                import job that you're checking.
+                                             </p>
+                                             
+                                          </li>
+                                       </ul>
+                                    </div>
+                                    <p>If your request succeeds, you receive a response like the
+                                       following:
+                                    </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight">{
+    "ApplicationId": "application_id",
+    "Id": "70a51b2cf442447492d2c8e50336a9e8",
+    "JobStatus": "COMPLETED",
+    "CompletedPieces": 1,
+    "FailedPieces": 0,
+    "TotalPieces": 1,
+    "CreationDate": "2018-06-05T22:04:49.213Z",
+    "CompletionDate": "2018-06-05T22:04:58.034Z",
+    "Type": "IMPORT",
+    "TotalFailures": 0,
+    "TotalProcessed": 3,
+    "Definition": {
+        "S3Url": "s3://bucket-name/prefix/key.json",
+        "RoleArn": "iam-import-role-arn",
+        "ExternalId": "external-id",
+        "Format": "JSON",
+        "RegisterEndpoints": true,
+        "DefineSegment": false
+    }
+}</code></pre><p>The response provides the job status with the <code class="code">JobStatus</code>
+                                       attribute.
+                                    </p>
+                                 </div>
+                              </div>
+                           </dd>
+                        </dl>
+                     </div>
+                     
+                     
+                     <h2 id="audience-define-import-related">Related Information</h2>
+                     
+                     <p>For more information about the Import Jobs resource in the Amazon Pinpoint API, including
+                        the
+                        supported HTTP methods and request parameters, see <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-import-jobs.html">Import Jobs</a> in the <em>Amazon Pinpoint API Reference</em>.
+                     </p>
+                     
+                  </div>
+                  <noscript>
+                     <div>
+                        <div>
+                           <div>
+                              <div id="js_error_message">
+                                 <p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p>
+                                 <p>To use the AWS Documentation, Javascript must be enabled. Please refer to your browser's
+                                    Help pages for instructions.
+                                 </p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </noscript>
+                  <div id="main-col-footer">
+                     <div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div>
+                     <div id="next"><a class="awstoc" accesskey="p" href="audience-define-endpoints-batch.html">« Previous </a><a class="awstoc" accesskey="n" href="audience-define-remove.html">Next »</a></div>
+                     <div id="copyright-main-footer">© 2019, Amazon Web Services, Inc. or its affiliates. All rights reserved.</div>
+                  </div>
+               </div>
+            </div>
+            <div id="right-expanded">
+               <div id="right-content-wrapper">
+                  <div id="pagetoc">
+                     <p>On this page:</p>
+                     <ul class="pagetoc">
+                        <li class="pagetoc" name="Before You Begin"><a class="pagetoc" href="#audience-define-import-before">Before You Begin</a></li>
+                        <li class="pagetoc" name="Examples"><a class="pagetoc" href="#audience-define-import-examples">Examples</a></li>
+                        <li class="pagetoc" name="Related Information"><a class="pagetoc" href="#audience-define-import-related">Related Information</a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="cookie-notice">
+         <div class="cookie-notice-text">We use cookies to provide and improve our services. By using our site, you consent
+            to cookies. <a href="http://aws.amazon.com/legal/cookies">Learn more</a></div>
+      </div>
+      <div id="footer">
+         <div id="footer_short_fb" class="hide" title="Feedback"><a target="_blank" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Pinpoint&amp;topic_url=http://docs.aws.amazon.com/en_us/pinpoint/latest/developerguide/audience-define-import.html&amp;hidden_guide_name=Developer Guide&amp;hidden_api_version=&amp;hidden_file_name=audience-define-import"><i class="awsdocs-footer-text fa fa-envelope-o"></i></a></div>
+         <div id="footer_toggle" class="mediaobject">
+            <div id="footer_toggle_img" class="awsdocs-footer-text fa fa-caret-down"></div>
+            <div id="footer_toggle_img_collapse" class="hide awsdocs-footer-text fa fa-caret-right"></div>
+         </div>
+         <div id="footer-left"><a class="awsdocs-footer-text" target="_top" href="http://aws.amazon.com/terms">Terms of Use</a><span class="awsdocs-footer-text"> | </span><a class="awsdocs-footer-text" target="_top" href="http://aws.amazon.com/privacy">Privacy</a><span class="awsdocs-footer-text"> | </span><span class="awsdocs-footer-text">© 2019, Amazon Web Services, Inc. or its affiliates. All rights reserved.</span></div>
+         <div id="footer-right">
+            <div id="feedback">
+               <div id="forums"><a id="forum_link" target="_blank" href="http://forums.aws.amazon.com/forum.jspa?forumID=225" class="awsdocs-footer-text">Have a question? Try the Forums.</a></div>
+               <div id="feedback-message" class="awsdocs-footer-text">Did this page help you?</div>
+               <div id="feedback-yesno-buttons"><a class="awstoc btn btn-default" target="_blank" href="feedbackyes.html?topic_url=http://docs.aws.amazon.com/en_us/pinpoint/latest/developerguide/audience-define-import.html">Yes</a><a class="awstoc btn btn-default" target="_blank" href="feedbackno.html?topic_url=http://docs.aws.amazon.com/en_us/pinpoint/latest/developerguide/audience-define-import.html">No</a></div>
+               <div id="feedback-feedback-button"><a class="awstoc btn btn-default" target="_blank" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Pinpoint&amp;topic_url=http://docs.aws.amazon.com/en_us/pinpoint/latest/developerguide/audience-define-import.html&amp;hidden_guide_name=Developer Guide&amp;hidden_api_version=&amp;hidden_file_name=audience-define-import">Feedback</a></div>
+            </div>
+         </div>
+      </div>
+      <!-- SiteCatalyst code version: H.25.2.
+            Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+            More info available at http://www.omniture.com --><script language="JavaScript" type="text/javascript" src="https://a0.awsstatic.com/s_code/js/1.0/awshome_s_code.js"></script><script language="JavaScript" type="text/javascript">
+         <!--
+
+            // Documentation Service Name
+            s.prop66='Amazon Pinpoint';
+            s.eVar66='D=c66';
+  
+            // Documentation Guide Name                                                                 
+            s.prop65='Developer Guide';
+            s.eVar65='D=c65';
+
+            var s_code=s.t();if(s_code)document.write(s_code)//--></script><script language="JavaScript" type="text/javascript">
+         <!--
+                if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+                //--></script><noscript><img src="https://amazonwebservices.d2.sc.omtrdc.net/b/ss/awsamazondev/1/H.25.2--NS/0" height="1" width="1" border="0" alt="" /></noscript>
+      <!--/DO NOT REMOVE/-->
+      <!-- End SiteCatalyst code version: H.25.2. -->
+   </body>
+</html>

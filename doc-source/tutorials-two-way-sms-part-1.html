@@ -1,0 +1,609 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Step 1: Set Up Amazon Pinpoint - Amazon Pinpoint</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="home" href="#top" />
+      <link rel="up" href="tutorials-two-way-sms.html" title="Tutorial: Setting Up an SMS Registration&#xA;            System" />
+      <link rel="prev" href="tutorials-two-way-sms-prereqs.html" title="Prerequisites" />
+      <link rel="next" href="tutorials-two-way-sms-part-2.html" title="Step 2: Create IAM Policies and&#xA;            Roles" />
+      <meta name="description" content="The first step in implementing this solution is to set up Amazon Pinpoint. In this section, you do the following:" />
+      <meta name="keywords" content="Pinpoint,Amazon Pinpoint,Customer engagement,Segmentation,Campaigns,Metrics" />
+      <meta name="deployment_region" content="IAD" />
+      <meta name="product" content="Amazon Pinpoint" />
+      <meta name="guide" content="Developer Guide" />
+      <meta name="guide-locale" content="en_us" />
+      <meta name="tocs" content="toc-contents.json" />
+      <link rel="icon" type="image/ico" href="images/favicon.ico" />
+      <link rel="shortcut icon" type="image/ico" href="images/favicon.ico" />
+      <link rel="canonical" href="https://docs.aws.amazon.com/pinpoint/latest/developerguide/tutorials-two-way-sms-part-1.html" />
+      <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" />
+      <link rel="stylesheet" type="text/css" href="font/css/font-awesome.min.css" />
+      <link rel="stylesheet" type="text/css" href="css/google-font.css" />
+      <link id="code-style" rel="stylesheet" type="text/css" href="css/code/light.css" />
+      <link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.css" />
+      <link rel="stylesheet" type="text/css" href="css/colorbox.css" />
+      <link rel="stylesheet" type="text/css" href="css/awsdocs.css?v=20181221" /><script type="text/javascript" src="js/highlight.pack.js"></script><script type="text/javascript" src="js/jquery.min.js"></script><script type="text/javascript" src="js/jquery-ui.min.js"></script><script type="text/javascript" src="js/jquery.colorbox.js"></script><script type="text/javascript" src="js/awsdocs.min.js?v=20181221"></script></head>
+   <body id="top">
+      <div xmlns:db="http://docbook.org/ns/docbook" id="aws-nav" class="aws-nav-header">
+         <div class="aws-nav-header-left">
+            <div class="aws-nav-logo">
+               <!--aws_logo_105x39.png--><a href="http://aws.amazon.com"><img src="images/aws_logo_105x39.png" alt="Amazon Web Services" /></a></div>
+         </div>
+         <div id="aws-nav-header-right" class="aws-nav-header-right">
+            <div class="aws-nav-cta-button-outer"><a id="aws-nav-cta-button" class="aws-nav-button" href="https://console.aws.amazon.com/console/home">Sign In to the Console</a></div>
+            <div class="aws-nav-popover-trigger" data-dropdown="aws-nav-dropdown-lang"><select id="languageSelection" onchange="SelectLanguage()">
+                  <option value="/de_de/pinpoint/latest/developerguide/tutorials-two-way-sms-part-1.html">Deutsch</option>
+                  <option value="/en_us/pinpoint/latest/developerguide/tutorials-two-way-sms-part-1.html" selected="selected">English</option>
+                  <option value="/es_es/pinpoint/latest/developerguide/tutorials-two-way-sms-part-1.html">Español</option>
+                  <option value="/fr_fr/pinpoint/latest/developerguide/tutorials-two-way-sms-part-1.html">Français</option>
+                  <option value="/it_it/pinpoint/latest/developerguide/tutorials-two-way-sms-part-1.html">Italiano</option>
+                  <option value="/ja_jp/pinpoint/latest/developerguide/tutorials-two-way-sms-part-1.html">日本語</option>
+                  <option value="/ko_kr/pinpoint/latest/developerguide/tutorials-two-way-sms-part-1.html">한국어</option>
+                  <option value="/pt_br/pinpoint/latest/developerguide/tutorials-two-way-sms-part-1.html">Português</option>
+                  <option value="/zh_cn/pinpoint/latest/developerguide/tutorials-two-way-sms-part-1.html">中文 (简体)</option>
+                  <option value="/zh_tw/pinpoint/latest/developerguide/tutorials-two-way-sms-part-1.html">中文 (繁體)</option></select></div><a class="btn btn-kindle-link" id="kindle-link-top" target="_blank" href="http://www.amazon.com/dp/B07JKHTQVP" title="Open Kindle"></a><a class="btn btn-pdf-link" id="pdf-link-top" href="pinpoint-dg.pdf#tutorials-two-way-sms-part-1" target="_blank" title="Open PDF"></a><a class="btn btn-github-link" id="github-link-top" href="https://github.com/awsdocs/amazon-pinpoint-developer-guide/tree/master/doc-source/tutorials-two-way-sms-part-1.md" target="_blank" title="Edit on GitHub"></a><div id="aws-nav-quicklinks-separator" class="aws-nav-quicklinks-separator">
+               <div class="aws-nav-left"></div>
+               <div class="aws-nav-right"></div>
+            </div>
+         </div>
+      </div>
+      <div id="content-container">
+         <div id="left-column">
+            <div id="left-col-header">
+               <div xmlns:db="http://docbook.org/ns/docbook" id="left-col-top-content">
+                  <div id="service-name">Amazon Pinpoint </div>
+                  <div id="search"><i id="search-icon" class="fa fa-search fa-2x"></i></div>
+                  <div id="guide-info">Developer Guide
+                     <div id="content-button"><i id="toggle-contents" class="fa fa-bars"></i></div>
+                  </div>
+               </div>
+               <form id="finegrainedSearch" method="get" onsubmit="return searchFormSubmit(this);" action="/search/doc-search.html">
+                  <div id="search-form"><select id="search-select" name="searchPath">
+                        <option value="all">Entire Site</option>
+                        <option value="AWSMarketplace">AMIs from AWS Marketplace</option>
+                        <option value="amis">AMIs from All Sources</option>
+                        <option value="articles">Articles &amp; Tutorials</option>
+                        <option value="products_and_info">AWS Product Information</option>
+                        <option value="case_studies">Case Studies</option>
+                        <option value="customerapps">Customer Apps</option>
+                        <option value="documentation">Documentation</option>
+                        <option value="documentation-product">Documentation - This Product</option>
+                        <option value="documentation-guide" selected="selected">Documentation - This Guide</option>
+                        <option value="datasets">Public Data Sets</option>
+                        <option value="releasenotes">Release Notes</option>
+                        <option value="solution_providers">Partners</option>
+                        <option value="code">Sample Code &amp; Libraries</option></select><br /><input id="search-query" name="searchQuery" type="text" placeholder="Search" /><input id="search-button" src="images/search-button.png" alt="Go" type="image" /></div><input type="hidden" name="this_doc_product" id="this_doc_product" value="Amazon Pinpoint" /><input type="hidden" name="this_doc_guide" id="this_doc_guide" value="Developer Guide" /><input type="hidden" name="doc_locale" value="en_us" /></form>
+            </div>
+            <div id="toc"></div>
+         </div>
+         <div id="main-column">
+            <div id="main">
+               <div id="main-content">
+                  <div id="main-col-body">
+                     <table summary="Breadcrumbs">
+                        <tr>
+                           <td>
+                              <div class="breadcrumb"><a href="/index.html">AWS Documentation</a> » <a href="/pinpoint/index.html">Amazon Pinpoint</a> » <a href="index.html">Developer Guide</a> » <a href="tutorials.html">Tutorials</a> » <a href="tutorials-two-way-sms.html">Tutorial: Setting Up an SMS Registration
+                                    System</a> » <span class="breadcrumb">Step 1: Set Up Amazon Pinpoint</span></div>
+                           </td>
+                        </tr>
+                     </table>
+                     <div id="language-notice">
+                        <div class="language-notice-text"></div>
+                     </div>
+                     <div></div>
+                     <h1 class="topictitle" id="tutorials-two-way-sms-part-1">Step 1: Set Up Amazon Pinpoint</h1>
+                     <p>The first step in implementing this solution is to set up Amazon Pinpoint. In this
+                        section, you do
+                        the following:
+                     </p>
+                     <div class="itemizedlist">
+                        
+                        
+                        
+                        
+                        <ul class="itemizedlist" type="disc">
+                           <li class="listitem">
+                              
+                              <p>Create an Amazon Pinpoint project</p>
+                              
+                           </li>
+                           <li class="listitem">
+                              
+                              <p>Enable the SMS channel and lease a long code</p>
+                              
+                           </li>
+                           <li class="listitem">
+                              
+                              <p>Configure two-way SMS messaging</p>
+                              
+                           </li>
+                        </ul>
+                     </div>
+                     <p>Before you begin with this tutorial, you should review the <a href="tutorials-two-way-sms-prereqs.html">prerequisites</a>.
+                     </p>
+                     
+                     <h2 id="tutorials-two-way-sms-part-1-create-project">Step 1.1: Create an Amazon Pinpoint
+                        Project
+                     </h2>
+                     
+                     <p>To get started, you need to create an Amazon Pinpoint project. In Amazon Pinpoint,
+                        a
+                        <em>project</em> consists of segments, campaigns, configurations, and
+                        data that are united by a common purpose. For example, you could use a project to
+                        contain all of the content that's related to a particular app, or to a specific brand
+                        or
+                        marketing initiative. When you add customer information to Amazon Pinpoint, that information
+                        is
+                        associated with a project.
+                     </p>
+                     
+                     <p>The steps involved in creating a new project differ depending on whether you've
+                        created a project in Amazon Pinpoint previously.
+                     </p>
+                     
+                     <div class="collapsible">
+                        <div id="tutorials-two-way-sms-part-1-create-project-opt-1" class="collapsible-header">Creating a
+                           Project (New Amazon Pinpoint Users)
+                        </div>
+                        <div class="collapsible-content">
+                           
+                           
+                           <p>These steps describe the process of creating a new Amazon Pinpoint project if you've
+                              never created a project in the current AWS Region.
+                           </p>
+                           
+                           <p class="title"><b>To create a project</b></p>
+                           <ol>
+                              <li>
+                                 <p>Sign in to the AWS Management Console and open the Amazon Pinpoint console at
+                                    <a href="https://console.aws.amazon.com/pinpoint/" target="_blank">https://console.aws.amazon.com/pinpoint/</a>.
+                                 </p>
+                              </li>
+                              <li>
+                                 
+                                 <p>Use the Region selector to choose the AWS Region that you want to
+                                    use, as shown in the following image. If you're unsure, choose the
+                                    Region that's located closest to you.
+                                 </p>
+                                 
+                                 <div class="mediaobject">
+                                    
+                                    <img src="images/Region_Selector.png" />
+                                    
+                                    
+                                 </div>
+                                 
+                              </li>
+                              <li>
+                                 
+                                 <p>Under <b>Get started</b>, for <b>Name</b>,
+                                    enter a name for the campaign (such as
+                                    <strong class="userinput"><code>SMSRegistration</code></strong>), and then choose
+                                    <b>Create project</b>.
+                                 </p>
+                                 
+                              </li>
+                              <li>
+                                 
+                                 <p>On the <b>Configure features</b> page, choose
+                                    <b>Skip this step</b>.
+                                 </p>
+                                 
+                              </li>
+                              <li>
+                                 
+                                 <p>In the navigation pane, choose <b>All
+                                       projects</b>.
+                                 </p>
+                                 
+                              </li>
+                              <li>
+                                 
+                                 <p>On the <b>All projects</b> page, next to the project you
+                                    just created, copy the value that's shown in the <b>Project
+                                       ID</b> column.
+                                 </p>
+                                 
+                                 <div class="aws-note">
+                                    <p class="aws-note">Tip</p>
+                                    <p>You need to use this ID in a few different places in this
+                                       tutorial. Keep the project ID in a convenient place so that you can
+                                       copy it later.
+                                    </p>
+                                 </div>
+                                 
+                              </li>
+                           </ol>
+                           
+                        </div>
+                        <div id="tutorials-two-way-sms-part-1-create-project-opt-2" class="collapsible-header">Creating a
+                           Project (Existing Amazon Pinpoint Users)
+                        </div>
+                        <div class="collapsible-content">
+                           
+                           
+                           <p>These steps describe the process of creating a new Amazon Pinpoint project if you've
+                              already created projects in the current AWS Region.
+                           </p>
+                           
+                           <p class="title"><b>To create a project</b></p>
+                           <ol>
+                              <li>
+                                 <p>Sign in to the AWS Management Console and open the Amazon Pinpoint console at
+                                    <a href="https://console.aws.amazon.com/pinpoint/" target="_blank">https://console.aws.amazon.com/pinpoint/</a>.
+                                 </p>
+                              </li>
+                              <li>
+                                 
+                                 <p>Use the Region selector to choose the AWS Region that you want to
+                                    use, as shown in the following image. If you're unsure, choose the
+                                    Region that's located closest to you.
+                                 </p>
+                                 
+                                 <div class="mediaobject">
+                                    
+                                    <img src="images/Region_Selector.png" />
+                                    
+                                    
+                                 </div>
+                                 
+                              </li>
+                              <li>
+                                 
+                                 <p>On the <b>All projects</b> page, choose <b>Create
+                                       a project</b>.
+                                 </p>
+                                 
+                              </li>
+                              <li>
+                                 
+                                 <p>On the <b>Create a project</b> window, for
+                                    <b>Project name</b>, enter a name for the project
+                                    (such as <strong class="userinput"><code>SMSRegistration</code></strong>). Choose
+                                    <b>Create</b>.
+                                 </p>
+                                 
+                              </li>
+                              <li>
+                                 
+                                 <p>On the <b>Configure features</b> page, choose
+                                    <b>Skip this step</b>.
+                                 </p>
+                                 
+                              </li>
+                              <li>
+                                 
+                                 <p>In the navigation pane, choose <b>All
+                                       projects</b>.
+                                 </p>
+                                 
+                              </li>
+                              <li>
+                                 
+                                 <p>On the <b>All projects</b> page, next to the project you
+                                    just created, copy the value that's shown in the <b>Project
+                                       ID</b> column.
+                                 </p>
+                                 
+                                 <div class="aws-note">
+                                    <p class="aws-note">Tip</p>
+                                    <p>You need to use this ID in a few different places in this
+                                       tutorial. Keep the project ID in a convenient place so that you can
+                                       copy it later.
+                                    </p>
+                                 </div>
+                                 
+                              </li>
+                           </ol>
+                           
+                        </div>
+                     </div>
+                     
+                     
+                     <h2 id="tutorials-two-way-sms-part-1-set-up-channel">Step 1.2: Obtain a
+                        Dedicated Long Code
+                     </h2>
+                     
+                     <p>After you create a project, you can start to configure features within that project.
+                        In this section, you enable the SMS channel, and obtain a dedicated long code to use
+                        when sending SMS messages.
+                     </p>
+                     
+                     <div class="aws-note">
+                        <p class="aws-note">Note</p>
+                        <p>This section assumes that you're leasing a long code that's based in the United
+                           States or Canada. If you follow the procedures in this section, but choose a country
+                           other than the United States or Canada, you won't be able to use that number to send
+                           SMS messages. To learn more about leasing SMS-capable long codes in countries other
+                           than the United States or Canada, see <a href="https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-awssupport-long-code.html">Requesting Dedicated
+                              Long Codes for SMS Messaging with Amazon Pinpoint</a> in the
+                           <em>Amazon Pinpoint User Guide</em>.
+                        </p>
+                     </div>
+                     
+                     <ol>
+                        <li>
+                           
+                           <p>In the navigation pane, under <b>Settings</b>, choose
+                              <b>SMS and voice</b>.
+                           </p>
+                           
+                        </li>
+                        <li>
+                           
+                           <p>Next to <b>SMS settings</b>, choose
+                              <b>Edit</b>.
+                           </p>
+                           
+                        </li>
+                        <li>
+                           
+                           <p>Under <b>General settings</b>, choose <b>Enable the SMS
+                                 channel for this project</b>, and then choose <b>Save
+                                 changes</b>.
+                           </p>
+                           
+                        </li>
+                        <li>
+                           
+                           <p>Next to <b>Number settings</b>, choose <b>Request long
+                                 codes</b>.
+                           </p>
+                           
+                        </li>
+                        <li>
+                           
+                           <p>Under <b>Long code specifications</b>, do the following:
+                           </p>
+                           
+                           <div class="itemizedlist">
+                              
+                              
+                              
+                              
+                              <ul class="itemizedlist" type="disc">
+                                 <li class="listitem">
+                                    
+                                    <p>For <b>Target country or region</b>, choose
+                                       <b>United States</b> or
+                                       <b>Canada</b>.
+                                    </p>
+                                    
+                                 </li>
+                                 <li class="listitem">
+                                    
+                                    <p>For <b>Default call type</b>, choose
+                                       <b>Transactional</b>.
+                                    </p>
+                                    
+                                 </li>
+                                 <li class="listitem">
+                                    
+                                    <p>For <b>Quantity</b>, choose
+                                       <b>1</b>.
+                                    </p>
+                                    
+                                 </li>
+                              </ul>
+                           </div>
+                           
+                        </li>
+                        <li>
+                           
+                           <p>Choose <b>Request long code</b>.
+                           </p>
+                           
+                        </li>
+                     </ol>
+                     
+                     
+                     <h2 id="tutorials-two-way-sms-part-1-enable-two-way">Step 1.3: Enable Two-Way
+                        SMS
+                     </h2>
+                     
+                     <p>Now that you have a dedicated phone number, you can set up two-way SMS. Enabling
+                        two-way SMS makes it possible for your customers to respond to the SMS messages that
+                        you
+                        send them. In this solution, you use two-way SMS to give your customers a way to confirm
+                        that they want to subscribe to your SMS program.
+                     </p>
+                     
+                     <ol>
+                        <li>
+                           
+                           <p>On the <b>SMS and voice</b> settings page, under
+                              <b>Number settings</b>, choose the long code that you received
+                              in the previous section.
+                           </p>
+                           
+                        </li>
+                        <li>
+                           
+                           <p>Under <b>Required keywords</b>, do the following:
+                           </p>
+                           
+                           <div class="itemizedlist">
+                              
+                              
+                              
+                              <ul class="itemizedlist" type="disc">
+                                 <li class="listitem">
+                                    
+                                    <p>Next to the <b>HELP</b> keyword, for <b>Response
+                                          message</b>, enter the message that you want Amazon Pinpoint to
+                                       automatically send recipients when they send the keyword "HELP" (or its
+                                       variations) to this long code.
+                                    </p>
+                                    
+                                 </li>
+                                 <li class="listitem">
+                                    
+                                    <p>Next to the <b>STOP</b> keyword, for <b>Response
+                                          message</b>, enter the message that you want Amazon Pinpoint to
+                                       automatically send recipients when they send the keyword "STOP" (or its
+                                       variations) to this long code.
+                                    </p>
+                                    
+                                    <div class="aws-note">
+                                       <p class="aws-note">Note</p>
+                                       <p>When a recipient sends the keyword "STOP" to one of your long
+                                          codes, Amazon Pinpoint automatically opts that recipient out of all future SMS
+                                          messages that are sent from this project.
+                                       </p>
+                                    </div>
+                                    
+                                 </li>
+                              </ul>
+                           </div>
+                           
+                        </li>
+                        <li>
+                           
+                           <p>Under <b>Registered keyword</b>, for
+                              <b>Keyword</b>, enter the word that customers can send you to
+                              register to receive messages from you. Then, for <b>Response
+                                 message</b>, enter the message that Amazon Pinpoint automatically sends when a
+                              customer sends the keyword to this long code.
+                           </p>
+                           
+                           <div class="aws-note">
+                              <p class="aws-note">Note</p>
+                              <p>For the purposes of this tutorial, the value that you enter in this
+                                 section isn't important. In this scenario, customers register for your SMS
+                                 messaging program by completing a registration form, rather than by sending
+                                 you a message directly.
+                              </p>
+                           </div>
+                           
+                        </li>
+                        <li>
+                           
+                           <p>Under <b>Two-Way SMS</b>, choose <b>Enable two-way
+                                 SMS</b>.
+                           </p>
+                           
+                        </li>
+                        <li>
+                           
+                           <p>Under <b>Incoming message destination</b>, choose <b>Create
+                                 a new SNS topic</b>. Enter an Amazon SNS topic name, such as
+                              <strong class="userinput"><code>SMSRegistrationFormTopic</code></strong>.
+                           </p>
+                           
+                        </li>
+                        <li>
+                           
+                           <p>Under <b>Two-way SMS keywords</b>, for
+                              <b>Keyword</b>, enter the word that customers send you to
+                              confirm their subscriptions (such as <strong class="userinput"><code>Yes</code></strong> or
+                              <strong class="userinput"><code>Confirm</code></strong>).
+                           </p>
+                           
+                           <div class="aws-note">
+                              <p class="aws-note">Note</p>
+                              <p>This value isn't case sensitive.</p>
+                           </div>
+                           
+                        </li>
+                        <li>
+                           
+                           <p>For <b>Response message</b>, enter the message that Amazon Pinpoint
+                              automatically sends to customers when they send you the keyword that you
+                              specified in the previous step.
+                           </p>
+                           
+                        </li>
+                        <li>
+                           
+                           <p>Choose <b>Save</b>.
+                           </p>
+                           
+                        </li>
+                     </ol>
+                     
+                     <p><b>Next</b>: <a href="tutorials-two-way-sms-part-2.html">Create
+                           IAM Policies and Roles</a></p>
+                  </div>
+                  <noscript>
+                     <div>
+                        <div>
+                           <div>
+                              <div id="js_error_message">
+                                 <p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p>
+                                 <p>To use the AWS Documentation, Javascript must be enabled. Please refer to your browser's
+                                    Help pages for instructions.
+                                 </p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </noscript>
+                  <div id="main-col-footer">
+                     <div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div>
+                     <div id="next"><a class="awstoc" accesskey="p" href="tutorials-two-way-sms-prereqs.html">« Previous </a><a class="awstoc" accesskey="n" href="tutorials-two-way-sms-part-2.html">Next »</a></div>
+                     <div id="copyright-main-footer">© 2019, Amazon Web Services, Inc. or its affiliates. All rights reserved.</div>
+                  </div>
+               </div>
+            </div>
+            <div id="right-expanded">
+               <div id="right-content-wrapper">
+                  <div id="pagetoc">
+                     <p>On this page:</p>
+                     <ul class="pagetoc">
+                        <li class="pagetoc" name="Step 1.1: Create an Amazon Pinpoint&#xA;                Project"><a class="pagetoc" href="#tutorials-two-way-sms-part-1-create-project">Create an
+                              Amazon Pinpoint project.</a></li>
+                        <li class="pagetoc" name="Step 1.2: Obtain a&#xA;                Dedicated Long Code"><a class="pagetoc" href="#tutorials-two-way-sms-part-1-set-up-channel">Obtain a
+                              Dedicated Long Code</a></li>
+                        <li class="pagetoc" name="Step 1.3: Enable Two-Way&#xA;                SMS"><a class="pagetoc" href="#tutorials-two-way-sms-part-1-enable-two-way">Enable Two-Way
+                              SMS</a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="cookie-notice">
+         <div class="cookie-notice-text">We use cookies to provide and improve our services. By using our site, you consent
+            to cookies. <a href="http://aws.amazon.com/legal/cookies">Learn more</a></div>
+      </div>
+      <div id="footer">
+         <div id="footer_short_fb" class="hide" title="Feedback"><a target="_blank" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Pinpoint&amp;topic_url=http://docs.aws.amazon.com/en_us/pinpoint/latest/developerguide/tutorials-two-way-sms-part-1.html&amp;hidden_guide_name=Developer Guide&amp;hidden_api_version=&amp;hidden_file_name=tutorials-two-way-sms-part-1"><i class="awsdocs-footer-text fa fa-envelope-o"></i></a></div>
+         <div id="footer_toggle" class="mediaobject">
+            <div id="footer_toggle_img" class="awsdocs-footer-text fa fa-caret-down"></div>
+            <div id="footer_toggle_img_collapse" class="hide awsdocs-footer-text fa fa-caret-right"></div>
+         </div>
+         <div id="footer-left"><a class="awsdocs-footer-text" target="_top" href="http://aws.amazon.com/terms">Terms of Use</a><span class="awsdocs-footer-text"> | </span><a class="awsdocs-footer-text" target="_top" href="http://aws.amazon.com/privacy">Privacy</a><span class="awsdocs-footer-text"> | </span><span class="awsdocs-footer-text">© 2019, Amazon Web Services, Inc. or its affiliates. All rights reserved.</span></div>
+         <div id="footer-right">
+            <div id="feedback">
+               <div id="forums"><a id="forum_link" target="_blank" href="http://forums.aws.amazon.com/forum.jspa?forumID=225" class="awsdocs-footer-text">Have a question? Try the Forums.</a></div>
+               <div id="feedback-message" class="awsdocs-footer-text">Did this page help you?</div>
+               <div id="feedback-yesno-buttons"><a class="awstoc btn btn-default" target="_blank" href="feedbackyes.html?topic_url=http://docs.aws.amazon.com/en_us/pinpoint/latest/developerguide/tutorials-two-way-sms-part-1.html">Yes</a><a class="awstoc btn btn-default" target="_blank" href="feedbackno.html?topic_url=http://docs.aws.amazon.com/en_us/pinpoint/latest/developerguide/tutorials-two-way-sms-part-1.html">No</a></div>
+               <div id="feedback-feedback-button"><a class="awstoc btn btn-default" target="_blank" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Pinpoint&amp;topic_url=http://docs.aws.amazon.com/en_us/pinpoint/latest/developerguide/tutorials-two-way-sms-part-1.html&amp;hidden_guide_name=Developer Guide&amp;hidden_api_version=&amp;hidden_file_name=tutorials-two-way-sms-part-1">Feedback</a></div>
+            </div>
+         </div>
+      </div>
+      <!-- SiteCatalyst code version: H.25.2.
+            Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+            More info available at http://www.omniture.com --><script language="JavaScript" type="text/javascript" src="https://a0.awsstatic.com/s_code/js/1.0/awshome_s_code.js"></script><script language="JavaScript" type="text/javascript">
+         <!--
+
+            // Documentation Service Name
+            s.prop66='Amazon Pinpoint';
+            s.eVar66='D=c66';
+  
+            // Documentation Guide Name                                                                 
+            s.prop65='Developer Guide';
+            s.eVar65='D=c65';
+
+            var s_code=s.t();if(s_code)document.write(s_code)//--></script><script language="JavaScript" type="text/javascript">
+         <!--
+                if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+                //--></script><noscript><img src="https://amazonwebservices.d2.sc.omtrdc.net/b/ss/awsamazondev/1/H.25.2--NS/0" height="1" width="1" border="0" alt="" /></noscript>
+      <!--/DO NOT REMOVE/-->
+      <!-- End SiteCatalyst code version: H.25.2. -->
+   </body>
+</html>

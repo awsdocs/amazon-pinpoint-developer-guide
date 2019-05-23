@@ -1,0 +1,469 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>IAM Role for Streaming Email
+         Events to Kinesis Data Firehose - Amazon Pinpoint
+      </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="home" href="#top" />
+      <link rel="up" href="permissions.html" title="Permissions" />
+      <link rel="prev" href="permissions-streams.html" title="IAM Role for Streaming Events to Kinesis" />
+      <link rel="next" href="limits.html" title="Limits in Amazon Pinpoint" />
+      <meta name="description" content="Create an IAM role that enables the Amazon Pinpoint Email API to automatically send email-sending, delivery, and response data to Kinesis Data Firehose." />
+      <meta name="keywords" content="Pinpoint,Amazon Pinpoint,Customer engagement,Segmentation,Campaigns,Metrics" />
+      <meta name="deployment_region" content="IAD" />
+      <meta name="product" content="Amazon Pinpoint" />
+      <meta name="guide" content="Developer Guide" />
+      <meta name="guide-locale" content="en_us" />
+      <meta name="tocs" content="toc-contents.json" />
+      <link rel="icon" type="image/ico" href="images/favicon.ico" />
+      <link rel="shortcut icon" type="image/ico" href="images/favicon.ico" />
+      <link rel="canonical" href="https://docs.aws.amazon.com/pinpoint/latest/developerguide/permissions-stream-email-events-kinesis.html" />
+      <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" />
+      <link rel="stylesheet" type="text/css" href="font/css/font-awesome.min.css" />
+      <link rel="stylesheet" type="text/css" href="css/google-font.css" />
+      <link id="code-style" rel="stylesheet" type="text/css" href="css/code/light.css" />
+      <link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.css" />
+      <link rel="stylesheet" type="text/css" href="css/colorbox.css" />
+      <link rel="stylesheet" type="text/css" href="css/awsdocs.css?v=20181221" /><script type="text/javascript" src="js/highlight.pack.js"></script><script type="text/javascript" src="js/jquery.min.js"></script><script type="text/javascript" src="js/jquery-ui.min.js"></script><script type="text/javascript" src="js/jquery.colorbox.js"></script><script type="text/javascript" src="js/awsdocs.min.js?v=20181221"></script></head>
+   <body id="top">
+      <div xmlns:db="http://docbook.org/ns/docbook" id="aws-nav" class="aws-nav-header">
+         <div class="aws-nav-header-left">
+            <div class="aws-nav-logo">
+               <!--aws_logo_105x39.png--><a href="http://aws.amazon.com"><img src="images/aws_logo_105x39.png" alt="Amazon Web Services" /></a></div>
+         </div>
+         <div id="aws-nav-header-right" class="aws-nav-header-right">
+            <div class="aws-nav-cta-button-outer"><a id="aws-nav-cta-button" class="aws-nav-button" href="https://console.aws.amazon.com/console/home">Sign In to the Console</a></div>
+            <div class="aws-nav-popover-trigger" data-dropdown="aws-nav-dropdown-lang"><select id="languageSelection" onchange="SelectLanguage()">
+                  <option value="/de_de/pinpoint/latest/developerguide/permissions-stream-email-events-kinesis.html">Deutsch</option>
+                  <option value="/en_us/pinpoint/latest/developerguide/permissions-stream-email-events-kinesis.html" selected="selected">English</option>
+                  <option value="/es_es/pinpoint/latest/developerguide/permissions-stream-email-events-kinesis.html">Español</option>
+                  <option value="/fr_fr/pinpoint/latest/developerguide/permissions-stream-email-events-kinesis.html">Français</option>
+                  <option value="/it_it/pinpoint/latest/developerguide/permissions-stream-email-events-kinesis.html">Italiano</option>
+                  <option value="/ja_jp/pinpoint/latest/developerguide/permissions-stream-email-events-kinesis.html">日本語</option>
+                  <option value="/ko_kr/pinpoint/latest/developerguide/permissions-stream-email-events-kinesis.html">한국어</option>
+                  <option value="/pt_br/pinpoint/latest/developerguide/permissions-stream-email-events-kinesis.html">Português</option>
+                  <option value="/zh_cn/pinpoint/latest/developerguide/permissions-stream-email-events-kinesis.html">中文 (简体)</option>
+                  <option value="/zh_tw/pinpoint/latest/developerguide/permissions-stream-email-events-kinesis.html">中文 (繁體)</option></select></div><a class="btn btn-kindle-link" id="kindle-link-top" target="_blank" href="http://www.amazon.com/dp/B07JKHTQVP" title="Open Kindle"></a><a class="btn btn-pdf-link" id="pdf-link-top" href="pinpoint-dg.pdf#permissions-stream-email-events-kinesis" target="_blank" title="Open PDF"></a><a class="btn btn-github-link" id="github-link-top" href="https://github.com/awsdocs/amazon-pinpoint-developer-guide/tree/master/doc-source/permissions-stream-email-events-kinesis.md" target="_blank" title="Edit on GitHub"></a><div id="aws-nav-quicklinks-separator" class="aws-nav-quicklinks-separator">
+               <div class="aws-nav-left"></div>
+               <div class="aws-nav-right"></div>
+            </div>
+         </div>
+      </div>
+      <div id="content-container">
+         <div id="left-column">
+            <div id="left-col-header">
+               <div xmlns:db="http://docbook.org/ns/docbook" id="left-col-top-content">
+                  <div id="service-name">Amazon Pinpoint </div>
+                  <div id="search"><i id="search-icon" class="fa fa-search fa-2x"></i></div>
+                  <div id="guide-info">Developer Guide
+                     <div id="content-button"><i id="toggle-contents" class="fa fa-bars"></i></div>
+                  </div>
+               </div>
+               <form id="finegrainedSearch" method="get" onsubmit="return searchFormSubmit(this);" action="/search/doc-search.html">
+                  <div id="search-form"><select id="search-select" name="searchPath">
+                        <option value="all">Entire Site</option>
+                        <option value="AWSMarketplace">AMIs from AWS Marketplace</option>
+                        <option value="amis">AMIs from All Sources</option>
+                        <option value="articles">Articles &amp; Tutorials</option>
+                        <option value="products_and_info">AWS Product Information</option>
+                        <option value="case_studies">Case Studies</option>
+                        <option value="customerapps">Customer Apps</option>
+                        <option value="documentation">Documentation</option>
+                        <option value="documentation-product">Documentation - This Product</option>
+                        <option value="documentation-guide" selected="selected">Documentation - This Guide</option>
+                        <option value="datasets">Public Data Sets</option>
+                        <option value="releasenotes">Release Notes</option>
+                        <option value="solution_providers">Partners</option>
+                        <option value="code">Sample Code &amp; Libraries</option></select><br /><input id="search-query" name="searchQuery" type="text" placeholder="Search" /><input id="search-button" src="images/search-button.png" alt="Go" type="image" /></div><input type="hidden" name="this_doc_product" id="this_doc_product" value="Amazon Pinpoint" /><input type="hidden" name="this_doc_guide" id="this_doc_guide" value="Developer Guide" /><input type="hidden" name="doc_locale" value="en_us" /></form>
+            </div>
+            <div id="toc"></div>
+         </div>
+         <div id="main-column">
+            <div id="main">
+               <div id="main-content">
+                  <div id="main-col-body">
+                     <table summary="Breadcrumbs">
+                        <tr>
+                           <td>
+                              <div class="breadcrumb"><a href="/index.html">AWS Documentation</a> » <a href="/pinpoint/index.html">Amazon Pinpoint</a> » <a href="index.html">Developer Guide</a> » <a href="permissions.html">Permissions</a> » <span class="breadcrumb">IAM Role for Streaming Email
+                                    Events to Kinesis Data Firehose</span></div>
+                           </td>
+                        </tr>
+                     </table>
+                     <div id="language-notice">
+                        <div class="language-notice-text"></div>
+                     </div>
+                     <div></div>
+                     <h1 class="topictitle" id="permissions-stream-email-events-kinesis">IAM Role for Streaming Email
+                        Events to Kinesis Data Firehose
+                     </h1>
+                     <p>In the Amazon Pinpoint Email API, you can create <em>configuration sets</em> that
+                        specify how to handle certain email events. For example, you can create a configuration
+                        set
+                        that sends delivery notifications to a specific <em>event destination</em>, such
+                        as an Amazon SNS topic or a Kinesis Data Firehose delivery stream. When you send email
+                        through the
+                        Amazon Pinpoint Email API using that configuration set, Amazon Pinpoint sends information
+                        about email-related
+                        events to the event destination that you specified in the configuration set.
+                     </p>
+                     <p>The Amazon Pinpoint Email API can deliver information about the following email events
+                        to the event
+                        destinations that you specify:
+                     </p>
+                     <div class="itemizedlist">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <ul class="itemizedlist" type="disc">
+                           <li class="listitem">
+                              
+                              <p><b>Sends</b> – The call to Amazon Pinpoint was successful,
+                                 and Amazon Pinpoint attempted to deliver the email. 
+                              </p>
+                              
+                           </li>
+                           <li class="listitem">
+                              
+                              <p><b>Deliveries</b> – Amazon Pinpoint successfully delivered
+                                 the email to the recipient's mail server.
+                              </p>
+                              
+                           </li>
+                           <li class="listitem">
+                              
+                              <p><b>Rejections</b> – Amazon Pinpoint accepted the email,
+                                 determined that it contained malware, and rejected it. Amazon Pinpoint didn't attempt
+                                 to
+                                 deliver the email to the recipient's mail server.
+                              </p>
+                              
+                           </li>
+                           <li class="listitem">
+                              
+                              <p><b>Rendering Failures</b> – The email wasn't sent
+                                 because of a template rendering issue. This event type only occurs when you send an
+                                 email that includes substitution tags. This event type can occur when substitution
+                                 values are missing. It can also occur when there's a mismatch between the
+                                 substitution tags that you used in the email and the substitution data that you
+                                 provided.
+                              </p>
+                              
+                              <div class="aws-note">
+                                 <p class="aws-note">Note</p>
+                                 <p>If you use substitution tags in the emails that you send by using the
+                                    Amazon Pinpoint Email API, you should always create a configuration set that records
+                                    Rendering Failure events.
+                                 </p>
+                              </div>
+                              
+                           </li>
+                           <li class="listitem">
+                              
+                              <p><b>Bounces</b> – The recipient's mail server
+                                 permanently rejected the email.
+                              </p>
+                              
+                           </li>
+                           <li class="listitem">
+                              
+                              <p><b>Complaints</b> – The email was successfully
+                                 delivered to the recipient, but the recipient used the "Report Spam" (or equivalent)
+                                 feature of their email client to report the message. 
+                              </p>
+                              
+                           </li>
+                           <li class="listitem">
+                              
+                              <p><b>Opens</b> – The recipient received the message
+                                 and opened it in their email client. 
+                              </p>
+                              
+                           </li>
+                           <li class="listitem">
+                              
+                              <p><b>Clicks</b> – The recipient clicked one or more
+                                 links that were contained in the email.
+                              </p>
+                              
+                              <div class="aws-note">
+                                 <p class="aws-note">Note</p>
+                                 <p>Every time a recipient opens or clicks an email, Amazon Pinpoint generates unique
+                                    open
+                                    or click events, respectively. In other words, if a specific recipient opens a
+                                    message five times, Amazon Pinpoint reports five separate Open events.
+                                 </p>
+                              </div>
+                              
+                           </li>
+                        </ul>
+                     </div>
+                     <p>If you want to send data about these events to a Kinesis Data Firehose stream, you
+                        have to create an IAM
+                        role that has the appropriate permissions. The role must use the following policies:
+                     </p>
+                     <div class="itemizedlist">
+                        
+                        
+                        
+                        <ul class="itemizedlist" type="disc">
+                           <li class="listitem">
+                              
+                              <p>A trust policy that allows Amazon Pinpoint to assume the role.</p>
+                              
+                           </li>
+                           <li class="listitem">
+                              
+                              <p>A permissions policy that allows the Amazon Pinpoint Email API to send email delivery
+                                 and
+                                 response records to your stream.
+                              </p>
+                              
+                           </li>
+                        </ul>
+                     </div>
+                     <p>For more information about IAM roles, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html">IAM
+                           Roles</a> in the <em>IAM User Guide</em>.
+                     </p>
+                     <p>After you create the role, you can configure Amazon Pinpoint to automatically send
+                        events to
+                        your stream. For more information, see <a href="analytics-streaming.html">Streaming Amazon Pinpoint Events to Kinesis</a>.
+                     </p>
+                     
+                     <h2 id="permissions-stream-email-events-kinesis-trustpolicy">Trust
+                        Policy
+                     </h2>
+                     
+                     
+                     <p>To allow the Amazon Pinpoint Email API to assume the IAM role and perform the actions
+                        allowed
+                        by the permissions policy, attach the following trust policy to the role:
+                     </p>
+                     <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="json ">{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "ses.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole",
+      "Condition": {
+        "StringEquals": {
+          "sts:ExternalId": "<em class="replaceable"><code>accountId</code></em>"
+        }
+      }
+    }
+  ]
+}</code></pre>
+                     <p>In the example above, replace <em class="replaceable"><code>accountId</code></em> with the ID of your
+                        AWS account.
+                     </p>
+                     
+                     
+                     <h2 id="permissions-stream-email-events-kinesis-permissionspolicies">Permissions Policy</h2>
+                     
+                     
+                     <p>To allow the Amazon Pinpoint Email API to send email event data to a Kinesis Data
+                        Firehose delivery stream,
+                        attach the following permissions policy to a role.
+                     </p>
+                     
+                     <p>The following policy allows Amazon Pinpoint to send event data to a Kinesis Data Firehose
+                        delivery
+                        stream.
+                     </p>
+                     <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="json ">{
+    "Version": "2012-10-17",
+    "Statement": {
+        "Effect": "Allow",
+        "Action": [
+        	"firehose:PutRecordBatch",
+        	"firehose:DescribeDeliveryStream"
+        ],
+        "Resource": [
+        	"arn:aws:firehose:<em class="replaceable"><code>region</code></em>:<em class="replaceable"><code>accountId</code></em>:deliverystream/<em class="replaceable"><code>deliveryStreamName</code></em>"
+    	]
+    }
+}</code></pre>
+                     <p>In the example above, replace <em class="replaceable"><code>region</code></em> with the name of the
+                        AWS Region that you created the delivery stream in. Replace
+                        <em class="replaceable"><code>accountId</code></em> with the ID of your AWS account. Finally,
+                        replace <em class="replaceable"><code>deliveryStreamName</code></em> with the name of the delivery
+                        stream.
+                     </p>
+                     
+                     
+                     <h2 id="permissions-stream-email-events-kinesis-create">Creating the IAM Role
+                        (AWS CLI)
+                     </h2>
+                     
+                     <p>Complete the following steps to create the IAM role by using the AWS Command Line
+                        Interface
+                        (AWS CLI).
+                     </p>
+                     
+                     <p>For more information about installing and configuring the AWS CLI, see <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html">Getting Set Up with the AWS Command
+                           Line Interface</a> in the <em>AWS Command Line Interface User Guide</em>.
+                     </p>
+                     
+                     
+                     <p class="title"><b>To create the IAM role by using the AWS CLI</b></p>
+                     <ol>
+                        <li>
+                           
+                           <p>Create a JSON file that contains the trust policy for your role, and then save
+                              the file locally. You can copy the <a href="permissions-stream-email-events-kinesis.html#permissions-stream-email-events-kinesis-trustpolicy">trust
+                                 policy</a> that's provided earlier in this topic.
+                           </p>
+                           
+                        </li>
+                        <li>
+                           
+                           <p>Use the <a href="https://docs.aws.amazon.com/cli/latest/reference/iam/create-role.html">create-role</a>
+                              command to create the role and attach the trust policy:
+                           </p>
+                           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight">aws iam create-role --role-name <em class="replaceable"><code>PinpointEventStreamRole</code></em> \ 
+--assume-role-policy-document file://<em class="replaceable"><code>PinpointEventStreamTrustPolicy.json</code></em></code></pre>
+                           <p>In the preceding example, replace
+                              <em class="replaceable"><code>PinpointEventStreamTrustPolicy.json</code></em> with the full
+                              path to the file that contains the trust policy.
+                           </p>
+                           
+                           <p>When you run this command, the AWS CLI returns the following output:</p>
+                           
+                           <pre class="programlisting"><div class="code-btn-container"><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="json ">{
+    "Role": {
+        "AssumeRolePolicyDocument": {
+            "Version": "2012-10-17", 
+            "Statement": [
+                {
+                    "Action": "sts:AssumeRole", 
+                    "Effect": "Allow", 
+                    "Principal": {
+                        "Service": "ses.amazonaws.com"
+                    }
+                }
+            ]
+        }, 
+        "RoleId": "AKIAIOSFODNN7EXAMPLE", 
+        "CreateDate": "2019-04-10T14:20:42.314Z", 
+        "RoleName": "PinpointEventStreamRole", 
+        "Path": "/", 
+        "Arn": "arn:aws:iam::111122223333:role/PinpointEventStreamRole"
+    }
+}</code></pre>
+                           </li>
+                        <li>
+                           
+                           <p>Create a JSON file that contains the permissions policy for your role, and
+                              then save the file locally. You can copy the <a href="permissions-stream-email-events-kinesis.html#permissions-stream-email-events-kinesis-permissionspolicies">permissions policy</a> that's provided earlier in this topic.
+                           </p>
+                           
+                        </li>
+                        <li>
+                           
+                           <p>Use the <a href="https://docs.aws.amazon.com/cli/latest/reference/iam/put-role-policy.html">put-role-policy</a> command to attach the permissions policy to the
+                              role:
+                           </p>
+                           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight">aws iam put-role-policy \
+--role-name <em class="replaceable"><code>PinpointEventStreamRole</code></em> \
+--policy-name <em class="replaceable"><code>PinpointEventStreamPermissionsPolicy</code></em> 
+--policy-document file://<em class="replaceable"><code>PinpointEventStreamPermissionsPolicy.json</code></em></code></pre>
+                           <p>In the preceding example, replace
+                              <em class="replaceable"><code>PinpointEventStreamPermissionsPolicy.json</code></em> with
+                              the full path to the file that contains the permissions policy.
+                           </p>
+                           
+                        </li>
+                     </ol>
+                     
+                  </div>
+                  <noscript>
+                     <div>
+                        <div>
+                           <div>
+                              <div id="js_error_message">
+                                 <p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p>
+                                 <p>To use the AWS Documentation, Javascript must be enabled. Please refer to your browser's
+                                    Help pages for instructions.
+                                 </p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </noscript>
+                  <div id="main-col-footer">
+                     <div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div>
+                     <div id="next"><a class="awstoc" accesskey="p" href="permissions-streams.html">« Previous </a><a class="awstoc" accesskey="n" href="limits.html">Next »</a></div>
+                     <div id="copyright-main-footer">© 2019, Amazon Web Services, Inc. or its affiliates. All rights reserved.</div>
+                  </div>
+               </div>
+            </div>
+            <div id="right-expanded">
+               <div id="right-content-wrapper">
+                  <div id="pagetoc">
+                     <p>On this page:</p>
+                     <ul class="pagetoc">
+                        <li class="pagetoc" name="Trust&#xA;                Policy"><a class="pagetoc" href="#permissions-stream-email-events-kinesis-trustpolicy">Trust
+                              Policy</a></li>
+                        <li class="pagetoc" name="Permissions Policy"><a class="pagetoc" href="#permissions-stream-email-events-kinesis-permissionspolicies">Permissions Policy</a></li>
+                        <li class="pagetoc" name="Creating the IAM Role&#xA;                (AWS CLI)"><a class="pagetoc" href="#permissions-stream-email-events-kinesis-create">Creating the IAM Role
+                              (AWS CLI)</a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="cookie-notice">
+         <div class="cookie-notice-text">We use cookies to provide and improve our services. By using our site, you consent
+            to cookies. <a href="http://aws.amazon.com/legal/cookies">Learn more</a></div>
+      </div>
+      <div id="footer">
+         <div id="footer_short_fb" class="hide" title="Feedback"><a target="_blank" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Pinpoint&amp;topic_url=http://docs.aws.amazon.com/en_us/pinpoint/latest/developerguide/permissions-stream-email-events-kinesis.html&amp;hidden_guide_name=Developer Guide&amp;hidden_api_version=&amp;hidden_file_name=permissions-stream-email-events-kinesis"><i class="awsdocs-footer-text fa fa-envelope-o"></i></a></div>
+         <div id="footer_toggle" class="mediaobject">
+            <div id="footer_toggle_img" class="awsdocs-footer-text fa fa-caret-down"></div>
+            <div id="footer_toggle_img_collapse" class="hide awsdocs-footer-text fa fa-caret-right"></div>
+         </div>
+         <div id="footer-left"><a class="awsdocs-footer-text" target="_top" href="http://aws.amazon.com/terms">Terms of Use</a><span class="awsdocs-footer-text"> | </span><a class="awsdocs-footer-text" target="_top" href="http://aws.amazon.com/privacy">Privacy</a><span class="awsdocs-footer-text"> | </span><span class="awsdocs-footer-text">© 2019, Amazon Web Services, Inc. or its affiliates. All rights reserved.</span></div>
+         <div id="footer-right">
+            <div id="feedback">
+               <div id="forums"><a id="forum_link" target="_blank" href="http://forums.aws.amazon.com/forum.jspa?forumID=225" class="awsdocs-footer-text">Have a question? Try the Forums.</a></div>
+               <div id="feedback-message" class="awsdocs-footer-text">Did this page help you?</div>
+               <div id="feedback-yesno-buttons"><a class="awstoc btn btn-default" target="_blank" href="feedbackyes.html?topic_url=http://docs.aws.amazon.com/en_us/pinpoint/latest/developerguide/permissions-stream-email-events-kinesis.html">Yes</a><a class="awstoc btn btn-default" target="_blank" href="feedbackno.html?topic_url=http://docs.aws.amazon.com/en_us/pinpoint/latest/developerguide/permissions-stream-email-events-kinesis.html">No</a></div>
+               <div id="feedback-feedback-button"><a class="awstoc btn btn-default" target="_blank" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Pinpoint&amp;topic_url=http://docs.aws.amazon.com/en_us/pinpoint/latest/developerguide/permissions-stream-email-events-kinesis.html&amp;hidden_guide_name=Developer Guide&amp;hidden_api_version=&amp;hidden_file_name=permissions-stream-email-events-kinesis">Feedback</a></div>
+            </div>
+         </div>
+      </div>
+      <!-- SiteCatalyst code version: H.25.2.
+            Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+            More info available at http://www.omniture.com --><script language="JavaScript" type="text/javascript" src="https://a0.awsstatic.com/s_code/js/1.0/awshome_s_code.js"></script><script language="JavaScript" type="text/javascript">
+         <!--
+
+            // Documentation Service Name
+            s.prop66='Amazon Pinpoint';
+            s.eVar66='D=c66';
+  
+            // Documentation Guide Name                                                                 
+            s.prop65='Developer Guide';
+            s.eVar65='D=c65';
+
+            var s_code=s.t();if(s_code)document.write(s_code)//--></script><script language="JavaScript" type="text/javascript">
+         <!--
+                if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+                //--></script><noscript><img src="https://amazonwebservices.d2.sc.omtrdc.net/b/ss/awsamazondev/1/H.25.2--NS/0" height="1" width="1" border="0" alt="" /></noscript>
+      <!--/DO NOT REMOVE/-->
+      <!-- End SiteCatalyst code version: H.25.2. -->
+   </body>
+</html>

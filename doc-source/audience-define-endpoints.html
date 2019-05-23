@@ -1,0 +1,517 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Adding Endpoints to Amazon Pinpoint - Amazon Pinpoint</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="home" href="#top" />
+      <link rel="up" href="audience-define.html" title="Defining Your Audience to Amazon Pinpoint" />
+      <link rel="prev" href="audience-define.html" title="Defining Your Audience to Amazon Pinpoint" />
+      <link rel="next" href="audience-define-user.html" title="Associating Users with Amazon Pinpoint Endpoints" />
+      <meta name="description" content="Before you send messages with Amazon Pinpoint, define one or more endpoints for each member of your audience." />
+      <meta name="keywords" content="Pinpoint,Amazon Pinpoint,Customer engagement,Segmentation,Campaigns,Metrics" />
+      <meta name="deployment_region" content="IAD" />
+      <meta name="product" content="Amazon Pinpoint" />
+      <meta name="guide" content="Developer Guide" />
+      <meta name="guide-locale" content="en_us" />
+      <meta name="tocs" content="toc-contents.json" />
+      <link rel="icon" type="image/ico" href="images/favicon.ico" />
+      <link rel="shortcut icon" type="image/ico" href="images/favicon.ico" />
+      <link rel="canonical" href="https://docs.aws.amazon.com/pinpoint/latest/developerguide/audience-define-endpoints.html" />
+      <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" />
+      <link rel="stylesheet" type="text/css" href="font/css/font-awesome.min.css" />
+      <link rel="stylesheet" type="text/css" href="css/google-font.css" />
+      <link id="code-style" rel="stylesheet" type="text/css" href="css/code/light.css" />
+      <link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.css" />
+      <link rel="stylesheet" type="text/css" href="css/colorbox.css" />
+      <link rel="stylesheet" type="text/css" href="css/awsdocs.css?v=20181221" /><script type="text/javascript" src="js/highlight.pack.js"></script><script type="text/javascript" src="js/jquery.min.js"></script><script type="text/javascript" src="js/jquery-ui.min.js"></script><script type="text/javascript" src="js/jquery.colorbox.js"></script><script type="text/javascript" src="js/awsdocs.min.js?v=20181221"></script></head>
+   <body id="top">
+      <div xmlns:db="http://docbook.org/ns/docbook" id="aws-nav" class="aws-nav-header">
+         <div class="aws-nav-header-left">
+            <div class="aws-nav-logo">
+               <!--aws_logo_105x39.png--><a href="http://aws.amazon.com"><img src="images/aws_logo_105x39.png" alt="Amazon Web Services" /></a></div>
+         </div>
+         <div id="aws-nav-header-right" class="aws-nav-header-right">
+            <div class="aws-nav-cta-button-outer"><a id="aws-nav-cta-button" class="aws-nav-button" href="https://console.aws.amazon.com/console/home">Sign In to the Console</a></div>
+            <div class="aws-nav-popover-trigger" data-dropdown="aws-nav-dropdown-lang"><select id="languageSelection" onchange="SelectLanguage()">
+                  <option value="/de_de/pinpoint/latest/developerguide/audience-define-endpoints.html">Deutsch</option>
+                  <option value="/en_us/pinpoint/latest/developerguide/audience-define-endpoints.html" selected="selected">English</option>
+                  <option value="/es_es/pinpoint/latest/developerguide/audience-define-endpoints.html">Español</option>
+                  <option value="/fr_fr/pinpoint/latest/developerguide/audience-define-endpoints.html">Français</option>
+                  <option value="/it_it/pinpoint/latest/developerguide/audience-define-endpoints.html">Italiano</option>
+                  <option value="/ja_jp/pinpoint/latest/developerguide/audience-define-endpoints.html">日本語</option>
+                  <option value="/ko_kr/pinpoint/latest/developerguide/audience-define-endpoints.html">한국어</option>
+                  <option value="/pt_br/pinpoint/latest/developerguide/audience-define-endpoints.html">Português</option>
+                  <option value="/zh_cn/pinpoint/latest/developerguide/audience-define-endpoints.html">中文 (简体)</option>
+                  <option value="/zh_tw/pinpoint/latest/developerguide/audience-define-endpoints.html">中文 (繁體)</option></select></div><a class="btn btn-kindle-link" id="kindle-link-top" target="_blank" href="http://www.amazon.com/dp/B07JKHTQVP" title="Open Kindle"></a><a class="btn btn-pdf-link" id="pdf-link-top" href="pinpoint-dg.pdf#audience-define-endpoints" target="_blank" title="Open PDF"></a><a class="btn btn-github-link" id="github-link-top" href="https://github.com/awsdocs/amazon-pinpoint-developer-guide/tree/master/doc-source/audience-define-endpoints.md" target="_blank" title="Edit on GitHub"></a><div id="aws-nav-quicklinks-separator" class="aws-nav-quicklinks-separator">
+               <div class="aws-nav-left"></div>
+               <div class="aws-nav-right"></div>
+            </div>
+         </div>
+      </div>
+      <div id="content-container">
+         <div id="left-column">
+            <div id="left-col-header">
+               <div xmlns:db="http://docbook.org/ns/docbook" id="left-col-top-content">
+                  <div id="service-name">Amazon Pinpoint </div>
+                  <div id="search"><i id="search-icon" class="fa fa-search fa-2x"></i></div>
+                  <div id="guide-info">Developer Guide
+                     <div id="content-button"><i id="toggle-contents" class="fa fa-bars"></i></div>
+                  </div>
+               </div>
+               <form id="finegrainedSearch" method="get" onsubmit="return searchFormSubmit(this);" action="/search/doc-search.html">
+                  <div id="search-form"><select id="search-select" name="searchPath">
+                        <option value="all">Entire Site</option>
+                        <option value="AWSMarketplace">AMIs from AWS Marketplace</option>
+                        <option value="amis">AMIs from All Sources</option>
+                        <option value="articles">Articles &amp; Tutorials</option>
+                        <option value="products_and_info">AWS Product Information</option>
+                        <option value="case_studies">Case Studies</option>
+                        <option value="customerapps">Customer Apps</option>
+                        <option value="documentation">Documentation</option>
+                        <option value="documentation-product">Documentation - This Product</option>
+                        <option value="documentation-guide" selected="selected">Documentation - This Guide</option>
+                        <option value="datasets">Public Data Sets</option>
+                        <option value="releasenotes">Release Notes</option>
+                        <option value="solution_providers">Partners</option>
+                        <option value="code">Sample Code &amp; Libraries</option></select><br /><input id="search-query" name="searchQuery" type="text" placeholder="Search" /><input id="search-button" src="images/search-button.png" alt="Go" type="image" /></div><input type="hidden" name="this_doc_product" id="this_doc_product" value="Amazon Pinpoint" /><input type="hidden" name="this_doc_guide" id="this_doc_guide" value="Developer Guide" /><input type="hidden" name="doc_locale" value="en_us" /></form>
+            </div>
+            <div id="toc"></div>
+         </div>
+         <div id="main-column">
+            <div id="main">
+               <div id="main-content">
+                  <div id="main-col-body">
+                     <table summary="Breadcrumbs">
+                        <tr>
+                           <td>
+                              <div class="breadcrumb"><a href="/index.html">AWS Documentation</a> » <a href="/pinpoint/index.html">Amazon Pinpoint</a> » <a href="index.html">Developer Guide</a> » <a href="audience-define.html">Defining Your Audience to Amazon Pinpoint</a> » <span class="breadcrumb">Adding Endpoints to Amazon Pinpoint</span></div>
+                           </td>
+                        </tr>
+                     </table>
+                     <div id="language-notice">
+                        <div class="language-notice-text"></div>
+                     </div>
+                     <div></div>
+                     <h1 class="topictitle" id="audience-define-endpoints">Adding Endpoints to Amazon Pinpoint</h1>
+                     <p>An <em>endpoint</em> represents a destination that you can
+                        message—such as a mobile device, phone number, or email address. Before you can
+                        message a member of your audience, you must define one or more endpoints for that
+                        individual. 
+                     </p>
+                     <p>When you define an endpoint, you specify the <em>channel</em>
+                        and <em>address</em>. The channel is the type of platform that you
+                        use to message the endpoint. Examples of channels include a push notification service,
+                        SMS,
+                        or email. The address specifies where to message the endpoint, such as a device token,
+                        phone
+                        number, or email address.
+                     </p>
+                     <p>To add more details about your audience, you can enrich your endpoints with custom
+                        and
+                        standard attributes. These attributes might include data about your users, their
+                        preferences, their devices, the versions of the client that they use, or their locations.
+                        When you add this type of data to your endpoints, you're able to:
+                     </p>
+                     <div class="itemizedlist">
+                        
+                        
+                        
+                        
+                        <ul class="itemizedlist" type="disc">
+                           <li class="listitem">
+                              
+                              <p>View charts about your audience in the Amazon Pinpoint console.</p>
+                              
+                           </li>
+                           <li class="listitem">
+                              
+                              <p>Segment your audience based on endpoint attributes so that you can send your
+                                 messages to the right target audience.
+                              </p>
+                              
+                           </li>
+                           <li class="listitem">
+                              
+                              <p>Personalize your messages by incorporating message variables that are substituted
+                                 with endpoint attribute values.
+                              </p>
+                              
+                           </li>
+                        </ul>
+                     </div>
+                     <p>A mobile or JavaScript client application registers endpoints automatically if you
+                        integrate Amazon Pinpoint by using the AWS Mobile SDKs or the AWS Amplify JavaScript
+                        library.
+                        The client registers an endpoint for each new user, and it updates endpoints for returning
+                        users. To register endpoints from a mobile or JavaScript client, see <a href="integrate-endpoints.html">Registering Endpoints in Your Application</a>.
+                     </p>
+                     
+                     <h2 id="audience-define-endpoints-examples">Examples</h2>
+                     
+                     <p>The following examples show you how to add an endpoint to an Amazon Pinpoint project.
+                        The
+                        endpoint represents an audience member who lives in Seattle and uses an iPhone. This
+                        person can be messaged through the Apple Push Notification service (APNs). The
+                        endpoint's address is the device token that's provided by APNs.
+                     </p>
+                     
+                     <div class="option container">
+                        <div class="optionselector"><span class="optionanchor" id=""><span class="option  selected" data-tab="aws-cli">AWS CLI</span></span><span class="optionanchor" id=""><span class="option " data-tab="aws-sdk-for-java">AWS SDK for Java</span></span><span class="optionanchor" id=""><span class="option " data-tab="http">HTTP</span></span></div>
+                        <dl>
+                           <dt>AWS CLI</dt>
+                           <dd class="selected" data-tab="aws-cli">
+                              <p>You can use Amazon Pinpoint by running commands with the AWS CLI.</p>
+                              <div class="example">
+                                 <p class="title"><b>Example Update Endpoint Command</b></p>
+                                 <div class="example-contents">
+                                    <p>To add or update an endpoint, use the <a href="https://docs.aws.amazon.com/cli/latest/reference/pinpoint/update-endpoint.html">update-endpoint</a> command:
+                                    </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">$ </code><strong class="userinput"><code>aws pinpoint update-endpoint \</code></strong>
+<code class="prompt" copy="false">&gt; </code><strong class="userinput"><code>--application-id <em class="replaceable"><code>application-id</code></em> \</code></strong>
+<code class="prompt" copy="false">&gt; </code><strong class="userinput"><code>--endpoint-id <em class="replaceable"><code>endpoint-id</code></em> \</code></strong>
+<code class="prompt" copy="false">&gt; </code><strong class="userinput"><code>--endpoint-request file://<em class="replaceable"><code>endpoint-request-file.json</code></em></code></strong></code></pre><p>Where:</p>
+                                    <div class="itemizedlist">
+                                       
+                                       
+                                       
+                                       
+                                       <ul class="itemizedlist" type="disc">
+                                          <li class="listitem">
+                                             
+                                             <p><em>application-id</em> is the ID of
+                                                the Amazon Pinpoint project in which you're adding or updating an
+                                                endpoint.
+                                             </p>
+                                             
+                                          </li>
+                                          <li class="listitem">
+                                             
+                                             <p><em>example-endpoint</em> is the ID
+                                                that you're assigning to a new endpoint, or it's the ID of an
+                                                existing endpoint that you're updating.
+                                             </p>
+                                             
+                                          </li>
+                                          <li class="listitem">
+                                             
+                                             <p><em>endpoint-request-file.json</em>
+                                                is the file path to a local JSON file that contains the input
+                                                for the <code class="code">--endpoint-request</code> parameter.
+                                             </p>
+                                             
+                                          </li>
+                                       </ul>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="example">
+                                 <p class="title"><b>Example Endpoint Request File</b></p>
+                                 <div class="example-contents">
+                                    <p>The example <code class="code">update-endpoint</code> command uses a JSON file as
+                                       the argument for the <code class="code">--endpoint-request</code> parameter. This
+                                       file contains an endpoint definition like the following:
+                                    </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="json ">{
+  "ChannelType": "APNS",
+  "Address": "1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7a8b9c0d1e2f",
+  "Attributes": {
+    "interests": [
+      "technology",
+      "music",
+      "travel"
+    ]
+  },
+  "Metrics": {
+    "technology_interest_level": 9.0,
+    "music_interest_level": 6.0,
+    "travel_interest_level": 4.0
+  },
+  "Demographic": {
+    "AppVersion": "1.0",
+    "Make": "apple",
+    "Model": "iPhone",
+    "ModelVersion": "8",
+    "Platform": "ios",
+    "PlatformVersion": "11.3.1",
+    "Timezone": "America/Los_Angeles"
+  },
+  "Location": {
+    "Country": "US",
+    "City": "Seattle",
+    "PostalCode": "98121",
+    "Latitude": 47.61,
+    "Longitude": -122.33
+  }
+}</code></pre><p>For the attributes that you can use to define an endpoint, see the
+                                       <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html#rest-api-endpoint-schemas">EndpointRequest</a> schema in the <em>Amazon Pinpoint API Reference</em>.
+                                    </p>
+                                 </div>
+                              </div>
+                           </dd>
+                           <dt>AWS SDK for Java</dt>
+                           <dd class="" data-tab="aws-sdk-for-java">
+                              <p>You can use the Amazon Pinpoint API in your Java applications by using the client
+                                 that's provided by the AWS SDK for Java.
+                              </p>
+                              <div class="example">
+                                 <p class="title"><b>Example Code</b></p>
+                                 <div class="example-contents">
+                                    <p>To add an endpoint, initialize an <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/model/EndpointRequest.html"><code class="code">EndpointRequest</code></a> object, and pass it to the
+                                       <a href="https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#updateEndpoint-com.amazonaws.services.pinpoint.model.UpdateEndpointRequest-"><code class="code">updateEndpoint</code></a> method of the
+                                       <code class="code">AmazonPinpoint</code> client:
+                                    </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="java ">
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.pinpoint.AmazonPinpoint;
+import com.amazonaws.services.pinpoint.AmazonPinpointClientBuilder;
+import com.amazonaws.services.pinpoint.model.*;
+import java.util.Arrays;
+
+public class AddExampleEndpoint {
+
+	public static void main(String[] args) {
+	
+		final String USAGE = "\n" +
+			"AddExampleEndpoint - Adds an example endpoint to an Amazon Pinpoint application." +
+			"Usage: AddExampleEndpoint &lt;applicationId&gt;" +
+			"Where:\n" +
+			"  applicationId - The ID of the Amazon Pinpoint application to add the example " +
+			"endpoint to.";
+		
+		if (args.length &lt; 1) {
+		    System.out.println(USAGE);
+		    System.exit(1);
+		}
+		
+		String applicationId = args[0];
+		
+		// The device token assigned to the user's device by Apple Push Notification service (APNs).
+		String deviceToken = "1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7a8b9c0d1e2f";
+		
+		// Initializes an endpoint definition with channel type and address.
+		EndpointRequest wangXiulansIphoneEndpoint = new EndpointRequest()
+			.withChannelType(ChannelType.APNS)
+			.withAddress(deviceToken);
+		
+		// Adds custom attributes to the endpoint.
+		wangXiulansIphoneEndpoint.addAttributesEntry("interests", Arrays.asList(
+			"technology",
+			"music",
+			"travel"));
+		
+		// Adds custom metrics to the endpoint.
+		wangXiulansIphoneEndpoint.addMetricsEntry("technology_interest_level", 9.0);
+		wangXiulansIphoneEndpoint.addMetricsEntry("music_interest_level", 6.0);
+		wangXiulansIphoneEndpoint.addMetricsEntry("travel_interest_level", 4.0);
+		
+		// Adds standard demographic attributes.
+		wangXiulansIphoneEndpoint.setDemographic(new EndpointDemographic()
+			.withAppVersion("1.0")
+			.withMake("apple")
+			.withModel("iPhone")
+			.withModelVersion("8")
+			.withPlatform("ios")
+			.withPlatformVersion("11.3.1")
+			.withTimezone("America/Los_Angeles"));
+		
+		// Adds standard location attributes.
+		wangXiulansIphoneEndpoint.setLocation(new EndpointLocation()
+			.withCountry("US")
+			.withCity("Seattle")
+			.withPostalCode("98121")
+			.withLatitude(47.61)
+			.withLongitude(-122.33));
+		
+		// Initializes the Amazon Pinpoint client.
+		AmazonPinpoint pinpointClient = AmazonPinpointClientBuilder.standard()
+			.withRegion(Regions.US_EAST_1).build();
+		
+		// Updates or creates the endpoint with Amazon Pinpoint.
+		UpdateEndpointResult result = pinpointClient.updateEndpoint(new UpdateEndpointRequest()
+			.withApplicationId(applicationId)
+			.withEndpointId("example_endpoint")
+			.withEndpointRequest(wangXiulansIphoneEndpoint));
+		
+		System.out.format("Update endpoint result: %s\n", result.getMessageBody().getMessage());
+	
+	}
+}
+</code></pre></div>
+                              </div>
+                           </dd>
+                           <dt>HTTP</dt>
+                           <dd class="" data-tab="http">
+                              <p>You can use Amazon Pinpoint by making HTTP requests directly to the REST API.</p>
+                              <div class="example">
+                                 <p class="title"><b>Example PUT Endpoint Request</b></p>
+                                 <div class="example-contents">
+                                    <p>To add an endpoint, issue a <code class="code">PUT</code> request to the <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html">Endpoint</a> resource
+                                       at the following URI:
+                                    </p>
+                                    <p><code class="code">/v1/apps/<em class="replaceable"><code>application-id</code></em>/endpoints/<em class="replaceable"><code>endpoint-id</code></em></code></p>
+                                    <p>Where:</p>
+                                    <div class="itemizedlist">
+                                       
+                                       
+                                       
+                                       <ul class="itemizedlist" type="disc">
+                                          <li class="listitem">
+                                             
+                                             <p><em>application-id</em> is the ID of
+                                                the Amazon Pinpoint project in which you're adding or updating an
+                                                endpoint.
+                                             </p>
+                                             
+                                          </li>
+                                          <li class="listitem">
+                                             
+                                             <p><em>endpoint-id</em> is the ID that
+                                                you're assigning to a new endpoint, or it's the ID of an
+                                                existing endpoint that you're updating.
+                                             </p>
+                                             
+                                          </li>
+                                       </ul>
+                                    </div>
+                                    <p>In your request, include the required headers, and provide the <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html#rest-api-endpoint-schemas">EndpointRequest</a> JSON as the body:
+                                    </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="http ">PUT /v1/apps/<em class="replaceable"><code>application_id</code></em>/endpoints/<em class="replaceable"><code>example_endpoint</code></em> HTTP/1.1
+Host: pinpoint.us-east-1.amazonaws.com
+X-Amz-Date: 20180415T182538Z
+Content-Type: application/json
+Accept: application/json
+X-Amz-Date: 20180428T004705Z
+Authorization: AWS4-HMAC-SHA256 Credential=AKIAIOSFODNN7EXAMPLE/20180428/us-east-1/mobiletargeting/aws4_request, SignedHeaders=accept;content-length;content-type;host;x-amz-date, Signature=c25cbd6bf61bd3b3667c571ae764b9bf2d8af61b875cacced95d1e68d91b4170
+Cache-Control: no-cache
+
+{
+  "ChannelType": "APNS",
+  "Address": "1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7a8b9c0d1e2f",
+  "Attributes": {
+    "interests": [
+      "technology",
+      "music",
+      "travel"
+    ]
+  },
+  "Metrics": {
+    "technology_interest_level": 9.0,
+    "music_interest_level": 6.0,
+    "travel_interest_level": 4.0
+  },
+  "Demographic": {
+    "AppVersion": "1.0",
+    "Make": "apple",
+    "Model": "iPhone",
+    "ModelVersion": "8",
+    "Platform": "ios",
+    "PlatformVersion": "11.3.1",
+    "Timezone": "America/Los_Angeles"
+  },
+  "Location": {
+    "Country": "US",
+    "City": "Seattle",
+    "PostalCode": "98121",
+    "Latitude": 47.61,
+    "Longitude": -122.33
+  }
+}</code></pre><p>If your request succeeds, you receive a response like the
+                                       following:
+                                    </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight">{
+    "RequestID": "67e572ed-41d5-11e8-9dc5-db288f3cbb72",
+    "Message": "Accepted"
+}</code></pre></div>
+                              </div>
+                           </dd>
+                        </dl>
+                     </div>
+                     
+                     
+                     <h2 id="audience-define-endpoints-related">Related Information</h2>
+                     
+                     <p>For more information about the Endpoint resource in the Amazon Pinpoint API, including
+                        the
+                        supported HTTP methods and request parameters, see <a href="https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html">Endpoint</a> in the <em>Amazon Pinpoint API Reference.</em></p>
+                     
+                     <p>For more information about personalizing messages with variables, see <a href="https://docs.aws.amazon.com/pinpoint/latest/userguide/campaigns-message.html#campaigns-message-variables.html">Message
+                           Variables</a> in the <em>Amazon Pinpoint User Guide</em>.
+                     </p>
+                     
+                     <p>For the limits that apply to endpoints, such as the number of attributes you can
+                        assign, see <a href="limits.html#limits-endpoint">Endpoint Limits</a>.
+                     </p>
+                     
+                  </div>
+                  <noscript>
+                     <div>
+                        <div>
+                           <div>
+                              <div id="js_error_message">
+                                 <p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p>
+                                 <p>To use the AWS Documentation, Javascript must be enabled. Please refer to your browser's
+                                    Help pages for instructions.
+                                 </p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </noscript>
+                  <div id="main-col-footer">
+                     <div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div>
+                     <div id="next"><a class="awstoc" accesskey="p" href="audience-define.html">« Previous </a><a class="awstoc" accesskey="n" href="audience-define-user.html">Next »</a></div>
+                     <div id="copyright-main-footer">© 2019, Amazon Web Services, Inc. or its affiliates. All rights reserved.</div>
+                  </div>
+               </div>
+            </div>
+            <div id="right-expanded">
+               <div id="right-content-wrapper">
+                  <div id="pagetoc">
+                     <p>On this page:</p>
+                     <ul class="pagetoc">
+                        <li class="pagetoc" name="Examples"><a class="pagetoc" href="#audience-define-endpoints-examples">Examples</a></li>
+                        <li class="pagetoc" name="Related Information"><a class="pagetoc" href="#audience-define-endpoints-related">Related Information</a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="cookie-notice">
+         <div class="cookie-notice-text">We use cookies to provide and improve our services. By using our site, you consent
+            to cookies. <a href="http://aws.amazon.com/legal/cookies">Learn more</a></div>
+      </div>
+      <div id="footer">
+         <div id="footer_short_fb" class="hide" title="Feedback"><a target="_blank" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Pinpoint&amp;topic_url=http://docs.aws.amazon.com/en_us/pinpoint/latest/developerguide/audience-define-endpoints.html&amp;hidden_guide_name=Developer Guide&amp;hidden_api_version=&amp;hidden_file_name=audience-define-endpoints"><i class="awsdocs-footer-text fa fa-envelope-o"></i></a></div>
+         <div id="footer_toggle" class="mediaobject">
+            <div id="footer_toggle_img" class="awsdocs-footer-text fa fa-caret-down"></div>
+            <div id="footer_toggle_img_collapse" class="hide awsdocs-footer-text fa fa-caret-right"></div>
+         </div>
+         <div id="footer-left"><a class="awsdocs-footer-text" target="_top" href="http://aws.amazon.com/terms">Terms of Use</a><span class="awsdocs-footer-text"> | </span><a class="awsdocs-footer-text" target="_top" href="http://aws.amazon.com/privacy">Privacy</a><span class="awsdocs-footer-text"> | </span><span class="awsdocs-footer-text">© 2019, Amazon Web Services, Inc. or its affiliates. All rights reserved.</span></div>
+         <div id="footer-right">
+            <div id="feedback">
+               <div id="forums"><a id="forum_link" target="_blank" href="http://forums.aws.amazon.com/forum.jspa?forumID=225" class="awsdocs-footer-text">Have a question? Try the Forums.</a></div>
+               <div id="feedback-message" class="awsdocs-footer-text">Did this page help you?</div>
+               <div id="feedback-yesno-buttons"><a class="awstoc btn btn-default" target="_blank" href="feedbackyes.html?topic_url=http://docs.aws.amazon.com/en_us/pinpoint/latest/developerguide/audience-define-endpoints.html">Yes</a><a class="awstoc btn btn-default" target="_blank" href="feedbackno.html?topic_url=http://docs.aws.amazon.com/en_us/pinpoint/latest/developerguide/audience-define-endpoints.html">No</a></div>
+               <div id="feedback-feedback-button"><a class="awstoc btn btn-default" target="_blank" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Pinpoint&amp;topic_url=http://docs.aws.amazon.com/en_us/pinpoint/latest/developerguide/audience-define-endpoints.html&amp;hidden_guide_name=Developer Guide&amp;hidden_api_version=&amp;hidden_file_name=audience-define-endpoints">Feedback</a></div>
+            </div>
+         </div>
+      </div>
+      <!-- SiteCatalyst code version: H.25.2.
+            Copyright 1996-2012 Adobe, Inc. All Rights Reserved
+            More info available at http://www.omniture.com --><script language="JavaScript" type="text/javascript" src="https://a0.awsstatic.com/s_code/js/1.0/awshome_s_code.js"></script><script language="JavaScript" type="text/javascript">
+         <!--
+
+            // Documentation Service Name
+            s.prop66='Amazon Pinpoint';
+            s.eVar66='D=c66';
+  
+            // Documentation Guide Name                                                                 
+            s.prop65='Developer Guide';
+            s.eVar65='D=c65';
+
+            var s_code=s.t();if(s_code)document.write(s_code)//--></script><script language="JavaScript" type="text/javascript">
+         <!--
+                if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+                //--></script><noscript><img src="https://amazonwebservices.d2.sc.omtrdc.net/b/ss/awsamazondev/1/H.25.2--NS/0" height="1" width="1" border="0" alt="" /></noscript>
+      <!--/DO NOT REMOVE/-->
+      <!-- End SiteCatalyst code version: H.25.2. -->
+   </body>
+</html>
