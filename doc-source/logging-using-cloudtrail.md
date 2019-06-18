@@ -96,12 +96,13 @@ The Amazon Pinpoint API supports logging the following actions as events in Clou
 + [UpdateSegment](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segment.html#rest-api-segment-methods-put)
 + [UpdateSmsChannel](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-sms-channel.html#rest-api-sms-channel-methods-put)
 
-The following Amazon Pinpoint API actions **aren't** logged in CloudTrail:
-+ GetEndpoint
-+ SendMessages
-+ SendUsersMessages
-+ UpdateEndpoint
-+ UpdateEndpointsBatch
+The following Amazon Pinpoint actions **aren't** logged in CloudTrail:  
+GetEndpoint
+PutEvents
+SendMessages
+SendUsersMessages
+UpdateEndpoint
+UpdateEndpointsBatch
 
 ### Amazon Pinpoint Email API Actions That Can be Logged by CloudTrail<a name="pinpoint-email-cloudtrail-actions"></a>
 
