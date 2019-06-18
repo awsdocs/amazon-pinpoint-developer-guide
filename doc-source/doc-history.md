@@ -1,14 +1,20 @@
 # Document History for Amazon Pinpoint<a name="doc-history"></a>
 
 The following table describes the documentation for this release of Amazon Pinpoint\.
-+ **Latest documentation update:** December 21, 2018
++ **Latest documentation update:** May 14, 2019
 
 
 | Change | Description | Date | 
 | --- | --- | --- | 
-| Regional availability | Amazon Pinpoint is now available in the US West \(Oregon\) and EU \(Frankfurt\) AWS Regions\. | December 21, 2018 | 
+| Importing segments from external systems | Added a [tutorial](tutorials-importing-data.md) that describes a solution for bringing customer data into Amazon Pinpoint from external systems, such as Salesforce or Marketo\. | May 14, 2019 | 
+| Regional availability | Amazon Pinpoint is now available in the AWS Asia Pacific \(Mumbai\) and Asia Pacific \(Sydney\) Regions\. | April 25, 2019 | 
+| Using Postman with Amazon Pinpoint | Added a [tutorial](tutorials-using-postman.md) that describes how to use Postman to interact with the Amazon Pinpoint API\. | April 8, 2019 | 
+| Setting Up an SMS Registration System | Added a [Tutorials section](tutorials.md), and added a tutorial that describes how to create [a solution that handles SMS user registration](tutorials-two-way-sms.md)\. | February 27, 2019 | 
+| Tagging support | Added information about [tagging Amazon Pinpoint resources](tagging-resources.md)\. | February 27, 2019 | 
+| Code examples | Added [code examples](send-messages.md) in several programming languages that show you how to send [email](send-messages-email.md), [SMS](send-messages-sms.md), and [voice](send-messages-voice.md) messages programmatically\. | February 6, 2019 | 
+| Regional availability | Amazon Pinpoint is now available in the AWS US West \(Oregon\) and EU \(Frankfurt\) Regions\. | December 21, 2018 | 
 | Voice channel | You can use the new Amazon Pinpoint voice channel to create voice messages and deliver them to your customers over the phone\. Currently, you can only send voice messages by using the Amazon Pinpoint SMS and Voice API\. | November 15, 2018 | 
-| EU \(Ireland\) Availability | Amazon Pinpoint is now available in the EU \(Ireland\) AWS Region\. | October 25, 2018 | 
+| EU \(Ireland\) Availability | Amazon Pinpoint is now available in the AWS EU \(Ireland\) Region\. | October 25, 2018 | 
 | Events API | Use the Amazon Pinpoint API to [record events](integrate-events.md#integrate-events-api) and associate them with endpoints\. | August 7, 2018 | 
 | Code examples for defining and looking up endpoints | Code examples are added that show you how to define, update, delete, and look up endpoints\. Examples are provided for the AWS CLI, AWS SDK for Java, and the Amazon Pinpoint API\. For more information, see [Defining Your Audience to Amazon Pinpoint](audience-define.md) and [Accessing Audience Data in Amazon Pinpoint](audience-data.md)\. | August 7, 2018 | 
 | Endpoint export permissions | [Configure an IAM policy](permissions-export-endpoints.md) that allows you to export Amazon Pinpoint endpoints to an Amazon S3 bucket\. | May 1, 2018 | 

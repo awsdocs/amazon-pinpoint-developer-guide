@@ -84,7 +84,7 @@ The example `update-endpoints-batch` command uses a JSON file as the argument fo
   ]
 }
 ```
-For the attributes that you can use to define a batch of endpoints, see the [EndpointBatchRequest](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoints.html#rest-api-endpoints-schemas) schema in the *Amazon Pinpoint API Reference*\.
+For the attributes that you can use to define a batch of endpoints, see the [EndpointBatchRequest](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints.html#apps-application-id-endpoints-schemas) schema in the *Amazon Pinpoint API Reference*\.
 
 ------
 #### [ AWS SDK for Java ]
@@ -204,10 +204,10 @@ public class AddExampleEndpoints {
 You can use Amazon Pinpoint by making HTTP requests directly to the REST API\.
 
 **Example Put Endpoints Request**  
-To submit an endpoint batch request, issue a `PUT` request to the [Endpoints](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoints.html) resource at the following URI:  
+To submit an endpoint batch request, issue a `PUT` request to the [Endpoints](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints.html) resource at the following URI:  
 `/v1/apps/application-id/endpoints`  
 Where *application\-id* is the ID of the Amazon Pinpoint project in which you're adding or updating the endpoints\.  
-In your request, include the required headers, and provide the [EndpointBatchRequest](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoints.html#rest-api-endpoints-schemas) JSON as the body:  
+In your request, include the required headers, and provide the [EndpointBatchRequest](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints.html#apps-application-id-endpoints-schemas) JSON as the body:  
 
 ```
 PUT /v1/apps/application_id/endpoints HTTP/1.1
@@ -286,4 +286,4 @@ If your request succeeds, you receive a response like the following:
 
 ## Related Information<a name="audience-define-endpoints-batch-related"></a>
 
-For more information about the Endpoint resource in the Amazon Pinpoint API, including the supported HTTP methods and request parameters, see [Endpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html) in the *Amazon Pinpoint API Reference\.*
+For more information about the Endpoint resource in the Amazon Pinpoint API, including the supported HTTP methods and request parameters, see [Endpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints-endpoint-id.html) in the *Amazon Pinpoint API Reference\.*

@@ -85,7 +85,7 @@ The following limits apply to messages that Amazon Pinpoint delivers through mob
 | Apple Push Notification service \(APNs\) message payload size | 4 KB per message | No | 
 | APNs sandbox message payload size | 4 KB per message | No | 
 | Baidu Cloud Push message payload size | 4 KB per message | No | 
-| Firebase Cloud Messaging \(FCM\) or Google Cloud Messaging \(GCM\) message payload size | 4 KB per message | No | 
+| Firebase Cloud Messaging \(FCM\) message payload size | 4 KB per message | No | 
 
 ## Email Limits<a name="limits-email"></a>
 
@@ -186,3 +186,9 @@ If the value in the **Eligible for Increase** column in any of the tables above 
 1. For **Contact Method**, choose your preferred method of communicating with the AWS Support team\.
 
 1. Choose **Submit**\.
+
+The AWS Support team provides an initial response to your request within 24 hours\.
+
+In order to prevent our systems from being used to send unsolicited or malicious content, we have to consider each request carefully\. If we’re able to do so, we'll grant your request within this 24\-hour period\. However, if we need to obtain additional information from you, it might take longer to resolve your request\.
+
+We might not be able to grant your request if your use case doesn’t align with our policies\.

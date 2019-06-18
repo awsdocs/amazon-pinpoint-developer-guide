@@ -1,6 +1,6 @@
 # IAM Role for Importing Endpoints or Segments<a name="permissions-import-segment"></a>
 
-With Amazon Pinpoint, you define a user segment by importing endpoint definitions from an Amazon S3 bucket in your AWS account\. Before you import, you must delegate the required permissions to Amazon Pinpoint\. Create an AWS Identity and Access Management \(IAM\) role and attach the following policies to the role: 
+With Amazon Pinpoint, you define a user segment by importing endpoint definitions from an Amazon Simple Storage Service \(Amazon S3\) bucket in your AWS account\. Before you import, you must delegate the required permissions to Amazon Pinpoint by creating an AWS Identity and Access Management \(IAM\) role and attaching the following policies to the role: 
 + The `AmazonS3ReadOnlyAccess` AWS managed policy\. This policy is created and managed by AWS, and it grants read\-only access to your Amazon S3 bucket\.
 + A *trust policy* that allows Amazon Pinpoint to assume the role\.
 
@@ -8,7 +8,7 @@ For more information about IAM roles, see [IAM Roles](https://docs.aws.amazon.co
 
 After you create the role, you can use Amazon Pinpoint to import segments\. For an example of how to import a segment by using the AWS SDK for Java, see [Importing Segments](segments-importing.md)\. For information about creating the Amazon S3 bucket, creating endpoint files, and importing a segment by using the console, see [Importing Segments](https://docs.aws.amazon.com/pinpoint/latest/userguide/segments-importing.html) in the *Amazon Pinpoint User Guide*\.
 
-## Trust Policy<a name="permissions-import-segment-trustpolicy"></a>
+## Attaching the Trust Policy<a name="permissions-import-segment-trustpolicy"></a>
 
 To allow Amazon Pinpoint to assume the IAM role and perform the actions allowed by the `AmazonS3ReadOnlyAccess` policy, attach the following trust policy to the role:
 
@@ -31,13 +31,13 @@ To allow Amazon Pinpoint to assume the IAM role and perform the actions allowed 
 
 Complete the following steps to create the IAM role by using the AWS Command Line Interface \(AWS CLI\)\.
 
-If you have not installed the AWS CLI, see [Getting Set Up with the AWS Command Line Interface](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html) in the *AWS Command Line Interface User Guide*\.
+If you have not installed the AWS CLI, see [Installing the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html) in the *AWS Command Line Interface User Guide*\.
 
 **To create the IAM role by using the AWS CLI**
 
 1. Create a JSON file that contains the trust policy for your role, and save the file locally\. You can copy the trust policy provided in this topic\.
 
-1. Use the [https://docs.aws.amazon.com/cli/latest/reference/iam/create-role.html](https://docs.aws.amazon.com/cli/latest/reference/iam/create-role.html) command to create the role and attach the trust policy:
+1. At the command line, use the [https://docs.aws.amazon.com/cli/latest/reference/iam/create-role.html](https://docs.aws.amazon.com/cli/latest/reference/iam/create-role.html) command to create the role and attach the trust policy:
 
    ```
    aws iam create-role --role-name PinpointSegmentImport --assume-role-policy-document file://PinpointImportTrustPolicy.json

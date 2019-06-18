@@ -1,6 +1,6 @@
 # IAM Role for Exporting Endpoints or Segments<a name="permissions-export-endpoints"></a>
 
-You can obtain a list of endpoints by creating an export job\. When you create an export job, you have to specify a project ID, and you can optionally specify a segment ID\. Amazon Pinpoint then exports a list of the endpoints associated with the project or segment to an Amazon Simple Storage Service \(Amazon S3\) bucket\. The resulting file contains a JSON\-formatted list of endpoints and their attributes \(such as channel, address, opt\-in/opt\-out status, creation date, and endpoint ID\)\. 
+You can obtain a list of endpoints by creating an export job\. When you create an export job, you have to specify a project ID, and you can optionally specify a segment ID\. Amazon Pinpoint then exports a list of the endpoints associated with the project or segment to an Amazon Simple Storage Service \(Amazon S3\) bucket\. The resulting file contains a JSON\-formatted list of endpoints and their attributes, such as channel, address, opt\-in/opt\-out status, creation date, and endpoint ID\. 
 
 To create an export job, you have to configure an IAM role that allows Amazon Pinpoint to write to an Amazon S3 bucket\. The process of configuring the role consists of two steps:
 
@@ -8,13 +8,13 @@ To create an export job, you have to configure an IAM role that allows Amazon Pi
 
 1. Create an IAM role and attach the policy to it\.
 
-This section contains procedures for completing both of these steps\. These procedures assume that you've already created an Amazon S3 bucket, as well as a folder within that bucket, for storing exported segments\. For more information about creating buckets, see [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html) in the *Amazon Simple Storage Service Getting Started Guide*\. 
+This section contains procedures for completing both of these steps\. These procedures assume that you've already created an Amazon S3 bucket, and a folder in that bucket, for storing exported segments\. For more information about creating buckets, see [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html) in the *Amazon Simple Storage Service Getting Started Guide*\. 
 
 These procedures also assume that you've already installed and configured the AWS CLI\. For more information about setting up the AWS CLI, see [Installing the AWS Command Line Interface](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) in the *AWS Command Line Interface User Guide*\.
 
 ## Step 1: Create the IAM Policy<a name="permissions-export-endpoints-create-policy"></a>
 
-An IAM policy defines the permissions for an entity, such as an identity or resource\. To create a role for exporting Amazon Pinpoint endpoints, you have to create a policy that grants permission to write to a specific folder in a specific Amazon S3 bucket\. The following policy example follows the security practice of granting least privilege—that is, it only grants the permissions that are required to perform a single task\.
+An IAM policy defines the permissions for an entity, such as an identity or resource\. To create a role for exporting Amazon Pinpoint endpoints, you have to create a policy that grants permission to write to a specific folder in a specific Amazon S3 bucket\. The following policy example follows the security practice of granting least privilege—that is, it grants only the permissions that are required to perform a single task\.
 
 **To create the IAM policy**
 
@@ -48,7 +48,7 @@ An IAM policy defines the permissions for an entity, such as an identity or reso
                            "Exports/"
                        ]
                    }
-               },
+               }
            },
            {
                "Sid": "AllowListingOfUserFolder",
@@ -75,7 +75,7 @@ An IAM policy defines the permissions for an entity, such as an identity or reso
    }
    ```
 
-   In the preceding code, replace all instances of *example\-bucket* with the name of the Amazon S3 bucket that contains the folder that you want to export the segment information into\. Also, replace all instances of *Example* with the name of the folder itself\.
+   In the preceding code, replace all instances of *example\-bucket* with the name of the Amazon S3 bucket that contains the folder that you want to export the segment information into\. Also, replace all instances of *Exports* with the name of the folder itself\.
 
    When you finish, save the file as `s3policy.json`\.
 
@@ -105,7 +105,7 @@ An IAM policy defines the permissions for an entity, such as an identity or reso
 
    Copy the Amazon Resource Name \(ARN\) of the policy \(`arn:aws:iam::123456789012:policy/s3ExportPolicy` in the preceding example\)\. In the next section, you must supply this ARN when you create the role\.
 **Note**  
-If you see a message stating that your account isn't authorized to perform the CreatePolicy operation, then you need to attach a policy to your user account that lets you create new IAM policies and roles\. For more information, see [Attaching IAM Policies \(Console\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html#attach-managed-policy-console) in the *IAM User Guide*\.
+If you see a message stating that your account isn't authorized to perform the `CreatePolicy` operation, then you need to attach a policy to your user account that lets you create new IAM policies and roles\. For more information, see [Adding and Removing IAM Identity Permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html#attach-managed-policy-console) in the *IAM User Guide*\.
 
 ## Step 2: Create the IAM Role<a name="permissions-export-endpoints-create-role"></a>
 
@@ -164,7 +164,7 @@ Now that you've created an IAM policy, you can create a role and attach the poli
    }
    ```
 
-1. At the command line, type the following command to attach the policy that you created in the previous section to the role you just created:
+1. At the command line, type the following command to attach the policy that you created in the previous section to the role that you just created:
 
    ```
    aws iam attach-role-policy --policy-arn arn:aws:iam::123456789012:policy/s3ExportPolicy --role-name s3ExportRole

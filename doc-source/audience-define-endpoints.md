@@ -71,7 +71,7 @@ The example `update-endpoint` command uses a JSON file as the argument for the `
   }
 }
 ```
-For the attributes that you can use to define an endpoint, see the [EndpointRequest](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html#rest-api-endpoint-schemas) schema in the *Amazon Pinpoint API Reference*\.
+For the attributes that you can use to define an endpoint, see the [EndpointRequest](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints-endpoint-id.html#apps-application-id-endpoints-endpoint-id-schemas) schema in the *Amazon Pinpoint API Reference*\.
 
 ------
 #### [ AWS SDK for Java ]
@@ -90,73 +90,72 @@ import java.util.Arrays;
 
 public class AddExampleEndpoint {
 
-    public static void main(String[] args) {
-
-        final String USAGE = "\n" +
-                "AddExampleEndpoint - Adds an example endpoint to an Amazon Pinpoint application." +
-                "Usage: AddExampleEndpoint <applicationId>" +
-                "Where:\n" +
-                "  applicationId - The ID of the Amazon Pinpoint application to add the example " +
-                "endpoint to.";
-
-        if (args.length < 1) {
-            System.out.println(USAGE);
-            System.exit(1);
-        }
-
-        String applicationId = args[0];
-
-        // The device token assigned to the user's device by Apple Push Notification service (APNs).
-        String deviceToken = "1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7a8b9c0d1e2f";
-
-        // Initializes an endpoint definition with channel type and address.
-        EndpointRequest wangXiulansIphoneEndpoint = new EndpointRequest()
-                .withChannelType(ChannelType.APNS)
-                .withAddress(deviceToken);
-
-        // Adds custom attributes to the endpoint.
-        wangXiulansIphoneEndpoint.addAttributesEntry("interests", Arrays.asList(
-                "technology",
-                "music",
-                "travel"));
-
-        // Adds custom metrics to the endpoint.
-        wangXiulansIphoneEndpoint.addMetricsEntry("technology_interest_level", 9.0);
-        wangXiulansIphoneEndpoint.addMetricsEntry("music_interest_level", 6.0);
-        wangXiulansIphoneEndpoint.addMetricsEntry("travel_interest_level", 4.0);
-
-        // Adds standard demographic attributes.
-        wangXiulansIphoneEndpoint.setDemographic(new EndpointDemographic()
-                .withAppVersion("1.0")
-                .withMake("apple")
-                .withModel("iPhone")
-                .withModelVersion("8")
-                .withPlatform("ios")
-                .withPlatformVersion("11.3.1")
-                .withTimezone("America/Los_Angeles"));
-
-        // Adds standard location attributes.
-        wangXiulansIphoneEndpoint.setLocation(new EndpointLocation()
-                .withCountry("US")
-                .withCity("Seattle")
-                .withPostalCode("98121")
-                .withLatitude(47.61)
-                .withLongitude(-122.33));
-
-        // Initializes the Amazon Pinpoint client.
-        AmazonPinpoint pinpointClient = AmazonPinpointClientBuilder.standard()
-                .withRegion(Regions.US_EAST_1).build();
-
-        // Updates or creates the endpoint with Amazon Pinpoint.
-        UpdateEndpointResult result = pinpointClient.updateEndpoint(new UpdateEndpointRequest()
-                .withApplicationId(applicationId)
-                .withEndpointId("example_endpoint")
-                .withEndpointRequest(wangXiulansIphoneEndpoint));
-
-        System.out.format("Update endpoint result: %s\n", result.getMessageBody().getMessage());
-
-    }
-
+	public static void main(String[] args) {
+	
+		final String USAGE = "\n" +
+			"AddExampleEndpoint - Adds an example endpoint to an Amazon Pinpoint application." +
+			"Usage: AddExampleEndpoint <applicationId>" +
+			"Where:\n" +
+			"  applicationId - The ID of the Amazon Pinpoint application to add the example " +
+			"endpoint to.";
+		
+		if (args.length < 1) {
+		    System.out.println(USAGE);
+		    System.exit(1);
+		}
+		
+		String applicationId = args[0];
+		
+		// The device token assigned to the user's device by Apple Push Notification service (APNs).
+		String deviceToken = "1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7a8b9c0d1e2f";
+		
+		// Initializes an endpoint definition with channel type and address.
+		EndpointRequest wangXiulansIphoneEndpoint = new EndpointRequest()
+			.withChannelType(ChannelType.APNS)
+			.withAddress(deviceToken);
+		
+		// Adds custom attributes to the endpoint.
+		wangXiulansIphoneEndpoint.addAttributesEntry("interests", Arrays.asList(
+			"technology",
+			"music",
+			"travel"));
+		
+		// Adds custom metrics to the endpoint.
+		wangXiulansIphoneEndpoint.addMetricsEntry("technology_interest_level", 9.0);
+		wangXiulansIphoneEndpoint.addMetricsEntry("music_interest_level", 6.0);
+		wangXiulansIphoneEndpoint.addMetricsEntry("travel_interest_level", 4.0);
+		
+		// Adds standard demographic attributes.
+		wangXiulansIphoneEndpoint.setDemographic(new EndpointDemographic()
+			.withAppVersion("1.0")
+			.withMake("apple")
+			.withModel("iPhone")
+			.withModelVersion("8")
+			.withPlatform("ios")
+			.withPlatformVersion("11.3.1")
+			.withTimezone("America/Los_Angeles"));
+		
+		// Adds standard location attributes.
+		wangXiulansIphoneEndpoint.setLocation(new EndpointLocation()
+			.withCountry("US")
+			.withCity("Seattle")
+			.withPostalCode("98121")
+			.withLatitude(47.61)
+			.withLongitude(-122.33));
+		
+		// Initializes the Amazon Pinpoint client.
+		AmazonPinpoint pinpointClient = AmazonPinpointClientBuilder.standard()
+			.withRegion(Regions.US_EAST_1).build();
+		
+		// Updates or creates the endpoint with Amazon Pinpoint.
+		UpdateEndpointResult result = pinpointClient.updateEndpoint(new UpdateEndpointRequest()
+			.withApplicationId(applicationId)
+			.withEndpointId("example_endpoint")
+			.withEndpointRequest(wangXiulansIphoneEndpoint));
+		
+		System.out.format("Update endpoint result: %s\n", result.getMessageBody().getMessage());
+	
+	}
 }
 ```
 
@@ -166,12 +165,12 @@ public class AddExampleEndpoint {
 You can use Amazon Pinpoint by making HTTP requests directly to the REST API\.
 
 **Example PUT Endpoint Request**  
-To add an endpoint, issue a `PUT` request to the [Endpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html) resource at the following URI:  
+To add an endpoint, issue a `PUT` request to the [Endpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints-endpoint-id.html) resource at the following URI:  
 `/v1/apps/application-id/endpoints/endpoint-id`  
 Where:  
 + *application\-id* is the ID of the Amazon Pinpoint project in which you're adding or updating an endpoint\.
 + *endpoint\-id* is the ID that you're assigning to a new endpoint, or it's the ID of an existing endpoint that you're updating\.
-In your request, include the required headers, and provide the [EndpointRequest](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html#rest-api-endpoint-schemas) JSON as the body:  
+In your request, include the required headers, and provide the [EndpointRequest](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints-endpoint-id.html#apps-application-id-endpoints-endpoint-id-schemas) JSON as the body:  
 
 ```
 PUT /v1/apps/application_id/endpoints/example_endpoint HTTP/1.1
@@ -229,7 +228,7 @@ If your request succeeds, you receive a response like the following:
 
 ## Related Information<a name="audience-define-endpoints-related"></a>
 
-For more information about the Endpoint resource in the Amazon Pinpoint API, including the supported HTTP methods and request parameters, see [Endpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html) in the *Amazon Pinpoint API Reference\.*
+For more information about the Endpoint resource in the Amazon Pinpoint API, including the supported HTTP methods and request parameters, see [Endpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints-endpoint-id.html) in the *Amazon Pinpoint API Reference\.*
 
 For more information about personalizing messages with variables, see [Message Variables](https://docs.aws.amazon.com/pinpoint/latest/userguide/campaigns-message.html#campaigns-message-variables.html) in the *Amazon Pinpoint User Guide*\.
 
