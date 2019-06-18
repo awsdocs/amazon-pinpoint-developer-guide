@@ -22,7 +22,7 @@ The following examples demonstrate how to add endpoint definitions to your Amazo
 
 ### Files with Endpoint Definitions<a name="audience-define-import-examples-files"></a>
 
-The files that you add to your Amazon S3 bucket can contain endpoint definitions in CSV or newline\-delimited JSON format\. For the attributes that you can use to define your endpoints, see the [EndpointRequest](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html#rest-api-endpoint-schemas) JSON schema in the *Amazon Pinpoint API Reference*\.
+The files that you add to your Amazon S3 bucket can contain endpoint definitions in CSV or newline\-delimited JSON format\. For the attributes that you can use to define your endpoints, see the [EndpointRequest](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints-endpoint-id.html#apps-application-id-endpoints-endpoint-id-schemas) JSON schema in the *Amazon Pinpoint API Reference*\.
 
 ------
 #### [ CSV ]
@@ -351,7 +351,7 @@ Where:
 + *bucket\-name* is the name of the Amazon S3 bucket that you're adding the endpoint definitions to\.
 
 **Example POST Import Job Request**  
-To import endpoint definitions from an Amazon S3 bucket, issue a POST request to the [Import Jobs](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-import-jobs.html) resource\. In your request, include the required headers and provide the [ImportJobRequest](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-import-jobs.html#rest-api-import-jobs-schemas) JSON as the body:  
+To import endpoint definitions from an Amazon S3 bucket, issue a POST request to the [Import Jobs](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-jobs-import.html) resource\. In your request, include the required headers and provide the [ImportJobRequest](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-jobs-import.html#apps-application-id-jobs-import-schemas) JSON as the body:  
 
 ```
 POST /v1/apps/application_id/jobs/import HTTP/1.1
@@ -395,7 +395,7 @@ If your request succeeds, you receive a response like the following:
 The response provides the job ID with the `Id` attribute\. You can use this ID to check the current status of the import job\.
 
 **Example GET Import Job Request**  
-To check the current status of an import job, issue a `GET` request to the [Import Job](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-import-job.html) resource:  
+To check the current status of an import job, issue a `GET` request to the [Import Job](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-jobs-import-job-id.html) resource:  
 
 ```
 GET /v1/apps/application_id/jobs/import/job_id HTTP/1.1
@@ -440,4 +440,4 @@ The response provides the job status with the `JobStatus` attribute\.
 
 ## Related Information<a name="audience-define-import-related"></a>
 
-For more information about the Import Jobs resource in the Amazon Pinpoint API, including the supported HTTP methods and request parameters, see [Import Jobs](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-import-jobs.html) in the *Amazon Pinpoint API Reference*\.
+For more information about the Import Jobs resource in the Amazon Pinpoint API, including the supported HTTP methods and request parameters, see [Import Jobs](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-jobs-import.html) in the *Amazon Pinpoint API Reference*\.

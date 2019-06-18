@@ -21,7 +21,7 @@ To create the first Lambda function for this tutorial, you first have to upload 
 
 1. Under **Function code**, for **Code entry type**, choose **Upload a \.zip file**\. Under **Function package**, choose **Upload**\. Choose the `pinpoint-importer.zip` file that you created in [Step 3](tutorials-importing-data-create-python-package.md)\. After you select the file, choose **Save**\. 
 **Note**  
-After you choose **Save**, you receive an error message stating that Lambda couldn’t open the file `lambda_function.py`\. Dismiss this error; you create this file in the next step\.
+After you choose **Save**, you receive an error message stating that Lambda couldn’t open the file `lambda_function.py`\. Dismiss this error—you create this file in the next step\.
 
 1. In the function editor, on the **File** menu, choose **New File**\. The editor creates a new file named `Untitled1`\.
 
@@ -110,13 +110,13 @@ After you choose **Save**, you receive an error message stating that Lambda coul
        s3.rm(input_file)
    ```
 
-1. In the function editor, on the **File** menu, choose **Save As**\. Save the file as `lambda_function.py` in the root directory for the function\.
+1. In the function editor, on the **File** menu, choose **Save As**\. Save the file as `lambda_function.py` in the root directory of the function\.
 
 1. At the top of the page, choose **Save**\.
 
 ## Step 4\.2: Test the Function<a name="tutorials-importing-data-lambda-function-input-split-test"></a>
 
-After you create the function, you should test it to ensure that it's set up correctly\.
+After you create the function, you should test it to make sure that it's set up correctly\.
 
 **To test the Lambda function**
 
@@ -173,14 +173,14 @@ For now, don't add or remove any columns to the file\. After you implement the s
 
    In the preceding example, replace *bucket\-name* with the name of the Amazon S3 bucket that you created in [Step 1](tutorials-importing-data-create-s3-bucket.md)\. When you finish, choose **Create**\.
 
-1. Choose **Test** again\. The function will execute with the test event that you provided\.
+1. Choose **Test** again\. The function executes with the test event that you provided\.
 
    If the function runs as expected, proceed to the next step\.
 
    If the function fails to complete, do the following: 
    + Make sure that you specified the correct bucket name in the IAM policy that you created in [Step 2: Create IAM Roles](tutorials-importing-data-create-iam-roles.md)\.
    + Make sure that the Lambda test event that you created in step 7 of this section refers to the correct bucket and file name\.
-   + If you named the input file something other than `testfile.csv`, make sure that the filename doesn't contain any spaces\.
+   + If you named the input file something other than `testfile.csv`, make sure that the file name doesn't contain any spaces\.
 
 1. Return to the [Amazon S3 console](https://console.aws.amazon.com/s3/)\. Choose the bucket that you created in [Step 1: Create an Amazon S3 Bucket](tutorials-importing-data-create-s3-bucket.md)\.
 

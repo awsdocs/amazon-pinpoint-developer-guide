@@ -2,7 +2,7 @@
 
 The next step in implementing this solution is to configure policies and roles in AWS Identity and Access Management \(IAM\)\. For this solution, you need to create the following roles and policies: 
 + A role that can read and write from a specific set of Amazon S3 buckets\.
-+ A role that can be passed to Amazon Pinpoint, allowing it to import segment data from your Amazon S3 bucket when you create an import job\.
++ A role that can be passed to Amazon Pinpoint that allows Amazon Pinpoint to import segment data from your Amazon S3 bucket when you create an import job\.
 + A policy that can perform certain actions in your Amazon Pinpoint account\.
 
 The policies that you create in this section use the principal of granting *least privilege*\. In other words, they only grant the specific permissions that are required to complete a specific task, and no more\.
@@ -205,11 +205,11 @@ The next policy that you need to create is one that allows Lambda to interact wi
    ```
 
    In the preceding example, do the following:
-   + Replace *us\-east\-1* with the Region that you use Amazon Pinpoint in\.
+   + Replace *us\-east\-1* with the AWS Region that you use Amazon Pinpoint in\.
    + Replace *123456789012* with your AWS account ID\.
    + Replace *01234567890123456789012345678901* with the Amazon Pinpoint project ID that you want to import contacts into\. The application ID that you specify has to exist in your Amazon Pinpoint account in the specified Region\.
 **Note**  
-You can use wildcards for any of the values above\. Using wildcards makes this policy more flexible, but also reduces the security of the policy because it doesn't strictly conform to the principle of least privilege\.
+You can use wildcards for any of these values\. Using wildcards makes this policy more flexible, but also reduces the security of the policy because it doesn't strictly conform to the principle of least privilege\.
 
 1. Choose **Review policy**\.
 

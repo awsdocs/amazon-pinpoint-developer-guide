@@ -102,6 +102,6 @@ The endpoints should also contain two User Attribute values\. These values aren'
 | User\.UserAttributes\.FirstName | The recipient's first name\. | 
 | User\.UserAttributes\.LastName | The recipient's last name\. | 
 
-If your Amazon Pinpoint project contains a large number of existing endpoints, you can use the [CreateExportJob](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-export-jobs.html#rest-api-export-jobs-methods-post) API operation to export a list of all the endpoints for a segment or project to an Amazon S3 bucket\. After that, you can write a script that uses the [UpdateEndpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html#rest-api-endpoint-methods-put) operation to programmatically updates endpoints to include these attributes\.
+If your Amazon Pinpoint project contains a large number of existing endpoints, you can use the [CreateExportJob](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-jobs-export.html#CreateExportJob) API operation to export a list of all the endpoints for a segment or project to an Amazon S3 bucket\. After that, you can write a script that uses the [UpdateEndpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints-endpoint-id.html#UpdateEndpoint) operation to programmatically updates endpoints to include these attributes\.
 
 **Next**: [Create IAM Policies and Roles](tutorials-email-prefs-part-3.md)

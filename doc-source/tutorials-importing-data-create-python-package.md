@@ -31,7 +31,7 @@ This procedure assumes that you've already installed Python\. Python is included
 
 ------
 
-1. Enter the following command to change into the `pinpoint-importer` directory:
+1. Enter the following command to change to the `pinpoint-importer` directory:
 
    ```
    cd pinpoint-importer

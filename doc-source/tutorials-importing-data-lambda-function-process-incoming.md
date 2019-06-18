@@ -2,9 +2,9 @@
 
 The next Lambda function that you create processes the records in the incoming files that were created by the function that you created in [Step 4](tutorials-importing-data-lambda-function-input-split.md)\. Specifically, it does the following things:
 + Changes the headers in the incoming file to values that Amazon Pinpoint expects to see\.
-+ Converts some of the contact information in the input spreadsheet into a format that Amazon Pinpoint expects\. For example, the value "United States" in the `Mailing Country` column is converted to "US" in the `Location.Country` column of the output file, because Amazon Pinpoint expects countries to represented in ISO\-3166\-1 format\.
-+ Sends every phone number that it finds to the phone number validation service\. This step ensures that all phone numbers are converted to E\.164 format\. It also determines the phone number type\. Mobile phone numbers are created as SMS endpoints, while all other phone numbers are created as Voice endpoints\.
-+ Writes separate rows for each endpoint that it finds\. For example, if one row in the input file contains a phone number and an email address, then the output file contains a separate row for each of those endpoints\. However, the two records are united by a common User ID\.
++ Converts some of the contact information in the input spreadsheet into a format that Amazon Pinpoint expects\. For example, the value "United States" in the `Mailing Country` column is converted to "US" in the `Location.Country` column of the output file\. This is because Amazon Pinpoint expects countries to be represented in ISO\-3166\-1 format\.
++ Sends every phone number that it finds to the phone number validation service\. This step ensures that all phone numbers are converted to E\.164 format\. It also determines the phone number type\. Mobile phone numbers are created as SMS endpoints, while all other phone numbers are created as voice endpoints\.
++ Writes separate rows for each endpoint that it finds\. For example, if one row in the input file contains a phone number and an email address, then the output file contains a separate row for each of those endpoints\. However, the two records are united by a common user ID\.
 + Checks to see if endpoint IDs in the incoming file already exist in the Amazon Pinpoint project\. If they do, the Lambda function updates the existing records rather than creating new ones\.
 
 When the function finishes processing the input files, it sends them to a folder in the `processed` directory\.
@@ -28,7 +28,7 @@ The process of creating this function is similar to the process that you complet
 
 1. Under **Function code**, for **Code entry type**, choose **Upload a \.zip file**\. Under **Function package**, choose **Upload**\. Choose the `pinpoint-importer.zip` file that you created in [Step 3](tutorials-importing-data-create-python-package.md)\. After you select the file, choose **Save**\. 
 **Note**  
-After you choose **Save**, you receive an error message stating that Lambda couldn’t open the file `lambda_function.py`\. Dismiss this error; you create this file in the next step\.
+After you choose **Save**, you receive an error message stating that Lambda couldn’t open the file `lambda_function.py`\. Dismiss this error—you create this file in the next step\.
 
 1. In the function editor, on the **File** menu, choose **New File**\. The editor creates a new file named `Untitled1`\.
 
@@ -244,7 +244,7 @@ After you choose **Save**, you receive an error message stating that Lambda coul
        s3.rm(input_file)
    ```
 
-1. In the function editor, on the **File** menu, choose **Save As**\. Save the file as `lambda_function.py` in the root directory for the function\.
+1. In the function editor, on the **File** menu, choose **Save As**\. Save the file as `lambda_function.py` in the root directory of the function\.
 
 1. In the function editor, on the **File** menu, choose **New File**\. The editor creates a new file named `Untitled1`\.
 
@@ -391,28 +391,28 @@ After you choose **Save**, you receive an error message stating that Lambda coul
            return returnValues
    ```
 
-1. In the function editor, on the **File** menu, choose **Save As**\. Save the file as `input_internationalization.py` in the root directory for the function\.
+1. In the function editor, on the **File** menu, choose **Save As**\. Save the file as `input_internationalization.py` in the root directory of the function\.
 
 1. Under **Environment variables**, do the following:
    + In the first row, create a variable with a key of **projectId**\. Next, set the value to the unique ID of the project that you specified in the IAM policy in [Step 2\.2](tutorials-importing-data-create-iam-roles.md#tutorials-importing-data-create-iam-roles-pinpoint)\.
-   + In the second row, create a variable with a key of **region**\. Next, set the value to the Region that that you specified in the IAM policy in [Step 2\.2](tutorials-importing-data-create-iam-roles.md#tutorials-importing-data-create-iam-roles-pinpoint)\.
+   + In the second row, create a variable with a key of **region**\. Next, set the value to the AWS Region that you specified in the IAM policy in [Step 2\.2](tutorials-importing-data-create-iam-roles.md#tutorials-importing-data-create-iam-roles-pinpoint)\.
 
    When you finish, the **Environment Variables** section should resemble the example shown in the following image\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/images/Email_Prefs_Tutorial_LAM_Step4.1_7.png)
 
 1. Under **Basic settings**, set the **Timeout** value to 6 minutes\.
 **Note**  
-Each call to the phone number validation service typically takes about \.5 seconds to complete, but can occasionally take longer\. If you don't increase the **Timeout** value, the function might time out before it finishes processing the incoming records\. This setting gives the Lambda function plenty of time to finish running\.
+Each call to the phone number validation service typically takes about 0\.5 seconds to complete, but it can occasionally take longer\. If you don't increase the **Timeout** value, the function might time out before it finishes processing the incoming records\. This setting gives the Lambda function plenty of time to finish running\.
 
 1. Under **Concurrency**, choose **Reserve concurrency**, and then set the value to `20`\.
 **Note**  
-Higher concurrency limits might cause the files to be processed faster\. However, if the concurrency value is too high, you start to generate a number of PUT events that exceeds the limits of Amazon S3\. As a result, the import process doesn't capture all of the data in your input spreadsheet, because many of the requests that are generated by this function end in failure\.
+Higher concurrency limits might cause the files to be processed faster\. However, if the concurrency value is too high, you start to generate a number of PUT events that exceeds the limits of Amazon S3\. As a result, the import process doesn't capture all of the data in your input spreadsheet\. This is because many of the requests that are generated by this function end in failure\.
 
 1. At the top of the page, choose **Save**\.
 
 ## Step 5\.2: Test the Function<a name="tutorials-importing-data-lambda-function-process-incoming-test"></a>
 
-After you create the function, you should test it to ensure that it's set up correctly\.
+After you create the function, you should test it to make sure that it's set up correctly\.
 
 **To test the Lambda function**
 

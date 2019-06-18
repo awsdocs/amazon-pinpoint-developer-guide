@@ -1,10 +1,10 @@
 # Step 7: Set Up Amazon S3 Events<a name="tutorials-importing-data-s3-events"></a>
 
-In this section, you set up your Amazon S3 bucket so that it triggers your Lambda functions when you add files to the folders in the bucket\. You also test the entire function to ensure that the triggers work as expected\.
+In this section, you set up your Amazon S3 bucket so that it triggers your Lambda functions when you add files to the folders in the bucket\. You also test the entire function to make sure that the triggers work as expected\.
 
 By using event triggers in Amazon S3, you make the process of executing the Lambda functions automatic\. When you upload a file to the `input` folder, Amazon S3 automatically sends a notification to the `CustomerImport_ReadIncomingAndSplit` function\. When that function runs, it sends files to the `to_process` folder\. When files are added to the `to_process` folder, Amazon S3 triggers the `CustomerImport_ProcessInput` function\. When that function runs, it adds files to the `processed` folder, which triggers the `CustomerImport_CreateJob` function\.
 
-## Step 7\.1: Set Up the Event Notifications<a name="tutorials-importing-data-s3-events-setup"></a>
+## Step 7\.1: Set Up Event Notifications<a name="tutorials-importing-data-s3-events-setup"></a>
 
 In this section, you configure three event notifications for your Amazon S3 bucket\. These notifications automatically trigger your Lambda functions when files are added to specific folders in your bucket\.
 
@@ -49,7 +49,7 @@ In this section, you configure three event notifications for your Amazon S3 buck
 
 ## Step 7\.2: Test the Triggers<a name="tutorials-importing-data-s3-events-test"></a>
 
-The last step in setting up the solution that's discussed in this tutorial is to upload a file to the `input` folder in your Amazon S3 bucket\. When you do, it triggers the Lambda function that you created in [Step 4](tutorials-importing-data-lambda-function-input-split.md)\. When this function finishes running, it creates files in the other folders that you configured event notifications for in the preceding section\. After a few minutes, the entire sequence of Lambda functions finishes running, and your Amazon Pinpoint project contains a new segment\.
+The last step in setting up the solution that's discussed in this tutorial is to upload a file to the `input` folder in your Amazon S3 bucket\. Uploading a file triggers the Lambda function that you created in [Step 4](tutorials-importing-data-lambda-function-input-split.md)\. When this function finishes running, it creates files in the other folders that you configured event notifications for in the preceding section\. After a few minutes, the entire sequence of Lambda functions finishes running, and your Amazon Pinpoint project contains a new segment\.
 
 **To test the event triggers**
 
@@ -69,6 +69,6 @@ The last step in setting up the solution that's discussed in this tutorial is to
 
    If you don't see a new segment on either tab, wait a few minutes longer, and then refresh the **Segments** page\. If you still don't see the segment, do the following:
    + Make sure that the Amazon S3 notification events are configured exactly as described in the preceding section\.
-   + Check the logs for all three of the Lambda function in CloudWatch Logs\. If any of the functions ended in error, fix the issues that caused the error\.
+   + Check the logs for all three of the Lambda functions in CloudWatch Logs\. If any of the functions ended in error, fix the issues that caused the error\.
 
 **Next**: [Next Steps](tutorials-importing-data-next-steps.md)

@@ -53,6 +53,6 @@ You can also modify the form so that it collects contact information in other ch
 
 This solution records two valuable attributes when it creates and updates endpoints\. First, when the first Lambda function initially creates the endpoint, it records the URL of the form itself in the `Attributes.Source` attribute\. If the customer responds to the message, the second Lambda function creates an `Attributes.OptInTimestamp` attribute\. This attribute contains the exact date and time when the customer provided their consent to receive messages from you\.
 
-Both of these fields can be useful if you're ever asked by a mobile carrier or regulatory agency to provide evidence of a customer's consent\. You can retrieve this information at any time by using the [GetEndpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html#rest-api-endpoint-methods-get) API operation\.
+Both of these fields can be useful if you're ever asked by a mobile carrier or regulatory agency to provide evidence of a customer's consent\. You can retrieve this information at any time by using the [GetEndpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints-endpoint-id.html#GetEndpoint) API operation\.
 
 You can also modify the Lambda functions to record additional data that might be useful for auditing purposes, such as the IP address that the registration request was submitted from\.

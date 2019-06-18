@@ -180,7 +180,7 @@ After you publish the form, you should submit some test events to make sure that
 1. Enter your contact information in the **First name**, **Last name**, and **Phone number** fields\.
 **Note**  
 When you submit the form, Amazon Pinpoint attempts to send a message to the phone number that you specified\. Because of this functionality, you should use a real phone number to test the solution from beginning to end\.  
-If you tested the Lambda function in [Step 3](tutorials-two-way-sms-part-3.md), your Amazon Pinpoint project already contains at least one endpoint\. When you test this form, you should either submit a different phone number on the form, or delete the existing endpoint by using the [DeleteEndpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html#rest-api-endpoint-methods-delete) API operation\.
+If you tested the Lambda function in [Step 3](tutorials-two-way-sms-part-3.md), your Amazon Pinpoint project already contains at least one endpoint\. When you test this form, you should either submit a different phone number on the form, or delete the existing endpoint by using the [DeleteEndpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints-endpoint-id.html#DeleteEndpoint) API operation\.
 
 1. Check the device that's associated with the phone number that you specified to make sure that it received the message\.
 
