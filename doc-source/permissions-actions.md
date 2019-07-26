@@ -93,7 +93,7 @@ The following policy provides users with read\-only access to the Amazon Pinpoin
 
 In the preceding policy example, replace *region* with the name of an AWS Region, and replace *accountId* with your AWS account ID\.
 
-You can also create read\-only policies that provide access only to specific projects\. The following policy lets users sign in to the console and view a list of applications\. However, it only lets users view additional information about the project that's specified in the policy\. You can modify this policy to allow access to additional projects or Regions\.
+You can also create read\-only policies that provide access to only specific projects\. The following policy lets users sign in to the console and view a list of projects\. However, it only lets users view additional information about the project that's specified in the policy\. You can modify this policy to allow access to additional projects or Regions\.
 
 ```
 {
@@ -224,11 +224,12 @@ This policy also grants read\-only access to the Amazon SES API\.
 
 ## Amazon Pinpoint API Actions<a name="permissions-actions-apiactions"></a>
 
-This section contains API actions that you can add to the IAM policies in your AWS account\. By adding these policies to an IAM user account, you can specify which Amazon Pinpoint features that user is allowed to use\.
+This section identifies API actions that you can add to the IAM policies in your AWS account\. By adding these policies to an IAM user account, you can specify which Amazon Pinpoint features that user is allowed to use\.
 
 To learn more about the Amazon Pinpoint API, see the [Amazon Pinpoint API Reference](https://docs.aws.amazon.com/pinpoint/latest/apireference/)\.
 
 **Topics**
++ [Analytics and Metrics](#permissions-actions-apiactions-metrics)
 + [Campaigns](#permissions-actions-apiactions-campaigns)
 + [Channels](#permissions-actions-apiactions-channels)
 + [Endpoints](#permissions-actions-apiactions-endpoints)
@@ -238,10 +239,31 @@ To learn more about the Amazon Pinpoint API, see the [Amazon Pinpoint API Refere
 + [Messages](#permissions-actions-apiactions-messages)
 + [Phone Number Validate](#permissions-actions-apiactions-phone-number-validate)
 + [Projects](#permissions-actions-apiactions-projects)
-+ [Reports](#permissions-actions-apiactions-reports)
 + [Segments](#permissions-actions-apiactions-segments)
 + [Tags](#permissions-actions-apiactions-tags)
 + [Users](#permissions-actions-apiactions-users)
+
+### Analytics and Metrics<a name="permissions-actions-apiactions-metrics"></a>
+
+The following permissions are related to viewing analytics data on the Amazon Pinpoint console and retrieving \(querying\) aggregated data for standard metrics, also referred to as *key performance indicators \(KPIs\)*, that apply to projects and campaigns\.
+
+**`mobiletargeting:GetReports`**  
+View analytics data on the Amazon Pinpoint console\.  
++ URI – Not applicable
++ Method – Not applicable
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:reports`
+
+**`mobiletargeting:GetApplicationDateRangeKpi`**  
+Retrieve \(query\) aggregated data for a standard application metric, which is a metric that applies to all the campaigns for a project\. An example of an application metric is the number of messages that were opened by recipients for each campaign that's associated with a project\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-kpis-daterange-kpi-name.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-kpis-daterange-kpi-name.html)
++ Method – GET
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/kpis/daterange/kpi-name`
+
+**`mobiletargeting:GetCampaignDateRangeKpi`**  
+Retrieve \(query\) aggregated data for a standard campaign metric, which is a metric that applies to an individual campaign\. An example of a campaign metric is the number of endpoints that a campaign message was sent to\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-campaigns-campaign-id-kpis-daterange-kpi-name.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-campaigns-campaign-id-kpis-daterange-kpi-name.html)
++ Method – GET
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/campaigns/campaign-id/kpis/daterange/kpi-name`
 
 ### Campaigns<a name="permissions-actions-apiactions-campaigns"></a>
 
@@ -535,7 +557,7 @@ Retrieve a list of all the export jobs for a project\.
 
 ### Import Jobs<a name="permissions-actions-apiactions-import-jobs"></a>
 
-The following permissions are related to managing import jobs in your Amazon Pinpoint account\. In Amazon Pinpoint, you create *import jobs* to create segments based on endpoint definitions stored in an Amazon S3 bucket\.
+The following permissions are related to managing import jobs in your Amazon Pinpoint account\. In Amazon Pinpoint, you create *import jobs* to create segments based on endpoint definitions that are stored in an Amazon S3 bucket\.
 
 **`mobiletargeting:CreateImportJob`**  
 Import endpoint definitions from Amazon S3 to create a segment\.  
@@ -620,16 +642,6 @@ Update the default settings for an Amazon Pinpoint project\.
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-settings.html#rest-api-settings-methods-put](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-settings.html#rest-api-settings-methods-put)
 + Method – PUT
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId`
-
-### Reports<a name="permissions-actions-apiactions-reports"></a>
-
-The following permission is related to retrieving reports and metrics for your Amazon Pinpoint account\.
-
-**`mobiletargeting:GetReports`**  
-View analytics in the Amazon Pinpoint console\.  
-+ URI – Not applicable
-+ Method – Not applicable
-+ Resource ARN – `arn:aws:mobiletargeting:region:accountId:reports`
 
 ### Segments<a name="permissions-actions-apiactions-segments"></a>
 
@@ -729,7 +741,7 @@ Retrieve information about all of the endpoints that are associated with a user 
 
 ## Amazon Pinpoint SMS and Voice API Actions<a name="permissions-actions-sms-voice-apiactions"></a>
 
-This section contains API actions that you can add to the IAM policies in your AWS account\. By adding these policies to an IAM user account, you can specify which features of the Amazon Pinpoint SMS and Voice API a user is allowed to use\.
+This section identifies API actions that you can add to the IAM policies in your AWS account\. By adding these policies to an IAM user account, you can specify which features of the Amazon Pinpoint SMS and Voice API a user is allowed to use\.
 
 To learn more about the Amazon Pinpoint SMS and Voice API, see the [Amazon Pinpoint SMS and Voice API Reference](https://docs.aws.amazon.com/pinpoint-sms-voice/latest/APIReference/)\.
 

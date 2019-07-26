@@ -4,7 +4,7 @@ This solution uses two Lambda functions\. This section shows you how to create a
 
 ## Step 3\.1: Create the Function That Validates Customer Information and Creates Endpoints<a name="tutorials-two-way-sms-part-3-create-register-function"></a>
 
-The first function takes input from your registration form, which it receives from Amazon API Gateway\. It uses this information to obtain information about the customer's phone number by using the [phone number validation](https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-verify.html) feature of Amazon Pinpoint\. The function then uses the validated data to create a new endpoint in the Amazon Pinpoint project that you specify\. By default, the endpoint that the function creates is opted out of future communications from you, but this status can be changed by the second function\. Finally, this function sends the customer a message asking them to verify that they want to receive SMS communications from you\.
+The first function takes input from your registration form, which it receives from Amazon API Gateway\. It uses this information to obtain information about the customer's phone number by using the [phone number validation](validate-phone-numbers.md) feature of Amazon Pinpoint\. The function then uses the validated data to create a new endpoint in the Amazon Pinpoint project that you specify\. By default, the endpoint that the function creates is opted out of future communications from you, but this status can be changed by the second function\. Finally, this function sends the customer a message asking them to verify that they want to receive SMS communications from you\.
 
 **To create the Lambda function**
 

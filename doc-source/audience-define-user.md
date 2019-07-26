@@ -7,7 +7,7 @@ You define a user by specifying a unique user ID and, optionally, custom user at
 You can add user attributes to track data that applies to an individual and doesn't vary based on which device the person is using\. For example, you can add attributes for a person's name, age, or account status\. 
 
 **Tip**  
-If your application uses Amazon Cognito user pools to handle user authentication, Amazon Cognito can add user IDs and attributes to your endpoints automatically\. For the endpoint user ID value, Amazon Cognito assigns the `sub` value that's assigned to the user in the user pool\. To add users with Amazon Cognito, see [Using Amazon Pinpoint Analytics with Amazon Cognito User Pools](https://docs.aws.amazon.com/cognito/latest/developerguide/)\.
+If your application uses Amazon Cognito user pools to handle user authentication, Amazon Cognito can add user IDs and attributes to your endpoints automatically\. For the endpoint user ID value, Amazon Cognito assigns the `sub` value that's assigned to the user in the user pool\. To learn about adding users with Amazon Cognito, see [Using Amazon Pinpoint Analytics with Amazon Cognito User Pools](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-pinpoint-integration.html) in the *Amazon Cognito Developer Guide*\.
 
 After you add user definitions to your endpoints, you have more options for how you segment your audience\. You can define a segment based on user attributes, or you can define a segment by importing a list of user IDs\. When you send a message to a segment that's based on users, the potential destinations include each endpoint that's associated with each user in the segment\.
 

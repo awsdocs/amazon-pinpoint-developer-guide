@@ -1,23 +1,32 @@
 # Document History for Amazon Pinpoint<a name="doc-history"></a>
 
-The following table describes the documentation for this release of Amazon Pinpoint\.
-+ **Latest documentation update:** May 14, 2019
+The following table describes important changes in each release of the *Amazon Pinpoint Developer Guide* after December 2018\. For notification about updates to this documentation, you can subscribe to an RSS feed\.
++ **Latest documentation update:** July 24, 2019
+
+| Change | Description | Date | 
+| --- |--- |--- |
+| [Analytics](#doc-history) | Added information about [querying analytics data](https://docs.aws.amazon.com/pinpoint/latest/developerguide/analytics.html) for a subset of metrics that apply to projects \(applications\) and campaigns\. | July 24, 2019 | 
+| [Importing segments from external systems](#doc-history) | Added a [tutorial](https://docs.aws.amazon.com/pinpoint/latest/developerguide/tutorials-importing-data.html) that describes a solution for bringing customer data into Amazon Pinpoint from external systems, such as Salesforce or Marketo\. | May 14, 2019 | 
+| [Regional availability](#doc-history) | Amazon Pinpoint is now available in the AWS Asia Pacific \(Mumbai\) and Asia Pacific \(Sydney\) Regions\. | April 25, 2019 | 
+| [Using Postman with Amazon Pinpoint](#doc-history) | Added a [tutorial](https://docs.aws.amazon.com/pinpoint/latest/developerguide/tutorials-using-postman.html) that describes how to use Postman to interact with the Amazon Pinpoint API\. | April 8, 2019 | 
+| [Tagging support](#doc-history) | Added information about [tagging Amazon Pinpoint resources](https://docs.aws.amazon.com/pinpoint/latest/developerguide/tagging-resources.html)\. | February 27, 2019 | 
+| [Setting up an SMS registration system](#doc-history) | Added a [Tutorials section](https://docs.aws.amazon.com/pinpoint/latest/developerguide/tutorials.html), and added a tutorial that describes how to create [a solution that handles SMS user registration](https://docs.aws.amazon.com/pinpoint/latest/developerguide/tutorials-two-way-sms.html)\. | February 27, 2019 | 
+| [Code examples](#doc-history) | Added [code examples](https://docs.aws.amazon.com/pinpoint/latest/developerguide/send-messages.html) in several programming languages that show you how to send [email](https://docs.aws.amazon.com/pinpoint/latest/developerguide/send-messages-email.html), [SMS](https://docs.aws.amazon.com/pinpoint/latest/developerguide/send-messages-sms.html), and [voice](https://docs.aws.amazon.com/pinpoint/latest/developerguide/send-messages-voice.html) messages programmatically\. | February 6, 2019 | 
+
+## Earlier Updates<a name="doc-releases-archive"></a>
+
+The following table describes important changes in each release of the *Amazon Pinpoint Developer Guide* through December 2018\.
 
 
 | Change | Description | Date | 
 | --- | --- | --- | 
-| Importing segments from external systems | Added a [tutorial](tutorials-importing-data.md) that describes a solution for bringing customer data into Amazon Pinpoint from external systems, such as Salesforce or Marketo\. | May 14, 2019 | 
-| Regional availability | Amazon Pinpoint is now available in the AWS Asia Pacific \(Mumbai\) and Asia Pacific \(Sydney\) Regions\. | April 25, 2019 | 
-| Using Postman with Amazon Pinpoint | Added a [tutorial](tutorials-using-postman.md) that describes how to use Postman to interact with the Amazon Pinpoint API\. | April 8, 2019 | 
-| Setting Up an SMS Registration System | Added a [Tutorials section](tutorials.md), and added a tutorial that describes how to create [a solution that handles SMS user registration](tutorials-two-way-sms.md)\. | February 27, 2019 | 
-| Tagging support | Added information about [tagging Amazon Pinpoint resources](tagging-resources.md)\. | February 27, 2019 | 
-| Code examples | Added [code examples](send-messages.md) in several programming languages that show you how to send [email](send-messages-email.md), [SMS](send-messages-sms.md), and [voice](send-messages-voice.md) messages programmatically\. | February 6, 2019 | 
 | Regional availability | Amazon Pinpoint is now available in the AWS US West \(Oregon\) and EU \(Frankfurt\) Regions\. | December 21, 2018 | 
 | Voice channel | You can use the new Amazon Pinpoint voice channel to create voice messages and deliver them to your customers over the phone\. Currently, you can only send voice messages by using the Amazon Pinpoint SMS and Voice API\. | November 15, 2018 | 
 | EU \(Ireland\) Availability | Amazon Pinpoint is now available in the AWS EU \(Ireland\) Region\. | October 25, 2018 | 
 | Events API | Use the Amazon Pinpoint API to [record events](integrate-events.md#integrate-events-api) and associate them with endpoints\. | August 7, 2018 | 
 | Code examples for defining and looking up endpoints | Code examples are added that show you how to define, update, delete, and look up endpoints\. Examples are provided for the AWS CLI, AWS SDK for Java, and the Amazon Pinpoint API\. For more information, see [Defining Your Audience to Amazon Pinpoint](audience-define.md) and [Accessing Audience Data in Amazon Pinpoint](audience-data.md)\. | August 7, 2018 | 
 | Endpoint export permissions | [Configure an IAM policy](permissions-export-endpoints.md) that allows you to export Amazon Pinpoint endpoints to an Amazon S3 bucket\. | May 1, 2018 | 
+| Phone number verification for SMS | Use the Amazon Pinpoint API to [verify a phone number](validate-phone-numbers.md) to determine whether it is a valid destination for SMS messages\. | April 23, 2018 | 
 | Updated topics for Amazon Pinpoint integration | [Integrate Amazon Pinpoint](integrate.md) with your Android, iOS, or JavaScript application by using AWS SDKs or libraries\. | March 23, 2018 | 
 | AWS CloudTrail logging | Added information about [logging Amazon Pinpoint API calls with CloudTrail](logging-using-cloudtrail.md)\. | February 6, 2018 | 
 | Updated service limits | Updated [Limits in Amazon Pinpoint](limits.md) with additional information about email limits\. | January 19, 2018 | 

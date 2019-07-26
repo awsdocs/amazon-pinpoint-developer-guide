@@ -60,11 +60,13 @@ The Amazon Pinpoint API supports logging the following actions as events in Clou
 + [GetApnsVoipChannel](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-voip-channel.html#rest-api-apns-voip-channel-methods-get)
 + [GetApnsVoipSandboxChannel](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-voip-sandbox-channel.html#rest-api-apns-voip-sandbox-channel-methods-get)
 + [GetApp](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-app.html#rest-api-app-methods-get)
++ [GetApplicationDateRangeKpi](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-kpis-daterange-kpi-name.html)
 + [GetApplicationSettings](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-settings.html#rest-api-settings-methods-get)
 + [GetApps](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apps.html#rest-api-apps-methods-get)
 + [GetBaiduChannel](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-baidu-channel.html#rest-api-baidu-channel-methods-get)
 + [GetCampaign](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaign.html#rest-api-campaign-methods-get)
 + [GetCampaignActivities](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaign-activities.html#rest-api-campaign-activities-methods-get)
++ [GetCampaignDateRangeKpi](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-campaigns-campaign-id-kpis-daterange-kpi-name.html)
 + [GetCampaignVersion](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaign-version.html#rest-api-campaign-version-methods-get)
 + [GetCampaignVersions](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaign-versions.html#rest-api-campaign-versions-methods-get)
 + [GetCampaigns](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaigns.html#rest-api-campaigns-methods-get)
@@ -96,13 +98,13 @@ The Amazon Pinpoint API supports logging the following actions as events in Clou
 + [UpdateSegment](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segment.html#rest-api-segment-methods-put)
 + [UpdateSmsChannel](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-sms-channel.html#rest-api-sms-channel-methods-put)
 
-The following Amazon Pinpoint actions **aren't** logged in CloudTrail:  
-GetEndpoint
-PutEvents
-SendMessages
-SendUsersMessages
-UpdateEndpoint
-UpdateEndpointsBatch
+The following Amazon Pinpoint API actions **aren't** logged in CloudTrail:
++ GetEndpoint
++ PutEvents
++ SendMessages
++ SendUsersMessages
++ UpdateEndpoint
++ UpdateEndpointsBatch
 
 ### Amazon Pinpoint Email API Actions That Can be Logged by CloudTrail<a name="pinpoint-email-cloudtrail-actions"></a>
 
