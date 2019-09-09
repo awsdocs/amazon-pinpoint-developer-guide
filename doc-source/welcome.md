@@ -33,7 +33,7 @@ Keep your customers informed by sending transactional mobile push and SMS messag
 
 Gain insights about your audience and the effectiveness of your campaigns by using the analytics that Amazon Pinpoint provides\. You can view trends about your users' level of engagement, purchase activity, demographics, and more\. You can also monitor your message traffic by viewing metrics such as the total number of messages that were sent or opened for a campaign or application\. Through the Amazon Pinpoint API, your application can report custom data, which Amazon Pinpoint makes available for analysis, and you can query analytics data for certain standard metrics\.
 
-To analyze or store analytics data outside Amazon Pinpoint, you can configure Amazon Pinpoint to [stream the data](analytics-streaming.md) to Amazon Kinesis\.
+To analyze or store analytics data outside Amazon Pinpoint, you can configure Amazon Pinpoint to [stream the data](event-streams.md) to Amazon Kinesis\.
 
 ## Regional Availability<a name="welcome-regions"></a>
 

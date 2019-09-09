@@ -44,7 +44,8 @@ In this tutorial, you want to give Lambda the ability to perform these tasks\. H
                "Effect": "Allow",
                "Action": [
                  "mobiletargeting:GetEndpoint",
-                 "mobiletargeting:UpdateEndpoint"
+                 "mobiletargeting:UpdateEndpoint",
+                 "mobiletargeting:PutEvents"
                ],
                "Resource": "arn:aws:mobiletargeting:region:accountId:apps/projectId/endpoints/*"
            },
