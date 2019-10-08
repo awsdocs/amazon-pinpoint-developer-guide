@@ -198,7 +198,7 @@ The following policy grants full access to the Amazon Pinpoint Email API:
 ```
 
 **Note**  
-This policy also grants full access to the Amazon SES API\.
+This policy also grants full access to the Amazon Simple Email Service \(Amazon SES\) API\.
 
 #### Read\-Only Access<a name="permissions-actions-examples-pin-email-api-readonly"></a>
 
@@ -226,7 +226,7 @@ This policy also grants read\-only access to the Amazon SES API\.
 
 ## Amazon Pinpoint API Actions<a name="permissions-actions-apiactions"></a>
 
-This section identifies API actions that you can add to the IAM policies in your AWS account\. By adding these policies to an IAM user account, you can specify which Amazon Pinpoint features that user is allowed to use\.
+This section identifies API actions that you can add to the IAM policies in your AWS account\. By adding policies to an IAM user account, you can specify which Amazon Pinpoint features that user is allowed to use\.
 
 To learn more about the Amazon Pinpoint API, see the [Amazon Pinpoint API Reference](https://docs.aws.amazon.com/pinpoint/latest/apireference/)\.
 
@@ -238,6 +238,7 @@ To learn more about the Amazon Pinpoint API, see the [Amazon Pinpoint API Refere
 + [Event Streams](#permissions-actions-apiactions-event-streams)
 + [Export Jobs](#permissions-actions-apiactions-export-jobs)
 + [Import Jobs](#permissions-actions-apiactions-import-jobs)
++ [Message Templates](#permissions-actions-apiactions-templates-messages)
 + [Messages](#permissions-actions-apiactions-messages)
 + [Phone Number Validation](#permissions-actions-apiactions-phone-number-validate)
 + [Projects](#permissions-actions-apiactions-projects)
@@ -336,7 +337,7 @@ Retrieve information about the ADM channel for a project\.
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/channels/adm`
 
 `mobiletargeting:UpdateAdmChannel`  
-Update the ADM channel for a project\.  
+Enable or update the ADM channel for a project\.  
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-adm-channel.html#rest-api-adm-channel-methods-put](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-adm-channel.html#rest-api-adm-channel-methods-put)
 + Method – PUT
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/channels/adm`
@@ -354,7 +355,7 @@ Retrieve information about the APNs channel for a project\.
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/channels/apns`
 
 **`mobiletargeting:UpdateApnsChannel`**  
-Update the certificate and private key for the APNs channel for a project\. This allows Amazon Pinpoint to send push notifications to your iOS app\.  
+Enable or update the APNs channel for a project\.  
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-channel.html#rest-api-apns-channel-methods-put](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-channel.html#rest-api-apns-channel-methods-put)
 + Method – PUT
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/channels/apns`
@@ -372,7 +373,7 @@ Retrieve information about the APNs sandbox channel for a project\.
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/channels/apns_sandbox`
 
 **`mobiletargeting:UpdateApnsSandboxChannel`**  
-Update the APNs sandbox channel for a project\.  
+Enable or update the APNs sandbox channel for a project\.  
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-sandbox-channel.html#rest-api-apns-sandbox-channel-methods-put](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-sandbox-channel.html#rest-api-apns-sandbox-channel-methods-put)
 + Method – PUT
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/channels/apns_sandbox`
@@ -390,7 +391,7 @@ Retrieve information about the APNs VoIP channel for a project\.
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/channels/apns_voip`
 
 **`mobiletargeting:UpdateApnsVoipChannel`**  
-Update the APNs VoIP channel for a project\.  
+Enable or update the APNs VoIP channel for a project\.  
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-voip-channel.html#rest-api-apns-voip-channel-methods-put](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-voip-channel.html#rest-api-apns-voip-channel-methods-put)
 + Method – PUT
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/channels/apns_voip`
@@ -408,7 +409,7 @@ Retrieve information about the APNs VoIP sandbox channel for a project\.
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/channels/apns_voip_sandbox`
 
 **`mobiletargeting:UpdateApnsVoipChannel`**  
-Update the APNs VoIP sandbox channel for a project\.  
+Enable or update the APNs VoIP sandbox channel for a project\.  
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-voip-sandbox-channel.html#rest-api-apns-voip-sandbox-channel-methods-put](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-voip-sandbox-channel.html#rest-api-apns-voip-sandbox-channel-methods-put)
 + Method – PUT
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/channels/apns_voip_sandbox`
@@ -426,7 +427,7 @@ Retrieve information about the Baidu Cloud Push channel for a project\.
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/channels/baidu`
 
 **`mobiletargeting:UpdateBaiduChannel`**  
-Update the Baidu Cloud Push channel for a project\.  
+Enable or update the Baidu Cloud Push channel for a project\.  
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-baidu-channel.html#rest-api-baidu-channel-methods-put](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-baidu-channel.html#rest-api-baidu-channel-methods-put)
 + Method – PUT
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/channels/baidu`
@@ -444,25 +445,25 @@ Retrieve information about the email channel for a project\.
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/channels/email`
 
 **`mobiletargeting:UpdateEmailChannel`**  
-Update the email channel for a project\.  
+Enable or update the email channel for a project\.  
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-email-channel.html#rest-api-email-channel-methods-put](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-email-channel.html#rest-api-email-channel-methods-put)
 + Method – PUT
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/channels/email`
 
 **`mobiletargeting:DeleteGcmChannel`**  
-Disable the Firebase Cloud Messaging \(FCM\), formerly Google Cloud Messaging \(GCM\), channel for a project\.  
+Disable the Firebase Cloud Messaging \(FCM\) channel for a project\. This channel allows Amazon Pinpoint to send push notifications to an Android app through the FCM service, which replaces the Google Cloud Messaging \(GCM\) service\.  
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-gcm-channel.html#rest-api-gcm-channel-methods-delete](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-gcm-channel.html#rest-api-gcm-channel-methods-delete)
 + Method – DELETE
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/channels/gcm`
 
 **`mobiletargeting:GetGcmChannel`**  
-Retrieve information about the FCM, formerly GCM, channel for a project\.  
+Retrieve information about the FCM channel for a project\. This channel allows Amazon Pinpoint to send push notifications to an Android app through the FCM service, which replaces the Google Cloud Messaging \(GCM\) service\.  
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-gcm-channel.html#rest-api-gcm-channel-methods-get](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-gcm-channel.html#rest-api-gcm-channel-methods-get)
 + Method – GET
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/channels/gcm`
 
 **`mobiletargeting:UpdateGcmChannel`**  
-Update the API key for the FCM, formerly GCM, channel for a project\. This allows Amazon Pinpoint to send push notifications to your Android app\.  
+Enable or update the FCM channel for a project\. This channel allows Amazon Pinpoint to send push notifications to an Android app through the FCM service, which replaces the Google Cloud Messaging \(GCM\) service\.  
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-gcm-channel.html#rest-api-gcm-channel-methods-put](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-gcm-channel.html#rest-api-gcm-channel-methods-put)
 + Method – PUT
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/channels/gcm`
@@ -480,7 +481,7 @@ Retrieve information about the SMS channel for a project\.
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/channels/sms`
 
 **`mobiletargeting:UpdateSmsChannel`**  
-Update the SMS channel for a project\.  
+Enable or update the SMS channel for a project\.  
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-sms-channel.html#rest-api-sms-channel-methods-put](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-sms-channel.html#rest-api-sms-channel-methods-put)
 + Method – PUT
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/channels/sms`
@@ -579,6 +580,88 @@ Retrieve information about all the import jobs for a project\.
 + Method – GET
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId`
 
+### Message Templates<a name="permissions-actions-apiactions-templates-messages"></a>
+
+The following permissions are related to creating and managing message templates for your Amazon Pinpoint account\. A *message template* is a set of content and settings that you optionally define, save, and reuse in email messages, push notifications, or SMS messages for your Amazon Pinpoint projects\.
+
+**`mobiletargeting:ListTemplates`**  
+Retrieve information about all the message templates that are associated with your Amazon Pinpoint account\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/templates.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates.html)
++ Method – GET
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:templates`
+
+**`mobiletargeting:GetEmailTemplate`**  
+Retrieve information about a message template for messages that are sent through the email channel\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-email.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-email.html)
++ Method – GET
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:templates/template-name/EMAIL`
+
+**`mobiletargeting:CreateEmailTemplate`**  
+Create a message template for messages that are sent through the email channel\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-email.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-email.html)
++ Method – POST
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:templates/template-name/EMAIL`
+
+**`mobiletargeting:UpdateEmailTemplate`**  
+Update an existing message template for messages that are sent through the email channel\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-email.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-email.html)
++ Method – PUT
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:templates/template-name/EMAIL`
+
+**`mobiletargeting:DeleteEmailTemplate`**  
+Delete a message template for messages that were sent through the email channel\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-email.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-email.html)
++ Method – DELETE
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:templates/template-name/EMAIL`
+
+**`mobiletargeting:GetPushTemplate`**  
+Retrieve information about a message template for messages that are sent through a push notification channel\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-push.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-push.html)
++ Method – GET
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:templates/template-name/PUSH`
+
+**`mobiletargeting:CreatePushTemplate`**  
+Create a message template for messages that are sent through a push notification channel\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-push.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-push.html)
++ Method – POST
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:templates/template-name/PUSH`
+
+**`mobiletargeting:UpdatePushTemplate`**  
+Update an existing message template for messages that are sent through a push notification channel\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-push.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-push.html)
++ Method – PUT
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:templates/template-name/PUSH`
+
+**`mobiletargeting:DeletePushTemplate`**  
+Delete a message template for messages that were sent through a push notification channel\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-push.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-push.html)
++ Method – DELETE
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:templates/template-name/PUSH`
+
+**`mobiletargeting:GetSmsTemplate`**  
+Retrieve information about a message template for messages that are sent through the SMS channel\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-sms.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-sms.html)
++ Method – GET
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:templates/template-name/SMS`
+
+**`mobiletargeting:CreateSmsTemplate`**  
+Create a message template for messages that are sent through the SMS channel\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-sms.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-sms.html)
++ Method – POST
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:templates/template-name/SMS`
+
+**`mobiletargeting:UpdateSmsTemplate`**  
+Update an existing message template for messages that are sent through the SMS channel\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-sms.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-sms.html)
++ Method – PUT
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:templates/template-name/SMS`
+
+**`mobiletargeting:DeleteSmsTemplate`**  
+Delete a message template for messages that were sent through the SMS channel\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-sms.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-sms.html)
++ Method – DELETE
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:templates/template-name/SMS`
+
 ### Messages<a name="permissions-actions-apiactions-messages"></a>
 
 The following permissions are related to sending messages and push notifications from your Amazon Pinpoint account\. You can use the `SendMessages` and `SendUsersMessages` operations to send messages to specific endpoints without creating segments and campaigns first\.
@@ -622,13 +705,13 @@ Delete an Amazon Pinpoint project\.
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId`
 
 **`mobiletargeting:GetApp`**  
-Retrieve information about a specific project in your Amazon Pinpoint account\.  
+Retrieve information about an Amazon Pinpoint project\.  
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-app.html#rest-api-app-methods-get](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-app.html#rest-api-app-methods-get)
 + Method – GET
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId`
 
 **`mobiletargeting:GetApps`**  
-Retrieve a list of projects in your Amazon Pinpoint account\.  
+Retrieve information about all the projects that are associated with your Amazon Pinpoint account\.  
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apps.html#rest-api-apps-methods-get](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apps.html#rest-api-apps-methods-get)
 + Method – GET
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps`
@@ -674,7 +757,7 @@ Retrieve information about jobs that export endpoint definitions for a segment\.
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/segments/segmentId/jobs/export`
 
 **`mobiletargeting:GetSegments`**  
-Retrieve information about the segments for a project\.  
+Retrieve information about all the segments for a project\.  
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segments.html#rest-api-segments-methods-get](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segments.html#rest-api-segments-methods-get)
 + Method – GET
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId`
@@ -705,22 +788,22 @@ Update a specific segment\.
 
 ### Tags<a name="permissions-actions-apiactions-tags"></a>
 
-The following permissions are related to managing tags for resources in your Amazon Pinpoint account\.
+The following permissions are related to tagging resources in your Amazon Pinpoint account\.
 
 **`mobiletargeting:ListTagsforResource`**  
-Retrieve information about the tags that are associated with a project, campaign, or segment\.  
+Retrieve information about the tags that are associated with a project, campaign, message template, or segment\.  
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-tags.html#rest-api-tags-methods-get](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-tags.html#rest-api-tags-methods-get)
 + Method – GET
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:*`
 
 **`mobiletargeting:TagResource`**  
-Add one or more tags to a project, campaign, or segment\.  
+Add one or more tags to a project, campaign, message template, or segment\.  
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-tags.html#rest-api-tags-methods-post](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-tags.html#rest-api-tags-methods-post)
 + Method – POST
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:*`
 
 **`mobiletargeting:UntagResource`**  
-Remove one or more tags from a project, campaign, or segment\.  
+Remove one or more tags from a project, campaign, message template, or segment\.  
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-tags.html#rest-api-tags-methods-delete](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-tags.html#rest-api-tags-methods-delete)
 + Method – DELETE
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:*`
@@ -743,7 +826,7 @@ Retrieve information about all the endpoints that are associated with a user ID\
 
 ## Amazon Pinpoint SMS and Voice API Actions<a name="permissions-actions-sms-voice-apiactions"></a>
 
-This section identifies API actions that you can add to the IAM policies in your AWS account\. By adding these policies to an IAM user account, you can specify the features of the Amazon Pinpoint SMS and Voice API that a user is allowed to use\.
+This section identifies API actions that you can add to the IAM policies in your AWS account\. By adding policies to an IAM user account, you can specify which features of the Amazon Pinpoint SMS and Voice API that user is allowed to use\.
 
 To learn more about the Amazon Pinpoint SMS and Voice API, see the [Amazon Pinpoint SMS and Voice API Reference](https://docs.aws.amazon.com/pinpoint-sms-voice/latest/APIReference/)\.
 
@@ -754,13 +837,13 @@ Create a configuration set for sending voice messages\.
 + Resource ARN – Not available\. Use `*`\.
 
 **`sms-voice:DeleteConfigurationSet`**  
-Delete a configuration set for voice messages\.  
+Delete a configuration set for sending voice messages\.  
 + URI – /sms\-voice/configuration\-sets/*ConfigurationSetName*
 + Method – DELETE
 + Resource ARN – Not available\. Use `*`\.
 
 **`sms-voice:GetConfigurationSetEventDestinations`**  
-Get information about a configuration set and the event destinations that it contains\.  
+Retrieve information about a configuration set and the event destinations that it contains\.  
 + URI – /sms\-voice/configuration\-sets/*ConfigurationSetName*/event\-destinations
 + Method – GET
 + Resource ARN – Not available\. Use `*`\.
