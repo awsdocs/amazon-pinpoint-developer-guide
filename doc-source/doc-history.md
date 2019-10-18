@@ -1,10 +1,11 @@
 # Document History for Amazon Pinpoint<a name="doc-history"></a>
 
 The following table describes important changes in each release of the *Amazon Pinpoint Developer Guide* after December 2018\. For notification about updates to this documentation, you can subscribe to an RSS feed\.
-+ **Latest documentation update:** September 6, 2019
++ **Latest documentation update:** October 17, 2019
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Analytics](#doc-history) | Added procedures that explain how to [query analytics data](https://docs.aws.amazon.com/pinpoint/latest/developerguide/analytics.html) for campaigns and transactional messages, and added information about [using query results](https://docs.aws.amazon.com/pinpoint/latest/developerguide/analytics-query-results.html)\. | October 17, 2019 | 
 | [Analytics](#doc-history) | Added information about [querying analytics data](https://docs.aws.amazon.com/pinpoint/latest/developerguide/analytics.html) for a subset of metrics that apply to transactional email and SMS messages\. | September 6, 2019 | 
 | [Code examples](#doc-history) | Added [code examples](https://docs.aws.amazon.com/pinpoint/latest/developerguide/send-messages-push.html) that you can use to send transactional push notifications using all of the services that Amazon Pinpoint supports\. | July 30, 2019 | 
 | [Analytics](#doc-history) | Added information about [querying analytics data](https://docs.aws.amazon.com/pinpoint/latest/developerguide/analytics.html) for a subset of metrics that apply to projects \(applications\) and campaigns\. | July 24, 2019 | 

@@ -111,4 +111,4 @@ The JSON object for an SMS event contains the data shown in the following exampl
 
 | Attribute | Description | 
 | --- | --- | 
-| price\_in\_millicents\_usd | The amount that we charged you to send the message\. This price is shown in thousandths of a United States cent\. For example, if the value of this attribute is `645`, then we charged you 0\.645¢ to send the message \(645 / 1000 = 0\.645¢ = $0\.00645\)\. | 
+| price\_in\_millicents\_usd | The amount that we charged you to send the message\. This price is shown in thousandths of a United States cent\. For example, if the value of this attribute is `645`, then we charged you 0\.645¢ to send the message \(645 / 1000 = 0\.645¢ = $0\.00645\)\.  This property doesn't appear for messages with an `event_type` of **\_SMS\.BUFFERED**\.   | 
