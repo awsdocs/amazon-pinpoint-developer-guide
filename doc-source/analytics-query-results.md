@@ -169,7 +169,6 @@ If the query results for a multiple\-value metric is null \(not greater than or 
 
 In addition to specifying the values that defined a query, such as the project ID \(`ApplicationId`\), each JSON response to a query for an application metric, campaign metric, or journey engagement metric includes a `KpiResult` object\. This object contains the overall result set for a query, which you can parse to send analytics data to another service or application\. Each `KpiResult` object contains some or all of the following standard objects and fields, depending on the metric\.
 
-
 | Object or Field | Description | 
 | --- | --- | 
 | Rows | An array of objects that contains the result set for a query\. | 
