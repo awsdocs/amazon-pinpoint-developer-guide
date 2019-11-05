@@ -292,7 +292,7 @@ If the customer doesn't respond, or responds with anything other than the design
    ```
 
 1. Under **Environment variables**, do the following:
-   + In the first row, create a variable with a key of **projectId**\. Next, set the value to the unique ID of the project that you created in [Step 1\.1](tutorials-two-way-sms-part-1.md#tutorials-two-way-sms-part-1-create-project)\.
+   + In the first row, create a variable with a key of **appId**\. Next, set the value to the unique ID of the project that you created in [Step 1\.1](tutorials-two-way-sms-part-1.md#tutorials-two-way-sms-part-1-create-project)\.
    + In the second row, create a variable with a key of **region**\. Next, set the value to the Region that you use Amazon Pinpoint in, such as **us\-east\-1** or **us\-west\-2**\.
    + In the third row, create a variable with a key of **confirmKeyword**\. Next, set the value to the confirmation keyword that you created in [Step 1\.3](tutorials-two-way-sms-part-1.md#tutorials-two-way-sms-part-1-set-up-channel)\.
 **Note**  
