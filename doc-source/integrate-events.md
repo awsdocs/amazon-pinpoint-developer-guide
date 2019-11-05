@@ -4,7 +4,7 @@ In your mobile or web application, you can use AWS Mobile SDKs or the [Amazon Pi
 
 After your application reports events, you can view analytics in the Amazon Pinpoint console\. The charts on the **Analytics** page provide metrics for many aspects of user behavior\. For more information, see [Chart Reference for Amazon Pinpoint Analytics](https://docs.aws.amazon.com/pinpoint/latest/userguide/analytics-charts.html) in the *Amazon Pinpoint User Guide*\.
 
-To analyze and store your event data outside of Amazon Pinpoint, you can configure Amazon Pinpoint to stream the data to Amazon Kinesis\. For more information, see [Streaming Amazon Pinpoint Events to Kinesis](analytics-streaming.md)\.
+To analyze and store your event data outside of Amazon Pinpoint, you can configure Amazon Pinpoint to stream the data to Amazon Kinesis\. For more information, see [Streaming Amazon Pinpoint Events to Kinesis](event-streams.md)\.
 
 By using the AWS Mobile SDKs and the AWS Amplify JavaScript libraries, you can call the Amazon Pinpoint API to report the following types of events:
 

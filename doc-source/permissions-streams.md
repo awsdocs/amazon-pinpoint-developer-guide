@@ -10,7 +10,7 @@ If you want to create the role manually, attach the following policies to the ro
 
 For more information about IAM roles, see [IAM Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) in the *IAM User Guide*\.
 
-After you create the role, you can configure Amazon Pinpoint to automatically send events to your stream\. For more information, see [Streaming Amazon Pinpoint Events to Kinesis](analytics-streaming.md)\.
+After you create the role, you can configure Amazon Pinpoint to automatically send events to your stream\. For more information, see [Streaming Amazon Pinpoint Events to Kinesis](event-streams.md)\.
 
 ## Permissions Policies<a name="permissions-streams-permissionspolicies"></a>
 

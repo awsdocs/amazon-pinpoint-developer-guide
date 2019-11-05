@@ -4,7 +4,7 @@ The solution that's described in this tutorial uses three Lambda functions\. The
 
 ## Step 4\.1: Create the Function<a name="tutorials-importing-data-lambda-function-input-split-create"></a>
 
-To create the first Lambda function for this tutorial, you first have to upload the \.zip file that you created in Step 3\. Next, you set up the function itself\.
+To create the first Lambda function for this tutorial, you first have to upload the \.zip file that you created in [Step 3](tutorials-importing-data-create-python-package.md)\. Next, you set up the function itself\.
 
 **To create the Lambda function**
 

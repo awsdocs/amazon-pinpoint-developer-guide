@@ -340,7 +340,7 @@ Now that you've submitted some test data, you can use the segmentation tool in t
 
 1. Open the Amazon Pinpoint console at [https://console\.aws\.amazon\.com/pinpoint/](https://console.aws.amazon.com/pinpoint/)\.
 
-1. On the **All projects** page, choose the project that you created in [Step 1\.1](tutorials-email-prefs-part-1-create-project)\.
+1. On the **All projects** page, choose the project that you created in [Step 1\.1](tutorials-email-prefs-part-1.md#tutorials-email-prefs-part-1-create-project)\.
 
 1. In the navigation pane, choose **Segments**\.
 
@@ -385,7 +385,7 @@ The final step in testing the preference form is to confirm that unsubscribe req
 
 1. Open the Amazon Pinpoint console at [https://console\.aws\.amazon\.com/pinpoint/](https://console.aws.amazon.com/pinpoint/)\.
 
-1. On the **All projects** page, choose the project that you created in [Step 1\.1](tutorials-email-prefs-part-1-create-project)\.
+1. On the **All projects** page, choose the project that you created in [Step 1\.1](tutorials-email-prefs-part-1.md#tutorials-email-prefs-part-1-create-project)\.
 
 1. In the navigation pane, choose **Segments**\.
 

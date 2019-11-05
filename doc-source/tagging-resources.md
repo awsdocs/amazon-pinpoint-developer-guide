@@ -1,6 +1,6 @@
 # Tagging Amazon Pinpoint Resources<a name="tagging-resources"></a>
 
-A *tag* is a label that you optionally define and associate with projects \(apps\), campaigns, and segments in Amazon Pinpoint\. Tags can help you categorize and manage these types of resources in different ways, such as by purpose, owner, environment, or other criteria\. For example, you can use tags to apply policies or automation, or to identify resources that are subject to certain compliance requirements\. A project, campaign, or segment can have as many as 50 tags\.
+A *tag* is a label that you optionally define and associate with projects \(applications\), campaigns, message templates, and segments in Amazon Pinpoint\. Tags can help you categorize and manage these types of resources in different ways, such as by purpose, owner, environment, or other criteria\. For example, you can use tags to apply policies or automation, or to identify resources that are subject to certain compliance requirements\. A resource can have as many as 50 tags\.
 
 **Topics**
 + [Managing Tags](#tags-manage)
@@ -21,7 +21,7 @@ A tag key can contain as many as 128 characters\. A tag value can contain as man
 + You can't update or delete a resource based only on its tags\. You must also specify the Amazon Resource Name \(ARN\) or resource ID, depending on the operation that you use\.
 + You can associate tags with public or shared resources, but the tags are available only for your AWS account, not any other accounts that share the resource\. In addition, the tags are available only for resources that are located in the specified AWS Region for your AWS account\.
 
-To add, display, update, and remove tag keys and values from Amazon Pinpoint projects, campaigns, and segments, you can use the AWS Command Line Interface \(AWS CLI\), the Amazon Pinpoint API, the AWS Resource Groups Tagging API, or an AWS SDK\. To manage tag keys and values across all the AWS resources that are located in the specified AWS Region for your AWS account, including Amazon Pinpoint resources, you can use the AWS Resource Groups Tagging API\.
+To add, display, update, and remove tag keys and values from Amazon Pinpoint resources, you can use the AWS Command Line Interface \(AWS CLI\), the Amazon Pinpoint API, the AWS Resource Groups Tagging API, or an AWS SDK\. To manage tag keys and values across all the AWS resources that are located in the specified AWS Region for your AWS account, including Amazon Pinpoint resources, you can use the AWS Resource Groups Tagging API\.
 
 After you start implementing tags, you can apply tag\-based, resource\-level permissions to AWS Identity and Access Management \(IAM\) policies and API operations, including operations that support the addition of tags to resources when resources are created\. This can help you implement granular control of which groups and users in your AWS account have permission to create and tag resources, and which groups and users have permission to create, update, and remove tags more generally\. For example, you might create a policy that allows users to have full access to the Amazon Pinpoint resources that they’ve tagged:
 
@@ -42,7 +42,7 @@ If you define tag\-based, resource\-level permissions, the permissions take effe
 
 ## Adding Tags to Resources<a name="tags-add"></a>
 
-The following examples show you how to add a tag to an Amazon Pinpoint project \(app\), campaign, or segment by using the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide//) and the [Amazon Pinpoint API](https://docs.aws.amazon.com/pinpoint/latest/apireference//)\.
+The following examples show you how to add a tag to an Amazon Pinpoint project \(application\), campaign, message template, or segment by using the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide//) and the [Amazon Pinpoint API](https://docs.aws.amazon.com/pinpoint/latest/apireference//)\.
 
 To add a tag to multiple Amazon Pinpoint resources in a single operation, use the resource groups tagging operations of the AWS CLI or the [AWS Resource Groups Tagging API](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html)\.
 
@@ -138,7 +138,7 @@ Where:
 
 ## Displaying Tags for Resources<a name="tags-display"></a>
 
-The following examples show you how to use the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide//) and the [Amazon Pinpoint API](https://docs.aws.amazon.com/pinpoint/latest/apireference//) to display a list of the tags that are associated with an Amazon Pinpoint project \(app\), campaign, or segment\.
+The following examples show you how to use the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide//) and the [Amazon Pinpoint API](https://docs.aws.amazon.com/pinpoint/latest/apireference//) to display a list of the tags that are associated with an Amazon Pinpoint project \(application\), campaign, message template, or segment\.
 
 ------
 #### [ AWS CLI ]
@@ -180,7 +180,7 @@ Cache-Control: no-cache
 
 In the JSON response to the preceding request, the `tags` attribute lists all the tag keys and values that are associated with the campaign\.
 
-To display all the tags that are associated with more than one resource of the same type \(project, campaign, or segment\), send a GET request to the appropriate resource URI\. For example, the following request gets information about all the campaigns in the specified project \(*application\-id*\):
+To display all the tags that are associated with more than one resource of the same type \(project, campaign, message template, or segment\), send a GET request to the appropriate resource URI\. For example, the following request gets information about all the campaigns in the specified project \(*application\-id*\):
 
 ```
 GET /v1/apps/application-id/campaigns HTTP/1.1
@@ -212,7 +212,7 @@ To update a tag key or value for multiple resources at the same time, you can us
 
 You can use Amazon Pinpoint by running commands with the AWS CLI\.
 
-To update a tag value for a resource by using a resource ID, use the appropriate `update` and `write request` commands for the resource type and include the `tags` parameter and arguments\. For example, the following command changes the tag value from `Test` to `Production` for the `Stack` tag key that's associated with the specified campaign:
+To update a tag value for a resource by using a resource ID, use the appropriate `update` or `write request` command for the resource type and include the `tags` parameter and arguments\. For example, the following command changes the tag value from `Test` to `Production` for the `Stack` tag key that's associated with the specified campaign:
 
 ```
 $ aws pinpoint update-campaign \
@@ -247,7 +247,7 @@ You can use Amazon Pinpoint by sending HTTP\(S\) requests directly to the Amazon
 
 To update a tag value for a project, use the `TagResources` action of the [AWS Resource Groups Tagging API](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html)\. The Amazon Pinpoint API currently doesn’t support updates to tags for projects\.
 
-To update a tag value for a campaign or segment, send a PUT request to the appropriate resource URI of the Amazon Pinpoint API, including the ID of the campaign or segment to update\. In the body of the request, include the `tags` parameter and attributes\. In the `tags` parameter, specify the corresponding tag key for the `tag` attribute and, for the `tagvalue` attribute, do one of the following:
+To update a tag value for a campaign, message template, or segment, send a PUT request to the appropriate resource URI of the Amazon Pinpoint API\. In the body of the request, include the `tags` parameter and attributes\. In the `tags` parameter, specify the corresponding tag key for the `tag` attribute and, for the `tagvalue` attribute, do one of the following:
 + To use a new value, specify the value\.
 + To remove the value, don’t specify a value\. Amazon Pinpoint will set the tag value to an empty string\.
 
@@ -275,7 +275,7 @@ Where:
 
 ## Removing Tags from Resources<a name="tags-remove"></a>
 
-The following examples show you how to remove a tag from an Amazon Pinpoint project \(app\), campaign, or segment by using the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide//) and the [Amazon Pinpoint API](https://docs.aws.amazon.com/pinpoint/latest/apireference//)\.
+The following examples show you how to remove a tag from an Amazon Pinpoint project \(application\), campaign, message template, or segment by using the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide//) and the [Amazon Pinpoint API](https://docs.aws.amazon.com/pinpoint/latest/apireference//)\.
 
 To remove a tag from multiple Amazon Pinpoint resources in a single operation, use the resource groups tagging operations of the AWS CLI or the [AWS Resource Groups Tagging API](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html)\.
 
@@ -315,7 +315,7 @@ To remove only a specific tag value, not a tag key, from a resource, you can [up
 
 You can use Amazon Pinpoint by sending HTTP\(S\) requests directly to the Amazon Pinpoint API\.
 
-To remove a tag, both the tag key and its associated value, from a resource, send a DELETE request to the [Tags](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-tags.html) URI\. For the URI, append a query string that includes the Amazon Resource Name \(ARN\) of the resource that you want to remove a tag from, followed by the `tagKeys` parameter and the tag to remove\. For example:
+To remove a tag, both the tag key and its associated value, from a resource, send a DELETE request to the [Tags](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-tags.html) URI\. In the URI, append a query string that includes the Amazon Resource Name \(ARN\) of the resource that you want to remove a tag from, followed by the `tagKeys` parameter and the tag to remove\. For example:
 
 ```
 https://endpoint/v1/tags/resource-arn?tagKeys=key
@@ -325,6 +325,8 @@ https://endpoint/v1/tags/resource-arn?tagKeys=key
 + *endpoint* is the Amazon Pinpoint endpoint for the AWS Region that hosts the resource\.
 + *resource\-arn* is the ARN of the resource that you want to remove a tag from\.
 + *key* is the tag that you want to remove from the resource\.
+
+All the parameters should be URL encoded\.
 
 To remove multiple tags, both tag keys and their associated values, from a resource, append the `tagKeys` parameter and argument for each additional tag to remove, separated by an ampersand \(&\)\. For example: 
 
