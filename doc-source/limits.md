@@ -36,7 +36,7 @@ The following limits apply to the [Campaigns](https://docs.aws.amazon.com/pinpoi
 | --- | --- | --- | 
 | Active campaigns | 200 per account An *active campaign* is a campaign that hasn't completed or failed\. Active campaigns have a status of `SCHEDULED`, `EXECUTING`, or `PENDING_NEXT_RUN`\.  | [Yes](#limits-increase) | 
 | Message sends | 100 million per campaign activity | [Yes](#limits-increase) | 
-| Event\-based campaigns | Each project can include up to 10 campaigns that are sent when events occur\. Campaigns that use event\-based triggers have to use dynamic segments \(that is, they can't use imported segments\)\.  Event\-based campaigns are only sent to customers who use apps that run version 2\.7\.2 or later of the AWS Mobile SDK for Android or version 2\.6\.30 or later of the AWS Mobile SDK for iOS\. If Amazon Pinpoint can't deliver a message from an event\-based campaign within five minutes, it drops the message and doesn't attempt to re\-deliver it\. | No | 
+| Event\-based campaigns | Each project can include up to 10 campaigns that are sent when events occur\. Campaigns that use event\-based triggers have to use dynamic segments \(that is, they can't use imported segments\)\.  Event\-based campaigns are only sent to customers who use apps that run version 2\.7\.2 or later of the AWS Mobile SDK for Android, or version 2\.6\.30 or later of the AWS Mobile SDK for iOS\. If Amazon Pinpoint can't deliver a message from an event\-based campaign within five minutes, it drops the message and doesn't attempt to redeliver it\. | No | 
 
 ## Email Limits<a name="limits-email"></a>
 
@@ -57,8 +57,8 @@ The limits in the following sections apply to the email channel\.
 | --- | --- | --- | 
 | Sender address | All sending addresses or domains must be verified\. | No | 
 | Recipient address | If your account is still in the sandbox, all recipient email addresses or domains must be verified\. If your account is out of the sandbox, you can send to any valid address\. | [Yes](#limits-increase) | 
-| Number of recipients per message |  50 recipients per message\.  | No | 
-| Number of identities that you can verify |  10,000 identities per AWS Region\.  *Identities* refers to email addresses or domains, or any combination of the two\. Every email you send using Amazon Pinpoint must be sent from a verified identity\.   | No | 
+| Number of recipients per message |  50 recipients per message  | No | 
+| Number of identities that you can verify |  10,000 identities per AWS Region  *Identities* refers to email addresses or domains, or any combination of the two\. Every email you send using Amazon Pinpoint must be sent from a verified identity\.   | No | 
 
 ### Email Sending Limits<a name="limits-email-sending"></a>
 
@@ -140,6 +140,7 @@ The following limits apply to message templates\.
 | Maximum number of characters in Baidu\-specific template parts of a push notification template | 4,000 characters | No | 
 | Maximum number of characters in FCM\-specific template parts of a push notification template | 4,000 characters | No | 
 |  Maximum number of characters in an SMS template  | 1,600 characters | No | 
+| Maximum number of characters in a voice template | 10,000 characters | No | 
 
 ## Mobile Push Limits<a name="limits-mobile"></a>
 
@@ -171,7 +172,7 @@ The following limits apply to the SMS channel\.
 
 | Resource | Default Limit | Eligible for Increase | 
 | --- | --- | --- | 
-| Account spend threshold | USD$1\.00 per account | [Yes](#limits-increase) | 
+| Account spend threshold | USD $1\.00 per account | [Yes](#limits-increase) | 
 | Number of SMS messages that can be sent each second \(*sending rate* \) | 20 messages per second | No | 
 | Number of SMS messages that can be sent to a single recipient each second | 1 message per second | No | 
 | Number of Amazon SNS topics for two\-way SMS | 100,000 per account | [Yes](#limits-increase) | 
@@ -183,14 +184,14 @@ The following limits apply to the voice channel\.
 
 | Resource | Default Limit | 
 | --- | --- | 
-| Number of voice messages that can be sent in a 24\-hour period | If your account is in the sandbox: 20 messages\.If your account is out of the sandbox: unlimited\. | 
-| Number of voice messages that can be sent to a single recipient in a 24\-hour period | 5 messages\. | 
-| Number of voice messages that can be sent per minute | If your account is in the sandbox: 5 calls per minute\.If your account is out of the sandbox: 20 calls per minute\. | 
-| Number of voice messages that can be sent from a single originating phone number per second | 1 message per second\. | 
-| Voice message length | If your account is in the sandbox: 30 seconds\.If your account is out of the sandbox: 5 minutes\. | 
+| Number of voice messages that can be sent in a 24\-hour period | If your account is in the sandbox: 20 messagesIf your account is out of the sandbox: unlimited | 
+| Number of voice messages that can be sent to a single recipient in a 24\-hour period | 5 messages | 
+| Number of voice messages that can be sent per minute | If your account is in the sandbox: 5 calls per minuteIf your account is out of the sandbox: 20 calls per minute | 
+| Number of voice messages that can be sent from a single originating phone number per second | 1 message per second | 
+| Voice message length | If your account is in the sandbox: 30 secondsIf your account is out of the sandbox: 5 minutes | 
 | Ability to send voice messages to international phone numbers | If your account is in the sandbox, you can send messages to recipients in only the following countries: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/limits.html) If your account is out of the sandbox, you can send messages to recipients in any country\.  International calls are subject to additional fees, which vary by destination country or region\.   | 
 | Number of characters in a voice message |  3,000 billable characters \(characters in words that are spoken\) 6,000 characters total \(including billable characters and SSML tags\) | 
-| Number of configuration sets | 10,000 voice configuration sets per AWS Region\. | 
+| Number of configuration sets | 10,000 voice configuration sets per AWS Region | 
 
 ## Requesting a Limit Increase<a name="limits-increase"></a>
 
@@ -205,9 +206,9 @@ If the value in the **Eligible for Increase** column in any of the preceding tab
 1. On the **Create case** page, choose **Service limit increase**\.
 
 1. For **Limit type**, choose one of the following options:
-   + Choose **Pinpoint Email** for limit increases related to the email channel\.
-   + Choose **Pinpoint SMS** for limit increases related to the SMS channel\.
-   + Choose **Pinpoint** for limit increases related to any other Amazon Pinpoint feature\.
+   + To request a limit increase that's related to the email channel, choose **Pinpoint Email**\.
+   + To request a limit increase that's related to the SMS channel, choose **Pinpoint SMS**\.
+   + To request a limit increase that's related to any other Amazon Pinpoint feature, choose **Pinpoint**\.
 
 1. Under **Requests**, for **Region**, choose the AWS Region that you want to request the limit increase for\. To request a limit increase for the same limit type in an additional Region, choose **Add another request**, and then choose the additional Region\.
 

@@ -249,7 +249,7 @@ To learn more about the Amazon Pinpoint API, see the [Amazon Pinpoint API Refere
 
 ### Analytics and Metrics<a name="permissions-actions-apiactions-metrics"></a>
 
-The following permissions are related to viewing analytics data on the Amazon Pinpoint console and retrieving \(querying\) aggregated data for standard metrics, also referred to as *key performance indicators \(KPIs\)*, that apply to projects, campaigns, and journeys\.
+The following permissions are related to viewing analytics data on the Amazon Pinpoint console\. They are also related to retrieving \(querying\) aggregated data for standard metrics, also referred to as *key performance indicators \(KPIs\)*, that apply to projects, campaigns, and journeys\.
 
 **`mobiletargeting:GetReports`**  
 View analytics data on the Amazon Pinpoint console\.  
@@ -258,19 +258,19 @@ View analytics data on the Amazon Pinpoint console\.
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:reports`
 
 **`mobiletargeting:GetApplicationDateRangeKpi`**  
-Retrieve \(query\) aggregated data for a standard application metric, which is a metric that applies to all the campaigns or transactional messages that are associated with a project\.  
+Retrieve \(query\) aggregated data for a standard application metric\. This is a metric that applies to all the campaigns or transactional messages that are associated with a project\.  
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-kpis-daterange-kpi-name.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-kpis-daterange-kpi-name.html)
 + Method – GET
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/kpis/daterange/kpi-name`
 
 **`mobiletargeting:GetCampaignDateRangeKpi`**  
-Retrieve \(query\) aggregated data for a standard campaign metric, which is a metric that applies to an individual campaign\.  
+Retrieve \(query\) aggregated data for a standard campaign metric\. This is a metric that applies to an individual campaign\.  
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-campaigns-campaign-id-kpis-daterange-kpi-name.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-campaigns-campaign-id-kpis-daterange-kpi-name.html)
 + Method – GET
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/campaigns/campaignId/kpis/daterange/kpi-name`
 
 **`mobiletargeting:GetJourneyDateRangeKpi`**  
-Retrieve \(query\) aggregated data for a standard journey engagement metric, which is an engagement metric that applies to an individual journey—for example, the number of messages that were opened by participants for all the activities in a journey\.  
+Retrieve \(query\) aggregated data for a standard journey engagement metric\. This is an engagement metric that applies to an individual journey—for example, the number of messages that were opened by participants for all the activities in a journey\.  
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-journeys-journey-id-kpis-daterange-kpi-name.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-journeys-journey-id-kpis-daterange-kpi-name.html)
 + Method – GET
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/journeys/journeyId/kpis/daterange/kpi-name`
@@ -641,7 +641,7 @@ Delete a specific journey\.
 
 ### Message Templates<a name="permissions-actions-apiactions-templates-messages"></a>
 
-The following permissions are related to creating and managing message templates for your Amazon Pinpoint account\. A *message template* is a set of content and settings that you optionally define, save, and reuse in email messages, push notifications, or SMS messages for your Amazon Pinpoint projects\.
+The following permissions are related to creating and managing message templates for your Amazon Pinpoint account\. A *message template* is a set of content and settings that you can define, save, and reuse in messages that you send for any of your Amazon Pinpoint projects\.
 
 **`mobiletargeting:ListTemplates`**  
 Retrieve information about all the message templates that are associated with your Amazon Pinpoint account\.  
@@ -720,6 +720,30 @@ Delete a message template for messages that were sent through the SMS channel\.
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-sms.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-sms.html)
 + Method – DELETE
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:templates/template-name/SMS`
+
+**`mobiletargeting:GetVoiceTemplate`**  
+Retrieve information about a message template for messages that are sent through the voice channel\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-voice.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-voice.html)
++ Method – GET
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:templates/template-name/VOICE`
+
+**`mobiletargeting:CreateVoiceTemplate`**  
+Create a message template for messages that are sent through the voice channel\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-voice.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-voice.html)
++ Method – POST
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:templates/template-name/VOICE`
+
+**`mobiletargeting:UpdateVoiceTemplate`**  
+Update an existing message template for messages that are sent through the voice channel\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-voice.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-voice.html)
++ Method – PUT
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:templates/template-name/VOICE`
+
+**`mobiletargeting:DeleteVoiceTemplate`**  
+Delete a message template for messages that were sent through the voice channel\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-voice.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-voice.html)
++ Method – DELETE
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:templates/template-name/VOICE`
 
 ### Messages<a name="permissions-actions-apiactions-messages"></a>
 
@@ -885,7 +909,7 @@ Retrieve information about all the endpoints that are associated with a user ID\
 
 ## Amazon Pinpoint SMS and Voice API Actions<a name="permissions-actions-sms-voice-apiactions"></a>
 
-This section identifies API actions that you can add to the IAM policies in your AWS account\. By adding policies to an IAM user account, you can specify which features of the Amazon Pinpoint SMS and Voice API that user is allowed to use\.
+This section identifies API actions that you can add to the IAM policies in your AWS account\. By adding policies to an IAM user account, you can specify which Amazon Pinpoint SMS and Voice API features that user is allowed to use\.
 
 To learn more about the Amazon Pinpoint SMS and Voice API, see the [Amazon Pinpoint SMS and Voice API Reference](https://docs.aws.amazon.com/pinpoint-sms-voice/latest/APIReference/)\.
 

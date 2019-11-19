@@ -1,6 +1,8 @@
 # Using Amazon Pinpoint Analytics Query Results<a name="analytics-query-results"></a>
 
-When you use Amazon Pinpoint Analytics APIs to query analytics data, Amazon Pinpoint returns the results in a JSON response\. For application metrics, campaign metrics, and journey engagement metrics, the data in the response adheres to a standard JSON schema for reporting Amazon Pinpoint analytics data\. This means that you can use the programming language or tool of your choice to implement a custom solution that queries the data for one or more of these metrics, captures the results of each query, and then writes the results to a table, object, or other location\. You can then work with the query results in that location by using another service or application\.
+When you use Amazon Pinpoint Analytics APIs to query analytics data, Amazon Pinpoint returns the results in a JSON response\. For application metrics, campaign metrics, and journey engagement metrics, the data in the response adheres to a standard JSON schema for reporting Amazon Pinpoint analytics data\. 
+
+This means that you can use the programming language or tool of your choice to implement a custom solution that queries the data for one or more of these metrics, captures the results of each query, and then writes the results to a table, object, or other location\. You can then work with the query results in that location by using another service or application\.
 
 For example, you can:
 + Build a custom dashboard that queries a set of metrics on a regular basis and displays the results by using your preferred data visualization framework\.
@@ -13,15 +15,19 @@ This topic explains the structure, objects, and fields in a JSON response to a q
 
 ## JSON Structure<a name="analytics-query-results-structure"></a>
 
-To help you parse and use query results, Amazon Pinpoint Analytics APIs use the same JSON response structure for all Amazon Pinpoint analytics data that you can query programmatically for application metrics, campaign metrics, and journey engagement metrics\. Each JSON response specifies the values that defined the query, such as the project ID \(`ApplicationId`\), and it includes one \(and only one\) `KpiResult` object\. The `KpiResult` object contains the overall result set for a query\.
+To help you parse and use query results, Amazon Pinpoint Analytics APIs use the same JSON response structure for all Amazon Pinpoint analytics data that you can query programmatically for application metrics, campaign metrics, and journey engagement metrics\. Each JSON response specifies the values that defined the query, such as the project ID \(`ApplicationId`\)\. The response also includes one \(and only one\) `KpiResult` object\. The `KpiResult` object contains the overall result set for a query\.
 
-Each `KpiResult` object contains a `Rows` object, which is an array of objects that contain query results and relevant metadata about the values in those results\. The structure and content of a `Rows` object has the following general characteristics:
-+ Each row of query results is a separate JSON object, named `Values`, in the `Rows` object\. For example, if a query returns three values, the `Rows` object contains three `Values` objects, where each `Values` object contains an individual result for the query\.
+Each `KpiResult` object contains a `Rows` object\. This is an array of objects that contain query results and relevant metadata about the values in those results\. The structure and content of a `Rows` object has the following general characteristics:
++ Each row of query results is a separate JSON object, named `Values`, in the `Rows` object\. For example, if a query returns three values, the `Rows` object contains three `Values` objects\. Each `Values` object contains an individual result for the query\.
 + Each column of query results is a property of the `Values` object that it applies to\. The name of the column is stored in the `Key` field of the `Values` object\.
-+ For grouped query results, each `Values` object has an associated `GroupedBys` object\. The `GroupedBys` object indicates which field was used to group the results and it provides the grouping value for the associated `Values` object\.
++ For grouped query results, each `Values` object has an associated `GroupedBys` object\. The `GroupedBys` object indicates which field was used to group the results\. It also provides the grouping value for the associated `Values` object\.
 + If the query results for a metric is null, the `Rows` object is empty\.
 
-Beyond these general characteristics, the structure and contents of the `Rows` object varies depending on the metric\. This is because Amazon Pinpoint supports two kinds of metrics, *single\-value metrics* and *multiple\-value metrics*\. A *single\-value metric* provides only one cumulative value—for example, the percentage of messages that were delivered to recipients by all runs of a campaign\. A *multiple\-value metric* provides more than one value and groups those values by a relevant field—for example, the percentage of messages that were delivered to recipients for each run of a campaign, grouped by campaign run\. You can quickly determine whether a metric is a single\-value metric or multiple\-value metric by referring to the name of the metric\. If the name doesn't contain `grouped-by`, it's a single\-value metric\. If it does, it's a multiple\-value metric\. For a complete list of metrics that you can query programmatically, see [Standard Amazon Pinpoint Analytics Metrics](analytics-standard-metrics.md)\. 
+Beyond these general characteristics, the structure and contents of the `Rows` object varies depending on the metric\. This is because Amazon Pinpoint supports two kinds of metrics, *single\-value metrics* and *multiple\-value metrics*\. 
+
+A *single\-value metric* provides only one cumulative value\. An example is the percentage of messages that were delivered to recipients by all runs of a campaign\. A *multiple\-value metric* provides more than one value and groups those values by a relevant field\. An example is the percentage of messages that were delivered to recipients for each run of a campaign, grouped by campaign run\. 
+
+You can quickly determine whether a metric is a single\-value metric or multiple\-value metric by referring to the name of the metric\. If the name doesn't contain `grouped-by`, it's a single\-value metric\. If it does, it's a multiple\-value metric\. For a complete list of metrics that you can query programmatically, see [Standard Amazon Pinpoint Analytics Metrics](analytics-standard-metrics.md)\. 
 
 ### Single\-Value Metrics<a name="analytics-query-results-structure-single"></a>
 
@@ -30,7 +36,7 @@ For a single\-value metric, the `Rows` object contains a `Values` object that:
 + Provides the value for the metric that was queried\.
 + Identifies the data type of the value that was returned\.
 
-For example, the following JSON response contains the query results for a single\-value metric that reports the number of unique endpoints that messages were delivered to by all the campaigns that are associated with a project, from August 1, 2019 through August 31, 2019:
+For example, the following JSON response contains the query results for a single\-value metric\. This metric reports the number of unique endpoints that messages were delivered to by all the campaigns that are associated with a project, from August 1, 2019 through August 31, 2019:
 
 ```
 {
@@ -56,7 +62,7 @@ For example, the following JSON response contains the query results for a single
 }
 ```
 
-In this example, the response indicates that all the project's campaigns delivered messages to 1,368 unique endpoints from August 1, 2019 through August 31, 2019\. Where:
+In this example, the response indicates that all the project's campaigns delivered messages to 1,368 unique endpoints from August 1, 2019 through August 31, 2019, where:
 + `Key` is the friendly name of the metric whose value is specified in the `Value` field \(`UniqueDeliveries`\)\.
 + `Type` is the data type of the value specified in the `Value` field \(`Double`\)\.
 + `Value` is the actual value for the metric that was queried, including any filters that were applied \(`1368.0`\)\.
@@ -81,9 +87,9 @@ If the query results for a single\-value metric is null \(not greater than or eq
 
 ### Multiple\-Value Metrics<a name="analytics-query-results-structure-multiple"></a>
 
-The structure and contents of the `Rows` object for a multiple\-value metric are mostly the same as a single\-value metric\. The `Rows` object for a multiple\-value metric also contains a `Values` object that specifies the friendly name of the metric that was queried, provides the value for that metric, and identifies the data type of that value\.
+The structure and contents of the `Rows` object for a multiple\-value metric are mostly the same as a single\-value metric\. The `Rows` object for a multiple\-value metric also contains a `Values` object\. The `Values` object specifies the friendly name of the metric that was queried, provides the value for that metric, and identifies the data type of that value\.
 
-However, the `Rows` object for a multiple\-value metric also contains one or more `GroupedBy` objects\. There is one `GroupedBy` object for each `Values` object in the query results\. The `GroupedBy` object indicates which field was used to group the data in the results, the data type of that field, and, for the associated `Values` object, the grouping value for that field\. 
+However, the `Rows` object for a multiple\-value metric also contains one or more `GroupedBy` objects\. There is one `GroupedBy` object for each `Values` object in the query results\. The `GroupedBy` object indicates which field was used to group the data in the results and the data type of that field\. It also indicates the grouping value for that field \(for the associated `Values` object\)\. 
 
 For example, the following JSON response contains the query results for a multiple\-value metric that reports the number of unique endpoints that messages were delivered to, for each campaign that's associated with a project, from August 1, 2019 through August 31, 2019:
 
@@ -178,7 +184,7 @@ In addition to specifying the values that defined a query, such as the project I
 | Rows\.GroupedBys\.Type | For a multiple\-value metric, the data type of the value specified in the GroupedBys\.Value field\. | 
 | Rows\.GroupedBys\.Value | For a multiple\-value metric, the actual value for the field that was used to group data in query results\. This value correlates to an associated Values object\. | 
 | Rows\.Values | An array of fields that contains query results\. | 
-| Rows\.Values\.Key | The friendly name of the metric that was queried and whose value is specified in the Values\.Value field\. | 
+| Rows\.Values\.Key | The friendly name of the metric that was queried\. The metric's value is specified in the Values\.Value field\. | 
 | Rows\.Values\.Type | The data type of the value specified in the Values\.Value field\. | 
 | Rows\.Values\.Value | The actual value for the metric that was queried, including any filters that were applied\. | 
 
