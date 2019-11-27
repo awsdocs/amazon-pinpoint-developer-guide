@@ -1,6 +1,6 @@
 # Building Segments<a name="segments-dimensional"></a>
 
-To reach the intended audience for a campaign, build a segment based on the data reported by your app\. For example, to reach users who haven’t used your app recently, you can define a segment for users who haven’t used your app in the last 7 days\.
+To reach the intended audience for a campaign, build a segment based on the data reported by your app\. For example, to reach users who haven’t used your app recently, you can define a segment for users who haven’t used your app in the last 30 days\.
 
 ## Building Segments With the AWS SDK for Java<a name="segments-dimensional-example-java"></a>
 

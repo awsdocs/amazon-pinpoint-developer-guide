@@ -88,6 +88,7 @@ Amazon's trademarks and trade dress may not be used in
    + [Setting Up Event Streaming](event-streams-setup.md)
    + [App Events](event-streams-data-app.md)
    + [Campaign Events](event-streams-data-campaign.md)
+   + [Journey Events](event-streams-data-journey.md)
    + [Email Events](event-streams-data-email.md)
    + [SMS Events](event-streams-data-sms.md)
 + [Querying Amazon Pinpoint Analytics Data](analytics.md)
