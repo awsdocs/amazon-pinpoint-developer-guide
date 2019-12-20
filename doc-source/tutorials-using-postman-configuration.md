@@ -19,8 +19,8 @@ In this section, you create at least one environment to use with Amazon Pinpoint
    + US West \(Oregon\)
    + Asia Pacific \(Mumbai\)
    + Asia Pacific \(Sydney\)
-   + EU \(Frankfurt\)
-   + EU \(Ireland\)
+   + Europe \(Frankfurt\)
+   + Europe \(Ireland\)
 
 1. Create six new variables: `endpoint`, `region`, `serviceName`, `accountId`, `accessKey`, and `secretAccessKey`\. Use the following table to determine which value to enter in the **Initial Value** column for each variable\.    
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/tutorials-using-postman-configuration.html)

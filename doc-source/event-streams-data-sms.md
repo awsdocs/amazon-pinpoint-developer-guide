@@ -45,6 +45,8 @@ The JSON object for an SMS event contains the data shown in the following exampl
 
 ## SMS Event Attributes<a name="event-streams-data-sms-attributes"></a>
 
+This section defines the attributes that are included in the event stream data that Amazon Pinpoint generates when you send SMS messages\.
+
 
 **Event**  
 
@@ -54,23 +56,27 @@ The JSON object for an SMS event contains the data shown in the following exampl
 | event\_timestamp | The time when the event was reported, shown as Unix time in milliseconds\. | 
 | arrival\_timestamp | The time when the event was received by Amazon Pinpoint, shown as Unix time in milliseconds\. | 
 | event\_version |  The version of the event JSON schema\.  Check this version in your event\-processing application so that you know when to update the application in response to a schema update\.   | 
-| application | Information about the Amazon Pinpoint project that's associated with the event\. See the [Application](#event-streams-data-sms-attributes-application) table for more information\. | 
-| client | Information about the app client installed on the device that reported the event\. See the [Client](#event-streams-data-sms-attributes-client) table for more information\. | 
-| device | Information about the device that reported the event\. See the [Device](#event-streams-data-sms-attributes-device) table for more information\. For events that are generated when you send a transactional message, this object is empty\. | 
+| application | Information about the Amazon Pinpoint project that's associated with the event\. For more information, see the [Application](#event-streams-data-sms-attributes-application) table\. | 
+| client | Information about the app client installed on the device that reported the event\. For more information, see the [Client](#event-streams-data-sms-attributes-client) table\. | 
+| device | Information about the device that reported the event\. For more information, see the [Device](#event-streams-data-sms-attributes-device) table\. For events that are generated when you send a transactional message, this object is empty\. | 
 | session | For SMS events, this object is empty\. | 
-| attributes |  Attributes that are associated with the event\. For events that are reported by one of your apps, this object can include custom attributes that are defined by the app\. For events that are created when you send a campaign, this object contains attributes that are associated with the campaign\. For events that are generated when you send transactional messages, this object contains information that's related to the message itself\. See the [Attributes](#event-streams-data-sms-attributes-attrs) table for more information\.  | 
-| metrics |  Additional metrics that are associated with the event\. See the [Metrics](#event-streams-data-sms-attributes-metrics) table for more information\.  | 
+| attributes |  Attributes that are associated with the event\. For events that are reported by one of your apps, this object can include custom attributes that are defined by the app\. For events that are created when you send a campaign, this object contains attributes that are associated with the campaign\. For events that are generated when you send transactional messages, this object contains information that's related to the message itself\. For more information, see the [Attributes](#event-streams-data-sms-attributes-attrs) table\.  | 
+| metrics |  Additional metrics that are associated with the event\. For more information, see the [Metrics](#event-streams-data-sms-attributes-metrics) table\.  | 
 | awsAccountId |  The ID of the AWS account that was used to send the message\.  | 
 
 ### Application<a name="event-streams-data-sms-attributes-application"></a>
+
+Includes information about the Amazon Pinpoint project that the event is associated with and, if applicable, the SDK that was used to report the event\.
 
 
 | Attribute | Description | 
 | --- | --- | 
 | app\_id |  The unique ID of the Amazon Pinpoint project that reported the event\.  | 
-| sdk |  The SDK that was used to report the event\. If you send a transactional SMS message calling the Amazon Pinpoint API directly, or by using the Amazon Pinpoint console, this object is empty\.  | 
+| sdk |  The SDK that was used to report the event\. If you send a transactional SMS message by calling the Amazon Pinpoint API directly or by using the Amazon Pinpoint console, this object is empty\.  | 
 
 ### Attributes<a name="event-streams-data-sms-attributes-attrs"></a>
+
+Includes information about the attributes that are associated with the event\.
 
 
 | Attribute | Description | 
@@ -90,13 +96,17 @@ The JSON object for an SMS event contains the data shown in the following exampl
 
 ### Client<a name="event-streams-data-sms-attributes-client"></a>
 
+Includes information about the app client that's installed on the device that reported the event\.
+
 
 | Attribute | Description | 
 | --- | --- | 
-| client\_id |  For events that are generated by apps, this value is the unique ID of the app client installed on the device\. This ID is automatically generated by the AWS Mobile SDK for iOS and the AWS Mobile SDK for Android\. For events that are generated when you send campaigns and transactional messages, this value is equal to the ID of the endpoint that you sent the message to\.  | 
+| client\_id |  For events that are generated by apps, this value is the unique ID of the app client that's installed on the device\. This ID is automatically generated by the AWS Mobile SDK for iOS and the AWS Mobile SDK for Android\. For events that are generated when you send campaigns and transactional messages, this value is equal to the ID of the endpoint that you sent the message to\.  | 
 | cognito\_id | The unique ID assigned to the app client in the Amazon Cognito identity pool used by your app\. | 
 
 ### Device<a name="event-streams-data-sms-attributes-device"></a>
+
+Includes information about the device that reported the event\.
 
 
 | Attribute | Description | 
@@ -107,6 +117,8 @@ The JSON object for an SMS event contains the data shown in the following exampl
 | platform | The device platform, such as ios or android\. | 
 
 ### Metrics<a name="event-streams-data-sms-attributes-metrics"></a>
+
+Includes information about metrics that are associated with the event\.
 
 
 | Attribute | Description | 

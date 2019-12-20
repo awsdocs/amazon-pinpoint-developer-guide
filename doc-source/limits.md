@@ -36,7 +36,7 @@ The following limits apply to the [Campaigns](https://docs.aws.amazon.com/pinpoi
 | --- | --- | --- | 
 | Active campaigns | 200 per account An *active campaign* is a campaign that hasn't completed or failed\. Active campaigns have a status of `SCHEDULED`, `EXECUTING`, or `PENDING_NEXT_RUN`\.  | [Yes](#limits-increase) | 
 | Message sends | 100 million per campaign activity | [Yes](#limits-increase) | 
-| Event\-based campaigns | Each project can include up to 10 campaigns that are sent when events occur\. Campaigns that use event\-based triggers have to use dynamic segments \(that is, they can't use imported segments\)\.  Event\-based campaigns are only sent to customers who use apps that run version 2\.7\.2 or later of the AWS Mobile SDK for Android, or version 2\.6\.30 or later of the AWS Mobile SDK for iOS\. If Amazon Pinpoint can't deliver a message from an event\-based campaign within five minutes, it drops the message and doesn't attempt to redeliver it\. | No | 
+| Event\-based campaigns | Each project can include up to 10 campaigns that are sent when events occur\. Campaigns that use event\-based triggers have to use dynamic segments\. They can't use imported segments\.  If you integrate your app with Amazon Pinpoint by using an AWS Mobile SDK, messages from event\-based campaigns are sent only to customers whose apps are running AWS Mobile SDK for Android version 2\.7\.2 or later, or AWS Mobile SDK for iOS version 2\.6\.30 or later\. If Amazon Pinpoint can't deliver a message from an event\-based campaign within five minutes, it drops the message and doesn't attempt to redeliver it\. | No | 
 
 ## Email Limits<a name="limits-email"></a>
 
@@ -133,6 +133,7 @@ The following limits apply to message templates\.
 | Resource | Default Limit | Eligible for Increase | 
 | --- | --- | --- | 
 | Maximum number of message templates | 10,000 per account | [Yes](#limits-increase) | 
+| Maximum number of versions of a message template | 5,000 per template | No | 
 | Maximum number of characters in an email template | 500,000 characters | No | 
 |  Maximum number of characters in the default template parts of a push notification template   | 2,000 characters | No | 
 | Maximum number of characters in ADM\-specific template parts of a push notification template | 4,000 characters | No | 

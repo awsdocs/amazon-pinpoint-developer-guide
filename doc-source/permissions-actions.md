@@ -649,6 +649,18 @@ Retrieve information about all the message templates that are associated with yo
 + Method – GET
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:templates`
 
+**`mobiletargeting:ListTemplateVersions`**  
+Retrieve information about all the versions of a specific message template\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-template-type-versions.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-template-type-versions.html)
++ Method – GET
++ Resource ARN – Not applicable
+
+**`mobiletargeting:UpdateTemplateActiveVersion`**  
+Designate a specific version of a message template as the active version of the template\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-template-type-active-version.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-template-type-active-version.html)
++ Method – GET
++ Resource ARN – Not applicable
+
 **`mobiletargeting:GetEmailTemplate`**  
 Retrieve information about a message template for messages that are sent through the email channel\.  
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-email.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-email.html)

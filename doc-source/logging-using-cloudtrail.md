@@ -100,11 +100,12 @@ The Amazon Pinpoint API supports logging the following actions as events in Clou
 + [GetSmsTemplate](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-sms.html)
 + [GetVoiceTemplate](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-voice.html)
 + [ListJourneys](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-journeys.html)
-+ [ListTagsForResource](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-tags.html#rest-api-tags-methods-get)
++ [ListTagsForResource](https://docs.aws.amazon.com/pinpoint/latest/apireference/tags-resource-arn.html)
 + [ListTemplates](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates.html)
++ [ListTemplateVersions](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-template-type-versions.html)
 + [PutEventStream](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-event-stream.html#rest-api-event-stream-methods-post)
-+ [TagResource](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-tags.html#rest-api-tags-methods-post)
-+ [UntagResource](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-tags.html#rest-api-tags-methods-delete)
++ [TagResource](https://docs.aws.amazon.com/pinpoint/latest/apireference/tags-resource-arn.html)
++ [UntagResource](https://docs.aws.amazon.com/pinpoint/latest/apireference/tags-resource-arn.html)
 + [UpdateAdmChannel](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-adm-channel.html#rest-api-adm-channel-methods-put)
 + [UpdateApnsChannel](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-channel.html#rest-api-apns-channel-methods-put)
 + [UpdateApnsSandboxChannel](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-sandbox-channel.html#rest-api-apns-sandbox-channel-methods-put)
@@ -122,6 +123,7 @@ The Amazon Pinpoint API supports logging the following actions as events in Clou
 + [UpdateSegment](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segment.html#rest-api-segment-methods-put)
 + [UpdateSmsChannel](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-sms-channel.html#rest-api-sms-channel-methods-put)
 + [UpdateSmsTemplate](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-sms.html)
++ [UpdateTemplateActiveVersion](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-template-type-active-version.html)
 + [UpdateVoiceTemplate](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-voice.html)
 
 The following Amazon Pinpoint API actions **aren't** logged in CloudTrail:

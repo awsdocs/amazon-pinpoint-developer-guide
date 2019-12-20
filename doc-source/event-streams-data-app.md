@@ -62,10 +62,10 @@ This section defines the attributes that are included in the app event stream\.
 | event\_timestamp | The time when the event was reported, shown as Unix time in milliseconds\. | 
 | arrival\_timestamp | The time when the event was received by Amazon Pinpoint, shown as Unix time in milliseconds\. | 
 | event\_version |  The version of the event JSON schema\.  Check this version in your event\-processing application so that you know when to update the application in response to a schema update\.   | 
-| application | Information about the Amazon Pinpoint project that's associated with the event\. See the [Application](#event-streams-data-app-attributes-application) table for more information\. | 
-| client | Information about the endpoint that reported the event\. See the [Client](#event-streams-data-app-attributes-client) table for more information\. | 
-| device | Information about the device that reported the event\. See the [Device](#event-streams-data-app-attributes-device) table for more information\. | 
-| session | Information about the session that generated the event\. See the [Session](#event-streams-data-app-attributes-session) table for more information\. | 
+| application | Information about the Amazon Pinpoint project that's associated with the event\. For more information, see the [Application](#event-streams-data-app-attributes-application) table\. | 
+| client | Information about the endpoint that reported the event\. For more information, see the [Client](#event-streams-data-app-attributes-client) table\. | 
+| device | Information about the device that reported the event\. For more information, see the [Device](#event-streams-data-app-attributes-device) table\. | 
+| session | Information about the session that generated the event\. For more information, see the [Session](#event-streams-data-app-attributes-session) table\. | 
 | attributes |  Attributes that are associated with the event\. For events that are reported by your apps, this object includes custom attributes that you define\.  | 
 | metrics | Metrics that are related to the event\. You can optionally configure your apps to send custom metrics to Amazon Pinpoint\. | 
 
@@ -79,12 +79,14 @@ Includes information about the Amazon Pinpoint project that the event is associa
 | app\_id |  The unique ID of the Amazon Pinpoint project that reported the event\.  | 
 | cognito\_identity\_pool\_id |  The ID of the Amazon Cognito Identity Pool that the endpoint is associated with\.  | 
 | package\_name |  The name of the app package, such as `com.example.my_app`\.  | 
-| sdk |  Information about the SDK that was used to report the event\. See the [SDK](#event-streams-data-app-attributes-application-sdk) table for more information\.  | 
+| sdk |  Information about the SDK that was used to report the event\. For more information, see the [SDK](#event-streams-data-app-attributes-application-sdk) table\.  | 
 | title |  The name of the app\.  | 
 | version\_name |  The name of the version of the app, such as `V2.5`\.  | 
 | version\_code |  The version number of the app, such as `3`\.  | 
 
 #### SDK<a name="event-streams-data-app-attributes-application-sdk"></a>
+
+Includes information about the SDK that was used to report the event\.
 
 
 | Attribute | Description | 
@@ -109,12 +111,14 @@ Includes information about the device of the endpoint that generated the event\.
 
 | Attribute | Description | 
 | --- | --- | 
-| locale |  Information about the language and region settings for the endpoint's device\. See the [Locale](#event-streams-data-app-attributes-device-locale) table for more information\.  | 
+| locale |  Information about the language and region settings for the endpoint's device\. For more information, see the [Locale](#event-streams-data-app-attributes-device-locale) table\.  | 
 | make | The manufacturer of the endpoint's device\. | 
 | model | The model identifier of the endpoint's device\. | 
-| platform |  Information about the operating system on the endpoint's device\. See the [Platform](#event-streams-data-app-attributes-device-platform) table for more information\.  | 
+| platform |  Information about the operating system on the endpoint's device\. For more information, see the [Platform](#event-streams-data-app-attributes-device-platform) table\.  | 
 
 #### Locale<a name="event-streams-data-app-attributes-device-locale"></a>
+
+Includes information about the language and region settings for the endpoint's device\.
 
 
 | Attribute | Description | 
@@ -124,6 +128,8 @@ Includes information about the device of the endpoint that generated the event\.
 | language | The language that's associated with the device's locale\. | 
 
 #### Platform<a name="event-streams-data-app-attributes-device-platform"></a>
+
+Includes information about the operating system on the endpoint's device\.
 
 
 | Attribute | Description | 

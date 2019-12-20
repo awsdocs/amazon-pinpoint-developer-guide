@@ -55,11 +55,11 @@ This section defines the attributes that are included in the event stream data t
 | event\_timestamp | The time when the event was reported, shown as Unix time in milliseconds\. | 
 | arrival\_timestamp | The time when the event was received by Amazon Pinpoint, shown as Unix time in milliseconds\. | 
 | event\_version |  The version of the event JSON schema\.  Check this version in your event\-processing application so that you know when to update the application in response to a schema update\.   | 
-| application | Information about the Amazon Pinpoint project that's associated with the event\. See the [Application](#event-streams-data-journey-attributes-application) table for more information\. | 
-| client | Information about the endpoint that's associated with the event\. See the [Client](#event-streams-data-journey-attributes-client) table for more information\. | 
+| application | Information about the Amazon Pinpoint project that's associated with the event\. For more information, see the [Application](#event-streams-data-journey-attributes-application) table\. | 
+| client | Information about the endpoint that's associated with the event\. For more information, see the [Client](#event-streams-data-journey-attributes-client) table\. | 
 | device | Information about the device that reported the event\. For journeys, this object is empty\. | 
 | session | Information about the session that generated the event\. For journeys, this object is empty\. | 
-| attributes |  Attributes that are associated with the journey and journey activity that generated the event\. See the [Attributes](#event-streams-data-journey-attributes-attrs) table for more information\.  | 
+| attributes |  Attributes that are associated with the journey and journey activity that generated the event\. For more information, see the [Attributes](#event-streams-data-journey-attributes-attrs) table\.  | 
 | client\_context | Contains a custom object, which contains an endpoint property\. The endpoint property contains the contents of the endpoint record for the endpoint that's associated with the event\. | 
 | awsAccountId |  The ID of the AWS account that was used to execute the journey\.  | 
 

@@ -15,7 +15,7 @@ The event types in the preceding list are explained in detail in [Email Event At
 ## Sample Events<a name="event-streams-data-email-send-example"></a>
 
 **Email Send**  
-The JSON object for an email send event contains the data shown in the following example\.
+The JSON object for an *email send* event contains the data shown in the following example\.
 
 ```
 {
@@ -77,7 +77,7 @@ The JSON object for an email send event contains the data shown in the following
 ```
 
 **Email Delivered**  
-The JSON object for an email delivered event contains the data shown in the following example\.
+The JSON object for an *email delivered* event contains the data shown in the following example\.
 
 ```
 {
@@ -113,7 +113,7 @@ The JSON object for an email delivered event contains the data shown in the foll
             "name": "From",
             "value": "sender@example.com"
           }, {
-            "name": "From",
+            "name": "To",
             "value": "recipient@example.com"
           }, {
             "name": "Subject",
@@ -144,7 +144,7 @@ The JSON object for an email delivered event contains the data shown in the foll
 ```
 
 **Email Click**  
-The JSON object for an email click event contains the data shown in the following example\.
+The JSON object for an *email click* event contains the data shown in the following example\.
 
 ```
 {
@@ -180,7 +180,7 @@ The JSON object for an email click event contains the data shown in the followin
             "name": "From",
             "value": "sender@example.com"
           }, {
-            "name": "From",
+            "name": "To",
             "value": "recipient@example.com"
           }, {
             "name": "Subject",
@@ -213,7 +213,7 @@ The JSON object for an email click event contains the data shown in the followin
 ```
 
 **Email Open**  
-The JSON object for an email open event contains the data shown in the following example\.
+The JSON object for an *email open* event contains the data shown in the following example\.
 
 ```
 {
@@ -249,7 +249,7 @@ The JSON object for an email open event contains the data shown in the following
             "name": "From",
             "value": "sender@example.com"
           }, {
-            "name": "From",
+            "name": "To",
             "value": "recipient@example.com"
           }, {
             "name": "Subject",
@@ -288,15 +288,15 @@ This section defines the attributes that are included in the event stream data t
 | Attribute | Description | 
 | --- | --- | 
 | event\_type |  The type of event\. Possible values are: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/event-streams-data-email.html)  | 
-| event\_timestamp | The time when the event was reported, shown as Unix time in milliseconds\. | 
-| arrival\_timestamp | The time when the event was received by Amazon Pinpoint, shown as Unix time in milliseconds\. | 
+| event\_timestamp |  The time when the event was reported, shown as Unix time in milliseconds\.  | 
+| arrival\_timestamp |  The time when the event was received by Amazon Pinpoint, shown as Unix time in milliseconds\.  | 
 | event\_version |  The version of the event JSON schema\.  Check this version in your event\-processing application so that you know when to update the application in response to a schema update\.   | 
-| application | Information about the Amazon Pinpoint project that's associated with the event\. See the *Application* table for more information\. | 
-| client |  Information about the app client installed on the device that reported the event\. See the *Client* table for more information\.  | 
-| device | Information about the device that reported the event\. See the *Device* table for more information\. For events that are generated when you send a transactional message, this object is empty\. | 
+| application |  Information about the Amazon Pinpoint project that's associated with the event\. See the *Application* table for more information\.  | 
+| client |  Information about the app client that's installed on the device that reported the event\. For more information, see the *Client* table\.  | 
+| device |  Information about the device that reported the event\. For more information, see the *Device* table\. For events that are generated when you send a transactional message, this object is empty\.  | 
 | session | For email events, this object is empty\. | 
-| attributes |  Attributes that are associated with the event\. See the *Attributes* table for more information\. For events that are reported by one of your apps, this object can include custom attributes that are defined by the app\. For events that are created when you send a message from a campaign or journey, this object contains attributes that are associated with the campaign or journey\. For events that are generated when you send transactional messages, this object contains information that's related to the message itself\.  | 
-| client\_context | For email events, this object contains a custom object, which contains a  legacy\_identifier attribute\. The value for the legacy\_identifier attribute is the ID of the project that the message was sent from\. | 
+| attributes |  Attributes that are associated with the event\. For more information, see the *Attributes* table\. For events that are reported by one of your apps, this object can include custom attributes that are defined by the app\. For events that are created when you send a message from a campaign or journey, this object contains attributes that are associated with the campaign or journey\. For events that are generated when you send transactional messages, this object contains information that's related to the message itself\.  | 
+| client\_context | For email events, this object contains a custom object, which contains a legacy\_identifier attribute\. The value for the legacy\_identifier attribute is the ID of the project that the message was sent from\. | 
 | facets |  Additional information about the message, such as the email headers\. See the *Facets* table for more information\.  | 
 | awsAccountId |  The ID of the AWS account that was used to send the message\.  | 
 
@@ -308,7 +308,7 @@ Includes information about the Amazon Pinpoint project that the event is associa
 | Attribute | Description | 
 | --- | --- | 
 | app\_id |  The unique ID of the Amazon Pinpoint project that reported the event\.  | 
-| sdk |  The SDK that was used to report the event\. If you send a transactional email message by calling the Amazon Pinpoint API directly, or by using the Amazon Pinpoint console, this object is empty\.  | 
+| sdk |  The SDK that was used to report the event\. If you send a transactional email message by calling the Amazon Pinpoint API directly or by using the Amazon Pinpoint console, this object is empty\.  | 
 
 ### Attributes<a name="event-streams-data-email-attributes-attrs"></a>
 
@@ -354,19 +354,19 @@ Includes information about the message and the event type\.
 
 | Attribute | Description | 
 | --- | --- | 
-| email\_channel | Contains a `mail_event` object, which contains two objects: `mail`, and an object that corresponds with the event type\. | 
+| email\_channel |  Contains a `mail_event` object, which contains two objects: `mail`, and an object that corresponds with the event type\.  | 
 
 ### Mail<a name="event-streams-data-email-attributes-mail"></a>
 
-Includes information about the content of the email message, and metadata related to the message itself\.
+Includes information about the content of the email message, and metadata about the message\.
 
 
 | Attribute | Description | 
 | --- | --- | 
-| message\_id | The unique ID of the message\. Amazon Pinpoint automatically generates this ID when it accepts the message\. | 
-| message\_send\_timestamp | The date and time when the message was sent, in the format specified in [RFC 822](https://tools.ietf.org/html/rfc822)\. | 
-| from\_address | The email address that the message was sent from\. | 
-| destination | An array that contains the email addresses that the message was sent to\. | 
-| headers\_truncated | A Boolean value that indicates whether the email headers were truncated\. | 
+| message\_id |  The unique ID of the message\. Amazon Pinpoint automatically generates this ID when it accepts the message\.  | 
+| message\_send\_timestamp |  The date and time when the message was sent, in the format specified in [RFC 822](https://tools.ietf.org/html/rfc822)\.  | 
+| from\_address |  The email address that the message was sent from\.  | 
+| destination |  An array that contains the email addresses that the message was sent to\.  | 
+| headers\_truncated |  A Boolean value that indicates whether the email headers were truncated\.  | 
 | headers |  An object that contains several name\-value pairs that correspond to the headers in the message\. This object typically contains information about the following headers: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/event-streams-data-email.html)  | 
-| common\_headers | Contains information about several common headers for email messages, such as the date when the message was sent, and the to, from, and subject lines of the message\. | 
+| common\_headers |  Contains information about several common headers for email messages\. The information can include the date when the message was sent, and the to, from, and subject lines of the message\.  | 

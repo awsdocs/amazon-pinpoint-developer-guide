@@ -1,6 +1,6 @@
 # Streaming Amazon Pinpoint Events to Kinesis<a name="event-streams"></a>
 
-In Amazon Pinpoint, an *event* is an action that occurs when: a user interacts with one of your applications; you send a message from a campaign or journey; or, you send a transactional SMS or email message\. For example, if you send an email message, several events occur:   
+In Amazon Pinpoint, an *event* is an action that occurs when a user interacts with one of your applications, when you send a message from a campaign or journey, or when you send a transactional SMS or email message\. For example, if you send an email message, several events occur:
 + When you send the message, a *send* event occurs\.
 + When the message reaches the recipient's inbox, a *delivered* event occurs\.
 + When the recipient opens the message, an *open* event occurs\.

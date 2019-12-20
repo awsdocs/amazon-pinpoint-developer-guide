@@ -11,16 +11,16 @@ A resource can have as many as 50 tags\.
 
 ## Managing Tags<a name="tags-manage"></a>
 
-Each tag consists of a required *tag key* and an optional *tag value*, both of which you define\. A *tag key* is a general label that acts as a category for more specific tag values\. A *tag value* acts as a descriptor for a tag key\. For example, if you have two versions of an Amazon Pinpoint project, one for internal testing and another for external use, you might assign a `Stack` tag key to both projects\. The value of the `Stack` tag key might be `Test` for one version of the project and `Production` for the other version\.
+Each tag consists of a required *tag key* and an optional *tag value*, both of which you define\. A *tag key* is a general label that acts as a category for more specific tag values\. A *tag value* acts as a descriptor for a tag key\. For example, if you have two versions of an Amazon Pinpoint project \(one for internal testing and another for external use\), you might assign a `Stack` tag key to both projects\. The value of the `Stack` tag key might be `Test` for one version of the project and `Production` for the other version\.
 
 A tag key can contain as many as 128 characters\. A tag value can contain as many as 256 characters\. The characters can be Unicode letters, numbers, white space, or one of the following symbols: \_ \. : / = \+ \-\. The following additional restrictions apply to tags:
 + Tag keys and values are case sensitive\.
 + For each associated resource, each tag key must be unique and it can have only one value\.
 + The `aws:` prefix is reserved for use by AWS; you can’t use it in any tag keys or values that you define\. In addition, you can't edit or remove tag keys or values that use this prefix\. Tags that use this prefix don’t count against the limit of 50 tags per resource\.
 + You can't update or delete a resource based only on its tags\. You must also specify the Amazon Resource Name \(ARN\) or resource ID, depending on the operation that you use\.
-+ You can associate tags with public or shared resources, but the tags are available only for your AWS account, not any other accounts that share the resource\. In addition, the tags are available only for resources that are located in the specified AWS Region for your AWS account\.
++ You can associate tags with public or shared resources\. However, the tags are available only for your AWS account, not any other accounts that share the resource\. In addition, the tags are available only for resources that are located in the specified AWS Region for your AWS account\.
 
-To add, display, update, and remove tag keys and values from Amazon Pinpoint resources, you can use the AWS Command Line Interface \(AWS CLI\), the Amazon Pinpoint API, the AWS Resource Groups Tagging API, or an AWS SDK\. To manage tag keys and values across all the AWS resources that are located in a specific AWS Region for your AWS account, including Amazon Pinpoint resources, use the [AWS Resource Groups Tagging API](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html)\.
+To add, display, update, and remove tag keys and values from Amazon Pinpoint resources, you can use the AWS Command Line Interface \(AWS CLI\), the Amazon Pinpoint API, the AWS Resource Groups Tagging API, or an AWS SDK\. To manage tag keys and values across all the AWS resources that are located in a specific AWS Region for your AWS account \(including Amazon Pinpoint resources\), use the [AWS Resource Groups Tagging API](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html)\.
 
 ## Using Tags in IAM Policies<a name="tags-iam"></a>
 
@@ -46,7 +46,7 @@ For example, you can create a policy that allows users to have full access to th
 }
 ```
 
-If you define tag\-based, resource\-level permissions, the permissions take effect immediately\. This means that your resources are more secure as soon as they're created and you can quickly start enforcing the use of tags for new resources\. You can also use resource\-level permissions to control which tag keys and values can be associated with new and existing resources\. For more information, see [Controlling Access Using Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html) in the *AWS IAM User Guide* and [IAM Policies for Amazon Pinpoint Users](permissions-actions.md) in this guide\.
+If you define tag\-based, resource\-level permissions, the permissions take effect immediately\. This means that your resources are more secure as soon as they're created, and you can quickly start enforcing the use of tags for new resources\. You can also use resource\-level permissions to control which tag keys and values can be associated with new and existing resources\. For more information, see [Controlling Access Using Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html) in the *AWS IAM User Guide* and [IAM Policies for Amazon Pinpoint Users](permissions-actions.md) in this guide\.
 
 ## Adding Tags to Resources<a name="tags-add"></a>
 
@@ -57,7 +57,7 @@ To add a tag to multiple Amazon Pinpoint resources in a single operation, use th
 ------
 #### [ AWS CLI ]
 
-To create a new resource and add a tag to it by using the AWS CLI, use the appropriate `create` command for the resource and include the `tags` parameter and values\. For example, the following command creates a new project named `ExampleCorp` and adds a `Stack` tag key with a `Test` tag value to the project:
+To create a new resource and add a tag to it by using the AWS CLI, use the appropriate `create` command for the resource\. Include the `tags` parameter and values\. For example, the following command creates a new project named `ExampleCorp` and adds a `Stack` tag key with a `Test` tag value to the project:
 
 ```
 C:\> aws pinpoint create-app ^
@@ -79,12 +79,12 @@ C:\> aws pinpoint tag-resource ^
 Where:
 + *resource\-arn* is the Amazon Resource Name \(ARN\) of the resource that you want to add a tag to\.
 + *key* is the tag key that you want to add to the resource\. The `key` argument is required\.
-+ *value* is the optional tag value that you want to add for the specified tag key \(`key`\)\. The `value` argument is required\. If you don’t want the resource to have a specific tag value, don’t specify a value for the `value` argument\. Amazon Pinpoint will set the value to an empty string\.
++ *value* is the optional tag value that you want to add for the specified tag key \(`key`\)\. The `value` argument is required\. If you don’t want the resource to have a specific tag value, don’t specify a value for the `value` argument\. Amazon Pinpoint sets the value to an empty string\.
 
 ------
 #### [ REST API ]
 
-To create a new resource and add a tag to it by using the Amazon Pinpoint REST API, send a POST request to the appropriate resource URI and include the `tags` parameter and values in the body of the request\. For example, the following request creates a new project named `ExampleCorp` and adds a `Stack` tag key with a `Test` tag value to the project:
+To create a new resource and add a tag to it by using the Amazon Pinpoint REST API, send a POST request to the appropriate resource URI\. Include the `tags` parameter and values in the body of the request\. For example, the following request creates a new project named `ExampleCorp` and adds a `Stack` tag key with a `Test` tag value to the project:
 
 ```
 POST /v1/apps HTTP/1.1
@@ -101,7 +101,7 @@ Cache-Control: no-cache
 }
 ```
 
-To add a tag to an existing resource, send a POST request to the [Tags](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-tags.html) URI and include the Amazon Resource Name \(ARN\) of the resource in the URI\. The ARN should be URL encoded\. In the body of the request, include the `tags` parameter and values\. For example, the following request adds a `Stack` tag key with a `Test` tag value to the specified project \(*resource\-arn*\):
+To add a tag to an existing resource, send a POST request to the [Tags](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-tags.html) URI\. Include the Amazon Resource Name \(ARN\) of the resource in the URI\. The ARN should be URL encoded\. In the body of the request, include the `tags` parameter and values\. For example, the following request adds a `Stack` tag key with a `Test` tag value to the specified project \(*resource\-arn*\):
 
 ```
 POST /v1/tags/resource-arn HTTP/1.1
@@ -155,7 +155,7 @@ C:\> aws pinpoint list-tags-for-resource ^
      --resource-arn resource-arn
 ```
 
-To display a list of all the Amazon Pinpoint resources that have tags, and all the tags that are associated with each of those resources, use the `get-resources` command of the AWS Resource Groups Tagging API and set the `resource-type-filters` parameter to `mobiletargeting`\. For example:
+To display a list of all the Amazon Pinpoint resources that have tags, and all the tags that are associated with each of those resources, use the `get-resources` command of the AWS Resource Groups Tagging API\. Set the `resource-type-filters` parameter to `mobiletargeting`\. For example:
 
 ```
 C:\> aws resourcegroupstaggingapi get-resources ^
@@ -211,7 +211,7 @@ To update a tag value \(of a tag key\) for only one resource, you can use the Am
 
 You can use the AWS CLI to update a tag value for a resource\.
 
-To do this by specifying a resource ID, use the appropriate `update` command for the resource type and include the `tags` parameter and arguments\. For example, the following command changes the tag value from `Test` to `Production` for the `Stack` tag key that's associated with the specified campaign:
+To do this by specifying a resource ID, use the appropriate `update` command for the resource type\. Include the `tags` parameter and arguments\. For example, the following command changes the tag value from `Test` to `Production` for the `Stack` tag key that's associated with the specified campaign:
 
 ```
 C:\> aws pinpoint update-campaign ^
@@ -237,14 +237,14 @@ C:\> aws pinpoint tag-resource ^
 Where:
 + *resource\-arn* is the ARN of the resource whose tag you want to update\. To get a list of ARNs for Amazon Pinpoint resources, you can [display a list of Amazon Pinpoint resources that have tags](#tags-display)\.
 + *key* is the tag key\. The `key` argument is required\.
-+ *value* is the new tag value to use for the specified tag key \(`key`\)\. The `value` argument is required\. To remove the tag value, don’t specify a value for this argument\. Amazon Pinpoint will set the value to an empty string\.
++ *value* is the new tag value to use for the specified tag key \(`key`\)\. The `value` argument is required\. To remove the tag value, don’t specify a value for this argument\. Amazon Pinpoint sets the value to an empty string\.
 
 ------
 #### [ REST API ]
 
 You can use the Amazon Pinpoint REST API to update a tag value for a resource\. To do this, send a PUT request to the appropriate URI for the type of resource whose tag you want to update\. In the body of the request, include the `tags` parameter and values\. For the `tags` parameter, specify the corresponding tag key for the `tag` property\. For the `value` property, do one of the following:
 + To use a new value, specify the value\.
-+ To remove the value, don’t specify a value\. Amazon Pinpoint will set the value to an empty string\.
++ To remove the value, don’t specify a value\. Amazon Pinpoint sets the value to an empty string\.
 
 For example, the following request changes the tag value from `Test` to `Production` for the `Stack` tag key that's associated with the specified campaign:
 
@@ -277,7 +277,7 @@ To remove a tag from multiple Amazon Pinpoint resources in a single operation, u
 ------
 #### [ AWS CLI ]
 
-To remove a tag from a resource by using the AWS CLI, run the `untag-resource` command and include the `tag-keys` parameter and argument:
+To remove a tag from a resource by using the AWS CLI, run the `untag-resource` command\. Include the `tag-keys` parameter and argument:
 
 ```
 C:\> aws pinpoint untag-resource ^
