@@ -6,7 +6,7 @@ Importing segments is useful if you've already created segments of your users ou
 
 When you import a segment, Amazon Pinpoint gets the segment's endpoints from Amazon Simple Storage Service \(Amazon S3\)\. Before you import, you add the endpoints to Amazon S3, and you create an IAM role that grants Amazon Pinpoint access to Amazon S3\. Then, you give Amazon Pinpoint the Amazon S3 location where the endpoints are stored, and Amazon Pinpoint adds each endpoint to the segment\.
 
-To create the IAM role, see [IAM Role for Importing Endpoints or Segments](permissions-import-segment.md)\. For information about importing a segment by using the Amazon Pinpoint console, see [Importing Segments](https://docs.aws.amazon.com/pinpoint/latest/userguide/segments-importing.html) in the *Amazon Pinpoint User Guide*\.
+To create the IAM role, see [IAM Role for Importing Endpoints or SegmentsImporting Endpoints or Segments](permissions-import-segment.md)\. For information about importing a segment by using the Amazon Pinpoint console, see [Importing Segments](https://docs.aws.amazon.com/pinpoint/latest/userguide/segments-importing.html) in the *Amazon Pinpoint User Guide*\.
 
 ## Importing a Segment<a name="segments-importing-example-java"></a>
 

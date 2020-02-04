@@ -5,23 +5,19 @@
 | --- |
 | This is prerelease documentation for a feature in public beta release\. It is subject to change\. | 
 
-You can use AWS Lambda to tailor how an Amazon Pinpoint campaign engages your target audience\. With AWS Lambda, you can modify the campaign's segment at the moment that Amazon Pinpoint delivers the campaign's message\.
+You can use AWS Lambda to tailor how an Amazon Pinpoint campaign engages your target audience\. With AWS Lambda, you can modify the campaign's segment the moment when Amazon Pinpoint sends the campaign's message\.
 
-AWS Lambda is a compute service that you can use to run code without provisioning or managing servers\. You package your code and upload it to Lambda as *Lambda functions*\. Lambda runs a function when the function is invoked, which might be done manually by you or automatically in response to events\.
+AWS Lambda is a compute service that you can use to run code without provisioning or managing servers\. You package your code and upload it to Lambda as *Lambda functions*\. Lambda runs a function when the function is invoked, which might be done manually by you or automatically in response to events\. For more information, see the [AWS Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)\.
 
-For more information, see [Lambda Functions](https://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction-function.html) in the *AWS Lambda Developer Guide*\.
-
-To assign a Lambda function to a campaign, you define the campaign's `CampaignHook` settings by using the [Campaign](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-campaigns-campaign-id.html) resource in the Amazon Pinpoint API\. These settings include the Lambda function name\. They also include the `CampaignHook` mode, which sets whether Amazon Pinpoint receives a return value from the function\.
+To assign a Lambda function to a campaign, you define the campaign's `CampaignHook` settings by using the [Campaign](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-campaigns-campaign-id.html) resource in the Amazon Pinpoint API\. These settings include the Lambda function name\. They also include the `CampaignHook` mode, which specifies whether Amazon Pinpoint receives a return value from the function\.
 
 A Lambda function that you assign to a campaign is referred to as an Amazon Pinpoint *extension*\.
 
-With the `CampaignHook` settings defined, Amazon Pinpoint automatically invokes the Lambda function when it runs the campaign, before it delivers the campaign's message\. When Amazon Pinpoint invokes the function, it provides *event data* about the message delivery\. This data includes the campaign's segment, which is the list of endpoints that Amazon Pinpoint sends the message to\.
+With the `CampaignHook` settings defined, Amazon Pinpoint automatically invokes the Lambda function when it runs the campaign, before it sends the campaign's message\. When Amazon Pinpoint invokes the function, it provides *event data* about the message delivery\. This data includes the campaign's segment, which is the list of endpoints that Amazon Pinpoint sends the message to\.
 
 If the `CampaignHook` mode is set to `FILTER`, Amazon Pinpoint allows the function to modify and return the segment before sending the message\. For example, the function might update the endpoint definitions with attributes that contain data from a source that is external to Amazon Pinpoint\. Or, the function might filter the segment by removing certain endpoints, based on conditions in your function code\. After Amazon Pinpoint receives the modified segment from your function, it sends the message to each of the segment's endpoints using the campaign's delivery channel\.
 
-By processing your segments with AWS Lambda, you have more control over who you send messages to and what those messages contain\. You can tailor your campaigns in real time, at the moment campaign messages are delivered\. Filtering segments enables you to engage more narrowly defined subsets of your segments\. Adding or updating endpoint attributes enables you to make new data available for message variables\.
-
-For more information about message variables, see [Message Variables](https://docs.aws.amazon.com/pinpoint/latest/userguide/campaigns-message.html#campaigns-message-variables) in the *Amazon Pinpoint User Guide*\.
+By processing your segments with AWS Lambda, you have more control over who you send messages to and what those messages contain\. You can tailor your campaigns in real time, at the moment when campaign messages are sent\. Filtering segments enables you to engage more narrowly defined subsets of your segments\. Adding or updating endpoint attributes also enables you to make new data available for message variables\.
 
 **Note**  
 You can also use the `CampaignHook` settings to assign a Lambda function that handles the message delivery\. This type of function is useful for delivering messages through custom channels that Amazon Pinpoint doesn't support, such as social media platforms\. For more information, see [Creating Custom Channels with AWS Lambda](channels-custom.md)\.
@@ -50,7 +46,7 @@ When Amazon Pinpoint invokes your Lambda function, it provides the following pay
 AWS Lambda passes the event data to your function code\. The event data provides the following attributes:
 + `MessageConfiguration` – Has the same structure as the `DirectMessageConfiguration` object of the [Messages](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-messages.html) resource in the Amazon Pinpoint API\. 
 + `ApplicationId` – The ID of the Amazon Pinpoint project that the campaign belongs to\.
-+ `CampaignId` – The ID of the Amazon Pinpoint project that the function is invoked for\.
++ `CampaignId` – The ID of the Amazon Pinpoint campaign that the function is invoked for\.
 + `TreatmentId` – The ID of a campaign variation that's used for A/B testing\.
 + `ActivityId` – The ID of the activity that's being performed by the campaign\.
 + `ScheduledTime` – The date and time, in ISO 8601 format, when the campaign's messages will be delivered\.
@@ -58,12 +54,10 @@ AWS Lambda passes the event data to your function code\. The event data provides
 
 ## Creating a Lambda Function<a name="segments-dynamic-lambda-create"></a>
 
-To create a Lambda function, see [Building Lambda Functions](https://docs.aws.amazon.com/lambda/latest/dg/lambda-app.html) in the *AWS Lambda Developer Guide*\.
-
-When you create your function, remember that the message delivery fails in the following conditions:
+To learn how to create a Lambda function, see [Getting Started](https://docs.aws.amazon.com/lambda/latest/dg/getting-started.html) in the *AWS Lambda Developer Guide*\. When you create your function, remember that message delivery fails in the following conditions:
 + The Lambda function takes longer than 15 seconds to return the modified segment\.
 + Amazon Pinpoint can't decode the function's return value\.
-+ The function requires more than 3 attempts from Amazon Pinpoint to successfully invoke\.
++ The function requires more than 3 attempts from Amazon Pinpoint to successfully invoke it\.
 
 Amazon Pinpoint only accepts endpoint definitions in the function's return value\. The function can't modify other elements in the event data\.
 
@@ -133,18 +127,18 @@ The example function modifies and returns the `event.Endpoints` object that it r
 Optionally, you can include the `TitleOverride` and `BodyOverride` attributes in the endpoint definitions that you return\.
 
 **Note**  
-When you use this solution to send messages, Amazon Pinpoint only honors the `TitleOverride` and `BodyOverride` attributes for endpoints where the value of the `ChannelType` attribute is one of the following: `SMS`, `GCM`, `APNS`, `APNS_SANDBOX`, `APNS_VOIP`, `APNS_VOIP_SANDBOX`, `ADM`, or `BAIDU`\.  
+When you use this solution to send messages, Amazon Pinpoint honors the `TitleOverride` and `BodyOverride` attributes only for endpoints where the value of the `ChannelType` attribute is one of the following: `ADM`, `APNS`, `APNS_SANDBOX`, `APNS_VOIP`, `APNS_VOIP_SANDBOX`, `BAIDU`, `GCM`, or `SMS`\.  
 Amazon Pinpoint **doesn't** honor these attributes for endpoints where the value of the `ChannelType` attribute is `EMAIL`\.
 
 ## Assigning a Lambda Function Policy<a name="segments-dynamic-lambda-trust-policy"></a>
 
 Before you can use your Lambda function to process your endpoints, you must authorize Amazon Pinpoint to invoke your Lambda function\. To grant invocation permission, assign a *Lambda function policy* to the function\. A Lambda function policy is a resource\-based permissions policy that designates which entities can use your function and what actions those entities can take\.
 
-For more information, see [Using Resource\-Based Policies for AWS Lambda \(Lambda Function Policies\)](https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html) in the *AWS Lambda Developer Guide*\.
+For more information, see [Using Resource\-Based Policies for AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html) in the *AWS Lambda Developer Guide*\.
 
 ### Example Function Policy<a name="segments-dynamic-lambda-trust-policy-example"></a>
 
-The following policy grants permission to the Amazon Pinpoint service principal to use the `lambda:InvokeFunction` action:
+The following policy grants permission to the Amazon Pinpoint service principal to use the `lambda:InvokeFunction` action for a specific campaign \(*campaign\-id*\):
 
 ```
 {
@@ -163,19 +157,23 @@ The following policy grants permission to the Amazon Pinpoint service principal 
 }
 ```
 
-Your function policy requires a `Condition` block that includes an `AWS:SourceArn` key\. This code states which Amazon Pinpoint campaign is allowed to invoke the function\. In this example, the policy grants permission to only a single campaign ID\. To write a more generic policy, use multi\-character match wildcards \(\*\)\. For example, you can use the following `Condition` block to allow any Amazon Pinpoint campaign in your AWS account to invoke the function:
+Your function policy requires a `Condition` block that includes an `AWS:SourceArn` key\. This code states which Amazon Pinpoint campaign is allowed to invoke the function\. In this example, the policy grants permission to only a single campaign\.
+
+To write a more generic policy, use a multicharacter match wildcard \(\*\)\. For example, you can use the following `Condition` block to allow any campaign in a specific Amazon Pinpoint project \(*application\-id*\) to invoke the function:
 
 ```
 "Condition": {
   "ArnLike": {
-    "AWS:SourceArn": "arn:aws:mobiletargeting:us-east-1:account-id:/apps/*"
+    "AWS:SourceArn": "arn:aws:mobiletargeting:us-east-1:account-id:/apps/application-id/campaigns/*"
   }
 }
 ```
 
+If you want the Lambda function to be the default function that's used by all the campaigns for a project, we recommend that you configure the `Condition` block for the policy in the preceding way\. For information about setting a Lambda function as the default for all campaigns in a project, see *Assigning a Lambda Function to a Campaign* later in this topic\.
+
 ### Granting Amazon Pinpoint Invocation Permission<a name="segments-dynamic-lambda-trust-policy-assign"></a>
 
-You can use the AWS Command Line Interface \(AWS CLI\) to add permissions to the Lambda function policy assigned to your Lambda function\. To allow Amazon Pinpoint to invoke a function, use the Lambda [https://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html](https://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html) command, as shown by the following example:
+You can use the AWS Command Line Interface \(AWS CLI\) to add permissions to the Lambda function policy assigned to your Lambda function\. To allow Amazon Pinpoint to invoke a function for a specific campaign, use the Lambda [https://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html](https://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html) command, as shown in the following example:
 
 ```
 $ aws lambda add-permission \
@@ -186,7 +184,7 @@ $ aws lambda add-permission \
 > --source-arn arn:aws:mobiletargeting:us-east-1:account-id:/apps/application-id/campaigns/campaign-id
 ```
 
-If you want to provide a campaign ID for the `--source-arn` parameter, you can look up your campaign IDs by using the Amazon Pinpoint [https://docs.aws.amazon.com/cli/latest/reference/pinpoint/get-campaigns.html](https://docs.aws.amazon.com/cli/latest/reference/pinpoint/get-campaigns.html) command with the AWS CLI\. This command requires an `--application-id` parameter\. To look up your application IDs, sign in to the Amazon Pinpoint console at [https://console\.aws\.amazon\.com/pinpoint/](https://console.aws.amazon.com/pinpoint/), and go to the **Projects** page\. The console shows an **ID** for each project, which is the project's application ID\.
+If you want to provide a campaign ID for the `--source-arn` parameter, you can look up your campaign IDs by using the Amazon Pinpoint [https://docs.aws.amazon.com/cli/latest/reference/pinpoint/get-campaigns.html](https://docs.aws.amazon.com/cli/latest/reference/pinpoint/get-campaigns.html) command with the AWS CLI\. This command requires an `--application-id` parameter\. To look up your application IDs, sign in to the Amazon Pinpoint console at [https://console\.aws\.amazon\.com/pinpoint/](https://console.aws.amazon.com/pinpoint/), and go to the **All projects** page\. The console shows a **Project ID** for each project, which is the project's application ID\.
 
 When you run the Lambda `add-permission` command, AWS Lambda returns the following output:
 
@@ -204,7 +202,7 @@ When you run the Lambda `add-permission` command, AWS Lambda returns the followi
 }
 ```
 
-The `Statement` value is a JSON string version of the statement added to the Lambda function policy\.
+The `Statement` value is a JSON string version of the statement that was added to the Lambda function policy\.
 
 ## Assigning a Lambda Function to a Campaign<a name="segments-dynamic-assign"></a>
 

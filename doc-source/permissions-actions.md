@@ -1,234 +1,20 @@
-# IAM Policies for Amazon Pinpoint Users<a name="permissions-actions"></a>
+# Amazon Pinpoint Actions for IAM Policies<a name="permissions-actions"></a>
 
-You can add Amazon Pinpoint API actions to AWS Identity and Access Management \(IAM\) policies to allow or deny specific actions for Amazon Pinpoint users in your account\. The Amazon Pinpoint API actions in your policies control what users can do in the Amazon Pinpoint console\. These actions also control which programmatic requests users can make with the AWS SDKs, the AWS Command Line Interface \(AWS CLI\), or the Amazon Pinpoint APIs\.
+To manage access to Amazon Pinpoint resources in your AWS account, you can add Amazon Pinpoint actions to AWS Identity and Access Management \(IAM\) policies\. By using actions in policies, you can control what users can do on the Amazon Pinpoint console\. You can also control what users can do programmatically by using the AWS SDKs, the AWS Command Line Interface \(AWS CLI\), or the Amazon Pinpoint APIs directly\.
 
-In a policy, you specify each action with the `mobiletargeting` namespace followed by a colon and the name of the action, such as `GetSegments`\. Most actions correspond to a request to the Amazon Pinpoint API using a specific URI and HTTP method\. For example, if you allow the `mobiletargeting:GetSegments` action in a user's policy, the user is allowed to make an HTTP GET request against the [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segments.html#rest-api-segments-list](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segments.html#rest-api-segments-list) URI\. This policy also allows the user to view the segments for a project in the console, and to retrieve the segments by using an AWS SDK or the AWS CLI\.
+In a policy, you specify each action with the appropriate Amazon Pinpoint namespace followed by a colon and the name of the action, such as `GetSegments`\. Most actions correspond to a request to the Amazon Pinpoint API using a specific URI and HTTP method\. For example, if you allow the `mobiletargeting:GetSegments` action in a user's policy, the user is allowed to retrieve information about all the segments for a project by submitting an HTTP GET request to the [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segments.html#rest-api-segments-list](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segments.html#rest-api-segments-list) URI\. This policy also allows the user to view that information on the console, and retrieve that information by using an AWS SDK or the AWS CLI\.
 
 Each action is performed on a specific Amazon Pinpoint resource, which you identify in a policy statement by its Amazon Resource Name \(ARN\)\. For example, the `mobiletargeting:GetSegments` action is performed on a specific project, which you identify with the ARN, `arn:aws:mobiletargeting:region:accountId:apps/projectId`\.
 
-**Note**  
-As a best practice, you should create policies that follow the principle of *least privilege*\. In other words, when you create IAM policies, they should include only the minimum permissions required to perform the task that you need to perform\. For more information, see the [IAM User Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege)\.
+This topic identifies Amazon Pinpoint actions that you can add to IAM policies for your AWS account\. To see examples that demonstrate how you can use actions in policies to manage access to Amazon Pinpoint resources, see [Amazon Pinpoint Identity\-Based Policy Examples](security_iam_id-based-policy-examples.md) and [Amazon Pinpoint Resource\-Based Policy Examples](security_iam_resource-based-policy-examples.md)\.
 
 **Topics**
-+ [Example Policies](#permissions-actions-examples)
 + [Amazon Pinpoint API Actions](#permissions-actions-apiactions)
 + [Amazon Pinpoint SMS and Voice API Actions](#permissions-actions-sms-voice-apiactions)
 
-## Example Policies<a name="permissions-actions-examples"></a>
-
-The following examples demonstrate how you can manage Amazon Pinpoint access with IAM policies\.
-
-### Amazon Pinpoint API Actions<a name="permissions-actions-examples-pin-api"></a>
-
-#### Amazon Pinpoint Administrator<a name="permissions-actions-examples-admin"></a>
-
-The following policy allows full access to all Amazon Pinpoint actions and resources:
-
-```
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "mobiletargeting:*"
-            ],
-            "Resource": "arn:aws:mobiletargeting:*:accountId:*"
-        }
-    ]
-}
-```
-
-In the preceding policy example, replace *accountId* with your AWS account ID\.
-
-#### Read\-Only Access<a name="permissions-actions-examples-readonly"></a>
-
-The following policy allows read\-only access to all the projects in your Amazon Pinpoint account in a specific AWS Region\. This policy applies only to the Amazon Pinpoint API\. For a policy that you can use to create read\-only access for console users, see the [next section](#permissions-actions-examples-console-readonly)\.
-
-```
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Action": [
-                "mobiletargeting:Get*"
-            ],
-            "Effect": "Allow",
-            "Resource": "arn:aws:mobiletargeting:region:accountId:*"
-        }
-    ]
-}
-```
-
-In the preceding policy example, replace *region* with the name of an AWS Region, and replace *accountId* with your AWS account ID\.
-
-#### Console Read\-Only Access<a name="permissions-actions-examples-console-readonly"></a>
-
-The following policy provides users with read\-only access to the Amazon Pinpoint console in a specific AWS Region\. It includes read\-only access to other services that the Amazon Pinpoint console depends on, such as Amazon SES, IAM, and Kinesis\.
-
-```
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": "mobiletargeting:Get*",
-            "Resource": "arn:aws:mobiletargeting:region:accountId:*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "firehose:ListDeliveryStreams",
-                "iam:ListRoles",
-                "kinesis:ListStreams",
-                "s3:List*",
-                "ses:Describe*",
-                "ses:Get*",
-                "ses:List*",
-                "sns:ListTopics"
-            ],
-            "Resource": "*"
-        }
-    ]
-}
-```
-
-In the preceding policy example, replace *region* with the name of an AWS Region, and replace *accountId* with your AWS account ID\.
-
-You can also create read\-only policies that provide access to only specific projects\. The following policy lets users sign in to the console and view a list of projects\. However, it only lets users view additional information about the project that's specified in the policy\. You can modify this policy to allow access to additional projects or Regions\.
-
-```
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": "mobiletargeting:GetApps",
-            "Resource": "arn:aws:mobiletargeting:region:accountId:*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": "mobiletargeting:Get*",
-            "Resource": [
-                "arn:aws:mobiletargeting:region:accountId:apps/projectId",
-                "arn:aws:mobiletargeting:region:accountId:apps/projectId/*",
-                "arn:aws:mobiletargeting:region:accountId:reports"
-            ]
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ses:Get*",
-                "kinesis:ListStreams",
-                "firehose:ListDeliveryStreams",
-                "iam:ListRoles",
-                "ses:List*",
-                "sns:ListTopics",
-                "ses:Describe*",
-                "s3:List*"
-            ],
-            "Resource": "*"
-        }
-    ]
-}
-```
-
-In the preceding policy example, replace *region* with the name of an AWS Region, replace *accountId* with your AWS account ID, and replace *projectId* with the ID of the Amazon Pinpoint project that you want to provide access to\.
-
-### Amazon Pinpoint SMS and Voice API Actions<a name="permissions-actions-examples-pin-sms-voice-api"></a>
-
-#### Administrator Access<a name="permissions-actions-examples-pin-sms-voice-api-admin"></a>
-
-The following policy grants full access to the Amazon Pinpoint SMS and Voice API:
-
-```
-{
-    "Version": "2018-09-05",
-    "Statement": [
-        {
-            "Action": [
-                "sms-voice:*"
-            ],
-            "Effect": "Allow",
-            "Resource": "*"
-        }
-    ]
-}
-```
-
-#### Read\-Only Access<a name="permissions-actions-examples-pin-sms-voice-api-readonly"></a>
-
-The following policy allows read\-only access to the Amazon Pinpoint SMS and Voice API:
-
-```
-{
-    "Version": "2018-09-05",
-    "Statement": [
-        {
-            "Action": [
-                "sms-voice:Get*",
-                "sms-voice:List*",
-            ],
-            "Effect": "Allow",
-            "Resource": "*"
-        }
-    ]
-}
-```
-
-### Amazon Pinpoint Email API Actions<a name="permissions-actions-examples-pin-email-api"></a>
-
-#### Administrator Access<a name="permissions-actions-examples-pin-email-api-admin"></a>
-
-The following policy grants full access to the Amazon Pinpoint Email API:
-
-```
-{
-    "Version": "2018-09-05",
-    "Statement": [
-        {
-            "Action": [
-                "ses:*"
-            ],
-            "Effect": "Allow",
-            "Resource": "*"
-        }
-    ]
-}
-```
-
-**Note**  
-This policy also grants full access to the Amazon Simple Email Service \(Amazon SES\) API\.
-
-#### Read\-Only Access<a name="permissions-actions-examples-pin-email-api-readonly"></a>
-
-The following policy allows read\-only access to the Amazon Pinpoint Email API:
-
-```
-{
-    "Version": "2018-09-05",
-    "Statement": [
-        {
-            "Action": [
-                "ses:Describe*",
-                "ses:Get*",
-                "ses:List*"
-            ],
-            "Effect": "Allow",
-            "Resource": "*"
-        }
-    ]
-}
-```
-
-**Note**  
-This policy also grants read\-only access to the Amazon SES API\.
-
 ## Amazon Pinpoint API Actions<a name="permissions-actions-apiactions"></a>
 
-This section identifies API actions that you can add to the IAM policies in your AWS account\. By adding policies to an IAM user account, you can specify which Amazon Pinpoint features that user is allowed to use\.
-
-To learn more about the Amazon Pinpoint API, see the [Amazon Pinpoint API Reference](https://docs.aws.amazon.com/pinpoint/latest/apireference/)\.
+This section identifies actions for features that are available from the Amazon Pinpoint API, which is the primary API for Amazon Pinpoint\. To learn more about this API, see the [Amazon Pinpoint API Reference](https://docs.aws.amazon.com/pinpoint/latest/apireference/)\.
 
 **Topics**
 + [Analytics and Metrics](#permissions-actions-apiactions-metrics)
@@ -249,7 +35,7 @@ To learn more about the Amazon Pinpoint API, see the [Amazon Pinpoint API Refere
 
 ### Analytics and Metrics<a name="permissions-actions-apiactions-metrics"></a>
 
-The following permissions are related to viewing analytics data on the Amazon Pinpoint console\. They are also related to retrieving \(querying\) aggregated data for standard metrics, also referred to as *key performance indicators \(KPIs\)*, that apply to projects, campaigns, and journeys\.
+The following permissions are related to viewing analytics data on the Amazon Pinpoint console\. They're also related to retrieving \(querying\) aggregated data for standard metrics, also referred to as *key performance indicators \(KPIs\)*, that apply to projects, campaigns, and journeys\.
 
 **`mobiletargeting:GetReports`**  
 View analytics data on the Amazon Pinpoint console\.  
@@ -883,7 +669,7 @@ Update a specific segment\.
 
 ### Tags<a name="permissions-actions-apiactions-tags"></a>
 
-The following permissions are related to tagging resources in your Amazon Pinpoint account\.
+The following permissions are related to viewing and managing tags for Amazon Pinpoint resources\.
 
 **`mobiletargeting:ListTagsforResource`**  
 Retrieve information about the tags that are associated with a project, campaign, message template, or segment\.  
@@ -921,9 +707,7 @@ Retrieve information about all the endpoints that are associated with a user ID\
 
 ## Amazon Pinpoint SMS and Voice API Actions<a name="permissions-actions-sms-voice-apiactions"></a>
 
-This section identifies API actions that you can add to the IAM policies in your AWS account\. By adding policies to an IAM user account, you can specify which Amazon Pinpoint SMS and Voice API features that user is allowed to use\.
-
-To learn more about the Amazon Pinpoint SMS and Voice API, see the [Amazon Pinpoint SMS and Voice API Reference](https://docs.aws.amazon.com/pinpoint-sms-voice/latest/APIReference/)\.
+This section identifies actions for features that are available from the Amazon Pinpoint SMS and Voice API\. This is a supplemental API that provides advanced options for using and managing the SMS and voice channels in Amazon Pinpoint\. To learn more about this API, see the [Amazon Pinpoint SMS and Voice API Reference](https://docs.aws.amazon.com/pinpoint-sms-voice/latest/APIReference/)\.
 
 **`sms-voice:CreateConfigurationSet`**  
 Create a configuration set for sending voice messages\.  

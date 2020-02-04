@@ -1,10 +1,11 @@
 # Document History for Amazon Pinpoint<a name="doc-history"></a>
 
 The following table describes important changes in each release of the *Amazon Pinpoint Developer Guide* after December 2018\. For notification about updates to this documentation, you can subscribe to an RSS feed\.
-+ **Latest documentation update:** October 31, 2019
++ **Latest documentation update:** February 4, 2020
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [New content](#doc-history) | Added a [Security chapter](https://docs.aws.amazon.com/pinpoint/latest/developerguide/security.html), which provides information about various security controls and features of Amazon Pinpoint\. | February 4, 2020 | 
 | [Journeys support](#doc-history) | You can now use Amazon Pinpoint journeys to develop automated workflows that perform messaging activities for projects\. You can also [query analytics data](https://docs.aws.amazon.com/pinpoint/latest/developerguide/analytics.html) for a subset of metrics that apply to journeys\. | October 31, 2019 | 
 | [Analytics](#doc-history) | Added procedures that explain how to [query analytics data](https://docs.aws.amazon.com/pinpoint/latest/developerguide/analytics.html) for campaigns and transactional messages, and added information about [using query results](https://docs.aws.amazon.com/pinpoint/latest/developerguide/analytics-query-results.html)\. | October 17, 2019 | 
 | [Analytics](#doc-history) | Added information about [querying analytics data](https://docs.aws.amazon.com/pinpoint/latest/developerguide/analytics.html) for a subset of metrics that apply to transactional email and SMS messages\. | September 6, 2019 | 
@@ -14,7 +15,7 @@ The following table describes important changes in each release of the *Amazon P
 | [Regional availability](#doc-history) | Amazon Pinpoint is now available in the AWS Asia Pacific \(Mumbai\) and Asia Pacific \(Sydney\) Regions\. | April 25, 2019 | 
 | [Using Postman with Amazon Pinpoint](#doc-history) | Added a [tutorial](https://docs.aws.amazon.com/pinpoint/latest/developerguide/tutorials-using-postman.html) that describes how to use Postman to interact with the Amazon Pinpoint API\. | April 8, 2019 | 
 | [Tagging support](#doc-history) | Added information about [tagging Amazon Pinpoint resources](https://docs.aws.amazon.com/pinpoint/latest/developerguide/tagging-resources.html)\. | February 27, 2019 | 
-| [Setting up an SMS registration system](#doc-history) | Added a [Tutorials section](https://docs.aws.amazon.com/pinpoint/latest/developerguide/tutorials.html), and added a tutorial that describes how to create [a solution that handles SMS user registration](https://docs.aws.amazon.com/pinpoint/latest/developerguide/tutorials-two-way-sms.html)\. | February 27, 2019 | 
+| [Setting up an SMS registration system](#doc-history) | Added a [Tutorials chapter](https://docs.aws.amazon.com/pinpoint/latest/developerguide/tutorials.html), and added a tutorial that describes how to create [a solution that handles SMS user registration](https://docs.aws.amazon.com/pinpoint/latest/developerguide/tutorials-two-way-sms.html)\. | February 27, 2019 | 
 | [Code examples](#doc-history) | Added [code examples](https://docs.aws.amazon.com/pinpoint/latest/developerguide/send-messages.html) in several programming languages that show you how to send [email](https://docs.aws.amazon.com/pinpoint/latest/developerguide/send-messages-email.html), [SMS](https://docs.aws.amazon.com/pinpoint/latest/developerguide/send-messages-sms.html), and [voice](https://docs.aws.amazon.com/pinpoint/latest/developerguide/send-messages-voice.html) messages programmatically\. | February 6, 2019 | 
 
 ## Earlier Updates<a name="doc-releases-archive"></a>
@@ -33,11 +34,11 @@ The following table describes important changes in each release of the *Amazon P
 | Phone number verification for SMS | Use the Amazon Pinpoint API to [verify a phone number](validate-phone-numbers.md) to determine whether it is a valid destination for SMS messages\. | April 23, 2018 | 
 | Updated topics for Amazon Pinpoint integration | [Integrate Amazon Pinpoint](integrate.md) with your Android, iOS, or JavaScript application by using AWS SDKs or libraries\. | March 23, 2018 | 
 | AWS CloudTrail logging | Added information about [logging Amazon Pinpoint API calls with CloudTrail](logging-using-cloudtrail.md)\. | February 6, 2018 | 
-| Updated service limits | Updated [Limits in Amazon Pinpoint](limits.md) with additional information about email limits\. | January 19, 2018 | 
+| Updated service quotas | Updated [Amazon Pinpoint Quotas](quotas.md) with additional information about email quotas\. | January 19, 2018 | 
 | Public beta for Amazon Pinpoint extensions | Use AWS Lambda functions to [customize segments](segments-dynamic.md) or [create custom messaging channels](channels-custom.md)\. | November 28, 2017 | 
 | External ID removed from IAM trust policies | The external ID key is removed from the example [trust policy](permissions-import-segment.md#permissions-import-segment-trustpolicy) and example [Java code](segments-importing.md) for importing segments\. | October 26, 2017 | 
-| Push notification payload limits | The limits include [payload sizes for mobile push messages](limits.md#limits-mobile)\. | October 25, 2017 | 
-| Updated service limits | Added SMS and email channel information to [Limits in Amazon Pinpoint](limits.md)\. | October 9, 2017 | 
+| Push notification payload quotas | The quotas include [payload sizes for mobile push messages](quotas.md#quotas-mobile)\. | October 25, 2017 | 
+| Updated service quotas | Added SMS and email channel information to [Amazon Pinpoint Quotas](quotas.md)\. | October 9, 2017 | 
 | ADM and Baidu mobile push | Update your app code to handle push notifications from the Baidu and ADM mobile push channels\. | September 27, 2017 | 
 | User IDs and authentication events with Amazon Cognito user pools\. | If you use Amazon Cognito user pools to manage user sign\-in in your mobile apps, Amazon Cognito assigns user IDs to endpoints, and it reports authentication events to Amazon Pinpoint\. | September 26, 2017 | 
 | User IDs | Assign user IDs to endpoints to monitor app usage from individual users\. Examples are provided for the [AWS Mobile SDKs](integrate-endpoints.md) and [SDK for Java](audience-define-user.md#audience-define-user-example)\. | August 31, 2017 | 
@@ -46,5 +47,5 @@ The following table describes important changes in each release of the *Amazon P
 | Android session management | Manage sessions in Android apps by using a class provided by the AWS Mobile Hub sample app\. | April 20, 2017 | 
 | Updated monetization event samples | The sample code is updated for reporting monetization events\.  \. | March 31, 2017 | 
 | Event streams | You can configure Amazon Pinpoint to [send your app and campaign events to an Kinesis stream](event-streams.md)\. | March 24, 2017 | 
-| Permissions | See [Permissions](permissions.md) for information about granting access to Amazon Pinpoint for AWS users in your account and users of your mobile app\. | January 12, 2017 | 
+| Permissions | See [How Amazon Pinpoint Works with IAM](security_iam_service-with-iam.md) for information about granting access to Amazon Pinpoint for AWS users in your account and users of your mobile app\. | January 12, 2017 | 
 | Amazon Pinpoint general availability | This release introduces Amazon Pinpoint\. | December 1, 2016 | 

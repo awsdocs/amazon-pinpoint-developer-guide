@@ -16,7 +16,7 @@ Each tag consists of a required *tag key* and an optional *tag value*, both of w
 A tag key can contain as many as 128 characters\. A tag value can contain as many as 256 characters\. The characters can be Unicode letters, numbers, white space, or one of the following symbols: \_ \. : / = \+ \-\. The following additional restrictions apply to tags:
 + Tag keys and values are case sensitive\.
 + For each associated resource, each tag key must be unique and it can have only one value\.
-+ The `aws:` prefix is reserved for use by AWS; you can’t use it in any tag keys or values that you define\. In addition, you can't edit or remove tag keys or values that use this prefix\. Tags that use this prefix don’t count against the limit of 50 tags per resource\.
++ The `aws:` prefix is reserved for use by AWS; you can’t use it in any tag keys or values that you define\. In addition, you can't edit or remove tag keys or values that use this prefix\. Tags that use this prefix don’t count against the quota of 50 tags per resource\.
 + You can't update or delete a resource based only on its tags\. You must also specify the Amazon Resource Name \(ARN\) or resource ID, depending on the operation that you use\.
 + You can associate tags with public or shared resources\. However, the tags are available only for your AWS account, not any other accounts that share the resource\. In addition, the tags are available only for resources that are located in the specified AWS Region for your AWS account\.
 
@@ -26,19 +26,20 @@ To add, display, update, and remove tag keys and values from Amazon Pinpoint res
 
 After you start implementing tags, you can apply tag\-based, resource\-level permissions to AWS Identity and Access Management \(IAM\) policies and API operations\. This includes operations that support adding tags to resources when resources are created\. By using tags in this way, you can implement granular control of which groups and users in your AWS account have permission to create and tag resources, and which groups and users have permission to create, update, and remove tags more generally\.
 
-For example, you can create a policy that allows users to have full access to the Amazon Pinpoint resources that they’ve tagged:
+For example, you can create a policy that allows a user to have full access to all the Amazon Pinpoint resources where their name is a value in the `Owner` tag for the resource:
 
 ```
 {
-   "Version":"2012-10-17",
-   "Statement":[
+   "Version": "2012-10-17",
+   "Statement": [
       {
-         "Effect":"Allow",
-         "Action":"mobiletargeting:*",
-         "Resource":"*",
-         "Condition":{
-            "StringEqualsIgnoreCase":{
-               "aws:ResourceTag/Owner":"${aws:username}"
+         "Sid": "ModifyResourceIfOwner",
+         "Effect": "Allow",
+         "Action": "mobiletargeting:*",
+         "Resource": "*",
+         "Condition": {
+            "StringEqualsIgnoreCase": {
+               "aws:ResourceTag/Owner": "${aws:username}"
             }
          }
       }
@@ -46,7 +47,7 @@ For example, you can create a policy that allows users to have full access to th
 }
 ```
 
-If you define tag\-based, resource\-level permissions, the permissions take effect immediately\. This means that your resources are more secure as soon as they're created, and you can quickly start enforcing the use of tags for new resources\. You can also use resource\-level permissions to control which tag keys and values can be associated with new and existing resources\. For more information, see [Controlling Access Using Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html) in the *AWS IAM User Guide* and [IAM Policies for Amazon Pinpoint Users](permissions-actions.md) in this guide\.
+If you define tag\-based, resource\-level permissions, the permissions take effect immediately\. This means that your resources are more secure as soon as they're created, and you can quickly start enforcing the use of tags for new resources\. You can also use resource\-level permissions to control which tag keys and values can be associated with new and existing resources\. For more information, see [Controlling Access Using Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html) in the *AWS IAM User Guide*\.
 
 ## Adding Tags to Resources<a name="tags-add"></a>
 

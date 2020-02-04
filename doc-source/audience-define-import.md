@@ -8,13 +8,13 @@ You can add or update endpoints in large numbers by importing them from an Amazo
 
 1. Add the endpoints to your Amazon Pinpoint project by importing them from the bucket\.
 
-Each import job can transfer up to 1 GB of data\. In a typical job, where each endpoint is 4 KB or less, you could import around 250,000 endpoints\. You can run up to two concurrent import jobs per AWS account\. If you need more bandwidth for your import jobs, you can submit a service limit increase request with AWS Support\. For more information, see [Requesting a Limit Increase](limits.md#limits-increase)\.
+Each import job can transfer up to 1 GB of data\. In a typical job, where each endpoint is 4 KB or less, you could import around 250,000 endpoints\. You can run up to two concurrent import jobs per AWS account\. If you need more bandwidth for your import jobs, you can submit a service quota increase request to AWS Support\. For more information, see [Requesting a Quota Increase](quotas.md#quotas-increase)\.
 
 ## Before You Begin<a name="audience-define-import-before"></a>
 
 Before you can import endpoints, you need the following resources in your AWS account:
 + An Amazon S3 bucket\. To create a bucket, see [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html) in the *Amazon Simple Storage Service Getting Started Guide*\.
-+ An AWS Identity and Access Management \(IAM\) role that grants Amazon Pinpoint read permissions for your Amazon S3 bucket\. To create the role, see [IAM Role for Importing Endpoints or Segments](permissions-import-segment.md)\.
++ An AWS Identity and Access Management \(IAM\) role that grants Amazon Pinpoint read permissions for your Amazon S3 bucket\. To create the role, see [IAM Role for Importing Endpoints or SegmentsImporting Endpoints or Segments](permissions-import-segment.md)\.
 
 ## Examples<a name="audience-define-import-examples"></a>
 

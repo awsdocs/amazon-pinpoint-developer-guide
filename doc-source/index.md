@@ -1,7 +1,7 @@
 # Amazon Pinpoint Developer Guide
 
 -----
-*****Copyright &copy; 2019 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
+*****Copyright &copy; 2020 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
 Amazon's trademarks and trade dress may not be used in 
@@ -100,12 +100,27 @@ Amazon's trademarks and trade dress may not be used in
 + [Logging Amazon Pinpoint API Calls with AWS CloudTrail](logging-using-cloudtrail.md)
 + [Tagging Amazon Pinpoint Resources](tagging-resources.md)
 + [Deleting Data from Amazon Pinpoint](deleting-data.md)
-+ [Permissions](permissions.md)
-   + [IAM Policies for Amazon Pinpoint Users](permissions-actions.md)
-   + [IAM Role for Importing Endpoints or Segments](permissions-import-segment.md)
-   + [IAM Role for Exporting Endpoints or Segments](permissions-export-endpoints.md)
-   + [IAM Role for Streaming Events to Kinesis](permissions-streams.md)
-   + [IAM Role for Streaming Email Events to Kinesis Data Firehose](permissions-stream-email-events-kinesis.md)
-+ [Limits in Amazon Pinpoint](limits.md)
++ [Security in Amazon Pinpoint](security.md)
+   + [Data Protection in Amazon Pinpoint](security-data-protection.md)
+      + [Data Encryption](security-data-protection-encryption.md)
+      + [Internetwork Traffic Privacy](security-data-protection-internetwork-traffic.md)
+   + [Identity and Access Management for Amazon Pinpoint](security-iam.md)
+      + [How Amazon Pinpoint Works with IAM](security_iam_service-with-iam.md)
+      + [Amazon Pinpoint Actions for IAM Policies](permissions-actions.md)
+      + [Amazon Pinpoint Identity-Based Policy Examples](security_iam_id-based-policy-examples.md)
+      + [Amazon Pinpoint Resource-Based Policy Examples](security_iam_resource-based-policy-examples.md)
+      + [IAM Roles for Common Amazon Pinpoint Tasks](security_iam_roles-common.md)
+         + [IAM Role for Importing Endpoints or Segments](permissions-import-segment.md)
+         + [IAM Role for Exporting Endpoints or Segments](permissions-export-endpoints.md)
+         + [IAM Role for Streaming Events to Kinesis](permissions-streams.md)
+         + [IAM Role for Streaming Email Events to Kinesis Data Firehose](permissions-stream-email-events-kinesis.md)
+      + [Troubleshooting Amazon Pinpoint Identity and Access Management](security_iam_troubleshoot.md)
+   + [Logging and Monitoring in Amazon Pinpoint](security-incident-response.md)
+   + [Compliance Validation for Amazon Pinpoint](security-compliance-validation.md)
+   + [Resilience in Amazon Pinpoint](security-disaster-recovery-resiliency.md)
+   + [Infrastructure Security in Amazon Pinpoint](security-infrastructure-security.md)
+   + [Configuration and Vulnerability Analysis in Amazon Pinpoint](security-vulnerability-analysis-management.md)
++ [Amazon Pinpoint Quotas](quotas.md)
 + [Creating Custom Channels with AWS Lambda](channels-custom.md)
 + [Document History for Amazon Pinpoint](doc-history.md)
++ [AWS Glossary](glossary.md)

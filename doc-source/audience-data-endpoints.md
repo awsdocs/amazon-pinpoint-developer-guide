@@ -22,8 +22,8 @@ $ aws pinpoint get-endpoint \
 > --endpoint-id endpoint-id
 ```
 Where:  
-+ *application\-id* is the ID of the Amazon Pinpoint project that contains the endpoint\.
-+ *endpoint\-id* is the ID of the endpoint that you're looking up\.
++ `application-id` is the ID of the Amazon Pinpoint project that contains the endpoint\.
++ `endpoint-id` is the ID of the endpoint that you're looking up\.
 The response to this command is the JSON definition of the endpoint, as in the following example:  
 
 ```
@@ -150,7 +150,7 @@ public class LookUpEndpoint {
     }
 }
 ```
-To print the endpoint data in a readable format, this example uses the Google GSON library to convert the EndpointResponse object into a JSON string\.
+To print the endpoint data in a readable format, this example uses the Google GSON library to convert the `EndpointResponse` object to a JSON string\.
 
 ------
 #### [ HTTP ]
@@ -168,8 +168,8 @@ Accept: application/json
 Cache-Control: no-cache
 ```
 Where:  
-+ *application\-id* is the ID of the Amazon Pinpoint project that contains the endpoint\.
-+ *endpoint\-id* is the ID of the endpoint that you're looking up\.
++ `application-id` is the ID of the Amazon Pinpoint project that contains the endpoint\.
++ `endpoint-id` is the ID of the endpoint that you're looking up\.
 The response to this request is the JSON definition of the endpoint, as in the following example:  
 
 ```

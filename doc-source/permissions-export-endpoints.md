@@ -8,9 +8,9 @@ To create an export job, you have to configure an IAM role that allows Amazon Pi
 
 1. Create an IAM role and attach the policy to it\.
 
-This section contains procedures for completing both of these steps\. These procedures assume that you've already created an Amazon S3 bucket, and a folder in that bucket, for storing exported segments\. For more information about creating buckets, see [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html) in the *Amazon Simple Storage Service Getting Started Guide*\. 
+This topic contains procedures for completing both of these steps\. These procedures assume that you've already created an Amazon S3 bucket, and a folder in that bucket, for storing exported segments\. For information about creating buckets, see [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html) in the *Amazon Simple Storage Service Getting Started Guide*\. 
 
-These procedures also assume that you've already installed and configured the AWS CLI\. For more information about setting up the AWS CLI, see [Installing the AWS Command Line Interface](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) in the *AWS Command Line Interface User Guide*\.
+These procedures also assume that you've already installed and configured the AWS Command Line Interface \(AWS CLI\)\. For information about setting up the AWS CLI, see [Installing the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) in the *AWS Command Line Interface User Guide*\.
 
 ## Step 1: Create the IAM Policy<a name="permissions-export-endpoints-create-policy"></a>
 
@@ -79,7 +79,7 @@ An IAM policy defines the permissions for an entity, such as an identity or reso
 
    When you finish, save the file as `s3policy.json`\.
 
-1. At the command line, navigate to the directory where `s3policy.json` is located\. Then type the following command to create the policy:
+1. By using the AWS CLI, navigate to the directory where the `s3policy.json` file is located\. Then enter the following command to create the policy:
 
    ```
    aws iam create-policy --policy-name s3ExportPolicy --policy-document file://s3policy.json
@@ -132,7 +132,7 @@ Now that you've created an IAM policy, you can create a role and attach the poli
 
    Save the file as `trustpolicy.json`\.
 
-1. At the command line, navigate to the directory where `trustpolicy.json` is located\. Then type the following command to create a new role:
+1. By using the AWS CLI, navigate to the directory where the `trustpolicy.json` file is located\. Then enter the following command to create a new role:
 
    ```
    aws iam create-role --role-name s3ExportRole --assume-role-policy-document file://trustpolicy.json
@@ -164,7 +164,7 @@ Now that you've created an IAM policy, you can create a role and attach the poli
    }
    ```
 
-1. At the command line, type the following command to attach the policy that you created in the previous section to the role that you just created:
+1. At the command line, enter the following command to attach the policy that you created in the previous section to the role that you just created:
 
    ```
    aws iam attach-role-policy --policy-arn arn:aws:iam::123456789012:policy/s3ExportPolicy --role-name s3ExportRole

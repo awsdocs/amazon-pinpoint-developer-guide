@@ -2,7 +2,7 @@
 
 In the Amazon Pinpoint Email API, you can create *configuration sets* that specify how to handle certain email events\. For example, you can create a configuration set that sends delivery notifications to a specific *event destination*, such as an Amazon SNS topic or a Kinesis Data Firehose delivery stream\. When you send email through the Amazon Pinpoint Email API using that configuration set, Amazon Pinpoint sends information about email\-related events to the event destination that you specified in the configuration set\.
 
-The Amazon Pinpoint Email API can deliver information about the following email events to the event destinations that you specify:
+The Amazon Pinpoint Email API can deliver information about the following types of email events to the event destinations that you specify:
 + **Sends** – The call to Amazon Pinpoint was successful, and Amazon Pinpoint attempted to deliver the email\. 
 + **Deliveries** – Amazon Pinpoint successfully delivered the email to the recipient's mail server\.
 + **Rejections** – Amazon Pinpoint accepted the email, determined that it contained malware, and rejected it\. Amazon Pinpoint didn't attempt to deliver the email to the recipient's mail server\.
@@ -19,8 +19,6 @@ Every time a recipient opens or clicks an email, Amazon Pinpoint generates uniqu
 If you want to send data about these events to a Kinesis Data Firehose stream, you have to create an IAM role that has the appropriate permissions\. The role must use the following policies:
 + A trust policy that allows Amazon Pinpoint to assume the role\.
 + A permissions policy that allows the Amazon Pinpoint Email API to send email delivery and response records to your stream\.
-
-For more information about IAM roles, see [IAM Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) in the *IAM User Guide*\.
 
 After you create the role, you can configure Amazon Pinpoint to automatically send events to your stream\. For more information, see [Streaming Amazon Pinpoint Events to Kinesis](event-streams.md)\.
 
@@ -77,9 +75,7 @@ In the example above, replace *region* with the name of the AWS Region that you 
 
 ## Creating the IAM Role \(AWS CLI\)<a name="permissions-stream-email-events-kinesis-create"></a>
 
-Complete the following steps to create the IAM role by using the AWS Command Line Interface \(AWS CLI\)\.
-
-For more information about installing and configuring the AWS CLI, see [Getting Set Up with the AWS Command Line Interface](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html) in the *AWS Command Line Interface User Guide*\.
+Complete the following steps to create the IAM role by using the AWS Command Line Interface \(AWS CLI\)\. For information about installing and configuring the AWS CLI, see [Installing the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html) in the *AWS Command Line Interface User Guide*\.
 
 **To create the IAM role by using the AWS CLI**
 
@@ -94,7 +90,7 @@ For more information about installing and configuring the AWS CLI, see [Getting 
 
    In the preceding example, replace *PinpointEventStreamTrustPolicy\.json* with the full path to the file that contains the trust policy\.
 
-   When you run this command, the AWS CLI returns the following output:
+   After you run this command, the AWS CLI returns the following output:
 
    ```
    {

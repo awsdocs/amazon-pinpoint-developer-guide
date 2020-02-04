@@ -180,12 +180,12 @@ If the request succeeds, you receive a response like the following:
 
 ## Related Information<a name="audience-define-user-related"></a>
 
-For more information about the Endpoint resource in the Amazon Pinpoint API, including the supported HTTP methods and request parameters, see [Endpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints-endpoint-id.html) in the *Amazon Pinpoint API Reference\.*
+For more information about the Endpoint resource in the Amazon Pinpoint API, including supported HTTP methods and request parameters, see [Endpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints-endpoint-id.html) in the *Amazon Pinpoint API Reference\.*
 
 For more information about personalizing messages with variables, see [Message Variables](https://docs.aws.amazon.com/pinpoint/latest/userguide/campaigns-message.html#campaigns-message-variables.html) in the *Amazon Pinpoint User Guide*\.
 
-To define a segment by importing a list of user IDs, see [Importing Segments](https://docs.aws.amazon.com/pinpoint/latest/userguide/segments-importing.html) in the *Amazon Pinpoint User Guide*\.
+To learn how to define a segment by importing a list of user IDs, see [Importing Segments](https://docs.aws.amazon.com/pinpoint/latest/userguide/segments-importing.html) in the *Amazon Pinpoint User Guide*\.
 
-To send a direct message to up to 100 user IDs, see [Users Messages](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-users-messages.html) in the *Amazon Pinpoint API Reference*\.
+For information about sending a direct message to up to 100 user IDs, see [Users Messages](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-users-messages.html) in the *Amazon Pinpoint API Reference*\.
 
-For the limits that apply to endpoints, including the number of user attributes you can assign, see [Endpoint Limits](limits.md#limits-endpoint)\.
+For information about the quotas that apply to endpoints, including the number of user attributes that you can assign, see [Endpoint Quotas](quotas.md#quotas-endpoint)\.

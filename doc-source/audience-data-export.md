@@ -9,7 +9,7 @@ To get all of the information that Amazon Pinpoint has about your audience, you 
 
 Before you can export endpoints, you need the following resources in your AWS account:
 + An Amazon S3 bucket\. To create a bucket, see [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html) in the *Amazon Simple Storage Service Getting Started Guide*\.
-+ An AWS Identity and Access Management \(IAM\) role that grants Amazon Pinpoint write permissions for your Amazon S3 bucket\. To create the role, see [IAM Role for Exporting Endpoints or Segments](permissions-export-endpoints.md)\.
++ An AWS Identity and Access Management \(IAM\) role that grants Amazon Pinpoint write permissions for your Amazon S3 bucket\. To create the role, see [IAM Role for Exporting Endpoints or SegmentsExporting Endpoints or Segments](permissions-export-endpoints.md)\.
 
 ## Examples<a name="audience-data-export-examples"></a>
 
@@ -337,7 +337,7 @@ Cache-Control: no-cache
 ```
 Where:  
 + *`application-id`* is the ID of the Amazon Pinpoint project that contains the endpoints\.
-+ *`bucket-name/prefix/`* is the name of your Amazon S3 bucket and, optionally, a prefix that helps you organize the objects in your bucket hierarchically\. For example, a useful prefix might be `pinpoint/exports/endpoints/`\.
++ *`bucket-name/prefix`* is the name of your Amazon S3 bucket and, optionally, a prefix that helps you organize the objects in your bucket hierarchically\. For example, a useful prefix might be `pinpoint/exports/endpoints/`\.
 + *`iam-export-role-arn`* is the Amazon Resource Name \(ARN\) of an IAM role that grants Amazon Pinpoint write access to the bucket\.
 The response to this request provides details about the export job:  
 

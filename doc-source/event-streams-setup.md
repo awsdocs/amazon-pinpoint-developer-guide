@@ -9,7 +9,7 @@ This section includes information about setting up event streaming programmatica
 The examples in this section require the following input:
 + The application ID of an application that's integrated with Amazon Pinpoint and reporting events\. For information about how to integrate, see [Integrating Amazon Pinpoint with Your Application](integrate.md)\.
 + The Amazon Resource Name \(ARN\) of a Kinesis stream or Kinesis Data Firehose delivery stream in your AWS account\. For information about creating these resources, see [Creating and Updating Data Streams](https://docs.aws.amazon.com/streams/latest/dev/amazon-kinesis-streams.html) in the *Amazon Kinesis Data Streams Developer Guide* or [Creating an Amazon Kinesis Data Firehose Delivery Stream](https://docs.aws.amazon.com/firehose/latest/dev/basic-create.html) in the *Amazon Kinesis Data Firehose Developer Guide*\.
-+ The ARN of an AWS Identity and Access Management \(IAM\) role that authorizes Amazon Pinpoint to send data to the stream\. For information about creating a role, see [IAM Role for Streaming Events to Kinesis](permissions-streams.md)\.
++ The ARN of an AWS Identity and Access Management \(IAM\) role that authorizes Amazon Pinpoint to send data to the stream\. For information about creating a role, see [IAM Role for Streaming Events to KinesisStreaming Events to Kinesis](permissions-streams.md)\.
 
 ## AWS CLI<a name="event-streams-setup-cli"></a>
 

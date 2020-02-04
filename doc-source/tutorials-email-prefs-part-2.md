@@ -46,7 +46,7 @@ Amazon Pinpoint requires you to store source files in Amazon S3\. Complete the p
 
 1. Choose **Create bucket**\.
 
-1. On the **Create bucket** window, for **Bucket name**, enter a name for the bucket that you want to store the file in\. The name that you specify has to be unique\. Also, there are several restrictions related to the bucket name\. For more information about these restrictions, see [Bucket Restrictions and Limitations](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service Developer Guide*\. Choose **Create**\.
+1. On the **Create bucket** window, for **Bucket name**, enter a name for the bucket that you want to store the file in\. The name that you specify has to be unique\. Also, there are several restrictions related to the bucket name\. For more information about these restrictions, see [Bucket Restrictions](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service Developer Guide*\. Choose **Create**\.
 
 1. In the list of buckets, choose the bucket that you just created\.
 

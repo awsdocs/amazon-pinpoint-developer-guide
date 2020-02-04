@@ -288,7 +288,7 @@ This section defines the attributes that are included in the event stream data t
 | Attribute | Description | 
 | --- | --- | 
 | event\_type |  The type of event\. Possible values are: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/event-streams-data-email.html)  | 
-| event\_timestamp |  The time when the event was reported, shown as Unix time in milliseconds\.  | 
+| event\_timestamp |  The time when the message was sent, shown as Unix time in milliseconds\. This value is typically the same for all the events that are generated for a message\.  | 
 | arrival\_timestamp |  The time when the event was received by Amazon Pinpoint, shown as Unix time in milliseconds\.  | 
 | event\_version |  The version of the event JSON schema\.  Check this version in your event\-processing application so that you know when to update the application in response to a schema update\.   | 
 | application |  Information about the Amazon Pinpoint project that's associated with the event\. See the *Application* table for more information\.  | 

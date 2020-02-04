@@ -1,12 +1,10 @@
 # IAM Role for Importing Endpoints or Segments<a name="permissions-import-segment"></a>
 
-With Amazon Pinpoint, you define a user segment by importing endpoint definitions from an Amazon Simple Storage Service \(Amazon S3\) bucket in your AWS account\. Before you import, you must delegate the required permissions to Amazon Pinpoint by creating an AWS Identity and Access Management \(IAM\) role and attaching the following policies to the role: 
+With Amazon Pinpoint, you can define a user segment by importing endpoint definitions from an Amazon Simple Storage Service \(Amazon S3\) bucket in your AWS account\. Before you import, you must delegate the required permissions to Amazon Pinpoint\. To do this, you create an AWS Identity and Access Management \(IAM\) role and attach the following policies to the role: 
 + The `AmazonS3ReadOnlyAccess` AWS managed policy\. This policy is created and managed by AWS, and it grants read\-only access to your Amazon S3 bucket\.
-+ A *trust policy* that allows Amazon Pinpoint to assume the role\.
++ A trust policy that allows Amazon Pinpoint to assume the role\.
 
-For more information about IAM roles, see [IAM Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) in the *IAM User Guide*\.
-
-After you create the role, you can use Amazon Pinpoint to import segments\. For an example of how to import a segment by using the AWS SDK for Java, see [Importing Segments](segments-importing.md)\. For information about creating the Amazon S3 bucket, creating endpoint files, and importing a segment by using the console, see [Importing Segments](https://docs.aws.amazon.com/pinpoint/latest/userguide/segments-importing.html) in the *Amazon Pinpoint User Guide*\.
+After you create the role, you can use Amazon Pinpoint to import segments from an Amazon S3 bucket\. For information about creating the bucket, creating endpoint files, and importing a segment by using the console, see [Importing Segments](https://docs.aws.amazon.com/pinpoint/latest/userguide/segments-importing.html) in the *Amazon Pinpoint User Guide*\. For an example of how to import a segment programmatically by using the AWS SDK for Java, see [Importing Segments](segments-importing.md) in this guide\. 
 
 ## Attaching the Trust Policy<a name="permissions-import-segment-trustpolicy"></a>
 
@@ -17,6 +15,7 @@ To allow Amazon Pinpoint to assume the IAM role and perform the actions allowed 
   "Version": "2012-10-17",
   "Statement": [
     {
+      "Sid": "AllowUserToImportEndpointDefinitions",
       "Effect": "Allow",
       "Principal": {
         "Service": "pinpoint.amazonaws.com"
@@ -29,9 +28,7 @@ To allow Amazon Pinpoint to assume the IAM role and perform the actions allowed 
 
 ## Creating the IAM Role \(AWS CLI\)<a name="permissions-import-segment-create"></a>
 
-Complete the following steps to create the IAM role by using the AWS Command Line Interface \(AWS CLI\)\.
-
-If you have not installed the AWS CLI, see [Installing the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html) in the *AWS Command Line Interface User Guide*\.
+Complete the following steps to create the IAM role by using the AWS Command Line Interface \(AWS CLI\)\. If you haven't installed the AWS CLI, see [Installing the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html) in the *AWS Command Line Interface User Guide*\.
 
 **To create the IAM role by using the AWS CLI**
 
@@ -45,7 +42,7 @@ If you have not installed the AWS CLI, see [Installing the AWS CLI](https://docs
 
    Following the `file://` prefix, specify the path to the JSON file that contains the trust policy\.
 
-   When you run this command, the AWS CLI prints the following output in your terminal:
+   After you run this command, you see output that's similar to the following in your terminal:
 
    ```
    {

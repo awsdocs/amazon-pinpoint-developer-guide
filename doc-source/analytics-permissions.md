@@ -13,6 +13,7 @@ For example, the following policy allows programmatic access to all the analytic
     "Version": "2012-10-17",
     "Statement": [
         {
+            "Sid": "QueryAllAnalytics",
             "Effect": "Allow",
             "Action": [
                 "mobiletargeting:GetApplicationDateRangeKpi",
@@ -42,6 +43,7 @@ However, as a best practice, you should create policies that follow the principl
     "Version": "2012-10-17",
     "Statement": [
         {
+            "Sid": "QueryProjectAnalytics",
             "Effect": "Allow",
             "Action": [
                 "mobiletargeting:GetApplicationDateRangeKpi",
@@ -74,6 +76,7 @@ Similarly, the following example policy allows programmatic access to the analyt
     "Version": "2012-10-17",
     "Statement": [
         {
+            "Sid": "QueryCampaignAnalytics",
             "Effect": "Allow",
             "Action": "mobiletargeting:GetCampaignDateRangeKpi",
             "Resource": "arn:aws:mobiletargeting:region:accountId:apps/projectId/campaigns/campaignId/kpis/*"
@@ -95,6 +98,7 @@ And the following example policy allows programmatic access to all the analytics
     "Version": "2012-10-17",
     "Statement": [
         {
+            "Sid": "QueryJourneyAnalytics",
             "Effect": "Allow",
             "Action": [
                 "mobiletargeting:GetJourneyDateRangeKpi",
@@ -117,4 +121,4 @@ Where:
 + *projectId* is the identifier for the project that’s associated with the journey\.
 + *journeyId* is the identifier for the journey that you want to provide access to\.
 
-For a complete list of Amazon Pinpoint API actions that you can use in IAM policies, see [IAM Policies for Amazon Pinpoint Users](permissions-actions.md)\. For detailed information about creating and managing IAM policies, see the [IAM User Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/)\.
+For a complete list of Amazon Pinpoint API actions that you can use in IAM policies, see [Amazon Pinpoint Actions for IAM Policies](permissions-actions.md)\. For detailed information about creating and managing IAM policies, see the [IAM User Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/)\.

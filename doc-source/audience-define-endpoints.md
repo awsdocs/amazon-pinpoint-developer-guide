@@ -228,8 +228,8 @@ If your request succeeds, you receive a response like the following:
 
 ## Related Information<a name="audience-define-endpoints-related"></a>
 
-For more information about the Endpoint resource in the Amazon Pinpoint API, including the supported HTTP methods and request parameters, see [Endpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints-endpoint-id.html) in the *Amazon Pinpoint API Reference\.*
+For more information about the Endpoint resource in the Amazon Pinpoint API, including supported HTTP methods and request parameters, see [Endpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints-endpoint-id.html) in the *Amazon Pinpoint API Reference\.*
 
 For more information about personalizing messages with variables, see [Message Variables](https://docs.aws.amazon.com/pinpoint/latest/userguide/campaigns-message.html#campaigns-message-variables.html) in the *Amazon Pinpoint User Guide*\.
 
-For the limits that apply to endpoints, such as the number of attributes you can assign, see [Endpoint Limits](limits.md#limits-endpoint)\.
+For information about the quotas that apply to endpoints, such as the number of attributes that you can assign, see [Endpoint Quotas](quotas.md#quotas-endpoint)\.
