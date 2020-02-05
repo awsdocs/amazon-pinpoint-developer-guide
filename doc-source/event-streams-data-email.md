@@ -9,6 +9,7 @@ When you send email messages, Amazon Pinpoint can stream data that provides addi
 + Clicks
 + Rejections
 + Unsubscribes
++ Rendering Failure
 
 The event types in the preceding list are explained in detail in [Email Event Attributes](#event-streams-data-email-attributes)\.
 
@@ -279,6 +280,38 @@ The JSON object for an *email open* event contains the data shown in the followi
   }
 }
 ```
+
+**Rendering Failure**
+The JSON object for an *Rendering Failure* event contains the data shown in the following example\.
+
+```
+{
+    "eventType": "Rendering Failure",
+    "mail": {
+        "timestamp": "2019-09-09T04:38:19.788Z",
+        "source": "sender@example.com",
+        "sourceArn": "arn:aws:ses:us-west-2:1234567890123:identity/sender@example.com",
+        "sendingAccountId": "1234567890123",
+        "messageId": "01010161a734a0eb-a706827a-3bda-490f-8eaa-63cf4b00d10c-000000",
+        "destination": [
+            "receiver@example.com"
+        ],
+        "headersTruncated": false,
+        "tags": {
+            "ses:configuration-set": [
+                "RenderFailure"
+            ]
+        }
+    },
+    "failure": {
+        "errorMessage": "Attribute 'favoritenumber' is not present in the rendering data.",
+        "templateName": "ExampleTemplate"
+    }
+}
+```
+
+**Note** 
+Rendering Failure events are only recorded if you create a configuration set. If you use substitution tags in the emails that you send by using Amazon Pinpoint, you should always create a configuration set that records Rendering Failure events\.
 
 ## Email Event Attributes<a name="event-streams-data-email-attributes"></a>
 
