@@ -65,6 +65,7 @@ In IAM policies, you can specify ARNs for the following types of Amazon Pinpoint
 + Journeys
 + Message templates \(referred to as *templates* in some contexts\)
 + Projects \(referred to as *apps* or *applications* in some contexts\)
++ Recommender models \(referred to as *recommenders* in some contexts\)
 + Segments
 
 For example, to create a policy statement for the project that has the project ID `810c7aab86d42fb2b56c8c966example`, use the following ARN:
@@ -115,7 +116,7 @@ To view examples of Amazon Pinpoint identity\-based policies, see [Amazon Pinpoi
 
 ## Amazon Pinpoint Resource\-Based Policies<a name="security_iam_service-with-iam-resource-based-policies"></a>
 
-Resource\-based policies are JSON policy documents that specify what actions a specified principal can perform on an Amazon Pinpoint resource and under what conditions\. Amazon Pinpoint supports resource\-based permissions policies for campaigns, journeys, message templates \(*templates*\), projects \(*apps*\), and segments\. Resource\-based policies let you grant usage permission to other accounts on a per\-resource basis\. You can also use a resource\-based policy to allow another AWS service to access these types of Amazon Pinpoint resources\.
+Resource\-based policies are JSON policy documents that specify what actions a specified principal can perform on an Amazon Pinpoint resource and under what conditions\. Amazon Pinpoint supports resource\-based permissions policies for campaigns, journeys, message templates \(*templates*\), recommender models \(*recommenders*\), projects \(*apps*\), and segments\. Resource\-based policies let you grant usage permission to other accounts on a per\-resource basis\. You can also use a resource\-based policy to allow another AWS service to access these types of Amazon Pinpoint resources\.
 
 To enable cross\-account access, you can specify an entire account or IAM entities in another account as the [principal in a resource\-based policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html)\. Adding a cross\-account principal to a resource\-based policy is only half of establishing the trust relationship\. When the principal and the resource are in different AWS accounts, you must also grant the principal entity permission to access the resource\. Grant permission by attaching an identity\-based policy to the entity\. However, if a resource\-based policy grants access to a principal in the same account, no additional identity\-based policy is required\. For more information, see [How IAM Roles Differ from Resource\-based Policies ](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_compare-resource-policies.html) in the *IAM User Guide*\.
 

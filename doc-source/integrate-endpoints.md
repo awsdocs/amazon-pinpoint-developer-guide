@@ -14,7 +14,7 @@ If you haven't already, integrate the AWS Mobile SDK for Android or iOS, or inte
 
 You can use the AWS Mobile SDKs for Android or iOS to register and customize endpoints\. For more information, and to view code examples, see the following documents:
 + [Registering Endpoints in Your Application](https://aws-amplify.github.io/docs/android/analytics#registering-endpoints-in-your-application) in the Android SDK documentation\.
-+ [Registering Endpoints in Your Application](https://aws-amplify.github.io/docs/ios/analytics#registering-endpoints-in-your-application) in the iOS SDK documentation\.
++ [Registering Endpoints in Your Application](https://aws-amplify.github.io/docs/sdk/ios/analytics#registering-endpoints-in-your-application) in the iOS SDK documentation\.
 
 ## Registering Endpoints with the AWS Amplify JavaScript Library<a name="integrate-events-amplify"></a>
 

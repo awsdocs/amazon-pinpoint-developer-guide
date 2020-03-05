@@ -40,7 +40,7 @@ For more information about updating your app to record and submit events to Amaz
 
 ## Reporting Events with the AWS Amplify JavaScript Library<a name="integrate-events-amplify"></a>
 
-You can enable JavaScript and React Native apps to report appplication usage events to Amazon Pinpoint by using the AWS Amplify JavaScript library\. For more information about updating your app to submit events to Amazon Pinpoint, see [Analytics](https://aws-amplify.github.io/docs/js/analytics) in the AWS Amplify JavaScript documentation\.
+You can enable JavaScript and React Native apps to report application usage events to Amazon Pinpoint by using the AWS Amplify JavaScript library\. For more information about updating your app to submit events to Amazon Pinpoint, see [Analytics](https://aws-amplify.github.io/docs/js/analytics) in the AWS Amplify JavaScript documentation\.
 
 ## Reporting Events by Using the Amazon Pinpoint API<a name="integrate-events-api"></a>
 

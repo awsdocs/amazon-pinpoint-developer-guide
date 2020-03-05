@@ -11,5 +11,6 @@ For these scenarios, you can delegate access to Amazon Pinpoint by using IAM rol
 **Topics**
 + [IAM Role for Importing Endpoints or Segments](permissions-import-segment.md)
 + [IAM Role for Exporting Endpoints or Segments](permissions-export-endpoints.md)
++ [IAM Role for Retrieving Recommendations from Amazon Personalize](permissions-get-recommendations.md)
 + [IAM Role for Streaming Events to Kinesis](permissions-streams.md)
 + [IAM Role for Streaming Email Events to Kinesis Data Firehose](permissions-stream-email-events-kinesis.md)

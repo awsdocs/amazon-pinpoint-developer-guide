@@ -32,10 +32,10 @@ The response to this command is the JSON definition of the endpoint, as in the f
         "Address": "1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7a8b9c0d1e2f",
         "ApplicationId": "application-id",
         "Attributes": {
-            "interests": [
-                "technology",
-                "music",
-                "travel"
+            "Interests": [
+                "Technology",
+                "Music",
+                "Travel"
             ]
         },
         "ChannelType": "APNS",
@@ -69,16 +69,10 @@ The response to this command is the JSON definition of the endpoint, as in the f
         "RequestId": "7f546cac-6858-11e8-adcd-2b5a07aab338",
         "User": {
             "UserAttributes": {
-                "gender": [
-                    "female"
-                ],
-                "name": [
-                    "Wang",
-                    "Xiulan"
-                ],
-                "age": [
-                    "39"
-                ]
+                "Gender": "Female",
+                "FirstName": "Wang",
+                "LastName": "Xiulan",
+                "Age": "39"
             },
             "UserId": "example_user"
         }
@@ -197,10 +191,10 @@ The response to this request is the JSON definition of the endpoint, as in the f
     },
     "EffectiveDate": "2018-06-06T00:58:19.865Z",
     "Attributes": {
-        "interests": [
-            "technology",
-            "music",
-            "travel"
+        "Interests": [
+            "Technology",
+            "Music",
+            "Travel"
         ]
     },
     "Metrics": {

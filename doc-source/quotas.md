@@ -10,6 +10,7 @@ The following sections list and describe the quotas, formerly referred to as *li
 + [Endpoint Import Quotas](#quotas-import)
 + [Event Ingestion Quotas](#quotas-events)
 + [Journey Quotas](#quotas-journeys)
++ [Machine Learning Quotas](#quotas-ML-models)
 + [Message Template Quotas](#quotas-message-templates)
 + [Push Notification Quotas](#quotas-mobile)
 + [Segment Quotas](#quotas-segment)
@@ -125,9 +126,27 @@ The following quotas apply to journeys\.
 |  Maximum number of journey activities  | 40 per journey | [Yes](#quotas-increase) | 
 | Maximum segment size | For imported segments: 5 GB per journeyFor dynamic segments: unlimited | No | 
 
+## Machine Learning Quotas<a name="quotas-ML-models"></a>
+
+The following quotas apply to Amazon Pinpoint configurations for retrieving and processing data from machine learning \(ML\) models\.
+
+
+| Resource | Default Quota | Eligible for Increase | 
+| --- | --- | --- | 
+| Maximum number of model configurations | 1 per message template | No | 
+| Maximum number of recommendations | 5 per message | No | 
+| Maximum number of recommended attributes per endpoint or user | 1, if the attribute values aren't processed by an AWS Lambda function10, if the attribute values are processed by an AWS Lambda function | No | 
+| Maximum length of a recommended attribute name | 50 characters for an attribute name25 characters for an attribute display name \(the name that appears on the Amazon Pinpoint console\) | No | 
+| Maximum length of a recommended attribute value that's retrieved from Amazon Personalize | 100 characters | No | 
+| Maximum size of an invocation payload \(request and response\) for a Lambda function | 6 MB | No | 
+| Maximum amount of time to wait for a Lambda function to process data | 15 seconds | No | 
+| Maximum number of attempts to invoke a Lambda function | 3 attempts | No | 
+
+Depending on how you configure Amazon Pinpoint to use an ML model, additional quotas may apply\. To learn about Amazon Personalize quotas, see [Quotas](https://docs.aws.amazon.com/personalize/latest/dg/limits.html) in the *Amazon Personalize Developer Guide*\. To learn about AWS Lambda quotas, see [Quotas](https://docs.aws.amazon.com/lambda/latest/dg/limits.html) in the *AWS Lambda Developer Guide*\.
+
 ## Message Template Quotas<a name="quotas-message-templates"></a>
 
-The following quotas apply to message templates\.
+The following quotas apply to message templates for your Amazon Pinpoint account\.
 
 
 | Resource | Default Quota | Eligible for Increase | 

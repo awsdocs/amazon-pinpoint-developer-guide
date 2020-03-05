@@ -30,58 +30,54 @@ The example `update-endpoints-batch` command uses a JSON file as the argument fo
 
 ```
 {
-  "Item": [
-    {
-      "ChannelType": "EMAIL",
-      "Address": "richard_roe@example.com",
-      "Attributes": {
-        "interests": [
-          "music",
-          "books"
-        ]
-      },
-      "Metrics": {
-        "music_interest_level": 3.0,
-        "books_interest_level": 7.0
-      },
-      "Id": "example_endpoint_1",
-      "User": {
-        "UserId": "example_user_1",
-        "UserAttributes": {
-          "name": [
-            "Richard",
-            "Roe"
-          ]
+    "Item": [
+        {
+            "ChannelType": "EMAIL",
+            "Address": "richard_roe@example.com",
+            "Attributes": {
+                "Interests": [
+                    "Music",
+                    "Books"
+                ]
+            },
+            "Metrics": {
+                "music_interest_level": 3.0,
+                "books_interest_level": 7.0
+            },
+            "Id": "example_endpoint_1",
+            "User":{
+                "UserId": "example_user_1",
+                "UserAttributes": {
+                    "FirstName": "Richard",
+                    "LastName": "Roe"
+                }
+            }
+        },
+        {
+            "ChannelType": "SMS",
+            "Address": "+16145550100",
+            "Attributes": {
+                "Interests": [
+                    "Cooking",
+                    "Politics",
+                    "Finance"
+                ]
+            },
+            "Metrics": {
+                "cooking_interest_level": 5.0,
+                "politics_interest_level": 8.0,
+                "finance_interest_level": 4.0
+            },
+            "Id": "example_endpoint_2",
+            "User": {
+                "UserId": "example_user_2",
+                "UserAttributes": {
+                    "FirstName": "Mary",
+                    "LastName": "Major"
+                }
+            }
         }
-      }
-    },
-    {
-      "ChannelType": "SMS",
-      "Address": "+16145550100",
-      "Attributes": {
-        "interests": [
-          "cooking",
-          "politics",
-          "finance"
-        ]
-      },
-      "Metrics": {
-        "cooking_interest_level": 5.0,
-        "politics_interest_level": 8.0,
-        "finance_interest_level": 4.0
-      },
-      "Id": "example_endpoint_2",
-      "User": {
-        "UserId": "example_user_2",
-        "UserAttributes": {
-          "name": [
-            "Mary",
-            "Major"
-          ]
-        }
-      }
-    }
-  ]
+    ]
 }
 ```
 For the attributes that you can use to define a batch of endpoints, see the [EndpointBatchRequest](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints.html#apps-application-id-endpoints-schemas) schema in the *Amazon Pinpoint API Reference*\.
@@ -219,58 +215,54 @@ Authorization: AWS4-HMAC-SHA256 Credential=AKIAIOSFODNN7EXAMPLE/20180501/us-east
 Cache-Control: no-cache
 
 {
-  "Item": [
-    {
-      "ChannelType": "EMAIL",
-      "Address": "richard_roe@example.com",
-      "Attributes": {
-        "interests": [
-          "music",
-          "books"
-        ]
-      },
-      "Metrics": {
-        "music_interest_level": 3.0,
-        "books_interest_level": 7.0
-      },
-      "Id": "example_endpoint_1",
-      "User": {
-        "UserId": "example_user_1",
-        "UserAttributes": {
-          "name": [
-            "Richard",
-            "Roe"
-          ]
+    "Item": [
+        {
+            "ChannelType": "EMAIL",
+            "Address": "richard_roe@example.com",
+            "Attributes": {
+                "Interests": [
+                    "Music",
+                    "Books"
+                ]
+            },
+            "Metrics": {
+                "music_interest_level": 3.0,
+                "books_interest_level": 7.0
+            },
+            "Id": "example_endpoint_1",
+            "User":{
+                "UserId": "example_user_1",
+                "UserAttributes": {
+                    "FirstName": "Richard",
+                    "LastName": "Roe"
+                }
+            }
+        },
+        {
+            "ChannelType": "SMS",
+            "Address": "+16145550100",
+            "Attributes": {
+                "Interests": [
+                    "Cooking",
+                    "Politics",
+                    "Finance"
+                ]
+            },
+            "Metrics": {
+                "cooking_interest_level": 5.0,
+                "politics_interest_level": 8.0,
+                "finance_interest_level": 4.0
+            },
+            "Id": "example_endpoint_2",
+            "User": {
+                "UserId": "example_user_2",
+                "UserAttributes": {
+                    "FirstName": "Mary",
+                    "LastName": "Major"
+                }
+            }
         }
-      }
-    },
-    {
-      "ChannelType": "SMS",
-      "Address": "+16145550100",
-      "Attributes": {
-        "interests": [
-          "cooking",
-          "politics",
-          "finance"
-        ]
-      },
-      "Metrics": {
-        "cooking_interest_level": 5.0,
-        "politics_interest_level": 8.0,
-        "finance_interest_level": 4.0
-      },
-      "Id": "example_endpoint_2",
-      "User": {
-        "UserId": "example_user_2",
-        "UserAttributes": {
-          "name": [
-            "Mary",
-            "Major"
-          ]
-        }
-      }
-    }
-  ]
+    ]
 }
 ```
 If your request succeeds, you receive a response like the following:  

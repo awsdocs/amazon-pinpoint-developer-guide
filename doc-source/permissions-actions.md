@@ -29,6 +29,7 @@ This section identifies actions for features that are available from the Amazon 
 + [Messages](#permissions-actions-apiactions-messages)
 + [Phone Number Validation](#permissions-actions-apiactions-phone-number-validate)
 + [Projects](#permissions-actions-apiactions-projects)
++ [Recommender Models](#permissions-actions-apiactions-recommenders)
 + [Segments](#permissions-actions-apiactions-segments)
 + [Tags](#permissions-actions-apiactions-tags)
 + [Users](#permissions-actions-apiactions-users)
@@ -608,6 +609,40 @@ Update the default settings for an Amazon Pinpoint project\.
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-settings.html#rest-api-settings-methods-put](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-settings.html#rest-api-settings-methods-put)
 + Method – PUT
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId`
+
+### Recommender Models<a name="permissions-actions-apiactions-recommenders"></a>
+
+The following permissions are related to managing Amazon Pinpoint configurations for retrieving and processing recommendation data from recommender models\. A *recommender model* is a type of machine learning model that predicts and generates personalized recommendations by finding patterns in data\.
+
+**`mobiletargeting:CreateRecommenderConfiguration`**  
+Create an Amazon Pinpoint configuration for a recommender model\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/recommenders.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/recommenders.html)
++ Method – POST
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:recommenders`
+
+**`mobiletargeting:GetRecommenderConfigurations`**  
+Retrieve information about all the recommender model configurations that are associated with your Amazon Pinpoint account\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/recommenders.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/recommenders.html)
++ Method – GET
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:recommenders`
+
+**`mobiletargeting:GetRecommenderConfiguration`**  
+Retrieve information about an individual Amazon Pinpoint configuration for a recommender model\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/recommenders-recommender-id.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/recommenders-recommender-id.html)
++ Method – GET
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:recommenders/recommenderId`
+
+**`mobiletargeting:UpdateRecommenderConfiguration`**  
+Update an Amazon Pinpoint configuration for a recommender model\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/recommenders-recommender-id.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/recommenders-recommender-id.html)
++ Method – PUT
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:recommenders/recommenderId`
+
+**`mobiletargeting:GetRecommenderConfiguration`**  
+Delete an Amazon Pinpoint configuration for a recommender model\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/recommenders-recommender-id.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/recommenders-recommender-id.html)
++ Method – DELETE
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:recommenders/recommenderId`
 
 ### Segments<a name="permissions-actions-apiactions-segments"></a>
 

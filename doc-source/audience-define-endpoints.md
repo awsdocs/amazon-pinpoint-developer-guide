@@ -42,10 +42,10 @@ The example `update-endpoint` command uses a JSON file as the argument for the `
   "ChannelType": "APNS",
   "Address": "1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7a8b9c0d1e2f",
   "Attributes": {
-    "interests": [
-      "technology",
-      "music",
-      "travel"
+    "Interests": [
+      "Technology",
+      "Music",
+      "Travel"
     ]
   },
   "Metrics": {
@@ -186,10 +186,10 @@ Cache-Control: no-cache
   "ChannelType": "APNS",
   "Address": "1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7a8b9c0d1e2f",
   "Attributes": {
-    "interests": [
-      "technology",
-      "music",
-      "travel"
+    "Interests": [
+      "Technology",
+      "Music",
+      "Travel"
     ]
   },
   "Metrics": {

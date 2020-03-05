@@ -12,6 +12,8 @@ When you send email messages, Amazon Pinpoint can stream data that provides addi
 
 The event types in the preceding list are explained in detail in [Email Event Attributes](#event-streams-data-email-attributes)\.
 
+Depending on the API and settings that you use to send email messages, you might see additional event types or different data\. For example, if you send messages using configuration sets that publish event data to Amazon Kinesis, such as those provided by Amazon Simple Email Service \(Amazon SES\), the data can also include events for template\-rendering failures\. For information about that data, see [Monitoring Using Amazon SES Event Publishing](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-using-event-publishing.html) in the *Amazon Simple Email Service Developer Guide*\.
+
 ## Sample Events<a name="event-streams-data-email-send-example"></a>
 
 **Email Send**  

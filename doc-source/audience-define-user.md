@@ -40,22 +40,16 @@ Where:
 The example `update-endpoint` command uses a JSON file as the argument for the `--endpoint-request` parameter\. This file contains a user definition like the following:  
 
 ```
-{
-  "User": {
-    "UserId": "example_user",
-    "UserAttributes": {
-      "name": [
-        "Wang",
-        "Xiulan"
-      ],
-      "gender": [
-        "female"
-      ],
-      "age": [
-        "39"
-      ]
+{ 
+    "User":{ 
+        "UserId":"example_user",
+        "UserAttributes":{ 
+            "FirstName":"Wang",
+            "LastName":"Xiulan",
+            "Gender":"Female",
+            "Age":"39"
+        }
     }
-  }
 }
 ```
 For the attributes that you can use to define a user, see the `User` object in the [EndpointRequest](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints-endpoint-id.html#apps-application-id-endpoints-endpoint-id-schemas) schema in the *Amazon Pinpoint API Reference*\.
@@ -149,22 +143,16 @@ Accept: application/json
 Authorization: AWS4-HMAC-SHA256 Credential=AKIAIOSFODNN7EXAMPLE/20180501/us-east-1/mobiletargeting/aws4_request, SignedHeaders=accept;content-length;content-type;host;x-amz-date, Signature=c25cbd6bf61bd3b3667c571ae764b9bf2d8af61b875cacced95d1e68d91b4170
 Cache-Control: no-cache
 
-{
-  "User": {
-    "UserId": "example_user",
-    "UserAttributes": {
-      "name": [
-        "Wang",
-        "Xiulan"
-      ],
-      "gender": [
-        "female"
-      ],
-      "age": [
-        "39"
-      ]
+{ 
+    "User":{ 
+        "UserId":"example_user",
+        "UserAttributes":{ 
+            "FirstName":"Wang",
+            "LastName":"Xiulan",
+            "Gender":"Female",
+            "Age":"39"
+        }
     }
-  }
 }
 ```
 If the request succeeds, you receive a response like the following:  

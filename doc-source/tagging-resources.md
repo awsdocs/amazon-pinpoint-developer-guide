@@ -2,7 +2,6 @@
 
 A *tag* is a label that you optionally define and associate with AWS resources, including certain types of Amazon Pinpoint resources\. Tags can help you categorize and manage resources in different ways, such as by purpose, owner, environment, or other criteria\. For example, you can use tags to apply policies or automation, or to identify resources that are subject to certain compliance requirements\. You can add tags to the following types of Amazon Pinpoint resources:
 + Campaigns
-+ Journeys
 + Message templates
 + Projects \(applications\)
 + Segments
@@ -51,7 +50,7 @@ If you define tag\-based, resource\-level permissions, the permissions take effe
 
 ## Adding Tags to Resources<a name="tags-add"></a>
 
-The following examples show how to add a tag to an Amazon Pinpoint resource by using the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide//) and the [Amazon Pinpoint REST API](https://docs.aws.amazon.com/pinpoint/latest/apireference//)\. The AWS CLI examples are formatted for Microsoft Windows\. For Unix, Linux, and macOS, replace the caret \(^\) line\-continuation character with a backslash \(\\\)\. You can also use any supported AWS SDK to add a tag to a resource\.
+The following examples show how to add a tag to an Amazon Pinpoint resource by using the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/) and the [Amazon Pinpoint REST API](https://docs.aws.amazon.com/pinpoint/latest/apireference/)\. The AWS CLI examples are formatted for Microsoft Windows\. For Unix, Linux, and macOS, replace the caret \(^\) line\-continuation character with a backslash \(\\\)\. You can also use any supported AWS SDK to add a tag to a resource\.
 
 To add a tag to multiple Amazon Pinpoint resources in a single operation, use the resource groups tagging operations of the AWS CLI or the [AWS Resource Groups Tagging API](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html)\.
 
@@ -144,7 +143,7 @@ Note that the Amazon Pinpoint API currently doesn’t support PUT requests for p
 
 ## Displaying Tags for Resources<a name="tags-display"></a>
 
-The following examples show how to use the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide//) and the [Amazon Pinpoint REST API](https://docs.aws.amazon.com/pinpoint/latest/apireference//) to display a list of all the tags \(keys and values\) that are associated with an Amazon Pinpoint resource\. The AWS CLI examples are formatted for Microsoft Windows\. For Unix, Linux, and macOS, replace the caret \(^\) line\-continuation character with a backslash \(\\\)\. You can also use any supported AWS SDK to display all the tags that are associated with a resource\.
+The following examples show how to use the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/) and the [Amazon Pinpoint REST API](https://docs.aws.amazon.com/pinpoint/latest/apireference/) to display a list of all the tags \(keys and values\) that are associated with an Amazon Pinpoint resource\. The AWS CLI examples are formatted for Microsoft Windows\. For Unix, Linux, and macOS, replace the caret \(^\) line\-continuation character with a backslash \(\\\)\. You can also use any supported AWS SDK to display all the tags that are associated with a resource\.
 
 ------
 #### [ AWS CLI ]
@@ -205,7 +204,7 @@ To update a tag for an Amazon Pinpoint project or for multiple resources at the 
 
 To update a tag key for one resource, you can [remove the current tag](#tags-remove) and [add a new tag](#tags-add) by using the Amazon Pinpoint API\.
 
-To update a tag value \(of a tag key\) for only one resource, you can use the Amazon Pinpoint API\. The following examples show how to do this by using the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide//) and the [Amazon Pinpoint REST API](https://docs.aws.amazon.com/pinpoint/latest/apireference//)\. The AWS CLI examples are formatted for Microsoft Windows\. For Unix, Linux, and macOS, replace the caret \(^\) line\-continuation character with a backslash \(\\\)\. You can also use any supported AWS SDK to update a tag value for a resource\.
+To update a tag value \(of a tag key\) for only one resource, you can use the Amazon Pinpoint API\. The following examples show how to do this by using the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/) and the [Amazon Pinpoint REST API](https://docs.aws.amazon.com/pinpoint/latest/apireference/)\. The AWS CLI examples are formatted for Microsoft Windows\. For Unix, Linux, and macOS, replace the caret \(^\) line\-continuation character with a backslash \(\\\)\. You can also use any supported AWS SDK to update a tag value for a resource\.
 
 ------
 #### [ AWS CLI ]
@@ -271,7 +270,7 @@ Where:
 
 ## Removing Tags from Resources<a name="tags-remove"></a>
 
-The following examples show how to remove a tag \(both the key and value\) from an Amazon Pinpoint resource by using the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide//) and the [Amazon Pinpoint REST API](https://docs.aws.amazon.com/pinpoint/latest/apireference//)\. The AWS CLI examples are formatted for Microsoft Windows\. For Unix, Linux, and macOS, replace the caret \(^\) line\-continuation character with a backslash \(\\\)\. You can also use any supported AWS SDK to remove a tag from a resource\.
+The following examples show how to remove a tag \(both the key and value\) from an Amazon Pinpoint resource by using the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/) and the [Amazon Pinpoint REST API](https://docs.aws.amazon.com/pinpoint/latest/apireference/)\. The AWS CLI examples are formatted for Microsoft Windows\. For Unix, Linux, and macOS, replace the caret \(^\) line\-continuation character with a backslash \(\\\)\. You can also use any supported AWS SDK to remove a tag from a resource\.
 
 To remove a tag from multiple Amazon Pinpoint resources in a single operation, use the resource groups tagging operations of the AWS CLI or the [AWS Resource Groups Tagging API](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html)\. To remove only a specific tag value \(not a tag key\) from a resource, [update the tag for the resource](#tags-update)\.
 
