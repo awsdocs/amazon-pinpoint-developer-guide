@@ -98,9 +98,9 @@ For example:
             }
         },
         "RecommendationItems":[
-            "1210",
-            "1527",
-            "2115"
+            "1815",
+            "2009",
+            "1527"
         ],
         "CreationDate":"2020-02-26T18:56:24.875Z"
     },
@@ -130,9 +130,9 @@ For example:
             }
         },
         "RecommendationItems":[
-            "55820",
-            "51255",
-            "91542"
+            "1210",
+            "6542",
+            "4582"
         ],
         "CreationDate":"2020-02-26T18:56:24.897Z"
     }
@@ -146,7 +146,7 @@ In the preceding example, the relevant Amazon Pinpoint settings are:
 
 When Amazon Pinpoint invokes the Lambda function and sends this payload as the event data, AWS Lambda passes the data to the Lambda function for processing\.
 
-Each payload can contain data for up to 50 endpoints\. If a segment contains more than 50 endpoints, Amazon Pinpoint invokes the function repeatedly, for up to 50 endpoints at a time, until all the data is processed by the function\. 
+Each payload can contain data for up to 50 endpoints\. If a segment contains more than 50 endpoints, Amazon Pinpoint invokes the function repeatedly, for up to 50 endpoints at a time, until the function processes all the data\. 
 
 ### Response Data and Requirements<a name="ml-models-rm-lambda-create-function-response"></a>
 
@@ -164,9 +164,65 @@ If any of the preceding requirements isn't met, Amazon Pinpoint won't be able to
 
 Finally, we recommend that you reserve 256 concurrent executions for the function\.
 
-Overall, your Lambda function should process the event data that's sent by Amazon Pinpoint and return modified endpoint definitions\. It can do this by iterating through each endpoint in the `Endpoints` object and, for each endpoint, creating and setting values for the custom recommended attributes that you want to use\.
+Overall, your Lambda function should process the event data that's sent by Amazon Pinpoint and return modified endpoint definitions\. It can do this by iterating through each endpoint in the `Endpoints` object and, for each endpoint, creating and setting values for the custom recommended attributes that you want to use\. The following example handler, written in Python and continuing with the preceding example of input event data, shows this:
 
-Continuing with the earlier example of event data, if a Lambda function iterates through each endpoint and creates and sets values for custom recommended attributes named `Recommendations.Title` and `Recommendations.Genre`, the function returns the following updated endpoint definitions: 
+```
+import json
+from random import randrange
+import random
+import string
+ 
+def lambda_handler(event, context):
+    print("Received event: " + json.dumps(event))
+    print("Received context: " +  str(context))
+    segment_endpoints = event["Endpoints"]
+    new_segment = dict()
+    for endpoint_id in segment_endpoints.keys():
+        endpoint = segment_endpoints[endpoint_id]
+        if supported_endpoint(endpoint):
+            new_segment[endpoint_id] = add_recommendation(endpoint)
+ 
+    print("Returning endpoints: " + json.dumps(new_segment))
+    return new_segment
+ 
+def supported_endpoint(endpoint):
+    return True
+ 
+def add_recommendation(endpoint):
+    endpoint["Recommendations"] = dict()
+ 
+    customTitleList = list()
+    customGenreList = list()
+    for i,item in enumerate(endpoint["RecommendationItems"]):
+        item = int(item)
+        if item = 1210:
+            customTitleList.insert(i, "Hanna")
+            customGenreList.insert(i, "Action")
+        elif item = 1527:
+            customTitleList.insert(i, "Catastrophe")
+            customGenreList.insert(i, "Comedy")
+        elif item = 1815:
+            customTitleList.insert(i, "Fleabag")
+            customGenreList.insert(i, "Comedy")
+        elif item = 2009:
+            customTitleList.insert(i, "Late Night")
+            customGenreList.insert(i, "Drama")
+        elif item = 4582:
+            customTitleList.insert(i, "Agatha Christie\'s The ABC Murders")
+            customGenreList.insert(i, "Crime")
+        elif item = 6542:
+            customTitleList.insert(i, "Hunters")
+            customGenreList.insert(i, "Drama")
+        
+    endpoint["Recommendations"]["Title"] = customTitleList
+    endpoint["Recommendations"]["Genre"] = customGenreList
+    
+    return endpoint
+```
+
+In the preceding example, AWS Lambda passes the event data to the handler as the `event` parameter\. The handler iterates through each endpoint in the `Endpoints` object and sets values for custom recommended attributes named `Recommendations.Title` and `Recommendations.Genre`\. The `return` statement returns each updated endpoint definition to Amazon Pinpoint\.
+
+Continuing with the earlier example of input event data, the updated endpoint definitions are:
 
 ```
 "Endpoints":{
@@ -196,9 +252,9 @@ Continuing with the earlier example of event data, if a Lambda function iterates
             }
         },
         "RecommendationItems":[
-            "1210",
-            "1527",
-            "2115"
+            "1815",
+            "2009",
+            "1527"
         ],
         "CreationDate":"2020-02-26T18:56:24.875Z",
         "Recommendations":{
@@ -240,9 +296,9 @@ Continuing with the earlier example of event data, if a Lambda function iterates
             }
         },
         "RecommendationItems":[
-            "55820",
-            "51255",
-            "91542"
+            "1210",
+            "6542",
+            "4582"
         ],
         "CreationDate":"2020-02-26T18:56:24.897Z",
         "Recommendations":{
@@ -267,7 +323,7 @@ In the preceding example, the function modified the `Endpoints` object that it r
 
 Before you can use your Lambda function to process recommendation data, you must authorize Amazon Pinpoint to invoke the function\. To grant invocation permission, assign a Lambda function policy to the function\. A *Lambda function policy* is a resource\-based permissions policy that designates which entities can use a function and what actions those entities can take\. For more information, see [Using Resource\-Based Policies for AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html) in the *AWS Lambda Developer Guide*\.
 
-The following example policy allows the Amazon Pinpoint service principal to use the `lambda:InvokeFunction` action for a particular campaign \(*campaignId*\) in a particular Amazon Pinpoint project \(*projectId*\):
+The following example policy allows the Amazon Pinpoint service principal to use the `lambda:InvokeFunction` action for a particular Amazon Pinpoint campaign \(*campaignId*\) in a particular Amazon Pinpoint project \(*projectId*\):
 
 ```
 {
@@ -286,7 +342,7 @@ The following example policy allows the Amazon Pinpoint service principal to use
 }
 ```
 
-The function policy requires a `Condition` block that includes an `AWS:SourceArn` key\. This code defines which resource is allowed to invoke the function\. In the preceding example, this code allows one particular campaign to invoke the function\.
+The function policy requires a `Condition` block that includes an `AWS:SourceArn` key\. This key specifies which resource is allowed to invoke the function\. In the preceding example, the policy allows one particular campaign to invoke the function\.
 
 You can also write a policy that allows the Amazon Pinpoint service principal to use the `lambda:InvokeFunction` action for all the campaigns and journeys in a specific Amazon Pinpoint project \(*projectId*\)\. The following example policy shows this:
 
@@ -307,7 +363,7 @@ You can also write a policy that allows the Amazon Pinpoint service principal to
 }
 ```
 
-Unlike the first example, `AWS:SourceArn` key in the `Condition` block of this example allows one particular project to invoke the function\. This permission applies to all the campaigns and journeys in the project\.
+Unlike the first example, the `AWS:SourceArn` key in the `Condition` block of this example allows one particular project to invoke the function\. This permission applies to all the campaigns and journeys in the project\.
 
 To write a more generic policy, you can use a multicharacter match wildcard \(\*\)\. For example, you can use the following `Condition` block to allow any Amazon Pinpoint project to invoke the function:
 
@@ -323,7 +379,7 @@ If you want to use the Lambda function with all the projects for your Amazon Pin
 
 ## Authorizing Amazon Pinpoint to Invoke the Function<a name="ml-models-rm-lambda-trust-policy-assign"></a>
 
-After you assign a Lambda function policy to the function, you can add permissions that allow Amazon Pinpoint to invoke the function for a specific project, campaign, or journey\. You can do this using the AWS Command Line Interface \(AWS CLI\) and the Lambda [https://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html](https://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html) command\. The following example shows how to do this for a specific project:
+After you assign a Lambda function policy to the function, you can add permissions that allow Amazon Pinpoint to invoke the function for a specific project, campaign, or journey\. You can do this using the AWS Command Line Interface \(AWS CLI\) and the Lambda [https://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html](https://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html) command\. The following example shows how to do this for a specific project \(*projectId*\):
 
 ```
 $ aws lambda add-permission \
