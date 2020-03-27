@@ -85,28 +85,20 @@ After you create the policy, you can create an IAM user and attach the policy to
 
 1. Open the IAM console at [https://console\.aws\.amazon\.com/iam/](https://console.aws.amazon.com/iam/)\.
 
-1. In the IAM console, in the navigation pane, choose **Users**, and then choose **Add user**\.
+1. On the IAM console, in the navigation pane, choose **Users**, and then choose **Add user**\.
 
-1. Under **Set user details**, for **User name**, enter a name that identifies the user account, such as PostmanUser\.
+1. Under **Set user details**, for **User name**, enter a name that identifies the user account, such as **PostmanUser**\.
 
-1. Under **Select AWS access type**, for **Access type**, choose **Programmatic access**\.
+1. Under **Select AWS access type**, for **Access type**, choose **Programmatic access**\. Then choose **Next: Permissions**\.
 
-1. Under **Attach permissions policies**, choose the policy that you created in the previous section, and then choose **Next: Tags**\.
+1. Under **Set permissions**, choose **Attach existing policies directly**\. In the list of policies, choose the policy that you created in [Step 1\.1](#tutorials-using-postman-iam-user-create-policy)\. Then choose **Next: Tags**\.
 
-   Choose **Next: Permissions**\.
+1. On the **Add tags** page, optionally add tags that help you identify the user\. For more information about using tags, see [Tagging IAM Users and Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the *IAM User Guide*\. Then choose **Next: Review**\.
 
-1. Under **Set permissions**, choose **Attach existing policies directly**\. In the list of policies, choose the **PostmanAccessPolicy** that you created in [Step 1\.1](#tutorials-using-postman-iam-user-create-policy)\.
-
-   Choose **Next: Tags**\.
-
-1. On the **Add tags** page, you can optionally add tags that help you identify the user\. For more information about using tags, see [Tagging IAM Entities](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the *IAM User Guide*\.
-
-   Choose **Next: Review**\.
-
-1. On the **Review** page, confirm the settings for the user\. When you're ready to create the user, choose **Create user**\.
+1. On the **Review** page, review and confirm the settings for the user\. When you're ready to create the user, choose **Create user**\.
 
 1. On the **Success** page, copy the credentials that are shown in the **Access key ID** and **Secret access key** columns\.
 **Note**  
-You need to provide both the access key ID and the secret access key in a later step in this tutorial\. This is the only time that you're able to view the secret access key, so you should copy it and save it in a safe location\.
+You need to provide both the access key ID and the secret access key later in this tutorial\. This is the only time that you're able to view the secret access key, so you should copy it and save it in a safe location\.
 
 **Next**: [Set Up Postman](tutorials-using-postman-configuration.md)

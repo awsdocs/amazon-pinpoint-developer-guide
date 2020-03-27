@@ -638,7 +638,7 @@ Update an Amazon Pinpoint configuration for a recommender model\.
 + Method – PUT
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:recommenders/recommenderId`
 
-**`mobiletargeting:GetRecommenderConfiguration`**  
+**`mobiletargeting:DeleteRecommenderConfiguration`**  
 Delete an Amazon Pinpoint configuration for a recommender model\.  
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/recommenders-recommender-id.html](https://docs.aws.amazon.com/pinpoint/latest/apireference/recommenders-recommender-id.html)
 + Method – DELETE

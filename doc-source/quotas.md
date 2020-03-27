@@ -1,9 +1,10 @@
 # Amazon Pinpoint Quotas<a name="quotas"></a>
 
-The following sections list and describe the quotas, formerly referred to as *limits*, that apply to Amazon Pinpoint resources and operations\. Some quotas can be increased, while others cannot\. To determine whether you can request an increase for a quota, refer to the **Eligible for Increase** column in each section\.
+The following sections list and describe the quotas, formerly referred to as *limits*, that apply to Amazon Pinpoint resources and operations\. Some quotas can be increased, while others cannot\. To determine whether you can request an increase for a quota, refer to the **Eligible for Increase** column or statement in each section\.
 
 **Topics**
 + [General Quotas](#quotas-general)
++ [API Request Quotas](#quotas-pinpoint-api)
 + [Campaign Quotas](#quotas-campaign)
 + [Email Quotas](#quotas-email)
 + [Endpoint Quotas](#quotas-endpoint)
@@ -20,13 +21,40 @@ The following sections list and describe the quotas, formerly referred to as *li
 
 ## General Quotas<a name="quotas-general"></a>
 
-The following quotas apply to general use of Amazon Pinpoint\.
+Your account can have up to 100 Amazon Pinpoint projects\. This quota is not eligible for increase\.
+
+## API Request Quotas<a name="quotas-pinpoint-api"></a>
+
+Amazon Pinpoint implements quotas that restrict the size and number of requests that you can make to the Amazon Pinpoint API from your AWS account\. These quotas are not eligible for increase\.
+
+The maximum size of an invocation \(request and response\) payload is 7 MB, unless otherwise specified for a particular type of resource\. To determine whether a resource has a different quota, see the appropriate section of this topic for that type of resource\.
+
+The maximum number of requests varies by quota type and API operation\. Amazon Pinpoint implements two types of quotas for API requests:
++ **Rate quotas** – Also referred to as *rate limits*, this type of quota defines the maximum number of requests that you can make per second for a particular operation\. It controls the rate of requests that are sent or received\.
++ **Burst quotas** – Also referred to as *burst limits* or *burst capacity*, this type of quota defines the maximum number of requests that you can send at one time for a particular operation\. It prevents usage spikes by ensuring that the supported number of requests is distributed evenly across a certain time period\.
+
+The following table lists the rate and burst quotas for the Amazon Pinpoint API\.
 
 
-| Resource | Default Quota | Eligible for Increase | 
+| Operation | Default Rate Quota \(Requests Per Second\) | Default Burst Quota \(Number of Requests\) | 
 | --- | --- | --- | 
-| API request payload size | 7 MB per request | No | 
-| Projects | 100 per account | No | 
+|  CreateCampaign  |  25  |  25  | 
+|  CreateSegment  |  25  |  25  | 
+| DeleteCampaign | 25 | 25 | 
+| DeleteEndpoint | 1,000 | 1,000 | 
+| DeleteSegment | 25 | 25 | 
+| GetEndpoint | 7,000 | 7,000 | 
+| PhoneNumberValidate | 20 | 20 | 
+| PutEvents | 7,000 | 7,000 | 
+| SendMessages | 4,000 | 4,000 | 
+| SendUsersMessages | 6,000 | 6,000 | 
+| UpdateCampaign | 25 | 25 | 
+| UpdateEndpoint | 5,000 | 5,000 | 
+| UpdateEndpointsBatch | 5,000 | 5,000 | 
+| UpdateSegment | 25 | 25 | 
+| All other operations | 300 | 300 | 
+
+If you exceed one of these quotas, Amazon Pinpoint throttles the request—that is, it rejects an otherwise valid request and returns a `TooManyRequests` error\. Throttling is based on the total number of requests that you make from your account for a specific operation in a specific AWS Region\. In addition, throttling decisions are calculated independently for each operation\. For example, if Amazon Pinpoint throttles a request for the `SendMessages` operation, a concurrent request for the `UpdateEndpoint` operation can complete successfully\.
 
 ## Campaign Quotas<a name="quotas-campaign"></a>
 
@@ -133,10 +161,10 @@ The following quotas apply to Amazon Pinpoint configurations for retrieving and 
 
 | Resource | Default Quota | Eligible for Increase | 
 | --- | --- | --- | 
-| Maximum number of model configurations | 1 per message template | No | 
-| Maximum number of recommendations | 5 per message | No | 
+| Maximum number of model configurations | 1 per message template100 per account | No | 
+| Maximum number of recommendations | 5 per endpoint or user | No | 
 | Maximum number of recommended attributes per endpoint or user | 1, if the attribute values aren't processed by an AWS Lambda function10, if the attribute values are processed by an AWS Lambda function | No | 
-| Maximum length of a recommended attribute name | 50 characters for an attribute name25 characters for an attribute display name \(the name that appears on the Amazon Pinpoint console\) | No | 
+| Maximum length of a recommended attribute name | 50 characters for an attribute name25 characters for an attribute display name \(the name that appears in the **Attribute finder** on the console\) | No | 
 | Maximum length of a recommended attribute value that's retrieved from Amazon Personalize | 100 characters | No | 
 | Maximum size of an invocation payload \(request and response\) for a Lambda function | 6 MB | No | 
 | Maximum amount of time to wait for a Lambda function to process data | 15 seconds | No | 
