@@ -2,13 +2,15 @@
 
 You can configure Amazon Pinpoint to retrieve recommendation data from an Amazon Personalize solution that's been deployed as an Amazon Personalize campaign\. You can use this data to send personalized recommendations to message recipients based on each recipient's attributes and behavior\. To learn more, see [Machine Learning Models](https://docs.aws.amazon.com/pinpoint/latest/userguide/ml-models.html) in the *Amazon Pinpoint User Guide*\.
 
-Before you can retrieve recommendation data from an Amazon Personalize campaign, you have to create an AWS Identity and Access Management \(IAM\) role that allows Amazon Pinpoint to retrieve the data from the campaign\. To create this role, use the IAM API to complete the following steps:
+Before you can retrieve recommendation data from an Amazon Personalize campaign, you have to create an AWS Identity and Access Management \(IAM\) role that allows Amazon Pinpoint to retrieve the data from the campaign\. Amazon Pinpoint can create this role for you automatically when you use the console to set up a recommender model in Amazon Pinpoint\. Or, you can create this role manually\.
+
+To create the role manually, use the IAM API to complete the following steps:
 
 1. Create an IAM policy that allows an entity \(in this case, Amazon Pinpoint\) to retrieve recommendation data from an Amazon Personalize campaign\.
 
 1. Create an IAM role and attach the IAM policy to it\.
 
-This topic explains how to complete these steps by using the AWS Command Line Interface \(AWS CLI\)\. It assumes that you've already created and deployed the Amazon Personalize campaign\. For information about creating and deploying a campaign, see [Creating a Campaign](https://docs.aws.amazon.com/personalize/latest/dg/campaigns.html) in the *Amazon Personalize Developer Guide*\.
+This topic explains how to complete these steps by using the AWS Command Line Interface \(AWS CLI\)\. It assumes that you've already created the Amazon Personalize solution and deployed it as an Amazon Personalize campaign\. For information about creating and deploying a campaign, see [Creating a Campaign](https://docs.aws.amazon.com/personalize/latest/dg/campaigns.html) in the *Amazon Personalize Developer Guide*\.
 
 This topic also assumes that you've already installed and configured the AWS CLI\. For information about setting up the AWS CLI, see [Installing the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) in the *AWS Command Line Interface User Guide*\.
 
