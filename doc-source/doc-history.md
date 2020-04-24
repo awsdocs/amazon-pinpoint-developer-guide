@@ -1,10 +1,11 @@
 # Document History for Amazon Pinpoint<a name="doc-history"></a>
 
 The following table describes important changes in each release of the *Amazon Pinpoint Developer Guide* after December 2018\. For notification about updates to this documentation, you can subscribe to an RSS feed\.
-+ **Latest documentation update:** March 4, 2020
++ **Latest documentation update:** April 23, 2020
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Custom channels](#doc-history) | Updated information about [creating custom channels by using Lambda functions or webhooks](https://docs.aws.amazon.com/pinpoint/latest/developerguide/channels-custom.html)\. | April 23, 2020 | 
 | [Machine learning](#doc-history) | Added information about retrieving personalized recommendations from recommender models, and optionally [enhancing those recommendations](https://docs.aws.amazon.com/pinpoint/latest/developerguide/ml-models-rm-lambda.html) by using AWS Lambda functions\. | March 4, 2020 | 
 | [Security](#doc-history) | Added a [Security chapter](https://docs.aws.amazon.com/pinpoint/latest/developerguide/security.html), which provides information about various security controls and features of Amazon Pinpoint\. | February 4, 2020 | 
 | [Journeys](#doc-history) | Added information about using Amazon Pinpoint journeys to develop automated workflows that perform messaging activities for projects\. Also added information about [querying analytics data](https://docs.aws.amazon.com/pinpoint/latest/developerguide/analytics.html) for a subset of metrics that apply to journeys\. | October 31, 2019 | 

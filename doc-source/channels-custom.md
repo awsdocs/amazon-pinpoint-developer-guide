@@ -1,231 +1,295 @@
-# Creating Custom Channels with AWS Lambda<a name="channels-custom"></a>
+# Creating Custom Channels in Amazon Pinpoint<a name="channels-custom"></a>
 
+Amazon Pinpoint includes built\-in support for sending messages through the push notification, email, SMS, and voice channels\. You can also configure Amazon Pinpoint to send messages through other channels by creating custom channels\. Custom channels in Amazon Pinpoint allow you to send messages through any service that has an API, including third\-party services\. You can interact with APIs by using a webhook, or by calling an AWS Lambda function\.
 
-|  | 
-| --- |
-| This is prerelease documentation for a feature in public beta release\. It is subject to change\. | 
+The segments that you send custom channel campaigns to can contain endpoints of all types \(that is, endpoints where the value of the `ChannelType` attribute is EMAIL, VOICE, SMS, CUSTOM, or one of the various push notification endpoint types\)\.
 
-Amazon Pinpoint supports messaging channels for mobile push, email, and SMS\. However, some messaging use cases might require unsupported channels\. For example, you might want to send a message to an instant messaging service, such as Facebook Messenger, or you might want to display a notification within your web application\. In such cases, you can use AWS Lambda to create a custom channel that performs the message delivery outside of Amazon Pinpoint\.
+## Creating a Campaign that Sends Messages Through a Custom Channel<a name="channels-custom-create"></a>
 
-AWS Lambda is a compute service that you can use to run code without provisioning or managing servers\. You package your code and upload it to Lambda as *Lambda functions*\. Lambda runs a function when the function is invoked, which might be done manually by you or automatically in response to events\.
+To assign a Lambda function or webhook to an individual campaign, use the Amazon Pinpoint API to create or update a [Campaign](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-campaigns.html) object\.
 
-For more information, see [Lambda Functions](https://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction-function.html) in the *AWS Lambda Developer Guide*\.
+The `MessageConfiguration` object in the campaign must also contain a `CustomMessage` object\. This object has one member, `Data`\. The value of `Data` is a JSON string that contains the message payload that you want to send to the custom channel\.
 
-To create a custom channel, you define a Lambda function that handles the message delivery for an Amazon Pinpoint campaign\. Then, you assign the function to a campaign by defining the campaign's `CampaignHook` settings \([Campaign](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-campaigns-campaign-id.html) resource\)\. These settings include the Lambda function name and the `CampaignHook` mode\. By setting the mode to `DELIVERY`, you specify that the Lambda function handles the message delivery instead of Amazon Pinpoint\.
-
-A Lambda function that you assign to a campaign is referred to as an Amazon Pinpoint *extension*\.
-
-With the `CampaignHook` settings defined, Amazon Pinpoint automatically invokes the Lambda function when it runs the campaign, without sending the campaign's message to a standard channel\. Instead, Amazon Pinpoint sends *event data* about the message delivery to the function, and it allows the function to handle the delivery\. The event data includes the message body and the list of endpoints to which the message should be delivered\.
-
-After Amazon Pinpoint successfully invokes the function, it generates a successful send event for the campaign\.
+The campaign has to contain a `CustomDeliveryConfiguration` object\. Within the `CustomDeliveryConfiguration` object, specify the following:
++ `EndpointTypes` – An array that contains all of the endpoint types that the custom channel campaign should be sent to\. It can contain any or all of the following channel types: 
+  + `ADM`
+  + `APNS`
+  + `APNS_SANDBOX`
+  + `APNS_VOIP`
+  + `APNS_VOIP_SANDBOX`
+  + `BAIDU`
+  + `CUSTOM`
+  + `EMAIL`
+  + `GCM`
+  + `SMS`
+  + `VOICE`
++ `DeliveryUri` – The destination that endpoints are sent to\. You can specify only one of the following:
+  + The Amazon Resource Name \(ARN\) of a Lambda function that you want to execute when the campaign runs\.
+  + The URL of the webhook that you want to send endpoint data to when the campaign runs\.
 
 **Note**  
-You can also use the `CampaignHook` settings to assign a Lambda function that modifies and returns a campaign's segment before Amazon Pinpoint delivers the campaign's message\. For more information, see [Customizing Segments with AWS Lambda](segments-dynamic.md)\.
+The `Campaign` object can also contain a `Hook` object\. This object is only used to create segments that are customized by a Lambda function when a campaign is executed\. For more information, see [Customizing Segments with AWS Lambda](segments-dynamic.md)\.
 
-To create a custom channel with AWS Lambda, first create a function that accepts the event data sent by Amazon Pinpoint and handles the message delivery\. Then, authorize Amazon Pinpoint to invoke the function by assigning a Lambda function policy\. Finally, assign the function to one or more campaigns by defining `CampaignHook` settings\.
+## Understanding the Event Data That Amazon Pinpoint Sends to Custom Channels<a name="channels-custom-event-data"></a>
 
-## Event Data<a name="channels-custom-event-data"></a>
-
-When Amazon Pinpoint invokes your Lambda function, it provides the following payload as the event data:
+Before you create a Lambda function that sends messages over a custom channel, you should familiarize yourself with the data that Amazon Pinpoint emits\. When a Amazon Pinpoint campaign sends messages over a custom channel, it sends a payload to the target Lambda function that resembles the following example:
 
 ```
 {
-  "MessageConfiguration": {Message configuration}
-  "ApplicationId": ApplicationId,
-  "CampaignId": CampaignId,
-  "TreatmentId": TreatmentId,
-  "ActivityId": ActivityId,
-  "ScheduledTime": Scheduled Time,
-  "Endpoints": {
-    EndpointId: {Endpoint definition}
-    . . .
+  "Message":{},
+  "Data":"The payload that's provided in the CustomMessage object in MessageConfiguration",
+  "ApplicationId":"3a9b1f4e6c764ba7b031e7183example",
+  "CampaignId":"13978104ce5d6017c72552257example",
+  "TreatmentId":"0",
+  "ActivityId":"575cb1929d5ba43e87e2478eeexample",
+  "ScheduledTime":"2020-04-08T19:00:16.843Z",
+  "Endpoints":{
+    "1dbcd396df28ac6cf8c1c2b7fexample":{
+      "ChannelType":"EMAIL",
+      "Address":"mary.major@example.com",
+      "EndpointStatus":"ACTIVE",
+      "OptOut":"NONE",
+      "Location":{
+        "City":"Seattle",
+        "Country":"USA"
+      },
+      "Demographic":{
+        "Make":"OnePlus",
+        "Platform":"android"
+      },
+      "EffectiveDate":"2020-04-01T01:05:17.267Z",
+      "Attributes":{
+        "CohortId":[
+          "42"
+        ]
+      },
+      "CreationDate":"2020-04-01T01:05:17.267Z"
+    }
   }
 }
 ```
 
 The event data provides the following attributes:
-+ `MessageConfiguration` – Has the same structure as the `DirectMessageConfiguration` object of the [Messages resource](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-messages.html) in the Amazon Pinpoint API\. 
-+ `ApplicationId` – The ID of the Amazon Pinpoint project to which the campaign belongs\.
-+ `CampaignId` – The ID of the Amazon Pinpoint project for which the function is invoked\.
-+ `TreatmentId` – The ID of a campaign variation used for A/B testing\.
++ `ApplicationId` – The ID of the Amazon Pinpoint project that the campaign belongs to\.
++ `CampaignId` – The ID of the Amazon Pinpoint project that invoked the Lambda function\.
++ `TreatmentId` – The ID of the campaign variant\. If you created a standard campaign, this value is always 0\. If you created an A/B test campaign, this value is an integer between 0 and 4\.
 + `ActivityId` – The ID of the activity being performed by the campaign\.
-+ `ScheduledTime` – The schedule time at which the campaign's messages are delivered in ISO 8601 format\.
-+ `Endpoints` – A map that associates endpoint IDs with endpoint definitions\. Each event data payload contains up to 50 endpoints\. If the campaign segment contains more than 50 endpoints, Amazon Pinpoint invokes the function repeatedly, with up to 50 endpoints at a time, until all endpoints have been processed\. 
++ `ScheduledTime` – The time when Amazon Pinpoint executed the campaign, shown in ISO 8601 format\.
++ `Endpoints` – A list of the endpoints that were targeted by the campaign\. Each payload can contain up to 50 endpoints\. If the segment that the campaign was sent to contains more than 50 endpoints, Amazon Pinpoint invokes the function repeatedly, with up to 50 endpoints at a time, until all endpoints have been processed\.
 
-## Creating a Lambda Function<a name="channels-custom-lambda-create"></a>
+You can use this sample data when creating and testing your custom channel Lambda function\.
 
-To create a Lambda function, refer to [Building Lambda Functions](https://docs.aws.amazon.com/lambda/latest/dg/lambda-app.html) in the *AWS Lambda Developer Guide*\.
+## Configuring Webhooks<a name="channels-custom-webhook-create"></a>
+
+If you use a webhook to send custom channel messages, the URL of the webhook has to begin with "https://"\. The webhook URL can only contain alphanumeric characters, plus the following symbols: hyphen \(\-\), period \(\.\), underscore \(\_\), tilde \(\~\), question mark \(?\), slash or solidus \(/\), pound or hash sign \(\#\), and semicolon \(:\)\. The URL has to comply with [RFC3986](https://tools.ietf.org/html/rfc3986)\. 
+
+When you create a campaign that specifies a webhook URL, Amazon Pinpoint issues an HTTP `HEAD` to that URL\. The response to the `HEAD` request must contain a header called `X-Amz-Pinpoint-AccountId`\. The value of this header must equal your AWS account ID\.
+
+## Configuring Lambda Functions<a name="channels-custom-lambda-create"></a>
+
+This section provides an overview of the steps that you need to take when you create a Lambda function that sends messages over a custom channel\. First, you create the function\. After that, you add an execution policy to the function\. This policy allows Amazon Pinpoint to execute the policy when a campaign runs\.
+
+For an introduction to creating Lambda functions, see [Building Lambda Functions](https://docs.aws.amazon.com/lambda/latest/dg/lambda-app.html) in the *AWS Lambda Developer Guide*\.
 
 ### Example Lambda Function<a name="channels-custom-lambda-example"></a>
 
-The following example Lambda function receives event data when Amazon Pinpoint runs a campaign, and it sends the campaign's message to Facebook Messenger:
+The following code example processes the payload and logs the number of endpoints of each endpoint type in CloudWatch\.
 
 ```
-"use strict";
+import boto3
+import random
+import pprint
+import json
+import time
 
-var https = require("https");
-var q = require("q");
+cloudwatch = boto3.client('cloudwatch')
+    
+def lambda_handler(event, context):
+    customEndpoints = 0
+    smsEndpoints = 0
+    pushEndpoints = 0
+    emailEndpoints = 0
+    voiceEndpoints = 0
+    numEndpoints = len(event['Endpoints'])
+    
+    print("Payload:\n", event)
+    print("Endpoints in payload: " + str(numEndpoints))
 
-var VERIFY_TOKEN = "my_token";
-var PAGE_ACCESS_TOKEN = "EAF...DZD";
-/* this constant can be put in a constants file and shared between this function and your Facebook Messenger webhook code */
-var FACEBOOK_MESSENGER_PSID_ATTRIBUTE_KEY = "facebookMessengerPsid";
-
-exports.handler = function(event, context, callback) {
-
-    var deliverViaMessengerPromises = [];
-
-    if (event.Message && event.Endpoints) {
-        for (var endpoint in event.Endpoints) {
-            if (isFbookMessengerActive(event.Endpoints[endpoint])) {
-                deliverViaMessengerPromises.push(deliverViaMessenger(event.Message, event.Endpoints[endpoint].User));
+    for key in event['Endpoints'].keys():
+        if event['Endpoints'][key]['ChannelType'] == "CUSTOM":
+            customEndpoints += 1
+        elif event['Endpoints'][key]['ChannelType'] == "SMS":
+            smsEndpoints += 1
+        elif event['Endpoints'][key]['ChannelType'] == "EMAIL":
+            emailEndpoints += 1
+        elif event['Endpoints'][key]['ChannelType'] == "VOICE":
+            voiceEndpoints += 1
+        else:
+            pushEndpoints += 1
+            
+    response = cloudwatch.put_metric_data(
+        MetricData = [
+            {
+                'MetricName': 'EndpointCount',
+                'Dimensions': [
+                    {
+                        'Name': 'CampaignId',
+                        'Value': event['CampaignId']
+                    },
+                    {
+                        'Name': 'ApplicationId',
+                        'Value': event['ApplicationId']
+                    }
+                ],
+                'Unit': 'None',
+                'Value': len(event['Endpoints'])
+            },
+            {
+                'MetricName': 'CustomCount',
+                'Dimensions': [
+                    {
+                        'Name': 'CampaignId',
+                        'Value': event['CampaignId']
+                    },
+                    {
+                        'Name': 'ApplicationId',
+                        'Value': event['ApplicationId']
+                    }
+                ],
+                'Unit': 'None',
+                'Value': customEndpoints
+            },
+            {
+                'MetricName': 'SMSCount',
+                'Dimensions': [
+                    {
+                        'Name': 'CampaignId',
+                        'Value': event['CampaignId']
+                    },
+                    {
+                        'Name': 'ApplicationId',
+                        'Value': event['ApplicationId']
+                    }
+                ],
+                'Unit': 'None',
+                'Value': smsEndpoints
+            },
+            {
+                'MetricName': 'EmailCount',
+                'Dimensions': [
+                    {
+                        'Name': 'CampaignId',
+                        'Value': event['CampaignId']
+                    },
+                    {
+                        'Name': 'ApplicationId',
+                        'Value': event['ApplicationId']
+                    }
+                ],
+                'Unit': 'None',
+                'Value': emailEndpoints
+            },
+            {
+                'MetricName': 'VoiceCount',
+                'Dimensions': [
+                    {
+                        'Name': 'CampaignId',
+                        'Value': event['CampaignId']
+                    },
+                    {
+                        'Name': 'ApplicationId',
+                        'Value': event['ApplicationId']
+                    }
+                ],
+                'Unit': 'None',
+                'Value': voiceEndpoints
+            },
+            {
+                'MetricName': 'PushCount',
+                'Dimensions': [
+                    {
+                        'Name': 'CampaignId',
+                        'Value': event['CampaignId']
+                    },
+                    {
+                        'Name': 'ApplicationId',
+                        'Value': event['ApplicationId']
+                    }
+                ],
+                'Unit': 'None',
+                'Value': pushEndpoints
+            },
+            {
+                'MetricName': 'EndpointCount',
+                'Dimensions': [
+                ],
+                'Unit': 'None',
+                'Value': len(event['Endpoints'])
+            },
+            {
+                'MetricName': 'CustomCount',
+                'Dimensions': [
+                ],
+                'Unit': 'None',
+                'Value': customEndpoints
+            },
+            {
+                'MetricName': 'SMSCount',
+                'Dimensions': [
+                ],
+                'Unit': 'None',
+                'Value': smsEndpoints
+            },
+            {
+                'MetricName': 'EmailCount',
+                'Dimensions': [
+                ],
+                'Unit': 'None',
+                'Value': emailEndpoints
+            },
+            {
+                'MetricName': 'VoiceCount',
+                'Dimensions': [
+                ],
+                'Unit': 'None',
+                'Value': voiceEndpoints
+            },
+            {
+                'MetricName': 'PushCount',
+                'Dimensions': [
+                ],
+                'Unit': 'None',
+                'Value': pushEndpoints
             }
-        }
-    }
-
-    /* default OK response */
-    var response = {
-        body: "ok",
-        statusCode: 200
-    };
-
-    if (deliverViaMessengerPromises.length > 0) {
-        q.all(deliverViaMessengerPromises).done(function() {
-            callback(null, response);
-        });
-    } else {
-        callback(null, response);
-    }
-
-}
-
-/**
-Example Pinpoint Endpoint User object where we've added custom attribute facebookMessengerPsid to store the PSID needed by Facebook's API
-{
-    "UserId": "7a9870b7-493c-4521-b0ca-08bbbc36e595",
-    "UserAttributes": {
-        "facebookMessengerPsid": [ "1667566386619741" ]
-    }
-}
-**/
-function isFbookMessengerActive(endpoint) {
-    return endpoint.User && endpoint.User.UserAttributes && endpoint.User.UserAttributes[FACEBOOK_MESSENGER_PSID_ATTRIBUTE_KEY];
-}
-
-/**
-Sample message object from Pinpoint. This sample was an SMS so it has "smsmessage" attribute but this will vary for each messaging channel
-{
-    "smsmessage": {
-        "body": "This message should be intercepted by a campaign hook."
-    }
-}
-**/
-function deliverViaMessenger(message, user) {
-    var deferred = q.defer();
-
-    var messageText = message["smsmessage"]["body"];
-    var pinpointUserId = user.UserId;
-    var facebookPsid = user.UserAttributes[FACEBOOK_MESSENGER_PSID_ATTRIBUTE_KEY][0];
-    console.log("Sending message for user %s and page %s with message:", pinpointUserId, facebookPsid, messageText);
-
-    var messageData = {
-        recipient: {
-            id: facebookPsid
-        },
-        message: {
-            text: messageText
-        }
-    };
-
-    var body = JSON.stringify(messageData);
-    var path = "/v2.6/me/messages?access_token=" + PAGE_ACCESS_TOKEN;
-    var options = {
-        host: "graph.facebook.com",
-        path: path,
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        }
-    };
-
-    var req = https.request(options, httpsCallback);
-
-    req.on("error", function(e) {
-        console.log("Error posting to Facebook Messenger: " + e);
-        deferred.reject(e);
-    });
-
-    req.write(body);
-    req.end();
-
-    return deferred.promise;
-
-    function httpsCallback(response) {
-        var str = "";
-        response.on("data", function(chunk) {
-            str += chunk;
-        });
-        response.on("end", function() {
-            console.log(str);
-            deferred.resolve(response);
-        });
-    }
-}
+        ],
+        Namespace = 'PinpointCustomChannelExecution'
+    )
+    print("cloudwatchResponse:\n",response)
 ```
 
-## Assigning a Lambda Function Policy<a name="segments-dynamic-lambda-trust-policy"></a>
+When an Amazon Pinpoint campaign executes this Lambda function, Amazon Pinpoint sends the function a list of segment members\. The function counts the number of endpoints of each `ChannelType`\. It then sends that data to Amazon CloudWatch\. You can view these metrics in the **Metrics** section of the CloudWatch console\. The metrics are available in the **PinpointCustomChannelExecution** namespace\.
 
-Before you can use your Lambda function to process your endpoints, you must authorize Amazon Pinpoint to invoke your Lambda function\. To grant invocation permission, assign a *Lambda function policy* to the function\. A Lambda function policy is a resource\-based permissions policy that designates which entities can use your function and what actions those entities can take\.
+You can modify this code example so that it also connects to the API of an external service in order to send messages through that service\.
 
-For more information, see [Using Resource\-Based Policies for AWS Lambda \(Lambda Function Policies\)](https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html) in the *AWS Lambda Developer Guide*\.
+### Granting Amazon Pinpoint Permission to Invoke the Lambda Function<a name="channels-custom-lambda-trust-policy-assign"></a>
 
-### Example Function Policy<a name="segments-dynamic-lambda-trust-policy-example"></a>
-
-The following policy grants permission to the Amazon Pinpoint service principal to use the `lambda:InvokeFunction` action:
+You can use the AWS Command Line Interface \(AWS CLI\) to add permissions to the Lambda function policy assigned to your Lambda function\. To allow Amazon Pinpoint to invoke a function, use the Lambda [add\-permission](https://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html) command, as shown by the following example:
 
 ```
-{
-  "Sid": "sid",
-  "Effect": "Allow",
-  "Principal": {
-    "Service": "pinpoint.us-east-1.amazonaws.com"
-  },
-  "Action": "lambda:InvokeFunction",
-  "Resource": "{arn:aws:lambda:us-east-1:account-id:function:function-name}",
-  "Condition": {
-    "ArnLike": {
-      "AWS:SourceArn": "arn:aws:mobiletargeting:us-east-1:account-id:/apps/application-id/campaigns/campaign-id"
-    }
-  }
-}
+aws lambda add-permission \
+--function-name myFunction \ 
+--statement-id sid0 \
+--action lambda:InvokeFunction \
+--principal pinpoint.us-east-1.amazonaws.com \
+--source-arn arn:aws:mobiletargeting:us-east-1:111122223333:apps/*
 ```
 
-Your function policy requires a `Condition` block that includes an `AWS:SourceArn` key\. This code states which Amazon Pinpoint campaign is allowed to invoke the function\. In this example, the policy grants permission to only a single campaign ID\. To write a more generic policy, use multi\-character match wildcards \(\*\)\. For example, you can use the following `Condition` block to allow any Amazon Pinpoint campaign in your AWS account to invoke the function:
+In the preceding command, do the following:
++ Replace *myFunction* with the name of the Lambda function\.
++ Replace *us\-east\-1* with the AWS Region where you use Amazon Pinpoint\.
++ Replace *111122223333* with your AWS account ID\.
 
-```
-"Condition": {
-  "ArnLike": {
-    "AWS:SourceArn": "arn:aws:mobiletargeting:us-east-1:account-id:/apps/*/campaigns/*"
-  }
-}
-```
-
-### Granting Amazon Pinpoint Invocation Permission<a name="channels-custom-lambda-trust-policy-assign"></a>
-
-You can use the AWS Command Line Interface \(AWS CLI\) to add permissions to the Lambda function policy assigned to your Lambda function\. To allow Amazon Pinpoint to invoke a function, use the Lambda [https://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html](https://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html) command, as shown by the following example:
-
-```
-$ aws lambda add-permission \
-> --function-name function-name \
-> --statement-id sid \
-> --action lambda:InvokeFunction \
-> --principal pinpoint.us-east-1.amazonaws.com \
-> --source-arn arn:aws:mobiletargeting:us-east-1:account-id:/apps/application-id/campaigns/campaign-id
-```
-
-If you want to provide a campaign ID for the `--source-arn` parameter, you can look up your campaign IDs by using the Amazon Pinpoint [https://docs.aws.amazon.com/cli/latest/reference/pinpoint/get-campaigns.html](https://docs.aws.amazon.com/cli/latest/reference/pinpoint/get-campaigns.html) command with the AWS CLI\. This command requires an `--application-id` parameter\. To look up your application IDs, sign in to the Amazon Pinpoint console at [https://console\.aws\.amazon\.com/pinpoint/](https://console.aws.amazon.com/pinpoint/), and go to the **Projects** page\. The console shows an **ID** for each project, which is the project's application ID\.
-
-When you run the Lambda `add-permission` command, AWS Lambda returns the following output:
+When you run the `add-permission` command, AWS Lambda returns the following output:
 
 ```
 {
@@ -233,22 +297,23 @@ When you run the Lambda `add-permission` command, AWS Lambda returns the followi
     \"Effect\":\"Allow\",
     \"Principal\":{\"Service\":\"pinpoint.us-east-1.amazonaws.com\"},
     \"Action\":\"lambda:InvokeFunction\",
-    \"Resource\":\"arn:aws:lambda:us-east-1:111122223333:function:function-name\",
+    \"Resource\":\"arn:aws:lambda:us-east-1:111122223333:function:myFunction\",
     \"Condition\":
       {\"ArnLike\":
         {\"AWS:SourceArn\":
-         \"arn:aws:mobiletargeting:us-east-1:111122223333:/apps/application-id/campaigns/campaign-id\"}}}"
+         \"arn:aws:mobiletargeting:us-east-1:111122223333:apps/*\"}}}"
 }
 ```
 
 The `Statement` value is a JSON string version of the statement added to the Lambda function policy\.
 
-## Assigning a Lambda Function to a Campaign<a name="channels-custom-assign"></a>
+#### Further Restricting the Execution Policy<a name="channels-custom-lambda-trust-policy-assign-restrict"></a>
 
-You can assign a Lambda function to an individual Amazon Pinpoint campaign\. Or, you can set the Lambda function as the default used by all campaigns for a project, except for those campaigns to which you assign a function individually\.
+You can modify the execution policy by restricting it to a specific Amazon Pinpoint project\. To do this, replace the `*` in the preceding example with the unique ID of the project\. You can further restrict the policy by limiting it to a specific campaign\. For example, to restrict the policy to only allow a campaign with the campaign ID `95fee4cd1d7f5cd67987c1436example` in a project with the project ID `dbaf6ec2226f0a9a8615e3ea5example`, use the following value for the `source-arn` attribute:
 
-To assign a Lambda function to an individual campaign, use the Amazon Pinpoint API to create or update a [Campaign](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-campaigns.html) object, and define its `CampaignHook` attribute\. To set a Lambda function as the default for all campaigns in a project, create or update the [Settings](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-settings.html) resource for that project, and define its `CampaignHook` object\.
+```
+arn:aws:mobiletargeting:us-east-1:111122223333:apps/dbaf6ec2226f0a9a8615e3ea5example/campaigns/95fee4cd1d7f5cd67987c1436example
+```
 
-In both cases, set the following `CampaignHook` attributes:
-+ `LambdaFunctionName` – The name or ARN of the Lambda function that Amazon Pinpoint invokes to send messages for the campaign\.
-+ `Mode` – Set to `DELIVERY`\. With this mode, Amazon Pinpoint uses the function to deliver the messages for a campaign, and it doesn't attempt to send the messages through the standard channels\.
+**Note**  
+If you do restrict execution of the Lambda function to a specific campaign, you first have to create the function with a less restrictive policy\. Next, you have to create the campaign in Amazon Pinpoint and choose the function\. Finally, you have to update the execution policy to refer to the specified campaign\.

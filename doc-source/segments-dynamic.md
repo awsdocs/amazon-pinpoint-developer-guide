@@ -20,7 +20,7 @@ If the `CampaignHook` mode is set to `FILTER`, Amazon Pinpoint allows the functi
 By processing your segments with AWS Lambda, you have more control over who you send messages to and what those messages contain\. You can tailor your campaigns in real time, at the moment when campaign messages are sent\. Filtering segments enables you to engage more narrowly defined subsets of your segments\. Adding or updating endpoint attributes also enables you to make new data available for message variables\.
 
 **Note**  
-You can also use the `CampaignHook` settings to assign a Lambda function that handles the message delivery\. This type of function is useful for delivering messages through custom channels that Amazon Pinpoint doesn't support, such as social media platforms\. For more information, see [Creating Custom Channels with AWS Lambda](channels-custom.md)\.
+You can also use the `CampaignHook` settings to assign a Lambda function that handles the message delivery\. This type of function is useful for delivering messages through custom channels that Amazon Pinpoint doesn't support, such as social media platforms\. For more information, see [Creating Custom Channels in Amazon Pinpoint](channels-custom.md)\.
 
 To modify campaign segments with AWS Lambda, first create a function that processes the event data sent by Amazon Pinpoint and returns a modified segment\. Then, authorize Amazon Pinpoint to invoke the function by assigning a Lambda function policy\. Finally, assign the function to one or more campaigns by defining `CampaignHook` settings\.
 
