@@ -3838,7 +3838,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://{{endpoint}}/v1/apps/{{projectId}}/users/{{userd}}",
+							"raw": "https://{{endpoint}}/v1/apps/{{projectId}}/users/{{userId}}",
 							"protocol": "https",
 							"host": [
 								"{{endpoint}}"
@@ -3848,7 +3848,7 @@
 								"apps",
 								"{{projectId}}",
 								"users",
-								"{{userd}}"
+								"{{userId}}"
 							]
 						},
 						"description": "Delete all of the endpoints that are associated with a specific user ID."
@@ -3894,7 +3894,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://{{endpoint}}/v1/apps/{{projectId}}/users/{{userd}}",
+							"raw": "https://{{endpoint}}/v1/apps/{{projectId}}/users/{{userId}}",
 							"protocol": "https",
 							"host": [
 								"{{endpoint}}"
@@ -3904,7 +3904,7 @@
 								"apps",
 								"{{projectId}}",
 								"users",
-								"{{userd}}"
+								"{{userId}}"
 							]
 						},
 						"description": "Get information about all of the endpoints that are associated with a specific user ID."
