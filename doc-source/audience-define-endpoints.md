@@ -31,7 +31,7 @@ $ aws pinpoint update-endpoint \
 ```
 Where:  
 + *application\-id* is the ID of the Amazon Pinpoint project in which you're adding or updating an endpoint\.
-+ *example\-endpoint* is the ID that you're assigning to a new endpoint, or it's the ID of an existing endpoint that you're updating\.
++ *endpoint\-id* is the ID that you're assigning to a new endpoint, or it's the ID of an existing endpoint that you're updating\.
 + *endpoint\-request\-file\.json* is the file path to a local JSON file that contains the input for the `--endpoint-request` parameter\.
 
 **Example Endpoint Request File**  
