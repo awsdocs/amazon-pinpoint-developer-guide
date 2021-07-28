@@ -164,7 +164,7 @@ After you create the function, you should test it to make sure that it's set up 
              "arn": "arn:aws:s3:::bucket-name"
            },
            "object": {
-             "key": "processed/testfile/testfile__part1_processed.csv"
+             "key": "processed/testfile/testfile__part1__of1_processed.csv"
            }
          }
        }
