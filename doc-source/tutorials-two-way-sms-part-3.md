@@ -46,6 +46,12 @@ The first function takes input from your registration form, which it receives fr
    var messageType = "TRANSACTIONAL";
    
    exports.handler = (event, context, callback) => {
+     if( ! event.destinationNumber && event.body )
+         event = event.body;
+
+     if( typeof event.destinationNumber == "undefined" )
+         event = JSON.parse(event);
+
      console.log('Received event:', event);
      validateNumber(event);
    };
