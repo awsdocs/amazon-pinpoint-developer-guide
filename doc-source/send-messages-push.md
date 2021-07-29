@@ -1,4 +1,4 @@
-# Send Push Notifications<a name="send-messages-push"></a>
+# Send push notifications<a name="send-messages-push"></a>
 
 The Amazon Pinpoint API can send transactional push notifications to specific device identifiers\. This section contains complete code examples that you can use to send push notifications through the Amazon Pinpoint API by using an AWS SDK\.
 
@@ -12,7 +12,7 @@ When you send push notifications through the Firebase Cloud Messaging \(FCM\) se
 
 Use this example to send push notifications by using the AWS SDK for JavaScript in Node\.js\. This example assumes that you've already installed and configured the SDK for JavaScript in Node\.js\.
 
-This example also assumes that you're using a shared credentials file to specify the Access Key and Secret Access Key for an existing IAM user\. For more information, see [Setting Credentials](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/setting-credentials.html) in the *AWS SDK for JavaScript in Node\.js Developer Guide*\.
+This example also assumes that you're using a shared credentials file to specify the Access Key and Secret Access Key for an existing IAM user\. For more information, see [Setting credentials](https://docs.aws.amazon.com/sdk-for-javascript/latest/developer-guide/setting-credentials.html) in the *AWS SDK for JavaScript in Node\.js Developer Guide*\.
 
 ```
 'use strict';
@@ -193,9 +193,9 @@ SendMessage()
 ------
 #### [ Python ]
 
-Use this example to send push notifications by using the AWS SDK for Python \(Boto 3\)\. This example assumes that you've already installed and configured the SDK for Python \(Boto 3\)\.
+Use this example to send push notifications by using the AWS SDK for Python \(Boto3\)\. This example assumes that you've already installed and configured the SDK for Python \(Boto3\)\.
 
-This example also assumes that you're using a shared credentials file to specify the Access Key and Secret Access Key for an existing IAM user\. For more information, see [Credentials](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html) in the *AWS SDK for Python \(Boto 3\) API Reference*\.
+This example also assumes that you're using a shared credentials file to specify the Access Key and Secret Access Key for an existing IAM user\. For more information, see [Credentials](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html) in the *AWS SDK for Python \(Boto3\) API Reference*\.
 
 ```
 import json
@@ -212,7 +212,7 @@ title = "Test message sent from Amazon Pinpoint."
 
 # The content of the push notification.
 message = ("This is a sample message sent from Amazon Pinpoint by using the "
-           "AWS SDK for Python (Boto 3).")
+           "AWS SDK for Python (Boto3).")
 
 # The Amazon Pinpoint project/application ID to use when you send this message.
 # Make sure that the push channel is enabled for the project or application

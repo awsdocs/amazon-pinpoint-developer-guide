@@ -1,4 +1,4 @@
-# Step 4: Set Up Amazon API Gateway<a name="tutorials-two-way-sms-part-4"></a>
+# Step 4: Set up Amazon API Gateway<a name="tutorials-two-way-sms-part-4"></a>
 
 In this section, you create a new API by using Amazon API Gateway\. The registration form that you deploy in this solution calls this API\. API Gateway then passes the information that's captured on the registration form to the Lambda function you created in [Step 3](tutorials-two-way-sms-part-3.md)\.
 
@@ -18,7 +18,7 @@ First, you have to create a new API in API Gateway\. The following procedures sh
    An example of these settings is shown in the following image\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/images/SMS_Reg_Tutorial_APIGW_Step2.png)
 
-## Step 4\.2: Create a Resource<a name="tutorials-two-way-sms-part-4-create-resource"></a>
+## Step 4\.2: Create a resource<a name="tutorials-two-way-sms-part-4-create-resource"></a>
 
 Now that you've created an API, you can start to add resources to it\. After that, you add a POST method to the resource, and tell API Gateway to pass the data that you receive from this method to your Lambda function\.
 
@@ -59,4 +59,4 @@ The API is now ready to use\. At this point, you have to deploy it in order to c
 
 1. On the **Enable CORS** pane, choose **Enable CORS and replace existing CORS headers**\.
 
-**Next**: [Create and Deploy the Web Form](tutorials-two-way-sms-part-5.md)
+**Next**: [Create and deploy the web form](tutorials-two-way-sms-part-5.md)

@@ -1,8 +1,8 @@
-# Step 3: Create IAM Policies and Roles<a name="tutorials-email-prefs-part-3"></a>
+# Step 3: Create IAM policies and roles<a name="tutorials-email-prefs-part-3"></a>
 
 The next step in implementing the email preference management solution is to configure a policy and a role in AWS Identity and Access Management \(IAM\)\. For this solution, you need to create a policy that provides access to certain resources that are related to Amazon Pinpoint\. You then create a role and attach the policy to it\. Later in this tutorial, you create an AWS Lambda function that uses this role to call certain operations in the Amazon Pinpoint API\.
 
-## Step 3\.1: Create an IAM Policy<a name="tutorials-email-prefs-part-3-create-policy"></a>
+## Step 3\.1: Create an IAM policy<a name="tutorials-email-prefs-part-3-create-policy"></a>
 
 This section shows you how to create an IAM policy\. Users and roles that use this policy are able to view, create, and update Amazon Pinpoint endpoints\.
 
@@ -44,7 +44,7 @@ In this tutorial, you want to give Lambda the ability to perform these tasks\. H
    In the preceding example, do the following:
    + Replace *region* with the AWS Region that you use Amazon Pinpoint in, such as `us-east-1` or `eu-central-1`\.
 **Tip**  
-For a complete list of AWS Regions where Amazon Pinpoint is available, see [AWS Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#pinpoint_region) in the *AWS General Reference*\.
+For a complete list of AWS Regions where Amazon Pinpoint is available, see [AWS regions and endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#pinpoint_region) in the *AWS General Reference*\.
    + Replace *accountId* with the unique ID for your AWS account\.
    + Replace *projectId* with the unique ID of the project that you created in [Step 1\.1](tutorials-email-prefs-part-1.md#tutorials-email-prefs-part-1-create-project) of this tutorial\.
 **Note**  
@@ -54,7 +54,7 @@ The `logs` actions enable Lambda to log its output in CloudWatch Logs\.
 
 1. For **Name**, enter a name for the policy, such as **EmailPreferencesPolicy**\. Choose **Create policy**\.
 
-## Step 3\.2: Create an IAM Role<a name="tutorials-email-prefs-part-3-create-role"></a>
+## Step 3\.2: Create an IAM role<a name="tutorials-email-prefs-part-3-create-role"></a>
 
 After you create the policy, you can create a role and attach the policy to it\. The Lambda function that you create in [Step 3](#tutorials-email-prefs-part-3) uses this role in order to gain access to the necessary AWS resources\. 
 

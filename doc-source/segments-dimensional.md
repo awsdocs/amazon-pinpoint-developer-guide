@@ -1,63 +1,135 @@
-# Building Segments<a name="segments-dimensional"></a>
+# Building segments<a name="segments-dimensional"></a>
 
 To reach the intended audience for a campaign, build a segment based on the data reported by your app\. For example, to reach users who haven’t used your app recently, you can define a segment for users who haven’t used your app in the last 30 days\.
 
-## Building Segments With the AWS SDK for Java<a name="segments-dimensional-example-java"></a>
+## Building segments with the AWS SDK for Java<a name="segments-dimensional-example-java"></a>
 
 The following example demonstrates how to build a segment with the AWS SDK for Java\.
 
 ```
-import com.amazonaws.services.pinpoint.AmazonPinpointClient;
-import com.amazonaws.services.pinpoint.model.AttributeDimension;
-import com.amazonaws.services.pinpoint.model.AttributeType;
-import com.amazonaws.services.pinpoint.model.CreateSegmentRequest;
-import com.amazonaws.services.pinpoint.model.CreateSegmentResult;
-import com.amazonaws.services.pinpoint.model.RecencyDimension;
-import com.amazonaws.services.pinpoint.model.SegmentBehaviors;
-import com.amazonaws.services.pinpoint.model.SegmentDemographics;
-import com.amazonaws.services.pinpoint.model.SegmentDimensions;
-import com.amazonaws.services.pinpoint.model.SegmentLocation;
-import com.amazonaws.services.pinpoint.model.SegmentResponse;
-import com.amazonaws.services.pinpoint.model.WriteSegmentRequest;
-
+import software.amazon.awssdk.regions.Region;
+import software.amazon.awssdk.services.pinpoint.PinpointClient;
+import software.amazon.awssdk.services.pinpoint.model.EndpointResponse;
+import software.amazon.awssdk.services.pinpoint.model.EndpointRequest;
+import software.amazon.awssdk.services.pinpoint.model.UpdateEndpointRequest;
+import software.amazon.awssdk.services.pinpoint.model.UpdateEndpointResponse;
+import software.amazon.awssdk.services.pinpoint.model.GetEndpointRequest;
+import software.amazon.awssdk.services.pinpoint.model.GetEndpointResponse;
+import software.amazon.awssdk.services.pinpoint.model.PinpointException;
+import software.amazon.awssdk.services.pinpoint.model.EndpointDemographic;
+import software.amazon.awssdk.services.pinpoint.model.EndpointLocation;
+import software.amazon.awssdk.services.pinpoint.model.EndpointUser;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import java.util.UUID;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Date;
+```
 
-public class PinpointSegmentSample {
+```
+    public static EndpointResponse createEndpoint(PinpointClient client, String appId) {
+        String endpointId = UUID.randomUUID().toString();
+        System.out.println("Endpoint ID: " + endpointId);
 
-    public SegmentResponse createSegment(AmazonPinpointClient client, String appId) {
-        Map<String, AttributeDimension> segmentAttributes = new HashMap<>();
-        segmentAttributes.put("Team", new AttributeDimension().withAttributeType(AttributeType.INCLUSIVE).withValues("Lakers"));
+        try {
 
-        SegmentBehaviors segmentBehaviors = new SegmentBehaviors();
-        SegmentDemographics segmentDemographics = new SegmentDemographics();
-        SegmentLocation segmentLocation = new SegmentLocation();
+            EndpointRequest endpointRequest = createEndpointRequestData();
 
-        RecencyDimension recencyDimension = new RecencyDimension();
-        recencyDimension.withDuration("DAY_30").withRecencyType("ACTIVE");
-        segmentBehaviors.setRecency(recencyDimension);
+            UpdateEndpointRequest updateEndpointRequest = UpdateEndpointRequest.builder()
+                    .applicationId(appId)
+                    .endpointId(endpointId)
+                    .endpointRequest(endpointRequest)
+                    .build();
 
-        SegmentDimensions dimensions = new SegmentDimensions()
-                .withAttributes(segmentAttributes)
-                .withBehavior(segmentBehaviors)
-                .withDemographic(segmentDemographics)
-                .withLocation(segmentLocation);
+            UpdateEndpointResponse updateEndpointResponse = client.updateEndpoint(updateEndpointRequest);
+            System.out.println("Update Endpoint Response: " + updateEndpointResponse.messageBody());
 
+            GetEndpointRequest getEndpointRequest = GetEndpointRequest.builder()
+                    .applicationId(appId)
+                    .endpointId(endpointId)
+                    .build();
+            GetEndpointResponse getEndpointResponse = client.getEndpoint(getEndpointRequest);
 
-        WriteSegmentRequest writeSegmentRequest = new WriteSegmentRequest()
-                .withName("MySegment").withDimensions(dimensions);
+            System.out.println(getEndpointResponse.endpointResponse().address());
+            System.out.println(getEndpointResponse.endpointResponse().channelType());
+            System.out.println(getEndpointResponse.endpointResponse().applicationId());
+            System.out.println(getEndpointResponse.endpointResponse().endpointStatus());
+            System.out.println(getEndpointResponse.endpointResponse().requestId());
+            System.out.println(getEndpointResponse.endpointResponse().user());
 
-        CreateSegmentRequest createSegmentRequest = new CreateSegmentRequest()
-                .withApplicationId(appId).withWriteSegmentRequest(writeSegmentRequest);
+            return getEndpointResponse.endpointResponse();
 
-        CreateSegmentResult createSegmentResult = client.createSegment(createSegmentRequest);
-
-        System.out.println("Segment ID: " + createSegmentResult.getSegmentResponse().getId());
-
-        return createSegmentResult.getSegmentResponse();
+        } catch (PinpointException e) {
+            System.err.println(e.awsErrorDetails().errorMessage());
+            System.exit(1);
+        }
+        return null;
     }
 
-}
+    private static EndpointRequest createEndpointRequestData() {
+
+        try {
+            List<String> favoriteTeams = new ArrayList<>();
+            favoriteTeams.add("Lakers");
+            favoriteTeams.add("Warriors");
+            HashMap<String, List<String>> customAttributes = new HashMap<>();
+            customAttributes.put("team", favoriteTeams);
+
+            EndpointDemographic demographic = EndpointDemographic.builder()
+                    .appVersion("1.0")
+                    .make("apple")
+                    .model("iPhone")
+                    .modelVersion("7")
+                    .platform("ios")
+                    .platformVersion("10.1.1")
+                    .timezone("America/Los_Angeles")
+                    .build();
+
+            EndpointLocation location = EndpointLocation.builder()
+                    .city("Los Angeles")
+                    .country("US")
+                    .latitude(34.0)
+                    .longitude(-118.2)
+                    .postalCode("90068")
+                    .region("CA")
+                    .build();
+
+            Map<String,Double> metrics = new HashMap<>();
+            metrics.put("health", 100.00);
+            metrics.put("luck", 75.00);
+
+            EndpointUser user = EndpointUser.builder()
+                    .userId(UUID.randomUUID().toString())
+                    .build();
+
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'"); // Quoted "Z" to indicate UTC, no timezone offset
+            String nowAsISO = df.format(new Date());
+
+            EndpointRequest endpointRequest = EndpointRequest.builder()
+                    .address(UUID.randomUUID().toString())
+                    .attributes(customAttributes)
+                    .channelType("APNS")
+                    .demographic(demographic)
+                    .effectiveDate(nowAsISO)
+                    .location(location)
+                    .metrics(metrics)
+                    .optOut("NONE")
+                    .requestId(UUID.randomUUID().toString())
+                    .user(user)
+                    .build();
+
+            return endpointRequest;
+
+        } catch (PinpointException e) {
+            System.err.println(e.awsErrorDetails().errorMessage());
+            System.exit(1);
+        }
+
+        return null;
+    }
 ```
 
 When you run this example, the following is printed to the console window of your IDE:
@@ -65,3 +137,5 @@ When you run this example, the following is printed to the console window of you
 ```
 Segment ID: 09cb2967a82b4a2fbab38fead8d1f4c4
 ```
+
+For the full SDK example, see [CreateSegment\.java](https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/javav2/example_code/pinpoint/src/main/java/com/example/pinpoint/CreateSegment.java/) on [GitHub](https://github.com/)\.

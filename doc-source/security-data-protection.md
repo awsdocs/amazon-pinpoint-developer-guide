@@ -1,6 +1,16 @@
-# Data Protection in Amazon Pinpoint<a name="security-data-protection"></a>
+# Data protection in Amazon Pinpoint<a name="security-data-protection"></a>
 
-Amazon Pinpoint conforms to the AWS [shared responsibility model](http://aws.amazon.com/compliance/shared-responsibility-model/), which includes regulations and guidelines for data protection\. AWS is responsible for protecting the global infrastructure that runs all the AWS services\. AWS maintains control over data hosted on this infrastructure, including the security configuration controls for handling customer content and personal data\. AWS customers and AWS Partner Network \(APN\) partners, acting either as data controllers or data processors, are responsible for any personal data that they put in the AWS Cloud\. 
+The AWS [shared responsibility model](http://aws.amazon.com/compliance/shared-responsibility-model/) applies to data protection in Amazon Pinpoint\. As described in this model, AWS is responsible for protecting the global infrastructure that runs all of the AWS Cloud\. You are responsible for maintaining control over your content that is hosted on this infrastructure\. This content includes the security configuration and management tasks for the AWS services that you use\. For more information about data privacy, see the [Data Privacy FAQ](http://aws.amazon.com/compliance/data-privacy-faq)\. For information about data protection in Europe, see the [AWS Shared Responsibility Model and GDPR](http://aws.amazon.com/blogs/security/the-aws-shared-responsibility-model-and-gdpr/) blog post on the *AWS Security Blog*\.
+
+For data protection purposes, we recommend that you protect AWS account credentials and set up individual user accounts with AWS Identity and Access Management \(IAM\)\. That way each user is given only the permissions necessary to fulfill their job duties\. We also recommend that you secure your data in the following ways:
++ Use multi\-factor authentication \(MFA\) with each account\.
++ Use SSL/TLS to communicate with AWS resources\. We recommend TLS 1\.2 or later\.
++ Set up API and user activity logging with AWS CloudTrail\.
++ Use AWS encryption solutions, along with all default security controls within AWS services\.
++ Use advanced managed security services such as Amazon Macie, which assists in discovering and securing personal data that is stored in Amazon S3\.
++ If you require FIPS 140\-2 validated cryptographic modules when accessing AWS through a command line interface or an API, use a FIPS endpoint\. For more information about the available FIPS endpoints, see [Federal Information Processing Standard \(FIPS\) 140\-2](http://aws.amazon.com/compliance/fips/)\.
+
+We strongly recommend that you never put confidential or sensitive information, such as your customers' email addresses, into tags or free\-form fields such as a **Name** field\. This includes when you work with Amazon Pinpoint or other AWS services using the console, API, AWS CLI, or AWS SDKs\. Any data that you enter into tags or free\-form fields used for names may be used for billing or diagnostic logs\. If you provide a URL to an external server, we strongly recommend that you do not include credentials information in the URL to validate your request to that server\.
 
 Depending on how you configure and use the service, Amazon Pinpoint might store the following types of personal data for you or about your customers:
 
@@ -16,17 +26,6 @@ This includes data for metrics, also referred to as *key performance indicators 
 **Imported data**  
 This includes any user, segmentation, and analytics data that you add or import from external sources and use in Amazon Pinpoint\. An example is a JSON file that you import into Amazon Pinpoint \(through the console directly or from an Amazon S3 bucket\) to build a static segment\. Other examples are endpoint data that you add programmatically to build a dynamic segment, endpoint addresses that you send direct messages to, and events that you configure an app to report to Amazon Pinpoint\.
 
-To help protect this data, we recommend that you protect AWS account credentials and set up individual user accounts with AWS Identity and Access Management \(IAM\), so that each user is given only the permissions necessary to fulfill their job duties\. We also recommend that you secure your data in the following ways:
-+ Use multi\-factor authentication \(MFA\) with each account\.
-+ Use SSL/TLS to communicate with AWS resources\.
-+ Set up API and user activity logging with AWS CloudTrail\.
-+ Use AWS encryption solutions, along with all default security controls within AWS services\.
-+ Use advanced managed security services such as Amazon Macie, which assists in discovering and securing personal data that's stored in Amazon S3\.
-
-We strongly recommend that you never put sensitive identifying information, such as your customers' account numbers, into free\-form fields such as a **Name** field or an identifier field\. This includes when you work with Amazon Pinpoint or other AWS services using the console, APIs, AWS CLI, or AWS SDKs\. Any data that you enter into Amazon Pinpoint or other services might be added to and included in diagnostic logs\. When you provide a URL to an external server, don't include credentials information in the URL to validate your request to that server\.
-
-For more information about data protection, see the [AWS Shared Responsibility Model and GDPR](http://aws.amazon.com/blogs/security/the-aws-shared-responsibility-model-and-gdpr/) blog post on the *AWS Security Blog*\.
-
 **Topics**
-+ [Data Encryption](security-data-protection-encryption.md)
-+ [Internetwork Traffic Privacy](security-data-protection-internetwork-traffic.md)
++ [Data encryption](security-data-protection-encryption.md)
++ [Internetwork traffic privacy](security-data-protection-internetwork-traffic.md)

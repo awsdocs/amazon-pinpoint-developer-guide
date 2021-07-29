@@ -1,4 +1,4 @@
-# Using Amazon Pinpoint Analytics Query Results<a name="analytics-query-results"></a>
+# Using Amazon Pinpoint analytics query results<a name="analytics-query-results"></a>
 
 When you use Amazon Pinpoint Analytics APIs to query analytics data, Amazon Pinpoint returns the results in a JSON response\. For application metrics, campaign metrics, and journey engagement metrics, the data in the response adheres to a standard JSON schema for reporting Amazon Pinpoint analytics data\. 
 
@@ -11,9 +11,9 @@ For example, you can:
 
 Note that Amazon Pinpoint Analytics APIs aren't designed to create or store any persistent objects that you can subsequently read or use in an Amazon Pinpoint project or your Amazon Pinpoint account\. Instead, the APIs are designed to help you retrieve analytics data and transfer that data to other services and applications for further analysis, storage, or reporting\. They do this partly by using the same JSON response structure and schema for all the analytics data that you can query programmatically for application metrics, campaign metrics, and journey engagement metrics\.
 
-This topic explains the structure, objects, and fields in a JSON response to a query for an application metric, campaign metric, or journey engagement metric\. For information about the fields in a JSON response to a query for a journey execution metric or journey activity execution metric, see [Standard Amazon Pinpoint Analytics Metrics](analytics-standard-metrics.md)\. 
+This topic explains the structure, objects, and fields in a JSON response to a query for an application metric, campaign metric, or journey engagement metric\. For information about the fields in a JSON response to a query for a journey execution metric or journey activity execution metric, see [Standard Amazon Pinpoint analytics metrics](analytics-standard-metrics.md)\. 
 
-## JSON Structure<a name="analytics-query-results-structure"></a>
+## JSON structure<a name="analytics-query-results-structure"></a>
 
 To help you parse and use query results, Amazon Pinpoint Analytics APIs use the same JSON response structure for all Amazon Pinpoint analytics data that you can query programmatically for application metrics, campaign metrics, and journey engagement metrics\. Each JSON response specifies the values that defined the query, such as the project ID \(`ApplicationId`\)\. The response also includes one \(and only one\) `KpiResult` object\. The `KpiResult` object contains the overall result set for a query\.
 
@@ -27,9 +27,9 @@ Beyond these general characteristics, the structure and contents of the `Rows` o
 
 A *single\-value metric* provides only one cumulative value\. An example is the percentage of messages that were delivered to recipients by all runs of a campaign\. A *multiple\-value metric* provides more than one value and groups those values by a relevant field\. An example is the percentage of messages that were delivered to recipients for each run of a campaign, grouped by campaign run\. 
 
-You can quickly determine whether a metric is a single\-value metric or multiple\-value metric by referring to the name of the metric\. If the name doesn't contain `grouped-by`, it's a single\-value metric\. If it does, it's a multiple\-value metric\. For a complete list of metrics that you can query programmatically, see [Standard Amazon Pinpoint Analytics Metrics](analytics-standard-metrics.md)\. 
+You can quickly determine whether a metric is a single\-value metric or multiple\-value metric by referring to the name of the metric\. If the name doesn't contain `grouped-by`, it's a single\-value metric\. If it does, it's a multiple\-value metric\. For a complete list of metrics that you can query programmatically, see [Standard Amazon Pinpoint analytics metrics](analytics-standard-metrics.md)\. 
 
-### Single\-Value Metrics<a name="analytics-query-results-structure-single"></a>
+### Single\-value metrics<a name="analytics-query-results-structure-single"></a>
 
 For a single\-value metric, the `Rows` object contains a `Values` object that:
 + Specifies the friendly name of the metric that was queried\.
@@ -85,7 +85,7 @@ If the query results for a single\-value metric is null \(not greater than or eq
 }
 ```
 
-### Multiple\-Value Metrics<a name="analytics-query-results-structure-multiple"></a>
+### Multiple\-value metrics<a name="analytics-query-results-structure-multiple"></a>
 
 The structure and contents of the `Rows` object for a multiple\-value metric are mostly the same as a single\-value metric\. The `Rows` object for a multiple\-value metric also contains a `Values` object\. The `Values` object specifies the friendly name of the metric that was queried, provides the value for that metric, and identifies the data type of that value\.
 
@@ -171,12 +171,12 @@ Where the general structure of the objects and fields is:
 
 If the query results for a multiple\-value metric is null \(not greater than or equal to zero\) for a specific project, campaign, or other resource, Amazon Pinpoint doesn't return any objects or fields for the resource\. If the query results for a multiple\-value metric is null for all resources, Amazon Pinpoint returns an empty `Rows` object\.
 
-## JSON Objects and Fields<a name="analytics-query-results-schema"></a>
+## JSON objects and fields<a name="analytics-query-results-schema"></a>
 
 In addition to specifying the values that defined a query, such as the project ID \(`ApplicationId`\), each JSON response to a query for an application metric, campaign metric, or journey engagement metric includes a `KpiResult` object\. This object contains the overall result set for a query, which you can parse to send analytics data to another service or application\. Each `KpiResult` object contains some or all of the following standard objects and fields, depending on the metric\.
 
 
-| Object or Field | Description | 
+| Object or field | Description | 
 | --- | --- | 
 | Rows | An array of objects that contains the result set for a query\. | 
 | Rows\.GroupedBys | For a multiple\-value metric, an array of fields that defines the field and values that were used to group data in query results\.  | 
@@ -188,4 +188,4 @@ In addition to specifying the values that defined a query, such as the project I
 | Rows\.Values\.Type | The data type of the value specified in the Values\.Value field\. | 
 | Rows\.Values\.Value | The actual value for the metric that was queried, including any filters that were applied\. | 
 
- For information about the fields in a JSON response to a query for a journey execution metric or journey activity execution metric, see [Standard Amazon Pinpoint Analytics Metrics](analytics-standard-metrics.md)\.
+ For information about the fields in a JSON response to a query for a journey execution metric or journey activity execution metric, see [Standard Amazon Pinpoint analytics metrics](analytics-standard-metrics.md)\.

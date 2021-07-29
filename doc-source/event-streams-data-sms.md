@@ -1,4 +1,4 @@
-# SMS Events<a name="event-streams-data-sms"></a>
+# SMS events<a name="event-streams-data-sms"></a>
 
 If the SMS channel is enabled for a project, Amazon Pinpoint can stream event data about SMS message deliveries for the project\.
 
@@ -43,7 +43,7 @@ The JSON object for an SMS event contains the data shown in the following exampl
 }
 ```
 
-## SMS Event Attributes<a name="event-streams-data-sms-attributes"></a>
+## SMS event attributes<a name="event-streams-data-sms-attributes"></a>
 
 This section defines the attributes that are included in the event stream data that Amazon Pinpoint generates when you send SMS messages\.
 
@@ -58,7 +58,7 @@ This section defines the attributes that are included in the event stream data t
 | event\_version |  The version of the event JSON schema\.  Check this version in your event\-processing application so that you know when to update the application in response to a schema update\.   | 
 | application | Information about the Amazon Pinpoint project that's associated with the event\. For more information, see the [Application](#event-streams-data-sms-attributes-application) table\. | 
 | client | Information about the app client installed on the device that reported the event\. For more information, see the [Client](#event-streams-data-sms-attributes-client) table\. | 
-| device | Information about the device that reported the event\. For more information, see the [Device](#event-streams-data-sms-attributes-device) table\. For events that are generated when you send a transactional message, this object is empty\. | 
+| device | Information about the device that reported the event\. For more information, see the [Device](#event-streams-data-sms-attributes-device) table\. For SMS events, this object is empty\. | 
 | session | For SMS events, this object is empty\. | 
 | attributes |  Attributes that are associated with the event\. For events that are reported by one of your apps, this object can include custom attributes that are defined by the app\. For events that are created when you send a campaign, this object contains attributes that are associated with the campaign\. For events that are generated when you send transactional messages, this object contains information that's related to the message itself\. For more information, see the [Attributes](#event-streams-data-sms-attributes-attrs) table\.  | 
 | metrics |  Additional metrics that are associated with the event\. For more information, see the [Metrics](#event-streams-data-sms-attributes-metrics) table\.  | 

@@ -1,10 +1,10 @@
-# Step 7: Set Up Amazon S3 Events<a name="tutorials-importing-data-s3-events"></a>
+# Step 7: Set up Amazon S3 events<a name="tutorials-importing-data-s3-events"></a>
 
 In this section, you set up your Amazon S3 bucket so that it triggers your Lambda functions when you add files to the folders in the bucket\. You also test the entire function to make sure that the triggers work as expected\.
 
 By using event triggers in Amazon S3, you make the process of executing the Lambda functions automatic\. When you upload a file to the `input` folder, Amazon S3 automatically sends a notification to the `CustomerImport_ReadIncomingAndSplit` function\. When that function runs, it sends files to the `to_process` folder\. When files are added to the `to_process` folder, Amazon S3 triggers the `CustomerImport_ProcessInput` function\. When that function runs, it adds files to the `processed` folder, which triggers the `CustomerImport_CreateJob` function\.
 
-## Step 7\.1: Set Up Event Notifications<a name="tutorials-importing-data-s3-events-setup"></a>
+## Step 7\.1: Set up event notifications<a name="tutorials-importing-data-s3-events-setup"></a>
 
 In this section, you configure three event notifications for your Amazon S3 bucket\. These notifications automatically trigger your Lambda functions when files are added to specific folders in your bucket\.
 
@@ -47,7 +47,7 @@ In this section, you configure three event notifications for your Amazon S3 buck
    + For **Lambda**, choose **CustomerImport\_CreateJob**\.
    + Choose **Save**\.
 
-## Step 7\.2: Test the Triggers<a name="tutorials-importing-data-s3-events-test"></a>
+## Step 7\.2: Test the triggers<a name="tutorials-importing-data-s3-events-test"></a>
 
 The last step in setting up the solution that's discussed in this tutorial is to upload a file to the `input` folder in your Amazon S3 bucket\. Uploading a file triggers the Lambda function that you created in [Step 4](tutorials-importing-data-lambda-function-input-split.md)\. When this function finishes running, it creates files in the other folders that you configured event notifications for in the preceding section\. After a few minutes, the entire sequence of Lambda functions finishes running, and your Amazon Pinpoint project contains a new segment\.
 

@@ -1,4 +1,4 @@
-# Standard Amazon Pinpoint Analytics Metrics<a name="analytics-standard-metrics"></a>
+# Standard Amazon Pinpoint analytics metrics<a name="analytics-standard-metrics"></a>
 
 You can use Amazon Pinpoint Analytics APIs to query analytics data for a subset of standard metrics that apply to Amazon Pinpoint projects, campaigns, and journeys\. These metrics, also referred to as a *key performance indicators \(KPIs\)*, are measurable values that can help you monitor and assess the performance of projects, campaigns, and journeys\.
 
@@ -12,20 +12,20 @@ Amazon Pinpoint provides programmatic access to analytics data for several types
 The topics in this section list and describe the individual metrics that you can query for each type of metric\.
 
 **Topics**
-+ [Application Metrics for Campaigns](#application-metrics-campaigns)
-+ [Application Metrics for Transactional Email Messages](#application-metrics-txn-email)
-+ [Application Metrics for Transactional SMS Messages](#application-metrics-txn-sms)
-+ [Campaign Metrics](#campaign-metrics)
-+ [Journey Engagement Metrics](#journey-metrics-engagement-email)
-+ [Journey Execution Metrics](#journey-metrics-execution)
-+ [Journey Activity Execution Metrics](#journey-metrics-activity-execution)
++ [Application metrics for campaigns](#application-metrics-campaigns)
++ [Application metrics for transactional email messages](#application-metrics-txn-email)
++ [Application metrics for transactional SMS messages](#application-metrics-txn-sms)
++ [Campaign metrics](#campaign-metrics)
++ [Journey engagement metrics](#journey-metrics-engagement-email)
++ [Journey execution metrics](#journey-metrics-execution)
++ [Journey activity execution metrics](#journey-metrics-activity-execution)
 
-## Application Metrics for Campaigns<a name="application-metrics-campaigns"></a>
+## Application metrics for campaigns<a name="application-metrics-campaigns"></a>
 
-The following table lists and describes standard application metrics that you can query to assess the performance of all the campaigns that are associated with an Amazon Pinpoint project\. To query data for these metrics, use the [Application Metrics](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-kpis-daterange-kpi-name.html) resource of the Amazon Pinpoint API\. The **kpi\-name** column in the table indicates the value to use for the `kpi-name` parameter in a query\. 
+The following table lists and describes standard application metrics that you can query to assess the performance of all the campaigns that are associated with an Amazon Pinpoint project\. To query data for these metrics, use the [Application metrics](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-kpis-daterange-kpi-name.html) resource of the Amazon Pinpoint API\. The **kpi\-name** column in the table indicates the value to use for the `kpi-name` parameter in a query\. 
 
 
-| Metric | kpi\-name | Description | 
+| Metric | Kpi\-name | Description | 
 | --- | --- | --- | 
 | Delivery rate |  `successful-delivery-rate`  |  For all the campaigns that are associated with a project, the percentage of messages that were delivered to recipients\. This metric is calculated as the number of messages that were sent by all the campaigns for a project and delivered to recipients, divided by the number of messages that were sent by all of those campaigns\.  | 
 |  Delivery rate, grouped by date  |  `successful-delivery-rate-grouped-by-date`  |  For all the campaigns that are associated with a project, the percentage of messages that were delivered to recipients, for each day in the specified date range\. This metric is calculated as the number of messages that were sent by all the campaigns for a project and delivered to recipients, divided by the number of messages that were sent by all of those campaigns, for each day in the specified date range\. The query results for this metric are grouped by calendar day, in extended ISO 8601 format\.  | 
@@ -38,14 +38,14 @@ The following table lists and describes standard application metrics that you ca
 |  Push open rate  |  `push-open-rate`  |  For all the campaigns that are associated with a project, the percentage of push notifications that were opened by recipients\.  This metric is calculated as the number of push notifications that were sent by all the campaigns for a project and opened by recipients, divided by the number of push notifications that were sent by all of those campaigns and delivered to recipients\.  | 
 |  Push open rate, grouped by campaign  |  `push-open-rate-grouped-by-campaign`  |  For each campaign that's associated with a project, the percentage of push notifications that were opened by recipients\. This metric is calculated as the number of push notifications that were sent by a campaign and opened by recipients, divided by the number of push notifications that were sent by the campaign and delivered to recipients\. The query results for this metric are grouped by campaign ID \(`CampaignId`\), which is a string that uniquely identifies a campaign\.  | 
 
-## Application Metrics for Transactional Email Messages<a name="application-metrics-txn-email"></a>
+## Application metrics for transactional email messages<a name="application-metrics-txn-email"></a>
 
-The following table lists and describes standard application metrics that you can query to monitor trends for all the transactional email messages that are associated with an Amazon Pinpoint project\. To query data for these metrics, use the [Application Metrics](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-kpis-daterange-kpi-name.html) resource of the Amazon Pinpoint API\. The **kpi\-name** column in the table indicates the value to use for the `kpi-name` parameter in a query\. 
+The following table lists and describes standard application metrics that you can query to monitor trends for all the transactional email messages that are associated with an Amazon Pinpoint project\. To query data for these metrics, use the [Application metrics](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-kpis-daterange-kpi-name.html) resource of the Amazon Pinpoint API\. The **kpi\-name** column in the table indicates the value to use for the `kpi-name` parameter in a query\. 
 
 Note that these metrics don't provide data about email messages that were sent by campaigns\. They provide data about transactional email messages only\. To query data for messages that were sent by one or more campaigns, use a [campaign metric](#campaign-metrics) or an [application metric for campaigns](#application-metrics-campaigns)\.
 
 
-| Metric | kpi\-name | Description | 
+| Metric | Kpi\-name | Description | 
 | --- | --- | --- | 
 | Clicks |  `txn-emails-clicked`  |  The number of times that recipients clicked links in the messages\. If a single recipient clicked multiple links in a message, or clicked the same link more than once, each click is included in the count\.  | 
 | Clicks, grouped by date |  `txn-emails-clicked-grouped-by-date`  |  The number of times that recipients clicked links in the messages, for each day in the specified date range\. If a single recipient clicked multiple links in a message, or clicked the same link more than once, each click is included in the count\. The query results for this metric are grouped by calendar day, in extended ISO 8601 format\.  | 
@@ -70,33 +70,39 @@ Note that these metrics don't provide data about email messages that were sent b
 | Unique user open events | `txn-emails-unique-opens` |  The number of unique recipients \(endpoints\) who opened messages\. Unlike the **Opens** metric, this metric reports the number of unique recipients who opened messages, not the number of open events that occurred\. For example, if a single recipient opens the same message multiple times, this metric reports only one open event for that recipient\.  | 
 | Unique user open events, grouped by date | `txn-emails-unique-opens-grouped-by-date` |  The number of unique recipients \(endpoints\) who opened messages, for each day in the specified date range\. Unlike the **Opens, grouped by date** metric, this metric reports the number of unique recipients who opened messages, not the number of open events that occurred\. For example, if a single recipient opens the same message multiple times, this metric reports only one open event for that recipient\. The query results for this metric are grouped by calendar day, in extended ISO 8601 format\.  | 
 
-## Application Metrics for Transactional SMS Messages<a name="application-metrics-txn-sms"></a>
+## Application metrics for transactional SMS messages<a name="application-metrics-txn-sms"></a>
 
-The following table lists and describes standard application metrics that you can query to monitor trends for all the transactional SMS messages that are associated with an Amazon Pinpoint project\. To query data for these metrics, use the [Application Metrics](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-kpis-daterange-kpi-name.html) resource of the Amazon Pinpoint API\. The **kpi\-name** column in the table indicates the value to use for the `kpi-name` parameter in a query\. 
+The following table lists and describes standard application metrics that you can query to monitor trends for all the transactional SMS messages that are associated with an Amazon Pinpoint project\. To query data for these metrics, use the [Application metrics](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-kpis-daterange-kpi-name.html) resource of the Amazon Pinpoint API\. The **kpi\-name** column in the table indicates the value to use for the `kpi-name` parameter in a query\. 
 
 Note that these metrics don't provide data about SMS messages that were sent by campaigns\. They provide data about transactional SMS messages only\. To query data for messages that were sent by one or more campaigns, use a [campaign metric](#campaign-metrics) or an [application metric for campaigns](#application-metrics-campaigns)\.
 
 
-| Metric | kpi\-name | Description | 
+| Metric | Kpi\-name | Description | 
 | --- | --- | --- | 
-| Average price, grouped by country |  `txn-sms-average-price-grouped-by-country`  |  The average cost, in US Dollars, of sending each message, for each country or region that messages were sent to\. This metric is calculated as the total cost of all the messages that were sent to recipients in each country or region, divided by the number of messages that were sent to recipients in each of those countries and regions\. The query results for this metric are grouped by country or region, in ISO 3166\-1 alpha\-2 format\.  | 
+| Average price per message, grouped by country |  `txn-sms-average-price-grouped-by-country`  |  The average cost, in US Dollars, of sending each message, for each country or region that messages were sent to\. This metric is calculated as the total cost of all the messages that were sent to recipients in each country or region, divided by the number of messages that were sent to recipients in each of those countries and regions\. The query results for this metric are grouped by country or region, in ISO 3166\-1 alpha\-2 format\.  | 
+| Average price per message part, grouped by country |  `txn-sms-average-price-by-parts-grouped-by-country`  |  The average cost, in US Dollars, of sending each message part, for each country or region that messages were sent to\. A message part is a portion of an SMS message\. This metric is calculated as the total cost of all the message parts that were sent to recipients in each country or region, divided by the number of message parts that were sent to recipients in each of those countries and regions\. The query results for this metric are grouped by country or region, in ISO 3166\-1 alpha\-2 format\.  | 
 | Deliveries |  `txn-sms-delivered`  |  The number of messages that were delivered to recipients\.  | 
 | Deliveries, grouped by country |  `txn-sms-delivered-grouped-by-country`  | The number of messages that were delivered to recipients, for each country or region that messages were sent to\. The query results for this metric are grouped by country or region, in ISO 3166\-1 alpha\-2 format\. | 
 | Deliveries, grouped by date |  `txn-sms-delivered-grouped-by-date`  | The number of messages that were delivered to recipients, for each day in the specified date range\. The query results for this metric are grouped by calendar day, in extended ISO 8601 format\. | 
 | Delivery errors |  `txn-sms-error-distribution`  |  The number of times that an error occurred while attempting to deliver the messages, for each type of error that occurred\. The query results for this metric are grouped by error code, for each type of error that occurred\.  | 
 | Delivery rate |  `txn-sms-delivery-rate`  |  The percentage of messages that were delivered to recipients\. This metric is calculated as the number of messages that were sent and delivered to recipients, divided by the number of messages that were sent\.  | 
 | Delivery rate, grouped by date |  `txn-sms-delivery-rate-grouped-by-date`  |  The percentage of messages that were delivered to recipients, for each day in the specified date range\. This metric is calculated as the number of messages that were sent and delivered to recipients, divided by the number of messages that were sent, for each day in the specified date range\. The query results for this metric are grouped by calendar day, in extended ISO 8601 format\.  | 
-| Sends |  `txn-sms-sent`  | The number of messages that were sent\. | 
-| Sends, grouped by country |  `txn-sms-sent-grouped-by-country`  |  The number of messages that were sent, for each country or region that messages were sent to\. The query results for this metric are grouped by country or region, in ISO 3166\-1 alpha\-2 format\.  | 
-| Sends, grouped by date |  `txn-sms-sent-grouped-by-date`  | The number of messages that were sent, for each day in the specified date range\. The query results for this metric are grouped by calendar day, in extended ISO 8601 format\. | 
+| Message parts delivered |  `txn-sms-delivered-by-parts`  |  The number of message parts that were delivered\. A *message part* is a portion of an SMS message\. If an SMS message contains more characters than the SMS protocol allows, Amazon Pinpoint splits the message into as many message parts as necessary to send the message to a recipient\.  | 
+| Message parts delivered, grouped by country |  `txn-sms-delivered-by-parts-grouped-by-country`  |  The number of message parts that were delivered, for each country or region that messages were sent to\. A *message part* is a portion of an SMS message\. The query results for this metric are grouped by country or region, in ISO 3166\-1 alpha\-2 format\.  | 
+| Message parts sent |  `txn-sms-sent-by-parts`  |  The number of message parts that were sent\. A *message part* is a portion of an SMS message\. If an SMS message contains more characters than the SMS protocol allows, Amazon Pinpoint splits the message into as many message parts as necessary to send the message to a recipient\.  | 
+| Message parts sent, grouped by country |  `txn-sms-sent-by-parts-grouped-by-country`  |  The number of message parts that were sent, for each country or region that messages were sent to\. A *message part* is a portion of an SMS message\. The query results for this metric are grouped by country or region, in ISO 3166\-1 alpha\-2 format\.  | 
+| Messages sent |  `txn-sms-sent`  | The number of messages that were sent\. | 
+| Messages sent, grouped by country |  `txn-sms-sent-grouped-by-country`  |  The number of messages that were sent, for each country or region that messages were sent to\. The query results for this metric are grouped by country or region, in ISO 3166\-1 alpha\-2 format\.  | 
+| Messages sent, grouped by date |  `txn-sms-sent-grouped-by-date`  | The number of messages that were sent, for each day in the specified date range\. The query results for this metric are grouped by calendar day, in extended ISO 8601 format\. | 
 | Total price, grouped by country |  `txn-sms-total-price-grouped-by-country`  |  The total cost, in US Dollars, of sending the messages, for each country or region that messages were sent to\. The query results for this metric are grouped by country or region, in ISO 3166\-1 alpha\-2 format\.  | 
+| Total SMS spend | sms\-spend | For all campaigns, the total amount of money, in milicents, spent on sending SMS\. | 
 
-## Campaign Metrics<a name="campaign-metrics"></a>
+## Campaign metrics<a name="campaign-metrics"></a>
 
-The following table lists and describes standard campaign metrics that you can query to assess the performance of an individual campaign\. To query data for these metrics, use the [Campaign Metrics](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-campaigns-campaign-id-kpis-daterange-kpi-name.html) resource of the Amazon Pinpoint API\. The **kpi\-name** column in the table indicates the value to use for the `kpi-name` parameter in your query\.
+The following table lists and describes standard campaign metrics that you can query to assess the performance of an individual campaign\. To query data for these metrics, use the [Campaign metrics](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-campaigns-campaign-id-kpis-daterange-kpi-name.html) resource of the Amazon Pinpoint API\. The **kpi\-name** column in the table indicates the value to use for the `kpi-name` parameter in your query\.
 
 
-| Metric | kpi\-name | Description | 
+| Metric | Kpi\-name | Description | 
 | --- | --- | --- | 
 |  Bounce rate  |  `hard-bounce-rate`  |  For all campaign runs, the percentage of email messages that couldn't be delivered to recipients\. This metric measures only hard bounces—that is, messages in which the recipient's email address had a permanent issue that prevented the message from being delivered\. This metric is calculated as the number of bounced email messages that were sent by all the campaign runs, divided by the number of email messages that were sent by all of those campaign runs\.  | 
 |  Bounce rate, grouped by campaign run  |  `hard-bounce-rate-grouped-by-campaign-activity`  |  For each campaign run, the percentage of email messages that couldn't be delivered to recipients\. This metric measures only hard bounces—that is, messages in which the recipient's email address had a permanent issue that prevented the message from being delivered\. This metric is calculated as the number of bounced email messages that were sent by a campaign run, divided by the number of email messages that were sent by the campaign run\. The query results for this metric are grouped by campaign activity ID \(`CampaignActivityId`\), which is a string that uniquely identifies a campaign run\.  | 
@@ -116,12 +122,12 @@ The following table lists and describes standard campaign metrics that you can q
 | Push open rate, grouped by campaign run |  `push-open-rate-grouped-by-campaign-activity`  |  For each campaign run, the percentage of push notifications that were opened by recipients\. This metric is calculated as the number of push notifications that were sent by a campaign run and opened by recipients, divided by the number of push notifications that were sent by the campaign run and delivered to recipients\. The query results for this metric are grouped by campaign activity ID \(`CampaignActivityId`\), which is a string that uniquely identifies a campaign run\.  | 
 | Total push opened, grouped by campaign run | `direct-push-opens-grouped-by-campaign-activity` |  For each campaign run, the number of push notifications that were opened by recipients\. The query results for this metric are grouped by campaign activity ID \(`CampaignActivityId`\), which is a string that uniquely identifies a campaign run\.  | 
 
-## Journey Engagement Metrics<a name="journey-metrics-engagement-email"></a>
+## Journey engagement metrics<a name="journey-metrics-engagement-email"></a>
 
-The following table lists and describes standard journey engagement metrics that you can query to monitor trends for all the email messages that were sent by an Amazon Pinpoint journey\. To query data for these metrics, use the [Journey Engagement Metrics](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-journeys-journey-id-kpis-daterange-kpi-name.html) resource of the Amazon Pinpoint API\. The **kpi\-name** column in the table indicates the value to use for the `kpi-name` parameter in a query\. 
+The following table lists and describes standard journey engagement metrics that you can query to monitor trends for all the email messages that were sent by an Amazon Pinpoint journey\. To query data for these metrics, use the [Journey engagement metrics](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-journeys-journey-id-kpis-daterange-kpi-name.html) resource of the Amazon Pinpoint API\. The **kpi\-name** column in the table indicates the value to use for the `kpi-name` parameter in a query\. 
 
 
-| Metric | kpi\-name | Description | 
+| Metric | Kpi\-name | Description | 
 | --- | --- | --- | 
 | Clicks |  `journey-emails-clicked`  |  The number of times that participants clicked links in the messages\. If a single participant clicked multiple links in a message, or clicked the same link more than once, each click is included in the count\.  | 
 | Clicks, grouped by activity |  `emails-clicked-grouped-by-journey-activity`  |  For each activity in the journey, the number of times that participants clicked links in the messages\. If a single participant clicked multiple links in a message, or clicked the same link more than once, each click is included in the count\. The query results for this metric are grouped by activity ID \(`JourneyActivityId`\), which is a string that uniquely identifies an activity\.  | 
@@ -142,9 +148,9 @@ The following table lists and describes standard journey engagement metrics that
 | Unsubscribes | `journey-emails-unsubscribed` |  The number of times that participants clicked unsubscribe links in the messages\. If a single participant clicked the same unsubscribe link more than once, each click is included in the count\.  | 
 | Unsubscribes, grouped by activity | `emails-unsubscribed-grouped-by-journey-activity` | For each activity in the journey, the number of times that participants clicked unsubscribe links in the messages\. If a single participant clicked the same unsubscribe link more than once, each click is included in the count\. The query results for this metric are grouped by activity ID \(`JourneyActivityId`\), which is a string that uniquely identifies an activity\. | 
 
-## Journey Execution Metrics<a name="journey-metrics-execution"></a>
+## Journey execution metrics<a name="journey-metrics-execution"></a>
 
-The following table lists and describes standard execution metrics that you can query to assess the status of participants in an Amazon Pinpoint journey\. To query data for these metrics, use the [Journey Execution Metrics](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-journeys-journey-id-execution-metrics.html) resource of the Amazon Pinpoint API\. The **Field** column in the table identifies the name of the field that appears in the query results for each metric\. 
+The following table lists and describes standard execution metrics that you can query to assess the status of participants in an Amazon Pinpoint journey\. To query data for these metrics, use the [Journey execution metrics](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-journeys-journey-id-execution-metrics.html) resource of the Amazon Pinpoint API\. The **Field** column in the table identifies the name of the field that appears in the query results for each metric\. 
 
 
 | Metric | Field | Description | 
@@ -156,12 +162,12 @@ The following table lists and describes standard execution metrics that you can 
 |  Participant exceptions, reentry limits  |  `REENTRY_CAP_EXCEEDED`  |  The number of participants who didn't complete the journey because they would have exceeded the maximum number of times that a single participant can re\-enter the journey\.  | 
 |  Participant exceptions, rejections  |  `ACTIVE_ENDPOINT_REJECTED`  |  The number of participants who can't start the journey because they are already active participants in the journey\. A participant is rejected if they start a journey and you subsequently update their endpoint definition in a way that affects their inclusion in a segment \(based on segment criteria\) or the journey \(based on activity conditions\)\.  | 
 
-## Journey Activity Execution Metrics<a name="journey-metrics-activity-execution"></a>
+## Journey activity execution metrics<a name="journey-metrics-activity-execution"></a>
 
-The following table lists and describes standard execution metrics that you can query to assess the status of participants in each type of individual activity for an Amazon Pinpoint journey\. To query data for these metrics, use the [Journey Activity Execution Metrics](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-journeys-journey-id-activities-journey-activity-id-execution-metrics.html) resource of the Amazon Pinpoint API\. The **Metrics** column in the table lists the fields that appear in the query results for each type of activity\. It also provides a brief description of each field\.
+The following table lists and describes standard execution metrics that you can query to assess the status of participants in each type of individual activity for an Amazon Pinpoint journey\. To query data for these metrics, use the [Journey activity execution metrics](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-journeys-journey-id-activities-journey-activity-id-execution-metrics.html) resource of the Amazon Pinpoint API\. The **Metrics** column in the table lists the fields that appear in the query results for each type of activity\. It also provides a brief description of each field\.
 
 
-| Activity Type | Metrics | 
+| Activity type | Metrics | 
 | --- | --- | 
 |  Yes/No split \(`CONDITIONAL_SPLIT`\)  |  The metrics are:  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/analytics-standard-metrics.html) Additional metrics are available for the activity on each path\. For information about those metrics, see the row in this table for that type of activity\.  | 
 |  Holdout \(`HOLDOUT`\)  |  The metrics are: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/analytics-standard-metrics.html)  | 

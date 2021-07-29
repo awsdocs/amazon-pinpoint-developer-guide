@@ -1,4 +1,4 @@
-# Customizing Recommendations with AWS Lambda<a name="ml-models-rm-lambda"></a>
+# Customizing recommendations with AWS Lambda<a name="ml-models-rm-lambda"></a>
 
 In Amazon Pinpoint, you can retrieve personalized recommendations from a recommender model and add them to messages that you send from campaigns and journeys\. A *recommender model* is a type of machine learning \(ML\) model that finds patterns in data and generates predictions and recommendations based on the patterns that it finds\. It predicts what a particular user will prefer from a given set of products or items, and it provides that information as a set of recommendations for the user\.
 
@@ -7,13 +7,13 @@ By using recommender models with Amazon Pinpoint, you can send personalized reco
 This feature is available in the following AWS Regions: US East \(N\. Virginia\); US West \(Oregon\); Asia Pacific \(Mumbai\); Asia Pacific \(Sydney\); and, Europe \(Ireland\)\.
 
 **Topics**
-+ [Using Recommendations in Messages](#ml-models-rm-lambda-overview)
-+ [Creating the Lambda Function](#ml-models-rm-lambda-create-function)
-+ [Assigning a Lambda Function Policy](#ml-models-rm-lambda-trust-policy)
-+ [Authorizing Amazon Pinpoint to Invoke the Function](#ml-models-rm-lambda-trust-policy-assign)
++ [Using recommendations in messages](#ml-models-rm-lambda-overview)
++ [Creating the Lambda function](#ml-models-rm-lambda-create-function)
++ [Assigning a Lambda function policy](#ml-models-rm-lambda-trust-policy)
++ [Authorizing Amazon Pinpoint to invoke the function](#ml-models-rm-lambda-trust-policy-assign)
 + [Configuring the Recommender Model](#ml-models-rm-lambda-configure)
 
-## Using Recommendations in Messages<a name="ml-models-rm-lambda-overview"></a>
+## Using recommendations in messages<a name="ml-models-rm-lambda-overview"></a>
 
 To use a recommender model with Amazon Pinpoint, you start by creating an Amazon Personalize solution and deploying that solution as an Amazon Personalize campaign\. Then, you create a configuration for the recommender model in Amazon Pinpoint\. In the configuration, you specify settings that determine how to retrieve and process recommendation data from the Amazon Personalize campaign\. This includes whether to invoke an AWS Lambda function to perform additional processing of the data that's retrieved\.
 
@@ -58,11 +58,11 @@ If you configure Amazon Pinpoint to invoke a Lambda function that processes reco
 
 To customize and enhance recommendations in this way, start by creating a Lambda function that processes the endpoint definitions sent by Amazon Pinpoint, and returns updated endpoint definitions\. Next, assign a Lambda function policy to the function and authorize Amazon Pinpoint to invoke the function\. Then, configure the recommender model in Amazon Pinpoint\. When you configure the model, specify the function to invoke and define the recommended attributes to use\.
 
-## Creating the Lambda Function<a name="ml-models-rm-lambda-create-function"></a>
+## Creating the Lambda function<a name="ml-models-rm-lambda-create-function"></a>
 
 To learn how to create a Lambda function, see [Getting Started](https://docs.aws.amazon.com/lambda/latest/dg/getting-started.html) in the *AWS Lambda Developer Guide*\. When you design and develop your function, keep the following requirements and guidelines in mind\. 
 
-### Input Event Data<a name="ml-models-rm-lambda-create-function-input"></a>
+### Input event data<a name="ml-models-rm-lambda-create-function-input"></a>
 
 When Amazon Pinpoint invokes a Lambda function for a recommender model, it sends a payload that contains the configuration and other settings for the campaign or journey that's sending the message\. The payload includes an `Endpoints` object, which is a map that associates endpoint IDs with endpoint definitions for message recipients\.
 
@@ -148,7 +148,7 @@ When Amazon Pinpoint invokes the Lambda function and sends this payload as the e
 
 Each payload can contain data for up to 50 endpoints\. If a segment contains more than 50 endpoints, Amazon Pinpoint invokes the function repeatedly, for up to 50 endpoints at a time, until the function processes all the data\. 
 
-### Response Data and Requirements<a name="ml-models-rm-lambda-create-function-response"></a>
+### Response data and requirements<a name="ml-models-rm-lambda-create-function-response"></a>
 
 As you design and develop your Lambda function, keep the [quotas for machine learning models](quotas.md#quotas-ML-models) in mind\. If the function doesn't meet the conditions defined by these quotas, Amazon Pinpoint won't be able to process and send the message\.
 
@@ -319,7 +319,7 @@ Continuing with the earlier example of input event data, the updated endpoint de
 
 In the preceding example, the function modified the `Endpoints` object that it received and returned the results\. The `Endpoint` object for each endpoint now contains a new `Recommendations` object, which contains `Title` and `Genre` fields\. Each of these fields stores an ordered array of three values \(as strings\), where each value provides enhanced content for a corresponding recommended item in the `RecommendationItems` field\.
 
-## Assigning a Lambda Function Policy<a name="ml-models-rm-lambda-trust-policy"></a>
+## Assigning a Lambda function policy<a name="ml-models-rm-lambda-trust-policy"></a>
 
 Before you can use your Lambda function to process recommendation data, you must authorize Amazon Pinpoint to invoke the function\. To grant invocation permission, assign a Lambda function policy to the function\. A *Lambda function policy* is a resource\-based permissions policy that designates which entities can use a function and what actions those entities can take\. For more information, see [Using Resource\-Based Policies for AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html) in the *AWS Lambda Developer Guide*\.
 
@@ -336,7 +336,7 @@ The following example policy allows the Amazon Pinpoint service principal to use
   "Resource": "{arn:aws:lambda:us-east-1:accountId:function:function-name}",
   "Condition": {
     "ArnLike": {
-      "AWS:SourceArn": "arn:aws:mobiletargeting:us-east-1:accountId:/apps/projectId/campaigns/campaignId"
+      "AWS:SourceArn": "arn:aws:mobiletargeting:us-east-1:accountId:recommenders/*"
     }
   }
 }
@@ -357,7 +357,7 @@ You can also write a policy that allows the Amazon Pinpoint service principal to
   "Resource": "{arn:aws:lambda:us-east-1:accountId:function:function-name}",
   "Condition": {
     "ArnLike": {
-      "AWS:SourceArn": "arn:aws:mobiletargeting:us-east-1:accountId:/apps/projectId"
+      "AWS:SourceArn": "arn:aws:mobiletargeting:us-east-1:accountId:recommenders/*"
     }
   }
 }
@@ -370,14 +370,14 @@ To write a more generic policy, you can use a multicharacter match wildcard \(\*
 ```
 "Condition": {
   "ArnLike": {
-    "AWS:SourceArn": "arn:aws:mobiletargeting:us-east-1:accountId:/apps/*"
+    "AWS:SourceArn": "arn:aws:mobiletargeting:us-east-1:accountId:recommenders/*"
   }
 }
 ```
 
 If you want to use the Lambda function with all the projects for your Amazon Pinpoint account, we recommend that you configure the `Condition` block of the policy in the preceding way\. However, as a best practice, you should create policies that include only the permissions that are required to perform a specific action on a specific resource\.
 
-## Authorizing Amazon Pinpoint to Invoke the Function<a name="ml-models-rm-lambda-trust-policy-assign"></a>
+## Authorizing Amazon Pinpoint to invoke the function<a name="ml-models-rm-lambda-trust-policy-assign"></a>
 
 After you assign a Lambda function policy to the function, you can add permissions that allow Amazon Pinpoint to invoke the function for a specific project, campaign, or journey\. You can do this using the AWS Command Line Interface \(AWS CLI\) and the Lambda [https://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html](https://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html) command\. The following example shows how to do this for a specific project \(*projectId*\):
 
@@ -387,7 +387,7 @@ $ aws lambda add-permission \
 --statement-id sid \
 --action lambda:InvokeFunction \
 --principal pinpoint.us-east-1.amazonaws.com \
---source-arn arn:aws:mobiletargeting:us-east-1:accountId:/apps/projectId
+--source-arn arn:aws:mobiletargeting:us-east-1:accountId:recommenders/*
 ```
 
 The preceding example is formatted for Unix, Linux, and macOS\. For Microsoft Windows, replace the backslash \(\\\) line\-continuation character with a caret \(^\)\.
@@ -404,7 +404,7 @@ If the command runs successfully, you see output similar to the following:
     \"Condition\":
       {\"ArnLike\":
         {\"AWS:SourceArn\":
-         \"arn:aws:mobiletargeting:us-east-1:111122223333:/apps/projectId\"}}}"
+         \"arn:aws:mobiletargeting:us-east-1:111122223333:recommenders/*\"}}}"
 }
 ```
 

@@ -1,3 +1,0 @@
-# Setting Up Android Push Notifications<a name="mobile-push-android"></a>
-
-Push notifications for Android apps are sent using Firebase Cloud Messaging \(FCM\), which replaces Google Cloud Messaging \(GCM\)\. Before you can send push notifications to Android devices, you must obtain FCM credentials\. You can then use those credentials to create an Android project and launch a sample app that can receive push notifications\. You can find more information about completing these steps in the [Setting Up FCM/GCM for Push Notifications](https://aws-amplify.github.io/docs/android/push-notifications-setup-fcm) and [Push Notifications](https://aws-amplify.github.io/docs/sdk/android/push-notifications) sections of the Android SDK documentation\.

@@ -137,7 +137,7 @@ The procedures for updating the DNS records for a domain vary depending on which
 
 | DNS/Hosting Provider | Documentation Link | 
 | --- | --- | 
-|  Amazon Route 53  |  [Creating Records by Using the Amazon Route 53 Console](Amazon Route 53 Developer Guideresource-record-sets-creating.html)  | 
+|  Amazon Route 53   |  [Creating Records by Using the Amazon Route 53 Console](Amazon Route 53              Developer Guideresource-record-sets-creating.html)  | 
 |  GoDaddy  |  [Add a CNAME record](https://www.godaddy.com/help/add-a-cname-record-19236) \(external link\)  | 
 |  Dreamhost  |  [How do I add custom DNS records?](https://help.dreamhost.com/hc/en-us/articles/215414867-How-do-I-add-custom-DNS-records-) \(external link\)  | 
 |  Cloudflare  |  [Managing DNS records in Cloudflare](https://support.cloudflare.com/hc/en-us/articles/360019093151) \(external link\)  | 

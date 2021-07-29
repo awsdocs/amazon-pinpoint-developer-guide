@@ -1,11 +1,11 @@
-# Step 3: Send Additional Requests<a name="tutorials-using-postman-sample-requests"></a>
+# Step 3: Send additional requests<a name="tutorials-using-postman-sample-requests"></a>
 
 When you finish configuring and testing Postman, you can start sending additional requests to the Amazon Pinpoint API\. This section includes information that you need to know before you start sending requests\. It also includes two sample requests that help you understand how to use the Amazon Pinpoint collection\.
 
 **Important**  
 When you complete the procedures in this section, you submit requests to the Amazon Pinpoint API\. These requests are capable of creating new resources in your Amazon Pinpoint account, modifying existing resources, sending messages, changing the configuration of your Amazon Pinpoint projects, and using other Amazon Pinpoint features\. Use caution when you execute these requests\.
 
-## About the Examples in the Amazon Pinpoint Postman Collection<a name="tutorials-using-postman-sample-requests-about"></a>
+## About the examples in the Amazon Pinpoint Postman collection<a name="tutorials-using-postman-sample-requests-about"></a>
 
 You have to configure most of the operations in the Amazon Pinpoint Postman collection before you can use them\. For `GET` and `DELETE` operations, you typically only need to modify the variables that are set on the **Pre\-request Script** tab\.
 
@@ -21,7 +21,7 @@ For `POST` and `PUT` operations, you also need to modify the request body to inc
 **Note**  
 The `UntagResource` operation also requires you to specify URL parameters\. You can specify these parameters on the **Params** tab\. Replace the values in the **VALUE** column with the tags that you want to delete for the specified resource\.
 
-## Example Request: Creating a Project by Using the `CreateApp` Operation<a name="tutorials-using-postman-sample-requests-createapp"></a>
+## Example request: Creating a project by using the `CreateApp` operation<a name="tutorials-using-postman-sample-requests-createapp"></a>
 
 Before you create segments and campaigns in Amazon Pinpoint, you first have to create a project\. In Amazon Pinpoint, a *project* consists of segments, campaigns, configurations, and data that are united by a common purpose\. For example, you could use a project to contain all of the content that's related to a particular app, or to a specific brand or marketing initiative\. When you add customer information to Amazon Pinpoint, that information is associated with a project\.
 
@@ -41,7 +41,7 @@ Before you create segments and campaigns in Amazon Pinpoint, you first have to c
 1. Choose **Send**\. If the campaign is created successfully, the response pane shows a status of `201 Created`\. You see a response that resembles the example in the following image\.  
 ![\[\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/images/Postman_Tutorial_3.2_5.png)
 
-## Example: Sending an Email by Using the `SendMessages` Operation<a name="tutorials-using-postman-sample-requests-sendmessages"></a>
+## Example: Sending an email by using the `SendMessages` operation<a name="tutorials-using-postman-sample-requests-sendmessages"></a>
 
 It's very common to use the Amazon Pinpoint `SendMessages` API to send transactional messages\. One advantage to sending messages by using the `SendMessages` API \(as opposed to creating campaigns\), is that you can use the `SendMessages` API to send messages to any address \(such as an email address, phone number, or device token\)\. The address that you send messages to doesn't have to exist in your Amazon Pinpoint account already\. Compare this to sending messages by creating campaigns\. Before you send a campaign in Amazon Pinpoint, you have to add endpoints to your Amazon Pinpoint account, create segments, create the campaign, and execute the campaign\.
 
@@ -49,7 +49,7 @@ The example in this section shows you how to send a transactional email message 
 
 **To send an email message by submitting a SendMessages request**
 
-1. Verify the email address or domain that you want to use to send the message\. For more information, see [Verifying Email Identities](https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-email-manage-verify.html) in the *Amazon Pinpoint User Guide*\.
+1. Verify the email address or domain that you want to use to send the message\. For more information, see [Verifying email identities](https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-email-manage-verify.html) in the *Amazon Pinpoint User Guide*\.
 **Note**  
 In Amazon Pinpoint, you can only send email from addresses or domains that you've verified\. You won't be able to complete the procedure in this section until you verify an email address\.
 
@@ -91,7 +91,7 @@ In Amazon Pinpoint, you can only send email from addresses or domains that you'v
 
 1. In the preceding code, replace *sender@example\.com* with your verified email address\. Replace *recipient@example\.com* with the address that you want to send the message to\.
 **Note**  
-If your account is still in the Amazon Pinpoint email sandbox, you can only send email to addresses or domains that are verified in your Amazon Pinpoint account\. For more information about having your account removed from the sandbox, see [ Requesting Production Access for Email](https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-email-setup-production-access.html) in the *Amazon Pinpoint User Guide*\.
+If your account is still in the Amazon Pinpoint email sandbox, you can only send email to addresses or domains that are verified in your Amazon Pinpoint account\. For more information about having your account removed from the sandbox, see [ Requesting production access for email](https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-email-setup-production-access.html) in the *Amazon Pinpoint User Guide*\.
 
 1. Choose **Send**\. If the message is sent successfully, the response pane shows a status of `200 OK`\. You see a response that resembles the example in the following image\.  
 ![\[\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/images/Postman_Tutorial_3.3_7.png)

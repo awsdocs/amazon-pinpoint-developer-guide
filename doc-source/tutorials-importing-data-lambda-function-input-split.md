@@ -1,8 +1,8 @@
-# Step 4: Create the Lambda Function That Splits Input Data<a name="tutorials-importing-data-lambda-function-input-split"></a>
+# Step 4: Create the Lambda function that splits input data<a name="tutorials-importing-data-lambda-function-input-split"></a>
 
 The solution that's described in this tutorial uses three Lambda functions\. The first Lambda function is triggered when you upload a file to a specific Amazon S3 bucket\. This function reads the content of the input file, and then breaks it into smaller parts\. Other functions \(which you create later in this tutorial\) process these incoming files concurrently\. Processing the files concurrently reduces the amount of time that it takes to import all of the endpoints into Amazon Pinpoint\.
 
-## Step 4\.1: Create the Function<a name="tutorials-importing-data-lambda-function-input-split-create"></a>
+## Step 4\.1: Create the function<a name="tutorials-importing-data-lambda-function-input-split-create"></a>
 
 To create the first Lambda function for this tutorial, you first have to upload the \.zip file that you created in [Step 3](tutorials-importing-data-create-python-package.md)\. Next, you set up the function itself\.
 
@@ -105,7 +105,7 @@ After you choose **Save**, you receive an error message stating that Lambda coul
    
    # Move the original input file into an archive folder.
    def archive(input_file, archive_path):
-       s3.copy_basic(input_file,archive_path)
+       s3.copy(input_file,archive_path)
        print("Moved " + input_file + " to " + archive_path)
        s3.rm(input_file)
    ```
@@ -114,7 +114,7 @@ After you choose **Save**, you receive an error message stating that Lambda coul
 
 1. At the top of the page, choose **Save**\.
 
-## Step 4\.2: Test the Function<a name="tutorials-importing-data-lambda-function-input-split-test"></a>
+## Step 4\.2: Test the function<a name="tutorials-importing-data-lambda-function-input-split-test"></a>
 
 After you create the function, you should test it to make sure that it's set up correctly\.
 
@@ -178,11 +178,11 @@ For now, don't add or remove any columns to the file\. After you implement the s
    If the function runs as expected, proceed to the next step\.
 
    If the function fails to complete, do the following: 
-   + Make sure that you specified the correct bucket name in the IAM policy that you created in [Step 2: Create IAM Roles](tutorials-importing-data-create-iam-roles.md)\.
+   + Make sure that you specified the correct bucket name in the IAM policy that you created in [Step 2: Create IAM roles](tutorials-importing-data-create-iam-roles.md)\.
    + Make sure that the Lambda test event that you created in step 7 of this section refers to the correct bucket and file name\.
    + If you named the input file something other than `testfile.csv`, make sure that the file name doesn't contain any spaces\.
 
-1. Return to the [Amazon S3 console](https://console.aws.amazon.com/s3/)\. Choose the bucket that you created in [Step 1: Create an Amazon S3 Bucket](tutorials-importing-data-create-s3-bucket.md)\.
+1. Return to the [Amazon S3 console](https://console.aws.amazon.com/s3/)\. Choose the bucket that you created in [Step 1: Create an Amazon S3 bucket](tutorials-importing-data-create-s3-bucket.md)\.
 
    Open the folders in the bucket and take note of the contents of each one\. If all of the following statements are true, then the Lambda function worked as expected:
    + The `input` folder doesn't contain any files\.
@@ -191,4 +191,4 @@ For now, don't add or remove any columns to the file\. After you implement the s
 
    Don't delete any of the newly generated files\. The Lambda function that you create in the next step uses the files in the `to_process` folder\.
 
-**Next**: [Create a Lambda Function That Processes the Incoming Records](tutorials-importing-data-lambda-function-process-incoming.md)
+**Next**: [Create a Lambda function that processes the incoming records](tutorials-importing-data-lambda-function-process-incoming.md)

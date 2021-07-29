@@ -1,4 +1,4 @@
-# Next Steps<a name="tutorials-email-prefs-next-steps"></a>
+# Next steps<a name="tutorials-email-prefs-next-steps"></a>
 
 By completing this tutorial, you've done the following:
 + Created an Amazon Pinpoint project, enabled the email channel, and verified an identity for sending email\.
@@ -12,7 +12,7 @@ By completing this tutorial, you've done the following:
 
 This section discusses a few ways that you can use the information that you collect by using this solution\. It also includes some suggestions of ways that you can customize this solution to fit your unique use case\.
 
-## Use the Form to Collect Additional Information<a name="tutorials-email-prefs-next-steps-collect-additional"></a>
+## Use the form to collect additional information<a name="tutorials-email-prefs-next-steps-collect-additional"></a>
 
 You can modify this solution to collect additional information on the registration form\. For example, you could ask the customer to provide their address, and then use the address data to populate the `Location.City`, `Location.Country`, `Location.Region`, and `Location.PostalCode` fields in the `Endpoint` resource\. If you collect this data, you can use it to create targeted segments\. 
 
@@ -20,7 +20,7 @@ For example, if you offer different products to customers based on their country
 
 You can also modify the form so that it collects contact information in other channels\. For example, you could use the form to collect the customers' phone numbers so that you can send them SMS alerts\. To make this change, you need to modify the HTML for the web form, and the JavaScript code in the form handler\. You also have to modify the Lambda function so that it creates or updates two separate endpoints \(one for the email endpoint, and one for the SMS endpoint\)\. Finally, you should modify the Lambda function so that it generates a unique value for the `User.UserId` attribute, and then associates that value with both endpoints\.
 
-## Record Additional Attributes for Auditing Purposes<a name="tutorials-email-prefs-next-steps-auditing"></a>
+## Record additional attributes for auditing purposes<a name="tutorials-email-prefs-next-steps-auditing"></a>
 
 This solution records two valuable attributes when it creates and updates endpoints\. First, when the first Lambda function updates the endpoint, it records the location of the form in the `Attributes.OptSource` attribute\. When a customer submits the form, the Lambda function creates or updates the `Attributes.OptStatusLastChanged` attribute\. This attribute contains the exact date and time when the customer last updated the opt status for all of your topics\.
 
@@ -28,7 +28,7 @@ Both of these fields can be useful if you're ever asked an email provider or reg
 
 You can also modify the Lambda functions to record additional data that might be useful for auditing purposes, such as the IP address that the registration request was submitted from\.
 
-## Collect New Customer Information<a name="tutorials-email-prefs-next-steps-preference-center"></a>
+## Collect new customer information<a name="tutorials-email-prefs-next-steps-preference-center"></a>
 
 The solution in this tutorial uses the [UpdateEndpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints-endpoint-id.html#UpdateEndpoint) API operation, which creates new endpoints and also updates existing ones\. You can use the web form to capture information about new customers\. If you do, you have to generate a unique endpoint ID for each customer\. When a new endpoint enters your system in this way, you should set the OptOut value for it to "ALL"\. Next, you should send a message to the endpoint that asks the customer to click a link to confirm their subscription\. When the customer confirms their subscription, you can change the OptOut value to "NONE"\.
 

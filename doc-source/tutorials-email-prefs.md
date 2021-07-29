@@ -1,4 +1,4 @@
-# Tutorial: Setting Up an Email Preference Management System<a name="tutorials-email-prefs"></a>
+# Tutorial: Setting up an email preference management system<a name="tutorials-email-prefs"></a>
 
 In many jurisdictions around the world, email senders are required to include a mechanism for opting out of email communications in each email that they send\.
 
@@ -18,7 +18,7 @@ The following diagram shows the flow of information in this solution\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/images/Email_Prefs_Tutorial_Architecture.png)
 
-## About This Solution<a name="tutorials-email-prefs-about"></a>
+## About this solution<a name="tutorials-email-prefs-about"></a>
 
 This section contains information about the solution that you're building in this tutorial\.
 
@@ -41,12 +41,12 @@ There are no regional restrictions associated with using this solution\. However
 There's no charge for creating an AWS account\. However, by implementing this solution, you might incur some or all of the costs that are listed in the following table\.
 
 
-| Description | Cost \(US Dollars\) | 
+| Description | Cost \(US dollars\) | 
 | --- | --- | 
 | Message sending costs | You pay $0\.0001 for each email that you send through Amazon Pinpoint\. | 
 | Monthly targeted audience | You pay $0 for the first 5,000 endpoints that you target in Amazon Pinpoint each month\. After that, you pay $0\.0012 per endpoint that you target\. | 
-| Lambda usage | The Lambda function in this tutorial uses about 80–90 MB of memory and about 100–300 milliseconds of compute time each time it's executed\. Your usage of AWS Lambda in implementing this solution might be included in the Free Tier\. For more information, see [AWS Lambda Pricing](https://aws.amazon.com/lambda/pricing/)\. | 
-| API Gateway usage | You pay $0\.0000035–$0\.0000037 per API request, depending on which AWS Region you use\. For more information, see [Amazon API Gateway Pricing](https://aws.amazon.com/api-gateway/pricing/)\. | 
+| Lambda usage | The Lambda function in this tutorial uses about 80–90 MB of memory and about 100–300 milliseconds of compute time each time it's executed\. Your usage of AWS Lambda in implementing this solution might be included in the Free Tier\. For more information, see [AWS Lambda pricing](https://aws.amazon.com/lambda/pricing/)\. | 
+| API Gateway usage | You pay $0\.0000035–$0\.0000037 per API request, depending on which AWS Region you use\. For more information, see [Amazon API Gateway pricing](https://aws.amazon.com/api-gateway/pricing/)\. | 
 | Web hosting costs | The price that you pay varies depending on your web hosting provider\. | 
 
 **Next**: [Prerequisites](tutorials-email-prefs-prereqs.md)

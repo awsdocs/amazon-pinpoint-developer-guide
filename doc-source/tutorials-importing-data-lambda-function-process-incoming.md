@@ -1,4 +1,4 @@
-# Step 5: Create the Lambda Function That Processes the Incoming Records<a name="tutorials-importing-data-lambda-function-process-incoming"></a>
+# Step 5: Create the Lambda function that processes the incoming records<a name="tutorials-importing-data-lambda-function-process-incoming"></a>
 
 The next Lambda function that you create processes the records in the incoming files that were created by the function that you created in [Step 4](tutorials-importing-data-lambda-function-input-split.md)\. Specifically, it does the following things:
 + Changes the headers in the incoming file to values that Amazon Pinpoint expects to see\.
@@ -9,7 +9,7 @@ The next Lambda function that you create processes the records in the incoming f
 
 When the function finishes processing the input files, it sends them to a folder in the `processed` directory\.
 
-## Step 5\.1: Create the Function<a name="tutorials-importing-data-lambda-function-process-incoming-create"></a>
+## Step 5\.1: Create the function<a name="tutorials-importing-data-lambda-function-process-incoming-create"></a>
 
 The process of creating this function is similar to the process that you completed in [Step 4](tutorials-importing-data-lambda-function-input-split.md) of this tutorial\. First, you upload the \.zip file that contains the necessary libraries\. Next, you create two Python files\. 
 
@@ -410,7 +410,7 @@ A higher concurrency value might cause the files to be processed faster\. Howeve
 
 1. At the top of the page, choose **Save**\.
 
-## Step 5\.2: Test the Function<a name="tutorials-importing-data-lambda-function-process-incoming-test"></a>
+## Step 5\.2: Test the function<a name="tutorials-importing-data-lambda-function-process-incoming-test"></a>
 
 After you create the function, you should test it to make sure that it's set up correctly\.
 
@@ -443,12 +443,12 @@ After you create the function, you should test it to make sure that it's set up 
    If the function runs as expected, proceed to the next step\.
 
    If the function fails to complete, do the following: 
-   + Make sure that you specified the correct bucket name in the IAM policy that you created in [Step 1: Create an Amazon S3 Bucket](tutorials-importing-data-create-s3-bucket.md)\.
+   + Make sure that you specified the correct bucket name in the IAM policy that you created in [Step 1: Create an Amazon S3 bucket](tutorials-importing-data-create-s3-bucket.md)\.
    + Make sure that the Lambda test event that you created in step 1 of this section refers to the correct bucket and file name\.
 
 1. Open the Amazon S3 console at [https://console\.aws\.amazon\.com/s3/](https://console.aws.amazon.com/s3/)\.
 
-   Choose the bucket that you created in [Step 1: Create an Amazon S3 Bucket](tutorials-importing-data-create-s3-bucket.md)\.
+   Choose the bucket that you created in [Step 1: Create an Amazon S3 bucket](tutorials-importing-data-create-s3-bucket.md)\.
 
    Open the folders in the bucket and take note of the contents of each one\. If all of the following statements are true, then the Lambda function worked as expected:
    + The `to_process` folder doesn't contain any files\.
@@ -456,4 +456,4 @@ After you create the function, you should test it to make sure that it's set up 
 
    Don't delete any of the newly generated files\. The Lambda function that you create in the next step uses the files in the `to_process` folder\.
 
-**Next**: [Create the Lambda Function Imports Records Into Amazon Pinpoint](tutorials-importing-data-lambda-function-import-job.md)
+**Next**: [Create the Lambda function imports records into Amazon Pinpoint](tutorials-importing-data-lambda-function-import-job.md)

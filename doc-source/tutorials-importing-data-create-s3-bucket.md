@@ -1,8 +1,8 @@
-# Step 1: Create an Amazon S3 Bucket<a name="tutorials-importing-data-create-s3-bucket"></a>
+# Step 1: Create an Amazon S3 bucket<a name="tutorials-importing-data-create-s3-bucket"></a>
 
 In this solution, you upload files that you want to import into an `input` folder in an Amazon S3 bucket\. When you upload a file into this folder, Amazon S3 triggers a Lambda function\. This function moves the input file into an `archive` folder\. It also creates several smaller files in a `to_process` folder\. The first step in implementing this solution is to create an Amazon S3 bucket\. Next, you create an `input` folder in that bucket\.
 
-## Step 1\.1: Create an Amazon S3 Bucket and Input Folder<a name="tutorials-importing-data-create-s3-bucket-new-bucket"></a>
+## Step 1\.1: Create an Amazon S3 bucket and input folder<a name="tutorials-importing-data-create-s3-bucket-new-bucket"></a>
 
 Complete the following procedure to create a new Amazon S3 bucket that contains a folder named `input`\.
 

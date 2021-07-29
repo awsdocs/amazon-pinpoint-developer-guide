@@ -1,10 +1,10 @@
-# Creating Custom Channels in Amazon Pinpoint<a name="channels-custom"></a>
+# Creating custom channels in Amazon Pinpoint<a name="channels-custom"></a>
 
 Amazon Pinpoint includes built\-in support for sending messages through the push notification, email, SMS, and voice channels\. You can also configure Amazon Pinpoint to send messages through other channels by creating custom channels\. Custom channels in Amazon Pinpoint allow you to send messages through any service that has an API, including third\-party services\. You can interact with APIs by using a webhook, or by calling an AWS Lambda function\.
 
 The segments that you send custom channel campaigns to can contain endpoints of all types \(that is, endpoints where the value of the `ChannelType` attribute is EMAIL, VOICE, SMS, CUSTOM, or one of the various push notification endpoint types\)\.
 
-## Creating a Campaign that Sends Messages Through a Custom Channel<a name="channels-custom-create"></a>
+## Creating a campaign that sends messages through a custom channel<a name="channels-custom-create"></a>
 
 To assign a Lambda function or webhook to an individual campaign, use the Amazon Pinpoint API to create or update a [Campaign](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-campaigns.html) object\.
 
@@ -28,9 +28,9 @@ The campaign has to contain a `CustomDeliveryConfiguration` object\. Within the 
   + The URL of the webhook that you want to send endpoint data to when the campaign runs\.
 
 **Note**  
-The `Campaign` object can also contain a `Hook` object\. This object is only used to create segments that are customized by a Lambda function when a campaign is executed\. For more information, see [Customizing Segments with AWS Lambda](segments-dynamic.md)\.
+The `Campaign` object can also contain a `Hook` object\. This object is only used to create segments that are customized by a Lambda function when a campaign is executed\. For more information, see [Customizing segments with AWS Lambda](segments-dynamic.md)\.
 
-## Understanding the Event Data That Amazon Pinpoint Sends to Custom Channels<a name="channels-custom-event-data"></a>
+## Understanding the event data that Amazon Pinpoint sends to custom channels<a name="channels-custom-event-data"></a>
 
 Before you create a Lambda function that sends messages over a custom channel, you should familiarize yourself with the data that Amazon Pinpoint emits\. When a Amazon Pinpoint campaign sends messages over a custom channel, it sends a payload to the target Lambda function that resembles the following example:
 
@@ -79,19 +79,19 @@ The event data provides the following attributes:
 
 You can use this sample data when creating and testing your custom channel Lambda function\.
 
-## Configuring Webhooks<a name="channels-custom-webhook-create"></a>
+## Configuring webhooks<a name="channels-custom-webhook-create"></a>
 
 If you use a webhook to send custom channel messages, the URL of the webhook has to begin with "https://"\. The webhook URL can only contain alphanumeric characters, plus the following symbols: hyphen \(\-\), period \(\.\), underscore \(\_\), tilde \(\~\), question mark \(?\), slash or solidus \(/\), pound or hash sign \(\#\), and semicolon \(:\)\. The URL has to comply with [RFC3986](https://tools.ietf.org/html/rfc3986)\. 
 
 When you create a campaign that specifies a webhook URL, Amazon Pinpoint issues an HTTP `HEAD` to that URL\. The response to the `HEAD` request must contain a header called `X-Amz-Pinpoint-AccountId`\. The value of this header must equal your AWS account ID\.
 
-## Configuring Lambda Functions<a name="channels-custom-lambda-create"></a>
+## Configuring Lambda functions<a name="channels-custom-lambda-create"></a>
 
 This section provides an overview of the steps that you need to take when you create a Lambda function that sends messages over a custom channel\. First, you create the function\. After that, you add an execution policy to the function\. This policy allows Amazon Pinpoint to execute the policy when a campaign runs\.
 
-For an introduction to creating Lambda functions, see [Building Lambda Functions](https://docs.aws.amazon.com/lambda/latest/dg/lambda-app.html) in the *AWS Lambda Developer Guide*\.
+For an introduction to creating Lambda functions, see [Building Lambda functions](https://docs.aws.amazon.com/lambda/latest/dg/lambda-app.html) in the *AWS Lambda Developer Guide*\.
 
-### Example Lambda Function<a name="channels-custom-lambda-example"></a>
+### Example Lambda function<a name="channels-custom-lambda-example"></a>
 
 The following code example processes the payload and logs the number of endpoints of each endpoint type in CloudWatch\.
 
@@ -271,7 +271,7 @@ When an Amazon Pinpoint campaign executes this Lambda function, Amazon Pinpoint 
 
 You can modify this code example so that it also connects to the API of an external service in order to send messages through that service\.
 
-### Granting Amazon Pinpoint Permission to Invoke the Lambda Function<a name="channels-custom-lambda-trust-policy-assign"></a>
+### Granting Amazon Pinpoint permission to invoke the Lambda function<a name="channels-custom-lambda-trust-policy-assign"></a>
 
 You can use the AWS Command Line Interface \(AWS CLI\) to add permissions to the Lambda function policy assigned to your Lambda function\. To allow Amazon Pinpoint to invoke a function, use the Lambda [add\-permission](https://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html) command, as shown by the following example:
 
@@ -307,7 +307,7 @@ When you run the `add-permission` command, AWS Lambda returns the following outp
 
 The `Statement` value is a JSON string version of the statement added to the Lambda function policy\.
 
-#### Further Restricting the Execution Policy<a name="channels-custom-lambda-trust-policy-assign-restrict"></a>
+#### Further restricting the execution policy<a name="channels-custom-lambda-trust-policy-assign-restrict"></a>
 
 You can modify the execution policy by restricting it to a specific Amazon Pinpoint project\. To do this, replace the `*` in the preceding example with the unique ID of the project\. You can further restrict the policy by limiting it to a specific campaign\. For example, to restrict the policy to only allow a campaign with the campaign ID `95fee4cd1d7f5cd67987c1436example` in a project with the project ID `dbaf6ec2226f0a9a8615e3ea5example`, use the following value for the `source-arn` attribute:
 

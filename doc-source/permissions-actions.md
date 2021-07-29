@@ -1,4 +1,4 @@
-# Amazon Pinpoint Actions for IAM Policies<a name="permissions-actions"></a>
+# Amazon Pinpoint actions for IAM policies<a name="permissions-actions"></a>
 
 To manage access to Amazon Pinpoint resources in your AWS account, you can add Amazon Pinpoint actions to AWS Identity and Access Management \(IAM\) policies\. By using actions in policies, you can control what users can do on the Amazon Pinpoint console\. You can also control what users can do programmatically by using the AWS SDKs, the AWS Command Line Interface \(AWS CLI\), or the Amazon Pinpoint APIs directly\.
 
@@ -6,35 +6,36 @@ In a policy, you specify each action with the appropriate Amazon Pinpoint namesp
 
 Each action is performed on a specific Amazon Pinpoint resource, which you identify in a policy statement by its Amazon Resource Name \(ARN\)\. For example, the `mobiletargeting:GetSegments` action is performed on a specific project, which you identify with the ARN, `arn:aws:mobiletargeting:region:accountId:apps/projectId`\.
 
-This topic identifies Amazon Pinpoint actions that you can add to IAM policies for your AWS account\. To see examples that demonstrate how you can use actions in policies to manage access to Amazon Pinpoint resources, see [Amazon Pinpoint Identity\-Based Policy Examples](security_iam_id-based-policy-examples.md) and [Amazon Pinpoint Resource\-Based Policy Examples](security_iam_resource-based-policy-examples.md)\.
+This topic identifies Amazon Pinpoint actions that you can add to IAM policies for your AWS account\. To see examples that demonstrate how you can use actions in policies to manage access to Amazon Pinpoint resources, see [Amazon Pinpoint identity\-based policy examples](security_iam_id-based-policy-examples.md)\.
 
 **Topics**
-+ [Amazon Pinpoint API Actions](#permissions-actions-apiactions)
-+ [Amazon Pinpoint SMS and Voice API Actions](#permissions-actions-sms-voice-apiactions)
++ [Amazon Pinpoint API actions](#permissions-actions-apiactions)
++ [Amazon Pinpoint SMS and voice API actions](#permissions-actions-sms-voice-apiactions)
 
-## Amazon Pinpoint API Actions<a name="permissions-actions-apiactions"></a>
+## Amazon Pinpoint API actions<a name="permissions-actions-apiactions"></a>
 
 This section identifies actions for features that are available from the Amazon Pinpoint API, which is the primary API for Amazon Pinpoint\. To learn more about this API, see the [Amazon Pinpoint API Reference](https://docs.aws.amazon.com/pinpoint/latest/apireference/)\.
 
 **Topics**
-+ [Analytics and Metrics](#permissions-actions-apiactions-metrics)
++ [Analytics and metrics](#permissions-actions-apiactions-metrics)
 + [Campaigns](#permissions-actions-apiactions-campaigns)
 + [Channels](#permissions-actions-apiactions-channels)
 + [Endpoints](#permissions-actions-apiactions-endpoints)
-+ [Event Streams](#permissions-actions-apiactions-event-streams)
-+ [Export Jobs](#permissions-actions-apiactions-export-jobs)
-+ [Import Jobs](#permissions-actions-apiactions-import-jobs)
++ [Event streams](#permissions-actions-apiactions-event-streams)
++ [Events](#permissions-actions-apiactions-events)
++ [Export jobs](#permissions-actions-apiactions-export-jobs)
++ [Import jobs](#permissions-actions-apiactions-import-jobs)
 + [Journeys](#permissions-actions-apiactions-journeys)
-+ [Message Templates](#permissions-actions-apiactions-templates-messages)
++ [Message templates](#permissions-actions-apiactions-templates-messages)
 + [Messages](#permissions-actions-apiactions-messages)
-+ [Phone Number Validation](#permissions-actions-apiactions-phone-number-validate)
++ [Phone number validation](#permissions-actions-apiactions-phone-number-validate)
 + [Projects](#permissions-actions-apiactions-projects)
-+ [Recommender Models](#permissions-actions-apiactions-recommenders)
++ [Recommender models](#permissions-actions-apiactions-recommenders)
 + [Segments](#permissions-actions-apiactions-segments)
 + [Tags](#permissions-actions-apiactions-tags)
 + [Users](#permissions-actions-apiactions-users)
 
-### Analytics and Metrics<a name="permissions-actions-apiactions-metrics"></a>
+### Analytics and metrics<a name="permissions-actions-apiactions-metrics"></a>
 
 The following permissions are related to viewing analytics data on the Amazon Pinpoint console\. They're also related to retrieving \(querying\) aggregated data for standard metrics, also referred to as *key performance indicators \(KPIs\)*, that apply to projects, campaigns, and journeys\.
 
@@ -42,7 +43,7 @@ The following permissions are related to viewing analytics data on the Amazon Pi
 View analytics data on the Amazon Pinpoint console\.  
 + URI – Not applicable
 + Method – Not applicable
-+ Resource ARN – `arn:aws:mobiletargeting:region:accountId:reports`
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:*`
 
 **`mobiletargeting:GetApplicationDateRangeKpi`**  
 Retrieve \(query\) aggregated data for a standard application metric\. This is a metric that applies to all the campaigns or transactional messages that are associated with a project\.  
@@ -202,19 +203,19 @@ Enable or update the APNs VoIP channel for a project\.
 + Method – PUT
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/channels/apns_voip`
 
-**`mobiletargeting:DeleteApnsVoipChannel`**  
+**`mobiletargeting:DeleteApnsVoipSandboxChannel`**  
 Disable the APNs VoIP sandbox channel for a project\.  
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-voip-sandbox-channel.html#rest-api-apns-voip-sandbox-channel-methods-delete](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-voip-sandbox-channel.html#rest-api-apns-voip-sandbox-channel-methods-delete)
 + Method – DELETE
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/channels/apns_voip_sandbox`
 
-**`mobiletargeting:GetApnsVoipChannel`**  
+**`mobiletargeting:GetApnsVoipSandboxChannel`**  
 Retrieve information about the APNs VoIP sandbox channel for a project\.  
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-voip-sandbox-channel.html#rest-api-apns-voip-sandbox-channel-methods-get](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-voip-sandbox-channel.html#rest-api-apns-voip-sandbox-channel-methods-get)
 + Method – GET
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/channels/apns_voip_sandbox`
 
-**`mobiletargeting:UpdateApnsVoipChannel`**  
+**`mobiletargeting:UpdateApnsVoipSandboxChannel`**  
 Enable or update the APNs VoIP sandbox channel for a project\.  
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-voip-sandbox-channel.html#rest-api-apns-voip-sandbox-channel-methods-put](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-voip-sandbox-channel.html#rest-api-apns-voip-sandbox-channel-methods-put)
 + Method – PUT
@@ -292,6 +293,30 @@ Enable or update the SMS channel for a project\.
 + Method – PUT
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/channels/sms`
 
+**`mobiletargeting:GetChannels`**  
+Retrieves information about the history and status of each channel for an application\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-channels.html#apps-application-id-channelsget](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-channels.html#apps-application-id-channelsget)
++ Method – GET
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/channels`
+
+**`mobiletargeting:DeleteVoiceChannel`**  
+Disables the voice channel for an application and deletes any existing settings for the channel\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-channels-voice.html#apps-application-id-channels-voicedelete](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-channels-voice.html#apps-application-id-channels-voicedelete)
++ Method – DELETE
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectid/channels/voice`
+
+**`mobiletargeting:GetVoiceChannel`**  
+Retrieves information about the status and settings of the voice channel for an application\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-channels-voice.html#apps-application-id-channels-voiceget](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-channels-voice.html#apps-application-id-channels-voiceget)
++ Method – GET
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectid/channels/voice`
+
+**`mobiletargeting:UpdateVoiceChannel`**  
+Enables the voice channel for an application or updates the status and settings of the voice channel for an application\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-channels-voice.html#apps-application-id-channels-voiceput](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-channels-voice.html#apps-application-id-channels-voiceput)
++ Method – PUT
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectid/channels/voice`
+
 ### Endpoints<a name="permissions-actions-apiactions-endpoints"></a>
 
 The following permissions are related to managing endpoints in your Amazon Pinpoint account\. In Amazon Pinpoint, an *endpoint* is a single destination for your messages\. For example, an endpoint could be a customer's email address, telephone number, or mobile device token\.
@@ -308,6 +333,12 @@ Retrieve information about a specific endpoint\.
 + Method – GET
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/endpoints/endpointId`
 
+**`mobiletargeting:RemoveAttributes`**  
+Removes one or more attributes, of the same attribute type, from all the endpoints that are associated with an application\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-attributes-attribute-type.html#apps-application-id-attributes-attribute-typeput](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-attributes-attribute-type.html#apps-application-id-attributes-attribute-typeput)
++ Method – PUT
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/attributes/attribute-type`
+
 **`mobiletargeting:UpdateEndpoint`**  
 Create an endpoint or update the information for an endpoint\.  
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html#rest-api-endpoint-methods-put](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html#rest-api-endpoint-methods-put)
@@ -320,7 +351,7 @@ Create or update endpoints as a batch operation\.
 + Method – PUT
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId`
 
-### Event Streams<a name="permissions-actions-apiactions-event-streams"></a>
+### Event streams<a name="permissions-actions-apiactions-event-streams"></a>
 
 The following permissions are related to managing event streams for your Amazon Pinpoint account\.
 
@@ -342,7 +373,17 @@ Create or update an event stream for a project\.
 + Method – POST
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/eventstream`
 
-### Export Jobs<a name="permissions-actions-apiactions-export-jobs"></a>
+### Events<a name="permissions-actions-apiactions-events"></a>
+
+The following permissions are related to managing events jobs in your Amazon Pinpoint account\. In Amazon Pinpoint, you create *import jobs* to create segments based on endpoint definitions that are stored in an Amazon S3 bucket\.
+
+**`mobiletargeting:PutEvents`**  
+Creates a new event to record for endpoints, or creates or updates endpoint data that existing events are associated with\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-events.html#apps-application-id-eventspost](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-events.html#apps-application-id-eventspost)
++ Method – POST
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/events`
+
+### Export jobs<a name="permissions-actions-apiactions-export-jobs"></a>
 
 The following permissions are related to managing export jobs in your Amazon Pinpoint account\. In Amazon Pinpoint, you create *export jobs* to send information about endpoints to an Amazon S3 bucket for storage or analysis\.
 
@@ -364,7 +405,7 @@ Retrieve a list of all the export jobs for a project\.
 + Method – GET
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/jobs/export`
 
-### Import Jobs<a name="permissions-actions-apiactions-import-jobs"></a>
+### Import jobs<a name="permissions-actions-apiactions-import-jobs"></a>
 
 The following permissions are related to managing import jobs in your Amazon Pinpoint account\. In Amazon Pinpoint, you create *import jobs* to create segments based on endpoint definitions that are stored in an Amazon S3 bucket\.
 
@@ -426,7 +467,7 @@ Delete a specific journey\.
 + Method – DELETE
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/journeys/journeyId`
 
-### Message Templates<a name="permissions-actions-apiactions-templates-messages"></a>
+### Message templates<a name="permissions-actions-apiactions-templates-messages"></a>
 
 The following permissions are related to creating and managing message templates for your Amazon Pinpoint account\. A *message template* is a set of content and settings that you can define, save, and reuse in messages that you send for any of your Amazon Pinpoint projects\.
 
@@ -558,9 +599,9 @@ Send a message or push notification to specific endpoints\.
 Send a message or push notification to all the endpoints that are associated with a specific user ID\.  
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-users-messages.html#rest-api-users-messages-methods-post](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-users-messages.html#rest-api-users-messages-methods-post)
 + Method – POST
-+ Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/users-messages`
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/messages`
 
-### Phone Number Validation<a name="permissions-actions-apiactions-phone-number-validate"></a>
+### Phone number validation<a name="permissions-actions-apiactions-phone-number-validate"></a>
 
 The following permissions are related to using the phone number validation service in Amazon Pinpoint\.
 
@@ -610,7 +651,7 @@ Update the default settings for an Amazon Pinpoint project\.
 + Method – PUT
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId`
 
-### Recommender Models<a name="permissions-actions-apiactions-recommenders"></a>
+### Recommender models<a name="permissions-actions-apiactions-recommenders"></a>
 
 The following permissions are related to managing Amazon Pinpoint configurations for retrieving and processing recommendation data from recommender models\. A *recommender model* is a type of machine learning model that predicts and generates personalized recommendations by finding patterns in data\.
 
@@ -706,7 +747,7 @@ Update a specific segment\.
 
 The following permissions are related to viewing and managing tags for Amazon Pinpoint resources\.
 
-**`mobiletargeting:ListTagsforResource`**  
+**`mobiletargeting:ListTagsForResource`**  
 Retrieve information about the tags that are associated with a project, campaign, message template, or segment\.  
 + URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-tags.html#rest-api-tags-methods-get](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-tags.html#rest-api-tags-methods-get)
 + Method – GET
@@ -740,9 +781,9 @@ Retrieve information about all the endpoints that are associated with a user ID\
 + Method – GET
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/users/userId`
 
-## Amazon Pinpoint SMS and Voice API Actions<a name="permissions-actions-sms-voice-apiactions"></a>
+## Amazon Pinpoint SMS and voice API actions<a name="permissions-actions-sms-voice-apiactions"></a>
 
-This section identifies actions for features that are available from the Amazon Pinpoint SMS and Voice API\. This is a supplemental API that provides advanced options for using and managing the SMS and voice channels in Amazon Pinpoint\. To learn more about this API, see the [Amazon Pinpoint SMS and Voice API Reference](https://docs.aws.amazon.com/pinpoint-sms-voice/latest/APIReference/)\.
+This section identifies actions for features that are available from the Amazon Pinpoint SMS and Voice API\. This is a supplemental API that provides advanced options for using and managing the SMS and voice channels in Amazon Pinpoint\. To learn more about this API, see the [Amazon Pinpoint SMS and voice API reference](https://docs.aws.amazon.com/pinpoint-sms-voice/latest/APIReference/)\.
 
 **`sms-voice:CreateConfigurationSet`**  
 Create a configuration set for sending voice messages\.  

@@ -1,14 +1,14 @@
-# Step 7: Create and Send Amazon Pinpoint Campaigns<a name="tutorials-email-prefs-part-7"></a>
+# Step 7: Create and send Amazon Pinpoint campaigns<a name="tutorials-email-prefs-part-7"></a>
 
 The email preference management solution is now set up and ready to use\. Now you can start sending campaign emails\. This section shows you how to send campaign emails that contain a special link that recipients can use to manage their subscription preferences\.
 
-## Step 7\.1: Create a Segment<a name="tutorials-email-prefs-part-7-create-segment"></a>
+## Step 7\.1: Create a segment<a name="tutorials-email-prefs-part-7-create-segment"></a>
 
 To send a campaign email, you first have to create the segment that you want to send the campaign to\. For the purpose of this tutorial, you should use a segment that only contains your own endpoints, or those of internal recipients within your organization\. After you confirm that the solution works as you expect it to work, you can start sending messages to external recipients\.
 
 To create a segment, repeat the procedures in [Step 2](tutorials-email-prefs-part-2.md) to import a segment of internal recipients\.
 
-## Step 7\.2: Create the Campaign<a name="tutorials-email-prefs-part-7-create-campaign"></a>
+## Step 7\.2: Create the campaign<a name="tutorials-email-prefs-part-7-create-campaign"></a>
 
 After you create a segment of recipients, you can create a campaign that targets the segment\.
 
@@ -65,7 +65,7 @@ The URL in the preceding example includes line breaks and spaces in order to mak
 
 1. When you receive the campaign email, choose the "Unsubscribe" or "Manage your email preferences" link that you specified in the message\. Confirm that the form loads properly, and that it's filled in with the appropriate values for **Email address**, **ID**, **First name**, and **Last name**\. Also, make sure that the selections in the **Subscriptions** section correspond with the opt\-in values that you specified when you created the endpoint\.
 
-## Step 7\.3: Create Production Segments<a name="tutorials-email-prefs-part-7-create-prod-segments"></a>
+## Step 7\.3: Create production segments<a name="tutorials-email-prefs-part-7-create-prod-segments"></a>
 
 After you complete the procedures in the preceding sections and confirmed that the preference page is working as expected, you're ready to start creating segments of customers who've opted into your various topics\.
 
@@ -91,6 +91,6 @@ After you complete the procedures in the preceding sections and confirmed that t
 
 1. \(Optional\) Create additional segments that further refine your audience\. When you create additional segments, use the **Include endpoints that are in any of the following segments** menu to choose the appropriate base segment of opted\-in endpoints\.
 
-   To learn more about creating segments, see [Customizing Segments with AWS Lambda](segments-dynamic.md)\.
+   To learn more about creating segments, see [Customizing segments with AWS Lambda](segments-dynamic.md)\.
 
 **Next**: [Next Steps](tutorials-email-prefs-next-steps.md)

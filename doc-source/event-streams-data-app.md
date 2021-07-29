@@ -1,6 +1,6 @@
-# App Events<a name="event-streams-data-app"></a>
+# App events<a name="event-streams-data-app"></a>
 
-After you integrate your application \(app\) with Amazon Pinpoint, Amazon Pinpoint can stream event data about user activity and message deliveries for the app\.
+After you integrate your application \(app\) with Amazon Pinpoint, Amazon Pinpoint can stream event data about user activity, custom events, and message deliveries for the app\.
 
 ## Example<a name="event-streams-data-app-example"></a>
 
@@ -51,7 +51,7 @@ The JSON object for an app event contains the data shown in the following exampl
 }
 ```
 
-## App Event Attributes<a name="event-streams-data-app-attributes"></a>
+## App event attributes<a name="event-streams-data-app-attributes"></a>
 
 This section defines the attributes that are included in the app event stream\.
 

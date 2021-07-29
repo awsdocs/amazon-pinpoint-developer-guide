@@ -1,4 +1,4 @@
-# Accessing Audience Data in Amazon Pinpoint<a name="audience-data"></a>
+# Accessing audience data in Amazon Pinpoint<a name="audience-data"></a>
 
 As you add endpoints to Amazon Pinpoint, it grows as a repository of audience data\. This data consists of:
 + The endpoints that you add or update by using the Amazon Pinpoint API\.
@@ -13,11 +13,11 @@ As your audience grows and changes, so does your endpoint data\. To view the lat
 
 The Amazon Pinpoint console also provides analytics for the demographics and custom attributes that are captured in your endpoints\.
 
-Before you can look up endpoints, you must add them to your Amazon Pinpoint project\. To add endpoints, see [Defining Your Audience to Amazon Pinpoint](audience-define.md)\.
+Before you can look up endpoints, you must add them to your Amazon Pinpoint project\. To add endpoints, see [Defining your audience to Amazon Pinpoint](audience-define.md)\.
 
 Use the topics in this section to look up or export endpoints by using the Amazon Pinpoint API\.
 
 **Topics**
-+ [Looking Up Endpoints](audience-data-endpoints.md)
-+ [Exporting Endpoints](audience-data-export.md)
-+ [Listing Endpoint IDs](audience-data-list-ids.md)
++ [Looking up endpoints](audience-data-endpoints.md)
++ [Exporting endpoints](audience-data-export.md)
++ [Listing endpoint IDs](audience-data-list-ids.md)

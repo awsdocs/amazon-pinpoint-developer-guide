@@ -1,8 +1,8 @@
-# Setting Up iOS Push Notifications<a name="apns-setup"></a>
+# Setting up iOS push notifications<a name="apns-setup"></a>
 
-Push notifications for iOS apps are sent using the Apple Push Notification service \(APNs\)\. Before you can send push notifications to iOS devices, you must create an app ID on the Apple Developer portal, and you must create the required certificates\. You can find more information about completing these steps in [Setting Up APNs for Push Notifications](https://aws-amplify.github.io/docs/sdk/ios/push-notifications-setup-apns) in the iOS SDK documentation\.
+Push notifications for iOS apps are sent using the Apple Push Notification service \(APNs\)\. Before you can send push notifications to iOS devices, you must create an app ID on the Apple Developer portal, and you must create the required certificates\. You can find more information about completing these steps in [Setting up push notification services](https://docs.amplify.aws/sdk/push-notifications/setup-push-service/q/platform/ios) in the iOS SDK documentation\.
 
-## Working with APNs Tokens<a name="apns-setup-best-practices"></a>
+## Working with APNs tokens<a name="apns-setup-best-practices"></a>
 
 As a best practice, you should develop your app so that your customers' device tokens are regenerated when the app is reinstalled\.
 

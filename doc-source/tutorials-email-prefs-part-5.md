@@ -1,4 +1,4 @@
-# Step 5: Set Up Amazon API Gateway<a name="tutorials-email-prefs-part-5"></a>
+# Step 5: Set up Amazon API Gateway<a name="tutorials-email-prefs-part-5"></a>
 
 In this section, you create a new API by using Amazon API Gateway\. The registration form that you deploy in this solution calls this API\. API Gateway then passes the information that's captured on the email preferences page to the Lambda function you created in [Step 4](tutorials-email-prefs-part-4.md)\.
 
@@ -18,7 +18,7 @@ First, you have to create a new API in API Gateway\. The following procedures sh
    An example of these settings is shown in the following image\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/images/Email_Prefs_Tutorial_APIGW_5.1_2.png)
 
-## Step 5\.2: Create a Resource<a name="tutorials-email-prefs-part-5-create-resource"></a>
+## Step 5\.2: Create a resource<a name="tutorials-email-prefs-part-5-create-resource"></a>
 
 Now that you've created an API, you can start to add resources to it\. After that, you add a POST method to the resource, and tell API Gateway to pass the data that you receive from this method to your Lambda function\.
 

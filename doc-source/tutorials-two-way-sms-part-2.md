@@ -1,8 +1,8 @@
-# Step 2: Create IAM Policies and Roles<a name="tutorials-two-way-sms-part-2"></a>
+# Step 2: Create IAM policies and roles<a name="tutorials-two-way-sms-part-2"></a>
 
 The next step in implementing the SMS registration solution is to configure a policy and a role in AWS Identity and Access Management \(IAM\)\. For this solution, you need to create a policy that provides access to certain resources that are related to Amazon Pinpoint\. You then create a role and attach the policy to it\. Later in this tutorial, you create an AWS Lambda function that uses this role to call certain operations in the Amazon Pinpoint API\.
 
-## Step 2\.1: Create an IAM Policy<a name="tutorials-two-way-sms-part-2-create-policy"></a>
+## Step 2\.1: Create an IAM policy<a name="tutorials-two-way-sms-part-2-create-policy"></a>
 
 This section shows you how to create an IAM policy\. Users and roles that use this policy are able to do the following:
 + Use the Phone Number Validate feature
@@ -61,7 +61,7 @@ In this tutorial, you want to give Lambda the ability to perform these tasks\. H
    In the preceding example, do the following:
    + Replace *region* with the AWS Region that you use Amazon Pinpoint in, such as `us-east-1` or `eu-central-1`\.
 **Tip**  
-For a complete list of AWS Regions where Amazon Pinpoint is available, see [AWS Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#pinpoint_region) in the *AWS General Reference*\.
+For a complete list of AWS Regions where Amazon Pinpoint is available, see [AWS regions and endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#pinpoint_region) in the *AWS General Reference*\.
    + Replace *accountId* with the unique ID for your AWS account\.
    + Replace *projectId* with the unique ID of the project that you created in [Step 1\.1](tutorials-two-way-sms-part-1.md#tutorials-two-way-sms-part-1-create-project) of this tutorial\.
 **Note**  
@@ -71,7 +71,7 @@ The `logs` actions enable Lambda to log its output in CloudWatch Logs\.
 
 1. For **Name**, enter a name for the policy, such as **RegistrationFormPolicy**\. Choose **Create policy**\.
 
-## Step 2\.2: Create an IAM Role<a name="tutorials-two-way-sms-part-2-create-role"></a>
+## Step 2\.2: Create an IAM role<a name="tutorials-two-way-sms-part-2-create-role"></a>
 
 **To create the role**
 
@@ -89,4 +89,4 @@ The service that you choose in this step isn't important—regardless of the ser
 
 1. Under **Review**, for **Name**, enter a name for the role, such as **SMSRegistrationForm**\. Choose **Create role**\.
 
-**Next**: [Create Lambda Functions](tutorials-two-way-sms-part-3.md)
+**Next**: [Create Lambda functions](tutorials-two-way-sms-part-3.md)

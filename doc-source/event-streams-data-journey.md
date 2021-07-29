@@ -1,8 +1,12 @@
-# Journey Events<a name="event-streams-data-journey"></a>
+# Journey events<a name="event-streams-data-journey"></a>
 
-If you publish a journey, Amazon Pinpoint can stream event data about the journey\. This includes event data for any email messages that you send from the journey\. For information about the data that Amazon Pinpoint streams for email messages, see [Email Events](event-streams-data-email.md)\. 
+If you publish a journey, Amazon Pinpoint can stream event data about the journey\. This includes event data for any email, SMS, push, or custom messages that you send from the journey\. 
 
-## Sample Event<a name="event-streams-data-journey-example"></a>
+See the following for information about the data that Amazon Pinpoint streams:
++ For email messages, see [Email events](event-streams-data-email.md)\. 
++ For SMS messages, see [SMS events](https://docs.aws.amazon.com/pinpoint/latest/developerguide/event-streams-data-sms.html)\. 
+
+## Sample event<a name="event-streams-data-journey-example"></a>
 
 The JSON object for a journey event contains the data shown in the following sample\.
 
@@ -33,7 +37,8 @@ The JSON object for a journey event contains the data shown in the following sam
       "journey_run_id":"edc9a0b577164d1daf72ebd15example",
       "journey_send_status":"SUCCESS",
       "journey_id":"546401670c5547b08811ac6a9example",
-      "journey_activity_id":"0yKexample"
+      "journey_activity_id":"0yKexample",
+      "journey_activity_type": "EMAIL"
    },
    "client_context":{
       "custom":{
@@ -44,7 +49,7 @@ The JSON object for a journey event contains the data shown in the following sam
 }
 ```
 
-## Journey Event Attributes<a name="event-streams-data-journey-attributes"></a>
+## Journey event attributes<a name="event-streams-data-journey-attributes"></a>
 
 This section defines the attributes that are included in the event stream data that Amazon Pinpoint generates for a journey\.
 
@@ -93,3 +98,4 @@ Includes information about the journey that generated the event\.
 | journey\_send\_status | Indicates the delivery status of the message that's associated with the event\. Possible values include:[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/event-streams-data-journey.html) | 
 | journey\_id | The unique ID of the journey that generated the event\. | 
 | journey\_activity\_id | The unique ID of the journey activity that generated the event\. | 
+| journey\_activity\_type | The event's journey activity type\. This can be **EMAIL**, **SMS**, **PUSH**, or **CUSTOM**\.  **VOICE **is not a supported journey activity type\. | 

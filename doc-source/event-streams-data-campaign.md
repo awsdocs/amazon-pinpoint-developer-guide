@@ -1,8 +1,8 @@
-# Campaign Events<a name="event-streams-data-campaign"></a>
+# Campaign events<a name="event-streams-data-campaign"></a>
 
-If you use Amazon Pinpoint to send campaigns through any channel, Amazon Pinpoint can stream event data about those campaigns\. This includes event data for any email or SMS messages that you send from a campaign\. For detailed information about the data that Amazon Pinpoint streams for those types of messages, see [Email Events](event-streams-data-email.md) and [SMS Events](event-streams-data-sms.md)\. 
+If you use Amazon Pinpoint to send campaigns through any channel, Amazon Pinpoint can stream event data about those campaigns\. This includes event data for any email or SMS messages that you send from a campaign\. For detailed information about the data that Amazon Pinpoint streams for those types of messages, see [Email events](event-streams-data-email.md) and [SMS events](event-streams-data-sms.md)\. 
 
-## Sample Event<a name="event-streams-data-campaign-example"></a>
+## Sample event<a name="event-streams-data-campaign-example"></a>
 
 The JSON object for a campaign event contains the data shown in the following sample\.
 
@@ -26,6 +26,7 @@ The JSON object for a campaign event contains the data shown in the following sa
   "attributes": {
     "treatment_id": "0",
     "campaign_activity_id": "5473285727f04865bc673e527example",
+    "delivery_type": "GCM",
     "campaign_id": "4f8d6097c2e8400fa3081d875example",
     "campaign_send_status": "SUCCESS"
   },
@@ -40,7 +41,7 @@ The JSON object for a campaign event contains the data shown in the following sa
 }
 ```
 
-## Campaign Event Attributes<a name="event-streams-data-campaign-attributes"></a>
+## Campaign event attributes<a name="event-streams-data-campaign-attributes"></a>
 
 This section defines the attributes that are included in the campaign event stream\.
 
@@ -78,6 +79,7 @@ Includes information about the campaign that produced the event\.
 | --- | --- | 
 | treatment\_id |  If the message was sent using an A/B test campaign, this value represents the treatment number of the message\. For standard campaigns, this value is `0`\.  | 
 | campaign\_activity\_id | The unique ID that Amazon Pinpoint generates when the event occurs\. | 
+| delivery\_type | The delivery method for the campaign\. This attribute should not be confused with the ChannelType field specified under the endpoint property of client\_context\. ChannelType is typically based on the endpoint that the message is being sent to\. For channels that support only one endpoint type — for example, the email channel — the delivery\_type and ChannelType fields have the same value, EMAIL\. However, this may not be true for channels that support different endpoint types, such as custom channels\. Since a custom channel can be used for different endpoints — EMAIL, SMS, CUSTOM, etc\. — the delivery\_type identifies a custom delivery event, CUSTOM, while the ChannelType specifies the type of the endpoint that the campaign was sent to — EMAIL, SMS, CUSTOM, etc\. For more information on creating custom channels, see [Creating custom channels in Amazon Pinpoint](channels-custom.md)\. Possible values are:[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/event-streams-data-campaign.html) | 
 | campaign\_id |  The unique ID of the campaign that the message was sent from\.  | 
 | campaign\_send\_status | Indicates the status of the campaign for the target endpoint\. Possible values include:[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/event-streams-data-campaign.html)  | 
 

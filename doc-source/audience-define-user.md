@@ -1,4 +1,4 @@
-# Associating Users with Amazon Pinpoint Endpoints<a name="audience-define-user"></a>
+# Associating users with Amazon Pinpoint endpoints<a name="audience-define-user"></a>
 
 An endpoint can include attributes that define a *user*, which represents a person in your audience\. For example, a user might represent someone who installed your mobile app, or someone who has an account on your website\. 
 
@@ -7,7 +7,7 @@ You define a user by specifying a unique user ID and, optionally, custom user at
 You can add user attributes to track data that applies to an individual and doesn't vary based on which device the person is using\. For example, you can add attributes for a person's name, age, or account status\. 
 
 **Tip**  
-If your application uses Amazon Cognito user pools to handle user authentication, Amazon Cognito can add user IDs and attributes to your endpoints automatically\. For the endpoint user ID value, Amazon Cognito assigns the `sub` value that's assigned to the user in the user pool\. To learn about adding users with Amazon Cognito, see [Using Amazon Pinpoint Analytics with Amazon Cognito User Pools](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-pinpoint-integration.html) in the *Amazon Cognito Developer Guide*\.
+If your application uses Amazon Cognito user pools to handle user authentication, Amazon Cognito can add user IDs and attributes to your endpoints automatically\. For the endpoint user ID value, Amazon Cognito assigns the `sub` value that's assigned to the user in the user pool\. To learn about adding users with Amazon Cognito, see [Using amazon pinpoint analytics with amazon cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-pinpoint-integration.html) in the *Amazon Cognito Developer Guide*\.
 
 After you add user definitions to your endpoints, you have more options for how you segment your audience\. You can define a segment based on user attributes, or you can define a segment by importing a list of user IDs\. When you send a message to a segment that's based on users, the potential destinations include each endpoint that's associated with each user in the segment\.
 
@@ -22,7 +22,7 @@ The following examples show you how to add a user definition to an endpoint\.
 
 You can use Amazon Pinpoint by running commands with the AWS CLI\.
 
-**Example Update Endpoint Command**  
+**Example Update endpoint command**  
 To add a user to an endpoint, use the [update\-endpoint](https://docs.aws.amazon.com/cli/latest/reference/pinpoint/update-endpoint.html) command\. For the `--endpoint-request` parameter, you can define a new endpoint, which can include a user\. Or, to update an existing endpoint, you can provide just the attributes that you want to change\. The following example adds a user to an existing endpoint by providing only the user attributes:  
 
 ```
@@ -36,7 +36,7 @@ Where:
 + *endpoint\-id* is the ID that you're assigning to a new endpoint, or it's the ID of an existing endpoint that you're updating\.
 + *endpoint\-request\-file\.json* is the file path to a local JSON file that contains the input for the `--endpoint-request` parameter\.
 
-**Example Endpoint Request File**  
+**Example Endpoint request file**  
 The example `update-endpoint` command uses a JSON file as the argument for the `--endpoint-request` parameter\. This file contains a user definition like the following:  
 
 ```
@@ -44,9 +44,9 @@ The example `update-endpoint` command uses a JSON file as the argument for the `
     "User":{ 
         "UserId":"example_user",
         "UserAttributes":{ 
-            "FirstName":"Wang",
-            "LastName":"Xiulan",
-            "Gender":"Female",
+            "FirstName":["Wang"],
+            "LastName":["Xiulan"],
+            "Gender":["Female"],
             "Age":"39"
         }
     }
@@ -60,73 +60,81 @@ For the attributes that you can use to define a user, see the `User` object in t
 You can use the Amazon Pinpoint API in your Java applications by using the client that's provided by the AWS SDK for Java\.
 
 **Example Code**  
-To add a user to an endpoint, initialize an [EndpointRequest](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/model/EndpointRequest.html) object, and pass it to the [https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#updateEndpoint-com.amazonaws.services.pinpoint.model.UpdateEndpointRequest-](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#updateEndpoint-com.amazonaws.services.pinpoint.model.UpdateEndpointRequest-) method of the `AmazonPinpoint` client\. You can use this object to define a new endpoint, which can include a user\. Or, to update an existing endpoint, you can update just the properties that you want to change\. The following example adds a user to an existing endpoint by adding an [EndpointUser](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/model/EndpointUser.html) object to the EndpointRequest object:  
+To add a user to an endpoint, initialize an [EndpointRequest](https://docs.aws.amazon.com/sdk-for-java/latest/reference/com/amazonaws/services/pinpoint/model/EndpointRequest.html) object, and pass it to the [https://docs.aws.amazon.com/sdk-for-java/latest/reference/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#updateEndpoint-com.amazonaws.services.pinpoint.model.UpdateEndpointRequest-](https://docs.aws.amazon.com/sdk-for-java/latest/reference/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#updateEndpoint-com.amazonaws.services.pinpoint.model.UpdateEndpointRequest-) method of the `AmazonPinpoint` client\. You can use this object to define a new endpoint, which can include a user\. Or, to update an existing endpoint, you can update just the properties that you want to change\. The following example adds a user to an existing endpoint by adding an [EndpointUser](https://docs.aws.amazon.com/sdk-for-java/latest/reference/com/amazonaws/services/pinpoint/model/EndpointUser.html) object to the EndpointRequest object:  
 
 ```
-import com.amazonaws.regions.Regions;
-import com.amazonaws.services.pinpoint.AmazonPinpoint;
-import com.amazonaws.services.pinpoint.AmazonPinpointClientBuilder;
-import com.amazonaws.services.pinpoint.model.EndpointRequest;
-import com.amazonaws.services.pinpoint.model.EndpointUser;
-import com.amazonaws.services.pinpoint.model.UpdateEndpointRequest;
-import com.amazonaws.services.pinpoint.model.UpdateEndpointResult;
+import software.amazon.awssdk.regions.Region;
+import software.amazon.awssdk.services.pinpoint.PinpointClient;
+import software.amazon.awssdk.services.pinpoint.model.EndpointRequest;
+import software.amazon.awssdk.services.pinpoint.model.EndpointUser;
+import software.amazon.awssdk.services.pinpoint.model.ChannelType;
+import software.amazon.awssdk.services.pinpoint.model.UpdateEndpointRequest;
+import software.amazon.awssdk.services.pinpoint.model.UpdateEndpointResponse;
+import software.amazon.awssdk.services.pinpoint.model.PinpointException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+```
 
-import java.util.Arrays;
-import java.util.Collections;
+```
+    public static void updatePinpointEndpoint(PinpointClient pinpoint,String applicationId, String endPointId) {
 
-public class AddExampleUser {
+        try{
+            List<String> wangXiList = new ArrayList<String>();
+            wangXiList.add("cooking");
+            wangXiList.add("running");
+            wangXiList.add("swimming");
 
-    public static void main(String[] args) {
+            Map myMapWang = new HashMap<String, List>();
+            myMapWang.put("interests", wangXiList);
 
-        final String USAGE = "\n" +
-                "AddExampleUser - Adds a user definition to the specified Amazon Pinpoint endpoint." +
-                "Usage: AddExampleUser <endpointId> <applicationId>" +
-                "Where:\n" +
-                "  endpointId - The ID of the endpoint to add the user to." +
-                "  applicationId - The ID of the Amazon Pinpoint application that contains the endpoint.";
+            List<String> myNameWang = new ArrayList<String>();
+            myNameWang.add("Wang ");
+            myNameWang.add("Xiulan");
 
-        if (args.length < 1) {
-            System.out.println(USAGE);
-            System.exit(1);
-        }
+            Map wangName = new HashMap<String, List>();
+            wangName.put("name",myNameWang );
 
-        String endpointId = args[0];
-        String applicationId = args[1];
+            EndpointUser wangMajor = EndpointUser.builder()
+                .userId("example_user_10")
+                .userAttributes(wangName)
+                .build();
 
-        // Creates a new user definition.
-        EndpointUser wangXiulan = new EndpointUser().withUserId("example_user");
+            // Create an EndpointBatchItem object for Mary Major.
+            EndpointRequest wangXiulanEndpoint = EndpointRequest.builder()
+                .channelType(ChannelType.EMAIL)
+                .address("wang_xiulan@example.com")
+                .attributes(myMapWang)
+                .user(wangMajor)
+                .build();
 
-        // Assigns custom user attributes.
-        wangXiulan.addUserAttributesEntry("name", Arrays.asList("Wang", "Xiulan"));
-        wangXiulan.addUserAttributesEntry("gender", Collections.singletonList("female"));
-        wangXiulan.addUserAttributesEntry("age", Collections.singletonList("39"));
+            // Adds multiple endpoint definitions to a single request object.
+            UpdateEndpointRequest endpointList = UpdateEndpointRequest.builder()
+               .applicationId(applicationId)
+                .endpointRequest(wangXiulanEndpoint)
+                .endpointId(endPointId)
+                .build();
 
-        // Adds the user definition to the EndpointRequest that is passed to the Amazon Pinpoint client.
-        EndpointRequest wangXiulansIphone = new EndpointRequest()
-                .withUser(wangXiulan);
+            UpdateEndpointResponse result = pinpoint.updateEndpoint(endpointList);
 
-        // Initializes the Amazon Pinpoint client.
-        AmazonPinpoint pinpointClient = AmazonPinpointClientBuilder.standard()
-                .withRegion(Regions.US_EAST_1).build();
+            System.out.format("Update endpoint result: %s\n", result.messageBody().message());
 
-        // Updates the specified endpoint with Amazon Pinpoint.
-        UpdateEndpointResult result = pinpointClient.updateEndpoint(new UpdateEndpointRequest()
-                .withEndpointRequest(wangXiulansIphone)
-                .withApplicationId(applicationId)
-                .withEndpointId(endpointId));
-
-        System.out.format("Update endpoint result: %s\n", result.getMessageBody().getMessage());
-
+    } catch (PinpointException e) {
+        System.err.println(e.awsErrorDetails().errorMessage());
+        System.exit(1);
     }
-}
+ }
 ```
+
+For the full SDK example, see [AddExampleUser\.java](https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/javav2/example_code/pinpoint/src/main/java/com/example/pinpoint/AddExampleUser.java/) on [GitHub](https://github.com/)\.
 
 ------
 #### [ HTTP ]
 
 You can use Amazon Pinpoint by making HTTP requests directly to the REST API\.
 
-**Example Put Endpoint Request with User Definition**  
+**Example Put endpoint request with user definition**  
 To add a user to an endpoint, issue a `PUT` request to the [Endpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints-endpoint-id.html) resource at the following URI:  
 `/v1/apps/application-id/endpoints/endpoint-id`  
 Where:  
@@ -166,14 +174,14 @@ If the request succeeds, you receive a response like the following:
 
 ------
 
-## Related Information<a name="audience-define-user-related"></a>
+## Related information<a name="audience-define-user-related"></a>
 
 For more information about the Endpoint resource in the Amazon Pinpoint API, including supported HTTP methods and request parameters, see [Endpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints-endpoint-id.html) in the *Amazon Pinpoint API Reference\.*
 
-For more information about personalizing messages with variables, see [Message Variables](https://docs.aws.amazon.com/pinpoint/latest/userguide/campaigns-message.html#campaigns-message-variables.html) in the *Amazon Pinpoint User Guide*\.
+For more information about personalizing messages with variables, see [Message variables](https://docs.aws.amazon.com/pinpoint/latest/userguide/campaigns-message.html#campaigns-message-variables.html) in the *Amazon Pinpoint User Guide*\.
 
-To learn how to define a segment by importing a list of user IDs, see [Importing Segments](https://docs.aws.amazon.com/pinpoint/latest/userguide/segments-importing.html) in the *Amazon Pinpoint User Guide*\.
+To learn how to define a segment by importing a list of user IDs, see [Importing segments](https://docs.aws.amazon.com/pinpoint/latest/userguide/segments-importing.html) in the *Amazon Pinpoint User Guide*\.
 
-For information about sending a direct message to up to 100 user IDs, see [Users Messages](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-users-messages.html) in the *Amazon Pinpoint API Reference*\.
+For information about sending a direct message to up to 100 user IDs, see [Users messages](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-users-messages.html) in the *Amazon Pinpoint API Reference*\.
 
-For information about the quotas that apply to endpoints, including the number of user attributes that you can assign, see [Endpoint Quotas](quotas.md#quotas-endpoint)\.
+For information about the quotas that apply to endpoints, including the number of user attributes that you can assign, see [Endpoint quotas](quotas.md#quotas-endpoint)\.

@@ -1,4 +1,4 @@
-# Creating Campaigns<a name="campaigns"></a>
+# Creating campaigns<a name="campaigns"></a>
 
 To help increase engagement between your app and its users, use Amazon Pinpoint to create and manage push notification campaigns that reach out to particular segments of users\.
 
@@ -12,60 +12,81 @@ To experiment with alternative campaign strategies, set up your campaign as an A
 
 For more information, see [Campaigns](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaigns.html)\.
 
-## Creating Standard Campaigns<a name="campaigns-standard"></a>
+## Creating standard campaigns<a name="campaigns-standard"></a>
 
 A standard campaign sends a custom push notification to a specified segment according to a schedule that you define\.
 
-### Creating Campaigns With the AWS SDK for Java<a name="campaigns-standard-example-java"></a>
+### Creating campaigns with the AWS SDK for Java<a name="campaigns-standard-example-java"></a>
 
 The following example demonstrates how to create a campaign with the AWS SDK for Java\.
 
 ```
-import com.amazonaws.services.pinpoint.AmazonPinpointClient;
-import com.amazonaws.services.pinpoint.model.Action;
-import com.amazonaws.services.pinpoint.model.CampaignResponse;
-import com.amazonaws.services.pinpoint.model.CreateCampaignRequest;
-import com.amazonaws.services.pinpoint.model.CreateCampaignResult;
-import com.amazonaws.services.pinpoint.model.Message;
-import com.amazonaws.services.pinpoint.model.MessageConfiguration;
-import com.amazonaws.services.pinpoint.model.Schedule;
-import com.amazonaws.services.pinpoint.model.WriteCampaignRequest;
+import software.amazon.awssdk.regions.Region;
+import software.amazon.awssdk.services.pinpoint.PinpointClient;
+import software.amazon.awssdk.services.pinpoint.model.CampaignResponse;
+import software.amazon.awssdk.services.pinpoint.model.Message;
+import software.amazon.awssdk.services.pinpoint.model.Schedule;
+import software.amazon.awssdk.services.pinpoint.model.Action;
+import software.amazon.awssdk.services.pinpoint.model.MessageConfiguration;
+import software.amazon.awssdk.services.pinpoint.model.WriteCampaignRequest;
+import software.amazon.awssdk.services.pinpoint.model.CreateCampaignResponse;
+import software.amazon.awssdk.services.pinpoint.model.CreateCampaignRequest;
+import software.amazon.awssdk.services.pinpoint.model.PinpointException;
+```
 
-import java.util.ArrayList;
-import java.util.List;
+```
+    public static void createPinCampaign(PinpointClient pinpoint, String appId, String segmentId) {
 
-public class PinpointCampaignSample {
 
-    public CampaignResponse createCampaign(AmazonPinpointClient client, String appId, String segmentId) {
-        Schedule schedule = new Schedule()
-                .withStartTime("IMMEDIATE");
+        CampaignResponse result = createCampaign(pinpoint, appId, segmentId);
+        System.out.println("Campaign " + result.name() + " created.");
+        System.out.println(result.description());
 
-        Message defaultMessage = new Message()
-                .withAction(Action.OPEN_APP)
-                .withBody("My message body.")
-                .withTitle("My message title.");
-
-        MessageConfiguration messageConfiguration = new MessageConfiguration()
-                .withDefaultMessage(defaultMessage);
-
-        WriteCampaignRequest request = new WriteCampaignRequest()
-                .withDescription("My description.")
-                .withSchedule(schedule)
-                .withSegmentId(segmentId)
-                .withName("MyCampaign")
-                .withMessageConfiguration(messageConfiguration);
-
-        CreateCampaignRequest createCampaignRequest = new CreateCampaignRequest()
-                .withApplicationId(appId).withWriteCampaignRequest(request);
-
-        CreateCampaignResult result = client.createCampaign(createCampaignRequest);
-
-        System.out.println("Campaign ID: " + result.getCampaignResponse().getId());
-
-        return result.getCampaignResponse();
     }
 
-}
+
+    public static CampaignResponse createCampaign(PinpointClient client, String appID, String segmentID) {
+
+        try {
+            Schedule schedule = Schedule.builder()
+                    .startTime("IMMEDIATE")
+                    .build();
+
+            Message defaultMessage = Message.builder()
+                    .action(Action.OPEN_APP)
+                    .body("My message body.")
+                    .title("My message title.")
+                    .build();
+
+            MessageConfiguration messageConfiguration = MessageConfiguration.builder()
+                    .defaultMessage(defaultMessage)
+                    .build();
+
+            WriteCampaignRequest request = WriteCampaignRequest.builder()
+                    .description("My description")
+                    .schedule(schedule)
+                    .name("MyCampaign")
+                    .segmentId(segmentID)
+                    .messageConfiguration(messageConfiguration)
+                    .build();
+
+            CreateCampaignResponse result = client.createCampaign(
+                    CreateCampaignRequest.builder()
+                            .applicationId(appID)
+                            .writeCampaignRequest(request).build()
+            );
+
+            System.out.println("Campaign ID: " + result.campaignResponse().id());
+
+            return result.campaignResponse();
+
+        } catch (PinpointException e) {
+            System.err.println(e.awsErrorDetails().errorMessage());
+            System.exit(1);
+        }
+
+        return null;
+    }
 ```
 
 When you run this example, the following is printed to the console window of your IDE:
@@ -74,11 +95,13 @@ When you run this example, the following is printed to the console window of you
 Campaign ID: b1c3de717aea4408a75bb3287a906b46
 ```
 
-## Creating A/B Test Campaigns<a name="campaigns-abtest"></a>
+For the full SDK example, see [CreateCampaign\.java](https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/javav2/example_code/pinpoint/src/main/java/com/example/pinpoint/CreateCampaign.java/) on [GitHub](https://github.com/)\.
+
+## Creating A/B test campaigns<a name="campaigns-abtest"></a>
 
 An A/B test behaves like a standard campaign, but enables you to define different treatments for the campaign message or schedule\.
 
-### Creating A/B Test Campaigns With the AWS SDK for Java<a name="campaigns-abtest-example-java"></a>
+### Creating A/B test campaigns with the AWS SDK for Java<a name="campaigns-abtest-example-java"></a>
 
 The following example demonstrates how to create an A/B test campaign with the AWS SDK for Java\.
 

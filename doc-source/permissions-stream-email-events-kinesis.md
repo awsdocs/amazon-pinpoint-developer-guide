@@ -1,4 +1,4 @@
-# IAM Role for Streaming Email Events to Kinesis Data Firehose<a name="permissions-stream-email-events-kinesis"></a>
+# IAM role for streaming email events to Kinesis Data Firehose<a name="permissions-stream-email-events-kinesis"></a>
 
 In the Amazon Pinpoint Email API, you can create *configuration sets* that specify how to handle certain email events\. For example, you can create a configuration set that sends delivery notifications to a specific *event destination*, such as an Amazon SNS topic or a Kinesis Data Firehose delivery stream\. When you send email through the Amazon Pinpoint Email API using that configuration set, Amazon Pinpoint sends information about email\-related events to the event destination that you specified in the configuration set\.
 
@@ -20,9 +20,9 @@ If you want to send data about these events to a Kinesis Data Firehose stream, y
 + A trust policy that allows Amazon Pinpoint to assume the role\.
 + A permissions policy that allows the Amazon Pinpoint Email API to send email delivery and response records to your stream\.
 
-After you create the role, you can configure Amazon Pinpoint to automatically send events to your stream\. For more information, see [Streaming Amazon Pinpoint Events to Kinesis](event-streams.md)\.
+After you create the role, you can configure Amazon Pinpoint to automatically send events to your stream\. For more information, see [Streaming Amazon Pinpoint events to Kinesis](event-streams.md)\.
 
-## Trust Policy<a name="permissions-stream-email-events-kinesis-trustpolicy"></a>
+## Trust policy<a name="permissions-stream-email-events-kinesis-trustpolicy"></a>
 
 To allow the Amazon Pinpoint Email API to assume the IAM role and perform the actions allowed by the permissions policy, attach the following trust policy to the role:
 
@@ -49,7 +49,7 @@ To allow the Amazon Pinpoint Email API to assume the IAM role and perform the ac
 
 In the example above, replace *accountId* with the ID of your AWS account\.
 
-## Permissions Policy<a name="permissions-stream-email-events-kinesis-permissionspolicies"></a>
+## Permissions policy<a name="permissions-stream-email-events-kinesis-permissionspolicies"></a>
 
 To allow the Amazon Pinpoint Email API to send email event data to a Kinesis Data Firehose delivery stream, attach the following permissions policy to a role\.
 
@@ -73,7 +73,7 @@ The following policy allows Amazon Pinpoint to send event data to a Kinesis Data
 
 In the example above, replace *region* with the name of the AWS Region that you created the delivery stream in\. Replace *accountId* with the ID of your AWS account\. Finally, replace *deliveryStreamName* with the name of the delivery stream\.
 
-## Creating the IAM Role \(AWS CLI\)<a name="permissions-stream-email-events-kinesis-create"></a>
+## Creating the IAM role \(AWS CLI\)<a name="permissions-stream-email-events-kinesis-create"></a>
 
 Complete the following steps to create the IAM role by using the AWS Command Line Interface \(AWS CLI\)\. For information about installing and configuring the AWS CLI, see [Installing the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html) in the *AWS Command Line Interface User Guide*\.
 

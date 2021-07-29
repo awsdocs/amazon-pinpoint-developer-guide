@@ -1,4 +1,4 @@
-# Adding Endpoints to Amazon Pinpoint<a name="audience-define-endpoints"></a>
+# Adding endpoints to Amazon Pinpoint<a name="audience-define-endpoints"></a>
 
 An *endpoint* represents a destination that you can message—such as a mobile device, phone number, or email address\. Before you can message a member of your audience, you must define one or more endpoints for that individual\. 
 
@@ -9,7 +9,7 @@ To add more details about your audience, you can enrich your endpoints with cust
 + Segment your audience based on endpoint attributes so that you can send your messages to the right target audience\.
 + Personalize your messages by incorporating message variables that are substituted with endpoint attribute values\.
 
-A mobile or JavaScript client application registers endpoints automatically if you integrate Amazon Pinpoint by using the AWS Mobile SDKs or the AWS Amplify JavaScript library\. The client registers an endpoint for each new user, and it updates endpoints for returning users\. To register endpoints from a mobile or JavaScript client, see [Registering Endpoints in Your Application](integrate-endpoints.md)\.
+A mobile or JavaScript client application registers endpoints automatically if you integrate Amazon Pinpoint by using the AWS Mobile SDKs or the AWS Amplify JavaScript library\. The client registers an endpoint for each new user, and it updates endpoints for returning users\. To register endpoints from a mobile or JavaScript client, see [Registering endpoints in your application](integrate-endpoints.md)\.
 
 ## Examples<a name="audience-define-endpoints-examples"></a>
 
@@ -20,7 +20,7 @@ The following examples show you how to add an endpoint to an Amazon Pinpoint pro
 
 You can use Amazon Pinpoint by running commands with the AWS CLI\.
 
-**Example Update Endpoint Command**  
+**Example Update endpoint command**  
 To add or update an endpoint, use the [update\-endpoint](https://docs.aws.amazon.com/cli/latest/reference/pinpoint/update-endpoint.html) command:  
 
 ```
@@ -31,10 +31,10 @@ $ aws pinpoint update-endpoint \
 ```
 Where:  
 + *application\-id* is the ID of the Amazon Pinpoint project in which you're adding or updating an endpoint\.
-+ *endpoint\-id* is the ID that you're assigning to a new endpoint, or it's the ID of an existing endpoint that you're updating\.
++ *example\-endpoint* is the ID that you're assigning to a new endpoint, or it's the ID of an existing endpoint that you're updating\.
 + *endpoint\-request\-file\.json* is the file path to a local JSON file that contains the input for the `--endpoint-request` parameter\.
 
-**Example Endpoint Request File**  
+**Example Endpoint request file**  
 The example `update-endpoint` command uses a JSON file as the argument for the `--endpoint-request` parameter\. This file contains an endpoint definition like the following:  
 
 ```
@@ -79,7 +79,7 @@ For the attributes that you can use to define an endpoint, see the [EndpointRequ
 You can use the Amazon Pinpoint API in your Java applications by using the client that's provided by the AWS SDK for Java\.
 
 **Example Code**  
-To add an endpoint, initialize an [https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/model/EndpointRequest.html](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/model/EndpointRequest.html) object, and pass it to the [https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#updateEndpoint-com.amazonaws.services.pinpoint.model.UpdateEndpointRequest-](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#updateEndpoint-com.amazonaws.services.pinpoint.model.UpdateEndpointRequest-) method of the `AmazonPinpoint` client:  
+To add an endpoint, initialize an [https://docs.aws.amazon.com/sdk-for-java/latest/reference/com/amazonaws/services/pinpoint/model/EndpointRequest.html](https://docs.aws.amazon.com/sdk-for-java/latest/reference/com/amazonaws/services/pinpoint/model/EndpointRequest.html) object, and pass it to the [https://docs.aws.amazon.com/sdk-for-java/latest/reference/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#updateEndpoint-com.amazonaws.services.pinpoint.model.UpdateEndpointRequest-](https://docs.aws.amazon.com/sdk-for-java/latest/reference/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#updateEndpoint-com.amazonaws.services.pinpoint.model.UpdateEndpointRequest-) method of the `AmazonPinpoint` client:  
 
 ```
 import com.amazonaws.regions.Regions;
@@ -164,7 +164,7 @@ public class AddExampleEndpoint {
 
 You can use Amazon Pinpoint by making HTTP requests directly to the REST API\.
 
-**Example PUT Endpoint Request**  
+**Example PUT endpoint request**  
 To add an endpoint, issue a `PUT` request to the [Endpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints-endpoint-id.html) resource at the following URI:  
 `/v1/apps/application-id/endpoints/endpoint-id`  
 Where:  
@@ -226,10 +226,10 @@ If your request succeeds, you receive a response like the following:
 
 ------
 
-## Related Information<a name="audience-define-endpoints-related"></a>
+## Related information<a name="audience-define-endpoints-related"></a>
 
 For more information about the Endpoint resource in the Amazon Pinpoint API, including supported HTTP methods and request parameters, see [Endpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints-endpoint-id.html) in the *Amazon Pinpoint API Reference\.*
 
-For more information about personalizing messages with variables, see [Message Variables](https://docs.aws.amazon.com/pinpoint/latest/userguide/campaigns-message.html#campaigns-message-variables.html) in the *Amazon Pinpoint User Guide*\.
+For more information about personalizing messages with variables, see [Message variables](https://docs.aws.amazon.com/pinpoint/latest/userguide/campaigns-message.html#campaigns-message-variables.html) in the *Amazon Pinpoint User Guide*\.
 
-For information about the quotas that apply to endpoints, such as the number of attributes that you can assign, see [Endpoint Quotas](quotas.md#quotas-endpoint)\.
+For information about the quotas that apply to endpoints, such as the number of attributes that you can assign, see [Endpoint quotas](quotas.md#quotas-endpoint)\.

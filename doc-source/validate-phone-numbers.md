@@ -1,4 +1,4 @@
-# Validating Phone Numbers in Amazon Pinpoint<a name="validate-phone-numbers"></a>
+# Validating phone numbers in Amazon Pinpoint<a name="validate-phone-numbers"></a>
 
 Amazon Pinpoint includes a phone number validation service that you can use to determine if a phone number is valid, and to obtain additional information about the phone number itself\. For example, when you use the phone number validation service, it returns the following information:
 + The phone number in E\.164 format\.
@@ -6,16 +6,16 @@ Amazon Pinpoint includes a phone number validation service that you can use to d
 + The city and country where the phone number is based\.
 + The service provider that's associated with the phone number\.
 
-There is an additional charge for using the phone number validation service\. For more information, see [Amazon Pinpoint Pricing](https://aws.amazon.com/pinpoint/pricing/#Phone_Number_Validate)\.
+There is an additional charge for using the phone number validation service\. For more information, see [Amazon Pinpoint pricing](https://aws.amazon.com/pinpoint/pricing/#Phone_Number_Validate)\.
 
-## Phone Number Validation Use Cases<a name="validate-phone-numbers-use-cases"></a>
+## Phone number validation use cases<a name="validate-phone-numbers-use-cases"></a>
 
 You can use the phone number validation service to enable several use cases, including the following:
 + **Verifying phone numbers provided on a web form** – If you use web\-based forms to collect contact information for your customers, you validate the phone numbers that customers provide before submitting the form\. Use your website's backend to validate the number by using the Amazon Pinpoint API\. The API response states whether the number is invalid—for example, if the phone number is formatted incorrectly\. If you determine that the phone number that the customer provided is invalid, your web form can prompt the customer to provide a different number\.
 + **Cleansing your existing contact database** – If you have a database of customer phone numbers, you can validate each phone number, and then update your database based on your findings\. For example, if you find endpoints with phone numbers that aren't capable of receiving SMS messages, you can change the `ChannelType` property for the endpoint from `SMS` to `VOICE`\.
 + **Choosing the right channel before you send a message** – If you intend to send an SMS message but you determine that the destination number is invalid, you can send a message to the recipient through a different channel\. For example, if the endpoint isn't able to receive SMS messages, you can send a voice message instead\.
 
-## Using the Phone Number Validation Service<a name="validate-phone-numbers-request"></a>
+## Using the phone number validation service<a name="validate-phone-numbers-request"></a>
 
 To validate a number, send an HTTP POST request to the `/v1/phone/number/validate/` URI in the Amazon Pinpoint API\. The request in the following example includes the required HTTP headers and a simple JSON body\. The body specifies the number to validate with the `PhoneNumber` parameter\.
 
@@ -32,7 +32,7 @@ Cache-Control: no-cache
 }
 ```
 
-For information about supported methods, parameters, and schemas, see [Phone Number Validate](https://docs.aws.amazon.com/pinpoint/latest/apireference/phone-number-validate.html) in the *Amazon Pinpoint API Reference*\.
+For information about supported methods, parameters, and schemas, see [Phone number validate](https://docs.aws.amazon.com/pinpoint/latest/apireference/phone-number-validate.html) in the *Amazon Pinpoint API Reference*\.
 
 You can also use the AWS CLI to quickly validate individual phone numbers\.
 
@@ -47,7 +47,7 @@ You can also use the AWS CLI to quickly validate individual phone numbers\.
 **Note**  
 When you provide a phone number to the phone number validation service, you should always include the country code\. If you don't include the country code, the service might return information for a phone number in a different country\.
 
-## Phone Number Validation Responses<a name="validate-phone-numbers-example-responses"></a>
+## Phone number validation responses<a name="validate-phone-numbers-example-responses"></a>
 
 The information that the phone number validation service provides varies slightly based on the data that's available for the phone number that you provide\. This section contains examples of the responses that the phone number validation service returns\.
 
@@ -162,4 +162,24 @@ The following example shows the response that the phone number validation servic
 }
 ```
 
-For more information about the information that's contained in these responses, see [Phone Number Validate](https://docs.aws.amazon.com/pinpoint/latest/apireference/phone-number-validate.html) in the *Amazon Pinpoint API Reference*\.
+**Prepaid phone numbers**  
+If your request contains a valid prepaid phone number, the phone number validation service returns information that resembles the following example:
+
+```
+{
+    "NumberValidateResponse": {
+        "Carrier": "ExampleCorp",
+        "City": "Countrywide",
+        "CleansedPhoneNumberE164": "+14255550199",
+        "CleansedPhoneNumberNational": "4255550199",
+        "Country": "United States",
+        "CountryCodeIso2": "US",
+        "CountryCodeNumeric": "1",
+        "OriginalPhoneNumber": "+14255550199",
+        "PhoneType": "PREPAID",
+        "PhoneTypeCode": 5
+    }
+}
+```
+
+For more information about the information that's contained in these responses, see [Phone number validate](https://docs.aws.amazon.com/pinpoint/latest/apireference/phone-number-validate.html) in the *Amazon Pinpoint API Reference*\.

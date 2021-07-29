@@ -1,15 +1,15 @@
-# AWS SDK Support for Amazon Pinpoint<a name="integrate-supported-sdks"></a>
+# AWS SDK support for Amazon Pinpoint<a name="integrate-supported-sdks"></a>
 
 One of the easiest ways to interact with the Amazon Pinpoint API is to use an AWS SDK\. The following AWS SDKs include support for Amazon Pinpoint API operations:
 + [AWS Mobile SDK for Android](https://aws-amplify.github.io/docs/android/start) version 2\.3\.5 or later
 + [AWS Mobile SDK for iOS](https://aws-amplify.github.io/docs/ios/start) version 2\.4\.14 or later
-+ [AWS Amplify JavaScript Library for JavaScript](https://aws-amplify.github.io/docs/js/start?platform=purejs)
-+ [AWS Amplify JavaScript Library for React Native](https://aws-amplify.github.io/docs/js/start?platform=react-native)
++ [AWS Amplify JavaScript library for JavaScript](https://docs.amplify.aws/start/q/integration/js)
++ [AWS Amplify JavaScript library for react native](https://docs.amplify.aws/start/q/integration/react)
 + [AWS SDK for JavaScript](https://aws.amazon.com/sdk-for-node-js/) version 2\.7\.10 or later
-+ [AWS SDK for Java](https://aws.amazon.com/sdk-for-java/) version 1\.11\.63 or later
++ [AWS SDK for Java](https://aws.amazon.com/sdk-for-java/) version 2\.15\.x or later
 + [AWS SDK for \.NET](https://aws.amazon.com/sdk-for-net/) version 3\.3\.27\.0 or later
 + [AWS SDK for PHP](https://aws.amazon.com/sdk-for-php/) version 3\.20\.1
-+ [AWS SDK for Python \(Boto 3\)](https://aws.amazon.com/sdk-for-python/) version 1\.4\.2 or later
++ [AWS SDK for Python \(Boto3\)](https://aws.amazon.com/sdk-for-python/) version 1\.4\.2 or later
 + [AWS SDK for Ruby](https://aws.amazon.com/sdk-for-ruby/) version 1\.0\.0\.rc2 or later
 + [AWS SDK for Go](https://aws.amazon.com/sdk-for-go/) version 1\.5\.13 or later
 + [AWS SDK for C\+\+](https://aws.amazon.com/sdk-for-cpp/) version 1\.0\.20151208\.143 or later

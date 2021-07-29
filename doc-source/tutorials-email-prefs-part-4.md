@@ -1,8 +1,8 @@
-# Step 4: Create the Lambda Function<a name="tutorials-email-prefs-part-4"></a>
+# Step 4: Create the Lambda function<a name="tutorials-email-prefs-part-4"></a>
 
 This solution uses a Lambda function to update customers' endpoint records based on the preferences that they provide on the web form\. This section shows you how to create, configure, and test this function\. Later, you set up API Gateway and Amazon Pinpoint to execute this function\.
 
-## Step 4\.1: Create the Function That Updates Endpoints<a name="tutorials-email-prefs-part-4-create-register-function"></a>
+## Step 4\.1: Create the function that updates endpoints<a name="tutorials-email-prefs-part-4-create-register-function"></a>
 
 The first function takes input from the preference management web form, which it receives from Amazon API Gateway\. It uses this information to update the customer's endpoint record according to the preferences that they provided on the form\.
 
@@ -86,14 +86,14 @@ The first function takes input from the preference management web form, which it
    
    function updateOpt(event) {
      var endpointId = event.endpointId,
-         firstName = event.firstName,
-         lastName = event.lastName,
-         source = event.source,
-         specialOffersOptStatus = event.topic1,
-         newProductsOptStatus = event.topic2,
-         comingSoonOptStatus = event.topic3,
-         dealOfTheDayOptStatus = event.topic4,
-         optTimestamp = event.optTimestamp;
+       firstName = event.firstName,
+       lastName = event.lastName,
+       source = event.source,
+       specialOffersOptStatus = event.topic1,
+       newProductsOptStatus = event.topic3,
+       comingSoonOptStatus = event.topic2,
+       dealOfTheDayOptStatus = event.topic4,   
+       optTimestamp = event.optTimestamp;
      
      var params = {
        ApplicationId: projectId,
@@ -153,7 +153,7 @@ The first function takes input from the preference management web form, which it
 
 1. At the top of the page, choose **Save**\.
 
-### Step 4\.1\.1: Test the Function<a name="tutorials-email-prefs-part-4-create-register-function-test"></a>
+### Step 4\.1\.1: Test the function<a name="tutorials-email-prefs-part-4-create-register-function-test"></a>
 
 After you create the function, you should test it to make sure that it's configured properly\. Also, make sure that the IAM role you created has the appropriate permissions\.
 

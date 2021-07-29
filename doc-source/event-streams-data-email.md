@@ -1,4 +1,4 @@
-# Email Events<a name="event-streams-data-email"></a>
+# Email events<a name="event-streams-data-email"></a>
 
 When you send email messages, Amazon Pinpoint can stream data that provides additional information about the following types of events for those messages:
 + Sends
@@ -9,14 +9,15 @@ When you send email messages, Amazon Pinpoint can stream data that provides addi
 + Clicks
 + Rejections
 + Unsubscribes
++ Rendering failures
 
-The event types in the preceding list are explained in detail in [Email Event Attributes](#event-streams-data-email-attributes)\.
+The event types in the preceding list are explained in detail in [Email event attributes](#event-streams-data-email-attributes)\.
 
-Depending on the API and settings that you use to send email messages, you might see additional event types or different data\. For example, if you send messages using configuration sets that publish event data to Amazon Kinesis, such as those provided by Amazon Simple Email Service \(Amazon SES\), the data can also include events for template\-rendering failures\. For information about that data, see [Monitoring Using Amazon SES Event Publishing](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-using-event-publishing.html) in the *Amazon Simple Email Service Developer Guide*\.
+Depending on the API and settings that you use to send email messages, you might see additional event types or different data\. For example, if you send messages using configuration sets that publish event data to Amazon Kinesis, such as those provided by Amazon Simple Email Service \(Amazon SES\), the data can also include events for template\-rendering failures\. For information about that data, see [Monitoring using Amazon SES event publishing](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-using-event-publishing.html) in the *Amazon Simple Email Service Developer Guide*\.
 
-## Sample Events<a name="event-streams-data-email-send-example"></a>
+## Sample events<a name="event-streams-data-email-send-example"></a>
 
-**Email Send**  
+**Email send**  
 The JSON object for an *email send* event contains the data shown in the following example\.
 
 ```
@@ -78,7 +79,7 @@ The JSON object for an *email send* event contains the data shown in the followi
 }
 ```
 
-**Email Delivered**  
+**Email delivered**  
 The JSON object for an *email delivered* event contains the data shown in the following example\.
 
 ```
@@ -145,7 +146,7 @@ The JSON object for an *email delivered* event contains the data shown in the fo
 }
 ```
 
-**Email Click**  
+**Email click**  
 The JSON object for an *email click* event contains the data shown in the following example\.
 
 ```
@@ -214,7 +215,7 @@ The JSON object for an *email click* event contains the data shown in the follow
 }
 ```
 
-**Email Open**  
+**Email open**  
 The JSON object for an *email open* event contains the data shown in the following example\.
 
 ```
@@ -282,7 +283,7 @@ The JSON object for an *email open* event contains the data shown in the followi
 }
 ```
 
-## Email Event Attributes<a name="event-streams-data-email-attributes"></a>
+## Email event attributes<a name="event-streams-data-email-attributes"></a>
 
 This section defines the attributes that are included in the event stream data that Amazon Pinpoint generates when you send email messages\.
 
@@ -295,7 +296,7 @@ This section defines the attributes that are included in the event stream data t
 | event\_version |  The version of the event JSON schema\.  Check this version in your event\-processing application so that you know when to update the application in response to a schema update\.   | 
 | application |  Information about the Amazon Pinpoint project that's associated with the event\. See the *Application* table for more information\.  | 
 | client |  Information about the app client that's installed on the device that reported the event\. For more information, see the *Client* table\.  | 
-| device |  Information about the device that reported the event\. For more information, see the *Device* table\. For events that are generated when you send a transactional message, this object is empty\.  | 
+| device |  Information about the device that reported the event\. For more information, see the *Device* table\. For email events, this object is empty\.  | 
 | session | For email events, this object is empty\. | 
 | attributes |  Attributes that are associated with the event\. For more information, see the *Attributes* table\. For events that are reported by one of your apps, this object can include custom attributes that are defined by the app\. For events that are created when you send a message from a campaign or journey, this object contains attributes that are associated with the campaign or journey\. For events that are generated when you send transactional messages, this object contains information that's related to the message itself\.  | 
 | client\_context | For email events, this object contains a custom object, which contains a legacy\_identifier attribute\. The value for the legacy\_identifier attribute is the ID of the project that the message was sent from\. | 

@@ -1,4 +1,4 @@
-# Tagging Amazon Pinpoint Resources<a name="tagging-resources"></a>
+# Tagging Amazon Pinpoint resources<a name="tagging-resources"></a>
 
 A *tag* is a label that you optionally define and associate with AWS resources, including certain types of Amazon Pinpoint resources\. Tags can help you categorize and manage resources in different ways, such as by purpose, owner, environment, or other criteria\. For example, you can use tags to apply policies or automation, or to identify resources that are subject to certain compliance requirements\. You can add tags to the following types of Amazon Pinpoint resources:
 + Campaigns
@@ -8,7 +8,7 @@ A *tag* is a label that you optionally define and associate with AWS resources, 
 
 A resource can have as many as 50 tags\.
 
-## Managing Tags<a name="tags-manage"></a>
+## Managing tags<a name="tags-manage"></a>
 
 Each tag consists of a required *tag key* and an optional *tag value*, both of which you define\. A *tag key* is a general label that acts as a category for more specific tag values\. A *tag value* acts as a descriptor for a tag key\. For example, if you have two versions of an Amazon Pinpoint project \(one for internal testing and another for external use\), you might assign a `Stack` tag key to both projects\. The value of the `Stack` tag key might be `Test` for one version of the project and `Production` for the other version\.
 
@@ -21,7 +21,7 @@ A tag key can contain as many as 128 characters\. A tag value can contain as man
 
 To add, display, update, and remove tag keys and values from Amazon Pinpoint resources, you can use the AWS Command Line Interface \(AWS CLI\), the Amazon Pinpoint API, the AWS Resource Groups Tagging API, or an AWS SDK\. To manage tag keys and values across all the AWS resources that are located in a specific AWS Region for your AWS account \(including Amazon Pinpoint resources\), use the [AWS Resource Groups Tagging API](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html)\.
 
-## Using Tags in IAM Policies<a name="tags-iam"></a>
+## Using tags in IAM policies<a name="tags-iam"></a>
 
 After you start implementing tags, you can apply tag\-based, resource\-level permissions to AWS Identity and Access Management \(IAM\) policies and API operations\. This includes operations that support adding tags to resources when resources are created\. By using tags in this way, you can implement granular control of which groups and users in your AWS account have permission to create and tag resources, and which groups and users have permission to create, update, and remove tags more generally\.
 
@@ -48,7 +48,7 @@ For example, you can create a policy that allows a user to have full access to a
 
 If you define tag\-based, resource\-level permissions, the permissions take effect immediately\. This means that your resources are more secure as soon as they're created, and you can quickly start enforcing the use of tags for new resources\. You can also use resource\-level permissions to control which tag keys and values can be associated with new and existing resources\. For more information, see [Controlling Access Using Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html) in the *AWS IAM User Guide*\.
 
-## Adding Tags to Resources<a name="tags-add"></a>
+## Adding tags to resources<a name="tags-add"></a>
 
 The following examples show how to add a tag to an Amazon Pinpoint resource by using the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/) and the [Amazon Pinpoint REST API](https://docs.aws.amazon.com/pinpoint/latest/apireference/)\. The AWS CLI examples are formatted for Microsoft Windows\. For Unix, Linux, and macOS, replace the caret \(^\) line\-continuation character with a backslash \(\\\)\. You can also use any supported AWS SDK to add a tag to a resource\.
 
@@ -141,7 +141,7 @@ Note that the Amazon Pinpoint API currently doesn’t support PUT requests for p
 
 ------
 
-## Displaying Tags for Resources<a name="tags-display"></a>
+## Displaying tags for resources<a name="tags-display"></a>
 
 The following examples show how to use the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/) and the [Amazon Pinpoint REST API](https://docs.aws.amazon.com/pinpoint/latest/apireference/) to display a list of all the tags \(keys and values\) that are associated with an Amazon Pinpoint resource\. The AWS CLI examples are formatted for Microsoft Windows\. For Unix, Linux, and macOS, replace the caret \(^\) line\-continuation character with a backslash \(\\\)\. You can also use any supported AWS SDK to display all the tags that are associated with a resource\.
 
@@ -193,7 +193,7 @@ The JSON response to the request lists all the campaigns in the project\. The `t
 
 ------
 
-## Updating Tags for Resources<a name="tags-update"></a>
+## Updating tags for resources<a name="tags-update"></a>
 
 There are several ways to update \(overwrite\) a tag for an Amazon Pinpoint resource\. The best way to update a tag depends on:
 + The type of resource that you want to update tags for\.
@@ -268,7 +268,7 @@ Where:
 
 ------
 
-## Removing Tags from Resources<a name="tags-remove"></a>
+## Removing tags from resources<a name="tags-remove"></a>
 
 The following examples show how to remove a tag \(both the key and value\) from an Amazon Pinpoint resource by using the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/) and the [Amazon Pinpoint REST API](https://docs.aws.amazon.com/pinpoint/latest/apireference/)\. The AWS CLI examples are formatted for Microsoft Windows\. For Unix, Linux, and macOS, replace the caret \(^\) line\-continuation character with a backslash \(\\\)\. You can also use any supported AWS SDK to remove a tag from a resource\.
 
@@ -327,7 +327,7 @@ All the parameters should be URL encoded\.
 
 ------
 
-## Related Information<a name="tags-related-information"></a>
+## Related information<a name="tags-related-information"></a>
 
 For more information about the CLI commands that you can use to manage Amazon Pinpoint resources, see the Amazon Pinpoint section of the [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/pinpoint/)\.
 

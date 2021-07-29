@@ -1,8 +1,8 @@
-# Step 6: Create and Deploy the Web Form<a name="tutorials-email-prefs-part-6"></a>
+# Step 6: Create and deploy the web form<a name="tutorials-email-prefs-part-6"></a>
 
 All of the components of this solution that use AWS services are now in place\. The last step is to create and deploy the web form that captures customer's data\.
 
-## Step 6\.1: Create the JavaScript Form Handler<a name="tutorials-email-prefs-part-6-create-form-handler"></a>
+## Step 6\.1: Create the JavaScript form handler<a name="tutorials-email-prefs-part-6-create-form-handler"></a>
 
 In this section, you create a JavaScript function that parses the content of the web form that you create in the next section\. After parsing the content, this function sends the data to the API that you created in [Part 4](tutorials-email-prefs-part-4.md)\.
 
@@ -166,7 +166,7 @@ In this section, you create a JavaScript function that parses the content of the
 
 1. Save the file\.
 
-## Step 6\.2: Create the Form File<a name="tutorials-email-prefs-part-6-create-form"></a>
+## Step 6\.2: Create the form file<a name="tutorials-email-prefs-part-6-create-form"></a>
 
 In this section, you create an HTML file that contains the form that customers use to manage their email preferences\. This file uses the JavaScript form handler that you created in the previous section to transmit the form data to your Lambda function\.
 
@@ -300,17 +300,17 @@ When a user submits this form, it triggers a Lambda function that updates endpoi
 
 1. Save the file\.
 
-## Step 6\.3: Upload the Form Files<a name="tutorials-email-prefs-part-6-upload-form"></a>
+## Step 6\.3: Upload the form files<a name="tutorials-email-prefs-part-6-upload-form"></a>
 
-Now that you've created the HTML form and the JavaScript form handler, the last step is to publish these files to the internet\. This section assumes that you have an existing web hosting provider\. If you don't have an existing hosting provider, you can launch a website by using Amazon Route 53, Amazon Simple Storage Service \(Amazon S3\), and Amazon CloudFront\. For more information, see [Host a Static Website](https://aws.amazon.com/getting-started/projects/host-static-website/)\.
+Now that you've created the HTML form and the JavaScript form handler, the last step is to publish these files to the internet\. This section assumes that you have an existing web hosting provider\. If you don't have an existing hosting provider, you can launch a website by using Amazon Route 53 , Amazon Simple Storage Service \(Amazon S3\), and Amazon CloudFront\. For more information, see [Host a static website](https://aws.amazon.com/getting-started/projects/host-static-website/)\.
 
 If you use another web hosting provider, consult the provider's documentation for more information about publishing webpages\.
 
-## Step 6\.4: Test the Form<a name="tutorials-email-prefs-part-6-test-form"></a>
+## Step 6\.4: Test the form<a name="tutorials-email-prefs-part-6-test-form"></a>
 
 After you publish the form, you should test it to confirm that it works properly\.
 
-### Step 6\.4\.1: Use the Form to Submit Test Data<a name="tutorials-email-prefs-part-6-test-form-data"></a>
+### Step 6\.4\.1: Use the form to submit test data<a name="tutorials-email-prefs-part-6-test-form-data"></a>
 
 The first step in testing the preferences form is to use it to submit some test data\. In this case, you opt in to all of the subscription topics that are listed on the form\.
 
@@ -332,7 +332,7 @@ The first step in testing the preferences form is to use it to submit some test 
 
 1. Wait for approximately one minute, and then proceed to the next section\.
 
-### Step 6\.4\.2: Check the Opt Status of the Test Endpoint<a name="tutorials-email-prefs-part-6-test-form-segment"></a>
+### Step 6\.4\.2: Check the opt status of the test endpoint<a name="tutorials-email-prefs-part-6-test-form-segment"></a>
 
 Now that you've submitted some test data, you can use the segmentation tool in the Amazon Pinpoint console to make sure that the test data was handled properly\.
 
@@ -357,7 +357,7 @@ Now that you've submitted some test data, you can use the segmentation tool in t
    When you finish, the **Segment estimate** section should indicate that the number of **Eligible endpoints** and **Total endpoints** are both 1\. The page should resemble the example shown in the following image\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/images/Email_Prefs_Tutorial_Test_Step6.3.2_8.png)
 
-### Step 6\.4\.3: Test the "Unsubscribe From All" Functionality<a name="tutorials-email-prefs-part-6-test-form-unsub-all"></a>
+### Step 6\.4\.3: Test the "unsubscribe from all" functionality<a name="tutorials-email-prefs-part-6-test-form-unsub-all"></a>
 
 Also make sure that the **Unsubscribe from all email communications** button on the preferences form works properly\. When a customer chooses this button, their opt status for all topics is set to "OptOut"\. Additionally, the OptOut attribute for the customer's endpoint record is set to "ALL"\. This change prevents the endpoint from being included in segments that you create in this project in the future\.
 
@@ -377,7 +377,7 @@ Also make sure that the **Unsubscribe from all email communications** button on 
 
 1. Wait for approximately one minute, and then proceed to the next section\.
 
-### Step 6\.3\.4: Check the Opt Status of the Test Endpoint<a name="tutorials-email-prefs-part-6-test-form-unsub-all-test"></a>
+### Step 6\.3\.4: Check the opt status of the test endpoint<a name="tutorials-email-prefs-part-6-test-form-unsub-all-test"></a>
 
 The final step in testing the preference form is to confirm that unsubscribe requests are handled properly\. In this section, you use the segmentation tool in the Amazon Pinpoint console to ensure that your test endpoint is opted out of email communications that are sent from the current Amazon Pinpoint project\.
 
@@ -394,7 +394,7 @@ The final step in testing the preference form is to confirm that unsubscribe req
 1. Note the values in the **Segment estimate** section\. This section should indicate that the number of **Eligible endpoints** is 0, and the number of **Total endpoints** is 1\. The page should resemble the example shown in the following image\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/images/Email_Prefs_Tutorial_Test_Step6.3.4_5.png)
 
-### Troubleshooting the Form<a name="tutorials-email-prefs-part-6-test-form-troubleshooting"></a>
+### Troubleshooting the form<a name="tutorials-email-prefs-part-6-test-form-troubleshooting"></a>
 
 If you perform these test steps, but the data in your Amazon Pinpoint project doesn't change, there are a few steps that you can take to troubleshoot the issue:
 + In the Amazon Pinpoint console, make sure that you're using the correct AWS Region\. Segments and endpoints aren't shared between Regions\.

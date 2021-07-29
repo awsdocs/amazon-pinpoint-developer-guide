@@ -1,4 +1,4 @@
-# Step 2: Add or Configure Endpoints<a name="tutorials-email-prefs-part-2"></a>
+# Step 2: Add or configure endpoints<a name="tutorials-email-prefs-part-2"></a>
 
 When you send campaigns in Amazon Pinpoint, you send them to endpoints\. An endpoint represents a single method of contacting a customer\. For example, a customer's phone number, their email address, and their unique Apple Push Notification Service \(APNs\) token are three separate endpoints\. In this example, these three endpoints represent three different ways of communicating with a customer—in this case, by sending SMS messages, emails, or push notifications\.
 
@@ -9,7 +9,7 @@ If you're new to Amazon Pinpoint, your Amazon Pinpoint project doesn't contain a
 
 To complete this tutorial, your Amazon Pinpoint project has to contain at least one email endpoint\. If your Amazon Pinpoint project already contains email endpoints, you can use those\. You can also use the sample CSV file in this section to import a list of test endpoints\.
 
-## Import Test Endpoints<a name="tutorials-email-prefs-part-2-import"></a>
+## Import test endpoints<a name="tutorials-email-prefs-part-2-import"></a>
 
 This section includes a file that you can use as a source file for importing a test endpoint into Amazon Pinpoint\. This method of adding endpoints is helpful if you don't have an application that sends endpoint information to Amazon Pinpoint, if you don't want to use the Amazon Pinpoint API to create endpoints, or if you don't want to modify the endpoints that already exist in your Amazon Pinpoint project\.
 
@@ -46,7 +46,7 @@ Amazon Pinpoint requires you to store source files in Amazon S3\. Complete the p
 
 1. Choose **Create bucket**\.
 
-1. On the **Create bucket** window, for **Bucket name**, enter a name for the bucket that you want to store the file in\. The name that you specify has to be unique\. Also, there are several restrictions related to the bucket name\. For more information about these restrictions, see [Bucket Restrictions](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service Developer Guide*\. Choose **Create**\.
+1. On the **Create bucket** window, for **Bucket name**, enter a name for the bucket that you want to store the file in\. The name that you specify has to be unique\. Also, there are several restrictions related to the bucket name\. For more information about these restrictions, see [Bucket restrictions](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html) in the *Amazon Simple Storage Service Developer Guide*\. Choose **Create**\.
 
 1. In the list of buckets, choose the bucket that you just created\.
 
@@ -58,7 +58,7 @@ Amazon Pinpoint requires you to store source files in Amazon S3\. Complete the p
 
 1. Choose **Add files**\. Locate the `testImports.csv` file that you created in the [previous section](#tutorials-email-prefs-part-2-import-create)\. Choose **Upload**\.
 
-### Import the File into Amazon Pinpoint<a name="tutorials-email-prefs-part-2-import-segment"></a>
+### Import the file into Amazon Pinpoint<a name="tutorials-email-prefs-part-2-import-segment"></a>
 
 After you upload your CSV file into an Amazon S3 bucket, you can import it into your Amazon Pinpoint project\.
 
@@ -84,20 +84,20 @@ After you upload your CSV file into an Amazon S3 bucket, you can import it into 
 
 1. On the **Segments** tab, choose the **EmailRegistrationTestRecipients** segment\. In the **Import details** section, confirm that the value under **Number of records** is accurate\. If you used the sample CSV file in this section, the correct value is **1**\.
 
-## Use Existing Endpoints \(for Advanced Users\)<a name="tutorials-email-prefs-part-2-use-existing"></a>
+## Use existing endpoints \(for advanced users\)<a name="tutorials-email-prefs-part-2-use-existing"></a>
 
 If your Amazon Pinpoint project already contains email endpoints, you have to modify those endpoints slightly before you can use them in this tutorial\. First, the endpoints have to include two endpoint Attribute values\. These values are listed in the following table\.
 
 
-| Attribute Name | Value | 
+| Attribute name | Value | 
 | --- | --- | 
 |  `Attributes.Email`  |  A URL\-encoded version of the existing `Address` attribute for the endpoint\.  | 
-|  `Attributes.EndpointId`  |  Equal to the existing `Id` attribute for the endpoint\. If the endpoint ID value contains non\-alphanumeric characters, then you should URL\-encode this value\.  For more information about URL encoding, see the [HTML URL Encoding Reference](https://www.w3schools.com/tags/ref_urlencode.asp) on the W3Schools website\.   | 
+|  `Attributes.EndpointId`  |  Equal to the existing `Id` attribute for the endpoint\. If the endpoint ID value contains non\-alphanumeric characters, then you should URL\-encode this value\.  For more information about URL encoding, see the [HTML URL encoding reference](https://www.w3schools.com/tags/ref_urlencode.asp) on the W3Schools website\.   | 
 
 The endpoints should also contain two User Attribute values\. These values aren't strictly required for the solution to work\. These values are listed in the following table\.
 
 
-| Attribute Name | Value | 
+| Attribute name | Value | 
 | --- | --- | 
 | User\.UserAttributes\.FirstName | The recipient's first name\. | 
 | User\.UserAttributes\.LastName | The recipient's last name\. | 

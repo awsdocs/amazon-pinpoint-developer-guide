@@ -3,9 +3,9 @@
 Postman is a popular tool for testing APIs in an easy\-to\-use graphical environment\. You can use Postman to send API requests to any REST API, and to receive responses to your requests\. Using Postman is a convenient way to test and troubleshoot the calls that you make to the Amazon Pinpoint API\. This tutorial includes procedures for setting up and using Postman with Amazon Pinpoint\.
 
 **Note**  
-Postman is developed by a third\-party company\. It isn't developed or supported by Amazon Web Services \(AWS\)\. To learn more about using Postman, or for assistance with issues related to Postman, see the [Support Center](https://www.getpostman.com/support) on the Postman website\.
+Postman is developed by a third\-party company\. It isn't developed or supported by Amazon Web Services \(AWS\)\. To learn more about using Postman, or for assistance with issues related to Postman, see the [Support center](https://www.getpostman.com/support) on the Postman website\.
 
-## About This Tutorial<a name="tutorials-using-postman-about"></a>
+## About this tutorial<a name="tutorials-using-postman-about"></a>
 
 This section contains an overview of this tutorial\.
 
@@ -30,4 +30,4 @@ There's no charge for creating an AWS account\. However, by implementing this so
 + Create and send campaigns
 + Use the phone number validation feature
 
-For more information about the charges that are associated with using Amazon Pinpoint, see [Amazon Pinpoint Pricing](https://aws.amazon.com/pinpoint/pricing)\.
+For more information about the charges that are associated with using Amazon Pinpoint, see [Amazon Pinpoint pricing](https://aws.amazon.com/pinpoint/pricing)\.

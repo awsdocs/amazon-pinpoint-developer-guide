@@ -1,8 +1,8 @@
-# Step 3: Create Lambda Functions<a name="tutorials-two-way-sms-part-3"></a>
+# Step 3: Create Lambda functions<a name="tutorials-two-way-sms-part-3"></a>
 
 This solution uses two Lambda functions\. This section shows you how to create and configure these functions\. Later, you set up API Gateway and Amazon Pinpoint to execute these functions when certain events occur\. Both of these functions create and update endpoints in the Amazon Pinpoint project that you specify\. The first function also uses the phone number validation feature\.
 
-## Step 3\.1: Create the Function That Validates Customer Information and Creates Endpoints<a name="tutorials-two-way-sms-part-3-create-register-function"></a>
+## Step 3\.1: Create the function that validates customer information and creates endpoints<a name="tutorials-two-way-sms-part-3-create-register-function"></a>
 
 The first function takes input from your registration form, which it receives from Amazon API Gateway\. It uses this information to obtain information about the customer's phone number by using the [phone number validation](validate-phone-numbers.md) feature of Amazon Pinpoint\. The function then uses the validated data to create a new endpoint in the Amazon Pinpoint project that you specify\. By default, the endpoint that the function creates is opted out of future communications from you, but this status can be changed by the second function\. Finally, this function sends the customer a message asking them to verify that they want to receive SMS communications from you\.
 
@@ -46,12 +46,6 @@ The first function takes input from your registration form, which it receives fr
    var messageType = "TRANSACTIONAL";
    
    exports.handler = (event, context, callback) => {
-     if( ! event.destinationNumber && event.body )
-         event = event.body;
-
-     if( typeof event.destinationNumber == "undefined" )
-         event = JSON.parse(event);
-
      console.log('Received event:', event);
      validateNumber(event);
    };
@@ -182,7 +176,7 @@ Be sure to include the plus sign \(\+\) and the country code for the phone numbe
 
 1. At the top of the page, choose **Save**\.
 
-### Step 3\.1\.1: Test the Function<a name="tutorials-two-way-sms-part-3-create-register-function-test"></a>
+### Step 3\.1\.1: Test the function<a name="tutorials-two-way-sms-part-3-create-register-function-test"></a>
 
 After you create the function, you should test it to make sure that it's configured properly\. Also, make sure that the IAM role you created has the appropriate permissions\.
 
@@ -225,7 +219,7 @@ After you create the function, you should test it to make sure that it's configu
    The **Segment estimate** section should show that there are zero eligible endpoints, and one total endpoint, as shown in the following image\. This result is expected\. When the function creates a new endpoint, the endpoint is opted out\. Segments in Amazon Pinpoint automatically exclude opted\-out endpoints\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/images/SMS_Reg_Tutorial_LAM_Step8.9.png)
 
-## Step 3\.2: Create the Function That Opts in Customers to Your Communications<a name="tutorials-two-way-sms-part-3-create-optin-function"></a>
+## Step 3\.2: Create the function that opts in customers to your communications<a name="tutorials-two-way-sms-part-3-create-optin-function"></a>
 
 The second function is only executed when a customer replies to the message that's sent by the first function\. If the customer's reply includes the keyword that you specified in [Step 1\.3](tutorials-two-way-sms-part-1.md#tutorials-two-way-sms-part-1-set-up-channel), the function updates their endpoint record to opt them in to future communications\. Amazon Pinpoint also automatically responds with the message that you specified in Step 1\.3\.
 
@@ -309,7 +303,7 @@ The keyword isn't case sensitive\. This function converts the incoming message t
 
 1. At the top of the page, choose **Save**\.
 
-### Step 3\.2\.1: Test the Function<a name="tutorials-two-way-sms-part-3-create-optin-function-test"></a>
+### Step 3\.2\.1: Test the function<a name="tutorials-two-way-sms-part-3-create-optin-function-test"></a>
 
 After you create the function, you should test it to make sure that it's configured properly\. Also, make sure that the IAM role you created has the appropriate permissions\.
 

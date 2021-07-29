@@ -1,4 +1,4 @@
-# Step 1: Set Up Amazon Pinpoint<a name="tutorials-two-way-sms-part-1"></a>
+# Step 1: Set up Amazon Pinpoint<a name="tutorials-two-way-sms-part-1"></a>
 
 The first step in implementing this solution is to set up Amazon Pinpoint\. In this section, you do the following:
 + Create an Amazon Pinpoint project
@@ -7,13 +7,13 @@ The first step in implementing this solution is to set up Amazon Pinpoint\. In t
 
 Before you begin with this tutorial, you should review the [prerequisites](tutorials-two-way-sms-prereqs.md)\.
 
-## Step 1\.1: Create an Amazon Pinpoint Project<a name="tutorials-two-way-sms-part-1-create-project"></a>
+## Step 1\.1: Create an Amazon Pinpoint project<a name="tutorials-two-way-sms-part-1-create-project"></a>
 
 To get started, you need to create an Amazon Pinpoint project\. In Amazon Pinpoint, a *project* consists of segments, campaigns, configurations, and data that are united by a common purpose\. For example, you could use a project to contain all of the content that's related to a particular app, or to a specific brand or marketing initiative\. When you add customer information to Amazon Pinpoint, that information is associated with a project\.
 
 The steps involved in creating a new project differ depending on whether you've created a project in Amazon Pinpoint previously\.
 
-### Creating a Project \(New Amazon Pinpoint Users\)<a name="tutorials-two-way-sms-part-1-create-project-opt-1"></a>
+### Creating a project \(new Amazon Pinpoint users\)<a name="tutorials-two-way-sms-part-1-create-project-opt-1"></a>
 
 These steps describe the process of creating a new Amazon Pinpoint project if you've never created a project in the current AWS Region\.
 
@@ -34,7 +34,7 @@ These steps describe the process of creating a new Amazon Pinpoint project if yo
 **Tip**  
 You need to use this ID in a few different places in this tutorial\. Keep the project ID in a convenient place so that you can copy it later\.
 
-### Creating a Project \(Existing Amazon Pinpoint Users\)<a name="tutorials-two-way-sms-part-1-create-project-opt-2"></a>
+### Creating a project \(existing Amazon Pinpoint users\)<a name="tutorials-two-way-sms-part-1-create-project-opt-2"></a>
 
 These steps describe the process of creating a new Amazon Pinpoint project if you've already created projects in the current AWS Region\.
 
@@ -57,12 +57,12 @@ These steps describe the process of creating a new Amazon Pinpoint project if yo
 **Tip**  
 You need to use this ID in a few different places in this tutorial\. Keep the project ID in a convenient place so that you can copy it later\.
 
-## Step 1\.2: Obtain a Dedicated Long Code<a name="tutorials-two-way-sms-part-1-set-up-channel"></a>
+## Step 1\.2: Obtain a dedicated long code<a name="tutorials-two-way-sms-part-1-set-up-channel"></a>
 
 After you create a project, you can start to configure features within that project\. In this section, you enable the SMS channel, and obtain a dedicated long code to use when sending SMS messages\.
 
 **Note**  
-This section assumes that you're leasing a long code that's based in the United States or Canada\. If you follow the procedures in this section, but choose a country other than the United States or Canada, you won't be able to use that number to send SMS messages\. To learn more about leasing SMS\-capable long codes in countries other than the United States or Canada, see [Requesting Dedicated Long Codes for SMS Messaging with Amazon Pinpoint](https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-awssupport-long-code.html) in the *Amazon Pinpoint User Guide*\.
+This section assumes that you're leasing a long code that's based in the United States or Canada\. If you follow the procedures in this section, but choose a country other than the United States or Canada, you won't be able to use that number to send SMS messages\. To learn more about leasing SMS\-capable long codes in countries other than the United States or Canada, see [Requesting dedicated long codes for SMS messaging with Amazon Pinpoint](https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-awssupport-long-code.html) in the *Amazon Pinpoint User Guide*\.
 
 1. In the navigation pane, under **Settings**, choose **SMS and voice**\.
 
@@ -79,7 +79,7 @@ This section assumes that you're leasing a long code that's based in the United 
 
 1. Choose **Request long code**\.
 
-## Step 1\.3: Enable Two\-Way SMS<a name="tutorials-two-way-sms-part-1-enable-two-way"></a>
+## Step 1\.3: Enable two\-way SMS<a name="tutorials-two-way-sms-part-1-enable-two-way"></a>
 
 Now that you have a dedicated phone number, you can set up two\-way SMS\. Enabling two\-way SMS makes it possible for your customers to respond to the SMS messages that you send them\. In this solution, you use two\-way SMS to give your customers a way to confirm that they want to subscribe to your SMS program\.
 

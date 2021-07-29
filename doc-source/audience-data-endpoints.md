@@ -1,8 +1,8 @@
-# Looking Up Endpoints with Amazon Pinpoint<a name="audience-data-endpoints"></a>
+# Looking up endpoints with Amazon Pinpoint<a name="audience-data-endpoints"></a>
 
 You can look up the details for any individual endpoint that was added to an Amazon Pinpoint project\. These details can include the destination address for your messages, the messaging channel, data about the user's device, data about the user's location, and any custom attributes that you record in your endpoints\.
 
-To look up an endpoint, you need the endpoint ID\. If you don't know the ID, you can get the endpoint data by exporting instead\. To export endpoints, see [Exporting Endpoints from Amazon Pinpoint](audience-data-export.md)\.
+To look up an endpoint, you need the endpoint ID\. If you don't know the ID, you can get the endpoint data by exporting instead\. To export endpoints, see [Exporting endpoints from Amazon Pinpoint](audience-data-export.md)\.
 
 ## Examples<a name="audience-data-endpoints-examples"></a>
 
@@ -13,7 +13,7 @@ The following examples show you how to look up an individual endpoint by specify
 
 You can use Amazon Pinpoint by running commands with the AWS CLI\.
 
-**Example Get Endpoint Command**  
+**Example Get endpoint command**  
 To look up an endpoint, use the [https://docs.aws.amazon.com/cli/latest/reference/pinpoint/get-endpoint.html](https://docs.aws.amazon.com/cli/latest/reference/pinpoint/get-endpoint.html) command:  
 
 ```
@@ -86,72 +86,57 @@ The response to this command is the JSON definition of the endpoint, as in the f
 You can use the Amazon Pinpoint API in your Java applications by using the client that's provided by the AWS SDK for Java\.
 
 **Example Code**  
-To look up an endpoint, initialize a [https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/model/GetEndpointRequest.html](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/model/GetEndpointRequest.html) object\. Then, pass this object to the [https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#getEndpoint-com.amazonaws.services.pinpoint.model.GetEndpointRequest-](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#getEndpoint-com.amazonaws.services.pinpoint.model.GetEndpointRequest-) method of the `AmazonPinpoint` client:  
+To look up an endpoint, initialize a [https://docs.aws.amazon.com/sdk-for-java/latest/reference/com/amazonaws/services/pinpoint/model/GetEndpointRequest.html](https://docs.aws.amazon.com/sdk-for-java/latest/reference/com/amazonaws/services/pinpoint/model/GetEndpointRequest.html) object\. Then, pass this object to the [https://docs.aws.amazon.com/sdk-for-java/latest/reference/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#getEndpoint-com.amazonaws.services.pinpoint.model.GetEndpointRequest-](https://docs.aws.amazon.com/sdk-for-java/latest/reference/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#getEndpoint-com.amazonaws.services.pinpoint.model.GetEndpointRequest-) method of the `AmazonPinpoint` client:  
 
 ```
-import com.amazonaws.regions.Regions;
-import com.amazonaws.services.pinpoint.AmazonPinpoint;
-import com.amazonaws.services.pinpoint.AmazonPinpointClientBuilder;
-import com.amazonaws.services.pinpoint.model.EndpointResponse;
-import com.amazonaws.services.pinpoint.model.GetEndpointRequest;
-import com.amazonaws.services.pinpoint.model.GetEndpointResult;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import software.amazon.awssdk.regions.Region;
+import software.amazon.awssdk.services.pinpoint.PinpointClient;
+import software.amazon.awssdk.services.pinpoint.model.EndpointResponse;
+import software.amazon.awssdk.services.pinpoint.model.GetEndpointResponse;
+import software.amazon.awssdk.services.pinpoint.model.PinpointException;
+import software.amazon.awssdk.services.pinpoint.model.GetEndpointRequest;
+```
 
-public class LookUpEndpoint {
+```
+    public static void lookupPinpointEndpoint(PinpointClient pinpoint, String appId, String endpoint ) {
 
-    public static void main(String[] args) {
+        try {
+            GetEndpointRequest appRequest = GetEndpointRequest.builder()
+                    .applicationId(appId)
+                    .endpointId(endpoint)
+                    .build();
 
-        final String USAGE = "\n" +
-                "LookUpEndpoint - Prints the definition of the endpoint that has the specified ID." +
-                "Usage: LookUpEndpoint <applicationId> <endpointId>\n\n" +
+            GetEndpointResponse result = pinpoint.getEndpoint(appRequest);
+            EndpointResponse endResponse = result.endpointResponse();
 
-                "Where:\n" +
-                "  applicationId - The ID of the Amazon Pinpoint application that has the " +
-                "endpoint." +
-                "  endpointId - The ID of the endpoint ";
+            // Uses the Google Gson library to pretty print the endpoint JSON.
+            Gson gson = new GsonBuilder()
+                    .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+                    .setPrettyPrinting()
+                    .create();
 
-        if (args.length < 1) {
-            System.out.println(USAGE);
+            String endpointJson = gson.toJson(endResponse);
+            System.out.println(endpointJson);
+
+        } catch (PinpointException e) {
+            System.err.println(e.awsErrorDetails().errorMessage());
             System.exit(1);
         }
-
-        String applicationId = args[0];
-        String endpointId = args[1];
-
-        // Specifies the endpoint that the Amazon Pinpoint client looks up.
-        GetEndpointRequest request = new GetEndpointRequest()
-                .withEndpointId(endpointId)
-                .withApplicationId(applicationId);
-
-        // Initializes the Amazon Pinpoint client.
-        AmazonPinpoint pinpointClient = AmazonPinpointClientBuilder.standard()
-                .withRegion(Regions.US_EAST_1).build();
-
-        // Uses the Amazon Pinpoint client to get the endpoint definition.
-        GetEndpointResult result = pinpointClient.getEndpoint(request);
-        EndpointResponse endpoint = result.getEndpointResponse();
-
-        // Uses the Google Gson library to pretty print the endpoint JSON.
-        Gson gson = new GsonBuilder()
-                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
-                .setPrettyPrinting()
-                .create();
-        String endpointJson = gson.toJson(endpoint);
-
-        System.out.println(endpointJson);
+        System.out.println("Done");
     }
-}
 ```
-To print the endpoint data in a readable format, this example uses the Google GSON library to convert the `EndpointResponse` object to a JSON string\.
+To print the endpoint data in a readable format, this example uses the Google GSON library to convert the `EndpointResponse` object to a JSON string\.  
+For the full SDK example, see [LookupEndpoint\.java](https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/javav2/example_code/pinpoint/src/main/java/com/example/pinpoint/LookupEndpoint.java/) on [GitHub](https://github.com/)\.
 
 ------
 #### [ HTTP ]
 
 You can use Amazon Pinpoint by making HTTP requests directly to the REST API\.
 
-**Example GET Endpoint Request**  
+**Example GET endpoint request**  
 To look up an endpoint, issue a `GET` request to the [Endpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html) resource:  
 
 ```
@@ -212,6 +197,6 @@ The response to this request is the JSON definition of the endpoint, as in the f
 
 ------
 
-## Related Information<a name="audience-data-endpoints-related"></a>
+## Related information<a name="audience-data-endpoints-related"></a>
 
 For more information about the Endpoint resource in the Amazon Pinpoint API, see [Endpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-endpoint.html) in the *Amazon Pinpoint API Reference\.*

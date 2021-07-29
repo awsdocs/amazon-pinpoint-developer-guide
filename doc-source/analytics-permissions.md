@@ -1,4 +1,4 @@
-# IAM Policies for Querying Amazon Pinpoint Analytics Data<a name="analytics-permissions"></a>
+# IAM policies for querying Amazon Pinpoint analytics data<a name="analytics-permissions"></a>
 
 By using the Amazon Pinpoint API, you can query analytics data for a subset of standard metrics, also referred to as *key performance indicators \(KPIs\)* that apply to Amazon Pinpoint projects, campaigns, and journeys\. These metrics can help you monitor and assess the performance of projects, campaigns, and journeys\.
 
@@ -121,4 +121,4 @@ Where:
 + *projectId* is the identifier for the project that’s associated with the journey\.
 + *journeyId* is the identifier for the journey that you want to provide access to\.
 
-For a complete list of Amazon Pinpoint API actions that you can use in IAM policies, see [Amazon Pinpoint Actions for IAM Policies](permissions-actions.md)\. For detailed information about creating and managing IAM policies, see the [IAM User Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/)\.
+For a complete list of Amazon Pinpoint API actions that you can use in IAM policies, see [Amazon Pinpoint actions for IAM policies](permissions-actions.md)\. For detailed information about creating and managing IAM policies, see the [IAM User Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/)\.

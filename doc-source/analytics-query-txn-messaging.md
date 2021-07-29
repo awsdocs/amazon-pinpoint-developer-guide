@@ -1,4 +1,4 @@
-# Querying Amazon Pinpoint Analytics Data for Transactional Messages<a name="analytics-query-txn-messaging"></a>
+# Querying Amazon Pinpoint analytics data for transactional messages<a name="analytics-query-txn-messaging"></a>
 
 In addition to using the analytics pages on the Amazon Pinpoint console, you can use Amazon Pinpoint Analytics APIs to query analytics data for a subset of standard metrics that provide insight into delivery and engagement trends for the transactional messages that were sent for a project\. 
 
@@ -13,17 +13,17 @@ This topic explains and provides examples of how to choose these options and que
 Before you query analytics data for transactional messages, it helps to gather the following information, which you use to define your query:
 + **Project ID** – The unique identifier for the project that the messages were sent from\. In the Amazon Pinpoint API, this value is stored in the `application-id` property\. On the Amazon Pinpoint console, this value is displayed as the **Project ID** on the **All projects** page\.
 + **Date range** – Optionally, the first and last date and time of the date range to query data for\. Date ranges are inclusive and must be limited to 31 or fewer calendar days\. In addition, they must start fewer than 90 days from the current day\. If you don’t specify a date range, Amazon Pinpoint automatically queries the data for the preceding 31 calendar days\.
-+ **Metric** – The name of the metric to query—more specifically, the `kpi-name` value for the metric\. For a complete list of supported metrics and the `kpi-name` value for each one, see [Standard Metrics](analytics-standard-metrics.md)\.
++ **Metric** – The name of the metric to query—more specifically, the `kpi-name` value for the metric\. For a complete list of supported metrics and the `kpi-name` value for each one, see [Standard metrics](analytics-standard-metrics.md)\.
 
 It also helps to determine whether you want to group the data by a relevant field\. If you do, you can simplify your analysis and reporting by choosing a metric that’s designed to group data for you automatically\. For example, Amazon Pinpoint provides several standard metrics that report the number of transactional SMS messages that were delivered to recipients\. One of these metrics automatically groups the data by date \(`txn-sms-delivered-grouped-by-date`\)\. Another metric automatically groups the data by country or region \(`txn-sms-delivered-grouped-by-country`\)\. A third metric simply returns a single value—the number of messages that were delivered to recipients \(`txn-sms-delivered`\)\. If you can't find a standard metric that groups data the way that you want, you can develop a series of queries that return the data that you want\. You can then manually break down or combine the query results into custom groups that you design\.
 
-Finally, it’s important to verify that you’re authorized to access the data that you want to query\. For more information, see [IAM Policies for Querying Amazon Pinpoint Analytics Data](analytics-permissions.md)\.
+Finally, it’s important to verify that you’re authorized to access the data that you want to query\. For more information, see [IAM policies for querying Amazon Pinpoint analytics data](analytics-permissions.md)\.
 
-## Querying Data for Transactional Email Messages<a name="analytics-query-txn-messaging-email"></a>
+## Querying data for transactional email messages<a name="analytics-query-txn-messaging-email"></a>
 
 To query the data for transactional email messages that were sent for a project, you use the [Application Metrics](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-kpis-daterange-kpi-name.html) API and specify values for the following required parameters:
 + **application\-id** – The project ID, which is the unique identifier for the project\. In Amazon Pinpoint, the terms *project* and *application* have the same meaning\.
-+ **kpi\-name** – The name of the metric to query\. This value describes the associated metric and consists of two or more terms, which are comprised of lowercase alphanumeric characters, separated by a hyphen\. For a complete list of supported metrics and the `kpi-name` value for each one, see [Standard Metrics](analytics-standard-metrics.md)\.
++ **kpi\-name** – The name of the metric to query\. This value describes the associated metric and consists of two or more terms, which are comprised of lowercase alphanumeric characters, separated by a hyphen\. For a complete list of supported metrics and the `kpi-name` value for each one, see [Standard metrics](analytics-standard-metrics.md)\.
 
 You can also apply a filter that queries the data for a specific date range\. If you don’t specify a date range, Amazon Pinpoint returns the data for the preceding 31 calendar days\. To filter the data by different dates, use the supported date range parameters to specify the first and last date and time of the date range\. The values should be in extended ISO 8601 format and use Coordinated Universal Time \(UTC\)—for example, `2019-09-06T20:00:00Z` for 8:00 PM UTC September 6, 2019\. Date ranges are inclusive and must be limited to 31 or fewer calendar days\. In addition, the first date and time must be fewer than 90 days from the current day\.
 
@@ -152,13 +152,13 @@ After you send your query, Amazon Pinpoint returns the query results in a JSON r
 
 Other metrics return multiple values and group the values by a relevant field\. If a metric returns multiple values, the JSON response includes a field that indicates which field was used to group the data\.
 
-To learn more about the structure of query results, see [Using Query Results](analytics-query-results.md)\.
+To learn more about the structure of query results, see [Using query results](analytics-query-results.md)\.
 
-## Querying Data for Transactional SMS Messages<a name="analytics-query-txn-messaging-sms"></a>
+## Querying data for transactional SMS messages<a name="analytics-query-txn-messaging-sms"></a>
 
 To query the data for transactional SMS messages that were sent for a project, you use the [Application Metrics](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-kpis-daterange-kpi-name.html) API and specify values for the following required parameters:
 + **application\-id** – The project ID, which is the unique identifier for the project\. In Amazon Pinpoint, the terms *project* and *application* have the same meaning\.
-+ **kpi\-name** – The name of the metric to query\. This value describes the associated metric and consists of two or more terms, which are comprised of lowercase alphanumeric characters, separated by a hyphen\. For a complete list of supported metrics and the `kpi-name` value for each one, see [Standard Metrics](analytics-standard-metrics.md)\.
++ **kpi\-name** – The name of the metric to query\. This value describes the associated metric and consists of two or more terms, which are comprised of lowercase alphanumeric characters, separated by a hyphen\. For a complete list of supported metrics and the `kpi-name` value for each one, see [Standard metrics](analytics-standard-metrics.md)\.
 
 You can also apply a filter that queries the data for a specific date range\. If you don’t specify a date range, Amazon Pinpoint returns the data for the preceding 31 calendar days\. To filter the data by different dates, use the supported date range parameters to specify the first date and time and the last date and time of the date range\. The values should be in extended ISO 8601 format and use Coordinated Universal Time \(UTC\)—for example, `2019-09-06T20:00:00Z` for 8:00 PM UTC September 6, 2019\. Date ranges are inclusive and must be limited to 31 or fewer calendar days\. In addition, the first date and time must be fewer than 90 days from the current day\.
 
@@ -331,4 +331,4 @@ In this case, the `GroupedBys` field indicates that the values are grouped by ca
 + 35 messages were sent on September 7, 2019\.
 + 10 messages were sent on September 8, 2019\.
 
-To learn more about the structure of query results, see [Using Query Results](analytics-query-results.md)\.
+To learn more about the structure of query results, see [Using query results](analytics-query-results.md)\.

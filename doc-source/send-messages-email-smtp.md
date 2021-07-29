@@ -1,8 +1,8 @@
-# Send Email by Using the Amazon Pinpoint SMTP Interface<a name="send-messages-email-smtp"></a>
+# Send email by using the Amazon Pinpoint SMTP interface<a name="send-messages-email-smtp"></a>
 
 This section contains complete code examples that you can use to send email from your apps by using the Amazon Pinpoint SMTP interface\. These examples use standard email\-sending libraries whenever possible\.
 
-These examples assume that you've already created an Amazon Pinpoint SMTP user name and password\. For more information, see [Obtaining SMTP Credentials](https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-email-send-smtp.html#channels-email-send-smtp-credentials) in the *Amazon Pinpoint User Guide*\.
+These examples assume that you've already created an Amazon Pinpoint SMTP user name and password\. For more information, see [Obtaining SMTP credentials](https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-email-send-smtp.html#channels-email-send-smtp-credentials) in the *Amazon Pinpoint User Guide*\.
 
 ------
 #### [ C\# ]
@@ -43,7 +43,7 @@ namespace PinpointEmailSMTP
         // Replace smtp_username with your Amazon Pinpoint SMTP user name.
         static string smtpUsername = "AKIAIOSFODNN7EXAMPLE";
 
-        // Replace smtp_password with your Amazon Pinpoint SMTP user name.
+        // Replace smtp_password with your Amazon Pinpoint SMTP password.
         static string smtpPassword = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY";
 
         // (Optional) the name of a configuration set to use for this message.
@@ -246,6 +246,17 @@ public class SendEmail {
 Use this example to send email by using the [Nodemailer](https://nodemailer.com) module for Node\.js\.
 
 ```
+/* 
+This code uses callbacks to handle asynchronous function responses.
+It currently demonstrates using an async-await pattern. 
+AWS supports both the async-await and promises patterns.
+For more information, see the following: 
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
+https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/calling-services-asynchronously.html
+https://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-handler.html 
+*/
+
 "use strict";
 const nodemailer = require("nodemailer");
 

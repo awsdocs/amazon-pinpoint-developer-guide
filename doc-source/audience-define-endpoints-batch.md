@@ -1,8 +1,8 @@
-# Adding a Batch of Endpoints to Amazon Pinpoint<a name="audience-define-endpoints-batch"></a>
+# Adding a batch of endpoints to Amazon Pinpoint<a name="audience-define-endpoints-batch"></a>
 
 You can add or update multiple endpoints in a single operation by providing the endpoints in batches\. Each batch request can include up to 100 endpoint definitions\.
 
-If you want to add or update more than 100 endpoints in a single operation, see [Importing Endpoints into Amazon Pinpoint](audience-define-import.md) instead\.
+If you want to add or update more than 100 endpoints in a single operation, see [Importing endpoints into Amazon Pinpoint](audience-define-import.md) instead\.
 
 ## Examples<a name="audience-define-endpoints-batch-examples"></a>
 
@@ -13,7 +13,7 @@ The following examples show you how to add two endpoints at once by including th
 
 You can use Amazon Pinpoint by running commands with the AWS CLI\.
 
-**Example Update Endpoints Batch Command**  
+**Example Update endpoints batch command**  
 To submit an endpoint batch request, use the [https://docs.aws.amazon.com/cli/latest/reference/pinpoint/update-endpoints-batch.html](https://docs.aws.amazon.com/cli/latest/reference/pinpoint/update-endpoints-batch.html) command:  
 
 ```
@@ -25,7 +25,7 @@ Where:
 + *application\-id* is the ID of the Amazon Pinpoint project in which you're adding or updating the endpoints\.
 + *endpoint\_batch\_request\_file\.json* is the file path to a local JSON file that contains the input for the `--endpoint-batch-request` parameter\.
 
-**Example Endpoint Batch Request File**  
+**Example Endpoint batch request file**  
 The example `update-endpoints-batch` command uses a JSON file as the argument for the `--endpoint-request` parameter\. This file contains a batch of endpoint definitions like the following:  
 
 ```
@@ -88,118 +88,117 @@ For the attributes that you can use to define a batch of endpoints, see the [End
 You can use the Amazon Pinpoint API in your Java applications by using the client that's provided by the AWS SDK for Java\.
 
 **Example Code**  
-To submit an endpoint batch request, initialize an [https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/model/EndpointRequest.html](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/model/EndpointRequest.html) object, and pass it to the [https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#updateEndpointsBatch-com.amazonaws.services.pinpoint.model.UpdateEndpointsBatchRequest-](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#updateEndpointsBatch-com.amazonaws.services.pinpoint.model.UpdateEndpointsBatchRequest-) method of the `AmazonPinpoint` client\. The following example populates an `EndpointBatchRequest` object with two `EndpointBatchItem` objects:  
+To submit an endpoint batch request, initialize an [https://docs.aws.amazon.com/sdk-for-java/latest/reference/com/amazonaws/services/pinpoint/model/EndpointRequest.html](https://docs.aws.amazon.com/sdk-for-java/latest/reference/com/amazonaws/services/pinpoint/model/EndpointRequest.html) object, and pass it to the [https://docs.aws.amazon.com/sdk-for-java/latest/reference/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#updateEndpointsBatch-com.amazonaws.services.pinpoint.model.UpdateEndpointsBatchRequest-](https://docs.aws.amazon.com/sdk-for-java/latest/reference/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#updateEndpointsBatch-com.amazonaws.services.pinpoint.model.UpdateEndpointsBatchRequest-) method of the `AmazonPinpoint` client\. The following example populates an `EndpointBatchRequest` object with two `EndpointBatchItem` objects:  
 
 ```
-import com.amazonaws.regions.Regions;
-import com.amazonaws.services.pinpoint.AmazonPinpoint;
-import com.amazonaws.services.pinpoint.AmazonPinpointClientBuilder;
-import com.amazonaws.services.pinpoint.model.ChannelType;
-import com.amazonaws.services.pinpoint.model.EndpointBatchItem;
-import com.amazonaws.services.pinpoint.model.EndpointBatchRequest;
-import com.amazonaws.services.pinpoint.model.EndpointUser;
-import com.amazonaws.services.pinpoint.model.UpdateEndpointsBatchRequest;
-import com.amazonaws.services.pinpoint.model.UpdateEndpointsBatchResult;
+import software.amazon.awssdk.regions.Region;
+import software.amazon.awssdk.services.pinpoint.PinpointClient;
+import software.amazon.awssdk.services.pinpoint.model.UpdateEndpointsBatchResponse;
+import software.amazon.awssdk.services.pinpoint.model.EndpointUser;
+import software.amazon.awssdk.services.pinpoint.model.EndpointBatchItem;
+import software.amazon.awssdk.services.pinpoint.model.ChannelType;
+import software.amazon.awssdk.services.pinpoint.model.EndpointBatchRequest;
+import software.amazon.awssdk.services.pinpoint.model.PinpointException;
+import software.amazon.awssdk.services.pinpoint.model.UpdateEndpointsBatchRequest;
+import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.HashMap;
+```
 
-import java.util.Arrays;
+```
+    public static void updateEndpointsViaBatch( PinpointClient pinpoint, String applicationId) {
 
-public class AddExampleEndpoints {
+        try {
+            List<String> myList = new ArrayList<String>();
+            myList.add("music");
+            myList.add("books");
 
-    public static void main(String[] args) {
+            Map myMap = new HashMap<String, List>();
+            myMap.put("attributes", myList);
 
-        final String USAGE = "\n" +
-                "AddExampleEndpoints - Adds example endpoints to an Amazon Pinpoint application." +
-                "Usage: AddExampleEndpoints <applicationId>" +
-                "Where:\n" +
-                "  applicationId - The ID of the Amazon Pinpoint application to add the example endpoints to.";
+            List<String> myNames = new ArrayList<String>();
+            myList.add("Richard");
+            myList.add("Roe");
 
-        if (args.length < 1) {
-            System.out.println(USAGE);
-            System.exit(1);
-        }
+            Map myMap2 = new HashMap<String, List>();
+            myMap2.put("name",myNames );
 
+            EndpointUser richardRoe = EndpointUser.builder()
+                .userId("example_user_1")
+                .userAttributes(myMap2)
+                .build();
 
-        String applicationId = args[0];
+            // Create an EndpointBatchItem object for Richard Roe.
+            EndpointBatchItem richardRoesEmailEndpoint = EndpointBatchItem.builder()
+                .channelType(ChannelType.EMAIL)
+                .address("richard_roe@example.com")
+                .id("example_endpoint_1")
+                .attributes(myMap)
+                .user(richardRoe)
+                .build();
 
-        // Initializes an endpoint definition with channel type, address, and ID.
-        EndpointBatchItem richardRoesEmailEndpoint = new EndpointBatchItem()
-                .withChannelType(ChannelType.EMAIL)
-                .withAddress("richard_roe@example.com")
-                .withId("example_endpoint_1");
+            List<String> myListMary = new ArrayList<String>();
+            myListMary.add("cooking");
+            myListMary.add("politics");
+            myListMary.add("finance");
 
-        // Adds custom attributes to the endpoint.
-        richardRoesEmailEndpoint.addAttributesEntry("interests", Arrays.asList(
-                "music",
-                "books"));
+            Map myMapMary = new HashMap<String, List>();
+            myMapMary.put("interests", myListMary);
 
-        // Adds custom metrics to the endpoint.
-        richardRoesEmailEndpoint.addMetricsEntry("music_interest_level", 3.0);
-        richardRoesEmailEndpoint.addMetricsEntry("books_interest_level", 7.0);
+            List<String> myNameMary = new ArrayList<String>();
+            myNameMary.add("Mary ");
+            myNameMary.add("Major");
 
-        // Initializes a user definition with a user ID.
-        EndpointUser richardRoe = new EndpointUser().withUserId("example_user_1");
+            Map maryName = new HashMap<String, List>();
+            myMapMary.put("name",myNameMary );
 
-        // Adds custom user attributes.
-        richardRoe.addUserAttributesEntry("name", Arrays.asList("Richard", "Roe"));
+            EndpointUser maryMajor = EndpointUser.builder()
+                .userId("example_user_2")
+                .userAttributes(maryName)
+                .build();
 
-        // Adds the user definition to the endpoint.
-        richardRoesEmailEndpoint.setUser(richardRoe);
+            // Create an EndpointBatchItem object for Mary Major.
+            EndpointBatchItem maryMajorsSmsEndpoint = EndpointBatchItem.builder()
+                .channelType(ChannelType.SMS)
+                .address("+16145550100")
+                .id("example_endpoint_2")
+                .attributes(myMapMary)
+                .user(maryMajor)
+                .build();
 
-        // Initializes an endpoint definition with channel type, address, and ID.
-        EndpointBatchItem maryMajorsSmsEndpoint = new EndpointBatchItem()
-                .withChannelType(ChannelType.SMS)
-                .withAddress("+16145550100")
-                .withId("example_endpoint_2");
+            // Adds multiple endpoint definitions to a single request object.
+            EndpointBatchRequest endpointList = EndpointBatchRequest.builder()
+                .item( richardRoesEmailEndpoint)
+                .item( maryMajorsSmsEndpoint)
+                .build();
 
-        // Adds custom attributes to the endpoint.
-        maryMajorsSmsEndpoint.addAttributesEntry("interests", Arrays.asList(
-                "cooking",
-                "politics",
-                "finance"));
+            // Create the UpdateEndpointsBatchRequest.
+            UpdateEndpointsBatchRequest batchRequest = UpdateEndpointsBatchRequest.builder()
+                .applicationId(applicationId)
+                .endpointBatchRequest(endpointList)
+                .build();
 
-        // Adds custom metrics to the endpoint.
-        maryMajorsSmsEndpoint.addMetricsEntry("cooking_interest_level", 5.0);
-        maryMajorsSmsEndpoint.addMetricsEntry("politics_interest_level", 8.0);
-        maryMajorsSmsEndpoint.addMetricsEntry("finance_interest_level", 4.0);
+            //  Updates the endpoints with Amazon Pinpoint.
+            UpdateEndpointsBatchResponse result = pinpoint.updateEndpointsBatch(batchRequest);
+            System.out.format("Update endpoints batch result: %s\n",
+                result.messageBody().message());
 
-        // Initializes a user definition with a user ID.
-        EndpointUser maryMajor = new EndpointUser().withUserId("example_user_2");
-
-        // Adds custom user attributes.
-        maryMajor.addUserAttributesEntry("name", Arrays.asList("Mary", "Major"));
-
-        // Adds the user definition to the endpoint.
-        maryMajorsSmsEndpoint.setUser(maryMajor);
-
-        // Adds multiple endpoint definitions to a single request object.
-        EndpointBatchRequest endpointList = new EndpointBatchRequest()
-                .withItem(richardRoesEmailEndpoint)
-                .withItem(maryMajorsSmsEndpoint);
-
-        // Initializes the Amazon Pinpoint client.
-        AmazonPinpoint pinpointClient = AmazonPinpointClientBuilder.standard()
-                .withRegion(Regions.US_EAST_1).build();
-
-        // Updates or creates the endpoints with Amazon Pinpoint.
-        UpdateEndpointsBatchResult result = pinpointClient.updateEndpointsBatch(
-                new UpdateEndpointsBatchRequest()
-                .withApplicationId(applicationId)
-                .withEndpointBatchRequest(endpointList));
-
-        System.out.format("Update endpoints batch result: %s\n",
-                result.getMessageBody().getMessage());
-
+     } catch (PinpointException e) {
+        System.err.println(e.awsErrorDetails().errorMessage());
+        System.exit(1);
     }
-
-}
+  }
 ```
+
+For the full SDK example, see [AddExampleEndpoints\.java](https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/javav2/example_code/pinpoint/src/main/java/com/example/pinpoint/AddExampleEndpoints.java/) on [GitHub](https://github.com/)\.
 
 ------
 #### [ HTTP ]
 
 You can use Amazon Pinpoint by making HTTP requests directly to the REST API\.
 
-**Example Put Endpoints Request**  
+**Example Put endpoints request**  
 To submit an endpoint batch request, issue a `PUT` request to the [Endpoints](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints.html) resource at the following URI:  
 `/v1/apps/application-id/endpoints`  
 Where *application\-id* is the ID of the Amazon Pinpoint project in which you're adding or updating the endpoints\.  
@@ -276,6 +275,6 @@ If your request succeeds, you receive a response like the following:
 
 ------
 
-## Related Information<a name="audience-define-endpoints-batch-related"></a>
+## Related information<a name="audience-define-endpoints-batch-related"></a>
 
 For more information about the Endpoint resource in the Amazon Pinpoint API, including the supported HTTP methods and request parameters, see [Endpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints-endpoint-id.html) in the *Amazon Pinpoint API Reference\.*

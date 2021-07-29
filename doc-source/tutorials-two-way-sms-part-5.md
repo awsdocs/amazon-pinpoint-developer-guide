@@ -1,8 +1,8 @@
-# Step 5: Create and Deploy the Web Form<a name="tutorials-two-way-sms-part-5"></a>
+# Step 5: Create and deploy the web form<a name="tutorials-two-way-sms-part-5"></a>
 
 All of the components of this solution that use AWS services are now in place\. The last step is to create and deploy the web form that captures customer's data\.
 
-## Step 5\.1: Create the JavaScript Form Handler<a name="tutorials-two-way-sms-part-5-create-form-handler"></a>
+## Step 5\.1: Create the JavaScript form handler<a name="tutorials-two-way-sms-part-5-create-form-handler"></a>
 
 In this section, you create a JavaScript function that parses the content of the web form that you create in the next section\. After parsing the content, this function sends the data to the API that you created in [Part 4](tutorials-two-way-sms-part-4.md)\.
 
@@ -80,7 +80,7 @@ In this section, you create a JavaScript function that parses the content of the
 
 1. Save the file\.
 
-## Step 5\.2: Create the Form File<a name="tutorials-two-way-sms-part-5-create-form"></a>
+## Step 5\.2: Create the form file<a name="tutorials-two-way-sms-part-5-create-form"></a>
 
 In this section, you create an HTML file that contains the form that customers use to register for your SMS program\. This file uses the JavaScript form handler that you created in the previous section to transmit the form data to your Lambda function\.
 
@@ -162,13 +162,13 @@ When a user submits this form, it triggers a Lambda function that calls several 
 
 1. Save the file\.
 
-## Step 5\.2: Upload the Form Files<a name="tutorials-two-way-sms-part-5-upload-form"></a>
+## Step 5\.2: Upload the form files<a name="tutorials-two-way-sms-part-5-upload-form"></a>
 
-Now that you've created the HTML form and the JavaScript form handler, the last step is to publish these files to the internet\. This section assumes that you have an existing web hosting provider\. If you don't have an existing hosting provider, you can launch a website by using Amazon Route 53, Amazon Simple Storage Service \(Amazon S3\), and Amazon CloudFront\. For more information, see [Host a Static Website](https://aws.amazon.com/getting-started/projects/host-static-website/)\.
+Now that you've created the HTML form and the JavaScript form handler, the last step is to publish these files to the internet\. This section assumes that you have an existing web hosting provider\. If you don't have an existing hosting provider, you can launch a website by using Amazon Route 53 , Amazon Simple Storage Service \(Amazon S3\), and Amazon CloudFront\. For more information, see [Host a static website](https://aws.amazon.com/getting-started/projects/host-static-website/)\.
 
 If you use another web hosting provider, consult the provider's documentation for more information about publishing webpages\.
 
-## Step 5\.3: Test the Form<a name="tutorials-two-way-sms-part-5-test-form"></a>
+## Step 5\.3: Test the form<a name="tutorials-two-way-sms-part-5-test-form"></a>
 
 After you publish the form, you should submit some test events to make sure that it works as expected\.
 

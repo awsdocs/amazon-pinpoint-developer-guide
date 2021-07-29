@@ -1,4 +1,4 @@
-# Step 2: Create IAM Roles<a name="tutorials-importing-data-create-iam-roles"></a>
+# Step 2: Create IAM roles<a name="tutorials-importing-data-create-iam-roles"></a>
 
 The next step in implementing this solution is to configure policies and roles in AWS Identity and Access Management \(IAM\)\. For this solution, you need to create the following roles and policies: 
 + A role that can read and write from a specific set of Amazon S3 buckets\.
@@ -7,7 +7,7 @@ The next step in implementing this solution is to configure policies and roles i
 
 The policies that you create in this section use the principal of granting *least privilege*\. In other words, they only grant the specific permissions that are required to complete a specific task, and no more\.
 
-## Step 2\.1: Create a Policy and Role for Reading and Writing From Amazon S3<a name="tutorials-importing-data-create-iam-roles-s3-read-write"></a>
+## Step 2\.1: Create a policy and role for reading and writing from Amazon S3<a name="tutorials-importing-data-create-iam-roles-s3-read-write"></a>
 
 The first policy that you need to create is one that allows Lambda to view the contents of a folder in an Amazon S3 bucket\. It also allows Lambda to read files in that bucket, and to move those files to other folders in the same bucket\.
 
@@ -80,7 +80,7 @@ When you finish creating the policy, you can create a role that uses it\.
 
 1. On the **Review** page, for **Name**, enter **ImporterS3Role**\. Choose **Create role**\.
 
-## Step 2\.2: Create a Policy and Role for Importing from Amazon S3<a name="tutorials-importing-data-create-iam-roles-pinpoint-import"></a>
+## Step 2\.2: Create a policy and role for importing from Amazon S3<a name="tutorials-importing-data-create-iam-roles-pinpoint-import"></a>
 
 To use the `CreateImportJob` API operation, you have to provide an IAM role that allows Amazon Pinpoint to read and write from your Amazon S3 bucket\. This role has to be passed from your user role to Amazon Pinpoint\. To enable the role to be passed to Amazon Pinpoint, you have to add a *trust policy* to the role\.
 
@@ -165,7 +165,7 @@ Next, you create a role that uses this policy, and then attach a trust policy to
 
 1. Choose **Update trust policy**\.
 
-## Step 2\.3: Create a Policy and Role for Using Amazon Pinpoint Resources<a name="tutorials-importing-data-create-iam-roles-pinpoint"></a>
+## Step 2\.3: Create a policy and role for using Amazon Pinpoint resources<a name="tutorials-importing-data-create-iam-roles-pinpoint"></a>
 
 The next policy that you need to create is one that allows Lambda to interact with Amazon Pinpoint\. Specifically, this policy allows Lambda to call the Amazon Pinpoint phone number validation service, and to create import jobs in Amazon Pinpoint\. It also allows Amazon Pinpoint to read from your Amazon S3 bucket when you create an import job\.
 

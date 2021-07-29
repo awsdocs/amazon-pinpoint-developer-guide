@@ -1,4 +1,4 @@
-# Logging Amazon Pinpoint API Calls with AWS CloudTrail<a name="logging-using-cloudtrail"></a>
+# Logging Amazon Pinpoint API calls with AWS CloudTrail<a name="logging-using-cloudtrail"></a>
 
 Amazon Pinpoint is integrated with AWS CloudTrail, which is a service that provides a record of actions taken by a user, role, or AWS service in Amazon Pinpoint\. CloudTrail captures API calls for Amazon Pinpoint as events\. The calls that are captured include calls from the Amazon Pinpoint console and code calls to Amazon Pinpoint API operations\. 
 
@@ -6,40 +6,40 @@ If you create a trail, you can enable continuous delivery of CloudTrail events t
 
 To learn more about CloudTrail, including how to configure and enable it, see the [AWS CloudTrail User Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/)\.
 
-## Amazon Pinpoint Information in CloudTrail<a name="pinpoint-info-in-cloudtrail"></a>
+## Amazon Pinpoint information in CloudTrail<a name="pinpoint-info-in-cloudtrail"></a>
 
-CloudTrail is enabled on your AWS account when you create the account\. When supported event activity occurs in Amazon Pinpoint, that activity is recorded in a CloudTrail event along with other AWS service events in **Event history**\. You can view, search, and download recent events in your AWS account\. For more information, see [Viewing Events with CloudTrail Event History](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html)\. 
+CloudTrail is enabled on your AWS account when you create the account\. When supported event activity occurs in Amazon Pinpoint, that activity is recorded in a CloudTrail event along with other AWS service events in **Event history**\. You can view, search, and download recent events in your AWS account\. For more information, see [Viewing events with CloudTrail event history](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html)\. 
 
 For an ongoing record of events in your AWS account, including events for Amazon Pinpoint, create a trail\. A *trail* enables CloudTrail to deliver log files to an Amazon S3 bucket\. By default, when you create a trail in the console, the trail applies to all AWS Regions\. The trail logs events from all Regions in the AWS partition and delivers the log files to the Amazon S3 bucket that you specify\. Additionally, you can configure other AWS services to further analyze and act upon the event data collected in CloudTrail logs\. For more information, see the following:
-+ [Overview for Creating a Trail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html)
-+ [CloudTrail Supported Services and Integrations](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html#cloudtrail-aws-service-specific-topics-integrations)
-+ [Configuring Amazon SNS Notifications for CloudTrail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html)
-+ [Receiving CloudTrail Log Files from Multiple Regions](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html) and [Receiving CloudTrail Log Files from Multiple Accounts](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html)
++ [Overview for creating a trail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-and-update-a-trail.html)
++ [CloudTrail supported services and integrations](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-aws-service-specific-topics.html#cloudtrail-aws-service-specific-topics-integrations)
++ [Configuring Amazon SNS notifications for CloudTrail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html)
++ [Receiving CloudTrail log files from multiple regions](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html) and [Receiving CloudTrail log files from multiple accounts](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html)
 
 Every event or log entry contains information about who generated the request\. The identity information helps you determine: 
 + Whether the request was made with root or AWS Identity and Access Management \(IAM\) user credentials\.
 + Whether the request was made with temporary security credentials for a role or federated user\.
 + Whether the request was made by another AWS service\.
 
-For more information, see [CloudTrail userIdentity Element](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html)\.
+For more information, see [CloudTrail userIdentity element](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html)\.
 
 You can create a trail and store your log files in your Amazon S3 bucket for as long as you want\. Also, you can define Amazon S3 lifecycle rules to archive or delete log files automatically\. By default, your log files are encrypted with Amazon S3 server\-side encryption \(SSE\)\.
 
-To be notified of log file delivery, configure CloudTrail to publish Amazon SNS notifications when new log files are delivered\. For more information, see [Configuring Amazon SNS Notifications for CloudTrail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html)\.
+To be notified of log file delivery, configure CloudTrail to publish Amazon SNS notifications when new log files are delivered\. For more information, see [Configuring Amazon SNS notifications for CloudTrail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/getting_notifications_top_level.html)\.
 
-You can also aggregate Amazon Pinpoint log files from multiple AWS Regions and multiple AWS accounts into a single Amazon S3 bucket\. For more information, see [Receiving CloudTrail Log Files from Multiple Regions](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html) and [Receiving CloudTrail Log Files from Multiple Accounts](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html)\.
+You can also aggregate Amazon Pinpoint log files from multiple AWS Regions and multiple AWS accounts into a single Amazon S3 bucket\. For more information, see [Receiving CloudTrail log files from multiple regions](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/receive-cloudtrail-log-files-from-multiple-regions.html) and [Receiving CloudTrail log files from multiple accounts](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-receive-logs-from-multiple-accounts.html)\.
 
 You can use CloudTrail to log actions for the following Amazon Pinpoint APIs:
 + [Amazon Pinpoint API](#pinpoint-cloudtrail-actions)
-+ [Amazon Pinpoint Email API](#pinpoint-email-cloudtrail-actions)
 + [Amazon Pinpoint SMS and Voice API](#pinpoint-sms-voice-cloudtrail-actions)
 
-## Amazon Pinpoint API Actions That Can Be Logged by CloudTrail<a name="pinpoint-cloudtrail-actions"></a>
+## Amazon Pinpoint API actions that can be logged by CloudTrail<a name="pinpoint-cloudtrail-actions"></a>
 
 The Amazon Pinpoint API supports logging the following actions as events in CloudTrail log files:
 + [CreateApp](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apps.html#rest-api-apps-methods-post)
 + [CreateCampaign](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaigns.html#rest-api-campaigns-methods-post)
 + [CreateEmailTemplate](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-email.html)
++ [CreateExportJob](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-jobs-export.html#CreateExportJob)
 + [CreateImportJob](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-import-jobs.html#rest-api-import-jobs-methods-post)
 + [CreateJourney](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-journeys.html)
 + [CreatePushTemplate](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-push.html)
@@ -57,6 +57,7 @@ The Amazon Pinpoint API supports logging the following actions as events in Clou
 + [DeleteCampaign](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaign.html#rest-api-campaign-methods-delete)
 + [DeleteEmailChannel](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-email-channel.html#rest-api-email-channel-methods-delete)
 + [DeleteEmailTemplate](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-email.html)
++ [DeleteEndpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints-endpoint-id.html#DeleteEndpoint)
 + [DeleteEventStream](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-event-stream.html#rest-api-event-stream-methods-delete)
 + [DeleteGcmChannel](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-gcm-channel.html#rest-api-gcm-channel-methods-delete)
 + [DeleteJourney](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-journeys-journey-id.html)
@@ -65,6 +66,8 @@ The Amazon Pinpoint API supports logging the following actions as events in Clou
 + [DeleteSegment](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segment.html#rest-api-segment-methods-delete)
 + [DeleteSmsChannel](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-sms-channel.html#rest-api-sms-channel-methods-delete)
 + [DeleteSmsTemplate](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-sms.html)
++ [DeleteUserEndpoints](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-users-user-id.html#DeleteUserEndpoints)
++ [DeleteVoiceChannel](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-channels-voice.html#DeleteVoiceChannel)
 + [DeleteVoiceTemplate](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-voice.html)
 + [GetAdmChannel](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-adm-channel.html#rest-api-adm-channel-methods-get)
 + [GetApnsChannel](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-apns-channel.html#rest-api-apns-channel-methods-get)
@@ -82,9 +85,13 @@ The Amazon Pinpoint API supports logging the following actions as events in Clou
 + [GetCampaignVersion](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaign-version.html#rest-api-campaign-version-methods-get)
 + [GetCampaignVersions](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaign-versions.html#rest-api-campaign-versions-methods-get)
 + [GetCampaigns](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaigns.html#rest-api-campaigns-methods-get)
++ [GetChannels](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-channels.html#GetChannels)
 + [GetEmailChannel](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-email-channel.html#rest-api-email-channel-methods-get)
 + [GetEmailTemplate](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-email.html)
++ [GetEndpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/)
 + [GetEventStream](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-event-stream.html#rest-api-event-stream-methods-get)
++ [GetExportJob](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-jobs-export-job-id.html#GetExportJob)
++ [GetExportJobs](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-jobs-export.html#GetExportJobs)
 + [GetGcmChannel](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-gcm-channel.html#rest-api-gcm-channel-methods-get)
 + [GetImportJob](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-import-job.html#rest-api-import-job-methods-get)
 + [GetImportJobs](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-import-jobs.html#rest-api-import-jobs-methods-get)
@@ -96,18 +103,23 @@ The Amazon Pinpoint API supports logging the following actions as events in Clou
 + [GetRecommenderConfiguration](https://docs.aws.amazon.com/pinpoint/latest/apireference/recommenders-recommender-id.html)
 + [GetRecommenderConfigurations](https://docs.aws.amazon.com/pinpoint/latest/apireference/recommenders.html)
 + [GetSegment](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segment.html#rest-api-segment-methods-get)
++ [GetSegmentExportJobs](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-segments-segment-id-jobs-export.html#GetSegmentExportJobs)
 + [GetSegmentImportJobs](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segment-import-jobs.html#rest-api-segment-import-jobs-methods-get)
 + [GetSegmentVersion](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segment-version.html#rest-api-segment-version-methods-get)
 + [GetSegmentVersions](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segment-versions.html#rest-api-segment-versions-methods-get)
 + [GetSegments](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segments.html#rest-api-segments-methods-get)
 + [GetSmsChannel](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-sms-channel.html#rest-api-sms-channel-methods-get)
 + [GetSmsTemplate](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-sms.html)
++ [GetUserEndpoints](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-users-user-id.html#GetUserEndpoints)
++ [GetVoiceChannel](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-channels-voice.html#GetVoiceChannel)
 + [GetVoiceTemplate](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-voice.html)
 + [ListJourneys](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-journeys.html)
 + [ListTagsForResource](https://docs.aws.amazon.com/pinpoint/latest/apireference/tags-resource-arn.html)
 + [ListTemplates](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates.html)
 + [ListTemplateVersions](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-template-type-versions.html)
++ [PhoneNumberValidate](https://docs.aws.amazon.com/pinpoint/latest/apireference/phone-number-validate.html)
 + [PutEventStream](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-event-stream.html#rest-api-event-stream-methods-post)
++ [RemoveAttributes](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-attributes-attribute-type.html#RemoveAttributes)
 + [TagResource](https://docs.aws.amazon.com/pinpoint/latest/apireference/tags-resource-arn.html)
 + [UntagResource](https://docs.aws.amazon.com/pinpoint/latest/apireference/tags-resource-arn.html)
 + [UpdateAdmChannel](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-adm-channel.html#rest-api-adm-channel-methods-put)
@@ -120,6 +132,8 @@ The Amazon Pinpoint API supports logging the following actions as events in Clou
 + [UpdateCampaign](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaign.html#rest-api-campaign-methods-put)
 + [UpdateEmailChannel](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-email-channel.html#rest-api-email-channel-methods-put)
 + [UpdateEmailTemplate](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-email.html)
++ [UpdateEndpoint](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints-endpoint-id.html#UpdateEndpoint)
++ [UpdateEndpointsBatch](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints.html#UpdateEndpointsBatch)
 + [UpdateGcmChannel](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-gcm-channel.html#rest-api-gcm-channel-methods-put)
 + [UpdateJourney](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-journeys-journey-id.html)
 + [UpdateJourneyState](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-journeys-journey-id-state.html)
@@ -129,17 +143,15 @@ The Amazon Pinpoint API supports logging the following actions as events in Clou
 + [UpdateSmsChannel](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-sms-channel.html#rest-api-sms-channel-methods-put)
 + [UpdateSmsTemplate](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-sms.html)
 + [UpdateTemplateActiveVersion](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-template-type-active-version.html)
++ [UpdateVoiceChannel](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-channels-voice.html#UpdateVoiceChannel)
 + [UpdateVoiceTemplate](https://docs.aws.amazon.com/pinpoint/latest/apireference/templates-template-name-voice.html)
 
 The following Amazon Pinpoint API actions **aren't** logged in CloudTrail:
-+ GetEndpoint
 + PutEvents
 + SendMessages
 + SendUsersMessages
-+ UpdateEndpoint
-+ UpdateEndpointsBatch
 
-## Amazon Pinpoint Email API Actions That Can Be Logged by CloudTrail<a name="pinpoint-email-cloudtrail-actions"></a>
+## Amazon Pinpoint email API actions that can be logged by CloudTrail<a name="pinpoint-email-cloudtrail-actions"></a>
 
 The Amazon Pinpoint Email API supports logging the following actions as events in CloudTrail log files:
 + [CreateConfigurationSet](https://docs.aws.amazon.com/pinpoint-email/latest/APIReference/API_CreateConfigurationSet.html)
@@ -175,7 +187,7 @@ The Amazon Pinpoint Email API supports logging the following actions as events i
 The following Amazon Pinpoint Email API action **isn't** logged in CloudTrail:
 + SendEmail
 
-## Amazon Pinpoint SMS and Voice API Actions That Can Be Logged by CloudTrail<a name="pinpoint-sms-voice-cloudtrail-actions"></a>
+## Amazon Pinpoint SMS and voice API actions that can be logged by CloudTrail<a name="pinpoint-sms-voice-cloudtrail-actions"></a>
 
 The Amazon Pinpoint SMS and Voice API supports logging the following actions as events in CloudTrail log files:
 + [CreateConfigurationSet](https://docs.aws.amazon.com/pinpoint-sms-voice/latest/APIReference/v1-sms-voice-configuration-sets.html#v1-sms-voice-configuration-setspost)
@@ -188,7 +200,7 @@ The Amazon Pinpoint SMS and Voice API supports logging the following actions as 
 The following Amazon Pinpoint SMS and Voice API action **isn't** logged in CloudTrail:
 + SendVoiceMessage
 
-## Examples: Amazon Pinpoint Log File Entries<a name="understanding-pinpoint-entries"></a>
+## Examples: Amazon Pinpoint log file entries<a name="understanding-pinpoint-entries"></a>
 
 A trail is a configuration that enables delivery of events as log files to an Amazon S3 bucket that you specify\. CloudTrail log files contain one or more log entries\. An event represents a single request from any source\. It includes information about the requested action, the date and time of the action, request parameters, and so on\. CloudTrail log files aren't an ordered stack trace of the public API calls, so they don't appear in any specific order\.
 

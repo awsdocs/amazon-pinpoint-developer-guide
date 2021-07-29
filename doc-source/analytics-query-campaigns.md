@@ -1,10 +1,10 @@
-# Querying Amazon Pinpoint Analytics Data for Campaigns<a name="analytics-query-campaigns"></a>
+# Querying Amazon Pinpoint analytics data for campaigns<a name="analytics-query-campaigns"></a>
 
 In addition to using the analytics pages on the Amazon Pinpoint console, you can use Amazon Pinpoint Analytics APIs to query analytics data for a subset of standard metrics that provide insight into delivery and engagement trends for campaigns\.
 
 Each of these metrics is a measurable value, also referred to as a *key performance indicator \(KPI\)*, that can help you monitor and assess the performance of one or more campaigns\. For example, you can use a metric to find out how many endpoints a campaign message was sent to, or how many of those messages were delivered to the intended endpoints\.
 
-Amazon Pinpoint automatically collects and aggregates this data for all of your campaigns\. It stores the data for 90 days\. If you integrated a mobile app with Amazon Pinpoint by using an AWS Mobile SDK, Amazon Pinpoint extends this support to include additional metrics, such as the percentage of push notifications that were opened by recipients\. For information about integrating a mobile app, see [Integrating Amazon Pinpoint with Your Application](integrate.md)\.
+Amazon Pinpoint automatically collects and aggregates this data for all of your campaigns\. It stores the data for 90 days\. If you integrated a mobile app with Amazon Pinpoint by using an AWS Mobile SDK, Amazon Pinpoint extends this support to include additional metrics, such as the percentage of push notifications that were opened by recipients\. For information about integrating a mobile app, see [Integrating Amazon Pinpoint with your application](integrate.md)\.
 
 If you use Amazon Pinpoint Analytics APIs to query data, you can choose various options that define the scope, data, grouping, and filters for your query\. You do this by using parameters that specify the project, campaign, and metric that you want to query, in addition to any date\-based filters that you want to apply\. 
 
@@ -17,20 +17,20 @@ Before you query analytics data for one or more campaigns, it helps to gather th
 + **Campaign ID** – The unique identifier for the campaign, if you want to query the data for only one campaign\. In the Amazon Pinpoint API, this value is stored in the `campaign-id` property\. This value is not displayed on the console\.
 + **Date range** – Optionally, the first and last date and time of the date range to query data for\. Date ranges are inclusive and must be limited to 31 or fewer calendar days\. In addition, they must start fewer than 90 days from the current day\. If you don’t specify a date range, Amazon Pinpoint automatically queries the data for the preceding 31 calendar days\.
 + **Metric type** – The type of metric to query\. There are two types, *application metrics* and *campaign metrics*\. An *application metric* provides data for all the campaigns that are associated with a project, also referred to as an *application*\. A *campaign metric* provides data for only one campaign\.
-+ **Metric** – The name of the metric to query—more specifically, the `kpi-name` value for the metric\. For a complete list of supported metrics and the `kpi-name` value for each one, see [Standard Metrics](analytics-standard-metrics.md)\.
++ **Metric** – The name of the metric to query—more specifically, the `kpi-name` value for the metric\. For a complete list of supported metrics and the `kpi-name` value for each one, see [Standard metrics](analytics-standard-metrics.md)\.
 
 It also helps to determine whether you want to group the data by a relevant field\. If you do, you can simplify your analysis and reporting by choosing a metric that’s designed to group data for you automatically\. For example, Amazon Pinpoint provides several standard metrics that report the percentage of messages that were delivered to recipients of a campaign\. One of these metrics automatically groups the data by date \(`successful-delivery-rate-grouped-by-date`\)\. Another metric automatically groups the data by campaign run \(`successful-delivery-rate-grouped-by-campaign-activity`\)\. A third metric simply returns a single value—the percentage of messages that were delivered to recipients by all campaign runs \(`successful-delivery-rate`\)\. 
 
 If you can't find a standard metric that groups data the way that you want, you can develop a series of queries that return the data that you want\. You can then manually break down or combine the query results into custom groups that you design\.
 
-Finally, it’s important to verify that you’re authorized to access the data that you want to query\. For more information, see [IAM Policies for Querying Amazon Pinpoint Analytics Data](analytics-permissions.md)\.
+Finally, it’s important to verify that you’re authorized to access the data that you want to query\. For more information, see [IAM policies for querying Amazon Pinpoint analytics data](analytics-permissions.md)\.
 
-## Querying Data for One Campaign<a name="analytics-query-campaigns-single"></a>
+## Querying data for one campaign<a name="analytics-query-campaigns-single"></a>
 
 To query the data for one campaign, you use the [Campaign Metrics](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-campaigns-campaign-id-kpis-daterange-kpi-name.html) API and specify values for the following required parameters:
 + **application\-id** – The project ID, which is the unique identifier for the project that’s associated with the campaign\. In Amazon Pinpoint, the terms *project* and *application* have the same meaning\. 
 + **campaign\-id** – The unique identifier for the campaign\.
-+ **kpi\-name** – The name of the metric to query\. This value describes the associated metric and consists of two or more terms, which are comprised of lowercase alphanumeric characters, separated by a hyphen\. For a complete list of supported metrics and the `kpi-name` value for each one, see [Standard Metrics](analytics-standard-metrics.md)\.
++ **kpi\-name** – The name of the metric to query\. This value describes the associated metric and consists of two or more terms, which are comprised of lowercase alphanumeric characters, separated by a hyphen\. For a complete list of supported metrics and the `kpi-name` value for each one, see [Standard metrics](analytics-standard-metrics.md)\.
 
 You can also apply a filter that queries the data for a specific date range\. If you don’t specify a date range, Amazon Pinpoint returns the data for the preceding 31 calendar days\. To filter the data by different dates, use the supported date range parameters to specify the first and last date and time of the date range\. The values should be in extended ISO 8601 format and use Coordinated Universal Time \(UTC\)—for example, `2019-07-19T20:00:00Z` for 8:00 PM UTC July 19, 2019\. Date ranges are inclusive and must be limited to 31 or fewer calendar days\. In addition, the first date and time must be fewer than 90 days from the current day\.
 
@@ -170,9 +170,9 @@ After you send your query, Amazon Pinpoint returns the query results in a JSON r
 
 Other metrics return multiple values, and group the values by a relevant field\. If a metric returns multiple values, the JSON response includes a field that indicates which field was used to group the data\.
 
-To learn more about the structure of query results, see [Using Query Results](analytics-query-results.md)\.
+To learn more about the structure of query results, see [Using query results](analytics-query-results.md)\.
 
-## Querying Data for Multiple Campaigns<a name="analytics-query-campaigns-multiple"></a>
+## Querying data for multiple campaigns<a name="analytics-query-campaigns-multiple"></a>
 
 There are two ways to query the data for multiple campaigns\. The best way depends on whether you want to query the data for campaigns that are all associated with the same project\. If you do, it also depends on whether you want to query the data for all or only or subset of those campaigns\.
 
@@ -180,7 +180,7 @@ To query the data for campaigns that are associated with different projects or f
 
 To query the data for all the campaigns that are associated with the same project, you can use the [Application Metrics](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-kpis-daterange-kpi-name.html) API\. Specify values for the following required parameters:
 + **application\-id** – The project ID, which is the unique identifier for the project\. In Amazon Pinpoint, the terms *project* and *application* have the same meaning\.
-+ **kpi\-name** – The name of the metric to query\. This value describes the associated metric and consists of two or more terms, which are comprised of lowercase alphanumeric characters, separated by a hyphen\. For a complete list of supported metrics and the `kpi-name` value for each one, see [Standard Metrics](analytics-standard-metrics.md)\.
++ **kpi\-name** – The name of the metric to query\. This value describes the associated metric and consists of two or more terms, which are comprised of lowercase alphanumeric characters, separated by a hyphen\. For a complete list of supported metrics and the `kpi-name` value for each one, see [Standard metrics](analytics-standard-metrics.md)\.
 
 You can also filter the data by date range\. If you don’t specify a date range, Amazon Pinpoint returns the data for the preceding 31 calendar days\. To filter the data by different dates, use the supported date range parameters to specify the first and last date and time of the date range\. The values should be in extended ISO 8601 format and use Coordinated Universal Time \(UTC\)—for example, `2019-07-19T20:00:00Z` for 8:00 PM UTC July 19, 2019\. Date ranges are inclusive and must be limited to 31 or fewer calendar days\. In addition, the first date and time must be fewer than 90 days from the current day\.
 
@@ -350,4 +350,4 @@ For example, the *endpoint deliveries, grouped by campaign* \(`unique-deliveries
 
 In this case, the `GroupedBys` field indicates that the values are grouped by campaign ID \(`CampaignId`\)\.
 
-To learn more about the structure of query results, see [Using Query Results](analytics-query-results.md)\.
+To learn more about the structure of query results, see [Using query results](analytics-query-results.md)\.

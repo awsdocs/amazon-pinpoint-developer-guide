@@ -1,9 +1,9 @@
-# Step 3: Create a Package That Contains the Required Python Libraries<a name="tutorials-importing-data-create-python-package"></a>
+# Step 3: Create a package that contains the required Python libraries<a name="tutorials-importing-data-create-python-package"></a>
 
 The solution that's documented in this tutorial uses several libraries that aren't included with the standard Python package that Lambda uses\. To use these libraries, you first have to download them on your computer\. Next, you create a `.zip` archive that contains all of the libraries\. Finally, you upload this archive in Lambda so that you can call the libraries from your functions\.
 
 **Note**  
-This procedure assumes that you've already installed Python\. Python is included by default with most recent Linux, macOS, or Unix distributions\. If you use Windows, you can download Python from the [Python Releases for Windows page](https://www.python.org/downloads/windows/) on the Python website\. This solution was tested using Python version 3\.7\.3 on macOS High Sierra, Ubuntu 18\.04 LTS, and Windows Server 2019\.
+This procedure assumes that you've already installed Python\. Python is included by default with most recent Linux, macOS, or Unix distributions\. If you use Windows, you can download Python from the [Python releases for Windows page](https://www.python.org/downloads/windows/) on the Python website\. This solution was tested using Python version 3\.7\.3 on macOS High Sierra, Ubuntu 18\.04 LTS, and Windows Server 2019\.
 
 **To download the libraries that are required for this tutorial**
 
@@ -26,7 +26,7 @@ This procedure assumes that you've already installed Python\. Python is included
 #### [ Windows PowerShell ]
 
    ```
-   new-item pinpoint-import -itemtype directory
+   new-item pinpoint-importer -itemtype directory
    ```
 
 ------
@@ -83,7 +83,7 @@ This procedure assumes that you've already installed Python\. Python is included
    ```
    cd venv/lib/python3.7/site-packages && \
    zip -r ~/pinpoint-importer/pinpoint-importer.zip dateutil docutils jmespath \
-   s3fs s3transfer six.py && cd -
+   s3fs s3transfer fsspec six.py && cd -
    ```
 
    In the preceding command, replace *3\.7* with the version of Python that's installed on your computer\.
