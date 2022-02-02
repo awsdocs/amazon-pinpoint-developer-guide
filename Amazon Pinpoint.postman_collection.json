@@ -2944,6 +2944,129 @@
 			]
 		},
 		{
+			"name": "OTP",
+			"item": [
+				{
+					"name": "SendOtpMessage",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "9b36cfb7-b560-48a8-b850-3fe72ce363a7",
+								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
+									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Channel\": \"SMS\",\n  \"BrandName\": \"Pinpoint OTP\",\n  \"CodeLength\": 5,\n  \"ValidityPeriod\": 20,\n  \"AllowedAttempts\": 2,\n  \"Language\": \"en-US\",\n  \"OriginationIdentity\": \"+19171234567\",\n  \"DestinationIdentity\": \"+15161234567\",\n  \"ReferenceId\": \"placeholder_reference_id\",\n  \"EntityId\": \"placeholder_entity_id\",\n  \"TemplateId\": \"placeholder_template_id\"\n}"
+						},
+						"url": {
+							"raw": "https://{{endpoint}}/v1/apps/{{projectId}}/otp",
+							"protocol": "https",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"v1",
+								"apps",
+								"{{projectId}}",
+								"otp"
+							]
+						},
+						"description": "Send a One-Time Password (OTP) to a destination phone number. Currently only SMS channel is supported."
+					},
+					"response": []
+				},
+				{
+					"name": "VerifyOtpMessage",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0c47u230-b560-48a8-b850-3fe72ce363a7",
+								"exec": [
+									"// Don't change this variable.",
+									"pm.variables.set(\"serviceName\", \"mobiletargeting\");",
+									"",
+									"// Change the value of this variable to your project ID.",
+									"pm.variables.set(\"projectId\", \"12345678901234567890123456789012\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"DestinationIdentity\":  \"+15161234567\",\n  \"ReferenceId\": \"placeholder_reference_id\",\n  \"Otp\": \"12345\"}"
+						},
+						"url": {
+							"raw": "https://{{endpoint}}/v1/apps/{{projectId}}/verify-otp",
+							"protocol": "https",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"v1",
+								"apps",
+								"{{projectId}}",
+								"verify-otp"
+							]
+						},
+						"description": "Verify an OTP code that you've already sent. Currently only SMS channel is supported."
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
 			"name": "PhoneNumberValidate",
 			"item": [
 				{
