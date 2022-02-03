@@ -128,8 +128,7 @@ import software.amazon.awssdk.services.pinpoint.model.GetEndpointRequest;
         System.out.println("Done");
     }
 ```
-To print the endpoint data in a readable format, this example uses the Google GSON library to convert the `EndpointResponse` object to a JSON string\.  
-For the full SDK example, see [LookupEndpoint\.java](https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/javav2/example_code/pinpoint/src/main/java/com/example/pinpoint/LookupEndpoint.java/) on [GitHub](https://github.com/)\.
+To print the endpoint data in a readable format, this example uses the Google GSON library to convert the `EndpointResponse` object to a JSON string\.
 
 ------
 #### [ HTTP ]

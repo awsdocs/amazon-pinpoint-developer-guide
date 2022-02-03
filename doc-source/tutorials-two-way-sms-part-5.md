@@ -164,7 +164,7 @@ When a user submits this form, it triggers a Lambda function that calls several 
 
 ## Step 5\.2: Upload the form files<a name="tutorials-two-way-sms-part-5-upload-form"></a>
 
-Now that you've created the HTML form and the JavaScript form handler, the last step is to publish these files to the internet\. This section assumes that you have an existing web hosting provider\. If you don't have an existing hosting provider, you can launch a website by using Amazon Route 53 , Amazon Simple Storage Service \(Amazon S3\), and Amazon CloudFront\. For more information, see [Host a static website](https://aws.amazon.com/getting-started/projects/host-static-website/)\.
+Now that you've created the HTML form and the JavaScript form handler, the last step is to publish these files to the internet\. This section assumes that you have an existing web hosting provider\. If you don't have an existing hosting provider, you can launch a website by using Amazon Route 53, Amazon Simple Storage Service \(Amazon S3\), and Amazon CloudFront\. For more information, see [Host a static website](https://aws.amazon.com/getting-started/projects/host-static-website/)\.
 
 If you use another web hosting provider, consult the provider's documentation for more information about publishing webpages\.
 

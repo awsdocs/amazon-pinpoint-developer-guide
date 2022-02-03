@@ -1,66 +1,12 @@
-# Send voice messages<a name="send-messages-voice"></a>
+# Send a voice message with Amazon Pinpoint SMS and Voice API using an AWS SDK<a name="example_pinpoint-sms-voice_SendVoiceMessage_section"></a>
 
-You can use the Amazon Pinpoint API to send voice messages to specific phone numbers\. This section contains complete code examples that you can use to send voice messages through the Amazon Pinpoint SMS and Voice API by using an AWS SDK\.
-
-------
-#### [ Java ]
-
-Use this example to send a voice message by using the [AWS SDK for Java](https://aws.amazon.com/sdk-for-java/)\. This example assumes that you've already installed and configured the SDK for Java\. For more information, see [Getting started ](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/getting-started.html) in the AWS SDK for Java Developer Guide\.
-
-This example assumes that you're using a shared credentials file to specify the Access Key and Secret Access Key for an existing IAM user\. For more information, see [Set up AWS credentials and Region for development](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/setup-credentials.html) in the *AWS SDK for Java Developer Guide*\.
-
-```
-import software.amazon.awssdk.core.client.config.ClientOverrideConfiguration;
-import software.amazon.awssdk.regions.Region;
-import software.amazon.awssdk.services.pinpointsmsvoice.PinpointSmsVoiceClient;
-import software.amazon.awssdk.services.pinpointsmsvoice.model.SSMLMessageType;
-import software.amazon.awssdk.services.pinpointsmsvoice.model.VoiceMessageContent;
-import software.amazon.awssdk.services.pinpointsmsvoice.model.SendVoiceMessageRequest;
-import software.amazon.awssdk.services.pinpointsmsvoice.model.PinpointSmsVoiceException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-```
-
-```
-    public static void sendVoiceMsg(PinpointSmsVoiceClient client, String originationNumber, String destinationNumber ) {
-
-        try {
-            SSMLMessageType ssmlMessageType = SSMLMessageType.builder()
-                    .languageCode(languageCode)
-                    .text(ssmlMessage)
-                     .voiceId(voiceName)
-                     .build();
-
-            VoiceMessageContent content = VoiceMessageContent.builder()
-                    .ssmlMessage(ssmlMessageType)
-                    .build();
-
-            SendVoiceMessageRequest voiceMessageRequest = SendVoiceMessageRequest.builder()
-                    .destinationPhoneNumber(destinationNumber)
-                    .originationPhoneNumber(originationNumber)
-                    .content(content)
-                    .build();
-
-            client.sendVoiceMessage(voiceMessageRequest);
-            System.out.println("The message was sent successfully.");
-
-        } catch (PinpointSmsVoiceException e) {
-            System.err.println(e.awsErrorDetails().errorMessage());
-            System.exit(1);
-        }
-    }
-```
-
-For the full SDK example, see [SendVoiceMessage\.java](https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/javav2/example_code/pinpoint/src/main/java/com/example/pinpoint/SendVoiceMessage.java/) on [GitHub](https://github.com/)\.
+The following code examples show how to send a voice message with Amazon Pinpoint SMS and Voice API\.
 
 ------
-#### [ JavaScript \(Node\.js\) ]
+#### [ JavaScript ]
 
-Use this example to send a voice message by using the AWS SDK for JavaScript in Node\.js\. This example assumes that you've already installed and configured the SDK for JavaScript in Node\.js\.
-
-This example assumes that you're using a shared credentials file to specify the Access Key and Secret Access Key for an existing IAM user\. For more information, see [Setting credentials](https://docs.aws.amazon.com/sdk-for-javascript/latest/developer-guide/setting-credentials.html) in the *AWS SDK for JavaScript in Node\.js Developer Guide*\.
+**SDK for JavaScript V2**  
+  
 
 ```
 'use strict'
@@ -142,13 +88,14 @@ pinpointsmsvoice.sendVoiceMessage(params, function(err, data) {
   }
 });
 ```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascript/example_code/pinpoint-sms-voice#code-examples)\. 
++  For API details, see [SendVoiceMessage](https://docs.aws.amazon.com/goto/AWSJavaScriptSDK/pinpoint-sms-voice-2018-09-05/SendVoiceMessage) in *AWS SDK for JavaScript API Reference*\. 
 
 ------
 #### [ Python ]
 
-Use this example to send a voice message by using the AWS SDK for Python \(Boto3\)\. This example assumes that you've already installed and configured the SDK for Python \(Boto3\)\. 
-
-This example assumes that you're using a shared credentials file to specify the Access Key and Secret Access Key for an existing IAM user\. For more information, see [Credentials](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html) in the *AWS SDK for Python \(Boto3\) API Reference*\.
+**SDK for Python \(Boto3\)**  
+  
 
 ```
 import logging
@@ -221,5 +168,9 @@ def main():
 if __name__ == '__main__':
     main()
 ```
++  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/python/example_code/pinpoint-sms-voice#code-examples)\. 
++  For API details, see [SendVoiceMessage](https://docs.aws.amazon.com/goto/boto3/pinpoint-sms-voice-2018-09-05/SendVoiceMessage) in *AWS SDK for Python \(Boto3\) API Reference*\. 
 
 ------
+
+For a complete list of AWS SDK developer guides and code examples, including help getting started and information about previous versions, see [Using Amazon Pinpoint with an AWS SDK](sdk-general-information-section.md)\.

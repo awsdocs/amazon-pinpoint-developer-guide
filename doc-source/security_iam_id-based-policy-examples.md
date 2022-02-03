@@ -14,6 +14,7 @@ To learn how to create an IAM identity\-based policy using these example JSON po
 + [Examples: Providing access to Amazon Pinpoint SMS and voice API actions](#permissions-actions-examples-pin-sms-voice-api)
 + [Example: Restricting Amazon Pinpoint project access to specific IP addresses](#security_iam_resource-based-policy-examples-restrict-project-access-by-ip)
 + [Example: Restricting Amazon Pinpoint access based on tags](#security_iam_resource-based-policy-examples-restrict-access-by-tag)
++ [Example: Allow Amazon Pinpoint to send email using identities that were verified in Amazon SES](#security_iam_resource-based-policy-examples-access-ses-identities)
 
 ## Policy best practices<a name="security_iam_service-with-iam-policy-best-practices"></a>
 
@@ -379,5 +380,63 @@ The `Condition` block uses the `StringEquals` condition and the `aws:ResourceTag
             }
         }
     ]
+}
+```
+
+## Example: Allow Amazon Pinpoint to send email using identities that were verified in Amazon SES<a name="security_iam_resource-based-policy-examples-access-ses-identities"></a>
+
+When you verify an email identity \(such as an email address or domain\) through the Amazon Pinpoint console, that identity is automatically configured so that it can be used by both Amazon Pinpoint and Amazon SES\. However, if you verify an email identity through Amazon SES, and you want to use that identity with Amazon Pinpoint, you must apply a policy to that identity\.
+
+The following example policy grants Amazon Pinpoint permission to send email using an email identity that was verified through Amazon SES\.
+
+```
+{
+  "Version": "2008-10-17",
+  "Statement": [
+    {
+      "Sid": "PinpointEmail",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "pinpoint.amazonaws.com"
+      },
+      "Action": "ses:*",
+      "Resource": "arn:aws:ses:region:accountId:identity/emailId",
+      "Condition": {
+        "StringEquals": {
+          "aws:SourceAccount": "accountId",
+        },
+        "StringLike": {
+          "aws:SourceArn": "arn:aws:mobiletargeting:region:accountId:apps/*"
+        }
+      }
+    }
+  ]
+}
+```
+
+If you use Amazon Pinpoint in the AWS GovCloud \(US\-West\) Region, use the following policy example instead:
+
+```
+{
+  "Version": "2008-10-17",
+  "Statement": [
+    {
+      "Sid": "PinpointEmail",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "pinpoint.amazonaws.com"
+      },
+      "Action": "ses:*",
+      "Resource": "arn:aws-us-gov:ses:us-gov-west-1:accountId:identity/emailId",
+      "Condition": {
+        "StringEquals": {
+          "aws:SourceAccount": "accountId"
+        },
+        "StringLike": {
+          "aws:SourceArn": "arn:aws-us-gov:mobiletargeting:us-gov-west-1:accountId:apps/*"
+        }
+      }
+    }
+  ]
 }
 ```

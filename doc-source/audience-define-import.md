@@ -13,7 +13,7 @@ Each import job can transfer up to 1 GB of data\. In a typical job, where each e
 ## Before you begin<a name="audience-define-import-before"></a>
 
 Before you can import endpoints, you need the following resources in your AWS account:
-+ An Amazon S3 bucket\. To create a bucket, see [Create a bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html) in the *Amazon Simple Storage Service Getting Started Guide*\.
++ An Amazon S3 bucket\. To create a bucket, see [Create a bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html) in the *Amazon Simple Storage Service User Guide*\.
 + An AWS Identity and Access Management \(IAM\) role that grants Amazon Pinpoint read permissions for your Amazon S3 bucket\. To create the role, see [IAM role for importing endpoints or segmentsImporting endpoints or segments](permissions-import-segment.md)\.
 
 ## Examples<a name="audience-define-import-examples"></a>

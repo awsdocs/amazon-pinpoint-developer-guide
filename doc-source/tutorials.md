@@ -6,6 +6,4 @@ The tutorials in this guide include tasks that are oriented toward a developer o
 
 **Topics**
 + [Using Postman with Amazon Pinpoint](tutorials-using-postman.md)
-+ [Importing data from external sources](tutorials-importing-data.md)
-+ [Setting up an email preference management system](tutorials-email-prefs.md)
 + [Setting up an SMS registration system](tutorials-two-way-sms.md)

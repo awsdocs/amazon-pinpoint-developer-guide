@@ -37,13 +37,11 @@ import software.amazon.awssdk.services.pinpoint.model.PinpointException;
 ```
     public static void createPinCampaign(PinpointClient pinpoint, String appId, String segmentId) {
 
-
         CampaignResponse result = createCampaign(pinpoint, appId, segmentId);
         System.out.println("Campaign " + result.name() + " created.");
         System.out.println(result.description());
 
     }
-
 
     public static CampaignResponse createCampaign(PinpointClient client, String appID, String segmentID) {
 

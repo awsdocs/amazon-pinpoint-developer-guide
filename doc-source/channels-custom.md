@@ -282,6 +282,7 @@ aws lambda add-permission \
 --action lambda:InvokeFunction \
 --principal pinpoint.us-east-1.amazonaws.com \
 --source-arn arn:aws:mobiletargeting:us-east-1:111122223333:apps/*
+--source-account 111122223333
 ```
 
 In the preceding command, do the following:
@@ -289,7 +290,7 @@ In the preceding command, do the following:
 + Replace *us\-east\-1* with the AWS Region where you use Amazon Pinpoint\.
 + Replace *111122223333* with your AWS account ID\.
 
-When you run the `add-permission` command, AWS Lambda returns the following output:
+When you run the `add-permission` command, Lambda returns the following output:
 
 ```
 {
@@ -301,7 +302,10 @@ When you run the `add-permission` command, AWS Lambda returns the following outp
     \"Condition\":
       {\"ArnLike\":
         {\"AWS:SourceArn\":
-         \"arn:aws:mobiletargeting:us-east-1:111122223333:apps/*\"}}}"
+         \"arn:aws:mobiletargeting:us-east-1:111122223333:apps/*\"}},
+      {\"StringEquals\": 
+        {\"AWS:SourceAccount\": 
+          \"111122223333\"}}}
 }
 ```
 

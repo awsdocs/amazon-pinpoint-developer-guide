@@ -3,7 +3,7 @@
 The following sections list and describe the quotas, formerly referred to as *limits*, that apply to Amazon Pinpoint resources and operations\. Some quotas can be increased, while others cannot\. To determine whether you can request an increase for a quota, refer to the **Eligible for Increase** column or statement in each section\.
 
 **Topics**
-+ [General quotas](#quotas-general)
++ [Project quotas](#quotas-projects)
 + [API request quotas](#quotas-pinpoint-api)
 + [Campaign quotas](#quotas-campaign)
 + [Email quotas](#quotas-email)
@@ -14,15 +14,21 @@ The following sections list and describe the quotas, formerly referred to as *li
 + [Machine learning quotas](#quotas-ML-models)
 + [Message template quotas](#quotas-message-templates)
 + [Push notification quotas](#quotas-mobile)
++ [In\-app message quotas](#quotas-inapp)
 + [Segment quotas](#quotas-segment)
 + [SMS quotas](#quotas-sms)
 + [10DLC quotas](#quotas-sms)
 + [Voice quotas](#quotas-voice)
 + [Requesting a quota increase](#quotas-increase)
 
-## General quotas<a name="quotas-general"></a>
+## Project quotas<a name="quotas-projects"></a>
 
-Your account can have up to 100 Amazon Pinpoint projects\. This quota is not eligible for increase\.
+The following table lists the quotas related to projects in Amazon Pinpoint\.
+
+
+| Resource | Default quota | Eligible for increase | 
+| --- | --- | --- | 
+|  Projects  |  In each AWS Region, you can have up to 100 projects\.  |  [Yes](#quotas-increase)  | 
 
 ## API request quotas<a name="quotas-pinpoint-api"></a>
 
@@ -210,9 +216,19 @@ The following quotas apply to messages that Amazon Pinpoint sends through push n
 |  Baidu Cloud Push message payload size  |  4 KB per message  |  No  | 
 |  Firebase Cloud Messaging \(FCM\) message payload size  |  4 KB per message  |  No  | 
 
+## In\-app message quotas<a name="quotas-inapp"></a>
+
+The following quota applies to in\-app messages that you manage with Amazon Pinpoint\.
+
+
+| Resource | Default quota | Eligible for increase | 
+| --- | --- | --- | 
+| Maximum number of times you can call the GetInAppMessages API per second\. | 5,000 requests per second | [Yes](#quotas-increase) | 
+| In\-app messaging campaigns | Each project can include up to 25 campaigns that use the in\-app messaging channel\.  | [Yes](#quotas-increase) | 
+
 ## Segment quotas<a name="quotas-segment"></a>
 
-The following quotas apply to the [Segments](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segments.html) resource of the Amazon Pinpoint API\.
+The following quota applies to the [Segments](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-segments.html) resource of the Amazon Pinpoint API\.
 
 
 | Resource | Default quota | Eligible for increase | 
@@ -227,13 +243,13 @@ The following quotas apply to the SMS channel\.
 | Resource | Default quota | Eligible for increase | 
 | --- | --- | --- | 
 |  Spending threshold  |  USD $1\.00 per account  |  [Yes](#quotas-increase), but spending limits vary by region\. You must specify the region\(s\) in which you require an increase\.   | 
-|  Number of SMS messages that can be sent each second \(*sending rate*\)  |  20 messages per second  You can request a quota increase if your use case supports it\.   |  [Yes](#quotas-increase) if your use case supports an increase; otherwise, No\.  | 
+|  Number of SMS messages that can be sent each second \(*sending rate*\)  |  Varies depending on destination country and originating phone number\. For more information, see [Message parts per second limits](https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-limitations-mps.html) in the *Amazon Pinpoint User Guide*\.  |  You don't need to request a quota increase\. However, you might need to obtain a phone number that supports higher throughput\. If you're unsure of which number type to use, contact AWS Support or your AWS Account Manager for more information\. If you use an alphanumeric Sender ID to send messages, you might be able to increase your throughput rate\. To find out if a throughput increase is available for your Sender ID, [open a Sender ID request](https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-awssupport-sender-id.html) in the Support Center Console\. In your request, include your existing Sender ID, the country in which you use that Sender ID, and the throughput rate you want to request\.  | 
 | Number of SMS messages that can be sent to a single recipient each second | 1 message per second | No | 
 | Number of Amazon SNS topics for two\-way SMS | 100,000 per account | [Yes](#quotas-increase) | 
 
 ## 10DLC quotas<a name="quotas-sms"></a>
 
-The following quotas apply to 10DLC\. 10DLC only applies to the U\.S\.
+The following quotas apply to SMS messages sent using 10DLC phone numbers\. 10DLC numbers can only be used to send messages to recipients in the United States\.
 
 
 | Resource | Default quota | Eligible for increase | 
@@ -277,7 +293,6 @@ If the value in the **Eligible for Increase** column in any of the preceding tab
    + To request a quota increase that's related to the email channel, choose **Pinpoint Email**\.
    + To request a quota increase that's related to the SMS channel, choose **Pinpoint SMS**\.
    + To request a quota increase that's related to the voice channel, choose **Pinpoint Voice**\.
-   + To request an increase that's related to 10DLC, choose **Pinpoint**\.
    + To request a quota increase that's related to any other Amazon Pinpoint feature, choose **Pinpoint**\.
 
 1. Depending on the option that you chose in the preceding step, enter the requested information in the optional and required fields to explain your use case\.

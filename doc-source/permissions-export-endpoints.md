@@ -8,7 +8,7 @@ To create an export job, you have to configure an IAM role that allows Amazon Pi
 
 1. Create an IAM role and attach the policy to it\.
 
-This topic contains procedures for completing both of these steps\. These procedures assume that you've already created an Amazon S3 bucket, and a folder in that bucket, for storing exported segments\. For information about creating buckets, see [Create a bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html) in the *Amazon Simple Storage Service Getting Started Guide*\. 
+This topic contains procedures for completing both of these steps\. These procedures assume that you've already created an Amazon S3 bucket, and a folder in that bucket, for storing exported segments\. For information about creating buckets, see [Create a bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html) in the *Amazon Simple Storage Service User Guide*\. 
 
 These procedures also assume that you've already installed and configured the AWS Command Line Interface \(AWS CLI\)\. For information about setting up the AWS CLI, see [Installing the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) in the *AWS Command Line Interface User Guide*\.
 

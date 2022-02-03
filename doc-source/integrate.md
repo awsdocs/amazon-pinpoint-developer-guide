@@ -10,12 +10,12 @@ After your application supplies endpoints and events, you can use this informati
 
 Use the topics in this section to integrate Amazon Pinpoint with a mobile or web client\. These topics include code examples and procedures to integrate with an Android, iOS, or JavaScript application\.
 
-Outside of your client, you can use [supported AWS SDKs](integrate-supported-sdks.md) or the [Amazon Pinpoint API](https://docs.aws.amazon.com/pinpoint/latest/apireference/) to import endpoints, export event data, define customer segments, create and run campaigns, and more\.
+Outside of your client, you can use [supported AWS SDKs](sdk-general-information-section.md) or the [Amazon Pinpoint API](https://docs.aws.amazon.com/pinpoint/latest/apireference/) to import endpoints, export event data, define customer segments, create and run campaigns, and more\.
 
 To start integrating your apps, see [Integrating the AWS mobile SDKs or JavaScript library with your application](integrate-sdk.md)\.
 
 **Topics**
-+ [AWS SDK support for Amazon Pinpoint](integrate-supported-sdks.md)
++ [Using Amazon Pinpoint with an AWS SDK](sdk-general-information-section.md)
 + [Integrating the AWS mobile SDKs or JavaScript library with your application](integrate-sdk.md)
 + [Registering endpoints in your application](integrate-endpoints.md)
 + [Reporting events in your application](integrate-events.md)

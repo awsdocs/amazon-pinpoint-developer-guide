@@ -8,7 +8,7 @@ To get all of the information that Amazon Pinpoint has about your audience, you 
 ## Before you begin<a name="audience-data-export-before"></a>
 
 Before you can export endpoints, you need the following resources in your AWS account:
-+ An Amazon S3 bucket\. To create a bucket, see [Create a bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html) in the *Amazon Simple Storage Service Getting Started Guide*\.
++ An Amazon S3 bucket\. To create a bucket, see [Create a bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html) in the *Amazon Simple Storage Service User Guide*\.
 + An AWS Identity and Access Management \(IAM\) role that grants Amazon Pinpoint write permissions for your Amazon S3 bucket\. To create the role, see [IAM role for exporting endpoints or segmentsExporting endpoints or segments](permissions-export-endpoints.md)\.
 
 ## Examples<a name="audience-data-export-examples"></a>

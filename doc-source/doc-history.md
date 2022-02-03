@@ -1,10 +1,15 @@
 # Document history for Amazon Pinpoint<a name="doc-history"></a>
 
 The following table describes important changes in each release of the *Amazon Pinpoint Developer Guide* after December 2018\. For notification about updates to this documentation, you can subscribe to an RSS feed\.
-+ **Latest documentation update:** November 16, 2020
++ **Latest documentation update:** November 26, 2021
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [One\-time password creation and validation](#doc-history) | Amazon Pinpoint now includes a feature that generates one\-time passwords \(OTPs\) and sends them to your users as SMS messages\. It also includes an API for validating the OTP codes when your users input them into your application or site\. For more information, see [Sending and validating One\-Time Passwords \(OTPs\)](https://docs.aws.amazon.com/pinpoint/latest/developerguide/send-validate-otp.html)\. | November 26, 2021 | 
+| [In\-app messages](#doc-history) | Added information about integrating the [in\-app messaging](https://docs.aws.amazon.com/pinpoint/latest/developerguide/channels-inapp.html) capability of Amazon Pinpoint with your apps\. | November 10, 2021 | 
+| [Code examples](#doc-history) | Added a [library of code examples](https://docs.aws.amazon.com/pinpoint/latest/developerguide/service_code_examples.html) for common Amazon Pinpoint operations\. | November 3, 2021 | 
+| [Project quotas](#doc-history) | The [maximum number of Amazon Pinpoint projects](https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html#quotas-projects) remains at 100, but this quota can now be increased by opening a Service Limit Increase request with AWS Support\. | October 11, 2021 | 
+| [Lambda policy updates\.](#doc-history) | Certain Lambda permission policies must now include an `AWS:SourceAccount` condition\. Updated the sample policies in the [Creating custom channels in Amazon Pinpoint](https://docs.aws.amazon.com/pinpoint/latest/developerguide/channels-custom.html) and [Customizing segments with AWS Lambda](https://docs.aws.amazon.com/pinpoint/latest/developerguide/segments-dynamic.html) topics to meet this requirement\. | October 7, 2021 | 
 | [UpdateEndpoint](#doc-history) | The Amazon Pinpoint [UpdateEndpoint API](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-endpoints-endpoint-id.html#UpdateEndpoint.html) is now logged by CloudTrail\. | November 16, 2020 | 
 | [Custom attributes](#doc-history) | Amazon Pinpoint now supports 250 attributes in email messaging templates\. See [Quotas](https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas)\. | September 18, 2020 | 
 | [Regional availability](#doc-history) | Amazon Pinpoint is now available in these Regions: Asia Pacific \(Tokyo\) Region, Europe \(London\) Region, and Canada \(Central\) Region\. Note that the Amazon Pinpoint SMS and Voice API is not available in these Regions\. | September 10, 2020 | 

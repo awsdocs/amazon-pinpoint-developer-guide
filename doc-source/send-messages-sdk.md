@@ -329,98 +329,168 @@ pinpoint.sendMessages(params, function(err, data) {
 
 Use this example to send email by using the [AWS SDK for Python \(Boto3\)](https://aws.amazon.com/sdk-for-python/)\. This example assumes that you've already installed and configured the SDK for Python \(Boto3\)\. For more information, see [Quickstart](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/quickstart.html) in the *AWS SDK for Python \(Boto3\) API Reference*\.
 
-This example assumes that you're using a shared credentials file to specify the Access Key and Secret Access Key for an existing IAM user\. For more information, see [Credentials](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html) in the *AWS SDK for Python \(Boto3\) API Reference*\.
-
-This code example was tested using the SDK for Python \(Boto3\) version 1\.9\.62 and Python version 3\.6\.7\.
-
 ```
+import logging
 import boto3
 from botocore.exceptions import ClientError
 
-# The AWS Region that you want to use to send the email. For a list of
-# AWS Regions where the Amazon Pinpoint API is available, see
-# https://docs.aws.amazon.com/pinpoint/latest/apireference/
-AWS_REGION = "us-west-2"
+logger = logging.getLogger(__name__)
 
-# The "From" address. This address has to be verified in
-# Amazon Pinpoint in the region you're using to send email.
-SENDER = "Mary Major <sender@example.com>"
 
-# The addresses on the "To" line. If your Amazon Pinpoint account is in
-# the sandbox, these addresses also have to be verified.
-TOADDRESS = "recipient@example.com"
+def send_email_message(
+        pinpoint_client, app_id, sender, to_addresses, char_set, subject,
+        html_message, text_message):
+    """
+    Sends an email message with HTML and plain text versions.
+    
+    :param pinpoint_client: A Boto3 Pinpoint client.
+    :param app_id: The Amazon Pinpoint project ID to use when you send this message.
+    :param sender: The "From" address. This address must be verified in
+                   Amazon Pinpoint in the AWS Region you're using to send email.
+    :param to_addresses: The addresses on the "To" line. If your Amazon Pinpoint account
+                         is in the sandbox, these addresses must be verified.
+    :param char_set: The character encoding to use for the subject line and message
+                     body of the email.
+    :param subject: The subject line of the email.
+    :param html_message: The body of the email for recipients whose email clients can
+                         display HTML content.
+    :param text_message: The body of the email for recipients whose email clients
+                         don't support HTML content.
+    :return: A dict of to_addresses and their message IDs.
+    """
+    try:
+        response = pinpoint_client.send_messages(
+            ApplicationId=app_id,
+            MessageRequest={
+                'Addresses': {
+                    to_address: {'ChannelType': 'EMAIL'} for to_address in to_addresses
+                },
+                'MessageConfiguration': {
+                    'EmailMessage': {
+                        'FromAddress': sender,
+                        'SimpleEmail': {
+                            'Subject': {'Charset': char_set, 'Data': subject},
+                            'HtmlPart': {'Charset': char_set, 'Data': html_message},
+                            'TextPart': {'Charset': char_set, 'Data': text_message}}}}})
+    except ClientError:
+        logger.exception("Couldn't send email.")
+        raise
+    else:
+        return {
+            to_address: message['MessageId'] for
+            to_address, message in response['MessageResponse']['Result'].items()
+        }
 
-# The Amazon Pinpoint project/application ID to use when you send this message.
-# Make sure that the email channel is enabled for the project or application
-# that you choose.
-APPID = "ce796be37f32f178af652b26eexample"
 
-# The subject line of the email.
-SUBJECT = "Amazon Pinpoint Test (SDK for Python (Boto 3))"
+def main():
+    app_id = "ce796be37f32f178af652b26eexample"
+    sender = "sender@example.com"
+    to_address = "recipient@example.com"
+    char_set = "UTF-8"
+    subject = "Amazon Pinpoint Test (SDK for Python (Boto3))"
+    text_message = """Amazon Pinpoint Test (SDK for Python)
+    -------------------------------------
+    This email was sent with Amazon Pinpoint using the AWS SDK for Python (Boto3).
+    For more information, see https://aws.amazon.com/sdk-for-python/
+                """
+    html_message = """<html>
+    <head></head>
+    <body>
+      <h1>Amazon Pinpoint Test (SDK for Python (Boto3)</h1>
+      <p>This email was sent with
+        <a href='https://aws.amazon.com/pinpoint/'>Amazon Pinpoint</a> using the
+        <a href='https://aws.amazon.com/sdk-for-python/'>
+          AWS SDK for Python (Boto3)</a>.</p>
+    </body>
+    </html>
+                """
 
-# The body of the email for recipients whose email clients don't support HTML
-# content.
-BODY_TEXT = """Amazon Pinpoint Test (SDK for Python)
--------------------------------------
-This email was sent with Amazon Pinpoint using the AWS SDK for Python (Boto 3).
-For more information, see https:#aws.amazon.com/sdk-for-python/
-            """
+    print("Sending email.")
+    message_ids = send_email_message(
+        boto3.client('pinpoint'), app_id, sender, [to_address], char_set, subject,
+        html_message, text_message)
+    print(f"Message sent! Message IDs: {message_ids}")
 
-# The body of the email for recipients whose email clients can display HTML
-# content.
-BODY_HTML = """<html>
-<head></head>
-<body>
-  <h1>Amazon Pinpoint Test (SDK for Python)</h1>
-  <p>This email was sent with
-    <a href='https:#aws.amazon.com/pinpoint/'>Amazon Pinpoint</a> using the
-    <a href='https:#aws.amazon.com/sdk-for-python/'>
-      AWS SDK for Python (Boto 3)</a>.</p>
-</body>
-</html>
-            """
 
-# The character encoding that you want to use for the subject line and message
-# body of the email.
-CHARSET = "UTF-8"
+if __name__ == '__main__':
+    main()
+```
 
-# Create a new client and specify a region.
-client = boto3.client('pinpoint',region_name=AWS_REGION)
-try:
-    response = client.send_messages(
-        ApplicationId=APPID,
-        MessageRequest={
-            'Addresses': {
-                TOADDRESS: {
-                     'ChannelType': 'EMAIL'
-                }
-            },
-            'MessageConfiguration': {
-                'EmailMessage': {
-                    'FromAddress': SENDER,
-                    'SimpleEmail': {
-                        'Subject': {
-                            'Charset': CHARSET,
-                            'Data': SUBJECT
-                        },
-                        'HtmlPart': {
-                            'Charset': CHARSET,
-                            'Data': BODY_HTML
-                        },
-                        'TextPart': {
-                            'Charset': CHARSET,
-                            'Data': BODY_TEXT
-                        }
+You can also use message templates to send email messages, as shown in the following example:
+
+```
+import logging
+import boto3
+from botocore.exceptions import ClientError
+
+logger = logging.getLogger(__name__)
+
+
+def send_templated_email_message(
+        pinpoint_client, project_id, sender, to_addresses, template_name,
+        template_version):
+    """
+    Sends an email message with HTML and plain text versions.
+
+    :param pinpoint_client: A Boto3 Pinpoint client.
+    :param project_id: The Amazon Pinpoint project ID to use when you send this message.
+    :param sender: The "From" address. This address must be verified in
+                   Amazon Pinpoint in the AWS Region you're using to send email.
+    :param to_addresses: The addresses on the "To" line. If your Amazon Pinpoint
+                         account is in the sandbox, these addresses must be verified.
+    :param template_name: The name of the email template to use when sending the message.
+    :param template_version: The version number of the message template.
+
+    :return: A dict of to_addresses and their message IDs.
+    """
+    try:
+        response = pinpoint_client.send_messages(
+            ApplicationId=project_id,
+            MessageRequest={
+                'Addresses': {
+                    to_address: {
+                        'ChannelType': 'EMAIL'
+                    } for to_address in to_addresses
+                },
+                'MessageConfiguration': {
+                    'EmailMessage': {'FromAddress': sender}
+                },
+                'TemplateConfiguration': {
+                    'EmailTemplate': {
+                        'Name': template_name,
+                        'Version': template_version
                     }
                 }
             }
+        )
+    except ClientError:
+        logger.exception("Couldn't send email.")
+        raise
+    else:
+        return {
+            to_address: message['MessageId'] for
+            to_address, message in response['MessageResponse']['Result'].items()
         }
-    )
-except ClientError as e:
-    print(e.response['Error']['Message'])
-else:
-    print("Message sent! Message ID: "
-            + response['MessageResponse']['Result'][TOADDRESS]['MessageId'])
+
+
+def main():
+    project_id = "296b04b342374fceb661bf494example"
+    sender = "sender@example.com"
+    to_addresses = ["recipient@example.com"]
+    template_name = "My_Email_Template"
+    template_version = "1"
+
+    print("Sending email.")
+    message_ids = send_templated_email_message(
+        boto3.client('pinpoint'), project_id, sender, to_addresses, template_name,
+        template_version)
+    print(f"Message sent! Message IDs: {message_ids}")
+
+
+if __name__ == '__main__':
+    main()
 ```
+
+These examples assume that you're using a shared credentials file to specify the Access Key and Secret Access Key for an existing IAM user\. For more information, see [Credentials](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html) in the *AWS SDK for Python \(Boto3\) API Reference*\.
 
 ------

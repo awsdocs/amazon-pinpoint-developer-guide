@@ -40,7 +40,7 @@ This section identifies actions for features that are available from the Amazon 
 The following permissions are related to viewing analytics data on the Amazon Pinpoint console\. They're also related to retrieving \(querying\) aggregated data for standard metrics, also referred to as *key performance indicators \(KPIs\)*, that apply to projects, campaigns, and journeys\.
 
 **`mobiletargeting:GetReports`**  
-View analytics data on the Amazon Pinpoint console\.  
+View analytics data on the Amazon Pinpoint console\. This permission is also required in order to create segments that contain custom attributes using the Amazon Pinpoint console\. It's also required to obtain an estimate of the size of a segment in the Amazon Pinpoint console\.  
 + URI – Not applicable
 + Method – Not applicable
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:*`
