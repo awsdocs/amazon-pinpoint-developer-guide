@@ -1,3 +1,16 @@
 # amazon-pinpoint-developer-guide
-The open source version of the Amazon Pinpoint Developer Guide
-The July 29, 2021 updates the Amazon Pinpoint Developer Guide for Pinpoint updates over the past two years. The Developer Guide had not been updated on GitHub in quite awhile, so this update includes everything that occurred over the last couple of years.
+
+The open source version of the Amazon Pinpoint Developer Guide. You can submit feedback & requests for changes by submitting issues in this repo or by making proposed changes & submitting a pull request.
+
+## Default branch
+
+The default branch for this repo has changed to `main`. 
+
+If you have cloned the previous default branch, please update your local repo to use the `main` branch. 
+
+## License Summary
+
+The documentation is made available under the Creative Commons Attribution-ShareAlike 4.0 International License. See the LICENSE file.
+
+The sample code within this documentation is made available under a modified MIT license. See the LICENSE-SAMPLECODE file.
+
