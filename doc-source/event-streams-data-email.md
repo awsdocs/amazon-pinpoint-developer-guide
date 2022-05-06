@@ -348,7 +348,7 @@ Includes information about the endpoint that was targeted by the campaign or jou
 
 | Attribute | Description | 
 | --- | --- | 
-| client\_id | The id of the endpoint that reported the event\. | 
+| client\_id | The ID of the endpoint that reported the event\. | 
 
 ### Facets<a name="event-streams-data-email-attributes-facets"></a>
 
