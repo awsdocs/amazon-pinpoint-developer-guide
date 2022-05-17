@@ -9,29 +9,6 @@ The following example demonstrates how to build a segment with the AWS SDK for J
 ```
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.pinpoint.PinpointClient;
-import software.amazon.awssdk.services.pinpoint.model.EndpointResponse;
-import software.amazon.awssdk.services.pinpoint.model.EndpointRequest;
-import software.amazon.awssdk.services.pinpoint.model.UpdateEndpointRequest;
-import software.amazon.awssdk.services.pinpoint.model.UpdateEndpointResponse;
-import software.amazon.awssdk.services.pinpoint.model.GetEndpointRequest;
-import software.amazon.awssdk.services.pinpoint.model.GetEndpointResponse;
-import software.amazon.awssdk.services.pinpoint.model.PinpointException;
-import software.amazon.awssdk.services.pinpoint.model.EndpointDemographic;
-import software.amazon.awssdk.services.pinpoint.model.EndpointLocation;
-import software.amazon.awssdk.services.pinpoint.model.EndpointUser;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.List;
-import java.util.UUID;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Date;
-```
-
-```
-import software.amazon.awssdk.regions.Region;
-import software.amazon.awssdk.services.pinpoint.PinpointClient;
 import software.amazon.awssdk.services.pinpoint.model.AttributeDimension;
 import software.amazon.awssdk.services.pinpoint.model.SegmentResponse;
 import software.amazon.awssdk.services.pinpoint.model.AttributeType;
@@ -46,16 +23,8 @@ import software.amazon.awssdk.services.pinpoint.model.CreateSegmentResponse;
 import software.amazon.awssdk.services.pinpoint.model.PinpointException;
 import java.util.HashMap;
 import java.util.Map;
-//snippet-end:[pinpoint.java2.createsegment.import]
-
-
-/**
- * To run this Java V2 code example, ensure that you have setup your development environment, including your credentials.
- *
- * For information, see this documentation topic:
- *
- * https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/get-started.html
- */
+```
+```
 public class CreateSegment {
 
     public static SegmentResponse createSegment(PinpointClient client, String appId) {
