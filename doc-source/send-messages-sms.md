@@ -112,6 +112,7 @@ Use this example to send an SMS message by using the [AWS SDK for Java](https://
 This example assumes that you're using a shared credentials file to specify the Access Key and Secret Access Key for an existing IAM user\. For more information, see [Set default credentials and Region](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/setup.html#setup-credentials) in the *AWS SDK for Java Developer Guide*\.
 
 ```
+import software.amazon.awssdk.auth.credentials.ProfileCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.pinpoint.PinpointClient;
 import software.amazon.awssdk.services.pinpoint.model.DirectMessageConfiguration;

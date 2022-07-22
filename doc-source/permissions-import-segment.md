@@ -6,27 +6,7 @@ With Amazon Pinpoint, you can define a user segment by importing endpoint defini
 
 
 
-After you create the role, you can use Amazon Pinpoint to import segments from an Amazon S3 bucket\. For information about creating the bucket, creating endpoint files, and importing a segment by using the console, see [Importing segments](https://docs.aws.amazon.com/pinpoint/latest/userguide/segments-importing.html) in the *Amazon Pinpoint User Guide*\. For an example of how to import a segment programmatically by using the AWS SDK for Java, see [Importing segments](segments-importing.md) in this guide\. 
-
-## Attaching the trust policy<a name="permissions-import-segment-trustpolicy"></a>
-
-To allow Amazon Pinpoint to assume the IAM role and perform the actions allowed by the `AmazonS3ReadOnlyAccess` policy, attach the following trust policy to the role:
-
-```
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "AllowUserToImportEndpointDefinitions",
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "pinpoint.amazonaws.com"
-      },
-      "Action": "sts:AssumeRole"
-    }
-  ]
-}
-```
+After you create the role, you can use Amazon Pinpoint to import segments from an Amazon S3 bucket\. For information about creating the bucket, creating endpoint files, and importing a segment by using the console, see [Importing segments](https://docs.aws.amazon.com/pinpoint/latest/userguide/segments-importing.html) in the *Amazon Pinpoint User Guide*\. For an example of how to import a segment programmatically by using the AWS SDK for Java, see [Importing segments](segments-importing.md) in this guide\.
 
 ## Creating the IAM role \(AWS CLI\)<a name="permissions-import-segment-create"></a>
 
@@ -57,6 +37,14 @@ Complete the following steps to create the IAM role by using the AWS Command Lin
                        "Effect": "Allow", 
                        "Principal": {
                            "Service": "pinpoint.amazonaws.com"
+                       },
+                       "Condition": {
+                           "StringEquals": {
+                               "aws:SourceAccount": "accountId"
+                            },
+                            "ArnLike": {
+                               "aws:SourceArn": "arn:aws:mobiletargeting:region:accountId:apps/application-id/*"
+                            }
                        }
                    }
                ]
@@ -65,7 +53,7 @@ Complete the following steps to create the IAM role by using the AWS Command Lin
            "CreateDate": "2016-12-20T00:44:37.406Z", 
            "RoleName": "PinpointSegmentImport", 
            "Path": "/", 
-           "Arn": "arn:aws:iam::111122223333:role/PinpointSegmentImport"
+           "Arn": "arn:aws:iam::accountId:role/PinpointSegmentImport"
        }
    }
    ```

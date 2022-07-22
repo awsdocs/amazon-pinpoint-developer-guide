@@ -187,9 +187,9 @@ The Amazon Pinpoint Email API supports logging the following actions as events i
 The following Amazon Pinpoint Email API action **isn't** logged in CloudTrail:
 + SendEmail
 
-## Amazon Pinpoint SMS and voice API actions that can be logged by CloudTrail<a name="pinpoint-sms-voice-cloudtrail-actions"></a>
+## Amazon Pinpoint SMS and voice API version 1 actions that can be logged by CloudTrail<a name="pinpoint-sms-voice-cloudtrail-actions"></a>
 
-The Amazon Pinpoint SMS and Voice API supports logging the following actions as events in CloudTrail log files:
+The Amazon Pinpoint SMS and Voice version 1 API supports logging the following actions as events in CloudTrail log files:
 + [CreateConfigurationSet](https://docs.aws.amazon.com/pinpoint-sms-voice/latest/APIReference/v1-sms-voice-configuration-sets.html#v1-sms-voice-configuration-setspost)
 + [CreateConfigurationSetEventDestination](https://docs.aws.amazon.com/pinpoint-sms-voice/latest/APIReference/v1-sms-voice-configuration-sets-configurationsetname-event-destinations.html#v1-sms-voice-configuration-sets-configurationsetname-event-destinationspost)
 + [DeleteConfigurationSet](https://docs.aws.amazon.com/pinpoint-sms-voice/latest/APIReference/v1-sms-voice-configuration-sets-configurationsetname.html#v1-sms-voice-configuration-sets-configurationsetnamedelete)
@@ -197,8 +197,57 @@ The Amazon Pinpoint SMS and Voice API supports logging the following actions as 
 + [GetConfigurationSetEventDestinations](https://docs.aws.amazon.com/pinpoint-sms-voice/latest/APIReference/v1-sms-voice-configuration-sets-configurationsetname-event-destinations.html#v1-sms-voice-configuration-sets-configurationsetname-event-destinationsget)
 + [UpdateConfigurationSetEventDestination](https://docs.aws.amazon.com/pinpoint-sms-voice/latest/APIReference/v1-sms-voice-configuration-sets-configurationsetname-event-destinations-eventdestinationname.html#v1-sms-voice-configuration-sets-configurationsetname-event-destinations-eventdestinationnameput)
 
-The following Amazon Pinpoint SMS and Voice API action **isn't** logged in CloudTrail:
+The following Amazon Pinpoint SMS and Voice version 1 API action **isn't** logged in CloudTrail:
 + SendVoiceMessage
+
+## Amazon Pinpoint SMS and voice API version 2 actions that can be logged by CloudTrail<a name="pinpoint-sms-voice-v2-cloudtrail-actions"></a>
+
+The Amazon Pinpoint SMS and Voice API version 2 supports logging the following actions as events in CloudTrail log files:
++ [AssociateOriginationIdentity](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_AssociateOriginationIdentity.html)
++ [CreateConfigurationSet](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_CreateConfigurationSet.html)
++ [CreateEventDestination](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_CreateEventDestination.html)
++ [CreateOptOutList](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_CreateOptOutList.html)
++ [CreatePool](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_CreatePool.html)
++ [DeleteConfigurationSet](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DeleteConfigurationSety.html)
++ [DeleteDefaultMessageType](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DeleteDefaultMessageType.html)
++ [DeleteDefaultSenderId](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DeleteDefaultSenderId.html)
++ [DeleteEventDestination](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DeleteEventDestination.html)
++ [DeleteKeyword](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DeleteKeyword.html)
++ [DeleteOptedOutNumber](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DeleteOptedOutNumber.html)
++ [DeleteOptOutList](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DeleteOptOutList.html)
++ [DeletePool](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DeletePool.html)
++ [DeleteTextMessageSpendLimitOverride](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DeleteTextMessageSpendLimitOverride.html)
++ [DeleteVoiceMessageSpendLimitOverride](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DeleteVoiceMessageSpendLimitOverride.html)
++ [DescribeAccountAttributes](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DescribeAccountAttributes.html)
++ [DescribeAccountLimits](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DescribeAccountLimits.html)
++ [DescribeConfigurationSets](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DescribeConfigurationSets.html)
++ [DescribeKeywords](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DescribeKeywords.html)
++ [DescribeOptedOutNumbers](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DescribeOptedOutNumbers.html)
++ [DescribeOptOutLists](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DescribeOptOutLists.html)
++ [DescribePhoneNumbers](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DescribePhoneNumbers.html)
++ [DescribePools](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DescribePools.html)
++ [DescribeSenderIds](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DescribeSenderIds.html)
++ [DescribeSpendLimits](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DescribeSpendLimits.html)
++ [DisassociateOriginationIdentity](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_DisassociateOriginationIdentity.html)
++ [ListPoolOriginationIdentities](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_ListPoolOriginationIdentities.html)
++ [ListTagsForResource](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_ListTagsForResource.html)
++ [PutKeyword](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_PutKeyword.html)
++ [PutOptedOutNumber](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_PutOptedOutNumber.html)
++ [ReleasePhoneNumber](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_ReleasePhoneNumber.html)
++ [RequestPhoneNumber](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_RequestPhoneNumber.html)
++ [SetDefaultMessageType](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_SetDefaultMessageType.html)
++ [SetDefaultSenderId](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_SetDefaultSenderId.html)
++ [SetTextMessageSpendLimitOverride](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_SetTextMessageSpendLimitOverride.html)
++ [SetVoiceMessageSpendLimitOverride](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_SetVoiceMessageSpendLimitOverride.html)
++ [TagResource](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_TagResource.html)
++ [UntagResource](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_UntagResource.html)
++ [UpdateEventDestination](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_UpdateEventDestination.html)
++ [UpdatePhoneNumber](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_UpdatePhoneNumber.html)
++ [UpdatePool](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_UpdatePool.html)
+
+The following Amazon Pinpoint SMS and Voice version 2 API actions **aren't** logged in CloudTrail:
++ [SendTextMessage](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_SendTextMessage.html)
++ [SendVoiceMessage](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/API_SendTextMessage.html)
 
 ## Examples: Amazon Pinpoint log file entries<a name="understanding-pinpoint-entries"></a>
 

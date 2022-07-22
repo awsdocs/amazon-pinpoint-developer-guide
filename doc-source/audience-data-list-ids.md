@@ -15,6 +15,7 @@ The following example uses the AWS SDK for Java and does the following:
 1. Cleans up by deleting the files that Amazon Pinpoint added to Amazon S3\.
 
 ```
+import software.amazon.awssdk.auth.credentials.ProfileCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.pinpoint.PinpointClient;
 import software.amazon.awssdk.services.pinpoint.model.EndpointResponse;

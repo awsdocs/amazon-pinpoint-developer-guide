@@ -10,6 +10,7 @@ Use this example to send a voice message by using the [AWS SDK for Java](https:/
 This example assumes that you're using a shared credentials file to specify the Access Key and Secret Access Key for an existing IAM user\. For more information, see [Set up AWS credentials and Region for development](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/setup-credentials.html) in the *AWS SDK for Java Developer Guide*\.
 
 ```
+import software.amazon.awssdk.auth.credentials.ProfileCredentialsProvider;
 import software.amazon.awssdk.core.client.config.ClientOverrideConfiguration;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.pinpointsmsvoice.PinpointSmsVoiceClient;

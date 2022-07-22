@@ -2,10 +2,14 @@
 
 The following code example shows how to export an endpoint\.
 
+**Note**  
+The source code for these examples is in the [AWS Code Examples GitHub repository](https://github.com/awsdocs/aws-doc-sdk-examples)\. Have feedback on a code example? [Create an Issue](https://github.com/awsdocs/aws-doc-sdk-examples/issues/new/choose) in the code examples repo\. 
+
 ------
 #### [ Java ]
 
 **SDK for Java 2\.x**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/pinpoint#readme)\. 
 Export an endpoint\.  
 
 ```
@@ -17,7 +21,6 @@ Export an endpoint\.
                                           String iamExportRoleArn) {
 
         try {
-
             List<String> objectKeys = exportEndpointsToS3(pinpoint, s3Client, s3BucketName, iamExportRoleArn, applicationId);
             List<String> endpointFileKeys = objectKeys.stream().filter(o -> o.endsWith(".gz")).collect(Collectors.toList());
             downloadFromS3(s3Client, path, s3BucketName, endpointFileKeys);
@@ -34,7 +37,7 @@ Export an endpoint\.
         String endpointsKeyPrefix = "exports/" + applicationId + "_" + dateFormat.format(new Date());
         String s3UrlPrefix = "s3://" + s3BucketName + "/" + endpointsKeyPrefix + "/";
         List<String> objectKeys = new ArrayList<>();
-        String key ="" ;
+        String key;
 
         try {
             // Defines the export job that Amazon Pinpoint runs
@@ -43,7 +46,7 @@ Export an endpoint\.
                     .s3UrlPrefix(s3UrlPrefix)
                     .build();
 
-            CreateExportJobRequest exportJobRequest =  CreateExportJobRequest.builder()
+            CreateExportJobRequest exportJobRequest = CreateExportJobRequest.builder()
                     .applicationId(applicationId)
                     .exportJobRequest(jobRequest)
                     .build();
@@ -61,7 +64,7 @@ Export an endpoint\.
                     .prefix(endpointsKeyPrefix)
                     .build();
 
-            // Create a list of object keys
+            // Create a list of object keys.
             ListObjectsV2Response v2Response = s3Client.listObjectsV2(v2Request);
             List<S3Object> objects = v2Response.contents();
             for (S3Object object: objects) {
@@ -83,7 +86,7 @@ Export an endpoint\.
                                              String jobId) {
 
         GetExportJobResponse getExportJobResult;
-        String status = "";
+        String status;
 
         try {
             // Checks the job status until the job completes or fails
@@ -94,7 +97,7 @@ Export an endpoint\.
 
             do {
                 getExportJobResult = pinpointClient.getExportJob(exportJobRequest);
-                status =  getExportJobResult.exportJobResponse().jobStatus().toString().toUpperCase();
+                status = getExportJobResult.exportJobResponse().jobStatus().toString().toUpperCase();
                 System.out.format("Export job %s . . .\n", status);
                 TimeUnit.SECONDS.sleep(3);
 
@@ -113,12 +116,12 @@ Export an endpoint\.
         }
     }
 
-    // Downloads files from an Amazon S3 bucket and writes them to the path location
+    // Download files from an Amazon S3 bucket and write them to the path location.
     public static void downloadFromS3(S3Client s3Client, String path, String s3BucketName, List<String> objectKeys) {
 
+        String newPath;
         try {
             for (String key : objectKeys) {
-
                 GetObjectRequest objectRequest = GetObjectRequest.builder()
                         .bucket(s3BucketName)
                         .key(key)
@@ -127,10 +130,10 @@ Export an endpoint\.
                 ResponseBytes<GetObjectResponse> objectBytes = s3Client.getObjectAsBytes(objectRequest);
                 byte[] data = objectBytes.asByteArray();
 
-                // Write the data to a local file
+                // Write the data to a local file.
                 String fileSuffix = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-                path = path+fileSuffix+".gz";
-                File myFile = new File(path );
+                newPath = path + fileSuffix+".gz";
+                File myFile = new File(newPath);
                 OutputStream os = new FileOutputStream(myFile);
                 os.write(data);
             }
@@ -142,9 +145,8 @@ Export an endpoint\.
         }
     }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/pinpoint#readme)\. 
 +  For API details, see [CreateExportJob](https://docs.aws.amazon.com/goto/SdkForJavaV2/pinpoint-2016-12-01/CreateExportJob) in *AWS SDK for Java 2\.x API Reference*\. 
 
 ------
 
-For a complete list of AWS SDK developer guides and code examples, including help getting started and information about previous versions, see [Using Amazon Pinpoint with an AWS SDK](sdk-general-information-section.md)\.
+For a complete list of AWS SDK developer guides and code examples, see [Using Amazon Pinpoint with an AWS SDK](sdk-general-information-section.md)\. This topic also includes information about getting started and details about previous SDK versions\.

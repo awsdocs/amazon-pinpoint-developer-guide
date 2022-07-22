@@ -2,10 +2,14 @@
 
 The following code examples show how to send a voice message with Amazon Pinpoint SMS and Voice API\.
 
+**Note**  
+The source code for these examples is in the [AWS Code Examples GitHub repository](https://github.com/awsdocs/aws-doc-sdk-examples)\. Have feedback on a code example? [Create an Issue](https://github.com/awsdocs/aws-doc-sdk-examples/issues/new/choose) in the code examples repo\. 
+
 ------
 #### [ JavaScript ]
 
 **SDK for JavaScript V2**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascript/example_code/pinpoint-sms-voice#code-examples)\. 
   
 
 ```
@@ -88,13 +92,13 @@ pinpointsmsvoice.sendVoiceMessage(params, function(err, data) {
   }
 });
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascript/example_code/pinpoint-sms-voice#code-examples)\. 
 +  For API details, see [SendVoiceMessage](https://docs.aws.amazon.com/goto/AWSJavaScriptSDK/pinpoint-sms-voice-2018-09-05/SendVoiceMessage) in *AWS SDK for JavaScript API Reference*\. 
 
 ------
 #### [ Python ]
 
 **SDK for Python \(Boto3\)**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/python/example_code/pinpoint-sms-voice#code-examples)\. 
   
 
 ```
@@ -168,9 +172,8 @@ def main():
 if __name__ == '__main__':
     main()
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/python/example_code/pinpoint-sms-voice#code-examples)\. 
 +  For API details, see [SendVoiceMessage](https://docs.aws.amazon.com/goto/boto3/pinpoint-sms-voice-2018-09-05/SendVoiceMessage) in *AWS SDK for Python \(Boto3\) API Reference*\. 
 
 ------
 
-For a complete list of AWS SDK developer guides and code examples, including help getting started and information about previous versions, see [Using Amazon Pinpoint with an AWS SDK](sdk-general-information-section.md)\.
+For a complete list of AWS SDK developer guides and code examples, see [Using Amazon Pinpoint with an AWS SDK](sdk-general-information-section.md)\. This topic also includes information about getting started and details about previous SDK versions\.

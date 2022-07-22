@@ -21,6 +21,7 @@ A standard campaign sends a custom push notification to a specified segment acco
 The following example demonstrates how to create a campaign with the AWS SDK for Java\.
 
 ```
+import software.amazon.awssdk.auth.credentials.ProfileCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.pinpoint.PinpointClient;
 import software.amazon.awssdk.services.pinpoint.model.CampaignResponse;
@@ -75,7 +76,6 @@ import software.amazon.awssdk.services.pinpoint.model.PinpointException;
             );
 
             System.out.println("Campaign ID: " + result.campaignResponse().id());
-
             return result.campaignResponse();
 
         } catch (PinpointException e) {

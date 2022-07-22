@@ -271,6 +271,36 @@ When an Amazon Pinpoint campaign executes this Lambda function, Amazon Pinpoint 
 
 You can modify this code example so that it also connects to the API of an external service in order to send messages through that service\.
 
+### Lambda function response format for Amazon Pinpoint<a name="channels-custom-lambda-response-format"></a>
+
+If you would like to use the journey multivariate or yes/no split to determine the endpoint path after a custom channel activity you must structure your Lambda function response into a format Amazon Pinpoint can understand, and then send endpoints down the correct path\. 
+
+The structure of the response should be in the following format:
+
+```
+{ 
+    <Endpoint ID 1>:{
+        EventAttributes: {
+            <Key1>: <Value1>,
+            <Key2>: <Value2>, 
+            ...
+        } 
+    }, 
+    <Endpoint ID 2>:{ 
+        EventAttributes: {
+            <Key1>: <Value1>,
+            <Key2>: <Value2>, 
+            ...
+        } 
+    }, 
+... 
+}
+```
+
+This will then allow you select a key and value you would like to determine the endpoints path\. 
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/images/journeys-yes-no-split-activity-format.png)
+
 ### Granting Amazon Pinpoint permission to invoke the Lambda function<a name="channels-custom-lambda-trust-policy-assign"></a>
 
 You can use the AWS Command Line Interface \(AWS CLI\) to add permissions to the Lambda function policy assigned to your Lambda function\. To allow Amazon Pinpoint to invoke a function, use the Lambda [add\-permission](https://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html) command, as shown by the following example:

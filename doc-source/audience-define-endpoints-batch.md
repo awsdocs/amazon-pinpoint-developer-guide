@@ -91,6 +91,7 @@ You can use the Amazon Pinpoint API in your Java applications by using the clien
 To submit an endpoint batch request, initialize an [https://docs.aws.amazon.com/sdk-for-java/latest/reference/com/amazonaws/services/pinpoint/model/EndpointRequest.html](https://docs.aws.amazon.com/sdk-for-java/latest/reference/com/amazonaws/services/pinpoint/model/EndpointRequest.html) object, and pass it to the [https://docs.aws.amazon.com/sdk-for-java/latest/reference/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#updateEndpointsBatch-com.amazonaws.services.pinpoint.model.UpdateEndpointsBatchRequest-](https://docs.aws.amazon.com/sdk-for-java/latest/reference/com/amazonaws/services/pinpoint/AmazonPinpointClient.html#updateEndpointsBatch-com.amazonaws.services.pinpoint.model.UpdateEndpointsBatchRequest-) method of the `AmazonPinpoint` client\. The following example populates an `EndpointBatchRequest` object with two `EndpointBatchItem` objects:  
 
 ```
+import software.amazon.awssdk.auth.credentials.ProfileCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.pinpoint.PinpointClient;
 import software.amazon.awssdk.services.pinpoint.model.UpdateEndpointsBatchResponse;

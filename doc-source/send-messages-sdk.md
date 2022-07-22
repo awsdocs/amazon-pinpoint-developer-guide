@@ -138,6 +138,7 @@ This example assumes that you're using a shared credentials file to specify the 
 This code example was tested using the AWS SDK for Java version 2\.3\.1 and OpenJDK version 11\.0\.1\.
 
 ```
+import software.amazon.awssdk.auth.credentials.ProfileCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.pinpoint.PinpointClient;
 import software.amazon.awssdk.services.pinpoint.model.AddressConfiguration;
@@ -161,9 +162,8 @@ import java.util.Map;
                                  String toAddress) {
 
         try {
-
-            Map<String,AddressConfiguration> addressMap = new HashMap<String,AddressConfiguration>();
-            AddressConfiguration configuration =  AddressConfiguration.builder()
+            Map<String,AddressConfiguration> addressMap = new HashMap<>();
+            AddressConfiguration configuration = AddressConfiguration.builder()
                     .channelType(ChannelType.EMAIL)
                     .build();
 
@@ -183,7 +183,7 @@ import java.util.Map;
                     .subject(subjectPart)
                     .build();
 
-            EmailMessage emailMessage =  EmailMessage.builder()
+            EmailMessage emailMessage = EmailMessage.builder()
                     .body(htmlBody)
                     .fromAddress(senderAddress)
                     .simpleEmail(simpleEmail)
@@ -204,7 +204,6 @@ import java.util.Map;
                     .build();
 
             pinpoint.sendMessages(messagesRequest);
-
 
         } catch (PinpointException e) {
             System.err.println(e.awsErrorDetails().errorMessage());

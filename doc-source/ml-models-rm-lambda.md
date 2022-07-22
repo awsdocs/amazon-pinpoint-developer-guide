@@ -168,8 +168,6 @@ Overall, your Lambda function should process the event data that's sent by Amazo
 
 ```
 import json
-from random import randrange
-import random
 import string
  
 def lambda_handler(event, context):
@@ -195,22 +193,22 @@ def add_recommendation(endpoint):
     customGenreList = list()
     for i,item in enumerate(endpoint["RecommendationItems"]):
         item = int(item)
-        if item = 1210:
+        if item == 1210:
             customTitleList.insert(i, "Hanna")
             customGenreList.insert(i, "Action")
-        elif item = 1527:
+        elif item == 1527:
             customTitleList.insert(i, "Catastrophe")
             customGenreList.insert(i, "Comedy")
-        elif item = 1815:
+        elif item == 1815:
             customTitleList.insert(i, "Fleabag")
             customGenreList.insert(i, "Comedy")
-        elif item = 2009:
+        elif item == 2009:
             customTitleList.insert(i, "Late Night")
             customGenreList.insert(i, "Drama")
-        elif item = 4582:
+        elif item == 4582:
             customTitleList.insert(i, "Agatha Christie\'s The ABC Murders")
             customGenreList.insert(i, "Crime")
-        elif item = 6542:
+        elif item == 6542:
             customTitleList.insert(i, "Hunters")
             customGenreList.insert(i, "Drama")
         

@@ -95,7 +95,6 @@ Note that these metrics don't provide data about SMS messages that were sent by 
 | Messages sent, grouped by country |  `txn-sms-sent-grouped-by-country`  |  The number of messages that were sent, for each country or region that messages were sent to\. The query results for this metric are grouped by country or region, in ISO 3166\-1 alpha\-2 format\.  | 
 | Messages sent, grouped by date |  `txn-sms-sent-grouped-by-date`  | The number of messages that were sent, for each day in the specified date range\. The query results for this metric are grouped by calendar day, in extended ISO 8601 format\. | 
 | Total price, grouped by country |  `txn-sms-total-price-grouped-by-country`  |  The total cost, in US Dollars, of sending the messages, for each country or region that messages were sent to\. The query results for this metric are grouped by country or region, in ISO 3166\-1 alpha\-2 format\.  | 
-| Total SMS spend | sms\-spend | For all campaigns, the total amount of money, in milicents, spent on sending SMS\. | 
 
 ## Campaign metrics<a name="campaign-metrics"></a>
 
@@ -121,6 +120,7 @@ The following table lists and describes standard campaign metrics that you can q
 |  Push open rate  |  `push-open-rate`  |  For all campaign runs, the percentage of push notifications that were opened by recipients\.  This metric is calculated as the number of push notifications that were sent by all the campaign runs and opened by recipients, divided by the number of push notifications that were sent by all of those campaign runs and delivered to recipients\.  | 
 | Push open rate, grouped by campaign run |  `push-open-rate-grouped-by-campaign-activity`  |  For each campaign run, the percentage of push notifications that were opened by recipients\. This metric is calculated as the number of push notifications that were sent by a campaign run and opened by recipients, divided by the number of push notifications that were sent by the campaign run and delivered to recipients\. The query results for this metric are grouped by campaign activity ID \(`CampaignActivityId`\), which is a string that uniquely identifies a campaign run\.  | 
 | Total push opened, grouped by campaign run | `direct-push-opens-grouped-by-campaign-activity` |  For each campaign run, the number of push notifications that were opened by recipients\. The query results for this metric are grouped by campaign activity ID \(`CampaignActivityId`\), which is a string that uniquely identifies a campaign run\.  | 
+| Total SMS spend | sms\-spend | For all campaigns, the total amount of money, in milicents, spent on sending SMS\. | 
 
 ## Journey engagement metrics<a name="journey-metrics-engagement-email"></a>
 

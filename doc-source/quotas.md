@@ -5,19 +5,21 @@ The following sections list and describe the quotas, formerly referred to as *li
 **Topics**
 + [Project quotas](#quotas-projects)
 + [API request quotas](#quotas-pinpoint-api)
++ [SMS and Voice v2 API request quotas](#quotas-pinpoint-apiv2)
 + [Campaign quotas](#quotas-campaign)
 + [Email quotas](#quotas-email)
 + [Endpoint quotas](#quotas-endpoint)
 + [Endpoint import quotas](#quotas-import)
 + [Event ingestion quotas](#quotas-events)
 + [Journey quotas](#quotas-journeys)
++ [Lambda quotas](#quotas-Lambda)
 + [Machine learning quotas](#quotas-ML-models)
 + [Message template quotas](#quotas-message-templates)
 + [Push notification quotas](#quotas-mobile)
 + [In\-app message quotas](#quotas-inapp)
 + [Segment quotas](#quotas-segment)
 + [SMS quotas](#quotas-sms)
-+ [10DLC quotas](#quotas-sms)
++ [10DLC quotas](#quotas-10dlc)
 + [Voice quotas](#quotas-voice)
 + [Requesting a quota increase](#quotas-increase)
 
@@ -62,6 +64,55 @@ The following table lists the rate and burst quotas for the Amazon Pinpoint API\
 | All other operations | 300 | 300 | 
 
 If you exceed one of these quotas, Amazon Pinpoint throttles the request—that is, it rejects an otherwise valid request and returns a `TooManyRequests` error\. Throttling is based on the total number of requests that you make from your account for a specific operation in a specific AWS Region\. In addition, throttling decisions are calculated independently for each operation\. For example, if Amazon Pinpoint throttles a request for the `SendMessages` operation, a concurrent request for the `UpdateEndpoint` operation can complete successfully\.
+
+## SMS and Voice v2 API request quotas<a name="quotas-pinpoint-apiv2"></a>
+
+The following table lists the Requests Per Second \(RPS\) quota for each resource of the Amazon Pinpoint v2 API\. All Resources are eligible for a rate increase by following the directions by following the directions in [Requesting a quota increase](#quotas-increase)\.
+
+
+| Resource | Default quota rate \(requests per second\) | 
+| --- | --- | 
+| DescribeAccountAttributes | 1  | 
+| DescribeAccountLimits | 1  | 
+| DescribeSpendLimits | 1  | 
+| SetTextMessageSpendLimitOverride | 1  | 
+| SetVoiceMessageSpendLimitOverride | 1  | 
+| DeleteTextMessageSpendLimitOverride | 1  | 
+| DeleteVoiceMessageSpendLimitOverride | 1  | 
+| DescribePhoneNumbers | 1  | 
+| DescribeSenderIds | 1  | 
+| RequestPhoneNumber | 1  | 
+| UpdatePhoneNumber | 1  | 
+| ReleasePhoneNumber | 1  | 
+| DescribePools | 1  | 
+| CreatePool | 1  | 
+| UpdatePool | 1  | 
+| DeletePool | 1  | 
+| ListPoolOriginationIdentities | 1  | 
+| AssociateOriginationIdentity | 1  | 
+| DisassociateOriginationIdentity | 1  | 
+| DescribeConfigurationSets | 1  | 
+| CreateConfigurationSet | 1  | 
+| DeleteConfigurationSet | 1  | 
+| CreateEventDestination | 1  | 
+| UpdateEventDestination | 1  | 
+| DeleteEventDestination | 1  | 
+| SetDefaultMessageType | 1  | 
+| SetDefaultSenderId | 1  | 
+| DeleteDefaultMessageType | 1  | 
+| DeleteDefaultSenderId | 1  | 
+| DescribeOptOutLists | 1  | 
+| CreateOptOutList | 1  | 
+| DeleteOptOutList | 1  | 
+| DescribeOptedOutNumbers | 1  | 
+| PutOptedOutNumber | 10  | 
+| DeleteOptedOutNumber | 10  | 
+| DescribeKeywords | 1  | 
+| PutKeyword | 1  | 
+| DeleteKeyword | 1  | 
+| ListTagsForResource | 1  | 
+| TagResource | 1  | 
+| UntagResource | 1  | 
 
 ## Campaign quotas<a name="quotas-campaign"></a>
 
@@ -166,6 +217,19 @@ The following quotas apply to journeys\.
 |  Maximum number of journey activities  |  40 per journey  |  [Yes](#quotas-increase)  | 
 | Maximum segment size | For imported segments: 100,000,000 per journey\.For dynamic segments: unlimited | No | 
 
+## Lambda quotas<a name="quotas-Lambda"></a>
+
+The following quotas apply to Amazon Pinpoint configurations for retrieving and processing data from Lambda
+
+
+| Resource | Default quota | Eligible for increase | 
+| --- | --- | --- | 
+| Maximum size of an invocation payload \(request and response\) for a Lambda function | 6 MB | No | 
+| Maximum amount of time to wait for a Lambda function to process data | 15 seconds | No | 
+| Maximum number of event attributes per endpoint | 5 | No | 
+| Maximum number of characters for an event attribute name | 128 characters | No | 
+| Maximum number of characters for an event attribute value | 128 characters | No | 
+
 ## Machine learning quotas<a name="quotas-ML-models"></a>
 
 The following quotas apply to Amazon Pinpoint configurations for retrieving and processing data from machine learning \(ML\) models\.
@@ -246,8 +310,17 @@ The following quotas apply to the SMS channel\.
 |  Number of SMS messages that can be sent each second \(*sending rate*\)  |  Varies depending on destination country and originating phone number\. For more information, see [Message parts per second limits](https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-limitations-mps.html) in the *Amazon Pinpoint User Guide*\.  |  You don't need to request a quota increase\. However, you might need to obtain a phone number that supports higher throughput\. If you're unsure of which number type to use, contact AWS Support or your AWS Account Manager for more information\. If you use an alphanumeric Sender ID to send messages, you might be able to increase your throughput rate\. To find out if a throughput increase is available for your Sender ID, [open a Sender ID request](https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-awssupport-sender-id.html) in the Support Center Console\. In your request, include your existing Sender ID, the country in which you use that Sender ID, and the throughput rate you want to request\.  | 
 | Number of SMS messages that can be sent to a single recipient each second | 1 message per second | No | 
 | Number of Amazon SNS topics for two\-way SMS | 100,000 per account | [Yes](#quotas-increase) | 
+| Number of Keywords for two\-way SMS | 30 Keywords per number | [Yes](#quotas-increase) | 
+| Number of SMS and Voice numbers | 25 per account and region | [Yes](#quotas-increase) | 
+| Number of dedicated phone numbers | 25 per account | [Yes](#quotas-increase) | 
+|  Number of opt\-out lists  Note: The required Default opt\-out list counts against this quota\.  | 25 per account | [Yes](#quotas-increase) | 
+| Number of configuration sets | 25 per account | [Yes](#quotas-increase) | 
+| Number of event destinations | 5 per configuration set | No | 
+| Number of verified destination phone numbers while in SMS sandbox | 10 per account | [Yes](#quotas-increase) | 
+| Number of phone number pools | 25 per account | [Yes](#quotas-increase) | 
+| Number of origination identities that can be associated with a phone number pool | 100 per phone number pool | [Yes](#quotas-increase) | 
 
-## 10DLC quotas<a name="quotas-sms"></a>
+## 10DLC quotas<a name="quotas-10dlc"></a>
 
 The following quotas apply to SMS messages sent using 10DLC phone numbers\. 10DLC numbers can only be used to send messages to recipients in the United States\.
 
@@ -256,7 +329,7 @@ The following quotas apply to SMS messages sent using 10DLC phone numbers\. 10DL
 | --- | --- | --- | 
 |  Max 10DLC companies per AWS account  | 25 |  [Yes](#quotas-increase)  | 
 |  Max 10DLC campaigns per 10DLC company  | 10 |  [Yes](#quotas-increase)  | 
-| Max 10DLC numbers per 10DLC campaign | 49 | [Yes](#quotas-increase), but may require carrier approval\. | 
+| Max 10DLC numbers per 10DLC campaign | 49 | No | 
 
 ## Voice quotas<a name="quotas-voice"></a>
 
@@ -291,7 +364,7 @@ If the value in the **Eligible for Increase** column in any of the preceding tab
 
 1. Under **Case classification**, for **Quota type**, choose one of the following options:
    + To request a quota increase that's related to the email channel, choose **Pinpoint Email**\.
-   + To request a quota increase that's related to the SMS channel, choose **Pinpoint SMS**\.
+   + To request a quota increase for SMS spending limits or SMS sending rates, choose **Pinpoint SMS**\. For all other SMS quota increases, choose **Pinpoint**
    + To request a quota increase that's related to the voice channel, choose **Pinpoint Voice**\.
    + To request a quota increase that's related to any other Amazon Pinpoint feature, choose **Pinpoint**\.
 
