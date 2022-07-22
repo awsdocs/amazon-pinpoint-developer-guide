@@ -16,3 +16,4 @@ This documentation helps you understand how to apply the shared responsibility m
 + [Resilience in Amazon Pinpoint](security-disaster-recovery-resiliency.md)
 + [Infrastructure security in Amazon Pinpoint](security-infrastructure-security.md)
 + [Configuration and vulnerability analysis in Amazon Pinpoint](security-vulnerability-analysis-management.md)
++ [Security best practices for Amazon Pinpoint](security-best-practices.md)

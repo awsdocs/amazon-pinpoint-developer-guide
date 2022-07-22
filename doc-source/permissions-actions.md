@@ -10,7 +10,8 @@ This topic identifies Amazon Pinpoint actions that you can add to IAM policies f
 
 **Topics**
 + [Amazon Pinpoint API actions](#permissions-actions-apiactions)
-+ [Amazon Pinpoint SMS and voice API actions](#permissions-actions-sms-voice-apiactions)
++ [Amazon Pinpoint SMS and voice version 1 API actions](#permissions-actions-sms-voice-apiactions)
++ [Amazon Pinpoint SMS and voice version 2 API actions](#permissions-actions-sms-voice-apiactions-V2)
 
 ## Amazon Pinpoint API actions<a name="permissions-actions-apiactions"></a>
 
@@ -28,6 +29,7 @@ This section identifies actions for features that are available from the Amazon 
 + [Journeys](#permissions-actions-apiactions-journeys)
 + [Message templates](#permissions-actions-apiactions-templates-messages)
 + [Messages](#permissions-actions-apiactions-messages)
++ [One\-time passwords](#permissions-actions-apiactions-otp)
 + [Phone number validation](#permissions-actions-apiactions-phone-number-validate)
 + [Projects](#permissions-actions-apiactions-projects)
 + [Recommender models](#permissions-actions-apiactions-recommenders)
@@ -601,6 +603,22 @@ Send a message or push notification to all the endpoints that are associated wit
 + Method – POST
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/messages`
 
+### One\-time passwords<a name="permissions-actions-apiactions-otp"></a>
+
+The following permissions are related to sending and validating one\-time passwords \(OTPs\) in Amazon Pinpoint\.
+
+**`mobiletargeting:SendOTPMessage`**  
+Send a text message that contains a one\-time password\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-otp.html#apps-application-id-otppost](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-otp.html#apps-application-id-otppost)
++ Method – POST
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/otp`
+
+**`mobiletargeting:VerifyOTPMessage`**  
+Check the validity of a one\-time password \(OTP\) that was generated using the SendOTPMessage operation\.  
++ URI – [https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-verify-otp.html#apps-application-id-verify-otppost](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-verify-otp.html#apps-application-id-verify-otppost)
++ Method – POST
++ Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/verify-otp`
+
 ### Phone number validation<a name="permissions-actions-apiactions-phone-number-validate"></a>
 
 The following permissions are related to using the phone number validation service in Amazon Pinpoint\.
@@ -781,7 +799,7 @@ Retrieve information about all the endpoints that are associated with a user ID\
 + Method – GET
 + Resource ARN – `arn:aws:mobiletargeting:region:accountId:apps/projectId/users/userId`
 
-## Amazon Pinpoint SMS and voice API actions<a name="permissions-actions-sms-voice-apiactions"></a>
+## Amazon Pinpoint SMS and voice version 1 API actions<a name="permissions-actions-sms-voice-apiactions"></a>
 
 This section identifies actions for features that are available from the Amazon Pinpoint SMS and Voice API\. This is a supplemental API that provides advanced options for using and managing the SMS and voice channels in Amazon Pinpoint\. To learn more about this API, see the [Amazon Pinpoint SMS and voice API reference](https://docs.aws.amazon.com/pinpoint-sms-voice/latest/APIReference/)\.
 
@@ -826,3 +844,205 @@ Create and send voice messages\.
 + URI – /sms\-voice/voice/message
 + Method – POST
 + Resource ARN – Not available\. Use `*`\.
+
+## Amazon Pinpoint SMS and voice version 2 API actions<a name="permissions-actions-sms-voice-apiactions-V2"></a>
+
+This section identifies actions for features that are available from the Amazon Pinpoint SMS and Voice API\. For the Amazon Pinpoint SMS and Voice API is a supplemental API that provides advanced options for using and managing the SMS and voice channels\. For a complete list of actions available in version 2, see the [Amazon Pinpoint SMS and Voice API version 2 API Reference](https://docs.aws.amazon.com/pinpoint/latest/apireference_smsvoicev2/Welcome.html)\.
+
+**`sms-voice:AssociateOriginationIdentity`**  
+  
+Associate the specified origination identity with a pool\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:pool/poolId`
++ Resource ARN – `arn:aws:sms-voice:region:accountId:phone-number/phoneNumberId`
++ Resource ARN – `arn:aws:sms-voice:region:accountId:sender-id/senderId/isoCountyCode`
+
+**`sms-voice:CreateConfigurationSet`**  
+Create a new configuration set\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:configuration-set/configurationSetName`
+
+**`sms-voice:CreateEventDestination`**  
+Create a new event destination in a configuration set\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:configuration-set/configurationSetName`
+
+**`sms-voice:CreateOptOutList`**  
+Create a new opt\-out list\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:opt-out-list/optOutListName`
+
+**`sms-voice:CreatePool`**  
+Create a new pool and associates the specified origination identity to the pool\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:pool/poolId`
++ Resource ARN – `arn:aws:sms-voice:region:accountId:phone-number/phoneNumberId`
++ Resource ARN – `arn:aws:sms-voice:region:accountId:sender-id/senderId/isoCountyCode`
+
+**`sms-voice:DeleteConfigurationSet`**  
+Delete an existing configuration set\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:configuration-set/configurationSetName`
+
+**`sms-voice:DeleteDefaultMessageType`**  
+Delete an existing default message type on a configuration set\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:configuration-set/configurationSetName`
+
+**`sms-voice:DeleteDefaultSenderId`**  
+Delete an existing default sender ID on a configuration set\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:sender-id/configuration-set/configurationSetName`
+
+**`sms-voice:DeleteEventDestination`**  
+Delete an existing event destination\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:configuration-set/configurationSetName`
+
+**`sms-voice:DeleteKeyword`**  
+Delete an existing keyword from an origination phone number or pool\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:pool/poolId`
++ Resource ARN – `arn:aws:sms-voice:region:accountId:phone-number/phoneNumberId`
+
+**`sms-voice:DeleteOptedOutNumber`**  
+Delete an existing opted out destination phone number from the specified opt\-out list\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:opt-out-list/optOutListName`
+
+**`sms-voice:DeleteOptOutList`**  
+Delete an existing opt\-out list\. All opted out phone numbers in the opt\-out list are deleted\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:opt-out-list/optOutListName`
+
+**`sms-voice:DeletePool`**  
+Delete an existing pool\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:pool/poolId`
+
+**`sms-voice:DeleteTextMessageSpendLimitOverride`**  
+Delete an account\-level monthly spending limit override for sending text messages\.  
++ Resource ARN – Not available\. Use `*`\.
+
+**`sms-voice:DeleteVoiceMessageSpendLimitOverride`**  
+Delete an account\-level monthly spend limit override for sending voice messages\.   
++ Resource ARN – Not available\. Use `*`\.
+
+**`sms-voice:DescribeAccountAttributes`**  
+Describe attributes of your AWS account\.  
++ Resource ARN – Not available\. Use `*`\.
+
+**`sms-voice:DescribeAccountLimits`**  
+Describe the current Amazon Pinpoint SMS Voice V2 resource quotas for your account\.   
++ Resource ARN – Not available\. Use `*`\.
+
+**`sms-voice:DescribeConfigurationSets`**  
+Describe the specified configuration sets or all in your account\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:configuration-set/configurationSetName`
+
+**`sms-voice:DescribeKeywords`**  
+Describe the specified keywords or all keywords on your origination phone number or pool\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:pool/poolId`
++ Resource ARN – `arn:aws:sms-voice:region:accountId:phone-number/phoneNumberId`
+
+**`sms-voice:DescribeOptedOutNumbers`**  
+Describe the specified opted out destination numbers or all opted out destination numbers in an opt\-out list\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:opt-out-list/optOutListName`
+
+**`sms-voice:DescribeOptOutLists`**  
+Describe the specified opt\-out list or all opt\-out lists in your account\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:opt-out-list/optOutListName`
+
+**`sms-voice:DescribePhoneNumbers`**  
+Describe the specified origination phone number, or all the phone numbers in your account\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:phone-number/phoneNumberId`
+
+**`sms-voice:DescribePools`**  
+Retrieve the specified pools or all pools associated with your AWS account\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:pool/poolId`
+
+**`sms-voice:DescribeSenderIds`**  
+Describe the specified SenderIds or all SenderIds associated with your AWS account\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:sender-id/senderId/isoCountryCode`
+
+**`sms-voice:DescribeSpendLimits`**  
+Describe the current Amazon Pinpoint monthly spend limits for sending voice and text messages\.  
++ Resource ARN – Not available\. Use `*`\.
+
+**`sms-voice:DisassociateOriginationIdentity`**  
+Remove the specified origination identity from an existing pool\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:pool/poolId`
++ Resource ARN – `arn:aws:sms-voice:region:accountId:phone-number/phoneNumberId`
++ Resource ARN – `arn:aws:sms-voice:region:accountId:sender-id/senderId/isoCountryCode`
+
+**`sms-voice:ListPoolOriginationIdentities`**  
+Show the origination phone numbers in a pool\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:pool/poolId`
+
+**`sms-voice:ListTagsForResource`**  
+List the tags associated with a resource\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:configuration-set/configurationSetName`
++ Resource ARN – `arn:aws:sms-voice:region:accountId:opt-out-list/optOutListName`
++ Resource ARN – `arn:aws:sms-voice:region:accountId:phone-number/phoneNumberId`
++ Resource ARN – `arn:aws:sms-voice:region:accountId:pool/poolId`
++ Resource ARN – `arn:aws:sms-voice:region:accountId:sender-id/senderId/isoCountryCode`
+
+**`sms-voice:PutKeyword`**  
+Add or update a keyword on an origination phone number or pool\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:phone-number/phoneNumberId`
++ Resource ARN – `arn:aws:sms-voice:region:accountId:pool/poolId`
+
+**`sms-voice:PutOptedOutNumber`**  
+Add a destination phone number to an opt\-out list\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:opt-out-list/optOutListName`
+
+**`sms-voice:ReleasePhoneNumber`**  
+Remove an origination phone number from your Amazon Pinpoint account\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:phone-number/phoneNumberId`
+
+**`sms-voice:RequestPhoneNumber`**  
+Request to add an origination phone number to your account\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:phone-number/phoneNumberId`
++ Resource ARN – `arn:aws:sms-voice:region:accountId:pool/poolId`
+
+**`sms-voice:SendTextMessage`**  
+Send an SMS message\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:phone-number/phoneNumberId`
++ Resource ARN – `arn:aws:sms-voice:region:accountId:pool/poolId`
++ Resource ARN – `arn:aws:sms-voice:region:accountId:sender-id/senderId/isoCountryCode`
+
+**`sms-voice:SendVoiceMessage`**  
+Send a voice message\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:phone-number/phoneNumberId`
++ Resource ARN – `arn:aws:sms-voice:region:accountId:pool/poolId`
+
+**`sms-voice:SetDefaultMessageType`**  
+Set the default message type for SMS messages\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:configuration-set/configurationSetName`
+
+**`sms-voice:SetDefaultSenderId`**  
+Set the default sender ID value for voice messages\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:configuration-set/configurationSetName`
+
+**`sms-voice:SetTextMessageSpendLimitOverride`**  
+Set a monthly spending limit for SMS messages\.  
++ Resource ARN – Not available\. Use `*`\.
+
+**`sms-voice:SetVoiceMessageSpendLimitOverride`**  
+Set a monthly spending limit for voice messages\.  
++ Resource ARN – Not available\. Use `*`\.
+
+**`sms-voice:TagResource`**  
+Add a tag to a resource\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:configuration-set/configurationSetName`
++ Resource ARN – `arn:aws:sms-voice:region:accountId:opt-out-list/optOutListName`
++ Resource ARN – `arn:aws:sms-voice:region:accountId:phone-number/phoneNumberId`
++ Resource ARN – `arn:aws:sms-voice:region:accountId:pool/poolId`
++ Resource ARN – `arn:aws:sms-voice:region:accountId:sender-id/senderId/isoCountryCode`
+
+**`sms-voice:UntagResource`**  
+Remove tags from a resource\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:configuration-set/configurationSetName`
++ Resource ARN – `arn:aws:sms-voice:region:accountId:opt-out-list/optOutListName`
++ Resource ARN – `arn:aws:sms-voice:region:accountId:phone-number/phoneNumberId`
++ Resource ARN – `arn:aws:sms-voice:region:accountId:pool/poolId`
++ Resource ARN – `arn:aws:sms-voice:region:accountId:sender-id/senderId/isoCountryCode`
+
+**`sms-voice:UpdateEventDestination`**  
+Update an existing event destination\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:configuration-set/configurationSetName`
+
+**`sms-voice:UpdatePhoneNumber`**  
+Update the configuration of an origination phone number\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:phone-number/phoneNumberId`
+
+**`sms-voice:UpdatePool`**  
+Update an existing phone number pool\.  
++ Resource ARN – `arn:aws:sms-voice:region:accountId:pool/poolId`

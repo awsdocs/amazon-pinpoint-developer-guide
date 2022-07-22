@@ -81,19 +81,19 @@ import java.util.Map;
     public static void updatePinpointEndpoint(PinpointClient pinpoint,String applicationId, String endPointId) {
 
         try{
-            List<String> wangXiList = new ArrayList<String>();
+            List<String> wangXiList = new ArrayList<>();
             wangXiList.add("cooking");
             wangXiList.add("running");
             wangXiList.add("swimming");
 
-            Map myMapWang = new HashMap<String, List>();
+            Map myMapWang = new HashMap<>();
             myMapWang.put("interests", wangXiList);
 
-            List<String> myNameWang = new ArrayList<String>();
+            List<String> myNameWang = new ArrayList<>();
             myNameWang.add("Wang ");
             myNameWang.add("Xiulan");
 
-            Map wangName = new HashMap<String, List>();
+            Map wangName = new HashMap<>();
             wangName.put("name",myNameWang );
 
             EndpointUser wangMajor = EndpointUser.builder()
@@ -111,13 +111,12 @@ import java.util.Map;
 
             // Adds multiple endpoint definitions to a single request object.
             UpdateEndpointRequest endpointList = UpdateEndpointRequest.builder()
-               .applicationId(applicationId)
+                .applicationId(applicationId)
                 .endpointRequest(wangXiulanEndpoint)
                 .endpointId(endPointId)
                 .build();
 
             UpdateEndpointResponse result = pinpoint.updateEndpoint(endpointList);
-
             System.out.format("Update endpoint result: %s\n", result.messageBody().message());
 
     } catch (PinpointException e) {

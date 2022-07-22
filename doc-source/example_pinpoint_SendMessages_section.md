@@ -2,10 +2,14 @@
 
 The following code examples show how to send email and text messages with Amazon Pinpoint\.
 
+**Note**  
+The source code for these examples is in the [AWS Code Examples GitHub repository](https://github.com/awsdocs/aws-doc-sdk-examples)\. Have feedback on a code example? [Create an Issue](https://github.com/awsdocs/aws-doc-sdk-examples/issues/new/choose) in the code examples repo\. 
+
 ------
 #### [ Java ]
 
 **SDK for Java 2\.x**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/pinpoint#readme)\. 
 Send an email message\.  
 
 ```
@@ -16,9 +20,8 @@ Send an email message\.
                                  String toAddress) {
 
         try {
-
-            Map<String,AddressConfiguration> addressMap = new HashMap<String,AddressConfiguration>();
-            AddressConfiguration configuration =  AddressConfiguration.builder()
+            Map<String,AddressConfiguration> addressMap = new HashMap<>();
+            AddressConfiguration configuration = AddressConfiguration.builder()
                     .channelType(ChannelType.EMAIL)
                     .build();
 
@@ -38,7 +41,7 @@ Send an email message\.
                     .subject(subjectPart)
                     .build();
 
-            EmailMessage emailMessage =  EmailMessage.builder()
+            EmailMessage emailMessage = EmailMessage.builder()
                     .body(htmlBody)
                     .fromAddress(senderAddress)
                     .simpleEmail(simpleEmail)
@@ -59,7 +62,6 @@ Send an email message\.
                     .build();
 
             pinpoint.sendMessages(messagesRequest);
-
 
         } catch (PinpointException e) {
             System.err.println(e.awsErrorDetails().errorMessage());
@@ -121,13 +123,13 @@ Send an SMS message\.
     }
   }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/pinpoint#readme)\. 
 +  For API details, see [SendMessages](https://docs.aws.amazon.com/goto/SdkForJavaV2/pinpoint-2016-12-01/SendMessages) in *AWS SDK for Java 2\.x API Reference*\. 
 
 ------
 #### [ JavaScript ]
 
 **SDK for JavaScript V3**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/pinpoint#code-examples)\. 
 Create the client in a separate module and export it\.  
 
 ```
@@ -319,10 +321,10 @@ const run = async () => {
 };
 run();
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/pinpoint#code-examples)\. 
 +  For API details, see [SendMessages](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-pinpoint/classes/sendmessagescommand.html) in *AWS SDK for JavaScript API Reference*\. 
 
 **SDK for JavaScript V2**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascript/example_code/pinpoint#code-examples)\. 
 Send an email message\.  
 
 ```
@@ -512,7 +514,6 @@ pinpoint.sendMessages(params, function(err, data) {
   }
 });
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascript/example_code/pinpoint#code-examples)\. 
 +  For API details, see [SendMessages](https://docs.aws.amazon.com/goto/AWSJavaScriptSDK/pinpoint-2016-12-01/SendMessages) in *AWS SDK for JavaScript API Reference*\. 
 
 ------
@@ -520,6 +521,7 @@ pinpoint.sendMessages(params, function(err, data) {
 
 **SDK for Kotlin**  
 This is prerelease documentation for a feature in preview release\. It is subject to change\.
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/kotlin/services/pinpoint#code-examples)\. 
   
 
 ```
@@ -582,13 +584,13 @@ This is prerelease documentation for a feature in preview release\. It is subjec
         }
    }
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/kotlin/services/pinpoint#code-examples)\. 
 +  For API details, see [SendMessages](https://github.com/awslabs/aws-sdk-kotlin#generating-api-documentation) in *AWS SDK for Kotlin API reference*\. 
 
 ------
 #### [ Python ]
 
 **SDK for Python \(Boto3\)**  
+ To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/python/example_code/pinpoint#code-examples)\. 
 Send an email message\.  
 
 ```
@@ -743,9 +745,8 @@ def main():
 if __name__ == '__main__':
     main()
 ```
-+  Find instructions and more code on [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/python/example_code/pinpoint#code-examples)\. 
 +  For API details, see [SendMessages](https://docs.aws.amazon.com/goto/boto3/pinpoint-2016-12-01/SendMessages) in *AWS SDK for Python \(Boto3\) API Reference*\. 
 
 ------
 
-For a complete list of AWS SDK developer guides and code examples, including help getting started and information about previous versions, see [Using Amazon Pinpoint with an AWS SDK](sdk-general-information-section.md)\.
+For a complete list of AWS SDK developer guides and code examples, see [Using Amazon Pinpoint with an AWS SDK](sdk-general-information-section.md)\. This topic also includes information about getting started and details about previous SDK versions\.

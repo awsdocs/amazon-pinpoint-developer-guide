@@ -29,20 +29,20 @@ In the following procedure, the example policy allows this access for a particul
 
    ```
    {
-       "Version": "2012-10-17",
-       "Statement": [
+       "Version":"2012-10-17",
+       "Statement":[
            {
-               "Sid": "RetrieveRecommendationsOneCampaign",
-               "Effect": "Allow",
-               "Action": [
+               "Sid":"RetrieveRecommendationsOneCampaign",
+               "Effect":"Allow",
+               "Action":[
                    "personalize:DescribeSolution",
                    "personalize:DescribeCampaign",
                    "personalize:GetRecommendations"
                ],
-                "Resource": [
+               "Resource":[
                    "arn:aws:personalize:region:accountId:solution/solutionId",
                    "arn:aws:personalize:region:accountId:campaign/campaignId"
-                   ]
+               ]
            }
        ]
    }
@@ -62,25 +62,6 @@ In the following procedure, the example policy allows this access for a particul
 
    ```
    aws iam create-policy --policy-name RetrieveRecommendationsPolicy --policy-document file://RetrieveRecommendationsPolicy.json
-   ```
-
-   If the policy was created successfully, you see output similar to the following:
-
-   ```
-   {
-       "Policy": {
-           "PolicyName": "RetrieveRecommendationsPolicy",
-           "PolicyId": "ANPAJ2YJQRJCG3EXAMPLE",
-           "Arn": "arn:aws:iam::123456789012:policy/RetrieveRecommendationsPolicy",
-           "Path": "/",
-           "DefaultVersionId": "v1",
-           "AttachmentCount": 0,
-           "PermissionBoundaryUsageCount": 0,
-           "IsAttachable": true,
-           "CreateDate": "2020-03-04T22:23:15Z",
-           "UpdateDate": "2020-03-04T22:23:15Z"
-       }
-   }
    ```
 **Note**  
 If you receive a message that your account isn't authorized to perform the `CreatePolicy` operation, you need to attach a policy to your user account that lets you create new IAM policies and roles for your account\. For more information, see [Adding and removing IAM identity permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html#attach-managed-policy-console) in the *IAM User Guide*\.
@@ -106,7 +87,15 @@ Each IAM role contains a *trust policy*, which is a set of rules that specifies 
                "Principal": {
                    "Service": "pinpoint.amazonaws.com"
                },
-               "Action": "sts:AssumeRole"
+               "Action": "sts:AssumeRole",
+               "Condition": {
+                   "StringEquals": {
+                       "AWS:SourceAccount": "accountId"
+                   },
+                   "ArnLike": {
+                       "AWS:SourceArn": "arn:aws:mobiletargeting:region:accountId:apps/*"
+                   }
+               }
            }
        ]
    }
@@ -120,32 +109,6 @@ Each IAM role contains a *trust policy*, which is a set of rules that specifies 
 
    ```
    aws iam create-role --role-name PinpointRoleforPersonalize --assume-role-policy-document file://RecommendationsTrustPolicy.json
-   ```
-
-   If the command runs successfully, you see output similar to the following:
-
-   ```
-   {                                                          
-       "Role": {                                              
-           "Path": "/",
-           "RoleName": "PinpointRoleforPersonalize",                           
-           "RoleId": "AKIAIOSFODNN7EXAMPLE",
-           "Arn": "arn:aws:iam::123456789012:role/PinpointRoleforPersonalize",
-           "CreateDate": "2020-03-04T22:29:45Z",
-           "AssumeRolePolicyDocument": {                      
-               "Version": "2012-10-17",                       
-               "Statement": [                                 
-                   {                                          
-                       "Effect": "Allow",                     
-                       "Principal": {                         
-                           "Service": "pinpoint.amazonaws.com"
-                       },                                     
-                       "Action": "sts:AssumeRole"             
-                   }                                          
-               ]                                              
-           }                                                                                         
-       }                                                      
-   }
    ```
 
 1. Enter the following command to attach the policy that you created in the previous section to the role that you just created:

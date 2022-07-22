@@ -1,6 +1,8 @@
-# API examples for Amazon Pinpoint<a name="service_code_examples_pinpoint_api"></a>
+# Actions for Amazon Pinpoint using AWS SDKs<a name="service_code_examples_pinpoint_actions"></a>
 
-The following code examples show how to use Amazon Pinpoint with AWS SDKs\.
+The following code examples demonstrate how to perform individual Amazon Pinpoint actions with AWS SDKs\. These excerpts call the Amazon Pinpoint API and are not intended to be run in isolation\. Each example includes a link to GitHub, where you can find instructions on how to set up and run the code in context\.
+
+ The following examples include only the most commonly used actions\. For a complete list, see the [Amazon Pinpoint API Reference](https://docs.aws.amazon.com/pinpoint/latest/apireference/welcome.html)\. 
 
 **Topics**
 + [Create a campaign](example_pinpoint_CreateCampaign_section.md)

@@ -31,7 +31,7 @@ You can import endpoints that are defined in a CSV file, as in the following exa
 
 ```
 ChannelType,Address,Location.Country,Demographic.Platform,Demographic.Make,User.UserId
-SMS,2065550182,CAN,Android,LG,example-user-id-1
+SMS,12065550182,CAN,Android,LG,example-user-id-1
 APNS,1a2b3c4d5e6f7g8h9i0j1a2b3c4d5e6f,USA,iOS,Apple,example-user-id-2
 EMAIL,john.stiles@example.com,USA,iOS,Apple,example-user-id-2
 ```
@@ -50,7 +50,7 @@ Line breaks are not supported within a value in the CSV\.
 You can import endpoints that are defined in a newline\-delimited JSON file, as in the following example:
 
 ```
-{"ChannelType":"SMS","Address":"2065550182","Location":{"Country":"CAN"},"Demographic":{"Platform":"Android","Make":"LG"},"User":{"UserId":"example-user-id-1"}}
+{"ChannelType":"SMS","Address":"12065550182","Location":{"Country":"CAN"},"Demographic":{"Platform":"Android","Make":"LG"},"User":{"UserId":"example-user-id-1"}}
 {"ChannelType":"APNS","Address":"1a2b3c4d5e6f7g8h9i0j1a2b3c4d5e6f","Location":{"Country":"USA"},"Demographic":{"Platform":"iOS","Make":"Apple"},"User":{"UserId":"example-user-id-2"}}
 {"ChannelType":"EMAIL","Address":"john.stiles@example.com","Location":{"Country":"USA"},"Demographic":{"Platform":"iOS","Make":"Apple"},"User":{"UserId":"example-user-id-2"}}
 ```

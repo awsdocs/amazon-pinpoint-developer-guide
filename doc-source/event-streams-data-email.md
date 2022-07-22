@@ -343,12 +343,12 @@ Includes information about the journey that produced the event\.
 
 ### Client<a name="event-streams-data-email-attributes-client"></a>
 
-Includes information about the endpoint that was targeted by the campaign or journey\.
+The unique identifier of the client that was targeted by the campaign or journey\.
 
 
 | Attribute | Description | 
 | --- | --- | 
-| client\_id | The email address of the endpoint that reported the event\. | 
+| client\_id | The ID of the client\. | 
 
 ### Facets<a name="event-streams-data-email-attributes-facets"></a>
 

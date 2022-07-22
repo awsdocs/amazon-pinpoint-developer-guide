@@ -1,10 +1,12 @@
 # Document history for Amazon Pinpoint<a name="doc-history"></a>
 
 The following table describes important changes in each release of the *Amazon Pinpoint Developer Guide* after December 2018\. For notification about updates to this documentation, you can subscribe to an RSS feed\.
-+ **Latest documentation update:** November 26, 2021
++ **Latest documentation update:** May 27, 2022
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [IAM role example updates](#doc-history) | Updated several IAM role examples throughout the document to better align with security best practices\. | May 27, 2022 | 
+| [SMS and Voice API, version 2](#doc-history) | Amazon Pinpoint now includes a dedicated API for sending SMS and Voice messages\. This API includes new features, such as configuration sets, pools, and opt\-out lists, which are helpful for customers who send SMS and voice messages transactionally\. For more information, see [Using the Amazon Pinpoint SMS and Voice API](https://docs.aws.amazon.com/pinpoint/latest/developerguide/sms-voice-v2.html)\. | April 1, 2022 | 
 | [One\-time password creation and validation](#doc-history) | Amazon Pinpoint now includes a feature that generates one\-time passwords \(OTPs\) and sends them to your users as SMS messages\. It also includes an API for validating the OTP codes when your users input them into your application or site\. For more information, see [Sending and validating One\-Time Passwords \(OTPs\)](https://docs.aws.amazon.com/pinpoint/latest/developerguide/send-validate-otp.html)\. | November 26, 2021 | 
 | [In\-app messages](#doc-history) | Added information about integrating the [in\-app messaging](https://docs.aws.amazon.com/pinpoint/latest/developerguide/channels-inapp.html) capability of Amazon Pinpoint with your apps\. | November 10, 2021 | 
 | [Code examples](#doc-history) | Added a [library of code examples](https://docs.aws.amazon.com/pinpoint/latest/developerguide/service_code_examples.html) for common Amazon Pinpoint operations\. | November 3, 2021 | 
@@ -50,7 +52,6 @@ The following table describes important changes in each release of the *Amazon P
 | AWS CloudTrail logging | Added information about [logging Amazon Pinpoint API calls with CloudTrail](logging-using-cloudtrail.md)\. | February 6, 2018 | 
 | Updated service quotas | Updated [Amazon Pinpoint quotas](quotas.md) with additional information about email quotas\. | January 19, 2018 | 
 | Public beta for Amazon Pinpoint extensions | Use AWS Lambda functions to [customize segments](segments-dynamic.md) or [create custom messaging channels](channels-custom.md)\. | November 28, 2017 | 
-| External ID removed from IAM trust policies | The external ID key is removed from the example [trust policy](permissions-import-segment.md#permissions-import-segment-trustpolicy) and example [Java code](segments-importing.md) for importing segments\. | October 26, 2017 | 
 | Push notification payload quotas | The quotas include [payload sizes for mobile push messages](quotas.md#quotas-mobile)\. | October 25, 2017 | 
 | Updated service quotas | Added SMS and email channel information to [Amazon Pinpoint quotas](quotas.md)\. | October 9, 2017 | 
 | ADM and Baidu mobile push | Update your app code to handle push notifications from the Baidu and ADM mobile push channels\. | September 27, 2017 | 

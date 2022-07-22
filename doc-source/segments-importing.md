@@ -13,6 +13,7 @@ To create the IAM role, see [IAM role for importing endpoints or segmentsImporti
 The following example demonstrates how to import a segment by using the AWS SDK for Java\.
 
 ```
+import software.amazon.awssdk.auth.credentials.ProfileCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.pinpoint.PinpointClient;
 import software.amazon.awssdk.services.pinpoint.model.CreateImportJobRequest;

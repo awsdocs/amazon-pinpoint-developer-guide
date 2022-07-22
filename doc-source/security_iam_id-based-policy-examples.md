@@ -55,7 +55,12 @@ The following example policy provides read\-only access to the Amazon Pinpoint c
                 "ses:List*",
                 "sns:ListTopics"
             ],
-            "Resource": "*"
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:SourceAccount": "accountId"
+                }
+            }
         }
     ]
 }
@@ -103,7 +108,12 @@ You can also create read\-only policies that provide access to only specific pro
                 "ses:Describe*",
                 "s3:List*"
             ],
-            "Resource": "*"
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:SourceAccount": "accountId"
+                }
+            }
         }
     ]
 }
@@ -152,7 +162,12 @@ In addition to granting permissions for `mobiletargeting:Get` and `mobiletargeti
                 "ses:Describe*",
                 "s3:List*"
             ],
-            "Resource": "*"
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:SourceAccount": "accountId"
+                }
+            }
         }
     ]
 }
@@ -184,7 +199,15 @@ You can use conditions in an identity\-based policy to control access to Amazon 
             ],
             "Resource": "arn:aws:mobiletargeting:*:*:*",
             "Condition": {
-                "StringEquals": {"aws:ResourceTag/Owner": "${aws:username}"}
+                "StringEquals": {
+                    "aws:ResourceTag/Owner": "userName"
+                },
+                "StringEquals": {
+                    "aws:SourceAccount": "accountId"
+                },
+                "ArnLike": {
+                    "aws:SourceArn": "arn:aws:mobiletargeting:region:accountId:*"
+                }
             }
         }
     ]
@@ -248,8 +271,8 @@ The following example policy allows read\-only access to all the resources in yo
             "Sid": "ViewAllResources",
             "Effect": "Allow",
             "Action": [
-                "mobiletargeting:Get*",
-                "mobiletargeting:List*"
+                "mobiletargetingGet*",
+                "mobiletargetingList*"
             ],
             "Resource": "arn:aws:mobiletargeting:region:accountId:*"
         }
@@ -261,7 +284,7 @@ In the preceding example, replace *region* with the name of an AWS Region, and r
 
 ### Administrator access<a name="permissions-actions-examples-admin"></a>
 
-The following example policy allows full access to all Amazon Pinpoint actions and resources in your Amazon Pinpoint account in all AWS Regions:
+The following example policy allows full access to all Amazon Pinpoint actions and resources in your Amazon Pinpoint account:
 
 ```
 {
@@ -271,9 +294,9 @@ The following example policy allows full access to all Amazon Pinpoint actions a
             "Sid": "FullAccess",
             "Effect": "Allow",
             "Action": [
-                "mobiletargeting:*"
+                "mobiletargeting*"
             ],
-            "Resource": "arn:aws:mobiletargeting:*:accountId:*"
+            "Resource": "arn:aws:mobiletargeting:region:accountId:*"
         }
     ]
 }
@@ -287,21 +310,28 @@ This section provides example policies that allow access to features that are av
 
 ### Read\-only access<a name="permissions-actions-examples-pin-sms-voice-api-readonly"></a>
 
-The following example policy allows read\-only access to all Amazon Pinpoint SMS and Voice API actions and resources in your AWS account in all AWS Regions:
+The following example policy allows read\-only access to all Amazon Pinpoint SMS and Voice API actions and resources in your AWS account:
 
 ```
 {
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "ViewAllResources",
+            "Sid": "SMSVoiceReadOnly",
             "Effect": "Allow",
             "Action": [
                 "sms-voice:Get*",
                 "sms-voice:List*"
             ],
-
-            "Resource": "*"
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:SourceAccount": "accountId"
+                },
+                "ArnLike": {
+                    "aws:SourceArn": "arn:aws::sms-voice:region:accountId:*"
+                }
+            }
         }
     ]
 }
@@ -309,20 +339,27 @@ The following example policy allows read\-only access to all Amazon Pinpoint SMS
 
 ### Administrator access<a name="permissions-actions-examples-pin-sms-voice-api-admin"></a>
 
-The following example policy allows full access to all Amazon Pinpoint SMS and Voice API actions and resources in your AWS account in all AWS Regions:
+The following example policy allows full access to all Amazon Pinpoint SMS and Voice API actions and resources in your AWS account:
 
 ```
 {
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "FullAccess",
+            "Sid": "SMSVoiceFullAccess",
             "Effect": "Allow",
             "Action": [
-                "sms-voice:*"
+                "sms-voice:*",
             ],
-
-            "Resource": "*"
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:SourceAccount": "accountId"
+                },
+                "ArnLike": {
+                    "aws:SourceArn": "arn:aws::sms-voice:region:accountId:*"
+                }
+            }
         }
     ]
 }
@@ -336,32 +373,34 @@ The condition in this statement identifies the `54.240.143.*` range of allowed I
 
 ```
 {
-  "Version": "2012-10-17",
-  "Id": "AMZPinpointPolicyId1",
-  "Statement": [
-    {
-      "Sid": "IPAllow",
-      "Effect": "Allow",
-      "Principal": "*",
-      "Action": "mobiletargeting:*",
-      "Resource": [
-                "arn:aws:mobiletargeting:*:*:apps/projectId",
-                "arn:aws:mobiletargeting:*:*:apps/projectId/*"
-                ],
-      "Condition": {
-         "IpAddress": {"aws:SourceIp": "54.240.143.0/24"},
-         "NotIpAddress": {"aws:SourceIp": "54.240.143.188/32"} 
-      } 
-    } 
-  ]
+    "Version":"2012-10-17",
+    "Id":"AMZPinpointPolicyId1",
+    "Statement":[
+        {
+            "Sid":"IPAllow",
+            "Effect":"Allow",
+            "Principal":"*",
+            "Action":"mobiletargeting:*",
+            "Resource":[
+                "arn:aws:mobiletargeting:region:accountId:apps/projectId",
+                "arn:aws:mobiletargeting:region:accountId:apps/projectId/*"
+            ],
+            "Condition":{
+                "IpAddress":{
+                    "aws:SourceIp":"54.240.143.0/24"
+                },
+                "NotIpAddress":{
+                    "aws:SourceIp":"54.240.143.188/32"
+                }
+            }
+        }
+    ]
 }
 ```
 
 ## Example: Restricting Amazon Pinpoint access based on tags<a name="security_iam_resource-based-policy-examples-restrict-access-by-tag"></a>
 
 The following example policy grants permissions to perform any Amazon Pinpoint action on a specified project \(*projectId*\)\. However, permissions are granted only if the request originates from a user whose name is a value in the `Owner` resource tag for the project, as specified in the condition\.
-
-The `Condition` block uses the `StringEquals` condition and the `aws:ResourceTag/${TagKey}` condition key\. For more information about conditions and condition keys, see [Specifying conditions in a policy](https://docs.aws.amazon.com/AmazonS3/latest/dev/amazon-s3-policy-keys.html) in the *IAM User Guide*\.
 
 ```
 {
@@ -372,11 +411,13 @@ The `Condition` block uses the `StringEquals` condition and the `aws:ResourceTag
             "Effect": "Allow",
             "Action": "mobiletargeting:*",
             "Resource": [
-                "arn:aws:mobiletargeting:*:*:apps/projectId",
-                "arn:aws:mobiletargeting:*:*:apps/projectId/*"
+                "arn:aws:mobiletargeting:region:accountId:apps/projectId",
+                "arn:aws:mobiletargeting:region:accountId:apps/projectId/*"
                 ],
             "Condition": {
-                "StringEquals": {"aws:ResourceTag/Owner": "${aws:username}"}
+                "StringEquals": {
+                    "aws:ResourceTag/Owner": "userName"
+                }
             }
         }
     ]
@@ -391,26 +432,26 @@ The following example policy grants Amazon Pinpoint permission to send email usi
 
 ```
 {
-  "Version": "2008-10-17",
-  "Statement": [
-    {
-      "Sid": "PinpointEmail",
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "pinpoint.amazonaws.com"
-      },
-      "Action": "ses:*",
-      "Resource": "arn:aws:ses:region:accountId:identity/emailId",
-      "Condition": {
-        "StringEquals": {
-          "aws:SourceAccount": "accountId",
-        },
-        "StringLike": {
-          "aws:SourceArn": "arn:aws:mobiletargeting:region:accountId:apps/*"
+    "Version":"2008-10-17",
+    "Statement":[
+        {
+            "Sid":"PinpointEmail",
+            "Effect":"Allow",
+            "Principal":{
+                "Service":"pinpoint.amazonaws.com"
+            },
+            "Action":"ses:*",
+            "Resource":"arn:aws:ses:region:accountId:identity/emailId",
+            "Condition":{
+                "StringEquals":{
+                    "aws:SourceAccount":"accountId"
+                },
+                "StringLike":{
+                    "aws:SourceArn":"arn:aws:mobiletargeting:region:accountId:apps/*"
+                }
+            }
         }
-      }
-    }
-  ]
+    ]
 }
 ```
 
@@ -418,25 +459,25 @@ If you use Amazon Pinpoint in the AWS GovCloud \(US\-West\) Region, use the foll
 
 ```
 {
-  "Version": "2008-10-17",
-  "Statement": [
-    {
-      "Sid": "PinpointEmail",
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "pinpoint.amazonaws.com"
-      },
-      "Action": "ses:*",
-      "Resource": "arn:aws-us-gov:ses:us-gov-west-1:accountId:identity/emailId",
-      "Condition": {
-        "StringEquals": {
-          "aws:SourceAccount": "accountId"
-        },
-        "StringLike": {
-          "aws:SourceArn": "arn:aws-us-gov:mobiletargeting:us-gov-west-1:accountId:apps/*"
+    "Version":"2008-10-17",
+    "Statement":[
+        {
+            "Sid":"PinpointEmail",
+            "Effect":"Allow",
+            "Principal":{
+                "Service":"pinpoint.amazonaws.com"
+            },
+            "Action":"ses:*",
+            "Resource":"arn:aws-us-gov:ses:us-gov-west-1:accountId:identity/emailId",
+            "Condition":{
+                "StringEquals":{
+                    "aws:SourceAccount":"accountId"
+                },
+                "StringLike":{
+                    "aws:SourceArn":"arn:aws-us-gov:mobiletargeting:us-gov-west-1:accountId:apps/*"
+                }
+            }
         }
-      }
-    }
-  ]
+    ]
 }
 ```

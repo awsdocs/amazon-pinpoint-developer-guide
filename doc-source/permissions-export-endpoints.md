@@ -124,7 +124,15 @@ Now that you've created an IAM policy, you can create a role and attach the poli
                "Principal":{
                    "Service":"pinpoint.amazonaws.com"
                },
-               "Action":"sts:AssumeRole"
+               "Action":"sts:AssumeRole",
+               "Condition": {
+                   "StringEquals": {
+                       "aws:SourceAccount": "accountId"
+                   },
+                   "ArnLike": {
+                       "aws:SourceArn": "arn:aws:mobiletargeting:region:accountId:apps/applicationId"
+                   }
+               }
            }
        ]
    }
@@ -136,32 +144,6 @@ Now that you've created an IAM policy, you can create a role and attach the poli
 
    ```
    aws iam create-role --role-name s3ExportRole --assume-role-policy-document file://trustpolicy.json
-   ```
-
-   If the command runs successfully, you see output similar to the following:
-
-   ```
-   {                                                          
-       "Role": {                                              
-           "RoleName": "s3ExportRole",                           
-           "AssumeRolePolicyDocument": {                      
-               "Version": "2012-10-17",                       
-               "Statement": [                                 
-                   {                                          
-                       "Effect": "Allow",                     
-                       "Principal": {                         
-                           "Service": "pinpoint.amazonaws.com"
-                       },                                     
-                       "Action": "sts:AssumeRole"             
-                   }                                          
-               ]                                              
-           },                                                 
-           "RoleId": "AROAICPO353GIPEXAMPLE",                 
-           "Arn": "arn:aws:iam::123456789012:role/s3ExportRole", 
-           "CreateDate": "2018-04-11T18:52:36.712Z",          
-           "Path": "/"                                        
-       }                                                      
-   }
    ```
 
 1. At the command line, enter the following command to attach the policy that you created in the previous section to the role that you just created:

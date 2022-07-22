@@ -2,7 +2,7 @@
 
 The first step in implementing this solution is to set up Amazon Pinpoint\. In this section, you do the following:
 + Create an Amazon Pinpoint project
-+ Enable the SMS channel and lease a long code
++ Enable the SMS channel and lease a phone number
 + Configure two\-way SMS messaging
 
 Before you begin with this tutorial, you should review the [prerequisites](tutorials-two-way-sms-prereqs.md)\.
@@ -57,12 +57,12 @@ These steps describe the process of creating a new Amazon Pinpoint project if yo
 **Tip**  
 You need to use this ID in a few different places in this tutorial\. Keep the project ID in a convenient place so that you can copy it later\.
 
-## Step 1\.2: Obtain a dedicated long code<a name="tutorials-two-way-sms-part-1-set-up-channel"></a>
+## Step 1\.2: Obtain a dedicated phone number<a name="tutorials-two-way-sms-part-1-set-up-channel"></a>
 
-After you create a project, you can start to configure features within that project\. In this section, you enable the SMS channel, and obtain a dedicated long code to use when sending SMS messages\.
+After you create a project, you can start to configure features within that project\. In this section, you enable the SMS channel, and obtain a dedicated phone number to use when sending SMS messages\.
 
 **Note**  
-This section assumes that you're leasing a long code that's based in the United States or Canada\. If you follow the procedures in this section, but choose a country other than the United States or Canada, you won't be able to use that number to send SMS messages\. To learn more about leasing SMS\-capable long codes in countries other than the United States or Canada, see [Requesting dedicated long codes for SMS messaging with Amazon Pinpoint](https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-awssupport-long-code.html) in the *Amazon Pinpoint User Guide*\.
+This section assumes that you're leasing a United States 10DLC phone number after brand and campaign registration, United States Toll\-Free number, or Canada long code\. If you follow the procedures in this section, but choose a country other than the United States or Canada, you won't be able to use that number to send SMS messages\. To learn more about leasing SMS\-capable long codes in countries other than the United States or Canada, see [Requesting dedicated long codes for SMS messaging with Amazon Pinpoint](https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-awssupport-long-code.html) in the *Amazon Pinpoint User Guide*\.
 
 1. In the navigation pane, under **Settings**, choose **SMS and voice**\.
 
@@ -70,28 +70,30 @@ This section assumes that you're leasing a long code that's based in the United 
 
 1. Under **General settings**, choose **Enable the SMS channel for this project**, and then choose **Save changes**\.
 
-1. Next to **Number settings**, choose **Request long codes**\.
+1. Next to **Number settings**, choose **Request phone number**\.
 
-1. Under **Long code specifications**, do the following:
-   + For **Target country or region**, choose **United States** or **Canada**\.
-   + For **Default call type**, choose **Transactional**\.
+1. Under **Define your phone numbers**, do the following:
+   + For **Country**, choose **United States** or **Canada**\.
+   + For **Default message type**, choose **Transactional**\.
    + For **Quantity**, choose **1**\.
 
-1. Choose **Request long code**\.
+1. Choose **Next**\.
+
+1. Choose **Request**\.
 
 ## Step 1\.3: Enable two\-way SMS<a name="tutorials-two-way-sms-part-1-enable-two-way"></a>
 
 Now that you have a dedicated phone number, you can set up two\-way SMS\. Enabling two\-way SMS makes it possible for your customers to respond to the SMS messages that you send them\. In this solution, you use two\-way SMS to give your customers a way to confirm that they want to subscribe to your SMS program\.
 
-1. On the **SMS and voice** settings page, under **Number settings**, choose the long code that you received in the previous section\.
+1. On the **SMS and voice** settings page, under **Number settings**, choose the phone number that you received in the previous section\.
 
 1. Under **Required keywords**, do the following:
-   + Next to the **HELP** keyword, for **Response message**, enter the message that you want Amazon Pinpoint to automatically send recipients when they send the keyword "HELP" \(or its variations\) to this long code\.
-   + Next to the **STOP** keyword, for **Response message**, enter the message that you want Amazon Pinpoint to automatically send recipients when they send the keyword "STOP" \(or its variations\) to this long code\.
+   + Next to the **HELP** keyword, for **Response message**, enter the message that you want Amazon Pinpoint to automatically send recipients when they send the keyword "HELP" \(or its variations\) to this phone number\.
+   + Next to the **STOP** keyword, for **Response message**, enter the message that you want Amazon Pinpoint to automatically send recipients when they send the keyword "STOP" \(or its variations\) to this phone number\.
 **Note**  
-When a recipient sends the keyword "STOP" to one of your long codes, Amazon Pinpoint automatically opts that recipient out of all future SMS messages that are sent from this project\.
+When a recipient sends the keyword "STOP" to one of your phone numbers, Amazon Pinpoint automatically opts that recipient out of all future SMS messages that are sent from this project\.
 
-1. Under **Registered keyword**, for **Keyword**, enter the word that customers can send you to register to receive messages from you\. Then, for **Response message**, enter the message that Amazon Pinpoint automatically sends when a customer sends the keyword to this long code\.
+1. Under **Registered keyword**, for **Keyword**, enter the word that customers can send you to register to receive messages from you\. Then, for **Response message**, enter the message that Amazon Pinpoint automatically sends when a customer sends the keyword to this phone number\.
 **Note**  
 For the purposes of this tutorial, the value that you enter in this section isn't important\. In this scenario, customers register for your SMS messaging program by completing a registration form, rather than by sending you a message directly\.
 

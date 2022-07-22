@@ -8,7 +8,7 @@ Before you use IAM to manage access to Amazon Pinpoint, you should understand wh
 
 **Topics**
 + [Amazon Pinpoint identity\-based policies](#security_iam_service-with-iam-id-based-policies)
-+ [Amazon Pinpoint resource\-based policies](#security_iam_service-with-iam-resource-based-policies)
++ [Amazon Pinpoint resource\-based permissions policies](#security_iam_service-with-iam-resource-based-policies)
 + [Authorization based on Amazon Pinpoint tags](#security_iam_service-with-iam-tags)
 + [Amazon Pinpoint IAM roles](#security_iam_service-with-iam-roles)
 
@@ -100,6 +100,31 @@ Some Amazon Pinpoint actions, such as certain actions for creating resources, ca
 "Resource": "*"
 ```
 
+ In IAM policies, you can also specify ARNs for the following types of Amazon Pinpoint SMS and Voice resources: 
++ Configuration Set
++ Opt Out List
++ Phone Number
++ Pool
++ Sender Id
+
+ For example, to create a policy statement for a phone number that has the phone number ID `phone-12345678901234567890123456789012` use the following ARN: 
+
+```
+"Resource": "arn:aws:sms-voice:us-east-1:123456789012:phone-number/phone-12345678901234567890123456789012"
+```
+
+To specify all phone numbers that belong to a specific account, use a wildcard \(\*\) in place of the phone number ID:
+
+```
+"Resource": "arn:aws:sms-voice:us-east-1:123456789012:phone-number/*"
+```
+
+Some Amazon Pinpoint SMS and Voice actions are not performed on a specific resource, such as those for managing account\-level settings like spend limits\. In those cases, you must use the wildcard \(\*\):
+
+```
+"Resource": "*"
+```
+
 Some Amazon Pinpoint API actions involve multiple resources\. For example, the `TagResource` action can add a tag to multiple projects\. To specify multiple resources in a single statement, separate the ARNs with commas:
 
 ```
@@ -132,11 +157,9 @@ Amazon Pinpoint defines its own set of condition keys and also supports some glo
 
 To view examples of Amazon Pinpoint identity\-based policies, see [Amazon Pinpoint identity\-based policy examples](security_iam_id-based-policy-examples.md)\.
 
-## Amazon Pinpoint resource\-based policies<a name="security_iam_service-with-iam-resource-based-policies"></a>
+## Amazon Pinpoint resource\-based permissions policies<a name="security_iam_service-with-iam-resource-based-policies"></a>
 
-Resource\-based policies are JSON policy documents that specify what actions a specified principal can perform on an Amazon Pinpoint resource and under what conditions\. Amazon Pinpoint supports resource\-based permissions policies for campaigns, journeys, message templates \(*templates*\), recommender models \(*recommenders*\), projects \(*apps*\), and segments\. Resource\-based policies let you grant usage permission to other accounts on a per\-resource basis\. You can also use a resource\-based policy to allow another AWS service to access these types of Amazon Pinpoint resources\.
-
-To enable cross\-account access, you can specify an entire account or IAM entities in another account as the [principal in a resource\-based policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html)\. Adding a cross\-account principal to a resource\-based policy is only half of establishing the trust relationship\. When the principal and the resource are in different AWS accounts, you must also grant the principal entity permission to access the resource\. Grant permission by attaching an identity\-based policy to the entity\. However, if a resource\-based policy grants access to a principal in the same account, no additional identity\-based policy is required\. For more information, see [How IAM roles differ from resource\-based policies ](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_compare-resource-policies.html) in the *IAM User Guide*\.
+Resource\-based permission policies are JSON policy documents that specify what actions a specified principal can perform on an Amazon Pinpoint resource and under what conditions\. Amazon Pinpoint supports resource\-based permissions policies for campaigns, journeys, message templates \(*templates*\), recommender models \(*recommenders*\), projects \(*apps*\), and segments\. 
 
 ### Examples<a name="security_iam_service-with-iam-resource-based-policies-examples"></a>
 
