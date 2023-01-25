@@ -82,6 +82,7 @@ function CreateMessageRequest() {
         'GCMMessage': {
           'Action': action,
           'Body': message,
+          'Data' : {'data':'value'},
           'Priority': priority,
           'SilentPush': silent,
           'Title': title,
