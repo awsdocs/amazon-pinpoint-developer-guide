@@ -1,10 +1,6 @@
 # Customizing segments with AWS Lambda<a name="segments-dynamic"></a>
 
 
-|  | 
-| --- |
-| This is prerelease documentation for a feature in public beta release\. It is subject to change\. | 
-
 You can use AWS Lambda to tailor how an Amazon Pinpoint campaign engages your target audience\. With AWS Lambda, you can modify the campaign's segment the moment when Amazon Pinpoint sends the campaign's message\.
 
 AWS Lambda is a compute service that you can use to run code without provisioning or managing servers\. You package your code and upload it to Lambda as *Lambda functions*\. Lambda runs a function when the function is invoked, which might be done manually by you or automatically in response to events\. For more information, see the [AWS Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)\.
