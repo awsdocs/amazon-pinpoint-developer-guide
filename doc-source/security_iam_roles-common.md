@@ -2,7 +2,7 @@
 
 An [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) is an AWS Identity and Access Management \(IAM\) identity that you can create in your AWS account and grant specific permissions\. An IAM role is an AWS identity with permission policies that determine what the identity can and can't do in AWS\. However, instead of being uniquely associated with one person, a role can be assumed by anyone who needs it\. 
 
-Also, a role doesn't have standard long\-term credentials such as a password or access keys associated with it\. Instead, it provides temporary security credentials for a session\. You can use IAM roles to delegate access to users, apps, applications, or services that don't normally have access to your AWS resources\.
+Also, a role doesn't have standard long\-term credentials  associated with it\. Instead, it provides temporary security credentials for a session\. You can use IAM roles to delegate access to users, apps, applications, or services that don't normally have access to your AWS resources\.
 
 For these reasons, you can use IAM roles to integrate Amazon Pinpoint with certain AWS services and resources for your account\. For example, you might want to allow Amazon Pinpoint to access endpoint definitions that you store in an Amazon Simple Storage Service \(Amazon S3\) bucket and want to use for segments\. Or you might want to allow Amazon Pinpoint to stream event data to an Amazon Kinesis stream for your account\. Similarly, you might want to use IAM roles to allow web or mobile apps to register endpoints or report usage data for Amazon Pinpoint projects, without embedding AWS keys in the apps \(where they can be difficult to rotate and users can potentially extract them\)\.
 

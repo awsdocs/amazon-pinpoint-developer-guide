@@ -32,44 +32,44 @@ import java.util.Map;
         try {
             Map<String, AttributeDimension> segmentAttributes = new HashMap<>();
             segmentAttributes.put("Team", AttributeDimension.builder()
-                    .attributeType(AttributeType.INCLUSIVE)
-                    .values("Lakers")
-                    .build());
+                .attributeType(AttributeType.INCLUSIVE)
+                .values("Lakers")
+                .build());
 
             RecencyDimension recencyDimension = RecencyDimension.builder()
-                    .duration("DAY_30")
-                    .recencyType("ACTIVE")
-                    .build();
+                .duration("DAY_30")
+                .recencyType("ACTIVE")
+                .build();
 
             SegmentBehaviors segmentBehaviors = SegmentBehaviors.builder()
-                    .recency(recencyDimension)
-                    .build();
+                .recency(recencyDimension)
+                .build();
 
             SegmentDemographics segmentDemographics = SegmentDemographics
-                    .builder()
-                    .build();
+                .builder()
+                .build();
 
             SegmentLocation segmentLocation = SegmentLocation
-                    .builder()
-                    .build();
+                .builder()
+                .build();
 
             SegmentDimensions dimensions = SegmentDimensions
-                    .builder()
-                    .attributes(segmentAttributes)
-                    .behavior(segmentBehaviors)
-                    .demographic(segmentDemographics)
-                    .location(segmentLocation)
-                    .build();
+                .builder()
+                .attributes(segmentAttributes)
+                .behavior(segmentBehaviors)
+                .demographic(segmentDemographics)
+                .location(segmentLocation)
+                .build();
 
             WriteSegmentRequest writeSegmentRequest = WriteSegmentRequest.builder()
-                    .name("MySegment")
-                    .dimensions(dimensions)
-                    .build();
+                .name("MySegment")
+                .dimensions(dimensions)
+                .build();
 
             CreateSegmentRequest createSegmentRequest = CreateSegmentRequest.builder()
-                    .applicationId(appId)
-                    .writeSegmentRequest(writeSegmentRequest)
-                    .build();
+                .applicationId(appId)
+                .writeSegmentRequest(writeSegmentRequest)
+                .build();
 
             CreateSegmentResponse createSegmentResult = client.createSegment(createSegmentRequest);
             System.out.println("Segment ID: " + createSegmentResult.segmentResponse().id());

@@ -107,7 +107,7 @@ Some Amazon Pinpoint actions, such as certain actions for creating resources, ca
 + Pool
 + Sender Id
 
- For example, to create a policy statement for a phone number that has the phone number ID `phone-12345678901234567890123456789012` use the following ARN: 
+For example, to create a policy statement for a phone number that has the phone number ID `phone-12345678901234567890123456789012` use the following ARN: 
 
 ```
 "Resource": "arn:aws:sms-voice:us-east-1:123456789012:phone-number/phone-12345678901234567890123456789012"
@@ -137,6 +137,8 @@ To see a list of Amazon Pinpoint resource types and their ARNs, see [Resources D
 
 ### Condition keys<a name="security_iam_service-with-iam-id-based-policies-conditionkeys"></a>
 
+
+
 Administrators can use AWS JSON policies to specify who has access to what\. That is, which **principal** can perform **actions** on what **resources**, and under what **conditions**\.
 
 The `Condition` element \(or `Condition` *block*\) lets you specify conditions in which a statement is in effect\. The `Condition` element is optional\. You can create conditional expressions that use [condition operators](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html), such as equals or less than, to match the condition in the policy with values in the request\. 
@@ -146,8 +148,6 @@ If you specify multiple `Condition` elements in a statement, or multiple keys in
  You can also use placeholder variables when you specify conditions\. For example, you can grant an IAM user permission to access a resource only if it is tagged with their IAM user name\. For more information, see [IAM policy elements: variables and tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_variables.html) in the *IAM User Guide*\. 
 
 AWS supports global condition keys and service\-specific condition keys\. To see all AWS global condition keys, see [AWS global condition context keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html) in the *IAM User Guide*\.
-
-
 
 Amazon Pinpoint defines its own set of condition keys and also supports some global condition keys\. To see a list of all AWS global condition keys, see [AWS global condition context keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html) in the *IAM User Guide*\. To see a list of Amazon Pinpoint condition keys, see [Condition Keys for Amazon Pinpoint](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonpinpoint.html#amazonpinpoint-policy-keys) in the *IAM User Guide*\. To learn which actions and resources you can use a condition key with, see [Actions Defined by Amazon Pinpoint](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonpinpoint.html#amazonpinpoint-actions-as-permissions) in the *IAM User Guide*\.
 

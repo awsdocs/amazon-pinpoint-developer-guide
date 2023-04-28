@@ -6,10 +6,48 @@ The following code examples show how to send a voice message with Amazon Pinpoin
 The source code for these examples is in the [AWS Code Examples GitHub repository](https://github.com/awsdocs/aws-doc-sdk-examples)\. Have feedback on a code example? [Create an Issue](https://github.com/awsdocs/aws-doc-sdk-examples/issues/new/choose) in the code examples repo\. 
 
 ------
+#### [ Java ]
+
+**SDK for Java 2\.x**  
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/pinpoint#readme)\. 
+  
+
+```
+    public static void sendVoiceMsg(PinpointSmsVoiceClient client, String originationNumber, String destinationNumber ) {
+
+        try {
+            SSMLMessageType ssmlMessageType = SSMLMessageType.builder()
+                .languageCode(languageCode)
+                .text(ssmlMessage)
+                .voiceId(voiceName)
+                .build();
+
+            VoiceMessageContent content = VoiceMessageContent.builder()
+                .ssmlMessage(ssmlMessageType)
+                .build();
+
+            SendVoiceMessageRequest voiceMessageRequest = SendVoiceMessageRequest.builder()
+                .destinationPhoneNumber(destinationNumber)
+                .originationPhoneNumber(originationNumber)
+                .content(content)
+                .build();
+
+            client.sendVoiceMessage(voiceMessageRequest);
+            System.out.println("The message was sent successfully.");
+
+        } catch (PinpointSmsVoiceException e) {
+            System.err.println(e.awsErrorDetails().errorMessage());
+            System.exit(1);
+        }
+    }
+```
++  For API details, see [SendVoiceMessage](https://docs.aws.amazon.com/goto/SdkForJavaV2/pinpoint-sms-voice-2018-09-05/SendVoiceMessage) in *AWS SDK for Java 2\.x API Reference*\. 
+
+------
 #### [ JavaScript ]
 
-**SDK for JavaScript V2**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascript/example_code/pinpoint-sms-voice#code-examples)\. 
+**SDK for JavaScript \(v2\)**  
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascript/example_code/pinpoint-sms-voice#code-examples)\. 
   
 
 ```
@@ -98,7 +136,7 @@ pinpointsmsvoice.sendVoiceMessage(params, function(err, data) {
 #### [ Python ]
 
 **SDK for Python \(Boto3\)**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/python/example_code/pinpoint-sms-voice#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/python/example_code/pinpoint-sms-voice#code-examples)\. 
   
 
 ```

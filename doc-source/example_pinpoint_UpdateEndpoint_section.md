@@ -9,7 +9,7 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
 #### [ Java ]
 
 **SDK for Java 2\.x**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/pinpoint#readme)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/pinpoint#readme)\. 
   
 
 ```
@@ -18,24 +18,22 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
         System.out.println("Endpoint ID: " + endpointId);
 
         try {
-
             EndpointRequest endpointRequest = createEndpointRequestData();
-
             UpdateEndpointRequest updateEndpointRequest = UpdateEndpointRequest.builder()
-                    .applicationId(appId)
-                    .endpointId(endpointId)
-                    .endpointRequest(endpointRequest)
-                    .build();
+                .applicationId(appId)
+                .endpointId(endpointId)
+                .endpointRequest(endpointRequest)
+                .build();
 
             UpdateEndpointResponse updateEndpointResponse = client.updateEndpoint(updateEndpointRequest);
             System.out.println("Update Endpoint Response: " + updateEndpointResponse.messageBody());
 
             GetEndpointRequest getEndpointRequest = GetEndpointRequest.builder()
-                    .applicationId(appId)
-                    .endpointId(endpointId)
-                    .build();
-            GetEndpointResponse getEndpointResponse = client.getEndpoint(getEndpointRequest);
+                .applicationId(appId)
+                .endpointId(endpointId)
+                .build();
 
+            GetEndpointResponse getEndpointResponse = client.getEndpoint(getEndpointRequest);
             System.out.println(getEndpointResponse.endpointResponse().address());
             System.out.println(getEndpointResponse.endpointResponse().channelType());
             System.out.println(getEndpointResponse.endpointResponse().applicationId());
@@ -62,55 +60,52 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
             customAttributes.put("team", favoriteTeams);
 
             EndpointDemographic demographic = EndpointDemographic.builder()
-                    .appVersion("1.0")
-                    .make("apple")
-                    .model("iPhone")
-                    .modelVersion("7")
-                    .platform("ios")
-                    .platformVersion("10.1.1")
-                    .timezone("America/Los_Angeles")
-                    .build();
+                .appVersion("1.0")
+                .make("apple")
+                .model("iPhone")
+                .modelVersion("7")
+                .platform("ios")
+                .platformVersion("10.1.1")
+                .timezone("America/Los_Angeles")
+                .build();
 
             EndpointLocation location = EndpointLocation.builder()
-                    .city("Los Angeles")
-                    .country("US")
-                    .latitude(34.0)
-                    .longitude(-118.2)
-                    .postalCode("90068")
-                    .region("CA")
-                    .build();
+                .city("Los Angeles")
+                .country("US")
+                .latitude(34.0)
+                .longitude(-118.2)
+                .postalCode("90068")
+                .region("CA")
+                .build();
 
             Map<String,Double> metrics = new HashMap<>();
             metrics.put("health", 100.00);
             metrics.put("luck", 75.00);
 
             EndpointUser user = EndpointUser.builder()
-                    .userId(UUID.randomUUID().toString())
-                    .build();
+                .userId(UUID.randomUUID().toString())
+                .build();
 
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'"); // Quoted "Z" to indicate UTC, no timezone offset
             String nowAsISO = df.format(new Date());
 
-            EndpointRequest endpointRequest = EndpointRequest.builder()
-                    .address(UUID.randomUUID().toString())
-                    .attributes(customAttributes)
-                    .channelType("APNS")
-                    .demographic(demographic)
-                    .effectiveDate(nowAsISO)
-                    .location(location)
-                    .metrics(metrics)
-                    .optOut("NONE")
-                    .requestId(UUID.randomUUID().toString())
-                    .user(user)
-                    .build();
-
-            return endpointRequest;
+            return EndpointRequest.builder()
+                .address(UUID.randomUUID().toString())
+                .attributes(customAttributes)
+                .channelType("APNS")
+                .demographic(demographic)
+                .effectiveDate(nowAsISO)
+                .location(location)
+                .metrics(metrics)
+                .optOut("NONE")
+                .requestId(UUID.randomUUID().toString())
+                .user(user)
+                .build();
 
         } catch (PinpointException e) {
             System.err.println(e.awsErrorDetails().errorMessage());
             System.exit(1);
         }
-
         return null;
     }
 ```

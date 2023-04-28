@@ -9,7 +9,7 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
 #### [ Java ]
 
 **SDK for Java 2\.x**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/pinpoint#readme)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/pinpoint#readme)\. 
 List segments\.  
 
 ```
@@ -17,14 +17,15 @@ List segments\.
 
         try {
             GetSegmentsRequest request = GetSegmentsRequest.builder()
-                    .applicationId(appId)
-                    .build();
+                .applicationId(appId)
+                .build();
 
             GetSegmentsResponse response = pinpoint.getSegments(request);
             List<SegmentResponse> segments = response.segmentsResponse().item();
             for(SegmentResponse segment: segments) {
                 System.out.println("Segement " + segment.id() + " " + segment.name() + " " + segment.lastModifiedDate());
             }
+
         } catch ( PinpointException e) {
             System.err.println(e.awsErrorDetails().errorMessage());
             System.exit(1);
@@ -38,7 +39,7 @@ List segments\.
 
 **SDK for Kotlin**  
 This is prerelease documentation for a feature in preview release\. It is subject to change\.
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/kotlin/services/pinpoint#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/kotlin/services/pinpoint#code-examples)\. 
   
 
 ```
@@ -46,14 +47,16 @@ suspend fun listSegs(appId: String?) {
 
     PinpointClient { region = "us-west-2" }.use { pinpoint ->
 
-        val response = pinpoint.getSegments(GetSegmentsRequest {
-            applicationId = appId
-        })
-        response.segmentsResponse?.item?.forEach { segment ->
-                 println("Segement id is ${segment.id.toString()}")
+        val response = pinpoint.getSegments(
+            GetSegmentsRequest {
+                applicationId = appId
             }
+        )
+        response.segmentsResponse?.item?.forEach { segment ->
+            println("Segement id is ${segment.id}")
         }
- }
+    }
+}
 ```
 +  For API details, see [GetSegments](https://github.com/awslabs/aws-sdk-kotlin#generating-api-documentation) in *AWS SDK for Kotlin API reference*\. 
 

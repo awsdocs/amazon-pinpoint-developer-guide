@@ -111,7 +111,7 @@ import java.util.HashMap;
     public static void updateEndpointsViaBatch( PinpointClient pinpoint, String applicationId) {
 
         try {
-            List<String> myList = new ArrayList<String>();
+            List<String> myList = new ArrayList<>();
             myList.add("music");
             myList.add("books");
 
@@ -182,14 +182,13 @@ import java.util.HashMap;
 
             //  Updates the endpoints with Amazon Pinpoint.
             UpdateEndpointsBatchResponse result = pinpoint.updateEndpointsBatch(batchRequest);
-            System.out.format("Update endpoints batch result: %s\n",
-                result.messageBody().message());
+            System.out.format("Update endpoints batch result: %s\n", result.messageBody().message());
 
-     } catch (PinpointException e) {
-        System.err.println(e.awsErrorDetails().errorMessage());
-        System.exit(1);
+        } catch (PinpointException e) {
+            System.err.println(e.awsErrorDetails().errorMessage());
+            System.exit(1);
+        }
     }
-  }
 ```
 
 For the full SDK example, see [AddExampleEndpoints\.java](https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/javav2/example_code/pinpoint/src/main/java/com/example/pinpoint/AddExampleEndpoints.java/) on [GitHub](https://github.com/)\.

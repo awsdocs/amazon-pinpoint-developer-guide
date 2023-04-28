@@ -2,10 +2,7 @@
 
 The following code examples show how to use Amazon Pinpoint SMS and Voice API with an AWS software development kit \(SDK\)\. 
 
-The examples are divided into the following categories:
-
-**Actions**  
-Code excerpts that show you how to call individual service functions\.
+*Actions* are code excerpts that show you how to call individual service functions\.
 
 For a complete list of AWS SDK developer guides and code examples, see [Using Amazon Pinpoint with an AWS SDK](sdk-general-information-section.md)\. This topic also includes information about getting started and details about previous SDK versions\.
 

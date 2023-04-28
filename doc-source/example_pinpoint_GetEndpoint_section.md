@@ -9,7 +9,7 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
 #### [ Java ]
 
 **SDK for Java 2\.x**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/pinpoint#readme)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/pinpoint#readme)\. 
   
 
 ```
@@ -17,18 +17,18 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
 
         try {
             GetEndpointRequest appRequest = GetEndpointRequest.builder()
-                    .applicationId(appId)
-                    .endpointId(endpoint)
-                    .build();
+                .applicationId(appId)
+                .endpointId(endpoint)
+                .build();
 
             GetEndpointResponse result = pinpoint.getEndpoint(appRequest);
             EndpointResponse endResponse = result.endpointResponse();
 
             // Uses the Google Gson library to pretty print the endpoint JSON.
             Gson gson = new GsonBuilder()
-                    .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
-                    .setPrettyPrinting()
-                    .create();
+                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+                .setPrettyPrinting()
+                .create();
 
             String endpointJson = gson.toJson(endResponse);
             System.out.println(endpointJson);
@@ -47,30 +47,31 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
 
 **SDK for Kotlin**  
 This is prerelease documentation for a feature in preview release\. It is subject to change\.
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/kotlin/services/pinpoint#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/kotlin/services/pinpoint#code-examples)\. 
   
 
 ```
 suspend fun lookupPinpointEndpoint(appId: String?, endpoint: String?) {
 
-          PinpointClient { region = "us-west-2" }.use { pinpoint ->
-            val result = pinpoint.getEndpoint(GetEndpointRequest {
+    PinpointClient { region = "us-west-2" }.use { pinpoint ->
+        val result = pinpoint.getEndpoint(
+            GetEndpointRequest {
                 applicationId = appId
                 endpointId = endpoint
-            })
-            val endResponse = result.endpointResponse
+            }
+        )
+        val endResponse = result.endpointResponse
 
-            // Uses the Google Gson library to pretty print the endpoint JSON.
-            val gson: com.google.gson.Gson = GsonBuilder()
-                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
-                .setPrettyPrinting()
-                .create()
+        // Uses the Google Gson library to pretty print the endpoint JSON.
+        val gson: com.google.gson.Gson = GsonBuilder()
+            .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+            .setPrettyPrinting()
+            .create()
 
-            val endpointJson: String = gson.toJson(endResponse)
-            println(endpointJson)
-
-          }
-   }
+        val endpointJson: String = gson.toJson(endResponse)
+        println(endpointJson)
+    }
+}
 ```
 +  For API details, see [GetEndpoint](https://github.com/awslabs/aws-sdk-kotlin#generating-api-documentation) in *AWS SDK for Kotlin API reference*\. 
 

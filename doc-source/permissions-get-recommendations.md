@@ -64,7 +64,7 @@ In the following procedure, the example policy allows this access for a particul
    aws iam create-policy --policy-name RetrieveRecommendationsPolicy --policy-document file://RetrieveRecommendationsPolicy.json
    ```
 **Note**  
-If you receive a message that your account isn't authorized to perform the `CreatePolicy` operation, you need to attach a policy to your user account that lets you create new IAM policies and roles for your account\. For more information, see [Adding and removing IAM identity permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html#attach-managed-policy-console) in the *IAM User Guide*\.
+If you receive a message that your account isn't authorized to perform the `CreatePolicy` operation, you need to attach a policy to your user that lets you create new IAM policies and roles for your account\. For more information, see [Adding and removing IAM identity permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html#attach-managed-policy-console) in the *IAM User Guide*\.
 
 1. Copy the Amazon Resource Name \(ARN\) of the policy \(`arn:aws:iam::123456789012:policy/RetrieveRecommendationsPolicy` in the preceding example\)\. You need this ARN to create the IAM role in the next section\.
 

@@ -9,7 +9,7 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
 #### [ Java ]
 
 **SDK for Java 2\.x**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/pinpoint#readme)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/pinpoint#readme)\. 
 Export an endpoint\.  
 
 ```
@@ -40,16 +40,16 @@ Export an endpoint\.
         String key;
 
         try {
-            // Defines the export job that Amazon Pinpoint runs
+            // Defines the export job that Amazon Pinpoint runs.
             ExportJobRequest jobRequest = ExportJobRequest.builder()
-                    .roleArn(iamExportRoleArn)
-                    .s3UrlPrefix(s3UrlPrefix)
-                    .build();
+                .roleArn(iamExportRoleArn)
+                .s3UrlPrefix(s3UrlPrefix)
+                .build();
 
             CreateExportJobRequest exportJobRequest = CreateExportJobRequest.builder()
-                    .applicationId(applicationId)
-                    .exportJobRequest(jobRequest)
-                    .build();
+                .applicationId(applicationId)
+                .exportJobRequest(jobRequest)
+                .build();
 
             System.out.format("Exporting endpoints from Amazon Pinpoint application %s to Amazon S3 " +
                     "bucket %s . . .\n", applicationId, s3BucketName);
@@ -60,9 +60,9 @@ Export an endpoint\.
             printExportJobStatus(pinpoint, applicationId, jobId);
 
             ListObjectsV2Request v2Request = ListObjectsV2Request.builder()
-                    .bucket(s3BucketName)
-                    .prefix(endpointsKeyPrefix)
-                    .build();
+                .bucket(s3BucketName)
+                .prefix(endpointsKeyPrefix)
+                .build();
 
             // Create a list of object keys.
             ListObjectsV2Response v2Response = s3Client.listObjectsV2(v2Request);
@@ -89,11 +89,11 @@ Export an endpoint\.
         String status;
 
         try {
-            // Checks the job status until the job completes or fails
+            // Checks the job status until the job completes or fails.
             GetExportJobRequest exportJobRequest = GetExportJobRequest.builder()
-                    .jobId(jobId)
-                    .applicationId(applicationId)
-                    .build();
+                .jobId(jobId)
+                .applicationId(applicationId)
+                .build();
 
             do {
                 getExportJobResult = pinpointClient.getExportJob(exportJobRequest);
@@ -123,9 +123,9 @@ Export an endpoint\.
         try {
             for (String key : objectKeys) {
                 GetObjectRequest objectRequest = GetObjectRequest.builder()
-                        .bucket(s3BucketName)
-                        .key(key)
-                        .build();
+                    .bucket(s3BucketName)
+                    .key(key)
+                    .build();
 
                 ResponseBytes<GetObjectResponse> objectBytes = s3Client.getObjectAsBytes(objectRequest);
                 byte[] data = objectBytes.asByteArray();
@@ -137,8 +137,8 @@ Export an endpoint\.
                 OutputStream os = new FileOutputStream(myFile);
                 os.write(data);
             }
-
             System.out.println("Download finished.");
+
         } catch (S3Exception | NullPointerException | IOException e) {
             System.err.println(e.getMessage());
             System.exit(1);

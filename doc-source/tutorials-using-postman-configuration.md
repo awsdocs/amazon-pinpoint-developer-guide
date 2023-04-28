@@ -1,6 +1,6 @@
 # Step 2: Set up Postman<a name="tutorials-using-postman-configuration"></a>
 
-Now that you've created an IAM user account that's able to access the Amazon Pinpoint API, you can set up Postman\. In this section, you create one or more environments in Postman\. Next, you import a collection that contains a request template for each of the operations in the Amazon Pinpoint API\.
+Now that you've created a user that's able to access the Amazon Pinpoint API, you can set up Postman\. In this section, you create one or more environments in Postman\. Next, you import a collection that contains a request template for each of the operations in the Amazon Pinpoint API\.
 
 ## Step 2\.1: Create Postman environments<a name="tutorials-using-postman-configuration-create-environments"></a>
 
@@ -39,7 +39,7 @@ For more information, see [IAM best practices](https://docs.aws.amazon.com/IAM/l
 In Postman, you can create as many environments as you need\. You can use environments in several ways\. For example, you can do all of the following:  
 Create a separate environment for every Region where you need to test the Amazon Pinpoint API\.
 Create environments that are associated with different AWS accounts\.
-Create environments that use credentials that are associated with other IAM users\.
+Create environments that use credentials that are associated with other user\.
 
 1. When you finish creating environments, proceed to the next section\.
 
@@ -83,6 +83,6 @@ When you submit your request, you might see an error\. See the following list fo
 | --- | --- | --- | 
 |  Could not get any response There was an error connecting to https://%7B%7Bendpoint%7D%7D/v1/apps\.  |  There is no current value for the `{{endpoint}}` variable, which is set when you choose an environment\.  | Use the environment selector to choose an environment\. | 
 |  The security token included in the request is invalid\.  |  Postman wasn't able to find the current value of your access key ID or secret access key\.  |  Choose the gear icon near the environment selector, and then choose the current environment\. Make sure that the `accessKey` and `secretAccessKey` values appear in both the **INITIAL VALUE** and **CURRENT VALUE** columns, and that you entered the credentials correctly\.  | 
-|  "Message": "User: arn:aws:iam::123456789012:user/PinpointPostmanUser is not authorized to perform: mobiletargeting:GetApps on resource: arn:aws:mobiletargeting:us\-west\-2:123456789012:\*"  |  The IAM policy associated with your user doesn't include the appropriate permissions\.  |  Make sure that your IAM user has the permissions that are described in [Step 1\.1](tutorials-using-postman-iam-user.md#tutorials-using-postman-iam-user-create-policy), and that you provided the correct credentials when you created the environment in [Step 2\.1](#tutorials-using-postman-configuration-create-environments)\.  | 
+|  "Message": "User: arn:aws:iam::123456789012:user/PinpointPostmanUser is not authorized to perform: mobiletargeting:GetApps on resource: arn:aws:mobiletargeting:us\-west\-2:123456789012:\*"  |  The IAM policy associated with your user doesn't include the appropriate permissions\.  |  Make sure that your user has the permissions that are described in [Step 1\.1](tutorials-using-postman-iam-user.md#tutorials-using-postman-iam-user-create-policy), and that you provided the correct credentials when you created the environment in [Step 2\.1](#tutorials-using-postman-configuration-create-environments)\.  | 
 
 **Next**: [Send additional requests](tutorials-using-postman-sample-requests.md)

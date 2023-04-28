@@ -348,7 +348,7 @@ The unique identifier of the client that was targeted by the campaign or journey
 
 | Attribute | Description | 
 | --- | --- | 
-| client\_id | The ID of the client\. | 
+| client\_id | The ID of the client\. The value is the Endpoint ID for campaigns and journeys, and for Transactional sending, it is a UUID\. | 
 
 ### Facets<a name="event-streams-data-email-attributes-facets"></a>
 

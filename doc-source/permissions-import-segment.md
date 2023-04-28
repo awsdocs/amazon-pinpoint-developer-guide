@@ -43,7 +43,7 @@ Complete the following steps to create the IAM role by using the AWS Command Lin
                                "aws:SourceAccount": "accountId"
                             },
                             "ArnLike": {
-                               "aws:SourceArn": "arn:aws:mobiletargeting:region:accountId:apps/application-id/*"
+                               "aws:SourceArn": "arn:aws:mobiletargeting:region:accountId:apps/application-id"
                             }
                        }
                    }

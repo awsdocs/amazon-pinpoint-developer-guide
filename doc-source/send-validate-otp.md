@@ -4,7 +4,8 @@ Amazon Pinpoint includes a One\-Time Password \(OTP\) management feature\. You c
 
 **Note**  
 To use this feature, your account must have production SMS access\. For more information, see [About the Amazon Pinpoint SMS sandbox](https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-sandbox.html) in the *Amazon Pinpoint User Guide*\.  
-In some countries and regions, you must obtain a dedicated phone number or origination ID before you can send SMS messages\. For example, when you send messages to the recipients in the United States, you must have a dedicated toll\-free number, 10DLC number, or short code\. When you send messages to recipients in India, you must have a registered sender ID, which includes a Principal Entity ID \(PEID\) and a Template ID\. These requirements still apply when you use the OTP feature\.
+In some countries and regions, you must obtain a dedicated phone number or origination ID before you can send SMS messages\. For example, when you send messages to the recipients in the United States, you must have a dedicated toll\-free number, 10DLC number, or short code\. When you send messages to recipients in India, you must have a registered sender ID, which includes a Principal Entity ID \(PEID\) and a Template ID\. These requirements still apply when you use the OTP feature\.  
+To use this feature you need permissions to send and verify OTP messages, see [One\-time passwords](permissions-actions.md#permissions-actions-apiactions-otp)\. If you need help determining permissions see [Troubleshooting Amazon Pinpoint identity and access management](security_iam_troubleshoot.md)\.
 
 ## Sending an OTP message<a name="send-validate-otp-sending"></a>
 
@@ -52,7 +53,7 @@ To ensure that your Amazon Pinpoint account is properly configured to send OTP m
 ------
 #### [ Linux, macOS, or Unix ]
 
-To send a test message using the AWS CLI, run the following command in the terminal:
+To send a test OTP message using the AWS CLI, run the [send\-otp\-message](https://docs.aws.amazon.com/cli/latest/reference/pinpoint/send-otp-message.html) command in the terminal:
 
 ```
 aws pinpoint send-otp-message \
@@ -72,7 +73,7 @@ aws pinpoint send-otp-message \
 ------
 #### [ PowerShell ]
 
-To send a test message using the AWS CLI, run the following command in PowerShell:
+To send a test OTP message using the AWS CLI, run the [send\-otp\-message](https://docs.aws.amazon.com/cli/latest/reference/pinpoint/send-otp-message.html) command in PowerShell:
 
 ```
 aws pinpoint send-otp-message `
@@ -91,7 +92,7 @@ aws pinpoint send-otp-message `
 ------
 #### [ Windows command prompt ]
 
-To send a test message using the AWS CLI, run the following command on the Windows command prompt:
+To send a test OTP message using the AWS CLI, run the [send\-otp\-message](https://docs.aws.amazon.com/cli/latest/reference/pinpoint/send-otp-message.html) command in the Windows command prompt:
 
 ```
 aws pinpoint send-otp-message ^
@@ -143,7 +144,7 @@ You can use the AWS CLI to test the validation process\. For more information ab
 ------
 #### [ Linux, macOS, or Unix ]
 
-To verify an OTP using the AWS CLI, run the following command in the terminal:
+To verify an OTP using the AWS CLI, run the [verify\-otp\-message](https://docs.aws.amazon.com/cli/latest/reference/pinpoint/verify-otp-message.html) command in the terminal:
 
 ```
 aws pinpoint verify-otp-message \
@@ -158,7 +159,7 @@ aws pinpoint verify-otp-message \
 ------
 #### [ PowerShell ]
 
-To verify an OTP using the AWS CLI, run the following command in PowerShell:
+To verify an OTP using the AWS CLI, run the [verify\-otp\-message](https://docs.aws.amazon.com/cli/latest/reference/pinpoint/verify-otp-message.html) command in PowerShell:
 
 ```
 aws pinpoint verify-otp-message \`
@@ -172,7 +173,7 @@ aws pinpoint verify-otp-message \`
 ------
 #### [ Windows command prompt ]
 
-To verify an OTP using the AWS CLI, run the following command on the Windows command prompt:
+To verify an OTP using the AWS CLI, run the [verify\-otp\-message](https://docs.aws.amazon.com/cli/latest/reference/pinpoint/verify-otp-message.html) command in the Windows command prompt:
 
 ```
 aws pinpoint verify-otp-message \^

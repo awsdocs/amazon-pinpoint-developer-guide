@@ -8,7 +8,7 @@ Amazon Pinpoint encrypts all the data that it stores for you\. This includes con
 
 ## Encryption in transit<a name="security-data-protection-encryption-transit"></a>
 
-Amazon Pinpoint uses HTTPS and Transport Layer Security \(TLS\) 1\.0 or later to communicate with your clients and applications\. To communicate with other AWS services, Amazon Pinpoint uses HTTPS and TLS 1\.2\. In addition, when you create and manage Amazon Pinpoint resources by using the console, an AWS SDK, or the AWS Command Line Interface, all communications are secured using HTTPS and TLS 1\.2\.
+Amazon Pinpoint uses HTTPS and Transport Layer Security \(TLS\) 1\.2 or later to communicate with your clients and applications\. To communicate with other AWS services, Amazon Pinpoint uses HTTPS and TLS 1\.2\. In addition, when you create and manage Amazon Pinpoint resources by using the console, an AWS SDK, or the AWS Command Line Interface, all communications are secured using HTTPS and TLS 1\.2\.
 
 ## Key management<a name="security-data-protection-key-mgmt"></a>
 

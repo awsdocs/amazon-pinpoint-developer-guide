@@ -9,7 +9,7 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
 #### [ Java ]
 
 **SDK for Java 2\.x**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/pinpoint#readme)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/pinpoint#readme)\. 
   
 
 ```
@@ -17,8 +17,8 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
 
         try {
             GetSmsChannelRequest request = GetSmsChannelRequest.builder()
-                    .applicationId(appId)
-                    .build();
+                .applicationId(appId)
+                .build();
 
             SMSChannelResponse response = client.getSmsChannel(request).smsChannelResponse();
             System.out.println("Channel state is " + response.enabled());
@@ -32,25 +32,21 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
     }
 
     private static void toggleSmsChannel(PinpointClient client, String appId, SMSChannelResponse getResponse) {
-        boolean enabled = true;
-
-        if (getResponse.enabled()) {
-            enabled = false;
-        }
+        boolean enabled = !getResponse.enabled();
 
         try {
             SMSChannelRequest request = SMSChannelRequest.builder()
-                    .enabled(enabled)
-                    .build();
+                .enabled(enabled)
+                .build();
 
             UpdateSmsChannelRequest updateRequest = UpdateSmsChannelRequest.builder()
-                    .smsChannelRequest(request)
-                    .applicationId(appId)
-                    .build();
+                .smsChannelRequest(request)
+                .applicationId(appId)
+                .build();
 
             UpdateSmsChannelResponse result = client.updateSmsChannel(updateRequest);
-
             System.out.println("Channel state: " + result.smsChannelResponse().enabled());
+
         } catch ( PinpointException e) {
             System.err.println(e.awsErrorDetails().errorMessage());
             System.exit(1);

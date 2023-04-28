@@ -9,17 +9,16 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
 #### [ Java ]
 
 **SDK for Java 2\.x**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/pinpoint#readme)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/pinpoint#readme)\. 
 Delete an application\.  
 
 ```
     public static void deletePinApp(PinpointClient pinpoint, String appId ) {
 
         try {
-
             DeleteAppRequest appRequest = DeleteAppRequest.builder()
-                    .applicationId(appId)
-                    .build();
+                .applicationId(appId)
+                .build();
 
             DeleteAppResponse result = pinpoint.deleteApp(appRequest);
             String appName = result.applicationResponse().name();
@@ -29,7 +28,7 @@ Delete an application\.
             System.err.println(e.awsErrorDetails().errorMessage());
             System.exit(1);
         }
-   }
+    }
 ```
 +  For API details, see [DeleteApp](https://docs.aws.amazon.com/goto/SdkForJavaV2/pinpoint-2016-12-01/DeleteApp) in *AWS SDK for Java 2\.x API Reference*\. 
 
@@ -38,20 +37,22 @@ Delete an application\.
 
 **SDK for Kotlin**  
 This is prerelease documentation for a feature in preview release\. It is subject to change\.
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/kotlin/services/pinpoint#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/kotlin/services/pinpoint#code-examples)\. 
   
 
 ```
- suspend fun deletePinApp(appId: String?) {
+suspend fun deletePinApp(appId: String?) {
 
-             PinpointClient { region = "us-west-2" }.use { pinpoint ->
-               val result = pinpoint.deleteApp(DeleteAppRequest {
-                 applicationId = appId
-               })
-               val appName= result.applicationResponse?.name
-               println("Application $appName has been deleted.")
-             }
-  }
+    PinpointClient { region = "us-west-2" }.use { pinpoint ->
+        val result = pinpoint.deleteApp(
+            DeleteAppRequest {
+                applicationId = appId
+            }
+        )
+        val appName = result.applicationResponse?.name
+        println("Application $appName has been deleted.")
+    }
+}
 ```
 +  For API details, see [DeleteApp](https://github.com/awslabs/aws-sdk-kotlin#generating-api-documentation) in *AWS SDK for Kotlin API reference*\. 
 

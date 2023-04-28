@@ -21,7 +21,7 @@ You can use the [RequestPhoneNumber](https://docs.aws.amazon.com/pinpoint/latest
 #### [ Linux, macOS, or Unix ]
 
   ```
-  $ aws request-phone-number \
+  $ aws pinpoint-sms-voice-v2 request-phone-number \
   > --iso-country-code XX \
   > --message-type TRANSACTIONAL \
   > --number-capabilities VOICE \
@@ -51,7 +51,7 @@ You can use the [RequestPhoneNumber](https://docs.aws.amazon.com/pinpoint/latest
 #### [ Windows Command Prompt ]
 
   ```
-  C:\> aws request-phone-number ^
+  C:\> aws pinpoint-sms-voice-v2 request-phone-number ^
    --iso-country-code XX ^
    --message-type TRANSACTIONAL ^
    --number-capabilities VOICE ^

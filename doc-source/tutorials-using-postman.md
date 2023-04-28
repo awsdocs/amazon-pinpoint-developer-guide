@@ -12,7 +12,7 @@ This section contains an overview of this tutorial\.
 **Intended Audience**  
 This tutorial is intended for developers and system implementers\. You don't have to be familiar with Amazon Pinpoint or Postman to complete the steps in this tutorial\. You should be comfortable managing IAM policies and modifying JSON code examples\.
 
-The procedures in this tutorial were designed to prevent new users from using API operations that can permanently delete Amazon Pinpoint resources\. Advanced users can remove this restriction by modifying the policy that's associated with their IAM users\.
+The procedures in this tutorial were designed to prevent new users from using API operations that can permanently delete Amazon Pinpoint resources\. Advanced users can remove this restriction by modifying the policy that's associated with their users\.
 
 **Features Used**  
 This tutorial includes usage examples for the following Amazon Pinpoint feature:

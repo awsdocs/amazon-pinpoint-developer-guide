@@ -16,6 +16,6 @@ AWS Trusted Advisor inspects your AWS environment and provides recommendations f
 Many of these checks can help you assess the security posture of your Amazon Pinpoint resources as part of your AWS account overall\. For example, the core set of Trusted Advisor checks includes the following:  
 + Logging configurations for your AWS account, for each supported AWS Region\.
 + Access permissions for your Amazon Simple Storage Service \(Amazon S3\) buckets, which might contain files that you import into Amazon Pinpoint to build segments\.
-+ Use of AWS Identity and Access Management \(IAM\) users, groups, and roles to control access to Amazon Pinpoint resources\.
++ Use of AWS Identity and Access Management users, groups, and roles to control access to Amazon Pinpoint resources\.
 + IAM configurations and policy settings that might compromise the security of your AWS environment and Amazon Pinpoint resources\.
 For more information, see [AWS Trusted Advisor](https://docs.aws.amazon.com/awssupport/latest/user/getting-started.html#trusted-advisor) in the *AWS Support User Guide*\.

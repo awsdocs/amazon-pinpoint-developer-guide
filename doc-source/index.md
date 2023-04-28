@@ -4,13 +4,13 @@
 *****Copyright &copy; Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
-Amazon's trademarks and trade dress may not be used in 
-     connection with any product or service that is not Amazon's, 
-     in any manner that is likely to cause confusion among customers, 
-     or in any manner that disparages or discredits Amazon. All other 
-     trademarks not owned by Amazon are the property of their respective
-     owners, who may or may not be affiliated with, connected to, or 
-     sponsored by Amazon.
+Amazon's trademarks and trade dress may not be used in
+connection with any product or service that is not Amazon's,
+in any manner that is likely to cause confusion among customers,
+or in any manner that disparages or discredits Amazon. All other
+trademarks not owned by Amazon are the property of their respective
+owners, who may or may not be affiliated with, connected to, or
+sponsored by Amazon.
 
 -----
 ## Contents
@@ -46,6 +46,7 @@ Amazon's trademarks and trade dress may not be used in
    + [Adding a batch of endpoints to Amazon Pinpoint](audience-define-endpoints-batch.md)
    + [Importing endpoints into Amazon Pinpoint](audience-define-import.md)
    + [Deleting endpoints from Amazon Pinpoint](audience-define-remove.md)
+   + [Managing an audience members maximum number of endpoints](audience-define-auto-inactive.md)
 + [Accessing audience data in Amazon Pinpoint](audience-data.md)
    + [Looking up endpoints with Amazon Pinpoint](audience-data-endpoints.md)
    + [Exporting endpoints from Amazon Pinpoint](audience-data-export.md)
@@ -73,7 +74,6 @@ Amazon's trademarks and trade dress may not be used in
 + [Sending transactional messages from your apps](send-messages.md)
    + [Send transactional email messages](send-messages-email.md)
       + [Send email by using the Amazon Pinpoint API](send-messages-sdk.md)
-      + [Send email by using the Amazon Pinpoint SMTP interface](send-messages-email-smtp.md)
    + [Send SMS messages](send-messages-sms.md)
    + [Send voice messages](send-messages-voice.md)
    + [Send push notifications](send-messages-push.md)
@@ -119,6 +119,7 @@ Amazon's trademarks and trade dress may not be used in
    + [Data protection in Amazon Pinpoint](security-data-protection.md)
       + [Data encryption](security-data-protection-encryption.md)
       + [Internetwork traffic privacy](security-data-protection-internetwork-traffic.md)
+      + [Creating an interface VPC endpoint for Amazon Pinpoint](security-vpc-endpoints.md)
    + [Identity and access management for Amazon Pinpoint](security-iam.md)
       + [How Amazon Pinpoint works with IAM](security_iam_service-with-iam.md)
       + [Amazon Pinpoint actions for IAM policies](permissions-actions.md)

@@ -19,6 +19,7 @@ The topics in this section list and describe the individual metrics that you can
 + [Journey engagement metrics](#journey-metrics-engagement-email)
 + [Journey execution metrics](#journey-metrics-execution)
 + [Journey activity execution metrics](#journey-metrics-activity-execution)
++ [Journey and campaign execution metrics](#journey-run-metrics-activity-execution)
 
 ## Application metrics for campaigns<a name="application-metrics-campaigns"></a>
 
@@ -79,8 +80,8 @@ Note that these metrics don't provide data about SMS messages that were sent by 
 
 | Metric | Kpi\-name | Description | 
 | --- | --- | --- | 
-| Average price per message, grouped by country |  `txn-sms-average-price-grouped-by-country`  |  The average cost, in US Dollars, of sending each message, for each country or region that messages were sent to\. This metric is calculated as the total cost of all the messages that were sent to recipients in each country or region, divided by the number of messages that were sent to recipients in each of those countries and regions\. The query results for this metric are grouped by country or region, in ISO 3166\-1 alpha\-2 format\.  | 
-| Average price per message part, grouped by country |  `txn-sms-average-price-by-parts-grouped-by-country`  |  The average cost, in US Dollars, of sending each message part, for each country or region that messages were sent to\. A message part is a portion of an SMS message\. This metric is calculated as the total cost of all the message parts that were sent to recipients in each country or region, divided by the number of message parts that were sent to recipients in each of those countries and regions\. The query results for this metric are grouped by country or region, in ISO 3166\-1 alpha\-2 format\.  | 
+| Average price per message, grouped by country |  `txn-sms-average-price-grouped-by-country`  |  The average cost of sending each message, for each country or region that messages were sent to\. The price is shown in thousandths of a United States cent\. For example, if the value of this attribute is 645, then we charged you 0\.645¢ to send the message \(645 / 1000 = 0\.645¢ = $0\.00645\)\. This metric is calculated as the total cost of all the messages that were sent to recipients in each country or region, divided by the number of messages that were sent to recipients in each of those countries and regions\. The query results for this metric are grouped by country or region, in ISO 3166\-1 alpha\-2 format\.  | 
+| Average price per message part, grouped by country |  `txn-sms-average-price-by-parts-grouped-by-country`  |  The average cost of sending each message part, for each country or region that messages were sent to\. A message part is a portion of an SMS message\. The price is shown in thousandths of a United States cent\. For example, if the value of this attribute is 645, then we charged you 0\.645¢ to send the message \(645 / 1000 = 0\.645¢ = $0\.00645\)\. This metric is calculated as the total cost of all the message parts that were sent to recipients in each country or region, divided by the number of message parts that were sent to recipients in each of those countries and regions\. The query results for this metric are grouped by country or region, in ISO 3166\-1 alpha\-2 format\.  | 
 | Deliveries |  `txn-sms-delivered`  |  The number of messages that were delivered to recipients\.  | 
 | Deliveries, grouped by country |  `txn-sms-delivered-grouped-by-country`  | The number of messages that were delivered to recipients, for each country or region that messages were sent to\. The query results for this metric are grouped by country or region, in ISO 3166\-1 alpha\-2 format\. | 
 | Deliveries, grouped by date |  `txn-sms-delivered-grouped-by-date`  | The number of messages that were delivered to recipients, for each day in the specified date range\. The query results for this metric are grouped by calendar day, in extended ISO 8601 format\. | 
@@ -94,7 +95,7 @@ Note that these metrics don't provide data about SMS messages that were sent by 
 | Messages sent |  `txn-sms-sent`  | The number of messages that were sent\. | 
 | Messages sent, grouped by country |  `txn-sms-sent-grouped-by-country`  |  The number of messages that were sent, for each country or region that messages were sent to\. The query results for this metric are grouped by country or region, in ISO 3166\-1 alpha\-2 format\.  | 
 | Messages sent, grouped by date |  `txn-sms-sent-grouped-by-date`  | The number of messages that were sent, for each day in the specified date range\. The query results for this metric are grouped by calendar day, in extended ISO 8601 format\. | 
-| Total price, grouped by country |  `txn-sms-total-price-grouped-by-country`  |  The total cost, in US Dollars, of sending the messages, for each country or region that messages were sent to\. The query results for this metric are grouped by country or region, in ISO 3166\-1 alpha\-2 format\.  | 
+| Total price, grouped by country |  `txn-sms-total-price-grouped-by-country`  |  The total cost of sending the messages, for each country or region that messages were sent to\. The price is shown in thousandths of a United States cent\. For example, if the value of this attribute is 645, then we charged you 0\.645¢ to send the message \(645 / 1000 = 0\.645¢ = $0\.00645\)\. The query results for this metric are grouped by country or region, in ISO 3166\-1 alpha\-2 format\.  | 
 
 ## Campaign metrics<a name="campaign-metrics"></a>
 
@@ -175,3 +176,29 @@ The following table lists and describes standard execution metrics that you can 
 | Multivariate split \(`MULTI_CONDITIONAL_SPLIT`\) |  For each path of the activity, the number of participants who proceeded to the activity on the path\. The query results for this metric are grouped by path, `Branch_#` where *\#* is the numeric identifier for a path—for example, `Branch_1` for the first path of the activity\.  Additional metrics are available for the activity on each path\. For information about those metrics, see the row in this table for that type of activity\.  | 
 | Random split \(`RANDOM_SPLIT`\) |  For each path of the activity, the number of participants who proceeded to the activity on the path\. The query results for this metric are grouped by path, `Branch_#` where *\#* is the numeric identifier for a path—for example, `Branch_1` for the first path of the activity\. Additional metrics are available for the activity on each path\. For information about those metrics, see the row in this table for that type of activity\.  | 
 | Wait \(`WAIT`\) |  The metrics are: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/analytics-standard-metrics.html)  | 
+| Contact Center \(`CONTACT_CENTER`\) |  The metrics are: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/analytics-standard-metrics.html)  | 
+
+## Journey and campaign execution metrics<a name="journey-run-metrics-activity-execution"></a>
+
+You can query standard execution metrics to assess the status of participants in each type of individual activity for an Amazon Pinpoint journey or campaign\. To query data for these metrics, use the [Journey run activity execution metrics](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-journeys-journey-id-runs-run-id-activities-journey-activity-id-execution-metrics.html.html) or [Campaign Metrics](https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-campaigns-campaign-id-kpis-daterange-kpi-name.html) resource of the Amazon Pinpoint API\. The following table lists the fields that appear in the query results for each type of activity\. 
+
+
+****  
+
+| Metric Name | Applies to Journeys, Campaigns, or Both | Description | 
+| --- | --- | --- | 
+| ENDPOINT\_PRODUCED | Both | The number of endpoints initially produced from the segment or event before any filtering\. | 
+| ENDPOINTS\_FROM\_USER | Both | If the customer has a user\-id only segment, then all the endpoints of those users will be added\. This metric measures the number of endpoints added in this way\. | 
+| ENDPOINT\_OPT\_OUT | Both | The endpoint was opted out and didn't enter the campaign or journey\. | 
+| ENDPOINT\_INACTIVE | Both | The endpoint was inactive and didn't enter the campaign or journey\. | 
+| FILTERED\_OUT\_BY\_SEGMENT | Both | Endpoint didn't match segment filters and didn't enter the campaign or journey\. | 
+| ENDPOINT\_MISSING\_ADDRESS | Both | Endpoint was missing an address and didn't enter the campaign or journey\. | 
+| ENDPOINT\_MISSING\_CHANNEL | Both | Endpoint was missing a channel and didn't enter the campaign or journey\. | 
+| ENDPOINT\_MISSING\_TIMEZONE | Both | Endpoint was missing a value for timezone and was filtered out\. This only happens when a timezone value is required\. | 
+| ENDPOINT\_TIMEZONE\_MISMATCH | Both | Endpoint was in a timezone that wasn't included in the execution at that time\. | 
+| ENDPOINT\_CHANNEL\_MISMATCH | Campaigns | The campaign doesn't have a message configured for this endpoint's channel type\. | 
+| DUPLICATE\_ENDPOINT | Both | Duplicate endpoints were found and de\-duped\. | 
+| DUPLICATE\_USER | Both | Duplicate users were found and de\-duped from a user\-id only segment\. If they have the same user id, a metric of 1 will be emitted\. | 
+| PAUSED | Journeys | Removed from execution because the journey was paused\. | 
+| ENDED | Journeys | Removed from execution because the journey was ended\. | 
+| TREATMENT\_HOLDOUT | Campaigns | This is emitted in A/B campaigns, for endpoints whose cohorts don’t match the current treatment\. For example in a 50/50 A/B split, 50% of the endpoints will emit this metric for each treatment | 

@@ -32,21 +32,20 @@ import software.amazon.awssdk.services.pinpoint.model.PinpointException;
                                                         String roleArn) {
 
         try {
-             ImportJobRequest importRequest = ImportJobRequest.builder()
-                    .defineSegment(true)
-                    .registerEndpoints(true)
-                    .roleArn(roleArn)
-                    .format(Format.JSON)
-                    .s3Url("s3://" + bucket + "/" + key)
-                    .build();
+            ImportJobRequest importRequest = ImportJobRequest.builder()
+                .defineSegment(true)
+                .registerEndpoints(true)
+                .roleArn(roleArn)
+                .format(Format.JSON)
+                .s3Url("s3://" + bucket + "/" + key)
+                .build();
 
             CreateImportJobRequest jobRequest = CreateImportJobRequest.builder()
-                    .importJobRequest(importRequest)
-                    .applicationId(appId)
-                    .build();
+                .importJobRequest(importRequest)
+                .applicationId(appId)
+                .build();
 
             CreateImportJobResponse jobResponse = client.createImportJob(jobRequest);
-
             return jobResponse.importJobResponse();
 
         } catch (PinpointException e) {

@@ -89,27 +89,7 @@ Cache-Control: no-cache
 }
 ```
 
-Alternatively, you can send a PUT request to the appropriate resource URI and include the `tags` parameter and values in the body of the request, as shown in the following example\.
 
-```
-PUT /v1/apps/application-id/campaigns/campaign-id HTTP/1.1
-Host: pinpoint.us-east-1.amazonaws.com
-Content-Type: application/x-www-form-urlencoded
-Accept: application/json
-Cache-Control: no-cache
-
-{
-   "tags":{
-      "key1":"value1"
-   }
-}
-```
-
-Where:
-+ *application\-id* is the ID of the project that contains the campaign\.
-+ *campaign\-id* is the ID of the campaign\.
-
-Note that the Amazon Pinpoint API currently doesn’t support PUT requests for projects\. Therefore, you have to use the [Tags](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-tags.html) resource to add a tag to an existing project\. 
 
 ### Adding tags by using the AWS CLI<a name="add-tags-cli"></a>
 
@@ -261,94 +241,7 @@ There are several ways to update \(overwrite\) a tag for an Amazon Pinpoint reso
 
 To update a tag for an Amazon Pinpoint project or for multiple resources at the same time, use the resource groups tagging operations of the AWS CLI or the [AWS Resource Groups Tagging API](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html)\. The Amazon Pinpoint API currently doesn’t provide direct support for either of those tasks\.
 
-To update a tag key for one resource, you can [remove the current tag](#tags-remove) and [add a new tag](#tags-add) by using the Amazon Pinpoint API\.
-
-To update a tag value \(of a tag key\) for only one resource, you can use the Amazon Pinpoint API\. The following examples show how to do this by using the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/) and the [Amazon Pinpoint REST API](https://docs.aws.amazon.com/pinpoint/latest/apireference/)\. The AWS CLI examples are formatted for Microsoft Windows\. You can also use any supported AWS SDK to update a tag value for a resource\.
-
-### Updating tags by using the API<a name="tags-update-api"></a>
-
-You can use the Amazon Pinpoint REST API to update a tag value for a resource\. To do this, send a PUT request to the appropriate URI for the type of resource whose tag you want to update\. In the body of the request, include the `tags` parameter and values\. For the `tags` parameter, specify the corresponding tag key for the `tag` property, as shown in the following example\.
-
-```
-PUT /v1/apps/application-id/campaigns/campaign-id HTTP/1.1
-Host: pinpoint.us-east-1.amazonaws.com
-Content-Type: application/json
-Accept: application/json
-Cache-Control: no-cache
-
-{
-    "tags": { 
-        "key1": "value1"
-    }
-}
-```
-
-Where:
-+ *application\-id* is the ID of the project that contains the campaign\.
-+ *campaign\-id* is the ID of the campaign whose tag you want to update\.
-
-### Updating tags by using the AWS CLI<a name="tags-update-cli"></a>
-
-You can use the AWS CLI to update a tag value for a resource\.
-
-To do this by specifying a resource ID, use the appropriate `Update` command for the resource type\. Include the `tags` parameter and arguments\. For example, you can use the `UpdateCampaign` command to update the tags for a campaign, as shown in the following example\.
-
-------
-#### [ Linux, macOS, or Unix ]
-
-```
-$ aws pinpoint update-campaign \
-  --application-id application-id \
-  --campaign-id campaign-id \
-  --write-campaign-request tags={key1=valueA}
-```
-
-------
-#### [ Windows Command Prompt ]
-
-```
-C:\> aws pinpoint update-campaign ^
-     --application-id application-id ^
-     --campaign-id campaign-id ^
-     --write-campaign-request tags={key1=valueA}
-```
-
-------
-
-In the preceding example, do the following:
-+ Replace *application\-id* with the ID of the project that contains the campaign\.
-+ Replace *campaign\-id* with the ID of the campaign that contains the tag that you want to update\.
-+ Replace *key1* with the key that you want to update\.
-+ Replace *valueA* with the new tag value to use for the specified tag key \(`key1`\)\.
-
-For information about the commands that you can use to update an Amazon Pinpoint resource, see the [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/pinpoint/)\.
-
-To update a tag value by specifying an Amazon Resource Name \(ARN\), use the `tag-resource` command and include the `tags-model` parameter and arguments, as shown in the following example\.
-
-------
-#### [ Linux, macOS, or Unix ]
-
-```
-$ aws pinpoint tag-resource \
-  --resource-arn resource-arn \
-  --tags-model tags={key1=valueA}
-```
-
-------
-#### [ Windows Command Prompt ]
-
-```
-C:\> aws pinpoint tag-resource ^
-     --resource-arn resource-arn ^
-     --tags-model tags={key1=valueA}
-```
-
-------
-
-In the preceding example, make the following changes:
-+ Replace *resource\-arn* with the ARN of the resource whose tag you want to update\. To get a list of ARNs for Amazon Pinpoint resources, you can [display a list of Amazon Pinpoint resources that have tags](#tags-display)\.
-+ Replace *key1* with the key that you want to update\.
-+ Replace *valueA* with the new tag value to use for the specified tag key \(`key1`\)\.
+To update a tag for one resource, you can [remove the current tag](#tags-remove) and [add a new tag](#tags-add) by using the Amazon Pinpoint API\.
 
 ## Removing tags from resources<a name="tags-remove"></a>
 

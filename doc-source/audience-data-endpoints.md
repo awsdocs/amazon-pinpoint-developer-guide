@@ -106,18 +106,18 @@ import software.amazon.awssdk.services.pinpoint.model.GetEndpointRequest;
 
         try {
             GetEndpointRequest appRequest = GetEndpointRequest.builder()
-                    .applicationId(appId)
-                    .endpointId(endpoint)
-                    .build();
+                .applicationId(appId)
+                .endpointId(endpoint)
+                .build();
 
             GetEndpointResponse result = pinpoint.getEndpoint(appRequest);
             EndpointResponse endResponse = result.endpointResponse();
 
             // Uses the Google Gson library to pretty print the endpoint JSON.
             Gson gson = new GsonBuilder()
-                    .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
-                    .setPrettyPrinting()
-                    .create();
+                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+                .setPrettyPrinting()
+                .create();
 
             String endpointJson = gson.toJson(endResponse);
             System.out.println(endpointJson);

@@ -28,18 +28,18 @@ import java.util.List;
 ```
     public static void listAllEndpoints(PinpointClient pinpoint,
                                         String applicationId,
-                                       String userId ) {
+                                       String userId) {
 
         try {
             GetUserEndpointsRequest endpointsRequest = GetUserEndpointsRequest.builder()
-                    .userId(userId)
-                    .applicationId(applicationId)
-                    .build();
+                .userId(userId)
+                .applicationId(applicationId)
+                .build();
 
             GetUserEndpointsResponse response = pinpoint.getUserEndpoints(endpointsRequest);
             List<EndpointResponse> endpoints = response.endpointsResponse().item();
 
-            // Display the results
+            // Display the results.
             for (EndpointResponse endpoint: endpoints) {
                 System.out.println("The channel type is: "+endpoint.channelType());
                 System.out.println("The address is  "+endpoint.address());

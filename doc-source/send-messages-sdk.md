@@ -7,7 +7,7 @@ This section contains complete code examples that you can use to send email thro
 
 Use this example to send email by using the [AWS SDK for \.NET](https://aws.amazon.com/sdk-for-net/)\. This example assumes that you've already installed and configured the AWS SDK for \.NET\. For more information, see [Getting started with the AWS SDK for \.NET](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/net-dg-setup.html) in the *AWS SDK for \.NET Developer Guide*\.
 
-This example assumes that you're using a shared credentials file to specify the Access Key and Secret Access Key for an existing IAM user\. For more information, see [Configuring AWS credentials](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/net-dg-config-creds.html) in the *AWS SDK for \.NET Developer Guide*\.
+This example assumes that you're using a shared credentials file to specify the Access Key and Secret Access Key for an existing user\. For more information, see [Configuring AWS credentials](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/net-dg-config-creds.html) in the *AWS SDK for \.NET Developer Guide*\.
 
 This code example was tested using the AWS SDK for \.NET version 3\.3\.29\.13 and \.NET Core runtime version 2\.1\.2\.
 
@@ -133,7 +133,7 @@ This email was sent using the Amazon Pinpoint API using the AWS SDK for .NET.";
 
 Use this example to send email by using the [AWS SDK for Java](https://aws.amazon.com/sdk-for-java/)\. This example assumes that you've already installed and configured the AWS SDK for Java 2\.x\. For more information, see [Getting started](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/getting-started.html) in the *AWS SDK for Java 2\.x Developer Guide*\.
 
-This example assumes that you're using a shared credentials file to specify the Access Key and Secret Access Key for an existing IAM user\. For more information, see [Set default credentials and Region](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/setup.html#setup-credentials) in the *AWS SDK for Java Developer Guide*\.
+This example assumes that you're using a shared credentials file to specify the Access Key and Secret Access Key for an existing user\. For more information, see [Set default credentials and Region](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/setup.html#setup-credentials) in the *AWS SDK for Java Developer Guide*\.
 
 This code example was tested using the AWS SDK for Java version 2\.3\.1 and OpenJDK version 11\.0\.1\.
 
@@ -164,44 +164,44 @@ import java.util.Map;
         try {
             Map<String,AddressConfiguration> addressMap = new HashMap<>();
             AddressConfiguration configuration = AddressConfiguration.builder()
-                    .channelType(ChannelType.EMAIL)
-                    .build();
+                .channelType(ChannelType.EMAIL)
+                .build();
 
             addressMap.put(toAddress, configuration);
             SimpleEmailPart emailPart = SimpleEmailPart.builder()
-                    .data(htmlBody)
-                    .charset(charset)
-                    .build() ;
+                .data(htmlBody)
+                .charset(charset)
+                .build() ;
 
             SimpleEmailPart subjectPart = SimpleEmailPart.builder()
-                    .data(subject)
-                    .charset(charset)
-                    .build() ;
+                .data(subject)
+                .charset(charset)
+                .build() ;
 
             SimpleEmail simpleEmail = SimpleEmail.builder()
-                    .htmlPart(emailPart)
-                    .subject(subjectPart)
-                    .build();
+                .htmlPart(emailPart)
+                .subject(subjectPart)
+                .build();
 
             EmailMessage emailMessage = EmailMessage.builder()
-                    .body(htmlBody)
-                    .fromAddress(senderAddress)
-                    .simpleEmail(simpleEmail)
-                    .build();
+                .body(htmlBody)
+                .fromAddress(senderAddress)
+                .simpleEmail(simpleEmail)
+                .build();
 
             DirectMessageConfiguration directMessageConfiguration = DirectMessageConfiguration.builder()
-                    .emailMessage(emailMessage)
-                    .build();
+                .emailMessage(emailMessage)
+                .build();
 
             MessageRequest messageRequest = MessageRequest.builder()
-                    .addresses(addressMap)
-                    .messageConfiguration(directMessageConfiguration)
-                    .build();
+                .addresses(addressMap)
+                .messageConfiguration(directMessageConfiguration)
+                .build();
 
             SendMessagesRequest messagesRequest = SendMessagesRequest.builder()
-                    .applicationId(appId)
-                    .messageRequest(messageRequest)
-                    .build();
+                .applicationId(appId)
+                .messageRequest(messageRequest)
+                .build();
 
             pinpoint.sendMessages(messagesRequest);
 
@@ -219,7 +219,7 @@ For the full SDK example, see [SendEmailMessage\.java](https://github.com/awsdoc
 
 Use this example to send email by using the [AWS SDK for JavaScript in Node\.js](https://aws.amazon.com/sdk-for-node-js/)\. This example assumes that you've already installed and configured the SDK for JavaScript in Node\.js\. For more information, see [Getting started](https://docs.aws.amazon.com/AWSJavaScriptSDK/guide/node-intro.html) in the *AWS SDK for JavaScript in Node\.js Developer Guide*\.
 
-This example assumes that you're using a shared credentials file to specify the Access Key and Secret Access Key for an existing IAM user\. For more information, see [Setting credentials](https://docs.aws.amazon.com/sdk-for-javascript/latest/developer-guide/setting-credentials.html) in the *AWS SDK for JavaScript in Node\.js Developer Guide*\.
+This example assumes that you're using a shared credentials file to specify the Access Key and Secret Access Key for an existing user\. For more information, see [Setting credentials](https://docs.aws.amazon.com/sdk-for-javascript/latest/developer-guide/setting-credentials.html) in the *AWS SDK for JavaScript in Node\.js Developer Guide*\.
 
 This code example was tested using the SDK for JavaScript in Node\.js version 2\.388\.0 and Node\.js version 11\.7\.0\.
 
@@ -490,6 +490,6 @@ if __name__ == '__main__':
     main()
 ```
 
-These examples assume that you're using a shared credentials file to specify the Access Key and Secret Access Key for an existing IAM user\. For more information, see [Credentials](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html) in the *AWS SDK for Python \(Boto3\) API Reference*\.
+These examples assume that you're using a shared credentials file to specify the Access Key and Secret Access Key for an existing user\. For more information, see [Credentials](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html) in the *AWS SDK for Python \(Boto3\) API Reference*\.
 
 ------

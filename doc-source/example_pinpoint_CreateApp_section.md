@@ -9,7 +9,7 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
 #### [ Java ]
 
 **SDK for Java 2\.x**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/pinpoint#readme)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/pinpoint#readme)\. 
   
 
 ```
@@ -17,12 +17,12 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
 
         try {
             CreateApplicationRequest appRequest = CreateApplicationRequest.builder()
-                    .name(appName)
-                    .build();
+                .name(appName)
+                .build();
 
             CreateAppRequest request = CreateAppRequest.builder()
-                    .createApplicationRequest(appRequest)
-                    .build();
+                .createApplicationRequest(appRequest)
+                .build();
 
             CreateAppResponse result = pinpoint.createApp(request);
             return result.applicationResponse().id();
@@ -41,23 +41,25 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
 
 **SDK for Kotlin**  
 This is prerelease documentation for a feature in preview release\. It is subject to change\.
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/kotlin/services/pinpoint#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/kotlin/services/pinpoint#code-examples)\. 
   
 
 ```
- suspend fun createApplication(applicationName: String?):String? {
+suspend fun createApplication(applicationName: String?): String? {
 
-            val createApplicationRequestOb = CreateApplicationRequest{
-                name = applicationName
-            }
-
-            PinpointClient { region = "us-west-2" }.use { pinpoint ->
-             val result = pinpoint.createApp(CreateAppRequest {
-                createApplicationRequest = createApplicationRequestOb
-             })
-             return result.applicationResponse?.id
-        }
+    val createApplicationRequestOb = CreateApplicationRequest {
+        name = applicationName
     }
+
+    PinpointClient { region = "us-west-2" }.use { pinpoint ->
+        val result = pinpoint.createApp(
+            CreateAppRequest {
+                createApplicationRequest = createApplicationRequestOb
+            }
+        )
+        return result.applicationResponse?.id
+    }
+}
 ```
 +  For API details, see [CreateApp](https://github.com/awslabs/aws-sdk-kotlin#generating-api-documentation) in *AWS SDK for Kotlin API reference*\. 
 

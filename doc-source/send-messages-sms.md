@@ -131,18 +131,14 @@ import java.util.Map;
 ```
     public static void sendSMSMessage(PinpointClient pinpoint, String message, String appId, String originationNumber, String destinationNumber) {
 
-    try {
-
-        Map<String, AddressConfiguration> addressMap =
-                new HashMap<String, AddressConfiguration>();
-
-        AddressConfiguration addConfig = AddressConfiguration.builder()
+        try {
+            Map<String, AddressConfiguration> addressMap = new HashMap<String, AddressConfiguration>();
+            AddressConfiguration addConfig = AddressConfiguration.builder()
                 .channelType(ChannelType.SMS)
                 .build();
 
-        addressMap.put(destinationNumber, addConfig);
-
-        SMSMessage smsMessage = SMSMessage.builder()
+            addressMap.put(destinationNumber, addConfig);
+            SMSMessage smsMessage = SMSMessage.builder()
                 .body(message)
                 .messageType(messageType)
                 .originationNumber(originationNumber)
@@ -150,35 +146,34 @@ import java.util.Map;
                 .keyword(registeredKeyword)
                 .build();
 
-        // Create a DirectMessageConfiguration object
-        DirectMessageConfiguration direct = DirectMessageConfiguration.builder()
+            // Create a DirectMessageConfiguration object.
+            DirectMessageConfiguration direct = DirectMessageConfiguration.builder()
                 .smsMessage(smsMessage)
                 .build();
 
-        MessageRequest msgReq = MessageRequest.builder()
+            MessageRequest msgReq = MessageRequest.builder()
                 .addresses(addressMap)
                 .messageConfiguration(direct)
                 .build();
 
-        // create a  SendMessagesRequest object
-        SendMessagesRequest request = SendMessagesRequest.builder()
+            // create a  SendMessagesRequest object
+            SendMessagesRequest request = SendMessagesRequest.builder()
                 .applicationId(appId)
                 .messageRequest(msgReq)
                 .build();
 
-        SendMessagesResponse response= pinpoint.sendMessages(request);
+            SendMessagesResponse response= pinpoint.sendMessages(request);
+            MessageResponse msg1 = response.messageResponse();
+            Map map1 = msg1.result();
 
-        MessageResponse msg1 = response.messageResponse();
-        Map map1 = msg1.result();
+            //Write out the result of sendMessage.
+            map1.forEach((k, v) -> System.out.println((k + ":" + v)));
 
-        //Write out the result of sendMessage
-        map1.forEach((k, v) -> System.out.println((k + ":" + v)));
-
-    } catch (PinpointException e) {
-        System.err.println(e.awsErrorDetails().errorMessage());
-        System.exit(1);
+        } catch (PinpointException e) {
+            System.err.println(e.awsErrorDetails().errorMessage());
+            System.exit(1);
+        }
     }
-  }
 ```
 
 For the full SDK example, see [SendMessage\.java](https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/javav2/example_code/pinpoint/src/main/java/com/example/pinpoint/SendMessage.java/) on [GitHub](https://github.com/)\.

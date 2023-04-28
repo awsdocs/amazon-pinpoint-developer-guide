@@ -9,24 +9,24 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
 #### [ Java ]
 
 **SDK for Java 2\.x**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/pinpoint#readme)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/pinpoint#readme)\. 
   
 
 ```
     public static void listAllEndpoints(PinpointClient pinpoint,
                                         String applicationId,
-                                       String userId ) {
+                                       String userId) {
 
         try {
             GetUserEndpointsRequest endpointsRequest = GetUserEndpointsRequest.builder()
-                    .userId(userId)
-                    .applicationId(applicationId)
-                    .build();
+                .userId(userId)
+                .applicationId(applicationId)
+                .build();
 
             GetUserEndpointsResponse response = pinpoint.getUserEndpoints(endpointsRequest);
             List<EndpointResponse> endpoints = response.endpointsResponse().item();
 
-            // Display the results
+            // Display the results.
             for (EndpointResponse endpoint: endpoints) {
                 System.out.println("The channel type is: "+endpoint.channelType());
                 System.out.println("The address is  "+endpoint.address());

@@ -9,7 +9,7 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
 #### [ Java ]
 
 **SDK for Java 2\.x**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/pinpoint#readme)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/pinpoint#readme)\. 
 Import a segment\.  
 
 ```
@@ -20,21 +20,20 @@ Import a segment\.
                                                         String roleArn) {
 
         try {
-             ImportJobRequest importRequest = ImportJobRequest.builder()
-                    .defineSegment(true)
-                    .registerEndpoints(true)
-                    .roleArn(roleArn)
-                    .format(Format.JSON)
-                    .s3Url("s3://" + bucket + "/" + key)
-                    .build();
+            ImportJobRequest importRequest = ImportJobRequest.builder()
+                .defineSegment(true)
+                .registerEndpoints(true)
+                .roleArn(roleArn)
+                .format(Format.JSON)
+                .s3Url("s3://" + bucket + "/" + key)
+                .build();
 
             CreateImportJobRequest jobRequest = CreateImportJobRequest.builder()
-                    .importJobRequest(importRequest)
-                    .applicationId(appId)
-                    .build();
+                .importJobRequest(importRequest)
+                .applicationId(appId)
+                .build();
 
             CreateImportJobResponse jobResponse = client.createImportJob(jobRequest);
-
             return jobResponse.importJobResponse();
 
         } catch (PinpointException e) {

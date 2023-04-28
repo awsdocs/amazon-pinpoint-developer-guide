@@ -71,7 +71,7 @@ Before you create a Lambda function that sends messages over a custom channel, y
 
 The event data provides the following attributes:
 + `ApplicationId` – The ID of the Amazon Pinpoint project that the campaign belongs to\.
-+ `CampaignId` – The ID of the Amazon Pinpoint project that invoked the Lambda function\.
++ `CampaignId` – The ID of the Amazon Pinpoint campaign that invoked the Lambda function\.
 + `TreatmentId` – The ID of the campaign variant\. If you created a standard campaign, this value is always 0\. If you created an A/B test campaign, this value is an integer between 0 and 4\.
 + `ActivityId` – The ID of the activity being performed by the campaign\.
 + `ScheduledTime` – The time when Amazon Pinpoint executed the campaign, shown in ISO 8601 format\.

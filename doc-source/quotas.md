@@ -118,12 +118,14 @@ The following table lists the Requests Per Second \(RPS\) quota for each resourc
 
 The following quotas apply to the [Campaigns](https://docs.aws.amazon.com/pinpoint/latest/apireference/rest-api-campaigns.html) resource of the Amazon Pinpoint API\.
 
+ The following quotas apply per AWS Region and some can be increased\. For more information, see [Requesting a quota increase in the *Service Quotas User Guide*](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html)\.
+
 
 | Resource | Default quota | Eligible for increase | 
 | --- | --- | --- | 
-|  Active campaigns  |  200 per account  An *active campaign* is a campaign that hasn't completed or failed\. Active campaigns have a status of `SCHEDULED`, `EXECUTING`, or `PENDING_NEXT_RUN`\.   |  [Yes](#quotas-increase)  | 
+|  Active campaigns  |  200 per account  An *active campaign* is a campaign that hasn't completed or failed\. Active campaigns have a status of `SCHEDULED`, `EXECUTING`, or `PENDING_NEXT_RUN`\.   |  Yes  | 
 | Maximum segment size | For imported segments: 100,000,000 per campaignFor dynamic segments: unlimited | No | 
-| Event\-based campaigns |  Each project can include up to 25 campaigns that are sent when events occur\. Campaigns that use event\-based triggers have to use dynamic segments\. They can't use imported segments\.  If you integrate your app with Amazon Pinpoint by using an AWS Mobile SDK, messages from event\-based campaigns are sent only to customers whose apps are running AWS Mobile SDK for Android version 2\.7\.2 or later, or AWS Mobile SDK for iOS version 2\.6\.30 or later\. If Amazon Pinpoint can't deliver a message from an event\-based campaign within five minutes, it drops the message and doesn't attempt to redeliver it\.  | [Yes](#quotas-increase) | 
+| Event\-based campaigns |  Each project can include up to 25 campaigns that are sent when events occur\. Campaigns that use event\-based triggers have to use dynamic segments\. They can't use imported segments\.  If you integrate your app with Amazon Pinpoint by using an AWS Mobile SDK, messages from event\-based campaigns are sent only to customers whose apps are running AWS Mobile SDK for Android version 2\.7\.2 or later, or AWS Mobile SDK for iOS version 2\.6\.30 or later\. If Amazon Pinpoint can't deliver a message from an event\-based campaign within five minutes, it drops the message and doesn't attempt to redeliver it\.  | Yes | 
 
 ## Email quotas<a name="quotas-email"></a>
 
@@ -166,10 +168,11 @@ The maximum number of attributes supported per endpoint is 250, and the maximum 
 
 | Resource | Default quota | Eligible for increase | 
 | --- | --- | --- | 
-|  Attributes assigned to the `Attributes`, `Metrics`, and `UserAttributes` parameters collectively  |  250 for all attribute parameters per application and a maximum size of 15 KB for the endpoint\.   |  Yes  | 
-|  Attributes assigned to the `Attributes` parameter  | 250 for all attribute parameters per application and a maximum size of 15 KB for the endpoint\.  |  Yes  | 
-|  Attributes assigned to the `Metrics` parameter  |  250 for all attribute parameters per application and a maximum size of 15 KB for the endpoint\.   |  Yes  | 
-|  Attributes assigned to the `UserAttributes` parameter  |  250 for all attribute parameters per application and a maximum size of 15 KB for the endpoint\.   |  Yes  | 
+| Endpoint size | Maximum size 15 KB | No | 
+|  Attributes assigned to the `Attributes`, `Metrics`, and `UserAttributes` parameters collectively  |  250 for all attribute parameters per application   |  Yes  | 
+|  Attributes assigned to the `Attributes` parameter  | 250 for all attribute parameters per application |  Yes  | 
+|  Attributes assigned to the `Metrics` parameter  |  250 for all attribute parameters per application   |  Yes  | 
+|  Attributes assigned to the `UserAttributes` parameter  |  250 for all attribute parameters per application  |  Yes  | 
 |  Attribute name length  |  50 characters  |  No  | 
 |  Attribute value length  |  100 characters  |  No  | 
 |  `EndpointBatchItem` objects in an `EndpointBatchRequest` payload  |  100 per payload\. The payload size can't exceed 7 MB\.  |  No  | 
@@ -184,7 +187,7 @@ The following quotas apply to importing endpoints into Amazon Pinpoint\.
 
 | Resource | Default quota | Eligible for increase | 
 | --- | --- | --- | 
-|  Concurrent import jobs  |  10 per account  |  [Yes](#quotas-increase)  | 
+|  Active import jobs  |  10 per account Import jobs only count against this quota if they are running\. Once the import job has completed it no longer counts against this quota\.   |  [Yes](#quotas-increase)  | 
 | Import size | 1 GB per import jobFor example, if each endpoint is 4 KB or less, you can import 250,000 endpoints\. |  [Yes](#quotas-increase)  | 
 
 ## Event ingestion quotas<a name="quotas-events"></a>
@@ -209,13 +212,16 @@ The following quotas apply to the ingestion of events using the AWS Mobile SDKs 
 
 The following quotas apply to journeys\.
 
+The following quotas apply per AWS Region and some can be increased\. For more information, see [Requesting a quota increase in the *Service Quotas User Guide*](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html)\.
+
 
 | Resource | Default quota | Eligible for increase | 
 | --- | --- | --- | 
-|  Maximum number of active journeys  |  50 per account  |  [Yes](#quotas-increase)  | 
-| Maximum number of active EventTriggeredJourneys | 20 per account | [Yes](#quotas-increase) | 
-|  Maximum number of journey activities  |  40 per journey  |  [Yes](#quotas-increase)  | 
+|  Maximum number of active journeys  |  50 per account  |  Yes  | 
+| Maximum number of active EventTriggeredJourneys | 20 per account | Yes | 
+|  Maximum number of journey activities  |  40 per journey  |  Yes  | 
 | Maximum segment size | For imported segments: 100,000,000 per journey\.For dynamic segments: unlimited | No | 
+| Maximum contact center activities | 3 per journey | Yes, see [Requesting a quota increase](#quotas-increase) | 
 
 ## Lambda quotas<a name="quotas-Lambda"></a>
 
@@ -229,6 +235,7 @@ The following quotas apply to Amazon Pinpoint configurations for retrieving and 
 | Maximum number of event attributes per endpoint | 5 | No | 
 | Maximum number of characters for an event attribute name | 128 characters | No | 
 | Maximum number of characters for an event attribute value | 128 characters | No | 
+| Maximum amount of days a journey can run | 540 days | No | 
 
 ## Machine learning quotas<a name="quotas-ML-models"></a>
 
@@ -255,12 +262,13 @@ The following quotas apply to message templates for your Amazon Pinpoint account
 
 | Resource | Default quota | Eligible for increase | 
 | --- | --- | --- | 
-|  Maximum number of message templates  |  10,000 per account  |  [Yes](#quotas-increase)  | 
+|  Maximum number of message templates  |  20,000 per account  |  [Yes](#quotas-increase)  | 
 |  Maximum number of versions  |  5,000 per template  |  No  | 
-|  Maximum number of characters in an email template  | 500,000 characters |  No  | 
-|  Maximum number of characters in the default template parts of a push notification template   | 2,000 characters | No | 
-| Maximum number of characters in ADM\-specific template parts of a push notification template | 4,000 characters | No | 
-| Maximum number of characters in APNs\-specific template parts of a push notification template | 2,000 characters | No | 
+|  Maximum number of characters in an email template  | 600,000 characters |  No  | 
+| Maximum number of characters in an in\-app template | 200,000 characters | No | 
+|  Maximum number of characters in the default template parts of a push notification template   | 4,000 characters | No | 
+| Maximum number of characters in ADM\-specific template parts of a push notification template | 6,000 characters | No | 
+| Maximum number of characters in APNs\-specific template parts of a push notification template | 4,000 characters | No | 
 | Maximum number of characters in Baidu\-specific template parts of a push notification template | 4,000 characters | No | 
 | Maximum number of characters in FCM\-specific template parts of a push notification template | 4,000 characters | No | 
 |  Maximum number of characters in an SMS template  | 1,600 characters | No | 
@@ -284,11 +292,13 @@ The following quotas apply to messages that Amazon Pinpoint sends through push n
 
 The following quota applies to in\-app messages that you manage with Amazon Pinpoint\.
 
+The following quotas apply per AWS Region and some can be increased\. For more information, see [Requesting a quota increase in the *Service Quotas User Guide*](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html)\.
+
 
 | Resource | Default quota | Eligible for increase | 
 | --- | --- | --- | 
 | Maximum number of times you can call the GetInAppMessages API per second\. | 5,000 requests per second | [Yes](#quotas-increase) | 
-| In\-app messaging campaigns | Each project can include up to 25 campaigns that use the in\-app messaging channel\.  | [Yes](#quotas-increase) | 
+| In\-app messaging campaigns | Each project can include up to 25 campaigns that use the in\-app messaging channel\.  | Yes, see [Requesting a quota increase in the *Service Quotas User Guide*](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html) | 
 
 ## Segment quotas<a name="quotas-segment"></a>
 
@@ -307,7 +317,7 @@ The following quotas apply to the SMS channel\.
 | Resource | Default quota | Eligible for increase | 
 | --- | --- | --- | 
 |  Spending threshold  |  USD $1\.00 per account  |  [Yes](#quotas-increase), but spending limits vary by region\. You must specify the region\(s\) in which you require an increase\.   | 
-|  Number of SMS messages that can be sent each second \(*sending rate*\)  |  Varies depending on destination country and originating phone number\. For more information, see [Message parts per second limits](https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-limitations-mps.html) in the *Amazon Pinpoint User Guide*\.  |  You don't need to request a quota increase\. However, you might need to obtain a phone number that supports higher throughput\. If you're unsure of which number type to use, contact AWS Support or your AWS Account Manager for more information\. If you use an alphanumeric Sender ID to send messages, you might be able to increase your throughput rate\. To find out if a throughput increase is available for your Sender ID, [open a Sender ID request](https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-awssupport-sender-id.html) in the Support Center Console\. In your request, include your existing Sender ID, the country in which you use that Sender ID, and the throughput rate you want to request\.  | 
+|  Number of SMS messages that can be sent each second \(*sending rate*\)  |  Varies depending on destination country and originating phone number\. For more information, see [Message parts per second limits](https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-limitations-mps.html) in the *Amazon Pinpoint User Guide*\.  |  [Yes](#quotas-increase), however, you might need to obtain a phone number that supports higher throughput\. If you're unsure of which number type to use, contact AWS Support or your AWS Account Manager for more information If you use an alphanumeric Sender ID to send messages, you might be able to increase your throughput rate\. To find out if a throughput increase is available for your Sender ID, [open a Sender ID request](https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-awssupport-sender-id.html) in the Support Center Console\. In your request, include your existing Sender ID, the country in which you use that Sender ID, and the throughput rate you want to request\.  | 
 | Number of SMS messages that can be sent to a single recipient each second | 1 message per second | No | 
 | Number of Amazon SNS topics for two\-way SMS | 100,000 per account | [Yes](#quotas-increase) | 
 | Number of Keywords for two\-way SMS | 30 Keywords per number | [Yes](#quotas-increase) | 
@@ -360,7 +370,9 @@ If the value in the **Eligible for Increase** column in any of the preceding tab
 
 1. Create a new AWS Support case at [https://console\.aws\.amazon\.com/support/home\#/case/create](https://console.aws.amazon.com/support/home#/case/create)\.
 
-1. On the **Create case** page, choose **Service quota increase**\.
+1. On the **Your support cases** pane, choose **Create case**\.
+
+1. Choose the **Looking for service limit increases?** link\.
 
 1. Under **Case classification**, for **Quota type**, choose one of the following options:
    + To request a quota increase that's related to the email channel, choose **Pinpoint Email**\.

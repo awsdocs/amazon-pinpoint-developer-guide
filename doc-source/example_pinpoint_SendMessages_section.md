@@ -9,7 +9,7 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
 #### [ Java ]
 
 **SDK for Java 2\.x**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/pinpoint#readme)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/pinpoint#readme)\. 
 Send an email message\.  
 
 ```
@@ -22,44 +22,44 @@ Send an email message\.
         try {
             Map<String,AddressConfiguration> addressMap = new HashMap<>();
             AddressConfiguration configuration = AddressConfiguration.builder()
-                    .channelType(ChannelType.EMAIL)
-                    .build();
+                .channelType(ChannelType.EMAIL)
+                .build();
 
             addressMap.put(toAddress, configuration);
             SimpleEmailPart emailPart = SimpleEmailPart.builder()
-                    .data(htmlBody)
-                    .charset(charset)
-                    .build() ;
+                .data(htmlBody)
+                .charset(charset)
+                .build() ;
 
             SimpleEmailPart subjectPart = SimpleEmailPart.builder()
-                    .data(subject)
-                    .charset(charset)
-                    .build() ;
+                .data(subject)
+                .charset(charset)
+                .build() ;
 
             SimpleEmail simpleEmail = SimpleEmail.builder()
-                    .htmlPart(emailPart)
-                    .subject(subjectPart)
-                    .build();
+                .htmlPart(emailPart)
+                .subject(subjectPart)
+                .build();
 
             EmailMessage emailMessage = EmailMessage.builder()
-                    .body(htmlBody)
-                    .fromAddress(senderAddress)
-                    .simpleEmail(simpleEmail)
-                    .build();
+                .body(htmlBody)
+                .fromAddress(senderAddress)
+                .simpleEmail(simpleEmail)
+                .build();
 
             DirectMessageConfiguration directMessageConfiguration = DirectMessageConfiguration.builder()
-                    .emailMessage(emailMessage)
-                    .build();
+                .emailMessage(emailMessage)
+                .build();
 
             MessageRequest messageRequest = MessageRequest.builder()
-                    .addresses(addressMap)
-                    .messageConfiguration(directMessageConfiguration)
-                    .build();
+                .addresses(addressMap)
+                .messageConfiguration(directMessageConfiguration)
+                .build();
 
             SendMessagesRequest messagesRequest = SendMessagesRequest.builder()
-                    .applicationId(appId)
-                    .messageRequest(messageRequest)
-                    .build();
+                .applicationId(appId)
+                .messageRequest(messageRequest)
+                .build();
 
             pinpoint.sendMessages(messagesRequest);
 
@@ -74,18 +74,14 @@ Send an SMS message\.
 ```
     public static void sendSMSMessage(PinpointClient pinpoint, String message, String appId, String originationNumber, String destinationNumber) {
 
-    try {
-
-        Map<String, AddressConfiguration> addressMap =
-                new HashMap<String, AddressConfiguration>();
-
-        AddressConfiguration addConfig = AddressConfiguration.builder()
+        try {
+            Map<String, AddressConfiguration> addressMap = new HashMap<String, AddressConfiguration>();
+            AddressConfiguration addConfig = AddressConfiguration.builder()
                 .channelType(ChannelType.SMS)
                 .build();
 
-        addressMap.put(destinationNumber, addConfig);
-
-        SMSMessage smsMessage = SMSMessage.builder()
+            addressMap.put(destinationNumber, addConfig);
+            SMSMessage smsMessage = SMSMessage.builder()
                 .body(message)
                 .messageType(messageType)
                 .originationNumber(originationNumber)
@@ -93,49 +89,98 @@ Send an SMS message\.
                 .keyword(registeredKeyword)
                 .build();
 
-        // Create a DirectMessageConfiguration object
-        DirectMessageConfiguration direct = DirectMessageConfiguration.builder()
+            // Create a DirectMessageConfiguration object.
+            DirectMessageConfiguration direct = DirectMessageConfiguration.builder()
                 .smsMessage(smsMessage)
                 .build();
 
-        MessageRequest msgReq = MessageRequest.builder()
+            MessageRequest msgReq = MessageRequest.builder()
                 .addresses(addressMap)
                 .messageConfiguration(direct)
                 .build();
 
-        // create a  SendMessagesRequest object
-        SendMessagesRequest request = SendMessagesRequest.builder()
+            // create a  SendMessagesRequest object
+            SendMessagesRequest request = SendMessagesRequest.builder()
                 .applicationId(appId)
                 .messageRequest(msgReq)
                 .build();
 
-        SendMessagesResponse response= pinpoint.sendMessages(request);
+            SendMessagesResponse response= pinpoint.sendMessages(request);
+            MessageResponse msg1 = response.messageResponse();
+            Map map1 = msg1.result();
 
-        MessageResponse msg1 = response.messageResponse();
-        Map map1 = msg1.result();
+            //Write out the result of sendMessage.
+            map1.forEach((k, v) -> System.out.println((k + ":" + v)));
 
-        //Write out the result of sendMessage
-        map1.forEach((k, v) -> System.out.println((k + ":" + v)));
-
-    } catch (PinpointException e) {
-        System.err.println(e.awsErrorDetails().errorMessage());
-        System.exit(1);
+        } catch (PinpointException e) {
+            System.err.println(e.awsErrorDetails().errorMessage());
+            System.exit(1);
+        }
     }
-  }
+```
+Send batch SMS messages\.  
+
+```
+    public static void sendSMSMessage(PinpointClient pinpoint, String message, String appId, String originationNumber, String destinationNumber, String destinationNumber1) {
+        try {
+            Map<String, AddressConfiguration> addressMap = new HashMap<String, AddressConfiguration>();
+            AddressConfiguration addConfig = AddressConfiguration.builder()
+                .channelType(ChannelType.SMS)
+                .build();
+
+            // Add an entry to the Map object for each number to whom you want to send a message.
+            addressMap.put(destinationNumber, addConfig);
+            addressMap.put(destinationNumber1, addConfig);
+            SMSMessage smsMessage = SMSMessage.builder()
+                .body(message)
+                .messageType(messageType)
+                .originationNumber(originationNumber)
+                .senderId(senderId)
+                .keyword(registeredKeyword)
+                .build();
+
+            // Create a DirectMessageConfiguration object.
+            DirectMessageConfiguration direct = DirectMessageConfiguration.builder()
+                .smsMessage(smsMessage)
+                .build();
+
+            MessageRequest msgReq = MessageRequest.builder()
+                .addresses(addressMap)
+                .messageConfiguration(direct)
+                .build();
+
+            // Create a SendMessagesRequest object.
+            SendMessagesRequest request = SendMessagesRequest.builder()
+                .applicationId(appId)
+                .messageRequest(msgReq)
+                .build();
+
+            SendMessagesResponse response= pinpoint.sendMessages(request);
+            MessageResponse msg1 = response.messageResponse();
+            Map map1 = msg1.result();
+
+            // Write out the result of sendMessage.
+            map1.forEach((k, v) -> System.out.println((k + ":" + v)));
+
+        } catch (PinpointException e) {
+            System.err.println(e.awsErrorDetails().errorMessage());
+            System.exit(1);
+        }
+    }
 ```
 +  For API details, see [SendMessages](https://docs.aws.amazon.com/goto/SdkForJavaV2/pinpoint-2016-12-01/SendMessages) in *AWS SDK for Java 2\.x API Reference*\. 
 
 ------
 #### [ JavaScript ]
 
-**SDK for JavaScript V3**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/pinpoint#code-examples)\. 
+**SDK for JavaScript \(v3\)**  
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/pinpoint#code-examples)\. 
 Create the client in a separate module and export it\.  
 
 ```
 import { PinpointClient } from "@aws-sdk/client-pinpoint";
 // Set the AWS Region.
-const REGION = "REGION";
+const REGION = "us-east-1";
 //Set the MediaConvert Service Object
 const pinClient = new PinpointClient({region: REGION});
 export  { pinClient };
@@ -147,24 +192,10 @@ Send an email message\.
 import { SendMessagesCommand } from "@aws-sdk/client-pinpoint";
 import { pinClient } from "./libs/pinClient.js";
 
-("use strict");
-
-/* The address on the "To" line. If your Amazon Pinpoint account is in
-the sandbox, this address also has to be verified.
-Note: All recipient addresses in this example are in arrays, which makes it
-easier to specify multiple recipients. Alternatively, you can make these
-variables strings, and then modify the To/Cc/BccAddresses attributes in the
-params variable so that it passes an array for each recipient type.*/
-const senderAddress = "SENDER_ADDRESS";
-const toAddress = "RECIPIENT_ADDRESS";
-const projectId = "PINPOINT_PROJECT_ID"; //e.g., XXXXXXXX66e4e9986478cXXXXXXXXX
-
-// CC and BCC addresses. If your account is in the sandbox, these addresses have to be verified.
-var ccAddresses = ["cc_recipient1@example.com", "cc_recipient2@example.com"];
-var bccAddresses = ["bcc_recipient@example.com"];
-
-// The configuration set that you want to use to send the email.
-var configuration_set = "ConfigSet";
+// The FromAddress must be verified in SES.
+const fromAddress = "FROM_ADDRESS";
+const toAddress = "TO_ADDRESS";
+const projectId = "PINPOINT_PROJECT_ID";
 
 // The subject line of the email.
 var subject = "Amazon Pinpoint Test (AWS SDK for JavaScript in Node.js)";
@@ -173,7 +204,7 @@ var subject = "Amazon Pinpoint Test (AWS SDK for JavaScript in Node.js)";
 var body_text = `Amazon Pinpoint Test (SDK for JavaScript in Node.js)
 ----------------------------------------------------
 This email was sent with Amazon Pinpoint using the AWS SDK for JavaScript in Node.js.
-For more information, see https:\/\/aws.amazon.com/sdk-for-node-js/`;
+For more information, see https://aws.amazon.com/sdk-for-node-js/`;
 
 // The body of the email for recipients whose email clients support HTML content.
 var body_html = `<html>
@@ -181,15 +212,11 @@ var body_html = `<html>
 <body>
   <h1>Amazon Pinpoint Test (SDK for JavaScript in Node.js)</h1>
   <p>This email was sent with
-    <a href='https://aws.amazon.com//pinpoint/'>the Amazon Pinpoint Email API</a> using the
-    <a href='https://aws.amazon.com//sdk-for-node-js/'>
+    <a href='https://aws.amazon.com/pinpoint/'>the Amazon Pinpoint Email API</a> using the
+    <a href='https://aws.amazon.com/sdk-for-node-js/'>
       AWS SDK for JavaScript in Node.js</a>.</p>
 </body>
 </html>`;
-
-// The message tags that you want to apply to the email.
-var tag0 = { Name: "key0", Value: "value0" };
-var tag1 = { Name: "key1", Value: "value1" };
 
 // The character encoding for the subject line and message body of the email.
 var charset = "UTF-8";
@@ -198,19 +225,13 @@ const params = {
   ApplicationId: projectId,
   MessageRequest: {
     Addresses: {
-      Destination: {
-        ToAddresses: toAddress,
-        //  CcAddresses: CC_ADDRESSES,
-        //  BccAddresses: BCC_ADDRESSES
-      },
-
       [toAddress]: {
         ChannelType: "EMAIL",
       },
     },
     MessageConfiguration: {
       EmailMessage: {
-        FromAddress: senderAddress,
+        FromAddress: fromAddress,
         SimpleEmail: {
           Subject: {
             Charset: charset,
@@ -233,15 +254,23 @@ const params = {
 const run = async () => {
   try {
     const data = await pinClient.send(new SendMessagesCommand(params));
-    return data; // For unit tests.
-    console.log(
-      "Email sent! Message ID: ",
-      data["MessageResponse"]["Result"][toAddress]["MessageId"]
-    );
+
+    const {
+      MessageResponse: { Result },
+    } = data;
+
+    const recipientResult = Result[toAddress];
+
+    if (recipientResult.StatusCode !== 200) {
+      throw new Error(recipientResult.StatusMessage);
+    } else {
+      console.log(recipientResult.MessageId);
+    }
   } catch (err) {
-    console.log("Error", err);
+    console.log(err.message);
   }
 };
+
 run();
 ```
 Send an SMS message\.  
@@ -323,8 +352,8 @@ run();
 ```
 +  For API details, see [SendMessages](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-pinpoint/classes/sendmessagescommand.html) in *AWS SDK for JavaScript API Reference*\. 
 
-**SDK for JavaScript V2**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascript/example_code/pinpoint#code-examples)\. 
+**SDK for JavaScript \(v2\)**  
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascript/example_code/pinpoint#code-examples)\. 
 Send an email message\.  
 
 ```
@@ -521,68 +550,73 @@ pinpoint.sendMessages(params, function(err, data) {
 
 **SDK for Kotlin**  
 This is prerelease documentation for a feature in preview release\. It is subject to change\.
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/kotlin/services/pinpoint#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/kotlin/services/pinpoint#code-examples)\. 
   
 
 ```
-    suspend fun sendEmail(
-        msgSubject: String?,
-        appId: String?,
-        senderAddress: String?,
-        toAddress: String) {
+suspend fun sendEmail(
+    msgSubject: String?,
+    appId: String?,
+    senderAddress: String?,
+    toAddress: String
+) {
 
-        // The body of the email for recipients whose email clients support HTML content.
-        val htmlBody = ("<h1>Amazon Pinpoint test (AWS SDK for Kotlin)</h1>"
-                + "<p>This email was sent through the <a href='https://aws.amazon.com/pinpoint/'>"
-                + "Amazon Pinpoint</a> Email API")
+    // The body of the email for recipients whose email clients support HTML content.
+    val htmlBody = (
+        "<h1>Amazon Pinpoint test (AWS SDK for Kotlin)</h1>" +
+            "<p>This email was sent through the <a href='https://aws.amazon.com/pinpoint/'>" +
+            "Amazon Pinpoint</a> Email API"
+        )
 
-        // The character encoding to use for the subject line and the message body.
-        val charsetVal = "UTF-8"
+    // The character encoding to use for the subject line and the message body.
+    val charsetVal = "UTF-8"
 
-        val addressMap = mutableMapOf<String, AddressConfiguration>()
-        val configuration = AddressConfiguration {
-                channelType = ChannelType.Email
+    val addressMap = mutableMapOf<String, AddressConfiguration>()
+    val configuration = AddressConfiguration {
+        channelType = ChannelType.Email
+    }
+
+    addressMap[toAddress] = configuration
+    val emailPart = SimpleEmailPart {
+        data = htmlBody
+        charset = charsetVal
+    }
+
+    val subjectPartOb = SimpleEmailPart {
+        data = msgSubject
+        charset = charsetVal
+    }
+
+    val simpleEmailOb = SimpleEmail {
+        htmlPart = emailPart
+        subject = subjectPartOb
+    }
+
+    val emailMessageOb = EmailMessage {
+        body = htmlBody
+        fromAddress = senderAddress
+        simpleEmail = simpleEmailOb
+    }
+
+    val directMessageConfigurationOb = DirectMessageConfiguration {
+        emailMessage = emailMessageOb
+    }
+
+    val messageRequestOb = MessageRequest {
+        addresses = addressMap
+        messageConfiguration = directMessageConfigurationOb
+    }
+
+    PinpointClient { region = "us-west-2" }.use { pinpoint ->
+        pinpoint.sendMessages(
+            SendMessagesRequest {
+                applicationId = appId
+                messageRequest = messageRequestOb
             }
-
-        addressMap[toAddress] = configuration
-        val emailPart = SimpleEmailPart {
-                data=htmlBody
-                charset=charsetVal
-        }
-
-        val subjectPartOb = SimpleEmailPart {
-              data = msgSubject
-              charset = charsetVal
-        }
-
-        val simpleEmailOb = SimpleEmail {
-            htmlPart = emailPart
-            subject = subjectPartOb
-        }
-
-        val emailMessageOb = EmailMessage {
-            body = htmlBody
-            fromAddress = senderAddress
-            simpleEmail = simpleEmailOb
-        }
-
-        val directMessageConfigurationOb = DirectMessageConfiguration {
-            emailMessage = emailMessageOb
-        }
-
-        val messageRequestOb = MessageRequest {
-            addresses = addressMap
-            messageConfiguration = directMessageConfigurationOb
-        }
-
-        PinpointClient { region = "us-west-2" }.use { pinpoint ->
-           pinpoint.sendMessages(SendMessagesRequest{
-               applicationId = appId
-               messageRequest = messageRequestOb
-           })
-           println("The email message was successfully sent")
-        }
-   }
+        )
+        println("The email message was successfully sent")
+    }
+}
 ```
 +  For API details, see [SendMessages](https://github.com/awslabs/aws-sdk-kotlin#generating-api-documentation) in *AWS SDK for Kotlin API reference*\. 
 
@@ -590,7 +624,7 @@ This is prerelease documentation for a feature in preview release\. It is subjec
 #### [ Python ]
 
 **SDK for Python \(Boto3\)**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/python/example_code/pinpoint#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/python/example_code/pinpoint#code-examples)\. 
 Send an email message\.  
 
 ```

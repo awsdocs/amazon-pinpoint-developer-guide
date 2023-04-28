@@ -12,7 +12,7 @@ When you send push notifications through the Firebase Cloud Messaging \(FCM\) se
 
 Use this example to send push notifications by using the AWS SDK for JavaScript in Node\.js\. This example assumes that you've already installed and configured the SDK for JavaScript in Node\.js\.
 
-This example also assumes that you're using a shared credentials file to specify the Access Key and Secret Access Key for an existing IAM user\. For more information, see [Setting credentials](https://docs.aws.amazon.com/sdk-for-javascript/latest/developer-guide/setting-credentials.html) in the *AWS SDK for JavaScript in Node\.js Developer Guide*\.
+This example also assumes that you're using a shared credentials file to specify the Access Key and Secret Access Key for an existing  user\. For more information, see [Setting credentials](https://docs.aws.amazon.com/sdk-for-javascript/latest/developer-guide/setting-credentials.html) in the *AWS SDK for JavaScript in Node\.js Developer Guide*\.
 
 ```
 'use strict';
@@ -195,7 +195,7 @@ SendMessage()
 
 Use this example to send push notifications by using the AWS SDK for Python \(Boto3\)\. This example assumes that you've already installed and configured the SDK for Python \(Boto3\)\.
 
-This example also assumes that you're using a shared credentials file to specify the Access Key and Secret Access Key for an existing IAM user\. For more information, see [Credentials](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html) in the *AWS SDK for Python \(Boto3\) API Reference*\.
+This example also assumes that you're using a shared credentials file to specify the Access Key and Secret Access Key for an existing user\. For more information, see [Credentials](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html) in the *AWS SDK for Python \(Boto3\) API Reference*\.
 
 ```
 import json

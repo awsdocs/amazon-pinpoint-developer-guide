@@ -22,3 +22,4 @@ Use the topics in this section to add, update, and delete endpoints by using the
 + [Adding a batch of endpoints](audience-define-endpoints-batch.md)
 + [Importing endpoints](audience-define-import.md)
 + [Deleting endpoints](audience-define-remove.md)
++ [Managing audience members endpoints](audience-define-auto-inactive.md)

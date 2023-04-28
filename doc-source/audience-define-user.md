@@ -47,7 +47,7 @@ The example `update-endpoint` command uses a JSON file as the argument for the `
             "FirstName":["Wang"],
             "LastName":["Xiulan"],
             "Gender":["Female"],
-            "Age":"39"
+            "Age":["39"]
         }
     }
 }
@@ -119,11 +119,11 @@ import java.util.Map;
             UpdateEndpointResponse result = pinpoint.updateEndpoint(endpointList);
             System.out.format("Update endpoint result: %s\n", result.messageBody().message());
 
-    } catch (PinpointException e) {
-        System.err.println(e.awsErrorDetails().errorMessage());
-        System.exit(1);
+        } catch (PinpointException e) {
+            System.err.println(e.awsErrorDetails().errorMessage());
+            System.exit(1);
+        }
     }
- }
 ```
 
 For the full SDK example, see [AddExampleUser\.java](https://github.com/awsdocs/aws-doc-sdk-examples/blob/master/javav2/example_code/pinpoint/src/main/java/com/example/pinpoint/AddExampleUser.java/) on [GitHub](https://github.com/)\.

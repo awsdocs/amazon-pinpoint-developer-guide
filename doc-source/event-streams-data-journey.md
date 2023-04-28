@@ -98,4 +98,4 @@ Includes information about the journey that generated the event\.
 | journey\_send\_status | Indicates the delivery status of the message that's associated with the event\. Possible values include:[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/pinpoint/latest/developerguide/event-streams-data-journey.html) | 
 | journey\_id | The unique ID of the journey that generated the event\. | 
 | journey\_activity\_id | The unique ID of the journey activity that generated the event\. | 
-| journey\_activity\_type | The event's journey activity type\. This can be **EMAIL**, **SMS**, **PUSH**, or **CUSTOM**\.  **VOICE **is not a supported journey activity type\. | 
+| journey\_activity\_type | The event's journey activity type\. This can be **EMAIL**, **SMS**, **PUSH**, **CONTACT\_CENTER**, or **CUSTOM**\.  **VOICE **is not a supported journey activity type\. | 

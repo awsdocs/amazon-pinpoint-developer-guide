@@ -9,7 +9,7 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
 #### [ Java ]
 
 **SDK for Java 2\.x**  
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/pinpoint#readme)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javav2/example_code/pinpoint#readme)\. 
   
 
 ```
@@ -18,44 +18,44 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
         try {
             Map<String, AttributeDimension> segmentAttributes = new HashMap<>();
             segmentAttributes.put("Team", AttributeDimension.builder()
-                    .attributeType(AttributeType.INCLUSIVE)
-                    .values("Lakers")
-                    .build());
+                .attributeType(AttributeType.INCLUSIVE)
+                .values("Lakers")
+                .build());
 
             RecencyDimension recencyDimension = RecencyDimension.builder()
-                    .duration("DAY_30")
-                    .recencyType("ACTIVE")
-                    .build();
+                .duration("DAY_30")
+                .recencyType("ACTIVE")
+                .build();
 
             SegmentBehaviors segmentBehaviors = SegmentBehaviors.builder()
-                    .recency(recencyDimension)
-                    .build();
+                .recency(recencyDimension)
+                .build();
 
             SegmentDemographics segmentDemographics = SegmentDemographics
-                    .builder()
-                    .build();
+                .builder()
+                .build();
 
             SegmentLocation segmentLocation = SegmentLocation
-                    .builder()
-                    .build();
+                .builder()
+                .build();
 
             SegmentDimensions dimensions = SegmentDimensions
-                    .builder()
-                    .attributes(segmentAttributes)
-                    .behavior(segmentBehaviors)
-                    .demographic(segmentDemographics)
-                    .location(segmentLocation)
-                    .build();
+                .builder()
+                .attributes(segmentAttributes)
+                .behavior(segmentBehaviors)
+                .demographic(segmentDemographics)
+                .location(segmentLocation)
+                .build();
 
             WriteSegmentRequest writeSegmentRequest = WriteSegmentRequest.builder()
-                    .name("MySegment")
-                    .dimensions(dimensions)
-                    .build();
+                .name("MySegment")
+                .dimensions(dimensions)
+                .build();
 
             CreateSegmentRequest createSegmentRequest = CreateSegmentRequest.builder()
-                    .applicationId(appId)
-                    .writeSegmentRequest(writeSegmentRequest)
-                    .build();
+                .applicationId(appId)
+                .writeSegmentRequest(writeSegmentRequest)
+                .build();
 
             CreateSegmentResponse createSegmentResult = client.createSegment(createSegmentRequest);
             System.out.println("Segment ID: " + createSegmentResult.segmentResponse().id());
@@ -76,7 +76,7 @@ The source code for these examples is in the [AWS Code Examples GitHub repositor
 
 **SDK for Kotlin**  
 This is prerelease documentation for a feature in preview release\. It is subject to change\.
- To learn how to set up and run this example, see [GitHub](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/kotlin/services/pinpoint#code-examples)\. 
+ There's more on GitHub\. Find the complete example and learn how to set up and run in the [AWS Code Examples Repository](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/kotlin/services/pinpoint#code-examples)\. 
   
 
 ```
@@ -115,10 +115,12 @@ suspend fun createPinpointSegment(applicationIdVal: String?): String? {
     }
 
     PinpointClient { region = "us-west-2" }.use { pinpoint ->
-        val createSegmentResult: CreateSegmentResponse = pinpoint.createSegment(CreateSegmentRequest {
-            applicationId = applicationIdVal
-            writeSegmentRequest = writeSegmentRequestOb
-        })
+        val createSegmentResult: CreateSegmentResponse = pinpoint.createSegment(
+            CreateSegmentRequest {
+                applicationId = applicationIdVal
+                writeSegmentRequest = writeSegmentRequestOb
+            }
+        )
         println("Segment ID is ${createSegmentResult.segmentResponse?.id}")
         return createSegmentResult.segmentResponse?.id
     }
