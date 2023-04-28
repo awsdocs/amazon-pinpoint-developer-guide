@@ -30,7 +30,7 @@ Use the following example to create a policy for sending events to an Amazon SNS
 }
 ```
 
-For more information about IAM policies, see [Policies and permissions in IAM](IAM/latest/UserGuide/access_policies.html) in the *IAM User Guide*\.
+For more information about IAM policies, see [Policies and permissions in IAM](/IAM/latest/UserGuide/access_policies.html) in the *IAM User Guide*\.
 
 ### Creating the event destination<a name="sms-voice-v2-event-destinations-sns-creating-cli"></a>
 
